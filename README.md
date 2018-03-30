@@ -177,10 +177,10 @@ If you do not plan to work with OpenUI5 you might as well use npm or any other n
 Apparently, the modules of the UI5 Build and Development Tooling as well as the OpenUI5 libraries are not yet available on the public npm registry. We are working on publishing them as soon as possible. Stay tuned!
 
 ## Contributing
-Please check our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/CONTRIBUTING.md).
+Please check our [Contribution Guidelines](/CONTRIBUTING.md).
 
 ## Support
-Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/CONTRIBUTING.md#report-an-issue) on how to report an issue.
+Please follow our [Contribution Guidelines](/CONTRIBUTING.md#report-an-issue) on how to report an issue.
 
 ## License
 This project is licensed under the Apache Software License, Version 2.0 except as noted otherwise in the [LICENSE](/LICENSE.txt) file.
