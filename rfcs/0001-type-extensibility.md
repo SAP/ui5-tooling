@@ -50,7 +50,7 @@ The `AbstractBuilder` (as well as any subclass-implementation) offers a set of f
 1. postprocess() / optimize()
     - uglify()
 
-A custom types `Builder` module shall extend another types builder or the generic `AbstractBuilder`:
+A custom types `Builder`-module shall extend another types builder or the generic `AbstractBuilder` and overwrite relevant functions:
 ```js
 class MyCustomBuilder extends AbstractBuilder {
     bundle() {
@@ -60,7 +60,54 @@ class MyCustomBuilder extends AbstractBuilder {
 }
 ```
 
+### Generic handling of extension
+A "Type Extension" will be only one way to extend the UI5 Build and Development Tooling. Other possible extensions include "Shims" (see RFC 0002), server middlewares, translators.
+
+Therefore a somewhat generic concept for dealing with extensions is needed.
+
+To separate "UI5 Projects" (i.e. things that represent UI5-artifacts for the browser) from tooling specific things like "extensions", an additional attribute "kind" is added to the ui5.yaml.
+
+
+#### Example type extension
+```yaml
+specVersion: "0.1"
+kind: extension
+type: project-type
+metadata:
+    name: my-custom-library
+```
+
+#### Example library
+```yaml
+specVersion: "0.1"
+kind: project
+type: my-custom-library
+metadata:
+    name: my.application
+```
+
+The `kind` attribute defaults to `project`.
+
 ### Collecting and applying type extensions
+A type extension might be a standalone module or part of a project. In the above "type extension"/"library" example, the library declares a dependency to the type extension module. `ui5-project` should resolve the dependency, identify it as an extension and run the appropriate formatter/type for the extension type. This will then add the type as "my-custom-library" to the type repository.
+
+If the type extension is part of a project, the single `ui5.yaml` for above example looks like this:
+
+```yaml
+specVersion: "0.1"
+kind: project
+type: my-custom-library
+metadata:
+    name: my.application
+----
+specVersion: "0.1"
+kind: extension
+type: project-type
+metadata:
+    name: my-custom-library
+```
+
+In this case the type extension is no dependency of any kind but automatically collected and processed with the processing of the project.
 
 ## How we teach this
 TBD
