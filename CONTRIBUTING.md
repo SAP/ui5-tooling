@@ -11,19 +11,16 @@ Go to [the Github issue tracker](https://github.com/SAP/ui5-tooling/issues?state
 Additional work may be further information or a hint that helps understanding the issue. Maybe you can even identify the root cause and [contribute](#contribute-code) a bugfix?
 
 ## Report an Issue
-If you find a bug you are welcome to report it.
-We can only handle well-reported, actual bugs, so please follow the guidelines below and use forums like [StackOverflow](http://stackoverflow.com/questions/tagged/sapui5) for support questions or when in doubt whether the issue is an actual bug.
-
-Once you have familiarized with the guidelines, you can go to the [Github issue tracker](https://github.com/SAP/ui5-tooling/issues/new) to report the issue.
+### Questions / Not a bug
+If you need help setting something up or if you have a question regarding the UI5 Build and Development Tooling, please seek help on a platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or in the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com).
 
 ### Requirements for a bug report
-These eight requirements are the mandatory base of a good bug report:
+These requirements are the foundation of a good bug report:
 
-1. **Only real bugs**: please do your best to make sure to only report real bugs! Do not report:
+1. **Only UI5 Build and Development Tooling issues**: Please do not report:
 	* issues caused by dependencies or plugins.
 	* issues caused by the usage of non-public/internal methods. Only the public methods listed in the API documentation may be used.
-	* something that behaves just different from what you expected. A bug is when something behaves different than specified. When in doubt, ask in a forum.
-	* something you do not get to work properly. Use a support forum like [StackOverflow](http://stackoverflow.com/questions/tagged/sapui5) to request help.
+        - something you do not get to work properly. Seek help on a platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or in the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com)
 2. **No duplicate**: you have searched the issue tracker to make sure the bug has not yet been reported
 3. **Good summary**: the summary should be specific to the issue
 4. **Current bug**: the bug can be reproduced in the most current version (state the tested version!)
@@ -37,11 +34,6 @@ These eight requirements are the mandatory base of a good bug report:
 You are encouraged to use [this template](ISSUE_TEMPLATE.md).
 
 Please report bugs in English, so all users can understand them.
-
-### Issue handling process
-When an issue is reported, a committer will look into it and either confirm it as a real issue (by giving the "approved" label), close it if it is not an issue, or ask for more details. Approved issues are then either assigned to a committer in GitHub, reported in our internal issue handling system, or left open as "contribution welcome" for easy or not urgent fixes.
-
-An issue that is about a real bug is closed as soon as the fix is committed.
 
 ### Reporting Security Issues
 If you find a security issue, please act responsibly and report it not in the public issue tracker, but directly to us, so we can fix it before it can be exploited:
@@ -59,17 +51,13 @@ Labels for issue categories:
  * enhancement: this is not a bug report, but an enhancement request
 
 Status of open issues:
- * unconfirmed: this report needs confirmation whether it is really a bug (no label; this is the default status)
- * approved: this issue is confirmed to be a bug
- * author action: the author is required to provide information
- * contribution welcome: this fix/enhancement is approved and you are invited to contribute it
+ * information required: the author is required to provide information
+ * good first issue: A newcomer may work on this
+ * help wanted: Additional help in analyzing this issue is appreciated
 
 Status/resolution of closed issues:
-
- * fixed: a fix for the issue was provided
- * duplicate: the issue is also reported in a different ticket and is handled there
+ * duplicate: the issue was already reported somewhere else
  * invalid: for some reason or another this issue report will not be handled further (maybe lack of information or issue does not apply anymore)
- * works: not reproducible or working as expected
  * wontfix: while acknowledged to be an issue, a fix cannot or will not be provided
 
 The labels can only be set and modified by committers.
