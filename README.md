@@ -1,5 +1,7 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
+[![OpenUI5 Community Slack (#tooling channel)](https://slackui5invite.herokuapp.com/badge.svg)](https://slackui5invite.herokuapp.com)
+
 # [UI5](https://ui5.sap.com) Build and Development Tooling
 **This is a Pre-Alpha release!**  
 **The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**
@@ -180,7 +182,7 @@ Apparently, the modules of the UI5 Build and Development Tooling as well as the 
 Please check our [Contribution Guidelines](/CONTRIBUTING.md).
 
 ## Support
-Please follow our [Contribution Guidelines](/CONTRIBUTING.md#report-an-issue) on how to report an issue.
+Please follow our [Contribution Guidelines](/CONTRIBUTING.md#report-an-issue) on how to report an issue. Or chat with us in the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com)
 
 ## License
 This project is licensed under the Apache Software License, Version 2.0 except as noted otherwise in the [LICENSE](/LICENSE.txt) file.
