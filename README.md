@@ -1,8 +1,8 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
+# [UI5](https://ui5.sap.com) Build and Development Tooling
 [![OpenUI5 Community Slack (#tooling channel)](https://slackui5invite.herokuapp.com/badge.svg)](https://slackui5invite.herokuapp.com)
 
-# [UI5](https://ui5.sap.com) Build and Development Tooling
 **This is a Pre-Alpha release!**  
 **The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**
 

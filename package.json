@@ -49,7 +49,6 @@
 			"jsdocs/**",
 			"coverage/**",
 			"test/**",
-			"lib/lbt/**"
 		],
 		"check-coverage": true,
 		"lines": 70,
