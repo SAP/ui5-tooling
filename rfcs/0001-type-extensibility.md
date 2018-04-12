@@ -22,40 +22,16 @@ Multiple UI5 projects may require the same kind of "customized" build. Therefore
 
 ## Detailed design
 ### Extensibility of types
-Leverage the existing mechanism of types (currently for application and library), allow for a custom type and do the necessary adaption via regular JS language features (i.e. object-orientation, deriving and overriding).
+Leverage the existing mechanism of types (currently for application and library), allow for a custom type and do the necessary adaption via regular JavaScript language features (i.e. object-orientation, deriving and overriding).
 
-The `AbstractBuilder` (as well as any subclass-implementation) offers a set of functions which can be overwritten.
-
-#### Combined list of tasks executed by application- and library types
-- replaceCopyright
-- replaceVersion
-- buildThemes
-- generateLibraryPreload
-- createDebugFiles
-- uglify
-- generateFlexChangesBundle
-- generateManifestBundle
-- generateAppPreload
-- generateStandaloneAppBundle
-- generateVersionInfo
-
-#### Functions of the `AbstractBuilder` ("Phases")
-1. preprocess()
-    - replaceCopyright
-    - replaceVersion
-1. process()
-    - createDebugFiles()
-    - buildThemes()
-1. bundle()
-1. postprocess() / optimize()
-    - uglify()
+The `AbstractBuilder` (as well as any subclass-implementation) offers a set of functions which can be overwritten. Mainly the `build` function.
 
 A custom types `Builder`-module shall extend another types builder or the generic `AbstractBuilder` and overwrite relevant functions:
 ```js
 class MyCustomBuilder extends AbstractBuilder {
-    bundle() {
-        super.bundle();
-        myCustomBundle();
+    build() {
+        super.build();
+        myCustomBuildTask();
     }
 }
 ```
