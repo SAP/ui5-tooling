@@ -18,7 +18,7 @@
 		"npm": ">= 5"
 	},
 	"scripts": {
-		"test": "npm run lint && npm run jsdoc-generate && npm run coverage",
+		"test": "npm run lint && npm run jsdoc-generate",
 		"lint": "eslint ./",
 		"unit": "rimraf test/tmp && ava",
 		"unit-watch": "rimraf test/tmp && ava --watch",
@@ -27,7 +27,7 @@
 		"unit-inspect": "cross-env DEBUG=*,-babel,-ava node --inspect-brk node_modules/ava/profile.js",
 		"coverage": "nyc npm run unit",
 		"jsdoc": "npm run jsdoc-generate && opn jsdocs/index.html",
-		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./node_modules/@ui5/ || (echo 'Error during JSDoc generation! Check log.' && exit 1)"
+		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./ || (echo 'Error during JSDoc generation! Check log.' && exit 1)"
 	},
 	"ava": {
 		"files": [

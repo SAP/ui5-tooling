@@ -4,7 +4,8 @@
     },
     "source": {
         "include": ["README.md"],
-        "includePattern": ".+\\.js$"
+        "includePattern": "node_modules/@ui5/[^\/]*/lib/.+\\.js$",
+        "excludePattern": "node_modules/@ui5/.*/node_modules/@ui5"
     },
     "plugins": [],
     "opts": {
