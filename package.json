@@ -82,6 +82,7 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
+		"@ui5/cli": "SAP/ui5-cli",
 		"@ui5/fs": "SAP/ui5-fs",
 		"@ui5/logger": "SAP/ui5-logger",
 		"@ui5/builder": "SAP/ui5-builder",
