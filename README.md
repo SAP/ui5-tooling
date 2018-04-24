@@ -21,7 +21,7 @@
 ## Installing the UI5 CLI
 ### Requirements
 - [Node.js](https://nodejs.org/) (**version must be 8.3 or higher** ⚠️)
-- Optional: Yarn ([yarnpkg.com](https://yarnpkg.com/en/docs/install))  
+- Optional: [Yarn](https://yarnpkg.com/en/docs/install) (**version must be 1.0 or higher**)  
     *Yarn is currently required when working with the [OpenUI5 main repository](https://github.com/SAP/openui5). See [FAQ: What's the thing with Yarn?](#whats-the-thing-with-yarn)*
 
 ### Installation
