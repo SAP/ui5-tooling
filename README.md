@@ -22,8 +22,6 @@
 ## Installing the UI5 CLI
 ### Requirements
 - [Node.js](https://nodejs.org/) (**version must be 8.3 or higher** ⚠️)
-- Optional: [Yarn](https://yarnpkg.com/en/docs/install) (**version must be 1.0 or higher**)  
-    *Yarn is currently required when working with the [OpenUI5 main repository](https://github.com/SAP/openui5). See [FAQ: What's the thing with Yarn?](#whats-the-thing-with-yarn)*
 
 ### Installation
 ```sh
@@ -65,8 +63,8 @@ Questions? Check the [FAQ](#faq)!
 ## Linking Projects
 You would like to work on an application project and one or more of its dependencies at the same time? We got you covered!
 
-By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](#why-packagejson-why-npm)) you have a variety of choices.  
-Let's have an example with [Yarn](https://yarnpkg.com/), an application and a reuse library:
+By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](#why-packagejson-why-npm)) you have a variety of options.  
+Let's have an example with [npm](https://www.npmjs.com/get-npm), an application and a reuse library:
 
 **Example: Your directory structure**
 ```
@@ -83,18 +81,18 @@ my-reuse-library/
     \_ package.json
 ```
 
-In its `package.json`, my-app should already define a dependency to my-reuse-library. So after running the `yarn` command, a copy of the "my-reuse-library"-package should be retrieved from the package registry and added to my-app's `node_modules/` directory.
+In its `package.json`, my-app should already define a dependency to my-reuse-library. So after running the `npm install` command, a copy of the "my-reuse-library"-package should be retrieved from the package registry and added to my-app's `node_modules/` directory.
 
 Now all you need to do is replacing this copy of my-reuse-library package with a  link to the my-reuse-library project located somewhere on your computer. In this example it is right next to my-app, but that doesn't really matter.
 
 First, in the directory of the my-reuse-library project, create a global link:
 ```sh
-yarn link
+npm link
 ```
 
 Then, in the my-app direcotry, use that link to replace the registry package:
 ```sh
-yarn link my-reuse-library
+npm link my-reuse-library
 ```
 _**Note:** "my-reuse-library" is the name defined in the package.json. Not necessarily the directory or ui5.yaml name_
 
@@ -113,16 +111,19 @@ That's it. You can check whether the linking worked by executing `ui5 tree` in t
 ```
 
 ## OpenUI5 Framework Development
+For OpenUI5 Framework Development, [Yarn](https://yarnpkg.com/en/docs/install) (version must be **1.0 or higher**) is required.  
+*See [FAQ: What's the thing with Yarn?](#whats-the-thing-with-yarn)*
+
 1. Clone the OpenUI5 repository and navigate into it
     ```sh
     git clone git@github.com:SAP/openui5.git
     cd openui5/
     ```
-1. Install all dependencies and create links between the OpenUI5 libraries (see [FAQ: What's the thing with Yarn?](#whats-the-thing-with-yarn))
+1. Install all dependencies and create links between the OpenUI5 libraries
     ```sh
     yarn
     ```
-1. Run the OpenUI5 testsuite
+1. Start the OpenUI5 testsuite
     ```sh
     cd src/testsuite/
     ui5 serve -o /index.html
@@ -153,9 +154,9 @@ Please follow our [Contribution Guidelines](/CONTRIBUTING.md#report-an-issue) on
 ### Why package.json? / Why npm?
 Currently, the tooling can only resolve dependencies defined in a `package.json` file. This might change in the future by adding Translators for additional dependency management systems.
 
-To manage your dependencies you can use almost any Node package manager that relies on `package.json` files. Popular ones are [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/) and [pnpm](https://pnpm.js.org/).
+To manage your dependencies you can use almost any Node.js package manager that relies on `package.json` files. Popular ones are [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/) and [pnpm](https://pnpm.js.org/).
 
-The UI5 Build and Development Tooling resolve dependencies (almost) the same way Node.js does when executing a `require` statement.
+The UI5 Build and Development Tooling resolve dependencies almost the same way Node.js does when executing a `require` statement.
 
 ### What's the thing with Yarn?
 In a couple of guides we refer to the [yarn](https://yarnpkg.com/) node package manager. This is because it offers functionality that the otherwise prefered [npm](https://www.npmjs.com/) package manager is currently lacking of. Namely the [workspace](https://yarnpkg.com/lang/en/docs/workspaces/) setting which is currently used in the [OpenUI5 (mono-)repository](https://github.com/SAP/openui5). Note that npm [might add](https://github.com/npm/npm/pull/15900#issuecomment-315335381) this feature in the future.
