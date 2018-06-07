@@ -26,24 +26,11 @@
     *Yarn is currently required when working with the [OpenUI5 main repository](https://github.com/SAP/openui5). See [FAQ: What's the thing with Yarn?](#whats-the-thing-with-yarn)*
 
 ### Installation
-Apparently, the modules that make up the UI5 Build and Development Tooling are not yet available on npm. See [FAQ: Where are the npm packages?](#where-are-the-npm-packages)
-
 ```sh
-# Clone the repository
-git clone https://github.com/SAP/ui5-cli.git
- 
-# Navigate into the repositroy
-cd ui5-cli
+npm install --global @ui5/cli
 
-# Install all dependencies
-npm install
-
-# Link the module globally
-npm link
-
-# Test
+# Verify installation
 ui5 --help
-# This should output something like: Usage: ui5 <command> [options]...
 ```
 
 ## ⚡️ Quick start: OpenUI5 Sample App
@@ -65,12 +52,11 @@ If your project is not setup for use with the UI5 Build and Development Tooling 
     ui5 init
     ```
 
-1. ~Install npm dependencies required for your project~  
+1. Install npm dependencies required for your project  
     ```sh
-    # npm install @openui5/sap.ui.core @openui5/themelib_sap_belize [...]
+    npm install @openui5/sap.ui.core @openui5/themelib_sap_belize [...]
     ```
-    ⚠️  **Note:** This is not yet possible (see [FAQ: Where are the npm packages?](#where-are-the-npm-packages)).  
-    Please follow [Linking Projects](#linking-projects) instead to create local links for your projects dependencies. You still need to add all dependencies to your projects `package.json`.
+    For a full list of all available OpenUI5 libraries, see [www.npmjs.com/org/openui5](https://www.npmjs.com/org/openui5)
 
 1. If you are using Git or similar version control, commit `package.json` and `ui5.yaml` to your repository
 
@@ -177,7 +163,7 @@ In a couple of guides we refer to the [yarn](https://yarnpkg.com/) node package 
 If you do not plan to work with OpenUI5 you might as well use npm or any other node package manger (see [FAQ: Why package.json? / Why npm?](#why-packagejson-why-npm). But keep in mind that linking the same module with npm and Yarn might lead to issues. Also, Yarn can't work with links created by npm and vice versa. 
 
 ### Where are the npm packages?
-Apparently, the modules of the UI5 Build and Development Tooling as well as the OpenUI5 libraries are not yet available on the public npm registry. We are working on publishing them as soon as possible. Stay tuned!
+[Here](https://www.npmjs.com/org/openui5) (OpenUI5 Libraries) and [here](https://www.npmjs.com/org/ui5) (UI5 Tooling).
 
 ## Contributing
 Please check our [Contribution Guidelines](/CONTRIBUTING.md).
