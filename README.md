@@ -2,7 +2,7 @@
 
 # [UI5](https://ui5.sap.com) Build and Development Tooling
 [![OpenUI5 Community Slack (#tooling channel)](https://img.shields.io/badge/slack-join-44cc11.svg)](https://join-ui5-slack.herokuapp.com)
-[![Travis CI Build Status](https://travis-ci.org/SAP/ui5-tooling.svg?branch=master)](https://travis-ci.org/SAP/ui5-tooling)
+[![Travis CI Build Status](https://travis-ci.org/SAP/ui5-tooling.svg?branch=master)](https://travis-ci.org/SAP/ui5-tooling) [![Greenkeeper badge](https://badges.greenkeeper.io/SAP/ui5-tooling.svg)](https://greenkeeper.io/)
 
 **This is a Pre-Alpha release!**  
 **The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**
