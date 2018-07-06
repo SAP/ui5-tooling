@@ -4,9 +4,7 @@ node_js:
 - "lts/*"
 
 script:
-  - npm run lint
-
-after_success: bash ./deploy/deploy.sh
+  - bash ./deploy/deploy.sh
 
 env:
   global:
