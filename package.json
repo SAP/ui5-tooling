@@ -27,7 +27,7 @@
 		"unit-inspect": "cross-env DEBUG=*,-babel,-ava node --inspect-brk node_modules/ava/profile.js",
 		"coverage": "nyc npm run unit",
 		"jsdoc": "npm run jsdoc-generate && opn jsdocs/index.html",
-		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./ || (echo 'Error during JSDoc generation! Check log.' && exit 1)"
+		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./ && cp -R ./docs ./jsdocs || (echo 'Error during JSDoc generation! Check log.' && exit 1)"
 	},
 	"ava": {
 		"files": [
