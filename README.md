@@ -8,7 +8,7 @@
 **The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**
 
 ## Documents
-- [API Reference](https://github.com/pages/SAP/ui5-tooling)
+- [API Reference](https://sap.github.io/ui5-tooling/)
 - [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
 
 ## Modules
