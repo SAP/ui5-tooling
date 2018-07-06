@@ -26,7 +26,7 @@ SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 
 function doCompile {
-  bash ./deploy/compile.sh || { echo "Compiling failed"; exit 1; }
+  npm run jsdoc-generate || { echo "Compiling JSDoc failed"; exit 1; }
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -56,7 +56,7 @@ doCompile
 
 # Now let's go have some fun with the cloned repo
 cd jsdocs
-git config user.name "Travis CI"
+git config user.name "$COMMIT_AUTHOR_NAME"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 git add -N . # consider untracked files for git diff
