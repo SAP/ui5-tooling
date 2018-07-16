@@ -44,9 +44,9 @@ Such resources can be an OData service endpoint but also runtime artifacts like 
 - Proxy should probably work against a single remote system
 - Useful for
     - application and library development
-        + No need to maintain/update framework dependencies locally
+        + e.g. no need to maintain/update framework dependencies locally, as they are served from the remote system
     - framework development
-        + e.g. test applications deployed in a system against a different version of OpenUI5/SAPUI5
+        + e.g. test applications deployed in a system against a different version of OpenUI5/SAPUI5 served from the local machine
 
 ### Rewriting request URL
 In all three use cases it might be required to rewrite some URLs. Examples are:
