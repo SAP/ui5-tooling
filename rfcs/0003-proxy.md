@@ -67,6 +67,11 @@ The proxy shall be able to forward the following authentication methods:
 
 In addition, authentication for a transparent proxy (e.g. some corporate proxies) sitting between the local machine and the remote system shall be supported.
 
+### Additional requirements
+- Full TLS support (with opt-out "insecure" option)
+- Possibly WebSocket support
+- Possibly HTTP/2 support
+
 ### Configuration
 #### Project setup
 It is to be decided whether a proxy is to be configured within a single project or as a separate project.
@@ -101,6 +106,14 @@ metadata:
 proxy:
     remoteRoot: "https://..."
 ```
+
+#### General configuration options
+- Remote systems root URL
+- Optional: Paths to certificate authority files for trusted connections with systems serving self-signed/corporate certificates.
+- Optional: Host and port of transparent proxy (could also be read from environment variables, see https://github.com/SAP/ui5-server/pull/38)
+- For use case **C**:
+    + Root path for UI5 resources
+    + Root path of target application (e.g. CP deployment, Fiori Launchpad)
 
 #### Defining what requests should be processed by the proxy
 TBD
