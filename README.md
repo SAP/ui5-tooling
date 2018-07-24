@@ -90,7 +90,7 @@ First, in the directory of the my-reuse-library project, create a global link:
 npm link
 ```
 
-Then, in the my-app direcotry, use that link to replace the registry package:
+Then, in the my-app directory, use that link to replace the registry package:
 ```sh
 npm link my-reuse-library
 ```
