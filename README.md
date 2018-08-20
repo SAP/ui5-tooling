@@ -7,9 +7,10 @@
 **This is an alpha release!**  
 **The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**
 
-## Documents
+## Resources
 - [API Reference](https://sap.github.io/ui5-tooling/)
 - [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
+- [Project Configuration](https://github.com/SAP/ui5-project#configuration)
 
 ## Modules
 - [ui5-cli](https://github.com/SAP/ui5-cli): UI5 Command Line Interface, utilizing all of the following modules
@@ -40,6 +41,7 @@ This file (with some exceptions) is required for all projects and their dependen
 
 ### Setup
 If your project is not setup for use with the UI5 Build and Development Tooling yet, follow these steps:
+
 1. **If** your project does not have a `package.json` file yet, let npm generate it
     ```sh
     npm init --yes
@@ -59,6 +61,9 @@ If your project is not setup for use with the UI5 Build and Development Tooling 
 1. If you are using Git or similar version control, commit `package.json` and `ui5.yaml` to your repository
 
 Questions? Check the [FAQ](#faq)!
+
+## Project Configuration
+For details about how to configure a UI5 project (e.g. using a ui5.yaml) see [ui5-project - Configuration](https://github.com/SAP/ui5-project#configuration).
 
 ## Linking Projects
 You would like to work on an application project and one or more of its dependencies at the same time? We got you covered!
