@@ -33,7 +33,7 @@ ui5 --help
 ```
 
 ## ⚡️ Quick start: OpenUI5 Sample App
-Checkout the [OpenUI5 Sample App (`ui5-tooling` branch)](https://github.com/SAP/openui5-sample-app/tree/ui5-tooling) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/tree/ui5-tooling#openui5-sample-app) to play around with the UI5 Build and Development Tooling.
+Checkout the [OpenUI5 Sample App](https://github.com/SAP/openui5-sample-app) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/#openui5-sample-app) to play around with the UI5 Build and Development Tooling.
 
 ## Enable an existing Project
 You can easily check whether or not a project (application or library) can already be used with the UI5 Build and Development Tooling by looking for a `ui5.yaml` file in the projects root directory.  
