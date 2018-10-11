@@ -1,6 +1,8 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
 # [UI5](https://ui5.sap.com) Build and Development Tooling
+> An open and modular toolchain to develop state of the art applications based on the [UI5](https://ui5.sap.com) framework.
+
 [![OpenUI5 Community Slack (#tooling channel)](https://img.shields.io/badge/slack-join-44cc11.svg)](https://join-ui5-slack.herokuapp.com)
 [![Travis CI Build Status](https://travis-ci.org/SAP/ui5-tooling.svg?branch=master)](https://travis-ci.org/SAP/ui5-tooling)
 
