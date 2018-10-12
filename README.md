@@ -13,6 +13,7 @@
 - [API Reference](https://sap.github.io/ui5-tooling/)
 - [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
 - [Project Configuration](https://github.com/SAP/ui5-project#configuration)
+- 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
 
 ## Modules
 - [ui5-cli](https://github.com/SAP/ui5-cli): UI5 Command Line Interface, utilizing all of the following modules
