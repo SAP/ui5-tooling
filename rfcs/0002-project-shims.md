@@ -162,7 +162,7 @@ Documentation in the [ui5-project](https://github.com/SAP/ui5-project) README.
 When a shim overwrites the configuration of another project, changes made to the projects original configuration might be incompatible with the shim-configuration.
 
 ## Alternatives
-TBD
+Unknown
 
 ## Unresolved questions
-TBD
+-
