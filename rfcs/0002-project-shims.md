@@ -35,24 +35,25 @@ kind: extension
 type: project-shim
 metadata:
     name: legacy-lib-shims
-configuration:
-    <id/module name>:
-        specVersion: "0.1",
-        type: <project type>,
-        metadata:
-            name: <project name>
-dependencies:
-    <id/module name>:
-        - <id/module name>
-        - <id/module name>
-        - <id/module name>
-        - ...
-collections:
-    <module name>:
-        modules:
-            <id>: <relative path>
-            <id>: <relative path>
-            <id>: <relative path>
+shims:
+    configuration:
+        <id/module name>:
+            specVersion: "0.1",
+            type: <project type>,
+            metadata:
+                name: <project name>
+    dependencies:
+        <id/module name>:
+            - <id/module name>
+            - <id/module name>
+            - <id/module name>
+            - ...
+    collections:
+        <module name>:
+            modules:
+                <id>: <relative path>
+                <id>: <relative path>
+                <id>: <relative path>
 ```
 
 ### Example
@@ -123,33 +124,34 @@ kind: extension
 type: project-shim
 metadata:
     name: legacy-lib-shims
-configurations:
-    legacy-library-a:
-        specVersion: "0.1",
-        type: library,
-        metadata:
-            name: legacy.library.a
-    legacy-library-b:
-        specVersion: "0.1",
-        type: library,
-        metadata:
-            name: legacy.library.b
-    legacy-library-x:
-        specVersion: "0.1",
-        type: library,
-        metadata:
-            name: legacy.library.x
-dependencies:
-    legacy-library-a:
-        - legacy-library-b
-        - legacy-library-x
-    legacy-library-b:
-        - legacy-library-x
-collections:
-    legacy-libs:
-        modules:
-            legacy-library-a: src/library.a
-            legacy-library-b: src/library.b
+shims:
+    configurations:
+        legacy-library-a:
+            specVersion: "0.1",
+            type: library,
+            metadata:
+                name: legacy.library.a
+        legacy-library-b:
+            specVersion: "0.1",
+            type: library,
+            metadata:
+                name: legacy.library.b
+        legacy-library-x:
+            specVersion: "0.1",
+            type: library,
+            metadata:
+                name: legacy.library.x
+    dependencies:
+        legacy-library-a:
+            - legacy-library-b
+            - legacy-library-x
+        legacy-library-b:
+            - legacy-library-x
+    collections:
+        legacy-libs:
+            modules:
+                legacy-library-a: src/library.a
+                legacy-library-b: src/library.b
 ```
 
 
