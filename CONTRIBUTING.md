@@ -5,16 +5,38 @@
  3. [Contributing Code](#-contributing-code)
 
 ## ⚡️ Quick Links
+- [UI5 Tooling - Task Board](https://github.com/orgs/SAP/projects/1)
+  + <details>
+    <summary>Card filter for project maintainers</summary>
+    <p>
+
+    ```
+    is:open repo:SAP/ui5-tooling repo:SAP/ui5-cli repo:SAP/ui5-logger repo:SAP/ui5-project repo:SAP/ui5-server repo:SAP/ui5-builder repo:SAP/ui5-fs sort:updated-desc -label:enhancement -label:documentation -label:dependencies -label:RFC
+    ```
+
+    </p>
+    </details>
+- [UI5 Tooling - Bug Triage](https://github.com/orgs/SAP/projects/2)
+  + <details>
+    <summary>Card filter for project maintainers</summary>
+    <p>
+
+    ```
+    is:open repo:SAP/ui5-tooling repo:SAP/ui5-cli repo:SAP/ui5-logger repo:SAP/ui5-project repo:SAP/ui5-server repo:SAP/ui5-builder repo:SAP/ui5-fs sort:updated-desc -label:dependencies
+    ```
+
+    </p>
+    </details>
 - [Open Issues (cross-repo)](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs)
 - [Open Pull Requests (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs)
 
 ## 🔍 Analyzing Issues
 Analyzing issue reports can be a lot of effort. Any help is welcome! 👍
 
-Open [this custom search](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs) and look for open issues which require additional work or a bugfix.  
-Especially look out for the labels **`good first issue`**, **`help wanted`** and **`information required`**.
+Open the [Bug Triage Project Board](https://github.com/orgs/SAP/projects/2) and look for open issues which require triage, additional work or a bugfix.  
+Especially look out for issues in the **`Needs Triage`** column or issues with the labels **`good first issue`**, **`help wanted`** or **`information required`**.
 
-You might be able to add additional or missing information. Like a scenario to reproduce an issue or an analysis of the root-cause. In case of the latter you might even be able to [contribute](#-contributing-code) a bugfix 🙌
+You might be able to add additional or missing information. Like a step-by-step guide on how to reproduce an issue or an analysis of the root-cause. In case of the latter you might even be able to [contribute](#-contributing-code) a bugfix 🙌
 
 ## 📝 Reporting Issues
 ### Not a Bug / Questions
@@ -106,12 +128,13 @@ The form contains a list of employees who are authorized to contribute on behalf
 
 ### How to Contribute
 1. Make sure the change is welcome (see [General Remarks](#general-remarks))
-2. Create a branch forking the relevant module repository and apply your change
-3. Commit and push your change on that branch
+    - Also check the [UI5 Tooling Task Board](https://github.com/orgs/SAP/projects/1) for whether related tasks are already being worked on, blocked or in discussion
+1. Create a branch forking the relevant module repository and apply your change
+1. Commit and push your change on that branch
     - 👉 **Please follow our [Development Conventions and Guidelines](docs/Guidelines.md)**
-5. Create a Pull Request in the relevant repository
-6. Follow the link posted by the CLA assistant to your pull request and accept it, as described in detail above.
-7. Wait for our code review and approval, possibly enhancing your change on request
+1. Create a Pull Request in the relevant repository
+1. Follow the link posted by the CLA assistant to your pull request and accept it, as described in detail above.
+1. Wait for our code review and approval, possibly enhancing your change on request
     - Note that the UI5 developers have many duties. So depending on the required effort for reviewing, testing and clarification this may take a while
-8. Once the change has been approved and merged we will inform you in a comment
-9. Celebrate 🎉
+1. Once the change has been approved and merged we will inform you in a comment
+1. Celebrate 🎉
