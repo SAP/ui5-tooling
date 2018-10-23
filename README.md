@@ -65,6 +65,11 @@ If your project is not setup for use with the UI5 Build and Development Tooling 
 
 Questions? Check the [FAQ](#faq)!
 
+## Working with the UI5 Build and Development Tooling
+When developing a UI5 project locally, you should use the UI5 Server (`ui5 serve`) and not the UI5 Builder (`ui5 build`). Building a project should only ever be required when deploying it.
+
+However, you might have good reasons to also use the UI5 Builder during development. In such cases feel free to let us know! Maybe your use case could be covered by a future enhancement of the UI5 Server.
+
 ## Project Configuration
 For details about how to configure a UI5 project (e.g. using a ui5.yaml) see [ui5-project - Configuration](https://github.com/SAP/ui5-project#configuration).
 
@@ -119,23 +124,7 @@ That's it. You can check whether the linking worked by executing `ui5 tree` in t
 ```
 
 ## OpenUI5 Framework Development
-For OpenUI5 Framework Development, [Yarn](https://yarnpkg.com/en/docs/install) (version must be **1.0 or higher**) is required.  
-*See [FAQ: What's the thing with Yarn?](#whats-the-thing-with-yarn)*
-
-1. Clone the OpenUI5 repository and navigate into it
-    ```sh
-    git clone git@github.com:SAP/openui5.git
-    cd openui5/
-    ```
-1. Install all dependencies and create links between the OpenUI5 libraries
-    ```sh
-    yarn
-    ```
-1. Start the OpenUI5 testsuite
-    ```sh
-    cd src/testsuite/
-    ui5 serve -o /index.html
-    ```
+See [SAP/openui5 Developing UI5](https://github.com/SAP/openui5/blob/master/docs/developing.md#developing-ui5).
         
 ## HTTP/2 Development Webserver
 The UI5 Build and Development Tooling contain a webserver to serve the project via HTTP/2 protocol.
@@ -162,14 +151,14 @@ Please follow our [Contribution Guidelines](/CONTRIBUTING.md#report-an-issue) on
 ### Why package.json? / Why npm?
 Currently, the tooling can only resolve dependencies defined in a `package.json` file. This might change in the future by adding Translators for additional dependency management systems.
 
-To manage your dependencies you can use almost any Node.js package manager that relies on `package.json` files. Popular ones are [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/) and [pnpm](https://pnpm.js.org/).
+To manage your dependencies you can use almost any Node.js package manager that relies on `package.json` files. Popular ones are [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/) and [pnpm](https://pnpm.js.org/).
 
 The UI5 Build and Development Tooling resolve dependencies almost the same way Node.js does when executing a `require` statement.
 
 ### What's the thing with Yarn?
-In a couple of guides we refer to the [yarn](https://yarnpkg.com/) node package manager. This is because it offers functionality that the otherwise prefered [npm](https://www.npmjs.com/) package manager is currently lacking of. Namely the [workspace](https://yarnpkg.com/lang/en/docs/workspaces/) setting which is currently used in the [OpenUI5 (mono-)repository](https://github.com/SAP/openui5). Note that npm [might add](https://github.com/npm/npm/pull/15900#issuecomment-315335381) this feature in the future.
+In a couple of guides we refer to the [Yarn](https://yarnpkg.com/) node package manager. This is because it offers functionality that the otherwise prefered [npm](https://www.npmjs.com/) package manager is currently lacking of. Namely the [workspace](https://yarnpkg.com/lang/en/docs/workspaces/) setting which is currently used in the [OpenUI5 (mono-)repository](https://github.com/SAP/openui5). Note that npm [might add](https://github.com/npm/npm/pull/15900#issuecomment-315335381) this feature in the future.
 
-If you do not plan to work with OpenUI5 you might as well use npm or any other node package manger (see [FAQ: Why package.json? / Why npm?](#why-packagejson-why-npm). But keep in mind that linking the same module with npm and Yarn might lead to issues. Also, Yarn can't work with links created by npm and vice versa. 
+If you do not plan to work with OpenUI5 you might as well use npm or any other node package manger (see [FAQ: Why package.json? / Why npm?](#why-packagejson-why-npm)). But keep in mind that linking the same module with npm and Yarn might lead to issues. Also, Yarn can't work with links created by npm and vice versa. 
 
 ### Where are the npm packages?
 [Here](https://www.npmjs.com/org/openui5) (OpenUI5 Libraries) and [here](https://www.npmjs.com/org/ui5) (UI5 Tooling).
