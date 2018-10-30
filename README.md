@@ -23,6 +23,9 @@
 - [ui5-project](https://github.com/SAP/ui5-project): Modules for building a UI5 projects dependency tree, including configuration
 - [ui5-logger](https://github.com/SAP/ui5-logger): Internal logging module
 
+**Usage Overview** *(arrows indicate dependencies)*
+![Module Overview](./docs/images/Module_overview.png)
+
 ## Installing the UI5 CLI
 ### Requirements
 - [Node.js](https://nodejs.org/) (**version 8.5 or higher** ⚠️)
