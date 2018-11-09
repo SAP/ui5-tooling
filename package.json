@@ -37,6 +37,6 @@
 	"devDependencies": {
 		"docdash": "^1.0.0",
 		"jsdoc": "^3.5.5",
-		"opn-cli": "^3.1.0"
+		"opn-cli": "^4.0.0"
 	}
 }
