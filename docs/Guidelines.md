@@ -9,9 +9,11 @@ Unit testing is based on the [ava](https://github.com/avajs/ava) test-framework.
 During development you might want to use `npm run unit` or `npm run unit-watch` (re-runs tests automatically after file changes) to quickly execute all unit tests and see whether your change just broke one of them 😉.
 
 ## Git Guidelines
-Git guidelines mainly follow the [OpenUI5 Git Guidelines](https://github.com/SAP/openui5/blob/master/docs/guidelines.md#git-guidelines).
+### No Merge Commits
+Please use [rebase instead of merge](https://www.atlassian.com/git/tutorials/merging-vs-rebasing) to update a branch to the latest master. This helps keeping a clean commit history in the project.
 
-### Commit Summary
+### Commit Message Style
+#### Commit Summary
 The commit summary is the first line of the commit message.
 
 - It should be **50-70 characters** long.
@@ -23,7 +25,7 @@ The commit summary is the first line of the commit message.
 - Do not use `[` or `]` anywhere else in the commit summary
 - *(optional but welcomed)* Use the **imperative present tense**. Instead of "I added feature xy" or "Adding tests for" use "Add feature xy" or "Add tests for".
 
-### Commit Body
+#### Commit Body
 After the commit summary there should be an empty line followed by the commit body.
 
 - Describe the intention and reasoning of the change
