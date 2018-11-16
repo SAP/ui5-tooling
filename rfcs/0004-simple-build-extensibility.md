@@ -66,10 +66,10 @@ type: task
 metadata:
     name: generateMarkdownFiles
 task:
-    path: generateMarkdownFiles.js
+    path: lib/tasks/generateMarkdownFiles.js
 ```
 
-**`generateMarkdownFiles.js`**:
+**`lib/tasks/generateMarkdownFiles.js`**:
 ```js
 const markdownGenerator = require("./markdownGenerator");
 
@@ -105,14 +105,14 @@ builder:
       afterTask: uglify
       configuration:
         color: blue
-----
+---
 specVersion: "0.1"
 kind: extension
 type: task
 metadata:
     name: generateMarkdownFiles
 task:
-    path: generateMarkdownFiles.js
+    path: lib/tasks/generateMarkdownFiles.js
 ```
 
 In this case the extension is no dependency of any kind but automatically collected and processed with the processing of the project.
