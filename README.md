@@ -138,11 +138,10 @@ ui5 serve --h2
 
 This will require an SSL certificate. You will be guided through the automatic generation process.
 
-## Advanced: Integration into other Build and Development Tooling
-One of the key features of the UI5 Build and Development Tooling is its modularization. This allows for easy integration into other Node.js based tools and frameworks with a fairly low footprint. 
+## Integration in other tools
+One of the key features of the UI5 Build and Development Tooling is its modularization. Single parts of the tooling can easily be integrated in other Node.js based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).
 
-The UI5 Build and Development CLI focuses on providing the best possible workflow for straight forward, best practice UI5 application and library development.  
-But if your project requires some additional build steps. If you already came up with your own set of tools to build and develop. Or if you want to define custom workflows, maybe with the help of task runners like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/). Then you can make use of various modules that build up to the UI5 Build and Development Tooling.
+All JavaScript APIs available for direct consumption are listed [here](https://sap.github.io/ui5-tooling/). However, for standard UI5 development the [UI5 CLI](https://github.com/SAP/ui5-cli) should always be the first choice.
 
 ## FAQ
 ### How can I contribute?
