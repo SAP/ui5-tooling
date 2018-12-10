@@ -36,7 +36,7 @@ type: project-shim
 metadata:
     name: legacy-lib-shims
 shims:
-    configuration:
+    configurations:
         <id/module name>:
             specVersion: "0.1",
             type: <project type>,
