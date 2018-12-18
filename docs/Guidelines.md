@@ -17,13 +17,14 @@ Please use [rebase instead of merge](https://www.atlassian.com/git/tutorials/mer
 The commit summary is the first line of the commit message.
 
 - It should be **50-70 characters** long.
-- It must be **prefixed** by `[FIX]`, `[FEATURE]` or `[INTERNAL]` accordingly, followed by the name of the component or module which was the main subject of the change.
+- It should be **prefixed** by `[FIX]`, `[FEATURE]` or `[INTERNAL]` accordingly, followed by the name of the component or module which was the main subject of the change.
     + Use `[FIX]` for bugfixes.
     + Use `[FEATURE]` for new features / enhancements.
     + Use `[INTERNAL]` for all other changes (e.g. refactorings, documentation, etc.).
-    + Exceptions are commits caused by automated processes like releases or dependency updates as those should not be part of any change log.
-- Do not use `[` or `]` anywhere else in the commit summary.
-- *(Optional, but welcomed)* Use the **imperative present tense**. Instead of "I added feature xy" or "Adding tests for" use "Add feature xy" or "Add tests for".
+    + Exceptions are changes not relevant for the change log, such as commits created by automated processes like releases or dependency updates or minor code style changes
+- It must not contain `[` or `]` anywhere but in the prefix.
+- It shall be written in **imperative present tense** (as recommended by [Git](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project))  
+    + Examples: Instead of *"Adding tests for"* or *"I added tests for"* use *"Add tests for"* or *"Add feature xy"*.
 
 #### Commit Body
 After the commit summary there should be an empty line followed by the commit body.
