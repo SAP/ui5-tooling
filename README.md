@@ -7,13 +7,16 @@
 [![Travis CI Build Status](https://travis-ci.org/SAP/ui5-tooling.svg?branch=master)](https://travis-ci.org/SAP/ui5-tooling)
 
 **This is an alpha release!**  
-**The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**
+**The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**  
+*(This is about to change, see [[Roadmap] Production ready UI5 CLI](https://github.com/SAP/ui5-tooling/issues/92))*
 
 ## Resources
 - [API Reference](https://sap.github.io/ui5-tooling/)
 - [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
 - [Project Configuration](https://github.com/SAP/ui5-project#configuration)
 - 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
+- [Contribution Guidelines](./CONTRIBUTING.md)
+- [Roadmap](https://github.com/SAP/ui5-tooling/issues/101)
 
 ## Modules
 - [ui5-cli](https://github.com/SAP/ui5-cli): UI5 Command Line Interface, utilizing all of the following modules
