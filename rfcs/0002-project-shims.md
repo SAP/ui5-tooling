@@ -39,7 +39,7 @@ shims:
     configurations:
         <id/module name>:
             specVersion: "0.1",
-            type: <project type>,
+            type: <project type>
             metadata:
                 name: <project name>
     dependencies:
@@ -100,7 +100,7 @@ application-a/
 ```json
 {
     "scripts": {
-        "install": "napa",
+        "install": "napa"
     },
     "napa": {
         "legacy-libs": "<git-repository-url>",
@@ -127,18 +127,18 @@ metadata:
 shims:
     configurations:
         legacy-library-a:
-            specVersion: "0.1",
-            type: library,
+            specVersion: "0.1"
+            type: library
             metadata:
                 name: legacy.library.a
         legacy-library-b:
-            specVersion: "0.1",
-            type: library,
+            specVersion: "0.1"
+            type: library
             metadata:
                 name: legacy.library.b
         legacy-library-x:
-            specVersion: "0.1",
-            type: library,
+            specVersion: "0.1"
+            type: library
             metadata:
                 name: legacy.library.x
     dependencies:
