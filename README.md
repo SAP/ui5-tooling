@@ -148,10 +148,10 @@ All JavaScript APIs available for direct consumption are listed [here](https://s
 
 ## FAQ
 ### How can I contribute?
-Please check our [Contribution Guidelines](/CONTRIBUTING.md).
+Please check our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/CONTRIBUTING.md).
 
 ### How can I obtain support?
-Please follow our [Contribution Guidelines](/CONTRIBUTING.md#report-an-issue) on how to report an issue.
+Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/CONTRIBUTING.md#report-an-issue) on how to report an issue.
 
 ### Why package.json? / Why npm?
 Currently, the tooling can only resolve dependencies defined in a `package.json` file. This might change in the future by adding Translators for additional dependency management systems.
@@ -169,10 +169,10 @@ If you do not plan to work with OpenUI5, you may as well use npm or any other no
 [Here](https://www.npmjs.com/org/openui5) (OpenUI5 Libraries) and [here](https://www.npmjs.com/org/ui5) (UI5 Tooling).
 
 ## Contributing
-Please check our [Contribution Guidelines](/CONTRIBUTING.md).
+Please check our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/CONTRIBUTING.md).
 
 ## Support
-Please follow our [Contribution Guidelines](/CONTRIBUTING.md#report-an-issue) on how to report an issue. Or chat with us in the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com)
+Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/CONTRIBUTING.md#report-an-issue) on how to report an issue. Or chat with us in the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com)
 
 ## License
-This project is licensed under the Apache Software License, Version 2.0 except as noted otherwise in the [LICENSE](/LICENSE.txt) file.
+This project is licensed under the Apache Software License, Version 2.0 except as noted otherwise in the [LICENSE](https://github.com/SAP/ui5-tooling/LICENSE.txt) file.
