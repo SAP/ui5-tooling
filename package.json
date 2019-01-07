@@ -20,7 +20,8 @@
 	"scripts": {
 		"test": "npm run jsdoc-generate",
 		"jsdoc": "npm run jsdoc-generate && opn jsdocs/index.html",
-		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./ && cp -R ./docs ./jsdocs || (echo 'Error during JSDoc generation! Check log.' && exit 1)"
+		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./ && cp -R ./docs ./jsdocs || (echo 'Error during JSDoc generation! Check log.' && exit 1)",
+		"postshrinkwrap": "replace --silent 'http://' 'https://' ./package-lock.json"
 	},
 	"repository": {
 		"type": "git",
@@ -37,6 +38,7 @@
 	"devDependencies": {
 		"docdash": "^1.0.2",
 		"jsdoc": "^3.5.5",
-		"opn-cli": "^4.0.0"
+		"opn-cli": "^4.0.0",
+		"replace": "^1.0.1"
 	}
 }
