@@ -6,10 +6,6 @@
 [![OpenUI5 Community Slack (#tooling channel)](https://img.shields.io/badge/slack-join-44cc11.svg)](https://join-ui5-slack.herokuapp.com)
 [![Travis CI Build Status](https://travis-ci.org/SAP/ui5-tooling.svg?branch=master)](https://travis-ci.org/SAP/ui5-tooling)
 
-**This is an alpha release!**  
-**The UI5 Build and Development Tooling described here is not intended for productive use yet. Breaking changes are to be expected.**  
-*(This is about to change, see [[Roadmap] Production ready UI5 CLI](https://github.com/SAP/ui5-tooling/issues/92))*
-
 ## Resources
 - [API Reference](https://sap.github.io/ui5-tooling/)
 - [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
