@@ -1,6 +1,6 @@
 # Migrate to v1.0.0
 
-v1.0.0 is the first stable release of the UI5 Build and Development Tooling. There are only a few notable changes to the 0.x alpha version, so upgrading should be fairly easy.
+v1.0.0 is the first stable release of the UI5 Build and Development Tooling. There are only a few notable changes to the 0.x alpha version.
 
 ## Breaking changes
 
@@ -31,9 +31,9 @@ npm install @ui5/cli@^1
 
 #### `specVersion: '1.0'`
 
-With v1.0.0 we have introduced the specification version `1.0`.
-New features will only be available for projects with specVersion `1.0` or newer.
-The specVersion `0.1` will be compatible with the v1.0.0, but we still recommend to adopt your projects.
+We have introduced the specification version `1.0`.
+New features will only be available for projects with specVersion `1.0` or newer.  
+The specVersion `0.1` will be compatible with the UI5 CLI v1.0.0, but we still recommend to adopt your projects.
 
 ```yaml
 specVersion: '1.0'
