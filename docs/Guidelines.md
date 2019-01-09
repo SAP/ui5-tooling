@@ -20,7 +20,11 @@ The commit summary is the first line of the commit message.
 - It must be **prefixed** by `[FIX]`, `[FEATURE]` or `[INTERNAL]` accordingly, followed by the name of the component or module which was the main subject of the change.
     + Use `[FIX]` for bugfixes.
     + Use `[FEATURE]` for new features / enhancements.
-    + Use `[INTERNAL]` for all other changes (e.g. refactorings, documentation, etc.).
+    + Use `[BREAKING]` for breaking / incompatible changes.  
+      _**Note:** The commit body of a breaking change should also include a paragraph starting with `BREAKING CHANGE:`.  
+      This paragraph will be highlighted in the changelog._
+    + Use `[DEPENDENCY]` for dependency updates that should be mentioned in the changelog.
+    + Use `[INTERNAL]` for all other changes (e.g. refactorings, documentation, etc.). These changes will not be listed in the changelog.
     + Exceptions are changes created by automated processes like releases or dependency updates
 - It must not contain `[` or `]` anywhere but in the prefix.
 - It shall be written in **imperative present tense** (as recommended by [Git](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project))  
@@ -32,6 +36,7 @@ After the commit summary there should be an empty line followed by the commit bo
 - Describe the intention and reasoning of the change
 - If a change fixes an issue reported on GitHub, add the following line to the commit message:
     + `Fixes: #<issueNumber>` (e.g. `Fixes: #42`)
+- Breaking changes should include a paragraph starting with `BREAKING CHANGE:`. This paragraph will be highlighted in the changelog.
 
 #### Example
 ```
