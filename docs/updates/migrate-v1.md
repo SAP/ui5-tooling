@@ -38,7 +38,7 @@ To upgrade your global installation, just run the installation command again, wh
 npm install --global @ui5/cli
 ```
 
-**Note:** Your local CLI installation will still be preferred, so you need to make sure to upgrade it as well (see below).
+**Note:** Your local CLI installation will still be preferred, so you need to make sure to upgrade it as well (see [Local vs. Global installation](https://github.com/SAP/ui5-cli#local-vs-global-installation)).
 
 ### Local installation
 
@@ -52,7 +52,7 @@ npm install @ui5/cli@^1
 
 #### `specVersion: '1.0'`
 
-We have introduced the specification version `1.0`.
+We have introduced the [specification version `1.0`](https://github.com/SAP/ui5-project/blob/master/docs/Configuration.md#specification-version-10).
 New features will only be available for projects with specVersion `1.0` or newer.  
 The specVersion `0.1` will be compatible with the UI5 CLI v1.0.0, but we still recommend to adopt your projects.
 
