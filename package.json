@@ -32,7 +32,7 @@
 		"@ui5/fs": "^1.0.0",
 		"@ui5/logger": "^1.0.0",
 		"@ui5/project": "^1.0.0",
-		"@ui5/server": "^0.2.2"
+		"@ui5/server": "^1.0.0"
 	},
 	"devDependencies": {
 		"docdash": "^1.0.2",
