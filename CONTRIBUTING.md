@@ -43,7 +43,7 @@ You may be able to add additional or missing information, such as a step-by-step
 If you need help setting something up, or if you have questions regarding the UI5 Tooling, please seek help on a community platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com).
 
 ### Requirements for a Bug Report
-You are encouraged to use the [issue template](ISSUE_TEMPLATE.md).
+You are encouraged to use the [issue template](.github/ISSUE_TEMPLATE.md).
 
 1. **Only UI5 Tooling issues**
     * Please do not report:
@@ -93,6 +93,11 @@ We want to improve the quality of the UI5 Tooling and good bug reports are welco
 Therefore, we reserve the right to close or to not process insufficient bug reports in favor of those which are clearly documented and easy to reproduce. Even though we would like to solve each well-documented issue, there is always the chance that it won't happen - please remember: The UI5 Tooling is Open Source and comes without warranty.
 
 Bug report analysis support is always very welcome! See [Analyze Issues](#-analyzing-issues).
+
+## Feature Requests
+For most feature requests you should create an issue in the related [repository](./README.md#modules).
+
+For bigger features an RFC (Request for Comment) might be necessary. You should always clarify the need for an RFC with the project contributors upfront. You can use [this template](rfcs/0000-template.md) for creating an RFC.
 
 ## 💻 Contributing Code
 ### General Remarks
