@@ -1,6 +1,6 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
-# [UI5](https://ui5.sap.com) Build and Development Tooling
+# UI5 Tooling
 > An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
 [![OpenUI5 Community Slack (#tooling channel)](https://img.shields.io/badge/slack-join-44cc11.svg)](https://join-ui5-slack.herokuapp.com)
@@ -38,14 +38,14 @@ ui5 --help
 ```
 
 ## ⚡️ Quick Start: OpenUI5 Sample App
-Check out the [OpenUI5 Sample App](https://github.com/SAP/openui5-sample-app) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/#openui5-sample-app) to play around with the UI5 Build and Development Tooling.
+Check out the [OpenUI5 Sample App](https://github.com/SAP/openui5-sample-app) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/#openui5-sample-app) to play around with the UI5 Tooling.
 
 ## Enable an Existing Project
-You can easily check whether or not a project (application or library) can already be used with the UI5 Build and Development Tooling by looking for a `ui5.yaml` file in the project's root directory.  
-This file (with some exceptions) is required for all projects and their dependencies (e.g. reuse libraries) to use them in the UI5 Build and Development Tooling.
+You can easily check whether or not a project (application or library) can already be used with the UI5 Tooling by looking for a `ui5.yaml` file in the project's root directory.  
+This file (with some exceptions) is required for all projects and their dependencies (e.g. reuse libraries) to use them in the UI5 Tooling.
 
 ### Setup
-If your project is not set up for use with the UI5 Build and Development Tooling yet, follow these steps:
+If your project is not set up for use with the UI5 Tooling yet, follow these steps:
 
 1. **If** your project does not have a `package.json` file yet, let npm generate it:
     ```sh
@@ -67,7 +67,7 @@ If your project is not set up for use with the UI5 Build and Development Tooling
 
 Questions? Check the [FAQ](#faq)!
 
-## Working With the UI5 Build and Development Tooling
+## Working With the UI5 Tooling
 When developing a UI5 project locally, you should use the UI5 Server (`ui5 serve`) and not the UI5 Builder (`ui5 build`). Building a project should only ever be required when deploying it.
 
 However, you might have good reasons to also use the UI5 Builder during development. In such cases, feel free to let us know! Maybe your use case could be covered by a future enhancement of the UI5 Server.
@@ -129,7 +129,7 @@ That's it. You can check whether the linking worked by executing `ui5 tree` in t
 See [SAP/openui5 Developing UI5](https://github.com/SAP/openui5/blob/master/docs/developing.md#developing-ui5).
         
 ## HTTP/2 Development Webserver
-The UI5 Build and Development Tooling contains a web server to serve the project via HTTP/2 protocol.
+The UI5 Tooling contains a web server to serve the project via HTTP/2 protocol.
 
 ```sh
 ui5 serve --h2
@@ -138,7 +138,7 @@ ui5 serve --h2
 This requires an SSL certificate. You are guided through the automatic generation process.
 
 ## Integration in Other Tools
-One of the key features of the UI5 Build and Development Tooling is its modularization. Single parts of the tooling can easily be integrated in other `Node.js`-based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).
+One of the key features of the UI5 Tooling is its modularization. Single parts of the tooling can easily be integrated in other `Node.js`-based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).
 
 All JavaScript APIs available for direct consumption are listed [here](https://sap.github.io/ui5-tooling/). However, for standard UI5 development, the [UI5 CLI](https://github.com/SAP/ui5-cli) should always be the first choice.
 
@@ -154,7 +154,7 @@ Currently, the tooling can only resolve dependencies defined in a `package.json`
 
 To manage your dependencies, you can use almost any `Node.js` package manager that relies on `package.json` files. Popular ones are [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/) and [pnpm](https://pnpm.js.org/).
 
-The UI5 Build and Development Tooling resolves dependencies almost the same way Node.js does when executing a `require` statement.
+The UI5 Tooling resolves dependencies almost the same way Node.js does when executing a `require` statement.
 
 ### What's the thing with Yarn?
 In a couple of guides we refer to the [Yarn](https://yarnpkg.com/) node package manager. This is because it offers functionality that the otherwise preferred [npm](https://www.npmjs.com/) package manager is currently lacking. Namely, the [workspace](https://yarnpkg.com/lang/en/docs/workspaces/) setting which is currently used in the [OpenUI5 (mono-)repository](https://github.com/SAP/openui5). Note that npm [might add](https://github.com/npm/npm/pull/15900#issuecomment-315335381) this feature in the future.

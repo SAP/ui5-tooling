@@ -1,4 +1,4 @@
-# Contributing to the UI5 Build and Development Tooling
+# Contributing to the UI5 Tooling
 ## 📖 Content
  1. [Analyzing Issues](#-analyzing-issues)
  2. [Reporting Issues](#-reporting-issues)
@@ -40,12 +40,12 @@ You may be able to add additional or missing information, such as a step-by-step
 
 ## 📝 Reporting Issues
 ### Not a Bug / Questions
-If you need help setting something up, or if you have questions regarding the UI5 Build and Development Tooling, please seek help on a community platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com).
+If you need help setting something up, or if you have questions regarding the UI5 Tooling, please seek help on a community platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com).
 
 ### Requirements for a Bug Report
 You are encouraged to use the [issue template](ISSUE_TEMPLATE.md).
 
-1. **Only UI5 Build and Development Tooling issues**
+1. **Only UI5 Tooling issues**
     * Please do not report:
         * Issues caused by dependencies or plugins.
         * Issues caused by the use of non-public/internal methods. Only the public methods listed in the API documentation may be used.
@@ -88,24 +88,24 @@ GitHub offers labels to categorize issues. The labels can only be set and modifi
 * **`wontfix`**: While acknowledged to be an issue, a fix cannot or will not be provided.
 
 ### Issue Reporting Disclaimer
-We want to improve the quality of the UI5 Build and Development Tooling and good bug reports are welcome! But our capacity is limited, so we cannot handle questions or consultation requests, and we cannot afford to ask for required details.
+We want to improve the quality of the UI5 Tooling and good bug reports are welcome! But our capacity is limited, so we cannot handle questions or consultation requests, and we cannot afford to ask for required details.
 
-Therefore, we reserve the right to close or to not process insufficient bug reports in favor of those which are clearly documented and easy to reproduce. Even though we would like to solve each well-documented issue, there is always the chance that it won't happen - please remember: The UI5 Build and Development Tooling is Open Source and comes without warranty.
+Therefore, we reserve the right to close or to not process insufficient bug reports in favor of those which are clearly documented and easy to reproduce. Even though we would like to solve each well-documented issue, there is always the chance that it won't happen - please remember: The UI5 Tooling is Open Source and comes without warranty.
 
 Bug report analysis support is always very welcome! See [Analyze Issues](#-analyzing-issues).
 
 ## 💻 Contributing Code
 ### General Remarks
-You are welcome to contribute code to the UI5 Build and Development Tooling in order to fix bugs or to implement new features.
+You are welcome to contribute code to the UI5 Tooling in order to fix bugs or to implement new features.
 
 There are three important things to know:
 
 1. You must be aware of the Apache License (which describes contributions) and **agree to the Contributors License Agreement**. This is common practice in major Open Source projects. To make this process as simple as possible, we are using *[CLA assistant](https://cla-assistant.io/)* for individual contributions. CLA assistant is an open source tool that integrates with GitHub very well and enables a one-click experience for accepting the CLA. For company contributers, special rules apply. See the respective section below for details.
 2. Follow our **[Development Conventions and Guidelines](docs/Guidelines.md)**.
-3. **Not all proposed contributions can be accepted**. Some features may just fit a third-party add-on better. The code must match the overall direction of the UI5 Build and Development Tooling and improve it. So there should be some "bang for the byte". For most bug fixes this is a given, but a major feature implementation first needs to be discussed with one of the committers. Possibly, one who touched the related code or module recently. The more effort you invest, the better you should clarify in advance whether the contribution will match the project's direction. The best way would be to just open an enhancement ticket in the issue tracker to discuss the feature you plan to implement (make it clear that you intend to contribute). We will then forward the proposal to the respective code owner. This avoids disappointment.
+3. **Not all proposed contributions can be accepted**. Some features may just fit a third-party add-on better. The code must match the overall direction of the UI5 Tooling and improve it. So there should be some "bang for the byte". For most bug fixes this is a given, but a major feature implementation first needs to be discussed with one of the committers. Possibly, one who touched the related code or module recently. The more effort you invest, the better you should clarify in advance whether the contribution will match the project's direction. The best way would be to just open an enhancement ticket in the issue tracker to discuss the feature you plan to implement (make it clear that you intend to contribute). We will then forward the proposal to the respective code owner. This avoids disappointment.
 
 ### Contributor License Agreement
-When you contribute code, documentation, or anything else, you have to be aware that your contribution is covered by the same [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0) that is applied to the UI5 Build and Development Tooling itself.
+When you contribute code, documentation, or anything else, you have to be aware that your contribution is covered by the same [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0) that is applied to the UI5 Tooling itself.
 
 In particular, you need to agree to the Individual Contributor License Agreement, which can be [found here](https://gist.github.com/CLAassistant/bd1ea8ec8aa0357414e8). This applies to all contributors, including those contributing on behalf of a company.
 
