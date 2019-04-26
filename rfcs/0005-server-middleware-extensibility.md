@@ -30,27 +30,27 @@ A middleware may be executed before or after any other middleware.
 This shall be configurable in a simple but less generic way.
 
 Custom and third party server middlewares are treated differently and have their own
-configuration sections (`customMiddlewares` and `thirdPartyMiddlewares`).
+configuration sections (`customMiddlewares` and `npmMiddlewares`).
 
 A project configuration might look like this:
 ```yaml
 specVersion: "1.0"
 type: application
 metadata:
-    name: my.application
+  name: my.application
 server:
-    customMiddlewares:
+  customMiddlewares:
     - name: myCustomMiddleware
       path: /myapp
       afterMiddleware: compression
       configuration:
         debug: true
-    thirdPartyMiddlewares:
+  npmMiddlewares:
     - name: helmet #TODO MB: Maybe rename to "moduleName"?
       path: /
       beforeMiddleware: cors
 ```
-   
+
 In the above sample the middleware `cors` and `compression` are already included by the UI5 Server.
 
 When serving the application `my.application`, this will execute the third party middleware `helmet` before
@@ -89,18 +89,22 @@ specVersion: "1.0"
 kind: extension
 type: server-middleware
 metadata:
-    name: myCustomMiddleware
+  name: myCustomMiddleware
 middleware:
-    path: middlewares/myCustomMiddleware.js
+  path: middlewares/myCustomMiddleware.js
 ```
 
 **`middlewares/myCustomMiddleware.js`**:
 ```js
-module.exports = async function({workspace, dependencies, options}) {
-    return function (req, res, next) {
-      // middleware code...
-      next();
-    }
+module.exports = async function({resources, options}) {
+	return function (req, res, next) {
+		resources.all.byPath("/resources/sap/ui/core/Core.js").then(() => {
+			// middleware code...
+			res.end();
+		}).catch((err) => {
+			next(err);
+		});
+	};
 };
 ```
 
@@ -114,9 +118,9 @@ specVersion: "1.0"
 kind: project
 type: application
 metadata:
-    name: my.application
+  name: my.application
 server:
-    customMiddlewares:
+  customMiddlewares:
     - name: myCustomMiddleware
       beforeMiddleware: compression
       configuration:
@@ -126,9 +130,9 @@ specVersion: "1.0"
 kind: extension
 type: middleware
 metadata:
-    name: myCustomMiddleware
+  name: myCustomMiddleware
 middleware:
-    path: middlewares/myCustomMiddleware.js
+  path: middlewares/myCustomMiddleware.js
 ```
 
 In this case the extension is no dependency of any kind but automatically collected when the server is started.
@@ -149,17 +153,26 @@ A custom middleware implementation needs to return a function with the following
  * Custom UI5 Server middleware example
  *
  * @param {Object} parameters Parameters
- * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
- * @param {module:@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {Object} parameters.resources Resource collections
+ * @param {module:@ui5/fs.AbstractReader} parameters.resources.all Reader or Collection to read resources of the
+ *                                           root project and its dependencies
+ * @param {module:@ui5/fs.AbstractReader} parameters.resources.rootProject Reader or Collection to read resources of
+ *                                          the project the server is started in
+ * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies Reader or Collection to read resources of
+ *                                          the projects dependencies
  * @param {Object} parameters.options Options
  * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
  */
-module.exports = async function({workspace, dependencies, options}) {
-    return function (req, res, next) {
-      // middleware code...
-      next();
-    }
+module.exports = async function({resources, options}) {
+	return function (req, res, next) {
+		resources.all.byPath("/resources/sap/ui/core/Core.js").then(() => {
+			// middleware code...
+			res.end();
+		}).catch((err) => {
+			next(err);
+		});
+	}
 };
 ```
 
