@@ -11,7 +11,7 @@
 
 # RFC 0005 Server Middleware Extensibility
 ## Summary
-Add a feature to load custom or third party server middleware. 
+Add a feature to load custom or third party server middleware from `npm` dependencies. 
 
 ## Motivation
 Currently the UI5 Server comes with a fixed set of middleware, which can not be extended.
@@ -29,7 +29,7 @@ server started in this project. Custom middleware configuration of dependencies 
 A middleware may be executed before or after any other middleware.
 This shall be configurable in a simple but less generic way.
 
-Custom and third party server middlewares are treated differently and have their own
+Custom and third party server middlewares (from `npm` dependencies) are treated differently and have their own
 configuration sections (`customMiddlewares` and `npmMiddlewares`).
 
 A project configuration might look like this:
@@ -142,7 +142,7 @@ into the servers start process to be available for the following HTTP requests.
 
 ##### Execution order
 The order of the middleware is important. In the following it is decribed in which order the middleware is executed.
-1. The section `customMiddlewares` before `thirdPartyMiddlewares`. This means, if a custom and a third party middleware
+1. The section `customMiddlewares` before `npmMiddlewares`. This means, if a custom and a third party middleware from
 should be both applied before or after the same middleware, the custom middlware will be executed first.  
 2. Multiple middlewares within the same section are executed in the provided order. 
 
@@ -155,14 +155,14 @@ A custom middleware implementation needs to return a function with the following
  * @param {Object} parameters Parameters
  * @param {Object} parameters.resources Resource collections
  * @param {module:@ui5/fs.AbstractReader} parameters.resources.all Reader or Collection to read resources of the
- *                                           root project and its dependencies
+ *                                        root project and its dependencies
  * @param {module:@ui5/fs.AbstractReader} parameters.resources.rootProject Reader or Collection to read resources of
- *                                          the project the server is started in
+ *                                        the project the server is started in
  * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies Reader or Collection to read resources of
- *                                          the projects dependencies
+ *                                        the projects dependencies
  * @param {Object} parameters.options Options
  * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
- * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
+ * @returns {Promise<function>} Promise resolving with the middleware function to use
  */
 module.exports = async function({resources, options}) {
 	return function (req, res, next) {
