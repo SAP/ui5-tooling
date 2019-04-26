@@ -29,6 +29,9 @@ server started in this project. Custom middleware configuration of dependencies 
 A middleware may be executed before or after any other middleware.
 This shall be configurable in a simple but less generic way.
 
+Custom and third party server middlewares are treated differently and have their own
+configuration sections (`customMiddlewares` and `thirdPartyMiddlewares`).
+
 A project configuration might look like this:
 ```yaml
 specVersion: "1.0"
@@ -45,18 +48,19 @@ server:
     thirdPartyMiddlewares:
     - name: helmet #TODO MB: Maybe rename to "moduleName"?
       path: /
-      beforeMiddleware: cors        
-   ```
+      beforeMiddleware: cors
+```
    
-### TODO describe:
-- thirdPartyMiddlewares configuration
-- path
-- configuration only for customMiddlewares
-
-In the above sample the middleware `cors` and `compression` are already included in the UI5 Server.
+In the above sample the middleware `cors` and `compression` are already included by the UI5 Server.
 
 When serving the application `my.application`, this will execute the third party middleware `helmet` before
 `cors` and the custom middleware `myCustomMiddleware` after `compression`.
+
+For custom server middleware, there can be optional `configuration` parameters which are passed
+directly to it with `options.configuration`. This is not possible for third party server middleware. 
+
+An optional `path` for which the middleware function is invoked, can be provided for both sections.
+It will be passed to the `app.use` call (see [express API reference](https://expressjs.com/en/4x/api.html#app.use)).
 
 ### Generic handling of extensions
 **This section is partially equal to what is outlined in [RFC 0001](https://github.com/SAP/ui5-tooling/blob/rfc-type-ext/rfcs/0001-type-extensibility.md#generic-handling-of-extension).**
@@ -114,7 +118,7 @@ metadata:
 server:
     customMiddlewares:
     - name: myCustomMiddleware
-      afterMiddleware: compression
+      beforeMiddleware: compression
       configuration:
         path: /myapp
 ---
@@ -132,6 +136,11 @@ In this case the extension is no dependency of any kind but automatically collec
 The UI5 Server will detect the custom middleware configuration of the project my.application and inject the middleware
 into the servers start process to be available for the following HTTP requests.
 
+##### Execution order
+The order of the middleware is important. In the following it is decribed in which order the middleware is executed.
+1. The section `customMiddlewares` before `thirdPartyMiddlewares`. This means, if a custom and a third party middleware
+should be both applied before or after the same middleware, the custom middlware will be executed first.  
+2. Multiple middlewares within the same section are executed in the provided order. 
 
 ### Server middleware implementation
 A custom middleware implementation needs to return a function with the following signature (written in JSDoc):
