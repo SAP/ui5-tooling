@@ -41,13 +41,13 @@ metadata:
 server:
   customMiddlewares:
     - name: myCustomMiddleware
-      path: /myapp
+      mountPath: /myapp
       afterMiddleware: compression
       configuration:
         debug: true
   npmMiddlewares:
     - name: helmet #TODO MB: Maybe rename to "moduleName"?
-      path: /
+      mountPath: /
       beforeMiddleware: cors
 ```
 
@@ -59,7 +59,7 @@ When serving the application `my.application`, this will execute the third party
 For custom server middleware, there can be optional `configuration` parameters which are passed
 directly to it with `options.configuration`. This is not possible for third party server middleware. 
 
-An optional `path` for which the middleware function is invoked, can be provided for both sections.
+An optional `mountPath` for which the middleware function is invoked, can be provided for both sections.
 It will be passed to the `app.use` call (see [express API reference](https://expressjs.com/en/4x/api.html#app.use)).
 
 ### Generic handling of extensions
@@ -123,8 +123,9 @@ server:
   customMiddlewares:
     - name: myCustomMiddleware
       beforeMiddleware: compression
+      mountPath: /myapp
       configuration:
-        path: /myapp
+        debug: true
 ---
 specVersion: "1.0"
 kind: extension
