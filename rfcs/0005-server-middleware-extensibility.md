@@ -22,15 +22,15 @@ Custom or existing third party middleware can provide the required behavior.
 
 ## Detailed design
 ### Configuration
-In a projects `ui5.yaml` file, a new configuration option should be added to define additional server middlewares that 
+In a projects `ui5.yaml` file, a new configuration option should be added to define additional server middleware modules that 
 shall be executed when the request is received by the server. This configuration shall only affect the
 server started in this project. Custom middleware configuration of dependencies shall be ignored. 
 
 A middleware may be executed before or after any other middleware.
 This shall be configurable in a simple but less generic way.
 
-Custom and third party server middlewares (from `npm` dependencies) are treated differently and have their own
-configuration sections (`customMiddlewares` and `npmMiddlewares`).
+Custom and third party server middleware modules (from `npm` dependencies) are treated differently and have their own
+configuration sections (`customMiddleware` and `npmMiddleware`).
 
 A project configuration might look like this:
 ```yaml
@@ -39,14 +39,14 @@ type: application
 metadata:
   name: my.application
 server:
-  customMiddlewares:
+  customMiddleware:
     - name: myCustomMiddleware
       mountPath: /myapp
       afterMiddleware: compression
       configuration:
         debug: true
-  npmMiddlewares:
-    - name: helmet #TODO MB: Maybe rename to "moduleName"?
+  npmMiddleware:
+    - name: helmet
       mountPath: /
       beforeMiddleware: cors
 ```
@@ -91,10 +91,10 @@ type: server-middleware
 metadata:
   name: myCustomMiddleware
 middleware:
-  path: middlewares/myCustomMiddleware.js
+  path: middleware/myCustomMiddleware.js
 ```
 
-**`middlewares/myCustomMiddleware.js`**:
+**`middleware/myCustomMiddleware.js`**:
 ```js
 module.exports = async function({resources, options}) {
 	return function (req, res, next) {
@@ -120,7 +120,7 @@ type: application
 metadata:
   name: my.application
 server:
-  customMiddlewares:
+  customMiddleware:
     - name: myCustomMiddleware
       beforeMiddleware: compression
       mountPath: /myapp
@@ -133,7 +133,7 @@ type: middleware
 metadata:
   name: myCustomMiddleware
 middleware:
-  path: middlewares/myCustomMiddleware.js
+  path: middleware/myCustomMiddleware.js
 ```
 
 In this case the extension is no dependency of any kind but automatically collected when the server is started.
@@ -143,9 +143,9 @@ into the servers start process to be available for the following HTTP requests.
 
 ##### Execution order
 The order of the middleware is important. In the following it is decribed in which order the middleware is executed.
-1. The section `customMiddlewares` before `npmMiddlewares`. This means, if a custom and a third party middleware from
+1. The section `customMiddleware` before `npmMiddleware`. This means, if a custom and a third party middleware from
 should be both applied before or after the same middleware, the custom middlware will be executed first.  
-2. Multiple middlewares within the same section are executed in the provided order. 
+2. Multiple middleware configurations within the same section are executed in the provided order. 
 
 ### Server middleware implementation
 A custom middleware implementation needs to return a function with the following signature (written in JSDoc):
