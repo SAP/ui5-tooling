@@ -129,7 +129,7 @@ server:
 ---
 specVersion: "1.0"
 kind: extension
-type: middleware
+type: server-middleware
 metadata:
   name: myCustomMiddleware
 middleware:
