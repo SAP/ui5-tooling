@@ -163,9 +163,9 @@ A custom middleware implementation needs to return a function with the following
  *                                        the projects dependencies
  * @param {Object} parameters.options Options
  * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
- * @returns {Promise<function> | function} Promise resolving with the middleware function to use or the middleware function
+ * @returns {function} Middleware function to use
  */
-module.exports = async function({resources, options}) { // optional async
+module.exports = function({resources, options}) {
 	return function (req, res, next) {
 		resources.all.byPath("/resources/sap/ui/core/Core.js").then(() => {
 			// middleware code...
