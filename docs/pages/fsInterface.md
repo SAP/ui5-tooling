@@ -1,4 +1,4 @@
-The [fsInterface](./lib/resources/fsInterface.js) module is a custom fs implementation which is used to replace node [fs](https://nodejs.org/api/fs.html).
+The [fsInterface](https://sap.github.io/ui5-tooling/module-@ui5_fs.html#.fsInterface) module is a custom fs implementation which is used to replace node [fs](https://nodejs.org/api/fs.html).
 A custom or modified fs can be necessary due to several reasons, maybe for caching functionality or to fallback to multiple locations automatically.
 
 To ensure a module or library can be used with custom fs implementations, it is best practice

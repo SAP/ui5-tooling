@@ -3,7 +3,7 @@
         "allowUnknownTags": false
     },
     "source": {
-        "include": ["README.md"],
+        "include": ["docs/indexJsdoc.md"],
         "includePattern": "node_modules/@ui5/[^\/]*/(lib/.+|index)\\.js$",
         "excludePattern": "node_modules/@ui5/.*/node_modules/@ui5"
     },

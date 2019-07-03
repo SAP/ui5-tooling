@@ -1,0 +1,32 @@
+site_name: UI5 Tooling
+repo_name: 'SAP/ui5-tooling'
+repo_url: 'https://github.com/SAP/ui5-tooling'
+nav:
+    - Home: index.md
+    - Getting Started: pages/GettingStarted.md
+    - Configuration: pages/Configuration.md
+    - CLI: pages/CLI.md
+    - Extending:
+      - Build: pages/BuildExtensibility.md
+      - Server: pages/ServerExtensibility.md
+    - Upgrade Guides:
+      - Migrate to v1: updates/migrate-v1.md
+    - FAQ: pages/FAQ.md
+    - API Reference: 'https://sap.github.io/ui5-tooling/'
+theme:
+  name: 'material'
+  font: false
+  palette:
+    primary: 'blue grey'
+    accent: 'blue grey'
+  # logo: 'images/logo.png'
+  logo:
+    icon: 'book'
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - footnotes
+  - pymdownx.superfences

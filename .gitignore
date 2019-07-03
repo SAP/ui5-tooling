@@ -57,3 +57,4 @@ deploy_key
 # Custom directories
 test/tmp/
 jsdocs/
+site/
