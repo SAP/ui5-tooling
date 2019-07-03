@@ -10,5 +10,9 @@ trim_trailing_whitespace = true
 end_of_line = lf
 tab_width = 4
 
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
 [*.md]
 trim_trailing_whitespace = false
