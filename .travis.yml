@@ -2,12 +2,3 @@ language: node_js # don't install any environment
 
 node_js:
 - "lts/*"
-
-script:
-  - bash ./deploy/deploy.sh
-
-env:
-  global:
-  - ENCRYPTION_LABEL: "7aba13404ae4"
-  - COMMIT_AUTHOR_NAME: "OpenUI5" # openui5bot
-  - COMMIT_AUTHOR_EMAIL: "openui5@sap.com"

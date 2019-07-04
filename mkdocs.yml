@@ -1,6 +1,8 @@
 site_name: UI5 Tooling
 repo_name: 'SAP/ui5-tooling'
 repo_url: 'https://github.com/SAP/ui5-tooling'
+docs_dir: 'docs' # default
+site_dir: 'site' # default
 nav:
     - Home: index.md
     - Getting Started: pages/GettingStarted.md
@@ -12,7 +14,7 @@ nav:
     - Upgrade Guides:
       - Migrate to v1: updates/migrate-v1.md
     - FAQ: pages/FAQ.md
-    - API Reference: 'https://sap.github.io/ui5-tooling/'
+    - API Reference: '/api/index.html' # only available in final build, not serve
 theme:
   name: 'material'
   font: false
