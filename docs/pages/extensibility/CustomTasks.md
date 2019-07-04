@@ -11,7 +11,6 @@ In the below example, when building the library `my.library` the `babel` task wi
 ### Example: Basic configuration
 
 ````yaml
----
 # In this example configuration two custom tasks are defined: 'babel' and 'generateMarkdownFiles'.
 specVersion: "1.0"
 type: library
@@ -32,7 +31,6 @@ builder:
 You can also connect multiple custom task with each other. Please be aware that the order of your definitions is important. You have to make sure that the task is defined before you reference it as `beforeTask` or `afterTask`.
 
 ````yaml
----
 # In this example 'myCustomTask2' gets executed after 'myCustomTask1'.
 specVersion: "1.0"
 type: library
@@ -53,7 +51,6 @@ A custom task extension consists of a `ui5.yaml` and a [task implementation](#ta
 ### Example: ui5.yaml
 
 ````yaml
----
 specVersion: "1.0"
 kind: extension
 type: task
