@@ -98,7 +98,7 @@ Some general information:
     - `excludes`: List of glob patterns. Matching resources will be ignored by the JSDoc build task.  
     Patterns are always applied relative to the projects virtual **source** directory `/resources/`.
     Any general builder excludes (as defined in `builder.resources.excludes`) are applied *after* these excludes.
-- `customTasks` (optional, list): In this block, you define additional custom build tasks, see [here](./BuildExtensibility.md) for a detailed explanation and examples of the build extensibility. Each entry in the `customTasks` list consists of the following options:
+- `customTasks` (optional, list): In this block, you define additional custom build tasks, see [here](./extensibility/CustomTasks.md) for a detailed explanation and examples of the build extensibility. Each entry in the `customTasks` list consists of the following options:
     - `name` (mandatory): The name of the custom task
     - `afterTask` or `beforeTask` (only one, mandatory): The name of the build task after or before which your custom task will be executed.
     - `configuration` (optional): Additional configuration that is passed to the custom build task
