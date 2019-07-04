@@ -1,0 +1,52 @@
+@font-face {
+  font-family: '72-Regular';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.svg#72-Regular") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: '72-Bold';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.svg#72-Bold") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: '72-Italic';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.svg#72-Italic") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: '72-Light';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.svg#72-Light") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: '72-BoldItalic';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.svg#72-BoldItalic") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: '72-Condensed';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.svg#72-Condensed") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: '72-CondensedBold';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.svg#72-CondensedBold") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: '72-Black';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.svg#72-Black") format("svg");
+  /* Legacy iOS */ }
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+  font-family: "72-Regular", "72", "72full", Arial, Helvetica, sans-serif;
+}
