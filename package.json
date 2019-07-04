@@ -19,10 +19,10 @@
 	},
 	"scripts": {
 		"test": "npm run jsdoc-generate",
-		"jsdoc": "npm run jsdoc-generate && opn site/api/index.html",
+		"jsdoc": "npm run jsdoc-generate && open-cli site/api/index.html",
 		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./ || (echo 'Error during JSDoc generation! Check log.' && exit 1)",
-		"docs-serve": "bash ./scripts/serveDocs.sh && opn http://localhost:8000",
-		"docs-build": "bash ./scripts/buildDocs.sh && opn http://localhost:8000 && ws --compress -d site"
+		"docs": "bash ./scripts/serveDocs.sh",
+		"docs-generate": "bash ./scripts/buildDocs.sh && open-cli http://localhost:8000 && ws --compress -d site"
 	},
 	"repository": {
 		"type": "git",
@@ -40,6 +40,6 @@
 		"docdash": "^1.1.1",
 		"jsdoc": "^3.6.2",
 		"local-web-server": "^3.0.4",
-		"opn-cli": "^4.1.0"
+		"open-cli": "^5.0.0"
 	}
 }
