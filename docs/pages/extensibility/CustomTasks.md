@@ -1,14 +1,14 @@
-# UI5 Build Extensibility
+# Custom UI5 Builder Tasks
 
-The UI5 Build Extensibility enables a developer to enhance the build process of any UI5 project. In addition to the [standard task list](https://github.com/SAP/ui5-builder/blob/master/README.md#tasks), custom tasks can be created.
+The UI5 Build Extensibility enables you to enhance the build process of any UI5 project. In addition to the [standard task list](https://github.com/SAP/ui5-builder/blob/master/README.md#tasks), custom tasks can be created.
 
-## Configuration of the Custom Build Process
+## Configuration
 
 You can configure your build process with additional build task. The custom tasks can be defined in the project [configuration](https://github.com/SAP/ui5-project/blob/master/README.md#configuration) within the `ui5.yaml` file.
 
 In the below example, when building the library `my.library` the `babel` task will be executed before the standard task `generateComponentPreload`. Another custom task called `generateMarkdownFiles` is then executed immediatly after the standard task `uglify`.
 
-### Example: Configuration of project 'my.library'
+### Example: Basic configuration
 
 ````yaml
 ---
