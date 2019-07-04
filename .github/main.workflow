@@ -5,7 +5,7 @@ workflow "Deploy docs" {
   on = "push"
 }
 
-action "On master" {
+action "Is on master" {
   uses = "actions/bin/filter@3c0b4f0e63ea54ea5df2914b4fabf383368cd0da"
   args = "branch master"
 }
@@ -13,7 +13,7 @@ action "On master" {
 action "Build mkdocs" {
   uses = "docker://squidfunk/mkdocs-material@4.4.0"
   args = "build"
-  needs = ["On master"]
+  needs = ["Is on master"]
 }
 
 action "Build JSDoc" {
