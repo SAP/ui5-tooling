@@ -11,7 +11,7 @@
     "opts": {
         "template": "node_modules/docdash/",
         "encoding": "utf8",
-        "destination": "jsdocs/",
+        "destination": "site/api/",
         "recurse": true,
         "verbose": true,
         "access": "public"
