@@ -62,15 +62,15 @@ task:
 
 Task extensions can be **standalone modules** which are handled as dependencies.
 
-On the other hand you can implement a task extension as **part of your UI5 project**. In that case, the configuration of the extension is part of your project configuration inside the `ui5.yaml` as shown below.
+Alternatively you can implement a task extension as **part of your UI5 project**.
+In that case, the configuration of the extension is part of your project configuration inside the `ui5.yaml` as shown below.
 
 The task extension will then be automatically collected and processed during the processing of the project.
 
 ### Example: Custom Task Extension defined in UI5 project
 
 ````yaml
-# ui5.yaml configuration for the above example
-
+# Project configuration for the above example
 specVersion: "1.0"
 kind: project
 type: library
