@@ -11,14 +11,14 @@
 
 # RFC 0005 Server Middleware Extensibility
 ## Summary
-Add a feature to load custom or third party server middleware from `npm` dependencies. 
+Add a feature to load custom server middleware from a projects dependencies or configuration. 
 
 ## Motivation
 Currently the UI5 Server comes with a fixed set of middleware, which can not be extended.
 A developer may want to handle requests differently. For example the developer wants to add various headers to a response
 or parse data of a POST request in a specific way.
 
-Custom or existing third party middleware can provide the required behavior.
+Custom middleware can provide the required behavior.
 
 ## Detailed design
 ### Configuration
@@ -28,9 +28,6 @@ server started in this project. Custom middleware configuration of dependencies 
 
 A middleware may be executed before or after any other middleware.
 This shall be configurable in a simple but less generic way.
-
-Custom and third party server middleware modules (from `npm` dependencies) are treated differently and have their own
-configuration sections (`customMiddleware` and `npmMiddleware`).
 
 A project configuration might look like this:
 ```yaml
@@ -45,19 +42,14 @@ server:
       afterMiddleware: compression
       configuration:
         debug: true
-  npmMiddleware:
-    - name: helmet
-      mountPath: /
-      beforeMiddleware: cors
 ```
 
-In the above sample the middleware `cors` and `compression` are already included by the UI5 Server.
+In the above sample the middleware `compression` is already included by the UI5 Server.
 
-When serving the application `my.application`, this will execute the third party middleware `helmet` before
-`cors` and the custom middleware `myCustomMiddleware` after `compression`.
+When serving the application `my.application`, this will use the custom middleware `myCustomMiddleware` after `compression`.
 
 For custom server middleware, there can be optional `configuration` parameters which are passed
-directly to it with `options.configuration`. This is not possible for third party server middleware. 
+directly to it with `options.configuration`.
 
 An optional `mountPath` for which the middleware function is invoked, can be provided for both sections.
 It will be passed to the `app.use` call (see [express API reference](https://expressjs.com/en/4x/api.html#app.use)).
@@ -74,13 +66,6 @@ like "extensions", an additional attribute "kind" is added to the ui5.yaml.
 
 A custom middleware will consist of at least a ui5.yaml defining it as an extension and
 a JavaScript implementation.
-
-A third party middleware which do not contain a ui5.yaml will be taken as it is.
-In this case the server expects the [default express API](https://expressjs.com/en/guide/writing-middleware.html). 
-The configured module name will be required directly by the UI5 Server, i.e. it will not be treated as a
-`server-middleware` extension.  
-
-If the third party middleware requires additional parameters, a custom middleware wrapper needs to be implemented.
 
 #### Example middleware extension
 **`ui5.yaml`**:
@@ -142,10 +127,7 @@ The UI5 Server will detect the custom middleware configuration of the project my
 into the servers start process to be available for the following HTTP requests.
 
 ##### Execution order
-The order of the middleware is important. In the following it is decribed in which order the middleware is executed.
-1. The section `customMiddleware` before `npmMiddleware`. This means, if a custom and a third party middleware from
-should be both applied before or after the same middleware, the custom middlware will be executed first.  
-2. Multiple middleware configurations within the same section are executed in the provided order. 
+The order of the middleware is important. Multiple middleware configurations are applied in the provided order. 
 
 ### Server middleware implementation
 A custom middleware implementation needs to return a function with the following signature (written in JSDoc):
