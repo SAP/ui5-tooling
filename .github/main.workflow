@@ -11,7 +11,7 @@ action "Is on master" {
 }
 
 action "Build mkdocs" {
-  uses = "docker://squidfunk/mkdocs-material@4.4.0"
+  uses = "docker://squidfunk/mkdocs-material:4.4.0"
   args = "build"
   needs = ["Is on master"]
 }
