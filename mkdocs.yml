@@ -21,9 +21,7 @@ theme:
   palette:
     primary: 'blue'
     accent: 'blue'
-  # logo: 'images/logo.png'
-  logo:
-    icon: 'book'
+  logo: 'images/logo.svg'
   font:
     text: "72" # Alternative Nunito
     code: Oxygen Mono
