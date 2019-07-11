@@ -16,10 +16,16 @@ action "Build mkdocs" {
   needs = ["Is on master"]
 }
 
+action "Install npm dependencies" {
+  uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
+  args = "ci"
+  needs = ["Build mkdocs"]
+}
+
 action "Build JSDoc" {
   uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
   args = "run jsdoc-generate"
-  needs = ["Build mkdocs"]
+  needs = ["Install npm dependencies"]
 }
 
 action "Deploy docs to gh-pages" {
