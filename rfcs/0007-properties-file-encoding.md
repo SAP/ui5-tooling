@@ -10,7 +10,7 @@
     + [ ] [ui5-logger](https://github.com/SAP/ui5-logger)
 
 
-# RFC 0006 Properties File Encoding
+# RFC 0007 Properties File Encoding
 ## Summary
 Properties files (`*.properties`) should be encoded in UTF-8 such that the client properly can consume it.
 
