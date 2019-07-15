@@ -22,6 +22,7 @@ theme:
     primary: 'blue'
     accent: 'blue'
   logo: 'images/logo.svg'
+  favicon: 'images/favicon.png'
   font:
     text: "72" # Alternative Nunito
     code: Oxygen Mono
