@@ -53,15 +53,14 @@ type: application
 metadata:
   name: my.application
 resources:
-  propertiesFiles:
-    - encoding: "UTF-8"
+  propertiesFileEncoding: "UTF-8"
 ```
 
 The resources section within the configuration can be consumed by `ui5-builder` and `ui5-server`.
 
 ### Build Task
 
-The `ui5-builder` should offer a new standard task called `escapePropertiesFiles` which escapes all special characters in unicode using the unicode escape sequence `\uXXXX`.
+The `ui5-builder` should offer a new standard task called `escapeNonAsciiCharacters` which escapes all special characters in unicode using the unicode escape sequence `\uXXXX`.
 It should use a processor called `stringEscaper` which escapes special characters in files and is used within the task to operate only on `*.properties` files.
 The task should be run first (before `replaceCopyright`) for all types.
 This ensures that the properties files can always be consumed.
