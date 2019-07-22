@@ -25,23 +25,14 @@ The user wants to be able to use properties files with ISO-8859-1 encoding. Addi
 
 ### Configuration
 
-A configuration for the `ui5-builder` tasks and the `ui5-server` should be provided such that the source encoding can be specified.
+A configuration for the `ui5-builder` tasks and the `ui5-server` should be provided such that the source encoding of `*.properties` files can be specified.
 
-There should be 2 options:
+Encodings should be supported according to the [Encoding spec](https://encoding.spec.whatwg.org/).
+For more information check out: [Buffers and Character Encodings](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings)
 
-- `ISO-8859-1` (non ASCII characters will be escaped with the unicode sequence `\uXXXX`)
-- `UTF-8` (no character escaping will take place)
+Sample values are: 'ascii', 'utf8', 'utf16le', 'latin1' ('ISO-8859-1'), ...
 
-The default is `ISO-8859-1` for compatibility reasons.
-
-Umlaut Example:
-
-| Umlaut   | UTF-8              |
-|----------|--------------------|
-| `Ä`, `ä` | `\u00c4`, `\u00e4` |
-| `Ö`, `ö` | `\u00d6`, `\u00f6` |
-| `Ü`, `ü` | `\u00dc`, `\u00fc` |
-| `ß`      | `\u00df`          |
+The default is `ISO-8859-1` for compatibility reasons (set by the formatters).
 
 This should be configured within the `ui5.yaml` file.
 
@@ -61,22 +52,34 @@ The resources section within the configuration can be consumed by `ui5-builder` 
 ### Build Task
 
 The `ui5-builder` should offer a new standard task called `escapeNonAsciiCharacters` which escapes all special characters in unicode using the unicode escape sequence `\uXXXX`.
-It should use a processor called `stringEscaper` which escapes special characters in files and is used within the task to operate only on `*.properties` files.
-The task should be run first (before `replaceCopyright`) for all types.
-This ensures that the properties files can always be consumed.
-Each build output should contain then the escaped properties files.
-This ensures taht the now purely ASCII based `*.properties` files can be used on other platforms too.
+It should use a processor called `stringEscaper` which escapes non ascii characters (characters which are not within the 128 character ASCII range) within a given string.
 
-The new standard task should automatically be integrated into the build process and can be reused by the server.
+
+Umlaut Example:
+
+| Umlaut   | UTF-8              |
+|----------|--------------------|
+| `Ä`, `ä` | `\u00c4`, `\u00e4` |
+| `Ö`, `ö` | `\u00d6`, `\u00f6` |
+| `Ü`, `ü` | `\u00dc`, `\u00fc` |
+| `ß`      | `\u00df`           |
+
+The task operates on `*.properties` files using the processor.
+The task should run first (before `replaceCopyright`) for all types.
+This ensures that the properties files can always be consumed.
+Each build output should contain the escaped properties files.
+This ensures that all `properties` contain only ASCII characters such that they can be consumed by other platforms.
+
+The new standard task should automatically be integrated into the build process and can be reused by the `ui5-server`.
 
 ### Server part
 
-Currently the `ui5-server` serves all resources as UTF-8.
+The `ui5-server` should serve all resources using `UTF-8` [charset header](https://www.w3.org/International/articles/http-charset/index.en).
 
-The `ui5-server` should offer the capability to re-use the `ui5-builder` processor `stringEscaper` to also escape characters while serving `*.properties`.
+The `ui5-server` should offer the capability to re-use the `ui5-builder` processor `stringEscaper` to escape characters in `*.properties` files.
 Due to the pure ASCII representation now, the served content can always be interpreted and properly consumed as UTF-8.
 
-Technically, there should be a special treatment in [serveResources](https://github.com/SAP/ui5-server/blob/master/lib/middleware/serveResources.js#L42) middleware which uses the configuration and the processor to serve properties files such that they can be interpreted as UTF-8 encoded files.
+Technically, there should be a special treatment in [serveResources](https://github.com/SAP/ui5-server/blob/master/lib/middleware/serveResources.js#L42) middleware which uses the configuration and the processor to serve properties files such that they can be interpreted as `UTF-8` encoded content.
 
 ## How we teach this
 
