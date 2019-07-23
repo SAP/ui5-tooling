@@ -53,7 +53,7 @@ The resources section within the configuration can be consumed by `ui5-builder` 
 
 The `ui5-builder` should offer a new standard task called `escapeNonAsciiCharacters` which escapes all special characters in unicode using the unicode escape sequence `\uXXXX`.
 It should use a processor called `nonAsciiEscaper` which escapes non ascii characters (characters which are not within the 128 character ASCII range) within a given string.
-The processor `nonAsciiEscaper` should offer an encoding parameter and a method which provides valid values for this option (`nonAsciiEscaper#getEncodingFromNiceName`).
+The processor `nonAsciiEscaper` should offer an encoding parameter and a method which provides valid values for this option (`nonAsciiEscaper#getEncodingFromAlias`).
 
 
 Umlaut Example:
