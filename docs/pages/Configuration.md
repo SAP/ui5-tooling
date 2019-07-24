@@ -87,8 +87,9 @@ Some general information:
         + `<virtual path>: <physical path>` (default `/: ./`): Any virtual path mapping can be defined here.  
           *(Only available for projects of type `module`)*  
           It is recommended that modules include their namespace in the virtual path and use the `/resources` prefix (e.g. `/resources/my/first/library/module-xy`).
-- `cachebuster`:
-    - `signatureType`: `time` or `hash`. By default, the generated cachebuster info file signatures are based on timestamps (`time`). In setups like CI environments, a mechanism based on file hashes (`hash`) might be more reliable.
+- `propertiesFileEncoding`:  
+Either `ISO-8859-1` or `UTF-8` (default);  
+This option specifies the encoding of properties files. This parameter is used to read the properties files and interpret them with the provided encoding. Each non ASCII character is replaced with a respective unicode escape sequence then.
 
 #### builder (optional)
 - `resources`: General resource configuration for this project
@@ -102,6 +103,8 @@ Some general information:
     - `name` (mandatory): The name of the custom task
     - `afterTask` or `beforeTask` (only one, mandatory): The name of the build task after or before which your custom task will be executed.
     - `configuration` (optional): Additional configuration that is passed to the custom build task
+- `cachebuster`:
+    - `signatureType`: `time` or `hash`. By default, the generated cachebuster info file signatures are based on timestamps (`time`). In setups like CI environments, a mechanism based on file hashes (`hash`) might be more reliable.
 
 #### server (optional)
 - `settings` (not yet implemented)
