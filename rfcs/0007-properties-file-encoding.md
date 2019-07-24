@@ -44,7 +44,8 @@ type: application
 metadata:
   name: my.application
 resources:
-  propertiesFileEncoding: "UTF-8"
+  configuration:
+    propertiesFileEncoding: "UTF-8"
 ```
 
 The resources section within the configuration can be consumed by `ui5-builder` and `ui5-server`.
