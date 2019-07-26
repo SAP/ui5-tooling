@@ -19,7 +19,8 @@ Properties files (`*.properties`) should be encoded in pure ASCII when serving t
 
 Currently the properties files are mostly encoded in ISO-8859-1 (which is used by most existing SAP server platforms).
 By default the files are served as UTF-8 by the `ui5-server`. This will lead to the problem that special characters are not displayed correctly because they are read using UTF-8 encoding.
-The user wants to be able to use properties files with ISO-8859-1 encoding. Additionally the user wants have the option to specify UTF-8 encoding if the properties file contain special characters.
+The user wants to be able to use properties files with ISO-8859-1 encoding. Additionally the user wants have the option to specify UTF-8 encoding 
+e.g. if a properties file contains special characters which are not present in ISO-8859-1.
 
 ## Detailed design
 
