@@ -13,14 +13,24 @@
 
 ## Summary
 
-Properties files (`*.properties`) should be encoded in pure ASCII when serving them via the `ui5-server` or building an application/library with the `ui5-builder`.
+Properties files (`*.properties`) should be allowed to use UTF-8 encoding, in addition to ISO-8859-1 (default).
+When building projects or serving files, the output file content should be independent of encodings (plain ASCII) to prevent issues with different encoding expectations/limitations of other tools or servers.
 
 ## Motivation
 
-Currently the properties files are mostly encoded in ISO-8859-1 (which is used by most existing SAP server platforms).
-By default the files are served as UTF-8 by the `ui5-server`. This will lead to the problem that special characters are not displayed correctly because they are read using UTF-8 encoding.
-The user wants to be able to use properties files with ISO-8859-1 encoding. Additionally the user wants have the option to specify UTF-8 encoding 
-e.g. if a properties file contains special characters which are not present in ISO-8859-1.
+The i18n source files in UI5 are expected to be encoded in ISO-8859-1, based on the [Java 8 properties files](https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html).
+This is also part of the [UI5 Development Conventions and Guidelines](https://ui5.sap.com/#/topic/753b32617807462d9af483a437874b36).
+
+Properties files encoded with UTF-8 are causing issues with non-ASCII characters, as a different encoding is expected.
+
+But as UTF-8 is the default encoding for most of the programs and tools nowadays, this is quite cumbersome. Some editors don't even easily support reading from or writing to other encodings and expect UTF-8 by default.
+Also with Java 9 the default encoding for properties files has been changed to UTF-8 ([JEP 226: UTF-8 Property Resource Bundles](http://openjdk.java.net/jeps/226)).
+
+A workaround to this problem is to use unicode escape sequences (`\uXXXX`) which makes the content independent from the encoding but very cumbersome to maintain without additional tools to convert the file.
+This escaping solution is already used for most of the UI5 libraries, especially for locales which require unicode characters not supported in ISO-8859-1.
+
+To improve the overall developer experience and to prevent encoding issues, the UI5 Tooling should be enhanced to also support properties files encoded in UTF-8.
+But as there are existing tools and server middleware which explicitly expect those files to be encoded in ISO-8859-1, the output of the UI5 Tooling needs to be independent of the encoding (plain ASCII). This should be achieved by converting non-ASCII characters to unicode escape sequences (`\uXXXX`), as already mentioned above.
 
 ## Detailed design
 
@@ -54,7 +64,7 @@ The resources section within the configuration can be consumed by `ui5-builder` 
 ### Build Task
 
 The `ui5-builder` should offer a new standard task called `escapeNonAsciiCharacters` which escapes all special characters in unicode using the unicode escape sequence `\uXXXX`.
-It should use a processor called `nonAsciiEscaper` which escapes non ascii characters (characters which are not within the 128 character ASCII range) within a given string.
+It should use a processor called `nonAsciiEscaper` which escapes non ASCII characters (characters which are not within the 128 character ASCII range) within a given string.
 The processor `nonAsciiEscaper` should offer an encoding parameter and a method which provides valid values for this option (`nonAsciiEscaper#getEncodingFromAlias`).
 
 
@@ -69,11 +79,11 @@ Umlaut Example:
 
 The task operates on `*.properties` files using the processor.
 The task should run first (before `replaceCopyright`) for all types.
-This ensures that the properties files can always be consumed.
+This ensures that the properties files can always be consumed independent of the source encoding.
 Each build output should contain the escaped properties files.
 This ensures that all `properties` contain only ASCII characters such that they can be consumed by other platforms.
 
-The new standard task should automatically be integrated into the build process and can be reused by the `ui5-server`.
+The new standard task should automatically be integrated into the build process and the underlaying processor can be reused by the `ui5-server`.
 
 ### Server part
 
