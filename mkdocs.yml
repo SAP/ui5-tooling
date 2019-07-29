@@ -7,8 +7,14 @@ site_dir: 'site' # default
 nav:
     - Home: index.md
     - Getting Started: pages/GettingStarted.md
+    - Working with the UI5 Tooling:
+      - Overview: pages/WorkingWithUi5Tooling.md
     - Configuration: pages/Configuration.md
     - CLI: pages/CLI.md
+    - Modules:
+      - Server: pages/Server.md
+      - Builder: pages/Builder.md
+      - Project: pages/Project.md
     - Extensibility:
       - Custom Tasks: pages/extensibility/CustomTasks.md
       - Custom Server Middleware: pages/extensibility/CustomServerMiddleware.md
