@@ -13,7 +13,7 @@
 
 ## Summary
 
-Properties files (`*.properties`) should be allowed to use UTF-8 encoding, in addition to ISO-8859-1 (default).
+Add possibility to use UTF-8 encoding for properties files (`*.properties`), in addition to the existing ISO-8859-1 encoding (default).
 When building projects or serving files, the output file content should be independent of encodings (plain ASCII) to prevent issues with different encoding expectations/limitations of other tools or servers.
 
 ## Motivation
@@ -38,12 +38,14 @@ But as there are existing tools and server middleware which explicitly expect th
 
 A configuration for the `ui5-builder` tasks and the `ui5-server` should be provided such that the source encoding of `*.properties` files can be specified.
 
-Encodings should be supported according to the [Encoding spec](https://encoding.spec.whatwg.org/).
-For more information check out: [Buffers and Character Encodings](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings)
+This configuration is set on project level, so that multiple projects with different encodings function idependently.
+Resources create as part of the project contain a reference to the project, which allows to read the expected source encoding for a single resource.
+
+Altought there are lots of different encodings, the configuration on projects only foresees the two relevant encodings.
 
 Supported values are: `UTF-8` and `ISO-8859-1`
 
-The default is `ISO-8859-1` for compatibility reasons (set by the formatters).
+The default is `ISO-8859-1` for compatibility reasons.
 
 This should be configured within the `ui5.yaml` file.
 
@@ -61,12 +63,10 @@ resources:
 
 The resources section within the configuration can be consumed by `ui5-builder` and `ui5-server`.
 
-### Build Task
+### Processor 
 
-The `ui5-builder` should offer a new standard task called `escapeNonAsciiCharacters` which escapes all special characters in unicode using the unicode escape sequence `\uXXXX`.
-It should use a processor called `nonAsciiEscaper` which escapes non ASCII characters (characters which are not within the 128 character ASCII range) within a given string.
-The processor `nonAsciiEscaper` should offer an encoding parameter and a method which provides valid values for this option (`nonAsciiEscaper#getEncodingFromAlias`).
-
+A processor called `nonAsciiEscaper` should be added.
+It escapes non ASCII characters (characters which are not within the 128 character ASCII range) within a given string with unicode escape sequence `\uXXXX`.
 
 Umlaut Example:
 
@@ -77,22 +77,33 @@ Umlaut Example:
 | `Ü`, `ü` | `\u00dc`, `\u00fc` |
 | `ß`      | `\u00df`           |
 
+The processor should offer an encoding parameter which defaults to "utf8" and passes it to the [Node.js Buffer#toString method](https://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end).
+Supported encodings are based on the Node.js implementation: https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings
+
+A static function (`nonAsciiEscaper.getEncodingFromAlias`) should be added to map valid encodings based on the supported configuration values (`UTF-8`, `ISO-8859-1`) to the Node.js encoding names (`utf8`, `latin1`).
+
+### Task
+
+A new task `escapeNonAsciiCharacters` should be added which receives the source encoding and a pattern to glob files within the workspace.
+It uses the `nonAsciiEscaper.getEncodingFromAlias` function to map the source encoding (based on the project configuration values) to a valid encoding for the processor.
+
+### Types
+
 The task operates on `*.properties` files using the processor.
 The task should run first (before `replaceCopyright`) for all types.
+
 This ensures that the properties files can always be consumed independent of the source encoding.
 Each build output should contain the escaped properties files.
-This ensures that all `properties` contain only ASCII characters such that they can be consumed by other platforms.
 
 The new standard task should automatically be integrated into the build process and the underlaying processor can be reused by the `ui5-server`.
 
-### Server part
+### Server
 
-The `ui5-server` should serve all resources using `UTF-8` [charset header](https://www.w3.org/International/articles/http-charset/index.en).
+The `ui5-server` should not use special handling of response headers to ensure ISO-8859-1 encoding anymore.
+Content-type / charset should be determined for all files by using the "mime-types" module.
 
-The `ui5-server` should offer the capability to re-use the `ui5-builder` processor `nonAsciiEscaper` to escape characters in `*.properties` files.
-Due to the pure ASCII representation now, the served content can always be interpreted and properly consumed as UTF-8.
-
-Technically, there should be a special treatment in [serveResources](https://github.com/SAP/ui5-server/blob/master/lib/middleware/serveResources.js#L42) middleware which uses the configuration and the processor to serve properties files such that they can be interpreted as `UTF-8` encoded content.
+The `serveResources` middleware should call the `nonAsciiEscaper` processor for all `*.properties` files and use the configured encoding of the project where the resource belongs to. This ensures that e.g. files from dependencies are handled properly, as it might have a different encoding than the root project running the server.
+In case there is no project or no encoding configuration available, it should default to "ISO-8859-1".
 
 ## How we teach this
 
