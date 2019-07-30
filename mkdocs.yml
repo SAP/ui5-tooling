@@ -7,8 +7,7 @@ site_dir: 'site' # default
 nav:
     - Home: index.md
     - Getting Started: pages/GettingStarted.md
-    - Working with the UI5 Tooling:
-      - Overview: pages/WorkingWithUi5Tooling.md
+    - Workflows: pages/Workflows.md
     - Configuration: pages/Configuration.md
     - CLI: pages/CLI.md
     - Modules:
@@ -22,6 +21,7 @@ nav:
     - Upgrade Guides:
       - Migrate to v1: updates/migrate-v1.md
     - FAQ: pages/FAQ.md
+    - Troubleshooting: pages/Troubleshooting.md
     - API Reference: 'api/index.html' # only available in final build, not serve
 theme:
   name: 'material'

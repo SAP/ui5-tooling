@@ -1,4 +1,4 @@
-# Working With the UI5 Tooling
+# Workflows
 When developing a UI5 project locally, you should use the UI5 Server (`ui5 serve`) and not the UI5 Builder (`ui5 build`). Building a project should only ever be required when deploying it.
 
 However, you might have good reasons to also use the UI5 Builder during development. In such cases, feel free to let us know! Maybe your use case could be covered by a future enhancement of the UI5 Server.
