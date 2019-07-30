@@ -39,9 +39,9 @@ But as there are existing tools and server middleware which explicitly expect th
 A configuration for the `ui5-builder` tasks and the `ui5-server` should be provided such that the source encoding of `*.properties` files can be specified.
 
 This configuration is set on project level, so that multiple projects with different encodings function idependently.
-Resources create as part of the project contain a reference to the project, which allows to read the expected source encoding for a single resource.
+Resources created as part of the project contain a reference to the project, which allows to read the expected source encoding for a single resource.
 
-Altought there are lots of different encodings, the configuration on projects only foresees the two relevant encodings.
+Altought there are lots of different encodings, the configuration of projects only foresees two relevant encodings.
 
 Supported values are: `UTF-8` and `ISO-8859-1`
 
