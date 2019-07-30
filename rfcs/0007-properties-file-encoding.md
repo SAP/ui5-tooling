@@ -84,18 +84,16 @@ A static function (`nonAsciiEscaper.getEncodingFromAlias`) should be added to ma
 
 ### Task
 
-A new task `escapeNonAsciiCharacters` should be added which receives the source encoding and a pattern to glob files within the workspace.
+A task `escapeNonAsciiCharacters` should be added which receives the source encoding and a pattern to glob files within the workspace.
 It uses the `nonAsciiEscaper.getEncodingFromAlias` function to map the source encoding (based on the project configuration values) to a valid encoding for the processor.
 
 ### Types
 
-The task operates on `*.properties` files using the processor.
-The task should run first (before `replaceCopyright`) for all types.
+Both `application` and `library` types should be enhanced.
 
-This ensures that the properties files can always be consumed independent of the source encoding.
-Each build output should contain the escaped properties files.
+The formatters should take the [configuration](#Configuration) into account and apply the default.
 
-The new standard task should automatically be integrated into the build process and the underlaying processor can be reused by the `ui5-server`.
+The builders should execute the `escapeNonAsciiCharacters` task as the very first task and pass the propertiesFileSourceEncoding from the project configuration. The pattern should include all properties files (`/**/*.properties`).
 
 ### Server
 
