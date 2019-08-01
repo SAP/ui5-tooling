@@ -87,9 +87,10 @@ Some general information:
         + `<virtual path>: <physical path>` (default `/: ./`): Any virtual path mapping can be defined here.  
           *(Only available for projects of type `module`)*  
           It is recommended that modules include their namespace in the virtual path and use the `/resources` prefix (e.g. `/resources/my/first/library/module-xy`).
-- `propertiesFileEncoding`:  
-Either `ISO-8859-1` or `UTF-8` (default);  
-This option specifies the encoding of properties files. This parameter is used to read the properties files and interpret them with the provided encoding. Each non ASCII character is replaced with a respective unicode escape sequence then.
+    - `propertiesFileSourceEncoding` (since UI5 CLI [`v1.7.0`](https://github.com/SAP/ui5-cli/releases/tag/v1.7.0)):  
+Either `ISO-8859-1` (default) or `UTF-8`.  
+This option specifies the source encoding of `*.properties` files of the project. Those files will be read in the given encoding and any non-ASCII characters replaced with the respective unicode escape sequences.  
+*Also see [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md).*
 
 #### builder (optional)
 - `resources`: General resource configuration for this project
