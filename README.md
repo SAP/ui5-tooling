@@ -8,7 +8,7 @@
 
 ## Resources
 - [Documentation](https://sap.github.io/ui5-tooling/)
-- [API Reference](https://sap.github.io/ui5-tooling/)
+- [API Reference](https://sap.github.io/ui5-tooling/api/)
 - [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
 - [Project Configuration](https://github.com/SAP/ui5-project/blob/master/docs/Configuration.md)
 - 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
