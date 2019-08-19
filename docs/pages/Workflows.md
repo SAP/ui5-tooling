@@ -6,7 +6,7 @@ However, you might have good reasons to also use the UI5 Builder during developm
 ## Linking Projects
 Would you like to work on an application project and one or more of its dependencies at the same time? We got you covered!
 
-By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](#why-packagejson-why-npm)) you have a variety of options.  
+By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](https://sap.github.io/ui5-tooling/pages/FAQ/#why-packagejson-why-npm)) you have a variety of options.  
 Here is an example with [npm](https://www.npmjs.com/get-npm), an application, and a reuse library:
 
 **Example: Your Directory Structure**
