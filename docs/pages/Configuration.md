@@ -123,6 +123,66 @@ Extensions can be identified by the `kind: extension` configuration. If no `kind
 - [Custom Server Middleware](./extensibility/CustomServerMiddleware.md)
 - [Project Shims](./extensibility/ProjectShims.md)
 
+## Custom Bundling
+
+Custom bundles can be defined in the `ui5.yaml`. It should be located in the `builder` configuration. With the property `bundles` a list of `bundleDefinitions` can be described.
+
+````yaml
+builder:
+  bundles:
+    - bundleDefinition:
+        name: "sap-ui-custom.js"
+        defaultFileTypes:
+          - ".js"
+        sections:
+          - mode: raw
+            filters:
+            - ui5loader-autoconfig.js
+            resolve: true
+            sort: true
+      bundleOptions:
+        optimize: true
+    - bundleDefinition:
+        name: "app.js"
+        defaultFileTypes:
+          - ".js"
+        sections:
+          - mode: preload
+            filters:
+              - some/app/Component.js
+            resolve: true
+            sort: true
+          - mode: provided
+            filters:
+            - ui5loader-autoconfig.js
+            resolve: true
+      bundleOptions:
+        optimize: true
+````
+
+### Properties
+
+**bundles**
+
+A list of bundle definitions. A `bundleDefinition` contains of the following options:
+
+- `name`: The module bundle name
+- `defaultFileTypes`: List of default file types which should be included in the bundle
+  - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html#.generateBundle)) and lists the resources that should be in- or excluded from the section.
+    - `mode`:  The embedding technology (e.g. provided, raw, preload)
+    - `filters`: List of resources as glob patterns that should be in- or excluded. A pattern either contains of a trailing slash '/' or single '*' and double '**' asterisks which denote an arbitrary number of characters or folder names. Exludes should be marked with a leading exclamation mark '!'. The order of filters is relevant, a later exclusion overrides an earlier inclusion and vice versa.
+    - `resolve`: Setting resolve to `true` will also include all (transitive) dependencies of the files
+    - `resolveConditional`: Whether conditional dependencies of modules should be resolved and added to the module set for this section. By default set to `false`
+    - `renderer`: Whether renderers for controls should be added to the module set. By default set to `false`
+    - `sort`:  By default, modules are sorted by their dependencies. The sorting can be suppressed by setting the option to `false`
+
+**bundleOptions**
+- `optimize`: By default set to `false`. If set to `true`, the module bundle gets minified
+- `decorateBootstrapModule`: By default set to `true`. If set to `false`, the module won't be decorated with an optimization marker
+- `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
+- `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
+- `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
+
 ## Specification Versions
 The specification version as configured in the `specVersion` property, defines the version a configuration is based on.
 
