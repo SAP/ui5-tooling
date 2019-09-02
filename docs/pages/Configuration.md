@@ -177,6 +177,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
     - `sort`:  By default, modules are sorted by their dependencies. The sorting can be suppressed by setting the option to `false`
 
 **bundleOptions**
+
 - `optimize`: By default set to `false`. If set to `true`, the module bundle gets minified
 - `decorateBootstrapModule`: By default set to `true`. If set to `false`, the module won't be decorated with an optimization marker
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
