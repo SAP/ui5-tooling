@@ -57,6 +57,7 @@ Options:
     --loglevel, --log-level    Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
     --all, -a                  Include all project dependencies into build process [boolean] [default: false]
     --dest                     Path of build destination  [string] [default: "./dist"]
+    --clean-dest               If present, clean the destination directory before building  [boolean] [default: false]
     --dev-exclude-project      A list of specific projects to be excluded from dev mode (dev mode must be active for this to be effective)  [array]
     --include-task             A list of specific tasks to be included to the default/dev set  [array]
     --exclude-task             A list of specific tasks to be excluded from default/dev set  [array]
