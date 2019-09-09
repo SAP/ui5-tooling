@@ -1,15 +1,14 @@
 name: Build and Deploy Docs
-on: push
+on:
+  push:
+    branches:
+      - master
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Is on master
-      uses: actions/bin/filter@3c0b4f0e63ea54ea5df2914b4fabf383368cd0da
-      with:
-        args: branch master
+    - uses: actions/checkout@v1
     - name: Build mkdocs
       uses: docker://squidfunk/mkdocs-material:4.4.0
       with:
