@@ -62,7 +62,8 @@ builder:
     signatureType: time
 server:
   settings:
-    port: 8099
+    httpPort: 1337
+    httpsPort: 1443
 ````
 
 ### Properties
@@ -108,8 +109,9 @@ This option specifies the source encoding of `*.properties` files of the project
     - `signatureType`: `time` or `hash`. By default, the generated cachebuster info file signatures are based on timestamps (`time`). In setups like CI environments, a mechanism based on file hashes (`hash`) might be more reliable.
 
 #### server (optional)
-- `settings` (not yet implemented)
-    - `port`: Project default server port; can be overwritten via CLI parameters
+- `settings`: Overwrite CLI defaults for this project
+    - `httpPort`: HTTP server port to use. Can be overwritten via CLI parameter `--port`
+    - `httpsPort`: HTTPS server port to use. Can be overwritten via CLI parameter `--port`
 
 ## Extension Configuration
 Extensions configuration can be added to any projects `ui5.yaml`. It should to be located *after* the projects configuration, separated by [three dashes](https://yaml.org/spec/1.2/spec.html#id2760395).
