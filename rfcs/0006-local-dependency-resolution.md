@@ -122,7 +122,8 @@ my-first-library/
     - Solved in the app repository if developer has located the library in the same directory
 
 ### Dependency Resolution Changes
-TBD
+
+Possibly breaking change of "translator" concept. Create "Project" class. Maybe change translators so that multiple translators can be executed in arbitrary, sequential order.
 
 ### Activation of the workspace mode
 If .ui5rc.yaml file is present in any parent directory, it is used by default.
