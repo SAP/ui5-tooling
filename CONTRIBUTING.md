@@ -40,7 +40,7 @@ You may be able to add additional or missing information, such as a step-by-step
 
 ## 📝 Reporting Issues
 ### Not a Bug / Questions
-If you need help setting something up, or if you have questions regarding the UI5 Tooling, please seek help on a community platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the `#tooling` channel of the [OpenUI5 Community Slack](https://slackui5invite.herokuapp.com).
+If you need help setting something up, or if you have questions regarding the UI5 Tooling, please seek help on a community platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the `#tooling` channel of the [OpenUI5 Community Slack](https://join-ui5-slack.herokuapp.com).
 
 ### Requirements for a Bug Report
 You are encouraged to use the [issue template](.github/ISSUE_TEMPLATE.md).
