@@ -84,6 +84,7 @@ Options:
     --port, -p                    Port to bind on (default for HTTP: 8080, HTTP/2: 8443)  [number]
     --open, -o                    Open web server root directory in default browser. Optionally, supplied relative path will be appended to the root URL  [string]
     --h2                          Shortcut for enabling the HTTP/2 protocol for the web server  [boolean] [default: false]
+    --simple-index                Use a simplified view for the server directory  [boolean] [default: false]
     --accept-remote-connections   Accept remote connections. By default the server only accepts connections from localhost  [boolean] [default: false]
     --key                         Path to the private key  [string] [default: "$HOME/.ui5/server/server.key"]
     --cert                        Path to the certificate  [string] [default: "$HOME/.ui5/server/server.crt"]
