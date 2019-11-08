@@ -132,8 +132,6 @@ A company representative authorized to do so needs to download, fill in, and pri
   *69190 Walldorf*  
   *Germany*
 
-The form contains a list of employees who are authorized to contribute on behalf of your company. When this list changes, please let us know.
-
 ### How to Contribute
 1. Make sure the change is welcome (see [General Remarks](#general-remarks)).
     - Also check on the [UI5 Tooling Task Board](https://github.com/orgs/SAP/projects/1) whether related tasks are already being worked on, blocked, or in discussion.
