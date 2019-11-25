@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build mkdocs
-      uses: docker://squidfunk/mkdocs-material:4.5.1
+      uses: docker://squidfunk/mkdocs-material:4.6.0
       with:
         args: build
     - name: Set /site ownership to current user
