@@ -65,7 +65,7 @@ dependencies:
     path: "../sap.m"
 ````
 
-This can be used via `ui5 serve -b static:/path/to/projectDependencies.yaml`
+This can be used via `ui5 serve --translator static:/path/to/projectDependencies.yaml`
 
 ## Project Preprocessor
 Enhances a given dependency tree based on a projects [configuration](docs/Configuration.md).
