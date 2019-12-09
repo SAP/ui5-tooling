@@ -10,17 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build mkdocs
-      uses: docker://squidfunk/mkdocs-material:4.4.0
+      uses: docker://squidfunk/mkdocs-material:4.5.1
       with:
         args: build
     - name: Install npm dependencies
-      uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
-      with:
-        args: ci
+      run: npm ci
     - name: Build JSDoc
-      uses: actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680
-      with:
-        args: run jsdoc-generate
+      run: npm run jsdoc-generate
     - name: Deploy docs to gh-pages
       uses: maxheld83/ghpages@v0.2.1
       env:
