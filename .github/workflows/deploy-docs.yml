@@ -13,8 +13,8 @@ jobs:
       uses: docker://squidfunk/mkdocs-material:4.5.1
       with:
         args: build
-    - name: Set /docs ownership to current user
-      run: sudo chown -R $(id -u):$(id -g) ./docs
+    - name: Set /site ownership to current user
+      run: sudo chown -R $(id -u):$(id -g) ./site
     - name: Install npm dependencies
       run: npm ci
     - name: Build JSDoc
