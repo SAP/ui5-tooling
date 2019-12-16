@@ -6,13 +6,15 @@ on:
 jobs:
   build-and-deploy:
     name: Build and Deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build mkdocs
       uses: docker://squidfunk/mkdocs-material:4.5.1
       with:
         args: build
+    - name: Set /docs ownership to current user
+      run: sudo chown -R $(id -u):$(id -g)
     - name: Install npm dependencies
       run: npm ci
     - name: Build JSDoc
