@@ -133,3 +133,6 @@ module.exports = async function({workspace, dependencies, options}) {
 	}));
 };
 ````
+
+!!! warning
+    Depending on your project setup, the UI5 Tooling tends to have lots of open files at the same time during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
