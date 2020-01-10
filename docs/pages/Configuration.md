@@ -1,13 +1,13 @@
 # Configuration
-This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) `1.0`**.
+This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) `1.1`**.
 
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
 ## Example
 
 ````yaml
-specVersion: "1.0"
-type: application|library|module
+specVersion: "1.1"
+type: application|library|theme-library|module
 metadata:
   name: some.project.name
 ````
@@ -15,10 +15,10 @@ metadata:
 ## General Configuration
 A project must define a specification version (`specVersion`), to which its configuration is compatible to. Also see [Specification Versions](#specification-versions).
 
-In addition, a project must define a `type`. This can be either `application`, `library` or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
+In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
 
 ````yaml
-specVersion: "1.0"
+specVersion: "1.1"
 type: library
 ````
 
@@ -46,7 +46,7 @@ Depending on the project type, the UI5 Tooling expects your projects source file
 **Type: application**  
 Default directory for runtime and test files: `webapp`
 
-**Type: library**  
+**Type: library and theme-library**  
 Default directory for runtime files: `src`  
 Default directory for test files: `test`
 
@@ -202,12 +202,12 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
 
 ### Example
 ````yaml
-specVersion: "1.0"
+specVersion: "1.1"
 type: application
 metadata:
   name: my.application
 ---
-specVersion: "1.0"
+specVersion: "1.1"
 kind: extension
 type: project-shim
 metadata:
@@ -215,7 +215,7 @@ metadata:
 shims:
   configurations:
     lodash:
-      specVersion: "1.0"
+      specVersion: "1.1"
       type: module
       metadata:
         name: lodash
@@ -292,10 +292,11 @@ The specification version as configured in the `specVersion` property, defines t
 
 ## Compatibility Matrix
 
-Version | [UI5 CLI](https://github.com/SAP/ui5-cli) Release
+Version | UI5 CLI Release
 --- | ---
 **0.1** | v0.0.1+
 **1.0** | v1.0.0+
+**1.1** | v1.13.0+
 
 ## Specification Version 0.1
 Initial version.
@@ -306,3 +307,8 @@ Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cl
 First stable release.
 
 Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.0.0 and above.
+
+### Specification Version 1.1
+Adds support for the `theme-library` type.
+
+Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.0 and above.
