@@ -15,7 +15,7 @@ metadata:
 ## General Configuration
 A project must define a specification version (`specVersion`), to which its configuration is compatible to. Also see [Specification Versions](#specification-versions).
 
-In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
+In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` (since Specification Version 1.1) or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
 
 ````yaml
 specVersion: "1.1"
