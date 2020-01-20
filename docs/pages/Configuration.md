@@ -287,23 +287,40 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
 
-# Specification Versions
-The specification version as configured in the `specVersion` property, defines the version a configuration is based on.
+## Specification Versions
+A project must define a Specification Version by setting the `specVersion` property. The UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
-## Compatibility Matrix
+````yaml
+specVersion: "1.1"
+[...]
+````
+
+To use new features, a project might need to update the `specVersion` property.
+
+For a given Specification Version **MAJOR.MINOR** we will increment:
+
+1. **MAJOR** when there are breaking changes that might require additional actions by the project maintainer
+2. **MINOR** when adding new features that are fully backward compatible
+
+All changes are documented below.
+
+### Compatibility Matrix
+
+Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible in the means that for example UI5 CLI v2.0 will still be able to handle a project that is using Specification Version `1.0`.
 
 Version | UI5 CLI Release
 --- | ---
 **0.1** | v0.0.1+
 **1.0** | v1.0.0+
 **1.1** | v1.13.0+
+*2.0a* | v1.13.1+
 
-## Specification Version 0.1
+### Specification Version 0.1
 Initial version.
 
 Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v0.0.1 and above.
 
-## Specification Version 1.0
+### Specification Version 1.0
 First stable release.
 
 Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.0.0 and above.
@@ -312,3 +329,19 @@ Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 Adds support for the `theme-library` type.
 
 Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.0 and above.
+
+### Specification Version 2.0a
+Alpha release of Specification Version 2.0.
+
+This is not intended for usage by projects that want to test any new functionality.
+
+??? info
+    The final Specification Version 2.0 will add support for a new "framework" configuration in projects.
+
+    This alpha release is intended to be used by projects that already want to define this configuration even though it is not yet supported by the UI5 Tooling.
+
+    It is not intended for projects that want to try out any new functionality.
+
+    Opposing to the final Specification Version 2.0, this alpha release is fully compatible to Specification Version 1.1.
+
+Version 2.0a projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.1 and above. Extensions projects are not supported.
