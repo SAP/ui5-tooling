@@ -15,7 +15,7 @@ metadata:
 ## General Configuration
 A project must define a specification version (`specVersion`), to which its configuration is compatible to. Also see [Specification Versions](#specification-versions).
 
-In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
+In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` (since Specification Version 1.1) or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
 
 ````yaml
 specVersion: "1.1"
@@ -287,10 +287,26 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
 
-# Specification Versions
-The specification version as configured in the `specVersion` property, defines the version a configuration is based on.
+## Specification Versions
+A project must define a Specification Version by setting the `specVersion` property. The UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
-## Compatibility Matrix
+````yaml
+specVersion: "1.1"
+[...]
+````
+
+To use new features, a project might need to update the `specVersion` property.
+
+For a given Specification Version **MAJOR.MINOR** we will increment:
+
+1. **MAJOR** when there are breaking changes that might require additional actions by the project maintainer
+2. **MINOR** when adding new features that are fully backward compatible
+
+All changes are documented below.
+
+### Compatibility Matrix
+
+Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible in the means that for example UI5 CLI v2.0 will still be able to handle a project that is using Specification Version `1.0`.
 
 Version | UI5 CLI Release
 --- | ---
@@ -298,12 +314,12 @@ Version | UI5 CLI Release
 **1.0** | v1.0.0+
 **1.1** | v1.13.0+
 
-## Specification Version 0.1
+### Specification Version 0.1
 Initial version.
 
 Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v0.0.1 and above.
 
-## Specification Version 1.0
+### Specification Version 1.0
 First stable release.
 
 Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.0.0 and above.

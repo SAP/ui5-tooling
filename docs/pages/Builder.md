@@ -2,7 +2,7 @@
 ## Types
 Types define how a project can be configured and how it is built. A type orchestrates a set of tasks and defines the order in which they get applied during build phase. Furthermore, it takes care of formatting and validating the project-specific configuration.
 
-Also see [UI5 Project: Configuration](https://sap.github.io/ui5-tooling/pages/Configuration/#root62)
+Also see [UI5 Project: Configuration](https://sap.github.io/ui5-tooling/pages/Configuration/#general-configuration)
 
 ### application
 Projects of type `application` are typically the main or root project. In a projects dependency tree, there should only be one project of type `application`. If multiple are found, those further away from the root are ignored.
@@ -19,6 +19,8 @@ A project of type `library` must have a source directory (typically named `src`)
 These directories should contain a directory structure representing the namespace of the library (e.g. `src/my/first/library`) to prevent name clashes between the resources of different libraries.
 
 ### theme-library
+*Available since [Specification Version](https://sap.github.io/ui5-tooling/pages/Configuration/#specification-versions) 1.1*
+
 UI5 theme libraries provide theming resources for the controls of one or multiple libraries.
 
 A project of type `theme-library` must have a source directory (typically named `src`). It may also feature a "test" directory. These directories are mapped to the virtual directories `/resources` for the sources and `/test-resources` for the test resources.
