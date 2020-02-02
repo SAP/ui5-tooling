@@ -37,7 +37,7 @@
 		"@ui5/server": "^1.5.3"
 	},
 	"devDependencies": {
-		"docdash": "^1.1.1",
+		"docdash": "^1.2.0",
 		"jsdoc": "^3.6.3",
 		"local-web-server": "^3.0.7",
 		"open-cli": "^5.0.0"
