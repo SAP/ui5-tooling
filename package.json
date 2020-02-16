@@ -39,7 +39,7 @@
 	"devDependencies": {
 		"docdash": "^1.2.0",
 		"jsdoc": "^3.6.3",
-		"local-web-server": "^3.0.7",
+		"local-web-server": "^4.0.0",
 		"open-cli": "^5.0.0"
 	}
 }
