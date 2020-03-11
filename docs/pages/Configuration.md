@@ -30,6 +30,8 @@ In the UI5 Tooling, a project is typically identified by the configured `name`. 
 A given `copyright` string will be used to fill placeholders like `${copyright}` and `@copyright@` in a projects source code. `|-` is a way to define a multi line string in YAML. For details, please check the [YAML Specification](https://yaml.org/spec/1.2/spec.html#id2794534).  
 Inside the copyright string, you can use the placeholder `${currentYear}` which will be replaced with the current year.
 
+In case your project is deprecated you may also define a property `deprecated: true`. In projects that have a direct dependency to your project, the UI5 Tooling will then display a deprecation warning.
+
 ````yaml
 metadata:
   name: my.cool.project
