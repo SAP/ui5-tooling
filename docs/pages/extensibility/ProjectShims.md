@@ -13,12 +13,12 @@ metadata:
 shims:
   configurations:
     <module name (id)>:
-      specVersion: "1.1",
+      specVersion: "1.1"
       type: <project type>
       metadata:
         name: <project name>
     <module name (id)>:
-      specVersion: "1.1",
+      specVersion: "1.1"
       type: <project type>
       metadata:
         name: <project name>
