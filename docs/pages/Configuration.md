@@ -308,7 +308,7 @@ All changes are documented below.
 
 ### Compatibility Matrix
 
-Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible in the means that for example UI5 CLI v3.0.0 will still be able to handle a project that is using Specification Version `1.0`.
+Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible in the means that for example UI5 CLI v3.0.0 might still be able to handle a project that is using Specification Version `1.0`.
 
 Version | UI5 CLI Release
 --- | ---
