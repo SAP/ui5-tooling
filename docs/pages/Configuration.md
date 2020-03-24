@@ -335,12 +335,6 @@ Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 ### Specification Version 2.0
 
 - Adds and enforces schema validation of ui5.yaml
-- The namespace for application and library projects is now mandatory.
-  - For applications the namespace must be defined in the `manifest.json` in the `sap.app/id` attribute.
-  - For libraries the namespace must be defined in the `manifest.json` in the `sap.app/id` attribute
-  or in a `.library` file in the `name` attribute.
-  - Also see: [Descriptor for Applications, Components, and Libraries](https://sapui5.hana.ondemand.com/#/topic/be0cf40f61184b358b5faedaec98b2da)
-  and [Descriptor for Libraries](https://sapui5.hana.ondemand.com/#/topic/b229914587444025be986d81dcc77303)
 - Adds support for "framework" configuration to consume SAPUI5 libraries.
 
 Version 2.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v.2.0.0 and above.
