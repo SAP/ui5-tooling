@@ -12,7 +12,7 @@ In the below example, when building the library `my.library` the `babel` task wi
 
 ````yaml
 # In this example configuration two custom tasks are defined: 'babel' and 'generateMarkdownFiles'.
-specVersion: "1.1"
+specVersion: "2.0"
 type: library
 metadata:
   name: my.library
@@ -32,7 +32,7 @@ You can also connect multiple custom task with each other. Please be aware that 
 
 ````yaml
 # In this example 'myCustomTask2' gets executed after 'myCustomTask1'.
-specVersion: "1.1"
+specVersion: "2.0"
 type: library
 metadata:
   name: my.library
@@ -51,7 +51,7 @@ A custom task extension consists of a `ui5.yaml` and a [task implementation](#ta
 ### Example: ui5.yaml
 
 ````yaml
-specVersion: "1.1"
+specVersion: "2.0"
 kind: extension
 type: task
 metadata:
@@ -71,7 +71,7 @@ The task extension will then be automatically collected and processed during the
 
 ````yaml
 # Project configuration for the above example
-specVersion: "1.1"
+specVersion: "2.0"
 kind: project
 type: library
 metadata:
@@ -84,7 +84,7 @@ builder:
         color: blue
 ---
 # Task extension as part of your project
-specVersion: "1.1"
+specVersion: "2.0"
 kind: extension
 type: task
 metadata:

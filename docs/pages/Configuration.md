@@ -1,12 +1,12 @@
 # Configuration
-This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) `1.1`**.
+This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) `2.0`**.
 
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
 ## Example
 
 ````yaml
-specVersion: "1.1"
+specVersion: "2.0"
 type: application|library|theme-library|module
 metadata:
   name: some.project.name
@@ -18,7 +18,7 @@ A project must define a specification version (`specVersion`), to which its conf
 In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` (since Specification Version 1.1) or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
 
 ````yaml
-specVersion: "1.1"
+specVersion: "2.0"
 type: library
 ````
 
@@ -204,12 +204,12 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
 
 ### Example
 ````yaml
-specVersion: "1.1"
+specVersion: "2.0"
 type: application
 metadata:
   name: my.application
 ---
-specVersion: "1.1"
+specVersion: "2.0"
 kind: extension
 type: project-shim
 metadata:
@@ -217,7 +217,7 @@ metadata:
 shims:
   configurations:
     lodash:
-      specVersion: "1.1"
+      specVersion: "2.0"
       type: module
       metadata:
         name: lodash
@@ -293,7 +293,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 A project must define a Specification Version by setting the `specVersion` property. The UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
 ````yaml
-specVersion: "1.1"
+specVersion: "2.0"
 [...]
 ````
 
@@ -308,13 +308,14 @@ All changes are documented below.
 
 ### Compatibility Matrix
 
-Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible in the means that for example UI5 CLI v2.0 will still be able to handle a project that is using Specification Version `1.0`.
+Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible in the means that for example UI5 CLI v3.0.0 might still be able to handle a project that is using Specification Version `1.0`.
 
 Version | UI5 CLI Release
 --- | ---
 **0.1** | v0.0.1+
 **1.0** | v1.0.0+
 **1.1** | v1.13.0+
+**2.0** | v2.0.0+
 
 ### Specification Version 0.1
 Initial version.
@@ -330,3 +331,10 @@ Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 Adds support for the `theme-library` type.
 
 Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.0 and above.
+
+### Specification Version 2.0
+
+- Adds and enforces schema validation of ui5.yaml
+- Adds support for "framework" configuration to consume SAPUI5 libraries.
+
+Version 2.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v.2.0.0 and above.
