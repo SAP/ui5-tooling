@@ -19,7 +19,7 @@ A project of type `library` must have a source directory (typically named `src`)
 These directories should contain a directory structure representing the namespace of the library (e.g. `src/my/first/library`) to prevent name clashes between the resources of different libraries.
 
 ### theme-library
-*Available since [Specification Version](https://sap.github.io/ui5-tooling/pages/Configuration/#specification-versions) 1.1*
+*Available since [Specification Version](./Configuration.md#specification-versions) 1.1*
 
 UI5 theme libraries provide theming resources for the controls of one or multiple libraries.
 

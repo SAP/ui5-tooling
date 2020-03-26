@@ -23,13 +23,22 @@ Configure your project for use with the UI5 Tooling.
 ❯ ui5 init
 Wrote ui5.yaml:
 
-specVersion: '1.0'
+specVersion: '2.0'
 metadata:
   name: my-app
 type: application
 ```
 
-#### 🏄‍♂️ Server
+#### 🚚 Add Dependencies
+
+```
+❯ ui5 use SAPUI5@1.75.0
+================ OUTPUT TBD ================
+❯ ui5 add sap.ui.core sap.m themelib_sap_fiori_3 [...]
+================ OUTPUT TBD ================
+```
+
+#### 🏄 Server
 Start a local development server.  
 *Also see the [Server Documentation](./pages/Server.md)*
 
