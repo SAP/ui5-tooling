@@ -1,5 +1,5 @@
 # Configuration
-This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) `2.0`**.
+This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) 2.0**.
 
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
@@ -101,7 +101,9 @@ resources:
 ````
 
 ### Encoding of `*.properties` files
-*Available since UI5 CLI [`v1.7.0`](https://github.com/SAP/ui5-cli/releases/tag/v1.7.0)*
+
+!!! info
+    This configuration is available since UI5 CLI [`v1.7.0`](https://github.com/SAP/ui5-cli/releases/tag/v1.7.0)
 
 By default, the UI5 Tooling expects `*.properties` files to be `ISO-8859-1` encoded. 
 
@@ -114,6 +116,118 @@ resources:
   configuration:
     propertiesFileSourceEncoding: UTF-8
 ````
+
+## Framework Configuration
+
+!!! info
+    This configuration is available since UI5 CLI [`v2.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.0.0)
+    and applies only to projects defining [Specification Version](#specification-versions)
+    2.0 or higher.
+
+Define your projects framework dependencies.
+
+Your projects framework configuration you must define whether you want to use the OpenUI5 or the SAPUI5 framework. Also see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+
+**SAPUI5**
+```yaml
+framework:
+  name: SAPUI5
+```
+
+**OpenUI5**
+```yaml
+framework:
+  name: OpenUI5
+```
+
+If you are not sure which framework is right for you, see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+
+!!! warning
+    Projects that use the OpenUI5 framework can not depend on projects that use the SAPUI5 framework.
+
+If you want to execute UI5 CLI commands directly in your project you also need to specify the framework version you want to use. Whenever you execute a UI5 CLI command, the framework version of the current root project is used.
+
+```yaml
+framework:
+  name: SAPUI5
+  version: 1.76.0
+```
+
+You can find an overview of the available versions for each framework here:
+
+- [SAPUI5 Version Overview](http://ui5.sap.com/versionoverview.html) (**Note:** The UI5 Tooling can only consume SAPUI5 starting with version 1.76.0.)
+- [OpenUI5 Version Overview](https://openui5.hana.ondemand.com/versionoverview.html)
+
+### Dependencies
+
+All libraries required by your project should be listed in the libraries section of the framework configuration.
+
+```yaml
+framework:
+  name: SAPUI5
+  version: 1.76.0
+  libraries:
+    - name: sap.ui.core
+    - name: sap.m
+    - name: sap.ui.comp
+    - ...
+```
+
+#### Development Dependencies
+Development dependencies are only installed if the project defining them is the current root project.
+They are typically only required during the development of the project.
+
+```yaml
+  libraries:
+    - name: sap.ushell
+      development: true
+```
+
+Note that a development dependency can not be optional and vice versa.
+
+#### Optional Dependencies
+Optional dependencies are installed either if the project defining them is the current root project or if the dependency is already part current dependency tree. A typical use case is libraries defining optional dependencies to all theme libraries they support.
+The application that is consuming the library can then choose which theme library to use by declaring it as a non-optional dependency.
+
+```yaml
+  libraries:
+    - name: themelib_sap_fiori_3
+      optional: true
+```
+
+??? example
+    **my library**
+    ```yaml
+    specVersion: "2.0"
+    type: library
+    metadata:
+      name: some.library
+    framework:
+      name: SAPUI5
+      libraries:
+        - name: sap.ui.core
+        - name: themelib_sap_belize
+          optional: true
+        - name: themelib_sap_bluecrystal
+          optional: true
+        - name: themelib_sap_fiori_3
+          optional: true
+    ```
+
+    **my application (depending on my library)**
+    ```yaml
+    specVersion: "2.0"
+    type: application
+    metadata:
+      name: some.app
+    framework:
+      name: SAPUI5
+      libraries:
+        - name: sap.ui.core
+        - name: themelib_sap_fiori_3
+    ```
+
+    When building the application project, only the theme library `themelib_sap_fiori_3` will be installed and built.
 
 ## Build Configuration
 ### Build Resources
@@ -308,7 +422,7 @@ All changes are documented below.
 
 ### Compatibility Matrix
 
-Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible in the means that for example UI5 CLI v3.0.0 might still be able to handle a project that is using Specification Version `1.0`.
+Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible.
 
 Version | UI5 CLI Release
 --- | ---
@@ -334,7 +448,12 @@ Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 
 ### Specification Version 2.0
 
-- Adds and enforces schema validation of ui5.yaml
-- Adds support for "framework" configuration to consume SAPUI5 libraries.
+**Breaking changes:**
+
+- Adds and enforces schema validation of the ui5.yaml
+
+**Features:**
+
+- Adds support for the ["framework"](#framework-configuration) configuration to consume SAPUI5 libraries.
 
 Version 2.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v.2.0.0 and above.
