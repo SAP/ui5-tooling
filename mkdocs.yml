@@ -23,6 +23,16 @@ nav:
     - FAQ: pages/FAQ.md
     - Troubleshooting: pages/Troubleshooting.md
     - API Reference: 'api/index.html' # only available in final build, not serve
+    - Documentation Archive:
+      - v1:
+        - Configuration: pages/v1/Configuration.md
+        - CLI: pages/v1/CLI.md
+        - Modules:
+          - Builder: pages/v1/Builder.md
+        - Extensibility:
+          - Custom Tasks: pages/v1/extensibility/CustomTasks.md
+          - Custom Server Middleware: pages/v1/extensibility/CustomServerMiddleware.md
+          - Project Shims: pages/v1/extensibility/ProjectShims.md
 theme:
   name: 'material'
   palette:
