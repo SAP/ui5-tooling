@@ -61,6 +61,7 @@ Options:
     --dev-exclude-project      A list of specific projects to be excluded from dev mode (dev mode must be active for this to be effective)  [array]
     --include-task             A list of specific tasks to be included to the default/dev set  [array]
     --exclude-task             A list of specific tasks to be excluded from default/dev set  [array]
+    --framework-version        Overrides the framework version defined by the project  [string]
 
 Examples:
     ui5 build --all                                                                      Preload build for project and dependencies to "./dist"
@@ -89,6 +90,7 @@ Options:
     --key                         Path to the private key  [string] [default: "$HOME/.ui5/server/server.key"]
     --cert                        Path to the certificate  [string] [default: "$HOME/.ui5/server/server.crt"]
     --sap-csp-policies            Always send content security policies 'sap-target-level-1' and 'sap-target-level-2' in report-only mode  [boolean] [default: false]
+    --framework-version           Overrides the framework version defined by the project  [string]
 
 
 Examples:
