@@ -32,7 +32,7 @@ type: application
 #### 🚚 Add Dependencies
 
 ```
-❯ ui5 use SAPUI5@1.75.0
+❯ ui5 use SAPUI5@1.76.0
 ================ OUTPUT TBD ================
 ❯ ui5 add sap.ui.core sap.m themelib_sap_fiori_3 [...]
 ================ OUTPUT TBD ================
