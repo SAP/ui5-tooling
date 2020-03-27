@@ -96,8 +96,8 @@ However, it is recommended that modules include their namespace in the virtual p
 resources:
   configuration:
     paths:
-      "/resources/my/library/module-xy/": lib
-      "/resources/my/library/module-xy-min/": dist
+      /resources/my/library/module-xy/: lib
+      /resources/my/library/module-xy-min/: dist
 ````
 
 ### Encoding of `*.properties` files
@@ -105,16 +105,21 @@ resources:
 !!! info
     This configuration is available since UI5 CLI [`v1.7.0`](https://github.com/SAP/ui5-cli/releases/tag/v1.7.0)
 
-By default, the UI5 Tooling expects `*.properties` files to be `ISO-8859-1` encoded. 
+By default the UI5 Tooling expects different encodings for `*.properties` i18n files, depending on a projects specification version:
 
-If your project uses `UTF-8` encoding for these files (for example because it has been created in SAP WebIDE), you need to set the `propertiesFileSourceEncoding` configuration property.
+Specification Version | Default propertiesFileSourceEncoding
+--- | ---
+**0.1, 1.0 or 1.1** | `ISO-8859-1` 
+**2.0+** | `UTF-8`
 
-Your projects `*.properties` files will be read in the given encoding and any non-ASCII characters replaced with the respective unicode escape sequences. This allows you to deploy the resulting files to any environment, independent from how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
+If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
+
+The UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent from how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
 
 ````yaml
 resources:
   configuration:
-    propertiesFileSourceEncoding: UTF-8
+    propertiesFileSourceEncoding: UTF-8|ISO-8859-1
 ````
 
 ## Framework Configuration
@@ -451,6 +456,8 @@ Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 **Breaking changes:**
 
 - Adds and enforces schema validation of the ui5.yaml
+- By default the encoding of `*.properties` files is expected to be `UTF-8` (opposed to `ISO-8859-1` in projects defining specification versions below 2.0)
+    - A project can still explicitly configure the [encoding of its `*.properties` files](#encoding-of-properties-files)
 
 **Features:**
 
