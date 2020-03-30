@@ -105,7 +105,7 @@ resources:
 !!! info
     This configuration is available since UI5 CLI [`v1.7.0`](https://github.com/SAP/ui5-cli/releases/tag/v1.7.0)
 
-By default the UI5 Tooling expects different encodings for `*.properties` i18n files, depending on a projects specification version:
+By default the UI5 Tooling expects different encodings for `*.properties` i18n files, depending on the project's specification version:
 
 Specification Version | Default propertiesFileSourceEncoding
 --- | ---
@@ -129,9 +129,9 @@ resources:
     and applies only to projects defining [Specification Version](#specification-versions)
     2.0 or higher.
 
-Define your projects framework dependencies.
+Define your project's framework dependencies.
 
-Your projects framework configuration you must define whether you want to use the OpenUI5 or the SAPUI5 framework. Also see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+In your project's framework configuration you must define whether you want to use the OpenUI5 or the SAPUI5 framework. For more information, see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
 
 **SAPUI5**
 ```yaml
@@ -148,7 +148,7 @@ framework:
 If you are not sure which framework is right for you, see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
 
 !!! warning
-    Projects that use the OpenUI5 framework can not depend on projects that use the SAPUI5 framework.
+   Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
 
 If you want to execute UI5 CLI commands directly in your project you also need to specify the framework version you want to use. Whenever you execute a UI5 CLI command, the framework version of the current root project is used.
 
@@ -160,12 +160,12 @@ framework:
 
 You can find an overview of the available versions for each framework here:
 
-- [SAPUI5 Version Overview](http://ui5.sap.com/versionoverview.html) (**Note:** The UI5 Tooling can only consume SAPUI5 starting with version 1.76.0.)
+- [SAPUI5 Version Overview](http://ui5.sap.com/versionoverview.html) (**Note:** The UI5 Tooling can only consume SAPUI5 starting with Version 1.76.0.)
 - [OpenUI5 Version Overview](https://openui5.hana.ondemand.com/versionoverview.html)
 
 ### Dependencies
 
-All libraries required by your project should be listed in the libraries section of the framework configuration.
+All libraries required by your project must be listed in the libraries section of the framework configuration.
 
 ```yaml
 framework:
@@ -188,11 +188,11 @@ They are typically only required during the development of the project.
       development: true
 ```
 
-Note that a development dependency can not be optional and vice versa.
+Note that a development dependency cannot be optional and vice versa.
 
 #### Optional Dependencies
-Optional dependencies are installed either if the project defining them is the current root project or if the dependency is already part current dependency tree. A typical use case is libraries defining optional dependencies to all theme libraries they support.
-The application that is consuming the library can then choose which theme library to use by declaring it as a non-optional dependency.
+Optional dependencies are installed either if the project defining them is the current root project or if the dependency is already part of the current dependency tree. A typical use case is libraries defining optional dependencies to all theme libraries they support.
+You can choose which theme library to use by the application that is consuming the library by declaring it as a non-optional dependency.
 
 ```yaml
   libraries:
@@ -456,7 +456,7 @@ Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 **Breaking changes:**
 
 - Adds and enforces schema validation of the ui5.yaml
-- By default the encoding of `*.properties` files is expected to be `UTF-8` (opposed to `ISO-8859-1` in projects defining specification versions below 2.0)
+- By default the encoding of `*.properties` files is expected to be `UTF-8` (as opposed to `ISO-8859-1` in projects defining specification versions below 2.0)
     - A project can still explicitly configure the [encoding of its `*.properties` files](#encoding-of-properties-files)
 
 **Features:**
