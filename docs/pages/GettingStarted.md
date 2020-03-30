@@ -33,7 +33,7 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
 1. Define the framework you want to use
 
-    You can choose between the OpenUI5 and the SAPUI5 Framework. Don't know which one to choose? Checkout our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+    You can choose between the OpenUI5 and the SAPUI5 Framework. Don't know which one to choose? Check out our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
 
     **[OpenUI5](https://openui5.hana.ondemand.com/)**
     ```sh
