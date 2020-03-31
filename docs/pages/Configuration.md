@@ -25,7 +25,7 @@ type: library
 ### Metadata
 A project must have a `name` and might define a `copyright` string.
 
-In the UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should follow a namespace scheme like `company.businessarea.project`.
+In the UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `company.businessarea.project`.
 
 A given `copyright` string will be used to fill placeholders like `${copyright}` and `@copyright@` in a projects source code. `|-` is a way to define a multi line string in YAML. For details, please check the [YAML Specification](https://yaml.org/spec/1.2/spec.html#id2794534).  
 Inside the copyright string, you can use the placeholder `${currentYear}` which will be replaced with the current year.
@@ -114,7 +114,7 @@ Specification Version | Default propertiesFileSourceEncoding
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
 
-The UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent from how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
+The UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
 
 ````yaml
 resources:
@@ -310,7 +310,7 @@ server:
 ````
 
 ## Extension Configuration
-Extensions configuration can be added to any projects `ui5.yaml`. It should to be located *after* the projects configuration, separated by [three dashes](https://yaml.org/spec/1.2/spec.html#id2760395) "`---`".
+Extensions configuration can be added to any projects `ui5.yaml`. For better readability, it should to be located *after* the projects configuration, separated by [three dashes](https://yaml.org/spec/1.2/spec.html#id2760395) "`---`".
 
 In cases where an extension shall be reused across multiple projects you can make it a module itself and have its configuration in a standalone `ui5.yaml` located inside that module.
 
@@ -349,7 +349,7 @@ shims:
 
 ## Custom Bundling
 
-Custom bundles can be defined in the `ui5.yaml`. It should be located in the `builder` configuration. With the property `bundles` a list of `bundleDefinitions` can be described.
+Custom bundles can be defined in the `ui5.yaml`. Within the `builder/bundles` configuration a list of `bundleDefinitions` can be described.
 
 ````yaml
 builder:

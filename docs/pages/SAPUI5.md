@@ -10,7 +10,7 @@ SAPUI5 libraries are hosted on the public npm registry at `registry.npmjs.org`. 
 ## Usage
 Since Version 2.0 the UI5 CLI will automatically download all required framework dependencies of a project if they have been defined in the corresponding `ui5.yaml` configuration. They will be cached in a `.ui5` directory located in your users' home directory. This happens transparently whenever you execute the `ui5 serve` or `ui5 build` commands.
 
-All non-framework dependencies, such as reuse libraries or UI5 Tooling extensions, still need to be maintained as npm dependencies in the projects `package.json`. At the same time, framework dependencies listed in the `ui5.yaml` should not be listed in the `package.json`.
+All non-framework dependencies, such as reuse libraries or UI5 Tooling extensions, still need to be maintained as npm dependencies in the projects `package.json`. At the same time, framework dependencies listed in the `ui5.yaml` should not be listed in the `package.json` as they will be ignored by the UI5 Tooling.
 
 ## Configuration
 
