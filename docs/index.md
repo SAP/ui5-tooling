@@ -33,9 +33,12 @@ type: application
 
 ```
 ❯ ui5 use SAPUI5@1.76.0
-================ OUTPUT TBD ================
-❯ ui5 add sap.ui.core sap.m themelib_sap_fiori_3 [...]
-================ OUTPUT TBD ================
+Updated configuration written to ui5.yaml
+This project is now using SAPUI5 version 1.76.0
+
+❯ ui5 add sap.ui.core sap.m themelib_sap_fiori_3
+Updated configuration written to ui5.yaml
+Added framework libraries sap.ui.core sap.m themelib_sap_fiori_3 as dependencies
 ```
 
 #### 🏄 Server
