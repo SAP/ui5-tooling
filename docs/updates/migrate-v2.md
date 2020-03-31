@@ -1,4 +1,4 @@
-# Migrate to v2.0.0
+# Migrate to v2
 
 ## Breaking changes
 
@@ -27,7 +27,7 @@ npm install @ui5/cli@^2
 
 #### `specVersion: '2.0'`
 
-We have introduced the [specification version `2.0`](https://github.com/SAP/ui5-project/blob/master/docs/Configuration.md#specification-version-10).
+We have introduced the [specification version `2.0`](../pages/Configuration.md#specification-version-10).
 New features will only be available for projects with specVersion `2.0` or newer.  
 Most projects defining specVersion `0.1` or `1.0` can still be used.
 
