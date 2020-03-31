@@ -397,6 +397,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
     - `filters`: List of resources as glob patterns that should be in- or excluded. A pattern either contains of a trailing slash `/` or single `*` and double `**` asterisks which denote an arbitrary number of characters or folder names. Exludes should be marked with a leading exclamation mark '!'. The order of filters is relevant, a later exclusion overrides an earlier inclusion and vice versa.
     - `resolve`: Setting resolve to `true` will also include all (transitive) dependencies of the files
     - `resolveConditional`: Whether conditional dependencies of modules should be resolved and added to the module set for this section. By default set to `false`
+    - `declareRawModules`: Whether raw modules should be declared after jQuery.sap.global became available. With the usage of the ui5loader, this flag should be set to 'false'. By default set to `false`
     - `renderer`: Whether renderers for controls should be added to the module set. By default set to `false`
     - `sort`:  By default, modules are sorted by their dependencies. The sorting can be suppressed by setting the option to `false`
 
