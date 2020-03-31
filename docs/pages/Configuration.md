@@ -109,8 +109,8 @@ By default the UI5 Tooling expects different encodings for `*.properties` i18n f
 
 Specification Version | Default propertiesFileSourceEncoding
 --- | ---
-**0.1, 1.0 or 1.1** | `ISO-8859-1` 
 **2.0+** | `UTF-8`
+**0.1, 1.0 or 1.1** | `ISO-8859-1`
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
 
@@ -148,7 +148,7 @@ framework:
 If you are not sure which framework is right for you, see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
 
 !!! warning
-   Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
+    Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
 
 If you want to execute UI5 CLI commands directly in your project you also need to specify the framework version you want to use. Whenever you execute a UI5 CLI command, the framework version of the current root project is used.
 
@@ -431,25 +431,10 @@ Unless otherwise noted in the table below, the UI5 Tooling modules are backward 
 
 Version | UI5 CLI Release
 --- | ---
-**0.1** | v0.0.1+
-**1.0** | v1.0.0+
-**1.1** | v1.13.0+
 **2.0** | v2.0.0+
-
-### Specification Version 0.1
-Initial version.
-
-Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v0.0.1 and above.
-
-### Specification Version 1.0
-First stable release.
-
-Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.0.0 and above.
-
-### Specification Version 1.1
-Adds support for the `theme-library` type.
-
-Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.0 and above.
+**1.1** | v1.13.0+
+**1.0** | v1.0.0+
+**0.1** | v0.0.1+
 
 ### Specification Version 2.0
 
@@ -464,3 +449,18 @@ Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 - Adds support for the ["framework"](#framework-configuration) configuration to consume SAPUI5 libraries.
 
 Version 2.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v.2.0.0 and above.
+
+### Specification Version 1.1
+Adds support for the `theme-library` type.
+
+Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.0 and above.
+
+### Specification Version 1.0
+First stable release.
+
+Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.0.0 and above.
+
+### Specification Version 0.1
+Initial version.
+
+Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v0.0.1 and above.

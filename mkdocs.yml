@@ -20,8 +20,8 @@ nav:
       - Custom Server Middleware: pages/extensibility/CustomServerMiddleware.md
       - Project Shims: pages/extensibility/ProjectShims.md
     - Upgrade Guides:
-      - Migrate to v1: updates/migrate-v1.md
       - Migrate to v2: updates/migrate-v2.md
+      - Migrate to v1: updates/migrate-v1.md
     - FAQ: pages/FAQ.md
     - Troubleshooting: pages/Troubleshooting.md
     - API Reference: 'api/index.html' # only available in final build, not serve
