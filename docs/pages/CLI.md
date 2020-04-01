@@ -17,16 +17,29 @@ ui5 --help
 Usage: ui5 <command> [options]
 
 Commands:
-  ui5 add [--development] [--optional] <framework-libraries..>  Add a SAPUI5/OpenUI5 framework library to the project
-                                                                configuration.
-  ui5 build                 Build project in current directory
-  ui5 init                  Initialize the UI5 Tooling configuration for an application or
-                              library project.
-  ui5 serve                 Start a web server for the current project
-  ui5 tree                  Outputs the dependency tree of the current project to stdout. It
-                              takes all relevant parameters of ui5 build into account.
-  ui5 use <framework-info>  Initialize or update the UI5 Tooling framework configuration.
-  ui5 versions              Shows the versions of all UI5 Tooling modules
+  ui5 add [--development] [--optional] <framework-libraries..>
+      Add SAPUI5/OpenUI5 framework libraries to the project
+        configuration.
+  
+  ui5 build
+      Build project in current directory
+  
+  ui5 init
+      Initialize the UI5 Tooling configuration for an application or
+        library project.
+  
+  ui5 serve
+      Start a web server for the current project
+  
+  ui5 tree
+      Outputs the dependency tree of the current project to stdout. It
+        takes all relevant parameters of ui5 build into account.
+  
+  ui5 use <framework-info>
+      Initialize or update the project's framework configuration.
+  
+  ui5 versions
+      Shows the versions of all UI5 Tooling modules
 
 Options:
   --help, -h               Show help  [boolean]
@@ -37,9 +50,11 @@ Options:
   --loglevel, --log-level  Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
 
 Examples:
-  ui5 <command> --translator static:/path/to/projectDependencies.yaml Execute command using a "static" translator with translator
-                                                                        parameters
-  ui5 <command> --config /path/to/ui5.yaml Execute command using a project configuration from custom path
+  ui5 <command> --translator static:/path/to/projectDependencies.yaml
+            Execute command using a "static" translator with translator
+              parameters
+  ui5 <command> --config /path/to/ui5.yaml
+            Execute command using a project configuration from custom path
 ```
 
 The CLI automatically checks for updates using [update-notifier](https://github.com/yeoman/update-notifier). While this is skipped in CI environments, you might also opt-out manually by following the steps described [here](https://github.com/yeoman/update-notifier/blob/master/readme.md#user-settings).
@@ -47,21 +62,26 @@ The CLI automatically checks for updates using [update-notifier](https://github.
 ### Commands
 #### add
 
-`ui5 add [--development] [--optional] <framework-libraries..>` adds a SAPUI5/OpenUI5 framework library to the project configuration.
+`ui5 add [--development] [--optional] <framework-libraries..>` adds SAPUI5/OpenUI5 framework libraries to the project configuration
 
 ```
 Positionals:
   framework-libraries  Framework library names  [array] [required] [default: []]
 
 Options:
-  --help, -h               Show help  [boolean]
-  --version, -v            Show version number  [boolean]
-  --config                 Path to configuration file  [string]
-  --translator, --t8r      Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
-  --verbose                Enable verbose logging  [boolean]
-  --loglevel, --log-level  Set the logging level (error|warn|info|verbose|silly)  [string] [default: "info"]
-  --development, -D        Add as development dependency  [boolean] [default: false]
-  --optional, -O           Add as optional dependency  [boolean] [default: false]
+  --help, -h                Show help  [boolean]
+  --version, -v             Show version number  [boolean]
+  --config                  Path to configuration file  [string]
+  --translator, --t8r       Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
+  --verbose                 Enable verbose logging  [boolean]
+  --loglevel, --log-level   Set the logging level (error|warn|info|verbose|silly)  [string] [default: "info"]
+  --development, -D, --dev  Add as development dependency  [boolean] [default: false]
+  --optional, -O            Add as optional dependency  [boolean] [default: false]
+
+Examples:
+  ui5 add sap.ui.core sap.m                Add the framework libraries sap.ui.core and sap.m as dependencies
+  ui5 add -D sap.ui.support                Add the framework library sap.ui.support as development dependency
+  ui5 add --optional themelib_sap_fiori_3  Add the framework library themelib_sap_fiori_3 as optional dependency
 ```
 
 #### build
@@ -166,11 +186,13 @@ Examples:
 
 #### use
 
-`ui5 use <framework-info>` initializes or updates the UI5 Tooling [framework configuration](./Configuration.md#framework-configuration).
+`ui5 use <framework-info>` initializes or updates the project's [framework configuration](./Configuration.md#framework-configuration).
 
 ```
 Positionals:
-  framework-info  Framework name, version or both  [string] [required]
+  framework-info  Framework name, version or both (name@version).
+                  Name can be "SAPUI5" or "OpenUI5" (case-insensitive).
+                  Version can be "latest", "1.xx" or "1.xx.x".  [string] [required]
 
 Options:
   --help, -h               Show help   [boolean]
@@ -179,6 +201,12 @@ Options:
   --translator, --t8r      Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
   --verbose                Enable verbose logging.  [boolean]
   --loglevel, --log-level  Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
+
+Examples:
+  ui5 use sapui5@latest  Use SAPUI5 in the latest available version
+  ui5 use openui5@1.76   Use OpenUI5 in the latest available 1.76 patch version
+  ui5 use latest         Use the latest available version of the configured framework
+  ui5 use openui5        Use OpenUI5 without a version (or use existing version)
 ```
 
 #### versions
