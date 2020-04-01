@@ -20,17 +20,17 @@ In case of libraries, additional fallbacks are in place:
 
 **UI5 Builder: LibraryFormatter: Ignore manifest.json of nested apps ([SAP/ui5-builder#392](https://github.com/SAP/ui5-builder/pull/392))**
 
-If a library contains both, a manifest.json and .library file, they must either be located in the same directory or the manifest.json is ignored. In cases where the manifest.json is located on a higher level or different directory on the same level than a .library file, an exception is thrown.
+If a library contains both a manifest.json and a .library file, they must be located in the same directory. Otherwise the manifest.json is ignored. In cases where the manifest.json is located at a higher level or in a different directory at the same level as the .library file, an exception is thrown.
 
 **UI5 Server: serveResources middleware: Expect *.properties files in UTF-8 by default ([SAP/ui5-server#303](https://github.com/SAP/ui5-server/pull/303))**
 
 When integrating the serveResources middleware directly into a custom server, it now handles `*.properties` files as being UTF-8 encoded.
 
-_**Note:** This change does not affect you when you are using the UI5 Server as part of the UI5 CLI or use the top level [`server.serve`](https://sap.github.io/ui5-tooling/api/module-@ui5_server.server.html#.serve) API. In those cases the project specific [configuration](../pages/Configuration.md#encoding-of-properties-files) defines the encoding of `*.properties` files._
+_**Note:** This change does not affect you when you use the UI5 Server as part of the UI5 CLI or use the top level [`server.serve`](https://sap.github.io/ui5-tooling/api/module-@ui5_server.server.html#.serve) API. In those cases the project specific [configuration](../pages/Configuration.md#encoding-of-properties-files) defines the encoding of `*.properties` files._
 
 **UI5 FS: Remove deprecated parameter useNamespaces ([SAP/ui5-fs#223](https://github.com/SAP/ui5-fs/pull/223))**
 
-Remove deprecated parameter `useNamespaces` from method [`resourceFactory.createCollectionsForTree`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree). Use parameter `getVirtualBasePathPrefix` instead.
+Remove the deprecated parameter `useNamespaces` from method [`resourceFactory.createCollectionsForTree`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree). Use the parameter `getVirtualBasePathPrefix` instead.
 
 ## How to upgrade
 
@@ -46,7 +46,7 @@ npm install --global @ui5/cli
 
 ### Local installation
 
-To upgrade the CLI installation within a project you need to run the following command.
+To upgrade the CLI installation within a project, you need to run the following command:
 
 ```
 npm install @ui5/cli@^2
