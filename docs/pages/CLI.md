@@ -17,27 +17,53 @@ ui5 --help
 Usage: ui5 <command> [options]
 
 Commands:
-    build  Build project in current directory
-    serve  Start a webserver for the current project
-    tree   Outputs the dependency tree of the current project to stdout. It takes all relevant parameters of ui5 build into account.
-    init   Initializes the UI5 Tooling configuration for an application or library project
+  ui5 add [--development] [--optional] <framework-libraries..>  Add a SAPUI5/OpenUI5 framework library to the project
+                                                                configuration.
+  ui5 build                 Build project in current directory
+  ui5 init                  Initialize the UI5 Tooling configuration for an application or
+                              library project.
+  ui5 serve                 Start a web server for the current project
+  ui5 tree                  Outputs the dependency tree of the current project to stdout. It
+                              takes all relevant parameters of ui5 build into account.
+  ui5 use <framework-info>  Initialize or update the UI5 Tooling framework configuration.
+  ui5 versions              Shows the versions of all UI5 Tooling modules
 
 Options:
-    --help, -h                Show help  [boolean]
-    --version, -v             Show version number  [boolean]
-    --config                  Path to config file  [string]
-    --translator, --t8r       Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
-    --verbose                 Enable verbose logging. [boolean]
-    --loglevel, --log-level   Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
+  --help, -h               Show help  [boolean]
+  --version, -v            Show version number  [boolean]
+  --config                 Path to configuration file  [string]
+  --translator, --t8r      Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
+  --verbose                Enable verbose logging.[boolean]
+  --loglevel, --log-level  Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
 
 Examples:
-    ui5 <command> --translator static:/path/to/projectDependencies.yaml  Execute command using a "static" translator with translator parameters
-    ui5 <command> --config /path/to/ui5.yaml                         Execute command using a project configuration from custom path
+  ui5 <command> --translator static:/path/to/projectDependencies.yaml Execute command using a "static" translator with translator
+                                                                        parameters
+  ui5 <command> --config /path/to/ui5.yaml Execute command using a project configuration from custom path
 ```
 
 The CLI automatically checks for updates using [update-notifier](https://github.com/yeoman/update-notifier). While this is skipped in CI environments, you might also opt-out manually by following the steps described [here](https://github.com/yeoman/update-notifier/blob/master/readme.md#user-settings).
 
 ### Commands
+#### add
+
+`ui5 add [--development] [--optional] <framework-libraries..>` adds a SAPUI5/OpenUI5 framework library to the project configuration.
+
+```
+Positionals:
+  framework-libraries  Framework library names  [array] [required] [default: []]
+
+Options:
+  --help, -h               Show help  [boolean]
+  --version, -v            Show version number  [boolean]
+  --config                 Path to configuration file  [string]
+  --translator, --t8r      Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
+  --verbose                Enable verbose logging  [boolean]
+  --loglevel, --log-level  Set the logging level (error|warn|info|verbose|silly)  [string] [default: "info"]
+  --development, -D        Add as development dependency  [boolean] [default: false]
+  --optional, -O           Add as optional dependency  [boolean] [default: false]
+```
+
 #### build
 `ui5 build [options]` builds the project in the current directory.
 
@@ -69,6 +95,19 @@ Examples:
     ui5 build --all --include-task=createDebugFiles --exclude-task=generateAppPreload    Build project and dependencies by applying all default tasks including the createDebugFiles task and excluding the generateAppPreload task
     ui5 build dev --all --dev-exclude-project=sap.ui.core sap.m                          Build project and dependencies in dev mode, except "sap.ui.core" and "sap.m" (useful in combination with --include-task)
     ui5 build dev                                                                        Build project and dependencies in dev mode. Only a set of essential tasks is executed.
+```
+
+#### init
+`ui5 init [options]` initializes the UI5 Tooling configuration for an application or library project.
+
+```
+Options:
+    --help, -h                Show help  [boolean]
+    --version, -v             Show version number  [boolean]
+    --config                  Path to config file  [string]
+    --translator, --t8r       Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
+    --verbose                 Enable verbose logging. [boolean]
+    --loglevel, --log-level   Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
 ```
 
 #### serve
@@ -125,17 +164,21 @@ Examples:
     ui5 tree --json --dedupe > tree.json  Pipes the dependency tree, excluding duplicates into a new file "tree.json"
 ```
 
-#### init
-`ui5 init [options]` initializes the UI5 Tooling configuration for an application or library project.
+#### use
+
+`ui5 use <framework-info>` initializes or updates the UI5 Tooling [framework configuration](./Configuration.md#framework-configuration).
 
 ```
+Positionals:
+  framework-info  Framework name, version or both  [string] [required]
+
 Options:
-    --help, -h                Show help  [boolean]
-    --version, -v             Show version number  [boolean]
-    --config                  Path to config file  [string]
-    --translator, --t8r       Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
-    --verbose                 Enable verbose logging. [boolean]
-    --loglevel, --log-level   Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
+  --help, -h               Show help   [boolean]
+  --version, -v            Show version number   [boolean]
+  --config                 Path to configuration file   [string]
+  --translator, --t8r      Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
+  --verbose                Enable verbose logging.  [boolean]
+  --loglevel, --log-level  Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
 ```
 
 #### versions
