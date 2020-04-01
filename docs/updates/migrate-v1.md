@@ -1,6 +1,6 @@
 # Migrate to v1
 
-v1 is the first stable release of the UI5 Tooling. There are only a few notable changes to the 0.x alpha version.
+v1.0.0 is the first stable release of the UI5 Tooling. There are only a few notable changes to the 0.x alpha version.
 
 ## Breaking changes
 
