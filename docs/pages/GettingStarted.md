@@ -47,7 +47,7 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
 1. Add required libraries
     ```sh
-    ui5 add sap.ui.core sap.m themelib_sap_fiori_3 [...]
+    ui5 add sap.ui.core sap.m themelib_sap_fiori_3 # [...]
     ```
 
 1. If you are using Git or similar version control, commit `package.json` and `ui5.yaml` to your repository.
