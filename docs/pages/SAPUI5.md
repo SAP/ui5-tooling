@@ -1,7 +1,7 @@
 # Consuming SAPUI5 libraries
 
 !!! info
-    **Make sure you have installed the latest UI5 CLI in Version 2.0 or later:**
+    **Make sure you have installed the UI5 CLI in Version 2.0 or later: `npm install --global @ui5/cli`**
 
 ## Overview
 
