@@ -130,6 +130,23 @@ resources:
     propertiesFileSourceEncoding: UTF-8|ISO-8859-1
 ````
 
+## Custom Properties in Configuration
+
+!!! info
+    This configuration is available since UI5 CLI [`v2.1.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.1.0)
+    and applies only to projects defining [Specification Version](#specification-versions)
+    2.1 or higher.
+
+Define your project's custom configuration.
+
+In your project's custom properties you can define own attributes which you can then use in your code.
+You can define simple values or complex objects in this configuration section.
+
+```yaml
+customConfiguration:
+  my: "value"
+```
+
 ## Framework Configuration
 
 !!! info
