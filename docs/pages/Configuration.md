@@ -3,6 +3,14 @@ This document describes the configuration of UI5 Tooling based projects and exte
 
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
+## Validation / IDE support
+
+Starting with [specification version 2.0](#specification-version-20) the configuration is validated according to a JSON schema.  
+The current version of the schema can be found here: https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+The schema is also part of the [JSON Schema Store catalog](http://schemastore.org/json/) which is used by the [YAML Language Server](https://github.com/redhat-developer/yaml-language-server).  
+See the list of [Clients](https://github.com/redhat-developer/yaml-language-server/blob/master/README.md#clients) to find extensions for various IDEs and editors.
+
 ## Example
 
 ````yaml
@@ -465,11 +473,3 @@ Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 Initial version.
 
 Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v0.0.1 and above.
-
-## Validation / IDE support
-
-Starting with specification version 2.0 the configuration is validated according to a JSON schema.  
-The current version of the schema can be found here: https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-
-The schema is also part of the [JSON Schema Store catalog](http://schemastore.org/json/) which is used by the [YAML Language Server](https://github.com/redhat-developer/yaml-language-server).  
-See the list of [Clients](https://github.com/redhat-developer/yaml-language-server#clients) to find extensions for various IDEs and editors.
