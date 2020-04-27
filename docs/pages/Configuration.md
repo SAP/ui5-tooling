@@ -1,12 +1,12 @@
 # Configuration
-This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) 2.0**.
+This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) 2.1**.
 
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
 ## Example
 
 ````yaml
-specVersion: "2.0"
+specVersion: "2.1"
 type: application|library|theme-library|module
 metadata:
   name: some.project.name
@@ -18,7 +18,7 @@ A project must define a specification version (`specVersion`), to which its conf
 In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` (since Specification Version 1.1) or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
 
 ````yaml
-specVersion: "2.0"
+specVersion: "2.1"
 type: library
 ````
 
@@ -109,7 +109,7 @@ By default the UI5 Tooling expects different encodings for `*.properties` i18n f
 
 Specification Version | Default propertiesFileSourceEncoding
 --- | ---
-**2.0+** | `UTF-8`
+**2.x** | `UTF-8`
 **0.1, 1.0 or 1.1** | `ISO-8859-1`
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
@@ -122,7 +122,7 @@ resources:
     propertiesFileSourceEncoding: UTF-8|ISO-8859-1
 ````
 
-## Custom Properties in Configuration
+## Custom Configuration
 
 !!! info
     This configuration is available since UI5 CLI [`v2.1.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.1.0)
@@ -220,7 +220,7 @@ You can choose which theme library to use by the application that is consuming t
 ??? example
     **my library**
     ```yaml
-    specVersion: "2.0"
+    specVersion: "2.1"
     type: library
     metadata:
       name: some.library
@@ -238,7 +238,7 @@ You can choose which theme library to use by the application that is consuming t
 
     **my application (depending on my library)**
     ```yaml
-    specVersion: "2.0"
+    specVersion: "2.1"
     type: application
     metadata:
       name: some.app
@@ -340,12 +340,12 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
 
 ### Example
 ````yaml
-specVersion: "2.0"
+specVersion: "2.1"
 type: application
 metadata:
   name: my.application
 ---
-specVersion: "2.0"
+specVersion: "2.1"
 kind: extension
 type: project-shim
 metadata:
@@ -353,7 +353,7 @@ metadata:
 shims:
   configurations:
     lodash:
-      specVersion: "2.0"
+      specVersion: "2.1"
       type: module
       metadata:
         name: lodash
@@ -430,7 +430,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 A project must define a Specification Version by setting the `specVersion` property. The UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
 ````yaml
-specVersion: "2.0"
+specVersion: "2.1"
 [...]
 ````
 
@@ -449,10 +449,19 @@ Unless otherwise noted in the table below, the UI5 Tooling modules are backward 
 
 Version | UI5 CLI Release
 --- | ---
+**2.1** | v2.1.0+
 **2.0** | v2.0.0+
 **1.1** | v1.13.0+
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
+
+### Specification Version 2.1
+
+**Features:**
+
+- Adds support for the ["customConfiguration"](#custom-configuration) configuration to provide custom data. Must be handled by custom tools. Can be consumed when using @ui5/project API.
+
+Version 2.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v.2.1.0 and above.
 
 ### Specification Version 2.0
 
