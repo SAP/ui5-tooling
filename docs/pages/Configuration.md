@@ -117,7 +117,7 @@ By default the UI5 Tooling expects different encodings for `*.properties` i18n f
 
 Specification Version | Default propertiesFileSourceEncoding
 --- | ---
-**2.x** | `UTF-8`
+**2.0+** | `UTF-8`
 **0.1, 1.0 or 1.1** | `ISO-8859-1`
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
@@ -137,14 +137,18 @@ resources:
     and applies only to projects defining [Specification Version](#specification-versions)
     2.1 or higher.
 
-Define your project's custom configuration.
+Custom configuration that is ignored by the UI5 Tooling.  
+This can be used to store UI5 specific configuration for third-party tools.
 
-In your project's custom properties you can define own attributes which you can then use in your code.
-You can define simple values or complex objects in this configuration section.
+The "customConfiguration" value must be an object.  
+For third-party tools it is recommended to follow a namespace-like structure.
 
 ```yaml
 customConfiguration:
-  my: "value"
+  myTool:
+    key: value
+  myOtherTool:
+    otherKey: otherValue
 ```
 
 ## Framework Configuration
@@ -467,9 +471,9 @@ Version | UI5 CLI Release
 
 **Features:**
 
-- Adds support for the ["customConfiguration"](#custom-configuration) configuration to provide custom data. Must be handled by custom tools. Can be consumed when using @ui5/project API.
+- Adds support for the ["customConfiguration"](#custom-configuration) configuration
 
-Version 2.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v.2.1.0 and above.
+Specification Version 2.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.1.0 and above.
 
 ### Specification Version 2.0
 
@@ -483,19 +487,22 @@ Version 2.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) 
 
 - Adds support for the ["framework"](#framework-configuration) configuration to consume SAPUI5 libraries.
 
-Version 2.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v.2.0.0 and above.
+Specification Version 2.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.0.0 and above.
 
 ### Specification Version 1.1
-Adds support for the `theme-library` type.
 
-Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.0 and above.
+**Features:**
+
+- Adds support for the `theme-library` type.
+
+Specification Version 1.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.13.0 and above.
 
 ### Specification Version 1.0
 First stable release.
 
-Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.0.0 and above.
+Specification Version 1.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v1.0.0 and above.
 
 ### Specification Version 0.1
 Initial version.
 
-Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v0.0.1 and above.
+Specification Version 0.1 projects are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v0.0.1 and above.
