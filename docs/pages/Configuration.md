@@ -278,20 +278,6 @@ builder:
       - "!/test-resources/some/project/name/demo-app/**"
 ````
 
-### JSDoc
-You can exclude a projects resources from the JSDoc build process using a list of glob patterns. Matching resources will be ignored by the JSDoc build task.
-
-Patterns are always applied relative to the projects virtual **source** directory `/resources/`.
-
-Any general builder excludes (as defined in `builder.resources.excludes`) are applied *after* these excludes.
-
-````yaml
-builder:
-  jsdoc:
-    excludes:
-      - "some/project/name/thirdparty/**"
-````
-
 ### Cachebuster
 By default, the generated cachebuster info file signatures are based on timestamps (`time`). In setups like CI environments, a mechanism based on file hashes (`hash`) might be more reliable. See also [PR #241](https://github.com/SAP/ui5-builder/pull/241).
 
@@ -322,6 +308,20 @@ builder:
       afterTask: custom-task-1
       configuration:
         color: blue
+````
+
+### JSDoc
+You can exclude the resources of a project from the JSDoc build process using a list of glob patterns. Matching resources will be ignored by the JSDoc build task.
+
+Patterns are always applied relative to the project's virtual **source** directory `/resources/`.
+
+These excludes are applied *before* any general builder excludes that have been defined in `builder.resources.excludes`.
+
+````yaml
+builder:
+  jsdoc:
+    excludes:
+      - "some/project/name/thirdparty/**"
 ````
 
 ## Server Configuration
