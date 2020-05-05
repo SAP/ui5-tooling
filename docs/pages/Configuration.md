@@ -133,7 +133,7 @@ resources:
 ## Custom Configuration
 
 !!! info
-    This configuration is available since UI5 CLI [`v2.1.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.1.0)
+    This configuration is available since UI5 CLI [`v2.2.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.2.0)
     and applies only to projects defining [Specification Version](#specification-versions)
     2.1 or higher.
 
@@ -461,7 +461,7 @@ Unless otherwise noted in the table below, the UI5 Tooling modules are backward 
 
 Version | UI5 CLI Release
 --- | ---
-**2.1** | v2.1.0+
+**2.1** | v2.2.0+
 **2.0** | v2.0.0+
 **1.1** | v1.13.0+
 **1.0** | v1.0.0+
@@ -473,7 +473,7 @@ Version | UI5 CLI Release
 
 - Adds support for the ["customConfiguration"](#custom-configuration) configuration
 
-Specification Version 2.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.1.0 and above.
+Specification Version 2.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.2.0 and above.
 
 ### Specification Version 2.0
 
