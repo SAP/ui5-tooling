@@ -27,6 +27,10 @@ Commands:
   ui5 init
       Initialize the UI5 Tooling configuration for an application or
         library project.
+
+  ui5 remove <framework-libraries..>
+      Remove SAPUI5/OpenUI5 framework libraries from the
+        project configuration.
   
   ui5 serve
       Start a web server for the current project
@@ -128,6 +132,27 @@ Options:
     --translator, --t8r       Translator to use. Including optional colon separated translator parameters.  [string] [default: "npm"]
     --verbose                 Enable verbose logging. [boolean]
     --loglevel, --log-level   Set the logging level (error|warn|info|verbose|silly).  [string] [default: "info"]
+```
+
+#### remove
+
+`ui5 remove <framework-libraries..>` removes SAPUI5/OpenUI5 framework libraries from the project configuration
+
+```
+Positionals:
+  framework-libraries  Framework library names                                     [array] [required] [default: []]
+
+Options:
+  --help, -h               Show help                                                                      [boolean]
+  --version, -v            Show version number                                                            [boolean]
+  --config                 Path to configuration file                                                      [string]
+  --translator, --t8r      Translator to use. Including optional colon separated translator parameters.
+                                                                                          [string] [default: "npm"]
+  --verbose                Enable verbose logging.                                                        [boolean]
+  --loglevel, --log-level  Set the logging level (error|warn|info|verbose|silly).        [string] [default: "info"]
+
+Examples:
+  ui5 remove sap.ui.core sap.m  Remove the framework libraries sap.ui.core and sap.m as dependencies
 ```
 
 #### serve
