@@ -174,6 +174,7 @@ Options:
     --key                         Path to the private key  [string] [default: "$HOME/.ui5/server/server.key"]
     --cert                        Path to the certificate  [string] [default: "$HOME/.ui5/server/server.crt"]
     --sap-csp-policies            Always send content security policies 'sap-target-level-1' and 'sap-target-level-2' in report-only mode  [boolean] [default: false]
+    --serve-csp-reports           Collects and serves CSP reports upon request to '/.ui5/csp/csp-reports.json'  [boolean] [default: false]
     --framework-version           Overrides the framework version defined by the project  [string]
 
 

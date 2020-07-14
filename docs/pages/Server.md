@@ -12,4 +12,22 @@ The development server has already a set of middleware which supports the develo
 ## Certificates for HTTPS or HTTP/2
 When using the UI5 Server with the UI5 CLI, SSL certificates for HTTPS and HTTP/2 configurations can automatically be generated.
 
-**Hint:** If Chrome unintentionally redirects a HTTP-URL to HTTPS, you need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://net-internals/#hsts) by entering the domain name (e.g. localhost) and pressing "delete".
+**Hint:** If Chrome unintentionally redirects an HTTP-URL to HTTPS, you need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://net-internals/#hsts) by entering the domain name (e.g. localhost) and pressing "delete".
+
+## CSP Reporting
+The support of a Content Security Policy ([CSP](https://www.w3.org/TR/CSP/)) is active by default.
+The header `content-security-policy` can be set by adding URL parameter `sap-ui-xx-csp-policy` to the request with the policy name as value.
+To set the policy to report-only, append `:report-only` or `:ro` to the policy name.
+E.g. `/index.html?sap-ui-xx-csp-policy=sap-target-level-1:report-only`
+
+### SAP target CSP
+The default CSP policies can be modified using parameter `sendSAPTargetCSP` (`--sap-csp-policies` when using the CLI).
+With `sendSAPTargetCSP` set to `true` the policies `sap-target-level-1` and `sap-target-level-2` policies are activated and send as report-only.
+
+### Serve CSP Reports
+
+!!! info
+    This option is available since UI5 CLI [`v2.3.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.3.0)
+    
+Serving of CSP reports can be activated with parameter `serveCSPReports` (`--serve-csp-reports` when using the CLI).
+With `serveCSPReports` set to `true`, the CSP reports are collected and can be downloaded from the server path `/.ui5/csp/csp-reports.json`.
