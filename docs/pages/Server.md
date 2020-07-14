@@ -25,5 +25,9 @@ The default CSP policies can be modified using parameter `sendSAPTargetCSP` (`--
 With `sendSAPTargetCSP` set to `true` the policies `sap-target-level-1` and `sap-target-level-2` policies are activated and send as report-only.
 
 ### Serve CSP Reports
+
+!!! info
+    This option is available since UI5 CLI [`v2.3.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.3.0)
+    
 Serving of CSP reports can be activated with parameter `serveCSPReports` (`--serve-csp-reports` when using the CLI).
 With `serveCSPReports` set to `true`, the CSP reports are collected and can be downloaded from the server path `/.ui5/csp/csp-reports.json`.
