@@ -22,7 +22,7 @@ let obj = {
 function execute(command) {
     
     parseOutput(exec(command).toString());
-}
+};
 
 function parseOutput(stdout) {
     let sections = stdout.split("\n\n");
@@ -44,8 +44,8 @@ function parseOutput(stdout) {
         first = false;
     }
     else {
-        obj.usage = sections[0];
-        obj.desc = sections[1];
+        obj.usage = sections[1];
+        obj.desc = sections[2];
         obj.commands = [];
         obj.examples = [];
         obj.positionals = [];

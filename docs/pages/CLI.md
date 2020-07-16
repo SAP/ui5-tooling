@@ -43,7 +43,14 @@ Execute command using a project configuration from custom path
 ```
   ui5 <command> --config /path/to/ui5.yaml                           
 ```
+Execute command using a project configuration from custom path
+```
+  ui5 <command> --config /path/to/ui5.yaml                           
+```
 
+## Commands
+
+<<<<<<< HEAD
 ## Commands
 
 ### ui5 add
@@ -55,6 +62,16 @@ Add SAPUI5/OpenUI5 framework libraries to the project configuration.
 =======
 <<<<<<< HEAD
 =======
+=======
+### ui5 add
+
+#### Description
+
+Add SAPUI5/OpenUI5 framework libraries to the project configuration.
+
+#### Usage
+
+>>>>>>> [INTERNAL] Edit CLI documentation
 `
 ui5 add [--development] [--optional] <framework-libraries..>
 `
@@ -86,6 +103,7 @@ Add the framework library sap.ui.support as development dependency
 Add the framework library themelib_sap_fiori_3 as optional dependency
 ```
   ui5 add --optional themelib_sap_fiori_3
+<<<<<<< HEAD
 >>>>>>> f7f20da... Correct String parsing
 ```
 Positionals:
@@ -105,6 +123,13 @@ Examples:
   ui5 add -D sap.ui.support                Add the framework library sap.ui.support as development dependency
   ui5 add --optional themelib_sap_fiori_3  Add the framework library themelib_sap_fiori_3 as optional dependency
 =======
+=======
+```
+### ui5 build
+
+#### Description
+
+>>>>>>> [INTERNAL] Edit CLI documentation
 Build project in current directory
 
 #### Usage
@@ -146,6 +171,7 @@ Build project and dependencies but only apply the createDebugFiles- and generate
   ui5 build --all --exclude-task=* --include-task=createDebugFiles generateAppPreload
 ```
 Build project and dependencies by applying all default tasks including the createDebugFiles task and excluding the generateAppPreload task
+<<<<<<< HEAD
 >>>>>>> f7f20da... Correct String parsing
 ```
 >>>>>>> [INTERNAL] Refactor CLI output parsing
@@ -175,6 +201,68 @@ Options:
     --exclude-task             A list of specific tasks to be excluded from default/dev set  [array]
     --framework-version        Overrides the framework version defined by the project  [string]
 =======
+=======
+```
+  ui5 build --all --include-task=createDebugFiles --exclude-task=generateAppPreload  
+```
+Build project and dependencies in dev mode, except &quot;sap.ui.core&quot; and &quot;sap.m&quot; (useful in combination with --include-task)
+```
+  ui5 build dev --all --dev-exclude-project=sap.ui.core sap.m                        
+```
+Build project and dependencies in dev mode. Only a set of essential tasks is executed.
+```
+  ui5 build dev                                                                      
+```
+### ui5 init
+
+#### Description
+
+Initialize the UI5 Tooling configuration for an application or library project.
+
+#### Usage
+
+`
+ui5 init
+`
+
+
+
+
+### ui5 remove
+
+#### Description
+
+Remove SAPUI5/OpenUI5 framework libraries from the project configuration.
+
+#### Usage
+
+`
+ui5 remove <framework-libraries..>
+`
+
+
+
+#### Positionals
+
+| Positional | Description |
+| --- | --- |
+|   framework-libraries | Framework library names  [array] [required] [default: []] |
+
+#### Examples
+
+Remove the framework libraries sap.ui.core and sap.m as dependencies
+```
+  ui5 remove sap.ui.core sap.m
+```
+### ui5 serve
+
+#### Description
+
+Start a web server for the current project
+
+#### Usage
+
+>>>>>>> [INTERNAL] Edit CLI documentation
 `
 ui5 serve
 `
@@ -194,6 +282,7 @@ ui5 serve
 |   --sap-csp-policies          | Always send content security policies &#x27;sap-target-level-1&#x27; and &#x27;sap-target-level-2&#x27; in report-only mode  [boolean] [default: false] |
 |   --serve-csp-reports         | Collects and serves CSP reports upon request to &#x27;/.ui5/csp/csp-reports.json&#x27;  [boolean] [default: false] |
 |   --framework-version         | Overrides the framework version defined by the project  [string] |
+<<<<<<< HEAD
 >>>>>>> f7f20da... Correct String parsing
 >>>>>>> [INTERNAL] Refactor CLI output parsing
 
@@ -227,6 +316,36 @@ Build project in current directory
 <<<<<<< HEAD
 `ui5 remove <framework-libraries..>` removes SAPUI5/OpenUI5 framework libraries from the project configuration
 =======
+=======
+
+
+#### Examples
+
+Start a web server for the current project
+```
+  ui5 serve                                                      
+```
+Enable the HTTP/2 protocol for the web server (requires SSL certificate)
+```
+  ui5 serve --h2                                                 
+```
+Use the project configuration from a custom path
+```
+  ui5 serve --config /path/to/ui5.yaml                           
+```
+Use a &quot;static&quot; translator with translator parameters.
+```
+  ui5 serve --translator static:/path/to/projectDependencies.yaml
+```
+Listen to port 1337 and launch default browser with http://localhost:1337/test/QUnit.html
+```
+  ui5 serve --port 1337 --open tests/QUnit.html                  
+```
+### ui5 tree
+
+#### Description
+
+>>>>>>> [INTERNAL] Edit CLI documentation
 Outputs the dependency tree of the current project to stdout. It takes all relevant parameters of ui5 build into account.
 
 #### Usage
@@ -244,6 +363,7 @@ ui5 tree
 |   --json                  | Output tree as formatted JSON string  [boolean] [default: false] |
 |   --dedupe                | Remove duplicate projects from project tree  [boolean] [default: false] |
 |   --framework-version     | Overrides the framework version defined by the project. Only supported in combination with --full  [string] |
+<<<<<<< HEAD
 >>>>>>> f7f20da... Correct String parsing
 >>>>>>> [INTERNAL] Refactor CLI output parsing
 
@@ -273,10 +393,13 @@ ui5 build
 |   --include-task          | A list of specific tasks to be included to the default/dev set  [array] |
 |   --exclude-task          | A list of specific tasks to be excluded from default/dev set  [array] |
 |   --framework-version     | Overrides the framework version defined by the project  [string] |
+=======
+>>>>>>> [INTERNAL] Edit CLI documentation
 
 
 #### Examples
 
+<<<<<<< HEAD
 Preload build for project and dependencies to &quot;./dist&quot;
 ```
   ui5 build --all                                                                    
@@ -302,10 +425,26 @@ Build project and dependencies in dev mode. Only a set of essential tasks is exe
 #### Description
 
 Initialize the UI5 Tooling configuration for an application or library project.
+=======
+Pipes the dependency tree into a new file &quot;tree.txt&quot;
+```
+  ui5 tree > tree.txt        
+```
+Pipes the dependency tree into a new file &quot;tree.json&quot;
+```
+  ui5 tree --json > tree.json
+```
+### ui5 use
+
+#### Description
+
+Initialize or update the project&#x27;s framework configuration.
+>>>>>>> [INTERNAL] Edit CLI documentation
 
 #### Usage
 
 `
+<<<<<<< HEAD
 ui5 init
 `
 
@@ -329,8 +468,22 @@ Options:
 |   framework-info | Framework name, version or both (name@version).<br>Name can be &quot;SAPUI5&quot; or &quot;OpenUI5&quot; (case-insensitive).<br>Version can be &quot;latest&quot;, &quot;1.xx&quot; or &quot;1.xx.x&quot;.  [string] [required] |
 >>>>>>> f7f20da... Correct String parsing
 >>>>>>> [INTERNAL] Refactor CLI output parsing
+=======
+ui5 use <framework-info>
+`
 
 
+
+#### Positionals
+
+| Positional | Description |
+| --- | --- |
+|   framework-info | Framework name, version or both (name@version).<br>Name can be &quot;SAPUI5&quot; or &quot;OpenUI5&quot; (case-insensitive).<br>Version can be &quot;latest&quot;, &quot;1.xx&quot; or &quot;1.xx.x&quot;.  [string] [required] |
+>>>>>>> [INTERNAL] Edit CLI documentation
+
+#### Examples
+
+<<<<<<< HEAD
 
 ### ui5 remove
 
@@ -495,6 +648,39 @@ ui5 versions
 
 
 
+=======
+Use SAPUI5 in the latest available version
+```
+  ui5 use sapui5@latest
+```
+Use OpenUI5 in the latest available 1.76 patch version
+```
+  ui5 use openui5@1.76 
+```
+Use the latest available version of the configured framework
+```
+  ui5 use latest       
+```
+Use OpenUI5 without a version (or use existing version)
+```
+  ui5 use openui5      
+```
+### ui5 versions
+
+#### Description
+
+Shows the versions of all UI5 Tooling modules
+
+#### Usage
+
+`
+ui5 versions
+`
+
+
+
+
+>>>>>>> [INTERNAL] Edit CLI documentation
 
 ### Local vs. Global Installation
 In general, we recommend a global installation of the UI5 CLI (`npm install --global @ui5/cli`).
