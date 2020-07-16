@@ -36,7 +36,7 @@ Tags are stored with a given resource's virtual path as key. This makes changes 
 Tasks have access to this new ProjectBuildContext API through a new TaskUtil class to create a specVersion agnostic abstraction.
 
 ### Tags
-**Standard tags shall be provided as an ENUM on the ProjectBuildContext:**
+**Standard tags shall be provided as an ENUM on the ProjectBuildContext/TaskUtil:**
 ```js
 buildContext.tags = {
     HideFromBuildResult: "ui5:HideFromBuildResult"
@@ -54,7 +54,7 @@ In the future, custom tasks shall be enabled to use self-defined tags for the pu
 
 The task facing API shall be wrapped in a new class "TaskUtil". Similarly to the [MiddlewareUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html) of the UI5 Server, it should provide a [specVersion-dependent interface](https://github.com/SAP/ui5-server/blob/master/lib/middleware/MiddlewareUtil.js#L21) to convenience functions as well as the new tagging APIs.
 
-A task with specVersion 2.2 or higher is provided with an instance of TaskUtil.
+Every custom task defining specVersion 2.2 or higher shall be provided with an instance of TaskUtil.
 
 **Example usage:**
 ```js
@@ -101,9 +101,10 @@ Would the acceptance of this proposal mean the UI5 Tooling or any of its subcomp
 How should this feature be introduced and taught to existing UI5 Tooling users?
 -->
 
-Provide proper documentation :-)
+Updated UI5 Tooling documentation:
 
-Update the custom task example to include the ProjectBuildContext, however state that this is just some optional API that can be used if there is a need to (see [Drawbacks](#drawbacks)).
+* JSDoc for TaskUtil class
+* Update the custom task example to include the taskUtil parameter, however state that this is just some optional API that can be used if there is a need to (see [Drawbacks](#drawbacks)).
 
 ## Drawbacks
 
@@ -116,17 +117,22 @@ There are tradeoffs to choosing any path, please attempt to identify them here.
 This enhancement is an opt-in for tasks to make use of that new API / functionality. There is no need for any changes within existing tasks.
 However it increases the complexity of the custom task API by adding a new entity that needs to be described and understood.
 
-It does not have an impact for most of the UI5 Tooling users, so there are no major drawbacks known.
-
+It does not have an impact for most of the UI5 Tooling users, so there are no major drawbacks expected.
 
 ## Alternatives
-**TODO**
 
+<!--
 What other designs have been considered? What is the impact of not doing this?
+-->
+
+As outlined in the [Motivation](#motivation), an actual `remove` function could be added to the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) or [DuplexCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.DuplexCollection.html) classes. However, due to the layered structure of ui5-fs, it needs to be decided whether `remove` should actually remove a resource from its source or just ignore it at a higher level. Removing from source might not be intended. Ignoring a resource on a higher level could cause confusion since it might not be ignored when asking a different ReaderCollection for it.
 
 ## Unresolved Questions and Bikeshedding
-**TODO**
 
+<!--
 *This section should be removed (i.e. resolved) before merging*
 
 Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made?
+-->
+
+Currently none.
