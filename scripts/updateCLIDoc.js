@@ -73,10 +73,10 @@ function generateDoc() {
     let optionObj = [];
     obj.commonOptions.shift();
     for (let all of obj.commonOptions) {
-        let temp = all.split("|").join("\\\|");
+        let temp = checkChars(all);
         let option, description;
-        option = temp.slice(0, 27);
-        description = temp.slice(27, temp.length);
+        option = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
+        description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
         optionObj.push({ commonOption: option, commonOptionDescription: description });
     }
 
@@ -84,10 +84,13 @@ function generateDoc() {
     let examplesObj = [];
     index = obj.examples[0].indexOf("Execute");
     for (let all of obj.examples) {
-        let temp = all.split("|").join("\\\|");
+        let temp = checkChars(all);
+        if (temp == '') {
+            continue;
+        }
         let example, description;
-        example = temp.slice(0, index);
-        description = temp.slice(index, temp.length);
+        example = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
+        description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
         examplesObj.push({ commonExample: example, commonExampleDescription: description });
     }
     
@@ -102,22 +105,22 @@ function generateDoc() {
         obj.commands.shift();
         if(!(obj.commands.length <= 1)) {
             for (let all of obj.commands) {
-                let temp = all.split("|").join("\\\|");
+                let temp = checkChars(all);
                 let command, description;
-                command = temp.slice(0, 64);
-                description = temp.slice(64, temp.length);
+                command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
+                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
                 commandsObj.push({ childCommand: command, commandDesc: description });
             }
         }
 
         let positionalObj = [];
         obj.positionals.shift();
-        if(!(obj.positionals.length <= 1)) {
+        if(!(obj.positionals.length < 1)) {
             for (let all of obj.positionals) {
-                let temp = all.split("|").join("\\\|");
+                let temp = checkChars(all);
                 let positional, description;
-                positional = temp.slice(0, 18);
-                description = temp.slice(18, temp.length);
+                positional = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
+                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
                 positionalObj.push({ positional: positional, positionalDesc: description });
             }
         }
@@ -126,10 +129,10 @@ function generateDoc() {
         obj.addOptions.shift();
         if(!(obj.addOptions.length <= 1)) {
             for (let all of obj.addOptions) {
-                let temp = all.split("|").join("\\\|");
+                let temp = checkChars(all);
                 let option, description;
-                option = temp.slice(0, 27);
-                description = temp.slice(27, temp.length);
+                option = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
+                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
                 optionObj.push({ option: option, optionDesc: description });
             }
         }
@@ -138,10 +141,13 @@ function generateDoc() {
         obj.examples.shift();
         if(!(obj.examples.length <= 1)) {
             for (let all of obj.examples) {
-                let temp = all.split("|").join("\\\|");
+                let temp = checkChars(all);
+                if (temp == '') {
+                    continue;
+                }
                 let example, description;
-                example = temp.slice(0, 25);
-                description = temp.slice(25, temp.length);
+                example = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
+                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
                 exampleObj.push({ example: example, exampleDesc: description });
             }
         }
@@ -157,12 +163,14 @@ function generateDoc() {
         };
         commandsArray.push(commandObj);
     }
-    const content = template({
+    let content = template({
         common: obj.common.split("Usage:").join(""),
         commonOptions: optionObj,
         commonExamples: examplesObj,
         commands: commandsArray
     });
+    content = content.split("&lt;").join("<").split("&gt;").join(">");
+    content = content.split("&#x3D;").join("=")
     fs.writeFile('./docs/pages/CLI.md', content, err => {
         if (err) {
             return console.error(`Failed to store template: ${err.message}.`);
@@ -173,4 +181,12 @@ function generateDoc() {
     
 }
 
+function checkChars(all) {
+    let clean = all.split("|").join("\\\|");
+    clean = clean.replace(/\D{9}[di]\d{6,}/i,"$HOME/");
+    return clean;
+}
+
 generateDoc();
+
+

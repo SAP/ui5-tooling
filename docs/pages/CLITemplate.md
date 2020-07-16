@@ -22,6 +22,8 @@ ui5 --help
 
 ### Common options
 
+These options you can use with each command.
+
 | Option | Description |
 | --- | --- |
 {{#each commonOptions}}
@@ -63,7 +65,7 @@ ui5 --help
 {{/if}}
 
 {{#if options}}
-#### Additional Options
+#### Options
 
 | Option | Description |
 | --- | --- |
@@ -85,13 +87,13 @@ ui5 --help
 {{#if examples}}
 #### Examples
 
-| Example | Description |
-| --- | --- |
 {{#each examples}}
-| {{example}} | {{exampleDesc}} |
+{{exampleDesc}}
+```
+{{example}}
+```
 {{/each}}
 {{/if}}
-
 {{/each}}
 
 ### Local vs. Global Installation
