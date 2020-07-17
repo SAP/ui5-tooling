@@ -83,10 +83,9 @@ function generateDoc() {
     obj.commonOptions.shift();
     for (let all of obj.commonOptions) {
         let temp = checkChars(all);
-        let option, description;
-        option = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
-        description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-        optionObj.push({ commonOption: option, commonOptionDescription: description });
+        let command, description;
+        ({ command, description } = splitString(command, temp, description));
+        optionObj.push({ commonOption: command, commonOptionDescription: description });
     }
 
     obj.examples.shift();
@@ -97,10 +96,9 @@ function generateDoc() {
         if (temp == '') {
             continue;
         }
-        let example, description;
-        example = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
-        description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-        examplesObj.push({ commonExample: example, commonExampleDescription: description });
+        let command, description;
+        ({ command, description } = splitString(command, temp, description));
+        examplesObj.push({ commonExample: command, commonExampleDescription: description });
     }
     
     obj.commands.shift();
@@ -116,8 +114,7 @@ function generateDoc() {
             for (let all of obj.commands) {
                 let temp = checkChars(all);
                 let command, description;
-                command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
-                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
+                ({ command, description } = splitString(command, temp, description));
                 commandsObj.push({ childCommand: command, commandDescription: description });
             }
         }
@@ -129,14 +126,13 @@ function generateDoc() {
             let index = 0;
             for (let all of obj.positionals) {
                 let temp = checkChars(all);
-                let positional, description;
-                positional = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
-                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-                if (!(/\S/.test(positional))) {
+                let command, description;
+                ({ command, description } = splitString(command, temp, description));
+                if (!(/\S/.test(command))) {
                     positionalObj[index-1].positionalDescription = positionalObj[index-1].positionalDescription.concat("<br>", description);
                     continue;
                 }
-                positionalObj.push({ positional: positional, positionalDescription: description });
+                positionalObj.push({ positional: command, positionalDescription: description });
                 index++;
             }
         }
@@ -146,10 +142,9 @@ function generateDoc() {
         if(!(obj.addOptions.length <= 1)) {
             for (let all of obj.addOptions) {
                 let temp = checkChars(all);
-                let option, description;
-                option = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
-                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-                optionObj.push({ option: option, optionDescription: description });
+                let command, description;
+                ({ command, description } = splitString(command, temp, description));
+                optionObj.push({ option: command, optionDescription: description });
             }
         }
 
@@ -161,10 +156,9 @@ function generateDoc() {
                 if (temp == '') {
                     continue;
                 }
-                let example, description;
-                example = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
-                description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-                exampleObj.push({ example: example, exampleDescription: description });
+                let command, description;
+                ({ command, description } = splitString(command, temp, description));
+                exampleObj.push({ example: command, exampleDescription: description });
             }
         }
         
@@ -198,9 +192,15 @@ function generateDoc() {
     
 }
 
+function splitString(command, temp, description) {
+    command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
+    description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
+    return { command, description };
+}
+
 function checkChars(all) {
     let clean = all.split("|").join("\\\|");
-    clean = clean.replace(/\D{9}[di]\d{6,}/i,"$HOME/");
+    clean = clean.replace(/"\D+[di]\d{6,}/i,"\"$HOME/");
     return clean;
 }
 
