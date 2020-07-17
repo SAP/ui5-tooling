@@ -27,12 +27,21 @@ function execute(command) {
 function parseOutput(stdout) {
     let sections = stdout.split("\n\n");
     if (first) {
-        obj.common = sections[0];
-        obj.commands = sections[1].split("\n");
-        obj.commonOptions = sections[2].split("\n");
-        obj.examples = sections[3].split("\n");
+        for (let section of sections) {
+            if (section.includes("Usage:")) {
+                obj.common = section;
+            }
+            if (section.includes("Options:")) {
+                obj.commonOptions = section.split("\n");
+            }
+            if (section.includes("Examples:")) {
+                obj.examples = section.split("\n");
+            }
+            if (section.includes("Commands:")) {
+                obj.commands = section.split("\n");
+            }
+        }
         first = false;
-
     }
     else {
         obj.usage = sections[0];
@@ -44,12 +53,6 @@ function parseOutput(stdout) {
         for (let section of sections) {
             if (section.includes("Positionals:")) {
                 obj.positionals = section.split("\n");
-                if (obj.positionals.length == 4) {
-                    // obj.positionals = [
-                    //     obj.positionals[0],
-                    //     obj.positionals[1] + "<br>" + obj.positionals[2].trim() + "<br>" + obj.positionals[3].trim()
-                    // ]
-                }
             }
             if (section.includes("Options:")) {
                 obj.addOptions = section.split("\n").filter(function (el) {
@@ -137,7 +140,7 @@ function generateDoc() {
                 index++;
             }
         }
-        
+
         let optionObj = [];
         obj.addOptions.shift();
         if(!(obj.addOptions.length <= 1)) {
