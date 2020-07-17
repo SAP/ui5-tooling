@@ -136,7 +136,6 @@ function generateDoc() {
                 index++;
             }
         }
-
         let optionObj = [];
         obj.addOptions.shift();
         if(!(obj.addOptions.length <= 1)) {
