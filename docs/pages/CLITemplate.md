@@ -60,7 +60,7 @@ These options you can use with each command.
 | Command | Description |
 | --- | --- |
 {{#each childCommands}}
-| {{childCommand}} | {{commandDesc}} |
+| {{childCommand}} | {{commandDescription}} |
 {{/each}}
 {{/if}}
 
@@ -70,7 +70,7 @@ These options you can use with each command.
 | Option | Description |
 | --- | --- |
 {{#each options}}
-| {{option}} | {{optionDesc}} |
+| {{option}} | {{optionDescription}} |
 {{/each}}
 {{/if}}
 
@@ -80,7 +80,7 @@ These options you can use with each command.
 | Positional | Description |
 | --- | --- |
 {{#each positionals}}
-| {{positional}} | {{positionalDesc}} |
+| {{positional}} | {{positionalDescription}} |
 {{/each}}
 {{/if}}
 
@@ -88,7 +88,7 @@ These options you can use with each command.
 #### Examples
 
 {{#each examples}}
-{{exampleDesc}}
+{{exampleDescription}}
 ```
 {{example}}
 ```

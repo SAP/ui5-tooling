@@ -22,7 +22,7 @@ let obj = {
 function execute(command) {
     
     parseOutput(exec(command).toString());
-};
+}
 
 function parseOutput(stdout) {
     let sections = stdout.split("\n\n");
@@ -44,6 +44,12 @@ function parseOutput(stdout) {
         for (let section of sections) {
             if (section.includes("Positionals:")) {
                 obj.positionals = section.split("\n");
+                if (obj.positionals.length == 4) {
+                    // obj.positionals = [
+                    //     obj.positionals[0],
+                    //     obj.positionals[1] + "<br>" + obj.positionals[2].trim() + "<br>" + obj.positionals[3].trim()
+                    // ]
+                }
             }
             if (section.includes("Options:")) {
                 obj.addOptions = section.split("\n").filter(function (el) {
@@ -109,22 +115,29 @@ function generateDoc() {
                 let command, description;
                 command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
                 description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-                commandsObj.push({ childCommand: command, commandDesc: description });
+                commandsObj.push({ childCommand: command, commandDescription: description });
             }
         }
 
         let positionalObj = [];
         obj.positionals.shift();
+        
         if(!(obj.positionals.length < 1)) {
+            let index = 0;
             for (let all of obj.positionals) {
                 let temp = checkChars(all);
                 let positional, description;
                 positional = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
                 description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-                positionalObj.push({ positional: positional, positionalDesc: description });
+                if (!(/\S/.test(positional))) {
+                    positionalObj[index-1].positionalDescription = positionalObj[index-1].positionalDescription.concat("<br>", description);
+                    continue;
+                }
+                positionalObj.push({ positional: positional, positionalDescription: description });
+                index++;
             }
         }
-
+        
         let optionObj = [];
         obj.addOptions.shift();
         if(!(obj.addOptions.length <= 1)) {
@@ -133,7 +146,7 @@ function generateDoc() {
                 let option, description;
                 option = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
                 description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-                optionObj.push({ option: option, optionDesc: description });
+                optionObj.push({ option: option, optionDescription: description });
             }
         }
 
@@ -148,7 +161,7 @@ function generateDoc() {
                 let example, description;
                 example = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
                 description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
-                exampleObj.push({ example: example, exampleDesc: description });
+                exampleObj.push({ example: example, exampleDescription: description });
             }
         }
         
@@ -169,8 +182,9 @@ function generateDoc() {
         commonExamples: examplesObj,
         commands: commandsArray
     });
+    
     content = content.split("&lt;").join("<").split("&gt;").join(">");
-    content = content.split("&#x3D;").join("=")
+    content = content.split("&#x3D;").join("=");
     fs.writeFile('./docs/pages/CLI.md', content, err => {
         if (err) {
             return console.error(`Failed to store template: ${err.message}.`);

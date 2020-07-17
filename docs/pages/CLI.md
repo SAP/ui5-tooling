@@ -59,7 +59,7 @@ ui5 add [--development] [--optional] <framework-libraries..>
 `
 
 
-#### Additional Options
+#### Options
 
 | Option | Description |
 | --- | --- |
@@ -107,7 +107,7 @@ ui5 build
 |   ui5 build preload         (default | Build project and create preload bundles |
 |   ui5 build self-contained | Build project and create self-contained bundle |
 
-#### Additional Options
+#### Options
 
 | Option | Description |
 | --- | --- |
@@ -196,7 +196,7 @@ ui5 serve
 `
 
 
-#### Additional Options
+#### Options
 
 | Option | Description |
 | --- | --- |
@@ -247,7 +247,7 @@ ui5 tree
 `
 
 
-#### Additional Options
+#### Options
 
 | Option | Description |
 | --- | --- |
@@ -285,9 +285,7 @@ ui5 use <framework-info>
 
 | Positional | Description |
 | --- | --- |
-|   framework-info | Framework name, version or both (name@version). |
-|                  | Name can be &quot;SAPUI5&quot; or &quot;OpenUI5&quot; (case-insensitive). |
-|                  | Version can be &quot;latest&quot;, &quot;1.xx&quot; or &quot;1.xx.x&quot;.  [string] [required] |
+|   framework-info | Framework name, version or both (name@version).<br>Name can be &quot;SAPUI5&quot; or &quot;OpenUI5&quot; (case-insensitive).<br>Version can be &quot;latest&quot;, &quot;1.xx&quot; or &quot;1.xx.x&quot;.  [string] [required] |
 
 #### Examples
 
