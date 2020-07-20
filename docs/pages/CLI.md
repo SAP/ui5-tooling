@@ -44,35 +44,35 @@ Execute command using a project configuration from custom path
   ui5 <command> --config /path/to/ui5.yaml                           
 ```
 
-## Commands
+### Commands
 
-### ui5 add
+#### ui5 add
 
-#### Description
+**Description**
 
 Add SAPUI5/OpenUI5 framework libraries to the project configuration.
 
-#### Usage
+**Usage**
 
 `
 ui5 add [--development] [--optional] <framework-libraries..>
 `
 
 
-#### Options
+**Options**
 
 | Option | Description |
 | --- | --- |
 |   --development, -D, --dev | Add as development dependency  [boolean] [default: false] |
 |   --optional, -O           | Add as optional dependency  [boolean] [default: false] |
 
-#### Positionals
+**Positionals**
 
 | Positional | Description |
 | --- | --- |
 |   framework-libraries | Framework library names  [array] [required] [default: []] |
 
-#### Examples
+**Examples**
 
 Add the framework libraries sap.ui.core and sap.m as dependencies
 ```
@@ -86,19 +86,19 @@ Add the framework library themelib_sap_fiori_3 as optional dependency
 ```
   ui5 add --optional themelib_sap_fiori_3
 ```
-### ui5 build
+#### ui5 build
 
-#### Description
+**Description**
 
 Build project in current directory
 
-#### Usage
+**Usage**
 
 `
 ui5 build
 `
 
-#### Child Commands
+**Child Commands**
 
 | Command | Description |
 | --- | --- |
@@ -107,7 +107,7 @@ ui5 build
 |   ui5 build preload         (default | Build project and create preload bundles |
 |   ui5 build self-contained | Build project and create self-contained bundle |
 
-#### Options
+**Options**
 
 | Option | Description |
 | --- | --- |
@@ -120,7 +120,7 @@ ui5 build
 |   --framework-version     | Overrides the framework version defined by the project  [string] |
 
 
-#### Examples
+**Examples**
 
 Preload build for project and dependencies to &quot;./dist&quot;
 ```
@@ -142,13 +142,13 @@ Build project and dependencies in dev mode. Only a set of essential tasks is exe
 ```
   ui5 build dev                                                                      
 ```
-### ui5 init
+#### ui5 init
 
-#### Description
+**Description**
 
 Initialize the UI5 Tooling configuration for an application or library project.
 
-#### Usage
+**Usage**
 
 `
 ui5 init
@@ -157,13 +157,13 @@ ui5 init
 
 
 
-### ui5 remove
+#### ui5 remove
 
-#### Description
+**Description**
 
 Remove SAPUI5/OpenUI5 framework libraries from the project configuration.
 
-#### Usage
+**Usage**
 
 `
 ui5 remove <framework-libraries..>
@@ -171,32 +171,32 @@ ui5 remove <framework-libraries..>
 
 
 
-#### Positionals
+**Positionals**
 
 | Positional | Description |
 | --- | --- |
 |   framework-libraries | Framework library names  [array] [required] [default: []] |
 
-#### Examples
+**Examples**
 
 Remove the framework libraries sap.ui.core and sap.m as dependencies
 ```
   ui5 remove sap.ui.core sap.m
 ```
-### ui5 serve
+#### ui5 serve
 
-#### Description
+**Description**
 
 Start a web server for the current project
 
-#### Usage
+**Usage**
 
 `
 ui5 serve
 `
 
 
-#### Options
+**Options**
 
 | Option | Description |
 | --- | --- |
@@ -212,7 +212,7 @@ ui5 serve
 |   --framework-version         | Overrides the framework version defined by the project  [string] |
 
 
-#### Examples
+**Examples**
 
 Start a web server for the current project
 ```
@@ -234,20 +234,20 @@ Listen to port 1337 and launch default browser with http://localhost:1337/test/Q
 ```
   ui5 serve --port 1337 --open tests/QUnit.html                  
 ```
-### ui5 tree
+#### ui5 tree
 
-#### Description
+**Description**
 
 Outputs the dependency tree of the current project to stdout. It takes all relevant parameters of ui5 build into account.
 
-#### Usage
+**Usage**
 
 `
 ui5 tree
 `
 
 
-#### Options
+**Options**
 
 | Option | Description |
 | --- | --- |
@@ -257,7 +257,7 @@ ui5 tree
 |   --framework-version     | Overrides the framework version defined by the project. Only supported in combination with --full  [string] |
 
 
-#### Examples
+**Examples**
 
 Pipes the dependency tree into a new file &quot;tree.txt&quot;
 ```
@@ -267,13 +267,13 @@ Pipes the dependency tree into a new file &quot;tree.json&quot;
 ```
   ui5 tree --json > tree.json
 ```
-### ui5 use
+#### ui5 use
 
-#### Description
+**Description**
 
 Initialize or update the project&#x27;s framework configuration.
 
-#### Usage
+**Usage**
 
 `
 ui5 use <framework-info>
@@ -281,13 +281,13 @@ ui5 use <framework-info>
 
 
 
-#### Positionals
+**Positionals**
 
 | Positional | Description |
 | --- | --- |
 |   framework-info | Framework name, version or both (name@version).<br>Name can be &quot;SAPUI5&quot; or &quot;OpenUI5&quot; (case-insensitive).<br>Version can be &quot;latest&quot;, &quot;1.xx&quot; or &quot;1.xx.x&quot;.  [string] [required] |
 
-#### Examples
+**Examples**
 
 Use SAPUI5 in the latest available version
 ```
@@ -305,13 +305,13 @@ Use OpenUI5 without a version (or use existing version)
 ```
   ui5 use openui5      
 ```
-### ui5 versions
+#### ui5 versions
 
-#### Description
+**Description**
 
 Shows the versions of all UI5 Tooling modules
 
-#### Usage
+**Usage**
 
 `
 ui5 versions

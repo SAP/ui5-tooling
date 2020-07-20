@@ -39,23 +39,23 @@ These options you can use with each command.
 ```
 {{/each}}
 
-## Commands
+### Commands
 
 {{#each commands}}
-### {{command}}
+#### {{command}}
 
-#### Description
+**Description**
 
 {{description}}
 
-#### Usage
+**Usage**
 
 `
 {{usage}}
 `
 
 {{#if childCommands}}
-#### Child Commands
+**Child Commands**
 
 | Command | Description |
 | --- | --- |
@@ -65,7 +65,7 @@ These options you can use with each command.
 {{/if}}
 
 {{#if options}}
-#### Options
+**Options**
 
 | Option | Description |
 | --- | --- |
@@ -75,7 +75,7 @@ These options you can use with each command.
 {{/if}}
 
 {{#if positionals}}
-#### Positionals
+**Positionals**
 
 | Positional | Description |
 | --- | --- |
@@ -85,7 +85,7 @@ These options you can use with each command.
 {{/if}}
 
 {{#if examples}}
-#### Examples
+**Examples**
 
 {{#each examples}}
 {{exampleDescription}}
