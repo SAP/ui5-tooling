@@ -45,7 +45,7 @@ buildContext.tags = {
 
 JSDoc for this enum shall document that the HideFromBuildResult tag must be set to `true`.
 
-Tags shall follow a naming convention `<namespace>:TagName`. Namespaces `sap`, `ui5`, `core`, `sapui5`, `openui5` shall be reserved for standard tags provided by the UI5 Tooling. No other tags are allowed to use these namespaces. The tag name must be alphanumeric, camel case and start with a capital letter (no number).
+Tags shall follow a naming convention `<namespace>:<TagName>`. Namespaces `sap`, `ui5`, `core`, `sapui5`, `openui5` shall be reserved for standard tags provided by the UI5 Tooling. No other tags are allowed to use these namespaces. The namespace must be alphanumeric, all lowercase and start with a letter (no number). The tag name must be alphanumeric, camel case and start with a capital letter (no number).
 
 Initially, tagging shall be restricted to the use of the standard tags defined by the UI5 Tooling.  
 In the future, custom tasks shall be enabled to use self-defined tags for the purpose of communicating per-resource information between tasks. These tags must follow the naming conventions and restrictions outlined above.
