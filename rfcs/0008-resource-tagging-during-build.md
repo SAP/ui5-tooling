@@ -36,14 +36,14 @@ Tags are stored with a given resource's virtual path as key. This makes changes 
 Tasks can set and get tags via a new "TaskUtil" class which provides a specVersion dependent interface per (custom-) task. Its API basically wraps that of the ResourceTagCollection instance of the ProjectBuildContext.
 
 ### Tags
-**Standard tags shall be provided as an ENUM on the ProjectBuildContext/TaskUtil:**
+**Standard tags shall be provided as a constant on the ProjectBuildContext/TaskUtil:**
 ```js
-buildContext.tags = {
+buildContext.TAGS = {
     HideFromBuildResult: "ui5:HideFromBuildResult"
 };
 ```
 
-JSDoc for this enum shall document that the HideFromBuildResult tag must be set to `true`.
+JSDoc for this constant shall document that the HideFromBuildResult tag must be set to `true`.
 
 Tags shall follow a naming convention `<namespace>:<TagName>`. Namespaces `sap`, `ui5`, `core`, `sapui5`, `openui5` shall be reserved for standard tags provided by the UI5 Tooling. No other tags are allowed to use these namespaces. The namespace must be alphanumeric, all lowercase and start with a letter (no number). The tag name must be alphanumeric, camel case and start with a capital letter (no number).
 
@@ -58,7 +58,7 @@ Every custom task defining specVersion 2.2 or higher shall be provided with an i
 
 **Example usage:**
 ```js
-const {HideFromBuildResult} = taskUtil.tags;
+const {HideFromBuildResult} = taskUtil.TAGS;
 taskUtil.setTag(resource, HideFromBuildResult, true);
 taskUtil.clearTag(resource, HideFromBuildResult);
 taskUtil.getTag(resource, HideFromBuildResult);
