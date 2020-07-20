@@ -5,7 +5,7 @@
     + [x] [ui5-builder](https://github.com/SAP/ui5-builder)
     + [ ] [ui5-server](https://github.com/SAP/ui5-server)
     + [ ] [ui5-cli](https://github.com/SAP/ui5-cli)
-    + [ ] [ui5-fs](https://github.com/SAP/ui5-fs)
+    + [x] [ui5-fs](https://github.com/SAP/ui5-fs)
     + [ ] [ui5-project](https://github.com/SAP/ui5-project)
     + [ ] [ui5-logger](https://github.com/SAP/ui5-logger)
 
@@ -28,12 +28,12 @@ This solution should not be used to store AST or dependency information of a res
 
 <!-- This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the UI5 Tooling to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here. -->
 
-Introduce a new API on the [ProjectBuildContext](https://github.com/SAP/ui5-builder/blob/4e75d4dc7a1d74a0fa21bb45928f07eec25dd353/lib/builder/BuildContext.js#L42) which allows setting, clearing and getting of tag values for a resource. The lifecycle of those tags is limited to that of a single project build.
+Introduce a new class "ResourceTagCollection" in ui5-fs which allows setting, clearing and getting of tag values for a resource. An instance of this class should be created and exposed in the [ProjectBuildContext](https://github.com/SAP/ui5-builder/blob/4e75d4dc7a1d74a0fa21bb45928f07eec25dd353/lib/builder/BuildContext.js#L42). With that the lifecycle of the tags is limited to that of a single project build.  
 In the future, some tags might be shared across all projects (via [BuildContext](https://github.com/SAP/ui5-builder/blob/4e75d4dc7a1d74a0fa21bb45928f07eec25dd353/lib/builder/BuildContext.js#L7)). Currently we are not aware of any use case for this.
 
 Tags are stored with a given resource's virtual path as key. This makes changes to a resource's tags easy as there is no need to write the resource back to the adapter in order to persist those changes.
 
-Tasks have access to this new ProjectBuildContext API through a new TaskUtil class to create a specVersion agnostic abstraction.
+Tasks can set and get tags via a new "TaskUtil" class which provides a specVersion dependent interface per (custom-) task. Its API basically wraps that of the ResourceTagCollection instance of the ProjectBuildContext.
 
 ### Tags
 **Standard tags shall be provided as an ENUM on the ProjectBuildContext/TaskUtil:**
