@@ -53,12 +53,6 @@ function parseOutput(stdout) {
         for (let section of sections) {
             if (section.includes("Positionals:")) {
                 obj.positionals = section.split("\n");
-                if (obj.positionals.length == 4) {
-                    // obj.positionals = [
-                    //     obj.positionals[0],
-                    //     obj.positionals[1] + "<br>" + obj.positionals[2].trim() + "<br>" + obj.positionals[3].trim()
-                    // ]
-                }
             }
             if (section.includes("Options:")) {
                 obj.addOptions = section.split("\n").filter(function (el) {
