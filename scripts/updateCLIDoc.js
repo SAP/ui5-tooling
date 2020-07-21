@@ -192,8 +192,8 @@ function generateDoc() {
 }
 
 function splitString(command, temp, description) {
-    command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0];
-    description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1];
+    command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0].trim();
+    description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1].trim();
     return { command, description };
 }
 
