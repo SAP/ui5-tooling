@@ -17,6 +17,8 @@ jobs:
       run: sudo chown -R $(id -u):$(id -g) ./site
     - name: Install npm dependencies
       run: npm ci
+    - name: Update CLI Doc
+      run: npm run update-cli-doc
     - name: Build JSDoc
       run: npm run jsdoc-generate
     - name: Build Schema

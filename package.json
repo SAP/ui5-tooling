@@ -23,7 +23,8 @@
 		"jsdoc-generate": "node_modules/.bin/jsdoc -c ./jsdoc.json ./ || (echo 'Error during JSDoc generation! Check log.' && exit 1)",
 		"docs": "bash ./scripts/serveDocs.sh",
 		"docs-generate": "bash ./scripts/buildDocs.sh && open-cli http://localhost:8000 && ws --compress -d site",
-		"schema-generate": "node ./scripts/buildSchema.js"
+		"schema-generate": "node ./scripts/buildSchema.js",
+		"update-cli-doc": "node ./scripts/updateCLIDoc.js"
 	},
 	"repository": {
 		"type": "git",
