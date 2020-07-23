@@ -19,6 +19,8 @@ ui5 --help
 {{common}}
 `
 
+The CLI automatically checks for updates using [update-notifier](https://github.com/yeoman/update-notifier). While this is skipped in CI environments, you might also opt-out manually by following the steps described [here](https://github.com/yeoman/update-notifier/blob/master/readme.md#user-settings).
+
 ## Common options
 
 These options you can use with each command.
