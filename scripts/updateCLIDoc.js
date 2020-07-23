@@ -3,7 +3,7 @@ const exec = require('child_process').execSync;
 const fs = require('fs');
 const Handlebars = require('handlebars');
 
-const source = fs.readFileSync('./docs/pages/CLITemplate.md', 'utf8');
+const source = fs.readFileSync('./scripts/resources/CLITemplate.md', 'utf8');
 const template = Handlebars.compile(source);
 
 
