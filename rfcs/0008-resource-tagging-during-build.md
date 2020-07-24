@@ -35,6 +35,8 @@ Tags are stored with a given resource's virtual path as key. This makes changes 
 
 Tasks can set and get tags via a new "TaskUtil" class which provides a specVersion dependent interface per (custom-) task. Its API basically wraps that of the ResourceTagCollection instance of the ProjectBuildContext.
 
+![UI5 Tooling Resource Tagging Classes](./resources/UI5_Tooling_Resource_Tagging_Classes.png)
+
 ### Tags
 **Standard tags shall be provided as a constant on the ProjectBuildContext/TaskUtil:**
 ```js
