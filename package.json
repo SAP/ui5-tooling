@@ -24,7 +24,7 @@
 		"docs": "bash ./scripts/serveDocs.sh",
 		"docs-generate": "bash ./scripts/buildDocs.sh && open-cli http://localhost:8000 && ws --compress -d site",
 		"schema-generate": "node ./scripts/buildSchema.js",
-		"update-cli-doc": "node ./scripts/updateCLIDoc.js"
+		"generate-cli-doc": "node ./scripts/generateCliDoc.js"
 	},
 	"repository": {
 		"type": "git",

@@ -12,7 +12,7 @@ jobs:
     - name: Install npm dependencies
       run: npm ci
     - name: Update CLI Doc
-      run: npm run update-cli-doc
+      run: npm run generate-cli-doc
     - name: Build mkdocs
       uses: docker://squidfunk/mkdocs-material:4.6.0
       with:

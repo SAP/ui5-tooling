@@ -3,7 +3,7 @@ const exec = require('child_process').execSync;
 const fs = require('fs');
 const Handlebars = require('handlebars');
 
-const source = fs.readFileSync('./scripts/resources/CLITemplate.md', 'utf8');
+const source = fs.readFileSync('./scripts/resources/CLI.template.md', 'utf8');
 const template = Handlebars.compile(source);
 
 
@@ -187,10 +187,10 @@ function generateDoc() {
 	content = content.split("&#x3D;").join("=");
 	fs.writeFile('./docs/pages/CLI.md', content, err => {
 		if (err) {
-			return console.error(`Failed to store template: ${err.message}.`);
+			return console.error(`Failed to generate docs/pages/CLI.md: ${err.message}.`);
 		}
 
-		console.log('Saved template!');
+		console.log('Generated docs/pages/CLI.md');
 	});
 
 }
