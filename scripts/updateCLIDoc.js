@@ -43,8 +43,14 @@ function parseOutput(stdout) {
 		first = false;
 	}
 	else {
-		obj.usage = sections[1];
-		obj.desc = sections[2];
+		if(sections[0].includes("local")) {
+			obj.usage = sections[1];
+			obj.desc = sections[2];
+		} else {
+			obj.usage = sections[0];
+			obj.desc = sections[1];
+		}
+
 		obj.commands = [];
 		obj.examples = [];
 		obj.positionals = [];
