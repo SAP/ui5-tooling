@@ -58,3 +58,6 @@ deploy_key
 test/tmp/
 jsdocs/
 site/
+
+# Custom files
+docs/pages/CLI.md
