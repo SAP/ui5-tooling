@@ -11,7 +11,7 @@ Support for older Node.js releases has been dropped.
 
 The UI5 Tooling must be able to determine an application- or library project's namespace. Otherwise an error is thrown.
 
-Ideally the namespace should be defined in the `sap.app/id` field of the [`manifest.json`](https://ui5.sap.com/#/topic/74038a52dcd7404e82b38be6d5fb1458)
+Ideally the namespace should be defined in the `sap.app/id` field of the [`manifest.json`](https://ui5.sap.com/#/topic/be0cf40f61184b358b5faedaec98b2da)
 
 In case of libraries, additional fallbacks are in place:
 
