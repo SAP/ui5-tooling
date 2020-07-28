@@ -1,11 +1,14 @@
 # Consuming SAPUI5 libraries
 
-!!! info
-    **Make sure you have installed the UI5 CLI in Version 2.0 or later: `npm install --global @ui5/cli`**
+!!! Warning
+    Make sure you have installed the UI5 CLI in Version 2.0 or later: `npm install --global @ui5/cli`
 
 ## Overview
 
 SAPUI5 libraries are hosted on the public npm registry at `registry.npmjs.org`. However, you should not install them using node package managers like npm or Yarn. Instead, please let the UI5 Tooling handle them by following this guide.
+
+!!! info
+    For background information also see the Blog Post ["UI5ers Buzz #49: The UI5 Tooling and SAPUI5 – The Next Step"](https://blogs.sap.com/2020/04/01/ui5ers-buzz-49-the-ui5-tooling-and-sapui5-the-next-step/)
 
 ## Usage
 Since Version 2.0 the UI5 CLI will automatically download all required framework dependencies of a project if they have been defined in the corresponding `ui5.yaml` configuration. They will be cached in a `.ui5` directory located in your users' home directory. This happens transparently whenever you execute the `ui5 serve` or `ui5 build` commands.
