@@ -124,6 +124,8 @@ To ensure that tasks can be executed independently from the UI5 build (i.e. dire
 
 It does not have an impact for most of the UI5 Tooling users, so there are no major drawbacks expected.
 
+Dependencies can be tagged, but might have already been processed. Therefore, depending on the tag, the desired effect might not occur.
+
 ## Alternatives
 
 <!--
