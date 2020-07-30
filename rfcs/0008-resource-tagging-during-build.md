@@ -56,7 +56,7 @@ In the future, custom tasks shall be enabled to use self-defined tags for the pu
 
 The task facing API shall be wrapped in a new class "TaskUtil". Similarly to the [MiddlewareUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html) of the UI5 Server, it should provide a [specVersion-dependent interface](https://github.com/SAP/ui5-server/blob/master/lib/middleware/MiddlewareUtil.js#L21) to convenience functions as well as the new tagging APIs.
 
-Every custom task defining specVersion 2.2 or higher shall be provided with an instance of TaskUtil.
+An instance of TaskUtil will be passed to every standard task and to every custom task defining specVersion >= 2.2.
 
 **Example usage:**
 ```js
@@ -118,6 +118,7 @@ There are tradeoffs to choosing any path, please attempt to identify them here.
 
 This enhancement is an opt-in for tasks to make use of that new API / functionality. There is no need for any changes within existing tasks.
 However it increases the complexity of the custom task API by adding a new entity that needs to be described and understood.
+To ensure that tasks can be executed independently from the UI5 build (i.e. direct function call), the new `taskUtil` parameter must be optional. This might make the task implementation more complex.
 
 It does not have an impact for most of the UI5 Tooling users, so there are no major drawbacks expected.
 
