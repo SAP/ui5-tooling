@@ -93,11 +93,13 @@ A custom middleware implementation needs to return a function with the following
  *                                        the project the server is started in
  * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies Reader or Collection to read resources of
  *                                        the projects dependencies
+ * @param {Object} parameters.middlewareUtil Specification Version dependent interface to a
+ *                                        [MiddlewareUtil]{@link module:@ui5/server.middleware.MiddlewareUtil} instance
  * @param {Object} parameters.options Options
  * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @returns {function} Middleware function to use
  */
-module.exports = function({resources, options}) {
+module.exports = function({resources, middlewareUtil, options}) {
     return function (req, res, next) {
         // [...]
     }
@@ -108,7 +110,7 @@ module.exports = function({resources, options}) {
 ````javascript
 // Custom middleware implementation
 
-module.exports = function({resources, options}) {
+module.exports = function({resources, middlewareUtil, options}) {
     const MarkdownIt = require('markdown-it');
     const md = new MarkdownIt();
     return function (req, res, next) {
@@ -137,3 +139,9 @@ module.exports = function({resources, options}) {
 ````
 
 Live demo of the above example: https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility
+
+## Helper Class `MiddlewareUtil`
+
+Custom middleware defining [Specification Version](../Configuration.md#specification-versions) 2.0 or higher have access to an interface of a [MiddlewareUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html) instance.
+
+In this case, a `middlewareUtil` object is provided as part of the custom middleware's [parameters](#custom-middleware-implementation).  Depending on the Specification Version of the custom middleware, a set of helper functions is available to the implementation. The lowest required Specification Version for every function is listed in the [MiddlewareUtil API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html).
