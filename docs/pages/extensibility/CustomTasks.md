@@ -104,13 +104,15 @@ A custom task implementation needs to return a function with the following signa
  * @param {Object} parameters Parameters
  * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
  * @param {module:@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {Object} parameters.taskUtil Specification Version dependent interface to a
+ *                [TaskUtil]{@link module:@ui5/builder.tasks.TaskUtil} instance
  * @param {Object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
  * @param {string} [parameters.options.projectNamespace] Project namespace if available
  * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
  * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
  */
-module.exports = async function({workspace, dependencies, options}) {
+module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	// [...]
 };
 ````
@@ -123,7 +125,7 @@ The following code snippets shows an example how a task implementation could loo
 // Task implementation
 const markdownGenerator = require("./markdownGenerator");
 
-module.exports = async function({workspace, dependencies, options}) {
+module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	const textResources = await workspace.byGlob("**/*.txt");
 	const markdownResources = await markdownGenerator({
 		resources: textResources
@@ -136,3 +138,10 @@ module.exports = async function({workspace, dependencies, options}) {
 
 !!! warning
     Depending on your project setup, the UI5 Tooling tends to have lots of open files at the same time during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
+
+
+## Helper Class `TaskUtil`
+
+Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html) instance.
+
+In this case, a `taskUtil` object is provided as part of the custom task's [parameters](#task-implementation).  Depending on the Specification Version of the custom task, a set of helper functions is available to the implementation. The lowest required Specification Version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html).
