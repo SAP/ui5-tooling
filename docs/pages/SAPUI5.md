@@ -21,7 +21,7 @@ There is a new configuration section dedicated to framework dependency handling.
 
 **Example:**
 ```yaml
-specVersion: "2.1"
+specVersion: "2.2"
 type: application
 metadata:
   name: some.project.name
@@ -39,7 +39,7 @@ framework:
 
 **Example:**
 ```yaml
-specVersion: "2.1"
+specVersion: "2.2"
 type: library
 metadata:
   name: some.library
