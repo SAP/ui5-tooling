@@ -12,6 +12,7 @@
 - [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
 - [Project Configuration](https://github.com/SAP/ui5-project/blob/master/docs/Configuration.md)
 - 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
+- 🎬 [UI5con@SAP 2020 Talk](https://www.youtube.com/watch?v=8IHoVJLKN34)
 - [Contribution Guidelines](./CONTRIBUTING.md)
 - [Roadmap](https://github.com/SAP/ui5-tooling/issues/101)
 
