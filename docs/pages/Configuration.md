@@ -472,7 +472,7 @@ Version | UI5 CLI Release
 
 **Features:**
 
-- TODO
+- Custom task extensions can make use of the [`TaskUtil` Helper Class](./extensibility/CustomTasks.md#helper-class-taskutil)
 
 Specification Version 2.2 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.4.0 and above.
 
@@ -481,6 +481,7 @@ Specification Version 2.2 projects are supported by [UI5 CLI](https://github.com
 **Features:**
 
 - Adds support for the ["customConfiguration"](#custom-configuration) configuration
+- Custom middleware extensions can make use of the [`MiddlewareUtil` Helper Class](./extensibility/CustomServerMiddleware.md#helper-class-middlewareutil)
 
 Specification Version 2.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.2.0 and above.
 
