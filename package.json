@@ -31,7 +31,7 @@
 		"url": "git@github.com:SAP/ui5-tooling.git"
 	},
 	"dependencies": {
-		"@ui5/builder": "^2.0.7",
+		"@ui5/builder": "^2.1.0",
 		"@ui5/cli": "^2.3.2",
 		"@ui5/fs": "^2.0.2",
 		"@ui5/logger": "^2.0.0",
