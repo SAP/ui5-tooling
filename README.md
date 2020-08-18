@@ -3,6 +3,7 @@
 # UI5 Tooling
 > An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/ui5-tooling)](https://api.reuse.software/info/github.com/SAP/ui5-tooling)
 [![OpenUI5 Community Slack (#tooling channel)](https://img.shields.io/badge/slack-join-44cc11.svg)](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/)
 [![Travis CI Build Status](https://travis-ci.org/SAP/ui5-tooling.svg?branch=master)](https://travis-ci.org/SAP/ui5-tooling)
 
