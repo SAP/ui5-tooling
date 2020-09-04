@@ -311,7 +311,7 @@ However you can define a `componentPreload` configuration to create Component Pr
 
 There are two ways of including components, which can also be used in combination with each other:
 
-- The `paths` option takes one or multiple patterns. For every matched file a separate `Component-preload.js` will be generated. Patterns are always applied relative to the projects virtual source directory `/resources/`
+- The `paths` option takes one or multiple patterns. For every matched file a separate `Component-preload.js` will be generated. Patterns are always applied relative to the project's virtual source directory `/resources/`
   ```yaml
   builder:
     componentPreload:
