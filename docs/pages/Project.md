@@ -68,7 +68,7 @@ dependencies:
 This can be used via `ui5 serve --translator static:/path/to/projectDependencies.yaml`
 
 ## Project Preprocessor
-Enhances a given dependency tree based on a projects [configuration](docs/Configuration.md).
+Enhances a given dependency tree based on a projects [configuration](./Configuration.md).
 
 **Enhanced dependency tree structure as returned by the Project Preprocessor:**
 ````json
