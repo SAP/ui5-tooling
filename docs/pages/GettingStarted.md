@@ -54,4 +54,4 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
 Hooray! 🎉 You can now use the UI5 Tooling in your project!
 
-Execute [`ui5 serve`](./pages/Server.md) to start a local development server or use [`ui5 build --all`](./pages/Builder.md) to create an optimized version of your project, including all of its dependencies which you can deploy from the created `./dist` directory.
+Execute [`ui5 serve`](./Server.md) to start a local development server or use [`ui5 build --all`](./Builder.md) to create an optimized version of your project, including all of its dependencies which you can deploy from the created `./dist` directory.
