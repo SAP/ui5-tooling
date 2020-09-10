@@ -32,7 +32,7 @@
 	},
 	"dependencies": {
 		"@ui5/builder": "^2.2.0",
-		"@ui5/cli": "^2.4.2",
+		"@ui5/cli": "^2.4.3",
 		"@ui5/fs": "^2.0.3",
 		"@ui5/logger": "^2.0.0",
 		"@ui5/project": "^2.2.1",
