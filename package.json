@@ -41,11 +41,11 @@
 	"devDependencies": {
 		"@apidevtools/json-schema-ref-parser": "^9.0.6",
 		"docdash": "^1.2.0",
-		"jsdoc": "^3.6.5",
+		"handlebars": "^4.7.6",
+		"jsdoc": "^3.6.6",
 		"local-web-server": "^4.2.1",
 		"mkdirp": "^1.0.4",
 		"open-cli": "^6.0.1",
-		"traverse": "^0.6.6",
-		"handlebars": "^4.7.6"
+		"traverse": "^0.6.6"
 	}
 }
