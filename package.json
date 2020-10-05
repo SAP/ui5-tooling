@@ -3,7 +3,11 @@
 	"private": true,
 	"version": "0.0.1",
 	"description": "UI5 Tooling - Main Repository",
-	"author": "SAP SE (https://www.sap.com)",
+	"author": {
+		"name": "SAP SE",
+		"email": "openui5@sap.com",
+		"url": "https://www.sap.com"
+	},
 	"license": "Apache-2.0",
 	"keywords": [
 		"openui5",
