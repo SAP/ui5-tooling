@@ -145,3 +145,52 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html) instance.
 
 In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html).
+
+
+## Standard Tasks
+
+### application
+
+- escapeNonAsciiCharacters
+- replaceCopyright
+- replaceVersion
+- generateFlexChangesBundle
+- generateManifestBundle
+- generateComponentPreload
+- generateStandaloneAppBundle
+- transformBootstrapHtml
+- generateBundle
+- createDebugFiles
+- uglify
+- generateVersionInfo
+- generateCachebusterInfo
+- generateApiIndex
+- generateResourcesJson
+
+### library
+
+- escapeNonAsciiCharacters
+- replaceCopyright
+- replaceVersion
+- generateJsdoc
+- executeJsdocSdkTransformation
+- generateComponentPreload
+- generateLibraryManifest
+- generateManifestBundle
+- generateLibraryPreload
+- generateBundle
+- buildThemes
+- createDebugFiles
+- uglify
+- generateResourcesJson
+
+### theme-library
+
+- replaceCopyright
+- replaceVersion
+- buildThemes
+- generateResourcesJson
+
+### module
+
+- N/A
