@@ -460,7 +460,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 **bundleOptions**
 
 - `optimize`: By default set to `false`. If set to `true`, the module bundle gets minified
-- `decorateBootstrapModule`: By default set to `true`. If set to `false`, the module won't be decorated with an optimization marker
+- `decorateBootstrapModule`: By default set to `false`. If set to `true`, the module will be decorated with an optimization marker
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
