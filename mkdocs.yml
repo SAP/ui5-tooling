@@ -32,9 +32,7 @@ theme:
     accent: 'blue'
   logo: 'images/logo.svg'
   favicon: 'images/favicon.png'
-  font:
-    text: "72" # Alternative Nunito
-    code: Oxygen Mono
+  font: false
 extra_css:
   - 'stylesheets/extra.css'
 
