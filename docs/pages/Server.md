@@ -1,33 +1,82 @@
 # UI5 Server
+
+[**API Reference**](https://sap.github.io/ui5-tooling/api/module-@ui5_server.html){: .md-button .sap-icon-initiative }
+
 The [UI5 Server](https://github.com/SAP/ui5-server) provides server capabilities for the [UI5 Tooling](https://github.com/SAP/ui5-tooling).
 
-## Middleware
-The development server has already a set of middleware which supports the developer with the following features:
+## Standard Middleware
 
-* Escaping of non-ASCII characters in `.properties` translation files
-* Changes on files with `.less` extension triggers a theme build and delivers the compiled CSS files.
-* Version info is created automatically (`/resources/sap-ui-version.json`).
-* List project files with URL (needed exclusively by the OpenUI5 [testsuite](https://github.com/SAP/openui5/tree/master/src/testsuite)): `/discovery/app_pages`, `/discovery/all_libs`, `/discovery/all_tests`
+All available standard middleware are listed below in the order of their execution.
 
-## Certificates for HTTPS or HTTP/2
-When using the UI5 Server with the UI5 CLI, SSL certificates for HTTPS and HTTP/2 configurations can automatically be generated.
+A project can also add custom middleware to the server by using the [Custom Server Middleware Extensibility](./extensibility/CustomServerMiddleware.md).
 
-**Hint:** If Chrome unintentionally redirects an HTTP-URL to HTTPS, you need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://net-internals/#hsts) by entering the domain name (e.g. localhost) and pressing "delete".
+| Middleware | Description |
+| ---- | ---- |
+| `csp` | See chapter [csp](#csp) |
+| `compression` | Standard [Express compression middleware](http://expressjs.com/en/resources/middleware/compression.html) |
+| `cors` | Standard [Express cors middleware](http://expressjs.com/en/resources/middleware/cors.html) |
+| `discovery` |  See chapter [discovery](#discovery) |
+| `serveResources` | See chapter [serveResources](#serveresources) |
+| `testRunner` | See chapter [testRunner](#testrunner) |
+| `serveThemes` | See chapter [serveThemes](#servethemes)  |
+| `versionInfo` | See chapter [versionInfo](#versioninfo)  |
+| `connectUi5Proxy` | See chapter [connectUi5Proxy](#connectui5proxy)  |
+| `nonReadRequests` | See chapter [nonReadRequests](#nonreadrequests)  |
+| `serveIndex` | See chapter [serveIndex](#serveindex)  |
 
-## CSP Reporting
-The support of a Content Security Policy ([CSP](https://www.w3.org/TR/CSP/)) is active by default.
+### csp
+The Content Security Policy ([CSP](https://www.w3.org/TR/CSP/)) middleware active by default.
+
 The header `content-security-policy` can be set by adding URL parameter `sap-ui-xx-csp-policy` to the request with the policy name as value.
+
 To set the policy to report-only, append `:report-only` or `:ro` to the policy name.
 E.g. `/index.html?sap-ui-xx-csp-policy=sap-target-level-1:report-only`
 
-### SAP target CSP
+#### SAP target CSP
 The default CSP policies can be modified using parameter `sendSAPTargetCSP` (`--sap-csp-policies` when using the CLI).
 With `sendSAPTargetCSP` set to `true` the policies `sap-target-level-1` and `sap-target-level-2` policies are activated and send as report-only.
 
-### Serve CSP Reports
+#### Serve CSP Reports
 
 !!! info
     This option is available since UI5 CLI [`v2.3.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.3.0)
     
 Serving of CSP reports can be activated with parameter `serveCSPReports` (`--serve-csp-reports` when using the CLI).
 With `serveCSPReports` set to `true`, the CSP reports are collected and can be downloaded from the server path `/.ui5/csp/csp-reports.json`.
+
+### discovery
+
+Lists project files with URLs under several `/discovery` endpoints. This is exclusively used by the OpenUI5 testsuite application
+
+### serveResources
+This middleware resolves requests using the [UI5 FS](./FS.md)-file system abstraction.
+
+It also escapes non-ASCII characters in `.properties` translation files based on a projects [configuration](./Configuration.md#encoding-of-properties-files).
+
+### testRunner
+Serves a static version of the UI5 QUnit TestRunner at `/test-resources/sap/ui/qunit/testrunner.html`.
+
+### serveThemes
+Compiles CSS files for themes on-the-fly from the source `*.less` files.
+
+Changes made to these `*.less` files while the server is running will automatically lead to the re-compilation of the relevant CSS files when requested again.
+
+### versionInfo
+Generates and serves the version info file `/resources/sap-ui-version.json`, which is required for several framework functionalities.
+
+### connectUi5Proxy
+Provides basic proxy functionality using the proxy offered by [`connect-openui5`](https://github.com/SAP/connect-openui5#proxy) under the endpoint `/proxy`.
+
+### nonReadRequests
+Answers all non-read requests (POST, PUT, DELETE, etc.), that have not been answered by any other middleware, with status code 404 "Not Found". This signals the client that these operations are not supported by the server.
+
+### serveIndex
+In case a directory has been requested, this middleware renders an HTML with a list of the directories content.
+
+## SSL Certificates
+When starting the UI5 Server in HTTPS- or HTTP/2 mode, for example by using UI5 CLI parameter `--h2`, you will be prompted for the automatic generation of a local SSL certificate if necessary.
+
+Follow the given instructions and enter your password to install the generated certificate as trusted. You can find the generated certificate and corresponding private key under `.ui5/server` in your users home directory.
+
+!!! tip
+    If Chrome unintentionally redirects an HTTP-URL to HTTPS, you need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://net-internals/#hsts) by entering the domain name (e.g. localhost) and pressing "delete".
