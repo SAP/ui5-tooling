@@ -100,20 +100,24 @@ These options you can use with each command.
 ## Local vs. Global Installation
 In general, we recommend a global installation of the UI5 CLI (`npm install --global @ui5/cli`).
 
-However, it makes sense to add the UI5 CLI as a [devDependency](https://docs.npmjs.com/files/package.json#devdependencies) (`npm install --save-dev @ui5/cli`) for a project that is using `ui5` commands in its build or test scripts or otherwise depends on the UI5 CLI for development workflows (like continuous integration).
+However, it makes sense to add the UI5 CLI as a [devDependency](https://docs.npmjs.com/files/package.json#devdependencies) (`npm install --save-dev @ui5/cli`) to a projects `package.json`. This not only ensures that every developer working on the project uses the same version of the UI5 CLI, your continuous integration environments will also use this version.
 
 In case you have both, a local installation in one of your projects as well as a global installation, the UI5 CLI will always try to invoke the local installation. This is in part because [npm scripts](https://docs.npmjs.com/misc/scripts) defined in your `package.json` will also always invoke the local installation.
 
 This behavior can be disabled by setting the environment variable `UI5_CLI_NO_LOCAL`.
 
 **Example**  
-You have a project located at `/my-application`. The project has a devDependency to `@ui5/cli` and defines the start script `"ui5 serve"`.
+You have a project located in the directory `/my-application`.
 
-| Current Working Directory | Command                         | Uses globally installed UI5 CLI | Uses locally installed UI5 CLI |
+You have installed the UI5 CLI globally. In addition, the project's `package.json` defines a `devDependency` to `@ui5/cli` and a start script `"ui5 serve"`. This means there are at least two installations of `@ui5/cli` on your system. Their versions might not match.
+
+This table illustrates which of the two installations is used in different scenarios. Note how the UI5 CLI always tries to prefer the version installed in the project.
+
+| Current Working Directory | Command                         | Global UI5 CLI | Local UI5 CLI |
 | ------------------------- | ------------------------------- | :-----------------------------: | :----------------------------: |
-| `/`                       |  `ui5 --version`                |               ✔️                |
-| `/my-application`         |  `ui5 --version`                |                                 |               ✔️               |
-| `/my-application`         |  `ui5 serve`                    |                                 |               ✔️               |
-| `/my-application`         |  `npm start`                    |                                 |               ✔️               |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |               ✔️                |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |               ✔️               |
+| `/`                       |  `ui5 --version`                |  {: .sap-icon-circle-task-2 }   |
+| `/my-application`         |  `ui5 --version`                |                                 |  {: .sap-icon-circle-task-2 }  |
+| `/my-application`         |  `ui5 serve`                    |                                 |  {: .sap-icon-circle-task-2 }  |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |  {: .sap-icon-circle-task-2 }   |
+| `/my-application`         |  `npm start`                    |                                 |  {: .sap-icon-circle-task-2 }  |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |  {: .sap-icon-circle-task-2 }  |

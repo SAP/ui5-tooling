@@ -33,25 +33,46 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
 1. Define the framework you want to use
 
-    You can choose between the OpenUI5 and the SAPUI5 Framework. Don't know which one to choose? Check out our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+    === "OpenUI5"
 
-    **[OpenUI5](https://openui5.hana.ondemand.com/)**
-    ```sh
-    ui5 use openui5@latest
-    ```
+        ```sh
+        ui5 use openui5@latest
+        ```
 
-    **[SAPUI5](https://ui5.sap.com/)**
-    ```sh
-    ui5 use sapui5@latest
-    ```
+    === "SAPUI5"
+
+        ```sh
+        ui5 use sapui5@latest
+        ```
+
+    You can choose between the OpenUI5 and the SAPUI5 Framework.
+
+    Don't know which one to choose? Check out our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
 
 1. Add required libraries
     ```sh
-    ui5 add sap.ui.core sap.m themelib_sap_fiori_3 # [...]
+    ui5 add sap.ui.core sap.m sap.ui.table themelib_sap_fiori_3 # [...]
     ```
 
+1. Start the server and work on your project! 🎉
+    ```sh
+    ui5 serve
+    ```
+
+    !!! tip
+        Use `ui5 serve` to start a local development server and `ui5 build --all` to produce an optimized, static version of your project which you can then deploy to your production environment.
+
+        Find more information here:
+
+        - [Server](./Server.md)
+        - [Builder](./Builder.md)
+
 1. If you are using Git or similar version control, commit `package.json` and `ui5.yaml` to your repository.
+    ```sh
+    git add package.json ui5.yaml
+    git commit -m "Enable use with the UI5 Tooling"
+    ```
 
-Hooray! 🎉 You can now use the UI5 Tooling in your project!
+**Hooray! You can now use the UI5 Tooling in your project!**
+{: .sap-icon-ui5-after }
 
-Execute [`ui5 serve`](./Server.md) to start a local development server or use [`ui5 build --all`](./Builder.md) to create an optimized version of your project, including all of its dependencies which you can deploy from the created `./dist` directory.
