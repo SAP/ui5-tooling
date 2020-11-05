@@ -1,7 +1,9 @@
 # Configuration
-This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version](#specification-versions) 2.2**.
 
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
+
+!!! info
+    This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version 2.2](#specification-versions)**.
 
 ## Validation / IDE support
 
@@ -9,7 +11,7 @@ Starting with [specification version 2.0](#specification-version-20) the configu
 The current version of the schema can be found here: https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
 
 The schema is also part of the [JSON Schema Store catalog](http://schemastore.org/json/) which is used by the [YAML Language Server](https://github.com/redhat-developer/yaml-language-server).  
-See the list of [Clients](https://github.com/redhat-developer/yaml-language-server/blob/master/README.md#clients) to find extensions for various IDEs and editors.
+See the list of [clients](https://github.com/redhat-developer/yaml-language-server/blob/master/README.md#clients) to find extensions for various IDEs and editors.
 
 ## Example
 
@@ -25,97 +27,157 @@ A project must define a specification version (`specVersion`), to which its conf
 
 In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` (since Specification Version 1.1) or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
 
-````yaml
-specVersion: "2.2"
-type: library
-````
+!!! example
+
+    === "application"
+
+        ````yaml
+        specVersion: "2.2"
+        type: application
+        ````
+
+    === "library"
+
+        ````yaml
+        specVersion: "2.2"
+        type: library
+        ````
+
+    === "theme-library"
+
+        ````yaml
+        specVersion: "2.2"
+        type: theme-library
+        ````
+
+    === "module"
+
+        ````yaml
+        specVersion: "2.2"
+        type: module
+        ````
 
 ### Metadata
+
+!!! example
+    ````yaml
+    metadata:
+      name: my.company.project
+      copyright: |-
+       My Project
+        * (c) Copyright 2009-${currentYear} My Company
+        * Licensed under the XYZ License, Version n - see LICENSE.txt.
+    ````
+
+#### name
+
 A project must have a `name` and might define a `copyright` string.
 
 In the UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `company.businessarea.project`.
 
+#### copyright
+
 A given `copyright` string will be used to fill placeholders like `${copyright}` and `@copyright@` in a projects source code. `|-` is a way to define a multi line string in YAML. For details, please check the [YAML Specification](https://yaml.org/spec/1.2/spec.html#id2794534).  
 Inside the copyright string, you can use the placeholder `${currentYear}` which will be replaced with the current year.
 
-In case your project is deprecated you may also define a property `deprecated: true`. In projects that have a direct dependency to your project, the UI5 Tooling will then display a deprecation warning.
+#### deprecated
 
-````yaml
-metadata:
-  name: my.cool.project
-  copyright: |-
-   My Cool Project
-    * (c) Copyright 2009-${currentYear} My Company
-    * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
-````
+In case your project is deprecated you may also define a property `deprecated: true`. In projects that have a direct dependency to your project, the UI5 Tooling will then display a deprecation warning.
 
 ## Resources
 ### Path Mapping
-Depending on the project type, the UI5 Tooling expects your projects source files to be in certain directories:
+Depending on the project type, the UI5 Tooling expects your projects source files to be located in certain directories.
 
-**Type: application**  
-Default directory for runtime and test files: `webapp`
+If your project's sources are located in different directories, you need to configure the path mapping accordingly. Depending on the type of project, there are several different path mappings available.
 
-**Type: library and theme-library**  
-Default directory for runtime files: `src`  
-Default directory for test files: `test`
+Note that all configured paths must be written in POSIX (i.e. using only forward slashes `/`) and relative to the projects root directory.
 
-**Type: module**  
-By default the projects root directory will be used.
+#### Available Path Mappings
 
----
+=== "Applications"
+    - `webapp`: Mapped to runtime path `/` (root)
 
-If your projects sources are located in different directories, you need to configure a path mapping. As types might require unique project structures, this configuration can differ:
+    *Default configuration:*
+    ````yaml
+    resources:
+      configuration:
+        paths:
+          webapp: webapp
+    ````
 
-Note that all configured paths must be POSIX and relative to the projects root directory.
+=== "Libraries"
+    - `src`: Mapped to runtime path `/resources`
+    - `test`: Mapped to runtime path `/test-resources`
 
-#### Path Mapping of Applications
-Available mappings:
+    *Default configuration:*
+    ````yaml
+    resources:
+      configuration:
+        paths:
+          src: src
+          test: test
+    ````
 
-- `webapp` (runtime path `/`)
+=== "Modules"
+    Any virtual paths can be mapped to any physical path.
 
-````yaml
-resources:
-  configuration:
-    paths:
-      webapp: my/path
-````
+    However, it is recommended that modules include their namespace in the virtual path and use the `/resources` prefix (e.g. `/resources/my/library/module-xy/`).
 
-#### Path Mapping of Libraries
-Available mappings:
+    *Example configuration:*
+    ````yaml
+    resources:
+      configuration:
+        paths:
+          /resources/my/library/module-xy/: lib
+          /resources/my/library/module-xy-min/: dist
+    ````
 
-- `src` (runtime path `/resources`)
-- `test` (runtime path `/test-resources`)
+!!! example
+    For an application project with the following directory structure, you need the below path mapping configuration:
 
-````yaml
-resources:
-  configuration:
-    paths:
-      src: path/to/sources
-      test: path/to/tests
-````
+    *Directory Structure*
+    ```` hl_lines="3 4 5"
+    my-app/
+    \_ ui5.yaml
+    \_ lib/
+      \_ js/
+        \_ app/
+    ````
 
-#### Path Mapping of Modules
-Any virtual paths can be mapped to any physical path.
+    *Path Mapping Configuration*
+    ````yaml hl_lines="4"
+    resources:
+      configuration:
+        paths:
+          webapp: lib/js/app
+    ````
 
-However, it is recommended that modules include their namespace in the virtual path and use the `/resources` prefix (e.g. `/resources/my/library/module-xy/`).
-
-````yaml
-resources:
-  configuration:
-    paths:
-      /resources/my/library/module-xy/: lib
-      /resources/my/library/module-xy-min/: dist
-````
 
 ### Encoding of `*.properties` files
 
 !!! info
     This configuration is available since UI5 CLI [`v1.7.0`](https://github.com/SAP/ui5-cli/releases/tag/v1.7.0)
 
+!!! example
+    === "UTF-8"
+
+        ````yaml
+        resources:
+          configuration:
+            propertiesFileSourceEncoding: UTF-8
+        ````
+
+    === "ISO-8859-1"
+
+        ````yaml
+        resources:
+          configuration:
+            propertiesFileSourceEncoding: ISO-8859-1
+        ````
+
 By default the UI5 Tooling expects different encodings for `*.properties` i18n files, depending on the project's specification version:
 
-Specification Version | Default propertiesFileSourceEncoding
+Specification Version | Default `propertiesFileSourceEncoding`
 --- | ---
 **2.0+** | `UTF-8`
 **0.1, 1.0 or 1.1** | `ISO-8859-1`
@@ -124,12 +186,6 @@ If your project uses a different encoding for `*.properties` files, you need to 
 
 The UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
 
-````yaml
-resources:
-  configuration:
-    propertiesFileSourceEncoding: UTF-8|ISO-8859-1
-````
-
 ## Custom Configuration
 
 !!! info
@@ -137,19 +193,20 @@ resources:
     and applies only to projects defining [Specification Version](#specification-versions)
     2.1 or higher.
 
+!!! example
+    ```yaml
+    customConfiguration:
+      myTool:
+        key: value
+      myOtherTool:
+        otherKey: otherValue
+    ```
+
 Custom configuration that is ignored by the UI5 Tooling.  
 This can be used to store UI5 specific configuration for third-party tools.
 
 The "customConfiguration" value must be an object.  
 For third-party tools it is recommended to follow a namespace-like structure.
-
-```yaml
-customConfiguration:
-  myTool:
-    key: value
-  myOtherTool:
-    otherKey: otherValue
-```
 
 ## Framework Configuration
 
@@ -160,58 +217,108 @@ customConfiguration:
 
 Define your project's framework dependencies.
 
-In your project's framework configuration you must define whether you want to use the OpenUI5 or the SAPUI5 framework. For more information, see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+### Framework and Version
 
-**SAPUI5**
-```yaml
-framework:
-  name: SAPUI5
-```
+In your project's framework configuration you must define whether you want to use the OpenUI5 or the SAPUI5 framework and in which version:
 
-**OpenUI5**
-```yaml
-framework:
-  name: OpenUI5
-```
+=== "OpenUI5"
+    ```yaml
+    framework:
+      name: OpenUI5
+      version: 1.82.0
+    ```
+
+=== "SAPUI5"
+    ```yaml
+    framework:
+      name: SAPUI5
+      version: 1.82.0
+    ```
 
 If you are not sure which framework is right for you, see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
 
-!!! warning
-    Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
-
-If you want to execute UI5 CLI commands directly in your project you also need to specify the framework version you want to use. Whenever you execute a UI5 CLI command, the framework version of the current root project is used.
-
-```yaml
-framework:
-  name: SAPUI5
-  version: 1.76.0
-```
-
 You can find an overview of the available versions for each framework here:
 
-- [SAPUI5 Version Overview](http://ui5.sap.com/versionoverview.html) (**Note:** The UI5 Tooling can only consume SAPUI5 starting with Version 1.76.0.)
-- [OpenUI5 Version Overview](https://openui5.hana.ondemand.com/versionoverview.html)
+- [**SAPUI5** Version Overview](http://ui5.sap.com/versionoverview.html)
+    - *The lowest version supported by the UI5 Tooling is __1.76.0__*
+- [**OpenUI5** Version Overview](https://openui5.hana.ondemand.com/versionoverview.html)
+    - *The lowest version supported by the UI5 Tooling is __1.52.5__*
+
+!!! info
+    Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
 
 ### Dependencies
 
-All libraries required by your project must be listed in the libraries section of the framework configuration.
+!!! example
+    === "application"
+        ```yaml
+        specVersion: "2.2"
+        type: application
+        metadata:
+          name: my.company.app
+        framework:
+          name: OpenUI5
+          version: 1.82.0
+          libraries:
+            - name: sap.ui.core
+            - name: sap.m
+            - name: sap.ui.table
+            - name: themelib_sap_fiori_3
+        ```
 
-```yaml
-framework:
-  name: SAPUI5
-  version: 1.76.0
-  libraries:
-    - name: sap.ui.core
-    - name: sap.m
-    - name: sap.ui.comp
-    - ...
-```
+    === "library"
+        ```yaml
+        specVersion: "2.2"
+        type: library
+        metadata:
+          name: my.company.library
+        framework:
+          name: SAPUI5
+          version: 1.82.0
+          libraries:
+            - name: sap.ui.core
+            - name: sap.m
+            - name: themelib_sap_belize
+              optional: true
+            - name: themelib_sap_bluecrystal
+              optional: true
+            - name: themelib_sap_fiori_3
+              optional: true
+        ```
+
+        When building an application depending on this library as well as one of the theme libraries, only that theme is built for this library.
+
+#### Runtime Dependencies
+
+All libraries required by your project must be listed in the libraries section of the framework configuration:
+
+=== "OpenUI5"
+    ```yaml hl_lines="4-7"
+    framework:
+      name: OpenUI5
+      version: 1.82.0
+      libraries:
+        - name: sap.ui.core
+        - name: sap.m
+        - name: sap.ui.table
+    ```
+
+=== "SAPUI5"
+    ```yaml hl_lines="4-7"
+    framework:
+      name: SAPUI5
+      version: 1.82.0
+      libraries:
+        - name: sap.ui.core
+        - name: sap.m
+        - name: sap.ui.comp
+    ```
 
 #### Development Dependencies
 Development dependencies are only installed if the project defining them is the current root project.
 They are typically only required during the development of the project.
 
-```yaml
+```yaml hl_lines="3"
   libraries:
     - name: sap.ushell
       development: true
@@ -223,69 +330,46 @@ Note that a development dependency cannot be optional and vice versa.
 Optional dependencies are installed either if the project defining them is the current root project or if the dependency is already part of the current dependency tree. A typical use case is libraries defining optional dependencies to all theme libraries they support.
 You can choose which theme library to use by the application that is consuming the library by declaring it as a non-optional dependency.
 
-```yaml
+```yaml hl_lines="3"
   libraries:
     - name: themelib_sap_fiori_3
       optional: true
 ```
 
-??? example
-    **my library**
-    ```yaml
-    specVersion: "2.2"
-    type: library
-    metadata:
-      name: some.library
-    framework:
-      name: SAPUI5
-      libraries:
-        - name: sap.ui.core
-        - name: themelib_sap_belize
-          optional: true
-        - name: themelib_sap_bluecrystal
-          optional: true
-        - name: themelib_sap_fiori_3
-          optional: true
-    ```
-
-    **my application (depending on my library)**
-    ```yaml
-    specVersion: "2.2"
-    type: application
-    metadata:
-      name: some.app
-    framework:
-      name: SAPUI5
-      libraries:
-        - name: sap.ui.core
-        - name: themelib_sap_fiori_3
-    ```
-
-    When building the application project, only the theme library `themelib_sap_fiori_3` will be installed and built.
-
 ## Build Configuration
-### Build Resources
+### Exclude Resources
+
+!!! example
+    ````yaml
+    builder:
+      resources:
+        excludes:
+          - "/resources/some/project/name/test_results/**"
+          - "/test-resources/**"
+          - "!/test-resources/some/project/name/demo-app/**"
+    ````
+
 You can exclude a projects resources from the build process using a list of glob patterns. Matching resources will be ignored by the builder and all build tasks.
 
 Patterns are applied to the **virtual** path of resources (i.e. the UI5 runtime paths). Exclude patterns are always applied after any includes.
 
-````yaml
-builder:
-  resources:
-    excludes:
-      - "/resources/some/project/name/test_results/**"
-      - "/test-resources/**"
-      - "!/test-resources/some/project/name/demo-app/**"
-````
-
 ### Cachebuster
-By default, the generated cachebuster info file signatures are based on timestamps (`time`). In setups like CI environments, a mechanism based on file hashes (`hash`) might be more reliable. See also [PR #241](https://github.com/SAP/ui5-builder/pull/241).
 
-````yaml
-builder:
-  cachebuster:
-    signatureType: hash
-````
+!!! example
+    === "time (default)"
+        ````yaml
+        builder:
+          cachebuster:
+            signatureType: time
+        ````
+    === "hash"
+        ````yaml
+        builder:
+          cachebuster:
+            signatureType: hash
+        ````
+
+By default, the generated cachebuster info file signatures are based on timestamps (`time`). In setups like CI environments, a mechanism based on file hashes (`hash`) might be more reliable. Also see [PR #241](https://github.com/SAP/ui5-builder/pull/241) for more details.
 
 ### Component Preload Generation
 
@@ -297,24 +381,46 @@ However you can define a `componentPreload` configuration to create Component Pr
 
 There are two ways of including components, which can also be used in combination with each other:
 
-- The `paths` option takes one or multiple patterns. For every matched file a separate `Component-preload.js` will be generated. Patterns are always applied relative to the project's virtual source directory `/resources/`
-  ```yaml
-  builder:
-    componentPreload:
-      paths:
-          - "my/great/app/**/Component.js"
-  ```
+#### paths
 
-- The `namespaces` option takes one or multiple component namespaces, which correspond to the directory structures:
-  ```yaml
-  builder:
-    componentPreload:
-      namespaces:
-          - "my/great/app/componentOne"
-          - "my/great/app/componentTwo"
-  ```
+The `paths` option takes one or multiple patterns. For every matched file a separate `Component-preload.js` will be generated. Patterns are always applied relative to the project's virtual source directory `/resources/`
+
+!!! example
+    ```yaml
+    builder:
+      componentPreload:
+        paths:
+            - "my/great/app/**/Component.js"
+    ```
+
+#### namespaces
+
+The `namespaces` option takes one or multiple component namespaces, which correspond to the directory structures:
+
+!!! example
+    ```yaml
+    builder:
+      componentPreload:
+        namespaces:
+            - "my/great/app/componentOne"
+            - "my/great/app/componentTwo"
+    ```
 
 ### Custom Tasks
+
+!!! example
+    ````yaml
+    builder:
+      customTasks:
+        - name: custom-task-1
+          beforeTask: replaceCopyright
+          configuration:
+            some-key: some value
+        - name: custom-task-2
+          afterTask: custom-task-1
+          configuration:
+            color: blue
+    ````
 
 You can define custom build tasks that will be executed for the project. Please refer to the [Custom Tasks Documentation](./extensibility/CustomTasks.md) for a detailed explanation and examples of the build extensibility.
 
@@ -324,48 +430,68 @@ In addition, the execution order needs to be defined by referencing a [standard 
 
 Optionally, arbitrary `configuration` can be passed to the custom task.
 
-````yaml
-builder:
-  customTasks:
-    - name: custom-task-1
-      beforeTask: replaceCopyright
-      configuration:
-        some-key: some value
-    - name: custom-task-2
-      afterTask: custom-task-1
-      configuration:
-        color: blue
-````
-
 ### JSDoc
+
+!!! example
+    ````yaml
+    builder:
+      jsdoc:
+        excludes:
+          - "some/project/name/thirdparty/**"
+    ````
+
 You can exclude the resources of a project from the JSDoc build process using a list of glob patterns. Matching resources will be ignored by the JSDoc build task.
 
 Patterns are always applied relative to the project's virtual **source** directory `/resources/`.
 
 These excludes are applied *before* any general builder excludes that have been defined in `builder.resources.excludes`.
 
-````yaml
-builder:
-  jsdoc:
-    excludes:
-      - "some/project/name/thirdparty/**"
-````
 
 ## Server Configuration
-By default, the UI5 Tooling will serve applications using port `8080`. When running in HTTP/2 or HTTPS mode, port `8443` will be used. If the default port is already in use, the next higher free port will be used.
 
-Instead of this behavior, a project can configure alternative default ports. If the configured port is already in use, an error will be thrown.
+!!! example
+    ````yaml
+    server:
+      settings:
+        httpPort: 1337
+        httpsPort: 1443
+    ````
 
-The server port can still be overwritten with the CLI parameter `--port`.
+By default, the UI5 Tooling will serve applications using port `8080`. When running in HTTP/2 or HTTPS mode, port `8443` will be used.
 
-````yaml
-server:
-  settings:
-    httpPort: 1337
-    httpsPort: 1443
-````
+If the default port is already in use, the next higher free port will be used.
+
+A project can also configure alternative default ports. If the configured port is already in use, an error will be thrown.
+
+The default and configured server ports can always be overwritten with the CLI parameter `--port`.
 
 ## Extension Configuration
+
+!!! example
+    ````yaml
+    specVersion: "2.2"
+    type: application
+    metadata:
+      name: my.application
+    ---
+    specVersion: "2.2"
+    kind: extension
+    type: project-shim
+    metadata:
+      name: my.application.thirdparty
+    shims:
+      configurations:
+        lodash:
+          specVersion: "2.2"
+          type: module
+          metadata:
+            name: lodash
+          resources:
+            configuration:
+              paths:
+                /resources/my/application/thirdparty/: ""
+    ````
+
 Extensions configuration can be added to any projects `ui5.yaml`. For better readability, it should to be located *after* the projects configuration, separated by [three dashes](https://yaml.org/spec/1.2/spec.html#id2760395) "`---`".
 
 In cases where an extension shall be reused across multiple projects you can make it a module itself and have its configuration in a standalone `ui5.yaml` located inside that module.
@@ -377,68 +503,43 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
 - [Custom Server Middleware](./extensibility/CustomServerMiddleware.md)
 - [Project Shims](./extensibility/ProjectShims.md)
 
-### Example
-````yaml
-specVersion: "2.2"
-type: application
-metadata:
-  name: my.application
----
-specVersion: "2.2"
-kind: extension
-type: project-shim
-metadata:
-  name: my.application.thirdparty
-shims:
-  configurations:
-    lodash:
-      specVersion: "2.2"
-      type: module
-      metadata:
-        name: lodash
-      resources:
-        configuration:
-          paths:
-            /resources/my/application/thirdparty/: ""
-````
-
-
 ## Custom Bundling
 
-Custom bundles can be defined in the `ui5.yaml`. Within the `builder/bundles` configuration a list of `bundleDefinitions` can be described.
+!!! example
+    ````yaml
+    builder:
+      bundles:
+        - bundleDefinition:
+            name: "sap-ui-custom.js"
+            defaultFileTypes:
+              - ".js"
+            sections:
+              - mode: raw
+                filters:
+                - ui5loader-autoconfig.js
+                resolve: true
+                sort: true
+          bundleOptions:
+            optimize: true
+        - bundleDefinition:
+            name: "app.js"
+            defaultFileTypes:
+              - ".js"
+            sections:
+              - mode: preload
+                filters:
+                  - some/app/Component.js
+                resolve: true
+                sort: true
+              - mode: provided
+                filters:
+                - ui5loader-autoconfig.js
+                resolve: true
+          bundleOptions:
+            optimize: true
+    ````
 
-````yaml
-builder:
-  bundles:
-    - bundleDefinition:
-        name: "sap-ui-custom.js"
-        defaultFileTypes:
-          - ".js"
-        sections:
-          - mode: raw
-            filters:
-            - ui5loader-autoconfig.js
-            resolve: true
-            sort: true
-      bundleOptions:
-        optimize: true
-    - bundleDefinition:
-        name: "app.js"
-        defaultFileTypes:
-          - ".js"
-        sections:
-          - mode: preload
-            filters:
-              - some/app/Component.js
-            resolve: true
-            sort: true
-          - mode: provided
-            filters:
-            - ui5loader-autoconfig.js
-            resolve: true
-      bundleOptions:
-        optimize: true
-````
+Custom bundles can be defined in the `ui5.yaml`. Within the `builder/bundles` configuration a list of `bundleDefinitions` can be described.
 
 ### Properties
 

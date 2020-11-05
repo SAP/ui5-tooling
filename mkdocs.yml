@@ -7,24 +7,27 @@ site_dir: 'site' # default
 nav:
     - Home: index.md
     - Getting Started: pages/GettingStarted.md
-    - Workflows: pages/Workflows.md
     - Configuration: pages/Configuration.md
-    - CLI: pages/CLI.md
-    - SAPUI5: pages/SAPUI5.md
-    - Modules:
-      - Server: pages/Server.md
-      - Builder: pages/Builder.md
-      - Project: pages/Project.md
+    - UI5 CLI: pages/CLI.md
+    - Development:
+      - Workflows: pages/Workflows.md
+      - OpenUI5: pages/OpenUI5.md
+      - SAPUI5: pages/SAPUI5.md
     - Extensibility:
       - Custom Tasks: pages/extensibility/CustomTasks.md
       - Custom Server Middleware: pages/extensibility/CustomServerMiddleware.md
       - Project Shims: pages/extensibility/ProjectShims.md
+    - Modules:
+      - Server: pages/Server.md
+      - Builder: pages/Builder.md
+      - Project: pages/Project.md
     - Upgrade Guides:
       - Migrate to v2: updates/migrate-v2.md
       - Migrate to v1: updates/migrate-v1.md
     - FAQ: pages/FAQ.md
     - Troubleshooting: pages/Troubleshooting.md
     - API Reference: 'api/index.html' # only available in final build, not serve
+
 theme:
   name: 'material'
   palette:
@@ -33,6 +36,7 @@ theme:
   logo: 'images/logo.svg'
   favicon: 'images/favicon.png'
   font: false
+
 extra_css:
   - 'stylesheets/extra.css'
 
@@ -43,6 +47,7 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - attr_list
   - codehilite:
       guess_lang: false
   - toc:
@@ -56,6 +61,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.keys
   - pymdownx.smartsymbols
+  - pymdownx.tabbed
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true

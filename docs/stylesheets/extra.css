@@ -46,7 +46,61 @@
   /* IE9 Compat Modes */
   src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.svg#72-Black") format("svg");
   /* Legacy iOS */ }
+@font-face {
+  font-family: '72-Black';
+  src: url("webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.svg#72-Black") format("svg");
+  /* Legacy iOS */ }
+@font-face {
+  font-family: "SAP-icons";
+  src:
+    url('https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/SAP-icons.woff2') format('woff2'), /* Chrome 36+, Firefox 39+, Safari 10+, Edge 14+, Chrome 51+ for Android */
+    url('https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/SAP-icons.woff') format('woff'), /* IE9+, Safari 5.1+, iOS 5.1+, Android Browser 4.4+, IE Mobile 11+ */
+    url('https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/SAP-icons.ttf') format('truetype'), /* Fallback for any older browser (except IE8 and below which are not supported anyway) */
+    local('SAP-icons'); /* fallback to local installed font in case it can't be loaded (e.g. font download is disabled due to browser security settings) */
+  font-weight: normal;
+  font-style: normal;
+}
 
 html, body, h1, h2, h3, h4, h5, h6, p {
   font-family: "72-Regular", "72", "72full", Arial, Helvetica, sans-serif;
+}
+
+.sap-icon-initiative::before {
+  font-family: SAP-icons;
+  content: "\e161";
+  margin-right: 0.5em;
+}
+
+.sap-icon-accept::before {
+  font-family: SAP-icons;
+  content: "\e05b";
+}
+
+.sap-icon-ui5-after::after {
+  font-family: SAP-icons;
+  content: "\e21b";
+  margin-left: 0.5em;
+  color: var(--md-primary-fg-color);
+}
+
+.sap-icon-circle-task::before {
+  font-family: SAP-icons;
+  content: "\e254";
+}
+.sap-icon-circle-task-before::before {
+  font-family: SAP-icons;
+  content: "\e254";
+  margin-right: 0.5em;
+}
+
+.sap-icon-circle-task-2::before {
+  font-family: SAP-icons;
+  content: "\e255";
+}
+.sap-icon-circle-task-2-before::before {
+  font-family: SAP-icons;
+  content: "\e255";
+  margin-right: 0.5em;
 }

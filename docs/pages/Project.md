@@ -1,4 +1,7 @@
 # UI5 Project
+
+[**API Reference**](https://sap.github.io/ui5-tooling/api/module-@ui5_project.html){: .md-button .sap-icon-initiative }
+
 ## Normalizer
 The purpose of the normalizer is to collect dependency information and to enrich it with project configuration (both done in [generateProjectTree](https://sap.github.io/ui5-tooling/api/module-@ui5_project.normalizer.html#.generateProjectTree)).
 
