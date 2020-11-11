@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report an issue with the UI5 Tooling
+about: Report an issue with UI5 Tooling
 title: ''
 labels: bug, needs triage
 assignees: ''
@@ -24,7 +24,7 @@ Thank you 🧡
 ## Steps to Reproduce the Issue
 <!--
     Please provide detailed steps on how we can reproduce your issue.
-    Depending on your issue, consider forking our sample app to reproduce it there: https://github.com/SAP/openui5-sample-app
+    Depending on your issue, consider forking our sample app to reproduce it here: https://github.com/SAP/openui5-sample-app
 -->
 1. {...}
 2. {...}
