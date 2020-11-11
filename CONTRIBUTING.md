@@ -11,7 +11,7 @@
 
 ## 📝 Reporting Issues
 ### Seeking Help / Not a Bug
-If you need help setting something up, or if you have questions regarding the UI5 Tooling, please seek help on a community platform like the [SAP Community](https://answers.sap.com/topics/ui5-tooling.html), [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the [`#tooling`](https://openui5.slack.com/archives/C0A7QFN6B) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
+If you need help setting something up, or if you have questions regarding UI5 Tooling, please seek help on a community platform like the [SAP Community](https://answers.sap.com/topics/ui5-tooling.html), [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the [`#tooling`](https://openui5.slack.com/archives/C0A7QFN6B) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/).
 
 ### How to Report an Issue
 Note that we collect issues for all UI5 Tooling modules (*[ui5-cli](https://github.com/SAP/ui5-cli), [ui5-server](https://github.com/SAP/ui5-server), [ui5-project](https://github.com/SAP/ui5-project), [ui5-builder](https://github.com/SAP/ui5-builder), [ui5-fs](https://github.com/SAP/ui5-fs) and [ui5-logger](https://github.com/SAP/ui5-logger)*) in the central [ui5-tooling](https://github.com/SAP/ui5-tooling) repository.
@@ -76,7 +76,7 @@ Bug report analysis support is always very welcome! See [Analyze Issues](#-analy
 ## 🤩 Feature Requests
 You can request most features by creating an issue in the UI5 Tooling repository: https://github.com/SAP/ui5-tooling/issues/new
 
-For bigger features an RFC (Request for Comment) might be necessary. You should always clarify the need for an RFC with the project contributors upfront. Either via an issue or in our [Slack channel](#seeking-help--not-a-bug). You can use [this template](rfcs/0000-template.md) for creating an RFC.
+For bigger features an RFC (Request for Comment) might be necessary. You should always clarify the need for an RFC with the project contributors upfront. You could do this either by opening an issue or in our [Slack channel](#seeking-help--not-a-bug). You can use [this template](rfcs/0000-template.md) for creating an RFC.
 
 ## 🔍 Analyzing Issues
 Analyzing issue reports can be a lot of effort. Any help is welcome! 👍

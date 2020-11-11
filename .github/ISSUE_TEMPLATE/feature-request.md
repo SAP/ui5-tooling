@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Request a new feature to be added to the UI5 Tooling
+about: Request a new feature to be added to UI5 Tooling
 title: ''
 labels: enhancement
 assignees: ''
@@ -13,7 +13,7 @@ https://github.com/SAP/ui5-tooling/blob/master/CONTRIBUTING.md#-feature-requests
 -->
 
 ## Is your feature request related to a problem? Please describe.
-A clear and concise description of what the problem is. Ex. I'm always frustrated when {...}
+A clear and concise description of the problem, e.g. "I'm always frustrated when {...}"
 
 ## Describe the solution you'd like
 A clear and concise description of what you want to happen.
