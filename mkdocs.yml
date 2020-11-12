@@ -10,7 +10,7 @@ nav:
     - Configuration: pages/Configuration.md
     - UI5 CLI: pages/CLI.md
     - Development:
-      - Workflows: pages/Workflows.md
+      - Overview: pages/Overview.md
       - OpenUI5: pages/OpenUI5.md
       - SAPUI5: pages/SAPUI5.md
     - Extensibility:

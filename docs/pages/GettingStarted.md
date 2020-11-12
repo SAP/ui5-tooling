@@ -12,9 +12,12 @@ ui5 --help
 ```
 
 ## ⚡️ Quick Start: OpenUI5 Sample App
-Check out the [OpenUI5 Sample App](https://github.com/SAP/openui5-sample-app) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/#openui5-sample-app) to play around with the UI5 Tooling.
+Check out the [OpenUI5 Sample App](https://github.com/SAP/openui5-sample-app) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/#openui5-sample-app) to play around with the UI5 Tooling!
 
-## Enable an Existing Project
+## Starting a New Project
+= **TODO:** Refer to templates =
+
+## Enabling an Existing Project
 You can easily check whether or not a project (application or library) can already be used with the UI5 Tooling by looking for a `ui5.yaml` file in the project's root directory.  
 This file (with some exceptions) is required for all projects and their dependencies (e.g. reuse libraries) to use them in the UI5 Tooling.
 
