@@ -2,6 +2,9 @@
 
 The UI5 Server Extensibility enables you to enhance the functionality of the UI5 Server. You may want to handle requests differently. For example add various headers to a response or parse data of a POST request in a specific way. For this you can plug custom middleware implementations into the internal [express](https://expressjs.com/) server of the UI5 Server module.
 
+TODO: https://petermuessig.github.io/ui5-ecosystem-showcase/
+
+
 ## Configuration
 In a projects `ui5.yaml` file, you can define additional server middleware modules that will be executed when the request is received by the server. This configuration exclusively affects the server started in this project. Custom middleware configurations defined in any dependencies are ignored.
 

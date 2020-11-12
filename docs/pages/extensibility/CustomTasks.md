@@ -2,6 +2,8 @@
 
 The UI5 Build Extensibility enables you to enhance the build process of any UI5 project. In addition to the [standard task list](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html), custom tasks can be created.
 
+TODO: https://petermuessig.github.io/ui5-ecosystem-showcase/
+
 ## Configuration
 
 You can configure your build process with additional build task. The custom tasks can be defined in the project [configuration](https://sap.github.io/ui5-tooling/pages/Configuration/) within the `ui5.yaml` file.

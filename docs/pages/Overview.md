@@ -1,7 +1,18 @@
-# Workflows
-When developing a UI5 project locally, you should use the UI5 Server (`ui5 serve`) and not the UI5 Builder (`ui5 build`). Building a project should only ever be required when deploying it.
+# Development Overview
+When developing a UI5 project on your local system, you should use the UI5 Server (`ui5 serve`) and not the UI5 Builder (`ui5 build`). Building a project should only be required when deploying it.
 
 However, you might have good reasons to also use the UI5 Builder during development. In such cases, feel free to let us know! Maybe your use case could be covered by a future enhancement of the UI5 Server.
+
+## Project Dependencies
+
+The UI5 Tooling differentiates between "framework dependencies" and "project dependencies".
+
+**Framework dependencies** are generally libraries and themes provided by the SAP frameworks "OpenUI5" and "SAPUI5". The UI5 Tooling will take care of downloading them and handling their versions for you. Please see the corresponding documentation on both options:
+
+* [**OpenUI5** Framework Dependencies](./OpenUI5.md)
+* [**SAPUI5** Framework Dependencies](./SAPUI5.md)
+
+**Project dependencies** are all other libraries, custom themes, UI5 Tooling extensions or JavaScript modules your project depends on. In general these dependencies are maintained in the package.json of your project. See also: [FAQ: Why package.json? / Why npm?](https://sap.github.io/ui5-tooling/pages/FAQ/#why-packagejson-why-npm).
 
 ## Linking Projects
 Would you like to work on an application project and one or more of its dependencies at the same time? We got you covered!
@@ -52,10 +63,7 @@ That's it. You can check whether the linking worked by executing `ui5 tree` in t
      │  └─ dependencies
 [...]
 ```
-
-## OpenUI5 Framework Development
-See [SAP/openui5 Developing UI5](https://github.com/SAP/openui5/blob/master/docs/developing.md#developing-ui5).
-        
+  
 ## HTTP/2 Development Webserver
 The UI5 Tooling contains a web server to serve the project via HTTP/2 protocol.
 
@@ -63,7 +71,7 @@ The UI5 Tooling contains a web server to serve the project via HTTP/2 protocol.
 ui5 serve --h2
 ```
 
-This requires an SSL certificate. You are guided through the automatic generation process.
+This requires an SSL certificate. You are guided through the automatic generation process. Also see the [UI5 Server documentation](./Server.md#ssl-certificates)
 
 ## Integration in Other Tools
 One of the key features of the UI5 Tooling is its modularization. Single parts of the tooling can easily be integrated in other `Node.js`-based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).

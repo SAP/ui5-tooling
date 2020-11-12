@@ -1,25 +1,38 @@
-# Consuming SAPUI5 libraries
+# SAPUI5 Development With the UI5 Tooling
 
-!!! Warning
+!!! info
     Make sure you have installed the UI5 CLI in Version 2.0 or later: `npm install --global @ui5/cli`
+
+    The minimum version of SAPUI5 that can be consumed by the UI5 Tooling as described below is **1.76.0.**  
+    For lower versions, consider using the [CDN bootstrap](https://ui5.sap.com/#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae) or a custom middleware like [ui5-middleware-simpleproxy](https://www.npmjs.com/package/ui5-middleware-simpleproxy).
 
 ## Overview
 
 SAPUI5 libraries are hosted on the public npm registry at `registry.npmjs.org`. However, you should not install them using node package managers like npm or Yarn. Instead, please let the UI5 Tooling handle them by following this guide.
 
-!!! info
-    For background information also see the Blog Post ["UI5ers Buzz #49: The UI5 Tooling and SAPUI5 – The Next Step"](https://blogs.sap.com/2020/04/01/ui5ers-buzz-49-the-ui5-tooling-and-sapui5-the-next-step/)
+!!! note
+    For more background information also see the Blog Post ["UI5ers Buzz #49: The UI5 Tooling and SAPUI5 – The Next Step"](https://blogs.sap.com/2020/04/01/ui5ers-buzz-49-the-ui5-tooling-and-sapui5-the-next-step/)
 
 ## Usage
-Since Version 2.0 the UI5 CLI will automatically download all required framework dependencies of a project if they have been defined in the corresponding `ui5.yaml` configuration. They will be cached in a `.ui5` directory located in your users' home directory. This happens transparently whenever you execute the `ui5 serve` or `ui5 build` commands.
+Since version 2.0 of the UI5 CLI, it will automatically download all required framework dependencies of a project that have been listed in the corresponding `ui5.yaml` file. They will be cached in a `.ui5` directory located in your users' home directory. This happens transparently whenever you execute the `ui5 serve` or `ui5 build` commands.
 
 All non-framework dependencies, such as reuse libraries or UI5 Tooling extensions, still need to be maintained as npm dependencies in the projects `package.json`. At the same time, framework dependencies listed in the `ui5.yaml` should not be listed in the `package.json` as they will be ignored by the UI5 Tooling.
 
 ## Configuration
 
-There is a new configuration section dedicated to framework dependency handling.
+In your projects `ui5.yaml`, there is a configuration section dedicated to framework dependency handling.
 
-**Example:**
+This configuration can be maintained by editing the file, or by using the UI5 CLI:
+
+!!! example
+      Using the [UI5 CLI](./CLI.md):
+      ```sh
+      ui5 use sapui5@latest
+      ui5 add sap.ui.core sap.m sap.ui.comp themelib_sap_fiori_3
+      ui5 add -D sap.ushell
+      ```
+
+**ui5.yaml (application)**
 ```yaml
 specVersion: "2.2"
 type: application
@@ -27,7 +40,7 @@ metadata:
   name: some.project.name
 framework:
   name: SAPUI5
-  version: 1.76.0
+  version: 1.82.0
   libraries:
     - name: sap.ui.core
     - name: sap.m
@@ -37,7 +50,7 @@ framework:
     - name: themelib_sap_fiori_3
 ```
 
-**Example:**
+**ui5.yaml (library)**
 ```yaml
 specVersion: "2.2"
 type: library
@@ -55,16 +68,10 @@ framework:
       optional: true
 ```
 
-Make sure that your project defines [Specification Version 2.0](./Configuration.md#specification-version-20) or higher.
+Please make sure that your project defines [Specification Version 2.0](./Configuration.md#specification-version-20) or higher.
 
-For details, please see the corresponding [framework configuration documentation](././Configuration.md#framework-configuratio).
+For details please refer to the [framework configuration documentation](././Configuration.md#framework-configuratio).
 
-### Differences Between OpenUI5 and SAPUI5
+## Differences Between OpenUI5 and SAPUI5
 
-The open source project [OpenUI5](https://openui5.org/) provides most of the fundamental framework features. [SAPUI5](https://ui5.sap.com/) enhances on this by providing additional libraries under a different license.
-
-OpenUI5 is provided under the Apache 2.0 license. The SAPUI5 packages that are consumed in the UI5 Tooling are provided under the terms of the [SAP Developer License Agreement](https://tools.hana.ondemand.com/developer-license-3.1.txt).
-
-Note that projects which use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
-
-Please also see the [UI5 SDK documentation "SAPUI5 vs. OpenUI5"](https://ui5.sap.com/#/topic/5982a9734748474aa8d4af9c3d8f31c0).
+Please refer to our documentation on the [differences between OpenUI5 and SAPUI5](./FAQ.md##whats-the-difference-between-openui5-and-sapui5)
