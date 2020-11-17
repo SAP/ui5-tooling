@@ -1,7 +1,7 @@
 # Getting Started
 ## Installing the UI5 CLI
 ### Requirements
-- [Node.js](https://nodejs.org/) (**version 10 or higher** ⚠️)
+- [Node.js](https://nodejs.org/) version 10 or later
 
 ### Installation
 ```sh
@@ -15,7 +15,14 @@ ui5 --help
 Check out the [OpenUI5 Sample App](https://github.com/SAP/openui5-sample-app) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/#openui5-sample-app) to play around with the UI5 Tooling!
 
 ## Starting a New Project
-= **TODO:** Refer to templates =
+The easiest way to start a new UI5 project is to use a template generator like [**generator-easy-ui5**](https://github.com/SAP/generator-easy-ui5).
+
+Choose a template that is designed for the type of project you want to create and the target environment where you want to deploy it to.
+Make sure that the template already uses the UI5 Tooling. A good indicator for that is the presence of a `ui5.yaml` file in the generated project.
+
+When working with the SAP Business Application Studio, there are several templates available to you. Check out the tutorial on creating a basic SAPUI5 application and deploying it to Cloud Foundry from within the SAP Business Application Studio: [Create an SAP Fiori App Using SAP Business Application Studio](https://developers.sap.com/tutorials/appstudio-fioriapps-create.html)
+
+You can find many guides on UI5 development with the SAP Business Application Studio in the [Tutorial Navigator](https://developers.sap.com/tutorial-navigator.html?tag=topic:sapui5&tag=products:technology-platform/sap-business-application-studio).
 
 ## Enabling an Existing Project
 You can easily check whether or not a project (application or library) can already be used with the UI5 Tooling by looking for a `ui5.yaml` file in the project's root directory.  
@@ -50,13 +57,18 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
     You can choose between the OpenUI5 and the SAPUI5 Framework.
 
-    Don't know which one to choose? Check out our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+    Don't know which one to choose? Check out our [documentation on the differences between OpenUI5 and SAPUI5](./FAQ.md##whats-the-difference-between-openui5-and-sapui5).
 
 1. Add required libraries
     ```sh
     ui5 add sap.ui.core sap.m sap.ui.table themelib_sap_fiori_3 # [...]
     ```
 
+    You can find a documentation of all libraries, including samples and more in the Demo Kit:
+   
+    - [**OpenUI5** Demo Kit](https://openui5.hana.ondemand.com/api)
+    - [**SAPUI5** Demo Kit](https://ui5.sap.com/#/api)
+    
 1. Start the server and work on your project! 🎉
     ```sh
     ui5 serve
@@ -69,6 +81,7 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
         - [Server](./Server.md)
         - [Builder](./Builder.md)
+        - [CLI](./CLI.md)
 
 1. If you are using Git or similar version control, commit `package.json` and `ui5.yaml` to your repository.
     ```sh
@@ -78,4 +91,3 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
 **Hooray! You can now use the UI5 Tooling in your project!**
 {: .sap-icon-ui5-after }
-

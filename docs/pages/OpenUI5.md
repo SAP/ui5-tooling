@@ -4,10 +4,10 @@ OpenUI5 consumption with the UI5 Tooling is very similar to SAPUI5 consumption. 
 
 Note that projects defining the "SAPUI5" framework can depend on projects defining the "OpenUI5" framework. However, OpenUI5 projects can't depend on SAPUI5 projects.
 
-Please also refer to our documentation on the [differences between OpenUI5 and SAPUI5](./FAQ.md##whats-the-difference-between-openui5-and-sapui5).
+Please also refer to our documentation on the [differences between OpenUI5 and SAPUI5](./FAQ.md#whats-the-difference-between-openui5-and-sapui5).
 
 !!! info
-    The minimum SAPUI5 version that can be consumed by the UI5 Tooling is 1.52.5
+    The minimum OpenUI5 version that can be consumed by the UI5 Tooling is **1.52.5**
 
 ## Configuration
 In your projects `ui5.yaml`, there is a configuration section dedicated to framework dependency handling.
@@ -21,9 +21,7 @@ This configuration can be maintained by editing the file, or by using the UI5 CL
       ui5 add sap.ui.core sap.m sap.ui.table themelib_sap_fiori_3
       ```
 
-**ui5.yaml (application)**
-
-**Example:**
+**Example ui5.yaml of an application**
 ```yaml
 specVersion: "2.2"
 type: application
@@ -39,7 +37,7 @@ framework:
     - name: themelib_sap_fiori_3
 ```
 
-**Example:**
+**Example ui5.yaml of a library**
 ```yaml
 specVersion: "2.2"
 type: library
@@ -61,9 +59,5 @@ Please make sure that your project defines [Specification Version 2.0](./Configu
 
 For details, please see the corresponding [framework configuration documentation](./Configuration.md#framework-configuration).
 
-## OpenUI5 Consumption via package.json
-
-
 ## OpenUI5 Framework Development
-See [SAP/openui5 Developing UI5](https://github.com/SAP/openui5/blob/master/docs/developing.md#developing-ui5).
-
+Please refer to the [OpenUI5 Framework Development Documentation](https://github.com/SAP/openui5/blob/master/docs/developing.md#developing-ui5).

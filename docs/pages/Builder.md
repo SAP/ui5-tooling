@@ -46,6 +46,8 @@ They are responsible for collecting resources which can be modified by a process
 
 A project can add custom tasks to the build by using the [Custom Tasks Extensibility](./extensibility/CustomTasks.md).
 
+### Standard Tasks
+
 All available standard tasks are documented [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html) and listed below in the order of their execution:
 
 | Task | Type `application` | Type `library` | Type `theme-library` |

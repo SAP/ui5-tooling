@@ -235,14 +235,14 @@ In your project's framework configuration you must define whether you want to us
       version: 1.82.0
     ```
 
-If you are not sure which framework is right for you, see our [documentation on the differences between OpenUI5 and SAPUI5](./SAPUI5.md#differences-between-openui5-and-sapui5).
+If you are not sure which framework is right for you, see our [documentation on the differences between OpenUI5 and SAPUI5](./FAQ.md##whats-the-difference-between-openui5-and-sapui5).
 
 You can find an overview of the available versions for each framework here:
 
-- [**SAPUI5** Version Overview](http://ui5.sap.com/versionoverview.html)
-    - *The lowest version supported by the UI5 Tooling is __1.76.0__*
 - [**OpenUI5** Version Overview](https://openui5.hana.ondemand.com/versionoverview.html)
     - *The lowest version supported by the UI5 Tooling is __1.52.5__*
+- [**SAPUI5** Version Overview](http://ui5.sap.com/versionoverview.html)
+    - *The lowest version supported by the UI5 Tooling is __1.76.0__*
 
 !!! info
     Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
