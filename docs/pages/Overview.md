@@ -9,15 +9,15 @@ The UI5 Tooling differentiates between "framework dependencies" and "project dep
 
 **Framework dependencies** are generally libraries and themes provided by the SAP frameworks "OpenUI5" and "SAPUI5". The UI5 Tooling will take care of downloading them and handling their versions for you. Please see the corresponding documentation on both options:
 
-* [**OpenUI5** Framework Dependencies](./OpenUI5.md)
-* [**SAPUI5** Framework Dependencies](./SAPUI5.md)
+* [Working with **OpenUI5** Framework Dependencies](./OpenUI5.md)
+* [Working with **SAPUI5** Framework Dependencies](./SAPUI5.md)
 
-**Project dependencies** are all other libraries, custom themes, UI5 Tooling extensions or JavaScript modules your project depends on. In general these dependencies are maintained in the package.json of your project. See also: [FAQ: Why package.json? / Why npm?](https://sap.github.io/ui5-tooling/pages/FAQ/#why-packagejson-why-npm).
+**Project dependencies** are all other libraries, custom themes, UI5 Tooling extensions or JavaScript modules your project depends on. In general these dependencies are maintained in the package.json of your project. See also: [FAQ: Why package.json? / Why npm?](./FAQ.md#why-packagejson-why-npm).
 
 ## Linking Projects
 Would you like to work on an application project and one or more of its dependencies at the same time? We got you covered!
 
-By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](https://sap.github.io/ui5-tooling/pages/FAQ/#why-packagejson-why-npm)) you have a variety of options.  
+By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](./FAQ.md#why-packagejson-why-npm)) you have a variety of options.  
 Here is an example with [npm](https://www.npmjs.com/get-npm), an application, and a reuse library:
 
 **Example: Your Directory Structure**
@@ -76,4 +76,4 @@ This requires an SSL certificate. You are guided through the automatic generatio
 ## Integration in Other Tools
 One of the key features of the UI5 Tooling is its modularization. Single parts of the tooling can easily be integrated in other `Node.js`-based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).
 
-All JavaScript APIs available for direct consumption are listed [here](https://sap.github.io/ui5-tooling/api/index.html). However, for standard UI5 development, the [UI5 CLI](https://github.com/SAP/ui5-cli) should always be the first choice.
+All JavaScript APIs available for direct consumption are listed [here](https://sap.github.io/ui5-tooling/api/index.html). However, for standard UI5 development, the [UI5 CLI](./CLI.md) should always be the first choice.

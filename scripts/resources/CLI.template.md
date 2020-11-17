@@ -1,6 +1,6 @@
 # UI5 CLI
 ## Requirements
-* [Node.js](https://nodejs.org/) (**version 10 or higher** ⚠️)
+- [Node.js](https://nodejs.org/) version 10 or later
 
 ## Installation
 

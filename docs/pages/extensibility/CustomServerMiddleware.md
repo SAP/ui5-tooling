@@ -2,13 +2,14 @@
 
 The UI5 Server Extensibility enables you to enhance the functionality of the UI5 Server. You may want to handle requests differently. For example add various headers to a response or parse data of a POST request in a specific way. For this you can plug custom middleware implementations into the internal [express](https://expressjs.com/) server of the UI5 Server module.
 
-TODO: https://petermuessig.github.io/ui5-ecosystem-showcase/
+The UI5 community already created many custom middleware packages to integrate into your project. They are often prefixed as `ui5-middleware-` to make them easily searchable in the [npm registry](https://www.npmjs.com/search?q=ui5-middleware-).
 
+Please note that custom middleware packages from third parties can not only modify how your project is served but also execute arbitrary code on your system. In fact, this is the case for all npm packages you install. Always act with the according care and follow best practices.
 
 ## Configuration
 In a projects `ui5.yaml` file, you can define additional server middleware modules that will be executed when the request is received by the server. This configuration exclusively affects the server started in this project. Custom middleware configurations defined in any dependencies are ignored.
 
-A middleware may be executed before or after any other middleware.
+A middleware may be executed before or after any other middleware. This can either be a [standard middleware](../Server.md#standard-middleware) or another custom middleware.
 
 ### Example: Basic configuration
 ```yaml
@@ -25,16 +26,14 @@ server:
         debug: true
 ```
 
-In the above sample the middleware `compression` is already included as a standard middleware by the UI5 Server.
-
-When serving the application `my.application`, this will execute the custom middleware `myCustomMiddleware` after `compression`.
+In the above example the middleware `compression` is already included as a standard middleware by the UI5 Server. When serving the application `my.application`, the server will call the custom middleware `myCustomMiddleware` after `compression`.
 
 There can be optional configuration parameters which are passed directly to the custom middleware implementation (see below).
 
 An optional mountPath for which the middleware function is invoked can be provided. It will be passed to the `app.use` call (see [express API reference](https://expressjs.com/en/4x/api.html#app.use)).
 
 ### Execution order
-The order of the middleware is important. Multiple middleware configurations are applied in the provided order. 
+Note that middleware configurations are applied in the order they are defined. When referencing another custom middleware, it has to be defined *before* that reference.
 
 ## Custom Middleware Extension
 A custom middleware extension consists of a `ui5.yaml` and a [custom middleware implementation](#custom-middleware-implementation). It can be a standalone module or part of an existing UI5 project.

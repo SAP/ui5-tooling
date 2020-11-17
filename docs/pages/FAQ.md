@@ -6,7 +6,7 @@ Please check our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/bl
 Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/master/CONTRIBUTING.md#report-an-issue) on how to report an issue.
 
 ### What's the Difference Between OpenUI5 and SAPUI5?
-The open source project [OpenUI5](https://openui5.org/) provides most of the fundamental framework features. [SAPUI5](https://ui5.sap.com/) enhances on this by providing additional libraries under a different license.
+The open source project [OpenUI5](https://openui5.org/) provides most of the fundamental framework features. [SAPUI5](https://ui5.sap.com/) enhances on this by providing **additional libraries** under a **different license**.
 
 OpenUI5 is provided under the Apache 2.0 license. The SAPUI5 packages that are consumed in the UI5 Tooling are provided under the terms of the [SAP Developer License Agreement](https://tools.hana.ondemand.com/developer-license-3.1.txt).
 

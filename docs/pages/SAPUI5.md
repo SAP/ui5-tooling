@@ -32,7 +32,7 @@ This configuration can be maintained by editing the file, or by using the UI5 CL
       ui5 add -D sap.ushell
       ```
 
-**ui5.yaml (application)**
+**Example ui5.yaml of an application**
 ```yaml
 specVersion: "2.2"
 type: application
@@ -50,7 +50,7 @@ framework:
     - name: themelib_sap_fiori_3
 ```
 
-**ui5.yaml (library)**
+**Example ui5.yaml of a library**
 ```yaml
 specVersion: "2.2"
 type: library
