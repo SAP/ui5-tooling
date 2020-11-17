@@ -1,5 +1,7 @@
 # UI5 Project
 
+The [UI5 Project](https://github.com/SAP/ui5-project) module provides functionality to build a UI5 project's dependency tree, including the validated project configurations. It is also responsible for installing and managing framework dependencies. Also see [Development Overview: Project Dependencies](./Overview.md#project-dependencies).
+
 [**API Reference**](https://sap.github.io/ui5-tooling/api/module-@ui5_project.html){: .md-button .sap-icon-initiative }
 
 ## Normalizer
