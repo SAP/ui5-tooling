@@ -1,4 +1,4 @@
-# SAPUI5 Development With the UI5 Tooling
+# Consuming SAPUI5 Libraries
 
 !!! info
     Make sure you have installed the UI5 CLI in Version 2.0 or later: `npm install --global @ui5/cli`

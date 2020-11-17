@@ -1,8 +1,8 @@
-# OpenUI5 Development With the UI5 Tooling
+# Consuming OpenUI5 Libraries
 
 OpenUI5 consumption with the UI5 Tooling is very similar to SAPUI5 consumption. Please refer to the documentation on [SAPUI5 Development With the UI5 Tooling](./SAPUI5.md) for a general description of how the UI5 Tooling can fetch and provide framework dependencies to your project.
 
-Note that projects defining the "SAPUI5" framework can depend on projects defining the "OpenUI5" framework. However, OpenUI5 projects can't depend on SAPUI5 projects.
+Note that projects using the SAPUI5 framework can depend on projects using the OpenUI5 framework. However, OpenUI5 projects can't depend on SAPUI5 projects.
 
 Please also refer to our documentation on the [differences between OpenUI5 and SAPUI5](./FAQ.md#whats-the-difference-between-openui5-and-sapui5).
 
