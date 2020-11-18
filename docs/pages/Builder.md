@@ -2,9 +2,9 @@
 
 The [UI5 Builder](https://github.com/SAP/ui5-builder) module takes care of building your project.
 
-Based on a project's type, the UI5 Builder defines a series of build steps to execute, these are also called "tasks".
+Based on a project's type, the UI5 Builder defines a series of build steps to execute; these are also called "tasks".
 
-For every type there is a set of default tasks. You can disable single tasks using the `--exclude-task` [CLI parameter](./CLI.md#ui5-build) and you can include tasks using the `--include-task` parameter.
+For every type there is a set of default tasks. You can disable single tasks using the `--exclude-task` [CLI parameter](./CLI.md#ui5-build), and you can include tasks using the `--include-task` parameter.
 
 [**API Reference**](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.html){: .md-button .sap-icon-initiative }
 
@@ -48,7 +48,7 @@ A project can add custom tasks to the build by using the [Custom Tasks Extensibi
 
 ### Standard Tasks
 
-All available standard tasks are documented [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html) and listed below in the order of their execution:
+All available standard tasks are documented [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html) and are listed below in the order of their execution:
 
 | Task | Type `application` | Type `library` | Type `theme-library` |
 | ---- | :----: | :----: | :----: |
@@ -76,7 +76,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 *Enabled by default*
 {: .sap-icon-circle-task-before }
 
-*Disabled by default. Can be activated by certain build modes, project configuration or by using the `--include-task` [CLI parameter](./CLI.md#ui5-build). See footnotes were given* 
+*Disabled by default. Can be activated by certain build modes, project configuration or by using the `--include-task` [CLI parameter](./CLI.md#ui5-build). See footnotes where given* 
 {: .sap-icon-circle-task-2-before }
 
 ---

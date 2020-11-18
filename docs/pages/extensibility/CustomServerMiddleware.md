@@ -2,7 +2,7 @@
 
 The UI5 Server Extensibility enables you to enhance the functionality of the UI5 Server. You may want to handle requests differently. For example add various headers to a response or parse data of a POST request in a specific way. For this you can plug custom middleware implementations into the internal [express](https://expressjs.com/) server of the UI5 Server module.
 
-The UI5 community already created many custom middleware packages to integrate into your project. They are often prefixed as `ui5-middleware-` to make them easily searchable in the [npm registry](https://www.npmjs.com/search?q=ui5-middleware-).
+The UI5 community already created many custom middleware packages which you can integrate into your project. They are often prefixed by `ui5-middleware-` to make them easily searchable in the [npm registry](https://www.npmjs.com/search?q=ui5-middleware-).
 
 Please note that custom middleware packages from third parties can not only modify how your project is served but also execute arbitrary code on your system. In fact, this is the case for all npm packages you install. Always act with the according care and follow best practices.
 

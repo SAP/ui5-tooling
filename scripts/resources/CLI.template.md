@@ -1,6 +1,6 @@
 # UI5 CLI
 ## Requirements
-- [Node.js](https://nodejs.org/) version 10 or later
+- [Node.js](https://nodejs.org/) Version 10 or later
 
 ## Installation
 
@@ -100,7 +100,7 @@ These options you can use with each command.
 ## Local vs. Global Installation
 In general, we recommend a global installation of the UI5 CLI (`npm install --global @ui5/cli`).
 
-However, it makes sense to add the UI5 CLI as a [devDependency](https://docs.npmjs.com/files/package.json#devdependencies) (`npm install --save-dev @ui5/cli`) to a projects `package.json`. This not only ensures that every developer working on the project uses the same version of the UI5 CLI, your continuous integration environments will also use this version.
+However, it makes sense to add the UI5 CLI as a [devDependency](https://docs.npmjs.com/files/package.json#devdependencies) (`npm install --save-dev @ui5/cli`) to a project's `package.json`. This ensures that every developer working on the project uses the same version of the UI5 CLI and your continuous integration environments also uses this version.
 
 In case you have both, a local installation in one of your projects as well as a global installation, the UI5 CLI will always try to invoke the local installation. This is in part because [npm scripts](https://docs.npmjs.com/misc/scripts) defined in your `package.json` will also always invoke the local installation.
 

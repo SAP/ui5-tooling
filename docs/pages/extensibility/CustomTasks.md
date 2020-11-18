@@ -2,7 +2,7 @@
 
 The UI5 Build Extensibility enables you to enhance the build process of any UI5 project. In addition to the [standard tasks](../Builder.md#standard-tasks), custom tasks can be created.
 
-The UI5 community already created many custom tasks which you can integrate into your project. They are often prefixed as `ui5-task-` to make them easily searchable in the [npm registry](https://www.npmjs.com/search?q=ui5-task-).
+The UI5 community already created many custom tasks which you can integrate into your project. They are often prefixed by `ui5-task-` to make them easily searchable in the [npm registry](https://www.npmjs.com/search?q=ui5-task-).
 
 Please note that custom tasks from third parties can not only modify your project but also execute arbitrary code on your system. In fact, this is the case for all npm packages you install. Always act with the according care and follow best practices.
 
@@ -10,7 +10,7 @@ Please note that custom tasks from third parties can not only modify your projec
 
 You can configure your build process with additional build task. These custom tasks are defined in the project [configuration](../Configuration.md).
 
-To hook your custom tasks into the different build phase of a project, they reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Note that a custom task will only be executed if the referenced task is executed (i.e. is not disabled).
+To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Note that a custom task will only be executed if the referenced task is executed (i.e. is not disabled).
 
 In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.  
 Another custom task called `generateMarkdownFiles` is then executed immediately after the standard task `uglify`.
@@ -35,7 +35,7 @@ builder:
 
 ### Example: Connect multiple custom tasks
 
-You can also connect multiple custom task with each other. The order in the configuration is important in this case. You have to make sure that a task is defined *before* you reference it via `beforeTask` or `afterTask`.
+You can also connect multiple custom tasks with each other. The order in the configuration is important in this case. You have to make sure that a task is defined *before* you reference it via `beforeTask` or `afterTask`.
 
 ````yaml
 # In this example 'myCustomTask2' gets executed after 'myCustomTask1'.
@@ -144,7 +144,7 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 ````
 
 !!! warning
-    Depending on your project setup, the UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
+    Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
 
 
 ## Helper Class `TaskUtil`
