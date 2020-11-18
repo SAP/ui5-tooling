@@ -5,9 +5,9 @@ However, you might have good reasons to also use the UI5 Builder during developm
 
 ## Project Dependencies
 
-The UI5 Tooling differentiates between "framework dependencies" and "project dependencies".
+UI5 Tooling differentiates between "framework dependencies" and "project dependencies".
 
-**Framework dependencies** are generally libraries and themes provided by the SAP frameworks "OpenUI5" and "SAPUI5". The UI5 Tooling will take care of downloading them and handling their versions for you. Please see the corresponding documentation on both options:
+**Framework dependencies** are generally libraries and themes provided by the SAP frameworks "OpenUI5" and "SAPUI5". UI5 Tooling will take care of downloading them and handling their versions for you. Please see the corresponding documentation on both options:
 
 * [Working with **OpenUI5** Framework Dependencies](./OpenUI5.md)
 * [Working with **SAPUI5** Framework Dependencies](./SAPUI5.md)

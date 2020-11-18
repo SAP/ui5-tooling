@@ -31,7 +31,7 @@ type: application
 
 #### 🚚 Dependency Management
 
-UI5 framework dependencies are managed by the tooling. All others by your favorite node package manager.
+UI5 framework dependencies are managed by the tooling. All other dependencies are managed by your favorite node package manager.
 
 ```
 ❯ ui5 use SAPUI5@1.76.0
@@ -73,7 +73,7 @@ Build succeeded in 363 ms
 
 ### 🧪 Node.js API
 Most UI5 Tooling modules provide JavaScript APIs for direct consumption in your own tools.
-This allows you to rely on the UI5 Tooling for 
+This allows you to rely on UI5 Tooling for 
 
 
 They are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/api/index.html).

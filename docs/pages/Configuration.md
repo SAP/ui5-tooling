@@ -82,15 +82,15 @@ Inside the copyright string, you can use the placeholder `${currentYear}` which 
 
 #### deprecated
 
-In case your project is deprecated you may also define a property `deprecated: true`. In projects that have a direct dependency to your project, the UI5 Tooling will then display a deprecation warning.
+In case your project is deprecated you may also define a property `deprecated: true`. In projects that have a direct dependency to your project, UI5 Tooling will then display a deprecation warning.
 
 ## Resources
 ### Path Mapping
-Depending on the project type, the UI5 Tooling expects your projects source files to be located in certain directories.
+Depending on the project type, UI5 Tooling expects your projects source files to be located in certain directories.
 
 If your project's sources are located in different directories, you need to configure the path mapping accordingly. Depending on the type of project, there are several different path mappings available.
 
-Note that all configured paths must be written in POSIX (i.e. using only forward slashes `/`) and relative to the projects root directory.
+Note that all configured paths must be written in POSIX (i.e. using only forward slashes `/`) and relative to the project's root directory.
 
 #### Available Path Mappings
 
@@ -133,7 +133,7 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
     ````
 
 !!! example
-    For an application project with the following directory structure, you need the below path mapping configuration:
+    For an application project with the following directory structure, you need the path mapping configuration given below:
 
     *Directory Structure*
     ```` hl_lines="3 4 5"
@@ -219,7 +219,7 @@ Define your project's framework dependencies.
 
 ### Framework and Version
 
-In your project's framework configuration you must define whether you want to use the OpenUI5 or the SAPUI5 framework and in which version:
+In your project's framework configuration you must define whether you want to use the OpenUI5 or the SAPUI5 framework and which version:
 
 === "OpenUI5"
     ```yaml
@@ -240,9 +240,9 @@ If you are not sure which framework is right for you, see our [documentation on 
 You can find an overview of the available versions for each framework here:
 
 - [**OpenUI5** Version Overview](https://openui5.hana.ondemand.com/versionoverview.html)
-    - *The lowest version supported by the UI5 Tooling is __1.52.5__*
+    - *The lowest version supported by UI5 Tooling is __1.52.5__*
 - [**SAPUI5** Version Overview](http://ui5.sap.com/versionoverview.html)
-    - *The lowest version supported by the UI5 Tooling is __1.76.0__*
+    - *The lowest version supported by UI5 Tooling is __1.76.0__*
 
 !!! info
     Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
@@ -290,7 +290,7 @@ You can find an overview of the available versions for each framework here:
 
 #### Runtime Dependencies
 
-All libraries required by your project must be listed in the libraries section of the framework configuration:
+All libraries required by your project must be listed in the `libraries` section of the framework configuration:
 
 === "OpenUI5"
     ```yaml hl_lines="4-7"
@@ -457,9 +457,9 @@ These excludes are applied *before* any general builder excludes that have been 
         httpsPort: 1443
     ````
 
-By default, the UI5 Tooling will serve applications using port `8080`. When running in HTTP/2 or HTTPS mode, port `8443` will be used.
+By default, UI5 Tooling will serve applications using Port `8080`. When running in HTTP/2 or HTTPS mode, Port `8443` will be used.
 
-If the default port is already in use, the next higher free port will be used.
+If the default port is already in use, the next highest free port will be used.
 
 A project can also configure alternative default ports. If the configured port is already in use, an error will be thrown.
 

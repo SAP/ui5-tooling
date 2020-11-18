@@ -25,14 +25,14 @@ A project can also add custom middleware to the server by using the [Custom Serv
 | `serveIndex` | See chapter [serveIndex](#serveindex)  |
 
 ### csp
-The Content Security Policy ([CSP](https://www.w3.org/TR/CSP/)) middleware active by default.
+The Content Security Policy ([CSP](https://www.w3.org/TR/CSP/)) middleware is active by default.
 
 The header `content-security-policy` can be set by adding URL parameter `sap-ui-xx-csp-policy` to the request with the policy name as value.
 
 To set the policy to report-only, append `:report-only` or `:ro` to the policy name.
 E.g. `/index.html?sap-ui-xx-csp-policy=sap-target-level-1:report-only`
 
-#### SAP target CSP
+#### The SAPtargetCSP parameter
 The default CSP policies can be modified using parameter `sendSAPTargetCSP` (`--sap-csp-policies` when using the CLI).
 With `sendSAPTargetCSP` set to `true` the policies `sap-target-level-1` and `sap-target-level-2` policies are activated and send as report-only.
 
@@ -46,12 +46,12 @@ With `serveCSPReports` set to `true`, the CSP reports are collected and can be d
 
 ### discovery
 
-Lists project files with URLs under several `/discovery` endpoints. This is exclusively used by the OpenUI5 testsuite application
+This middleware lists project files with URLs under several `/discovery` endpoints. This is exclusively used by the OpenUI5 test suite application.
 
 ### serveResources
 This middleware resolves requests using the [UI5 FS](./FS.md)-file system abstraction.
 
-It also escapes non-ASCII characters in `.properties` translation files based on a projects [configuration](./Configuration.md#encoding-of-properties-files).
+It also escapes non-ASCII characters in `.properties` translation files based on a project's [configuration](./Configuration.md#encoding-of-properties-files).
 
 ### testRunner
 Serves a static version of the UI5 QUnit TestRunner at `/test-resources/sap/ui/qunit/testrunner.html`.
@@ -68,15 +68,15 @@ Generates and serves the version info file `/resources/sap-ui-version.json`, whi
 Provides basic proxy functionality using the proxy offered by [`connect-openui5`](https://github.com/SAP/connect-openui5#proxy) under the endpoint `/proxy`.
 
 ### nonReadRequests
-Answers all non-read requests (POST, PUT, DELETE, etc.), that have not been answered by any other middleware, with status code 404 "Not Found". This signals the client that these operations are not supported by the server.
+Answers all non-read requests (POST, PUT, DELETE, etc.) that have not been answered by any other middleware with the 404 "Not Found" status code . This signals the client that these operations are not supported by the server.
 
 ### serveIndex
-In case a directory has been requested, this middleware renders an HTML with a list of the directories content.
+In case a directory has been requested, this middleware renders an HTML with a list of the directory's content.
 
 ## SSL Certificates
 When starting the UI5 Server in HTTPS- or HTTP/2 mode, for example by using UI5 CLI parameter `--h2`, you will be prompted for the automatic generation of a local SSL certificate if necessary.
 
-Follow the given instructions and enter your password to install the generated certificate as trusted. You can find the generated certificate and corresponding private key under `.ui5/server` in your users home directory.
+Follow the given instructions and enter your password to install the generated certificate as trusted. You can find the generated certificate and corresponding private key under `.ui5/server` in your user's home directory.
 
 !!! tip
     If Chrome unintentionally redirects an HTTP-URL to HTTPS, you need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://net-internals/#hsts) by entering the domain name (e.g. localhost) and pressing "delete".
