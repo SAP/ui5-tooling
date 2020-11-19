@@ -10,8 +10,12 @@ An open and modular toolchain to develop state-of-the-art applications based on 
 ### 💻 UI5 CLI
 *Also see the [UI5 CLI Documentation](./pages/CLI.md)*
 
-```
+```sh
+# Global
 npm install --global @ui5/cli
+
+# In your project
+npm install --save-dev @ui5/cli
 ```
 
 #### ⚙️ Project Setup
@@ -72,11 +76,10 @@ Build succeeded in 363 ms
 ```
 
 ### 🧪 Node.js API
-Most UI5 Tooling modules provide JavaScript APIs for direct consumption in your own tools.
-This allows you to rely on UI5 Tooling for 
+Most UI5 Tooling modules provide JavaScript APIs for direct consumption in other Node.js projects.
+This allows you to rely on UI5 Tooling for UI5-specific build functionality and project handling, while creating your own tools to perfectly match the needs of your project.
 
-
-They are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/api/index.html).
+All available APIs are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/api/index.html).
 
 ```js linenums="1"
 const {normalizer} = require("@ui5/project");
