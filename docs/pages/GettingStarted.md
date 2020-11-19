@@ -5,11 +5,17 @@
 
 ### Installation
 ```sh
+# Global installation to have the command available
 npm install --global @ui5/cli
+
+# Additional local install in your project
+npm install --save-dev @ui5/cli
 
 # Verify installation
 ui5 --help
 ```
+
+The globally installed UI5 CLI will always try to invoke a locally installed version of the UI5 CLI (if present). This way you can use different versions of the UI5 Tooling across your projects. Please see the [UI5 CLI documentation](./CLI.md#local-vs-global-installation) for details.
 
 ## ⚡️ Quick Start: OpenUI5 Sample App
 Check out the [OpenUI5 Sample App](https://github.com/SAP/openui5-sample-app) featuring a full blown [How-to](https://github.com/SAP/openui5-sample-app/#openui5-sample-app) to play around with UI5 Tooling!
