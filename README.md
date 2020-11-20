@@ -11,14 +11,16 @@
 ## Resources
 - [Documentation](https://sap.github.io/ui5-tooling/)
 - [API Reference](https://sap.github.io/ui5-tooling/api/)
-- [CLI Documentation](https://github.com/SAP/ui5-cli#cli-usage)
-- [Project Configuration](https://github.com/SAP/ui5-project/blob/master/docs/Configuration.md)
+- [CLI Documentation](https://sap.github.io/ui5-tooling/pages/CLI/)
+- [Project Configuration](https://sap.github.io/ui5-tooling/pages/Configuration/)
 - 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
 - 🎬 [UI5con@SAP 2020 Talk](https://www.youtube.com/watch?v=8IHoVJLKN34)
-- [Contribution Guidelines](./CONTRIBUTING.md)
+- [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/master/CONTRIBUTING.md)
 - [Roadmap](https://github.com/SAP/ui5-tooling/issues/101)
 
 ## Modules
+UI5 Tooling consists of multiple modules. Each one is managed in a separate repository:
+
 - [ui5-cli](https://github.com/SAP/ui5-cli): UI5 Command Line Interface, utilizing all of the following modules
 - [ui5-project](https://github.com/SAP/ui5-project): Modules for building a UI5 project's dependency tree, including configuration
 - [ui5-server](https://github.com/SAP/ui5-server): Modules for running a UI5 development server
