@@ -74,10 +74,10 @@ All available standard tasks are documented [in the API reference](https://sap.g
 | generateResourcesJson | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |
 
 *Enabled by default*
-{: .sap-icon-circle-task-before }
+{: .sap-icon-circle-task-2-before }
 
 *Disabled by default. Can be activated by certain build modes, project configuration or by using the `--include-task` [CLI parameter](./CLI.md#ui5-build). See footnotes where given* 
-{: .sap-icon-circle-task-2-before }
+{: .sap-icon-circle-task-before }
 
 ---
 
