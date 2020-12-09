@@ -1,0 +1,399 @@
+- Start Date: 2020-02-23
+- RFC PR: -
+- Issue: -
+- Affected components <!-- Check affected components by writing an "X" into the brackets -->
+    + [x] [ui5-builder](https://github.com/SAP/ui5-builder)
+    + [x] [ui5-server](https://github.com/SAP/ui5-server)
+    + [x] [ui5-cli](https://github.com/SAP/ui5-cli)
+    + [ ] [ui5-fs](https://github.com/SAP/ui5-fs)
+    + [x] [ui5-project](https://github.com/SAP/ui5-project)
+    + [ ] [ui5-logger](https://github.com/SAP/ui5-logger)
+
+
+# RFC 0009 UI5 Project Refactoring
+
+## Summary
+Refactor the ui5-project module to resolve a series of issues with the way dependencies are currently detected and analyzed as well as to provide a "Project" class entity, which can provide useful API for UI5 Tooling internal processes as well as for custom tasks and -middleware.
+
+## Motivation
+<!-->Why are we doing this? What use cases does it support? What is the expected outcome?
+
+Please focus on explaining the motivation so that if this RFC is not accepted, the motivation could be used to develop alternative solutions. In other words, enumerate the constraints you are trying to solve without coupling them too closely to the solution you have in mind.
+-->
+
+1. [UI5 Tooling modules might use different installations/instances of each other](https://github.com/SAP/ui5-tooling/issues/302)
+    * Affected modules:
+        * addTask API of `taskRepository`
+        * addMiddleware API of  `middlewareRepository`
+        * ui5-project access of `typeRepository` *(could use different formatter than builder)*
+    * Example scenario:
+        * A Node.js script `build-module` orchestrates the build of a UI5 project by using the offered Node.js API:
+            * `build-module` requests a dependency tree from `@ui5/project v2.2.0` which internally adds custom tasks to the task repository `@ui5/builder v2.2.0`
+            * `build-module` then supplies that dependency tree to `@ui5/builder v2.1.0` (different module), which can't find the custom tasks referenced in the dependency tree
+    * Ideally, ui5-project should not depend on ui5-builder and ui5-server
+1. ["JavaScript heap out of memory" error when declaring the ui5 tooling as a "dependency"](https://github.com/SAP/ui5-tooling/issues/311)
+    * Improve detecting relevant dependencies and/or building the dependency tree
+    * For example only add one level of dependencies from any module that contains an UI5 project or extension
+1. Include package.json `devDependencies` by default
+    * Custom middleware is typically referenced as a `devDependency` and should be detected by default
+1. Make "ui5.dependencies" workaround obsolete
+1. [Fix handling of circular dependencies between UI5 projects](https://github.com/SAP/ui5-tooling/issues/312)
+    * Instead of representing the UI5 Project tree as a JSON, use an actual graph
+1. [Access package.json in custom task](https://github.com/SAP/ui5-tooling/issues/360)
+    * Have a "Project" entity providing an API for such use cases
+1. Introduce easier maintainability of specVersion updates
+1. "Formatters" should already access project resources via @ui5/fs
+    * Example use cases: ZipArchiveAdapter
+
+## Detailed design
+
+### Replace the Current Dependency Tree Generation Approach
+
+First replace the dependency tree itself (which is basically one big JSON) with an actual graph. Currently all project information, including the configuration and dependencies are one object. This object is returned from the `@ui5/project.normalizer` module and then passed to either `@ui5/builder.builder` or `@ui5/server.server` where it is used to generate `@ui5/fs`-readers for all projects and to start working with them. While this keeps some things simple, there are several drawbacks with this approach.
+
+A graph represents the structure of a typical UI5 project and its dependencies way better. It makes deduplication operations superfluous because you can't add the same node twice. Also, detecting problematic cyclic dependencies becomes very easy.
+
+In addition, the process of gathering a project's dependencies and analyzing them should be merged into one step.
+
+Currently, a [translator](https://sap.github.io/ui5-tooling/pages/Project/#translators), like the `npm`-translator will first need to collect all *possibly relevant* dependencies of a project. Only in the next step, the [`projectPreprocessor`](https://sap.github.io/ui5-tooling/pages/Project/#project-preprocessor) can check which dependencies are actually relevant by looking for a ui5.yaml file or [project-shim](https://sap.github.io/ui5-tooling/pages/extensibility/ProjectShims/) configuration. This means that for some projects maybe thousands of npm dependencies are read and organized in a preliminary dependency tree, only for the `projectPreprocessor` to pick one percent of them as actually being relevant. This is also the reason why the `npm`-translator has to ignore `devDependencies` by default.
+
+To resolve this, dependencies should be checked for relevance immediately. Only if a dependency can be configured as a project or extension, its dependencies should be searched for and analyzed as well. In first tests based on the PoC mentioned below, this seems to work very well.
+
+The current proposal for these two topics is as follows:
+
+* Introduce a `ProjectGraph` entity which contains all projects and extensions required for any build or serve operation of a UI5 project
+* Introduce a `projectGraphBuilder` helper module which allows "providers" to easily generate a Project Graph for an environment (for example npm)
+* Introduce a `Module` entity which can be instantiated with an identifier and a path and then provides any available project and extensions (if any) for the given module. If none can be provided, the module is not relevant for UI5 Tooling
+
+Since the `ProjectGraph` provides a place to store all extensions relevant to the project, the current singleton-like task- and middleware-"repositories" become obsolete for storing those.
+
+The `projectGraphBuilder` is called with an instance of one of the aforementioned "providers". It then asks the provider for the id, version, path and configuration (if provided directly) of the root node. With that information, a `Module` is instantiated and asked for any project and extensions in that module. If one or both is returned, the provider is asked to provide the same information for the processed node's dependencies. This is then repeated until no more projects or extensions can be found or the provider stops returning dependencies.
+
+#### New "Graph" Entities in Detail
+
+##### ProjectGraph
+A rooted, directed graph representing a UI5 project, its dependencies and available extensions
+
+To be discussed: Should `ProjectGraph` have a `graphVersion`? Potentially equal to the version of ui5-project? This would allow ui5-builder and ui5-server to ensure compatibility with the provided `ProjectGraph` instance.
+
+```
+/**
+ * @public
+ * @param {object} parameters Parameters
+ * @param {string} parameters.rootProjectName Root project name
+ */
+constructor({rootProjectName})
+
+/**
+ * @public
+ * @returns {module:@ui5/project.specification.Project} Root project
+ */
+getRoot()
+
+/**
+ * @public
+ * @param {module:@ui5/project.specification.Project} project Project which should be added to the graph
+ * @param {boolean} [ignoreDuplicates=false] Whether an error should be thrown when a duplicate project is added
+ */
+addProject(project, ignoreDuplicates)
+
+/**
+ * @public
+ * @param {string} projectName Name of the project to retrieve
+ * @returns {module:@ui5/project.specification.project|undefined}
+ *                  project instance or undefined if the project is unknown to the graph
+ */
+getProject(projectName)
+
+/**
+ * @public
+ * @param {module:@ui5/project.specification.Extension} extension Extension which should be available in the graph
+ */
+addExtension(extension)
+
+/**
+ * @public
+ * @param {string} extensionName Name of the extension to retrieve
+ * @returns {module:@ui5/project.specification.Extension|undefined}
+ *                  Extension instance or undefined if the extension is unknown to the graph
+ */
+getExtension(extensionName)
+
+/**
+ * Declare a dependency from one project in the graph to another
+ *
+ * @public
+ * @param {string} fromProjectName Name of the depending project
+ * @param {string} toProjectName Name of project on which the other depends
+ */
+declareDependency(fromProjectName, toProjectName)
+
+/**
+ * Declare a dependency from one project in the graph to another
+ *
+ * @public
+ * @param {string} fromProjectName Name of the depending project
+ * @param {string} toProjectName Name of project on which the other depends
+ */
+declareOptionalDependency(fromProjectName, toProjectName)
+
+/**
+ * @public
+ * @param {string} projectName Name of the project to retrieve the dependencies of
+ * @returns {string[]} Project names of the given project's dependencies
+ */
+getDependencies(projectName)
+
+/**
+ * Transforms any optional dependencies in the graph for which the target is referenced by
+ * at least one non-optional project
+ * into a non-optional dependency.
+ *
+ * @public
+ */
+resolveOptionalDependencies()
+
+/**
+ * Callback for graph traversal operations
+ *
+ * @public
+ * @async
+ * @callback module:@ui5/project.graph.ProjectGraph~traversalCallback
+ * @param {object} parameters Parameters passed to the callback
+ * @param {module:@ui5/project.specifications.Project} parameters.project The project that is currently visited
+ * @param {module:@ui5/project.graph.ProjectGraph~getDependencies} parameters.getDependencies
+ *              Function to access the dependencies of the project that is currently visited.
+ * @returns {Promise} Must return a promise on which the graph traversal will wait
+ */
+
+/**
+ * Helper function available in the
+ * [traversalCallback]{@link module:@ui5/project.graph.ProjectGraph~traversalCallback} to access the
+ * dependencies of the corresponding project in the current graph.
+ * <br><br>
+ * Note that transitive dependencies can't be accessed this way. Projects should rather add a direct
+ * dependency to projects they need access to.
+ *
+ * @public
+ * @function module:@ui5/project.graph.ProjectGraph~getDependencies
+ * @returns {Array.<module:@ui5/project.specifications.Project>} Direct dependencies of the visited project
+ */
+
+
+// TODO: Use generator functions instead?
+/**
+ * Visit every project in the graph that can be reached by the given entry project exactly once.
+ * The entry project defaults to the root project.
+ * In case a cycle is detected, an error is thrown
+ *
+ * @public
+ * @param {module:@ui5/project.graph.ProjectGraph~traversalCallback} callback Will be called
+ * @param {string} [startName] Name of the project to start the traversal at. Defaults to the graph's root project
+ */
+async traverseBreadthFirst(callback, startName = this._rootProjectName)
+
+/**
+ * Visit every project in the graph that can be reached by the given entry project exactly once.
+ * The entry project defaults to the root project.
+ * In case a cycle is detected, an error is thrown
+ *
+ * @public
+ * @param {module:@ui5/project.graph.ProjectGraph~traversalCallback} callback Will be called
+ * @param {string} [startName] Name of the project to start the traversal at. Defaults to the graph's root project
+ */
+async traverseDepthFirst(callback, startName = this._rootProjectName)
+
+/**
+ * Join another project graph into this one.
+ * Projects and extensions which already exist in this graph will cause an error to be thrown
+ *
+ * @public
+ * @param {module:@ui5/project.graph.ProjectGraph} projectGraph Project Graph to merge into this one
+ */
+join(projectGraph)
+
+/**
+ * Seal the project graph so that no further changes can be made to it
+ *
+ * @public
+ */
+seal()
+
+/**
+ * Check whether the project graph has been sealed
+ *
+ * @public
+ * @returns {boolean} True if the project graph has been sealed
+ */
+isSealed()
+```
+
+##### projectGraphBuilder
+
+```
+/**
+ * Dependency graph node representing a module
+ *
+ * @public
+ * @typedef {object} Node
+ * @property {string} node.id Unique ID for the project
+ * @property {string} node.version Version of the project
+ * @property {string} node.path File System path to access the projects resources
+ * @property {object|object[]} [node.configuration]
+ *  Configuration object or array of objects to use instead of reading from a configuration file
+ * @property {string} [node.configPath] Configuration file to use instead the default ui5.yaml
+ * @property {boolean} [node.optional]
+ *                  Whether the node is an optional dependency of the parent it has been requested for
+ * @property {*} * Additional attributes are allowed but ignored.
+ *                  These can be used to pass information internally in the provider.
+ */
+
+/**
+ * Node Provider interface
+ *
+ * @interface NodeProvider
+ */
+
+/**
+ * Retrieve information on the root module
+ *
+ * @function
+ * @name NodeProvider#getRootNode
+ * @returns {Node} The root node of the dependency graph
+ */
+
+/**
+ * Retrieve information on given a nodes dependencies
+ *
+ * @function
+ * @name NodeProvider#getDependencies
+ * @param {Node} The root node of the dependency graph
+ * @returns {Node[]} Array of nodes which are direct dependencies of the given node
+ */
+
+/**
+ * Helper module to create a [@ui5/project.graph.ProjectGraph]{@link module:@ui5/project.graph.ProjectGraph}
+ * from a dependency tree as returned by translators.
+ *
+ * @public
+ * @alias module:@ui5/project.graph.projectGraphBuilder
+ * @param {NodeProvider} nodeProvider
+ * @returns {module:@ui5/project.graph.ProjectGraph} A new project graph instance
+ */
+```
+
+##### Module
+
+The Module class shall be private and only for internal use by the projectGraphBuilder.
+
+```
+/**
+ * @param {object} parameters Module parameters
+ * @param {string} parameters.id Unique ID for the module
+ * @param {string} parameters.version Version of the module
+ * @param {string} parameters.modulePath File System path to access the projects resources
+ * @param {string} [parameters.configPath=ui5.yaml]
+ *                      Either a path relative to `modulePath` which will be resolved by @ui5/fs (default),
+ *                      or an absolute File System path to the configuration file.
+ * @param {object|object[]} [parameters.configuration]
+ *                      Configuration object or array of objects to use. If supplied, no ui5.yaml will be read
+ * @param {@ui5/project.graph.ShimCollection} [parameters.shimCollection]
+ *                      Collection of shims that might be relevant for this module
+ */
+constructor({id, version, modulePath, configPath = defaultConfigPath, configuration = [], shimCollection})
+
+/**
+ * Specifications found in the module
+ *
+ * @public
+ * @typedef {object} SpecificationsResult
+ * @property {@ui5/project.specifications.Project|undefined} Project found in the module (if one is found)
+ * @property {@ui5/project.specifications.Extension[]} Array of extensions found in the module
+ *
+ */
+
+/**
+ * Get any available project and extensions of the module
+ *
+ * @returns {SpecificationsResult} Project and extensions found in the module
+ */
+async getSpecifications()
+```
+
+### Introduce "Specification" Entities
+
+It is proposed to introduce the umbrella term "Specification" to refer to any entity that has a configuration (specification) based on which UI5 Tooling will derive a functionality from.
+
+Currently, there are two kinds of specifications: projects and extensions. These are again subdivided into the different types. For example there are projects of type application, library, theme-library and module.
+
+By mapping this concept onto a class-based inheritance hierarchy, every project- and extension-type will have its own class, sharing common functionalities with the other specifications.
+
+This concept is similar to the already existing [Formatters](https://github.com/SAP/ui5-builder/blob/0fc364ded64eb5bae4085397dc1831e04b19edf4/lib/types/library/LibraryFormatter.js), which basically formatted the JSON representation of a project by modifying and adding attributes. However the proposed specification instances will have a much longer lifecycle. They are intended to represent a specification throughout an entire UI5 Tooling operation. They should be available to extensions, providing a public API to interact with project resources.
+
+Specifications should provide an API for accessing its resources via ui5-fs readers. This should make the [`@ui5/fs.resourceFactory#createCollectionsForTree`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree) API obsolete, leaving decisions like whether to include the projects namespace to the project itself.
+
+The proposed resource access APIs for specifications are as follows:
+
+```
+/**
+* Get a resource reader for the sources of the project (excluding any test resources)
+*
+* @public
+ * @returns {module:@ui5/fs.ReaderCollection} Reader collection
+*/
+getSourceReader()
+
+/**
+* Get a resource reader for accessing the project resources the same way the UI5 runtime would do
+*
+* @public
+* @returns {module:@ui5/fs.ReaderCollection} Reader collection
+*/
+getRuntimeReader()
+
+/**
+* Get a resource reader for accessing the project resources during the build process
+*
+* @public
+* @returns {module:@ui5/fs.ReaderCollection} Reader collection
+*/
+getBuildtimeReader()
+```
+
+Additional Specification APIs should include a helper for validating whether the Specification's specification version is newer or older than any given version.
+
+=> ui5-project should not have any dependencies to ui5-builder and ui5-server
+
+### Proof of Concept
+
+<!-->This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the UI5 Tooling to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here. -->
+
+## How we teach this
+<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+
+What names and terminology work best for these concepts and why? How is this idea best presented?
+
+Would the acceptance of this proposal mean the UI5 Tooling or any of its sub-components documentation must be re-organized or altered?
+
+How should this feature be introduced and taught to existing UI5 Tooling users?
+
+## Drawbacks
+<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+
+Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
+
+There are trade-offs to choosing any path, please attempt to identify them here.
+
+## Alternatives
+<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+
+Arborist adds ~6MB
+
+What other designs have been considered? What is the impact of not doing this?
+
+## Unresolved Questions and Bikeshedding
+<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+
+*This section should be removed (i.e. resolved) before merging*
+
+Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made?
