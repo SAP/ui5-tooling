@@ -15,7 +15,7 @@ For benchmarking UI5 Tooling we typically make use of the open source tool [hype
 
 In general we only benchmark calls to the UI5 CLI. However, we might add scripted benchmarks for some components in the future.
 
-The following is a walk-through on how to compare the performance impact of an imaginary change in UI5 Builder project.
+The following is a walk-through on how to evaluate the performance impact of an imaginary change in UI5 Builder project.
 
 ### Setup
 
@@ -33,7 +33,7 @@ The following is a walk-through on how to compare the performance impact of an i
         ```sh
         git clone git@github.com:SAP/ui5-builder.git
         ```
-        Make sure you checkout the `master` branch since we will perform the baseline test first
+        Make sure you check out the `master` branch, since we will perform the baseline test first
     1. Install npm dependencies in both directories
         ```sh
         (cd ui5-cli && npm install)
@@ -59,7 +59,7 @@ The following is a walk-through on how to compare the performance impact of an i
         2.6.6 (from /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js)
         ```
 
-1. Prepare your test project (we chose the [openui5-sample-app](https://github.com/SAP/openui5-sample-app))
+1. Prepare your test project (we choose the [openui5-sample-app](https://github.com/SAP/openui5-sample-app))
     1. Clone the project
         ```sh
         git clone git@github.com:SAP/openui5-sample-app.git
@@ -72,7 +72,7 @@ The following is a walk-through on how to compare the performance impact of an i
         ```sh
         npm install
         ```
-        Note: We will not link UI5 CLI into the but call the global install directly
+        Note: We will not link UI5 CLI into this project. Instead, we will call it directly.
     1. Verify that the previously installed UI5 CLI can be called with the following command
         ```sh
         UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js --version
@@ -85,10 +85,10 @@ The following is a walk-through on how to compare the performance impact of an i
 
 ### Benchmark
 
-1. Depending on how reliable you want the measurements, consider preparing your system:
+1. Depending on how reliable you want the measurements to be, consider preparing your system:
     1. Connect your computer to a power supply
-    1. Make sure no updates or anti virus scans are taking place
-    1. Close all applications. This includes your IDE since it might start indexing any new files created during the build, thus impacting I/O
+    1. Make sure no updates or anti-virus scans are taking place
+    1. Close all applications. This includes your IDE, since it might start indexing any new files created during the build, thus impacting I/O
     1. Don't interact with your system wile the benchmark is running
 
 1. Perform the baseline measurement
