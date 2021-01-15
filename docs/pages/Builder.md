@@ -66,6 +66,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 | transformBootstrapHtml | {: .sap-icon-circle-task }^3^ |  |  |
 | generateBundle | {: .sap-icon-circle-task }^4^ | {: .sap-icon-circle-task }^4^ |  |
 | buildThemes |  | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
+| generateThemeDesignerResources |  | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |
 | createDebugFiles | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |  |
 | uglify | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |  |
 | generateVersionInfo | {: .sap-icon-circle-task-2 } |  |  |
