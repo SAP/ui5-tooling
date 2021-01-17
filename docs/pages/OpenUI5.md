@@ -45,6 +45,7 @@ metadata:
   name: some.library
 framework:
   name: OpenUI5
+  version: 1.76.0
   libraries:
     - name: sap.ui.core
     - name: themelib_sap_belize
