@@ -58,6 +58,7 @@ metadata:
   name: some.library
 framework:
   name: SAPUI5
+  version: 1.82.0
   libraries:
     - name: sap.ui.core
     - name: themelib_sap_belize
