@@ -15,7 +15,7 @@ For benchmarking UI5 Tooling we typically make use of the open source tool [hype
 
 In general we only benchmark calls to the UI5 CLI. However, we might add scripted benchmarks for some components in the future.
 
-The following is a walk-through on how to evaluate the performance impact of an imaginary change in UI5 Builder project.
+The following is a walk-through on how to evaluate the performance impact of an imaginary change in the UI5 Builder project.
 
 ### Setup
 
@@ -29,11 +29,11 @@ The following is a walk-through on how to evaluate the performance impact of an 
         ```sh
         git clone git@github.com:SAP/ui5-cli.git
         ```
-    1. Clone [UI5 Builder](https://github.com/SAP/ui5-builder) (or your fork!)
+    1. Clone [UI5 Builder](https://github.com/SAP/ui5-builder) (or your fork)
         ```sh
         git clone git@github.com:SAP/ui5-builder.git
         ```
-        Make sure you check out the `master` branch, since we will perform the baseline test first
+        Make sure you check out the `master` branch, since we'll perform the baseline test first
     1. Install npm dependencies in both directories
         ```sh
         (cd ui5-cli && npm install)
@@ -72,8 +72,8 @@ The following is a walk-through on how to evaluate the performance impact of an 
         ```sh
         npm install
         ```
-        Note: We will not link UI5 CLI into this project. Instead, we will call it directly.
-    1. Verify that the previously installed UI5 CLI can be called with the following command
+        Note: We won't link UI5 CLI into this project. Instead, we'll call it directly.
+    1. Verify that the previously installed UI5 CLI can be called with the following command:
         ```sh
         UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js --version
         ```
@@ -83,13 +83,13 @@ The following is a walk-through on how to evaluate the performance impact of an 
         ```
         *(Replace the path to ui5.js with the one shown in the previous `ui5 --version` output)*
 
-### Benchmark
+### Benchmarking
 
-1. Depending on how reliable you want the measurements to be, consider preparing your system:
+1. Depending on how reliable you'd like the measurements to be, consider preparing your system:
     1. Connect your computer to a power supply
     1. Make sure no updates or anti-virus scans are taking place
     1. Close all applications. This includes your IDE, since it might start indexing any new files created during the build, thus impacting I/O
-    1. Don't interact with your system wile the benchmark is running
+    1. Don't interact with your system wile the benchmarking is running
 
 1. Perform the baseline measurement
     1. In the project, start your first benchmark
@@ -154,6 +154,6 @@ The following is a walk-through on how to evaluate the performance impact of an 
         | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 |
         | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.584 ± 0.074 | 1.477 | 1.680 |
 
-1. You can now share these results on GitHub or wherever you might need them!
+1. You can now share these results on GitHub or wherever you might need them.
 
 **Happy benchmarking! 🏎**
