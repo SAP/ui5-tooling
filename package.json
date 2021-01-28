@@ -39,7 +39,7 @@
 		"@ui5/cli": "^2.9.0",
 		"@ui5/fs": "^2.0.6",
 		"@ui5/logger": "^2.0.1",
-		"@ui5/project": "^2.2.5",
+		"@ui5/project": "^2.2.6",
 		"@ui5/server": "^2.2.7"
 	},
 	"devDependencies": {
