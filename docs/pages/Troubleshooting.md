@@ -14,11 +14,11 @@ Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/b
 
 When using the UI5 CLI in versions lower than `v2.9.1` or the `@ui5/project` module in versions lower than `v2.2.6` you might experience build- or runtime issues caused by missing or corrupt files in one or more UI5 framework dependencies. Note that this does not affect other project dependencies, such as reuse libraries, which are installed via external package managers like npm or Yarn.
 
-These issues can be the result of an aborted install during a preceding UI5 Tooling execution. Because of [a bug](https://github.com/SAP/ui5-tooling/issues/478), that has since been fixed, UI5 Tooling assumed that the preceding install was successful and work with the potentially corrupted dependency.
+These issues can be the result of an aborted install during a preceding UI5 Tooling execution. Because of [a bug](https://github.com/SAP/ui5-tooling/issues/478) that has since been fixed, UI5 Tooling assumes that the preceding install was successful and uses the potentially corrupted dependency.
 
 #### Resolution
 
-Remove the `.ui5/framework/` directory, located in your user's home directory.
+Remove the `.ui5/framework/` directory from your user's home directory.
 
 ```sh
 rm -rf ~/.ui5/framework/
@@ -32,7 +32,7 @@ There are possibly many versions of UI5 framework dependencies installed on your
 
 #### Resolution
 
-Remove the `.ui5/framework/` directory, located in your user's home directory:
+Remove the `.ui5/framework/` directory from your user's home directory:
 
 ```sh
 rm -rf ~/.ui5/framework/
