@@ -81,7 +81,7 @@ Enhances a given dependency tree based on a projects [configuration](./Configura
     "id": "projectA",
     "version": "1.0.0",
     "path": "/absolute/path/to/projectA",
-    "specVersion": "2.2",
+    "specVersion": "2.3",
     "type": "application",
     "metadata": {
         "name": "sap.projectA",
@@ -102,7 +102,7 @@ Enhances a given dependency tree based on a projects [configuration](./Configura
             "id": "projectB",
             "version": "1.0.0",
             "path": "/path/to/projectB",
-            "specVersion": "2.2",
+            "specVersion": "2.3",
             "type": "library",
             "metadata": {
                 "name": "sap.ui.projectB"
@@ -124,7 +124,7 @@ Enhances a given dependency tree based on a projects [configuration](./Configura
                     "id": "projectD",
                     "version": "1.0.0",
                     "path": "/path/to/different/projectD",
-                    "specVersion": "2.2",
+                    "specVersion": "2.3",
                     "type": "library",
                     "metadata": {
                         "name": "sap.ui.projectD"
@@ -149,7 +149,7 @@ Enhances a given dependency tree based on a projects [configuration](./Configura
             "id": "projectD",
             "version": "1.0.0",
             "path": "/path/to/projectD",
-            "specVersion": "2.2",
+            "specVersion": "2.3",
             "type": "library",
             "metadata": {
                 "name": "sap.ui.projectD"

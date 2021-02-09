@@ -27,7 +27,7 @@ Configure your project for use with the UI5 Tooling.
 ❯ ui5 init
 Wrote ui5.yaml:
 
-specVersion: '2.2'
+specVersion: '2.3'
 metadata:
   name: my-app
 type: application
