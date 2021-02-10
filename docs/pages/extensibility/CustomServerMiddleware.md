@@ -13,7 +13,7 @@ A middleware may be executed before or after any other middleware. This can eith
 
 ### Example: Basic configuration
 ```yaml
-specVersion: "2.2"
+specVersion: "2.3"
 type: application
 metadata:
   name: my.application
@@ -41,7 +41,7 @@ A custom middleware extension consists of a `ui5.yaml` and a [custom middleware 
 ### Example: ui5.yaml
 
 ````yaml
-specVersion: "2.2"
+specVersion: "2.3"
 kind: extension
 type: server-middleware
 metadata:
@@ -61,7 +61,7 @@ The UI5 Server will detect the custom middleware configuration of the project an
 
 ````yaml
 # Project configuration for the above example
-specVersion: "2.2"
+specVersion: "2.3"
 kind: project
 type: application
 metadata:
@@ -72,7 +72,7 @@ server:
       beforeMiddleware: serveResources
 ---
 # Custom middleware extension as part of your project
-specVersion: "2.2"
+specVersion: "2.3"
 kind: extension
 type: server-middleware
 metadata:
