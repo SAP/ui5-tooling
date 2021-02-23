@@ -23,6 +23,11 @@ Please focus on explaining the motivation so that if this RFC is not accepted, t
 
 The following is a list of issues and requirements that the proposed refactoring should focus on. Note that for some topics additional changes in other modules are required. However, ui5-project often needs to provide the necessary prerequisites to enable these follow-up changes.
 
+### Issues
+
+1. ["JavaScript heap out of memory" error when declaring the ui5 tooling as a "dependency"](https://github.com/SAP/ui5-tooling/issues/311)
+    * Improve detecting relevant dependencies and/or building the dependency tree
+1. [Fix handling of circular dependencies between UI5 projects](https://github.com/SAP/ui5-tooling/issues/312)
 1. [UI5 Tooling modules might use different installations/instances of each other](https://github.com/SAP/ui5-tooling/issues/302)
     * Affected modules:
         * addTask API of `taskRepository`
@@ -33,14 +38,13 @@ The following is a list of issues and requirements that the proposed refactoring
             * `build-module` requests a dependency tree from `@ui5/project v2.2.0` which internally adds custom tasks to the task repository `@ui5/builder v2.2.0`
             * `build-module` then supplies that dependency tree to `@ui5/builder v2.1.0` (different module), which can't find the custom tasks referenced in the dependency tree
     * Ideally, ui5-project should not depend on ui5-builder and ui5-server
-1. ["JavaScript heap out of memory" error when declaring the ui5 tooling as a "dependency"](https://github.com/SAP/ui5-tooling/issues/311)
-    * Improve detecting relevant dependencies and/or building the dependency tree
-    * For example only add one level of dependencies from any module that contains an UI5 project or extension
+
+### Requirements
+
 1. Include package.json `devDependencies` by default
-    * Custom middleware is typically referenced as a `devDependency` and should be detected by default
 1. Make `ui5: {dependencies: [...]}` workaround in package.json obsolete
     * Currently required to force UI5 Tooling into analyzing a `devDependency` or to not run out of memory in some projects
-1. [Fix handling of circular dependencies between UI5 projects](https://github.com/SAP/ui5-tooling/issues/312)
+    * Custom middleware is typically referenced as a `devDependency` and should be detected by default
 1. [Access package.json in custom task](https://github.com/SAP/ui5-tooling/issues/360)
     * Have a "Project" entity providing an API for such use cases
 1. Introduce easier maintainability of specVersion updates
@@ -338,11 +342,11 @@ Specifications should provide an API for accessing its resources via ui5-fs read
 
 The proposed resource access APIs for specifications are as follows:
 
-TODO: Names
-
-TODO: Add DuplexCollection APIs to actually modify the resources of a project?
-
-TODO: Scenario: Modify resources using buildtime reader/writer and read them using runtime reader
+**To be discussed/To be done:**
+1. API Names
+1. Add DuplexCollection APIs to actually modify the resources of a project?
+    * Scenario: Modify resources using buildtime reader/writer and read them using runtime reader
+1. Specification version check API
 
 ```js
 /**
@@ -378,11 +382,19 @@ getRuntimeReader() {}
 getBuildtimeReader() {}
 ```
 
-Additional Specification APIs should include a helper for validating whether the Specification's specification version is newer or older than any given version.
-
-=> ui5-project should not have any dependencies to ui5-builder and ui5-server
-
 ### Compatibility
+
+#### Specification Version Requirements
+
+Projects and extensions using specification versions before 2.0 can define arbitrary configuration in their ui5.yaml which might influence the behavior of the UI5 Tooling or is being relied on by extensions. Since the proposed changes to the handling of  configuration and projects in general would break these use cases, it might make sense to require a specification equal or later than 2.0. This would also make much of the validation currently taking place in the `Formatters` obsolete. Validation could be completely handed over to the schema validator.
+
+#### Breaking Changes
+It might be possible to convert the a project graph into the format of the current dependency tree. This would allow to implement parts of this concept behind a feature toggle and to make it available to the community for evaluation and early feedback.
+
+To implement all the requirements listed in the [Motivation](#motivation) chapter of this RFC, it is very likely that a UI5 Tooling 3.0 release is necessary due to incompatible changes.
+
+**Any expected breaking changes shall be listed here:**  
+* A shim extension located in a project's dependencies can't influence other dependencies of that project anymore (to be confirmed, see `projectGraphFromTree` test case in the PoC)
 
 ### Proof of Concept
 
@@ -391,31 +403,31 @@ A Proof of Concept is has been implemented: https://github.com/SAP/ui5-project/p
 A description on how to test it should be added to this documented soon.
 
 ## How we teach this
-<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+<!--You can either remove the following explanatory text or move it into this comment for later reference
 
 What names and terminology work best for these concepts and why? How is this idea best presented?
 
 Would the acceptance of this proposal mean the UI5 Tooling or any of its sub-components documentation must be re-organized or altered?
 
-How should this feature be introduced and taught to existing UI5 Tooling users?
+How should this feature be introduced and taught to existing UI5 Tooling users? -->
 
 ## Drawbacks
-<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+<!--You can either remove the following explanatory text or move it into this comment for later reference 
 
 Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
 
-There are trade-offs to choosing any path, please attempt to identify them here.
+There are trade-offs to choosing any path, please attempt to identify them here.-->
 
 ## Alternatives
-<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+<!--You can either remove the following explanatory text or move it into this comment for later reference 
 
-Arborist adds ~6MB
+What other designs have been considered? What is the impact of not doing this?-->
 
-What other designs have been considered? What is the impact of not doing this?
+npm dependency resolution could be done using [Arborist](https://github.com/npm/arborist), a tool developed by the npm team and also used in the npm CLI. However, it does a lot more than what we need and would add approximately **6 MB** to the size of a UI5 CLI installation. Plus, the basic dependency resolution as implemented by the current [npm translator](https://github.com/SAP/ui5-project/blob/e262a9ceec6734e598184747f41203e2a5541415/lib/translators/npm.js) worked very well in the past and even [seems to work with Yarn 2 PnP](https://github.com/SAP/ui5-tooling/issues/207#issuecomment-582518273).
 
 ## Unresolved Questions and Bikeshedding
-<!-->You can either remove the following explanatory text or move it into this comment for later reference -->
+<!--You can either remove the following explanatory text or move it into this comment for later reference
+
+Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made? -->
 
 *This section should be removed (i.e. resolved) before merging*
-
-Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made?
