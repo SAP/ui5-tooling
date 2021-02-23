@@ -41,14 +41,14 @@ The following is a list of issues and requirements that the proposed refactoring
 
 ### Requirements
 
-1. Include package.json `devDependencies` by default
-1. Make `ui5: {dependencies: [...]}` workaround in package.json obsolete
-    * Currently required to force UI5 Tooling into analyzing a `devDependency` or to not run out of memory in some projects
+1. Analyze `devDependencies` listed in the package.json by default
     * Custom middleware is typically referenced as a `devDependency` and should be detected by default
+1. Make `ui5: {dependencies: [...]}` workaround in package.json obsolete
+    * Currently required in projects with lots of transitive dependencies or to force UI5 Tooling into analyzing a `devDependency`
 1. [Access package.json in custom task](https://github.com/SAP/ui5-tooling/issues/360)
     * Have a "Project" entity providing an API for such use cases
-1. Introduce easier maintainability of specVersion updates
-1. "Formatters" should already access project resources via `@ui5/fs` abstraction layer
+1. Introduce easier maintainability of specification version updates
+1. "Formatters" should already access project resources via the `@ui5/fs` abstraction layer
     * Currently they use the native file system layer. This caused addional efforts while working on the ZipArchiveAdapter PoC
 
 ## Detailed design
@@ -398,9 +398,9 @@ To implement all the requirements listed in the [Motivation](#motivation) chapte
 
 ### Proof of Concept
 
-A Proof of Concept is has been implemented: https://github.com/SAP/ui5-project/pull/394
+A Proof of Concept implementation has been started: https://github.com/SAP/ui5-project/pull/394
 
-A description on how to test it should be added to this documented soon.
+A description on how to test it should be added to this document soon.
 
 ## How we teach this
 <!--You can either remove the following explanatory text or move it into this comment for later reference
