@@ -395,6 +395,7 @@ To implement all the requirements listed in the [Motivation](#motivation) chapte
 
 **Any expected breaking changes shall be listed here:**  
 * A shim extension located in a project's dependencies can't influence other dependencies of that project anymore (to be confirmed, see `projectGraphFromTree` test case in the PoC)
+* Support for collections defined in the package.json is dropped. Technically it would be possible to continue to support them. However, they are not documented and we never saw them being used in the wild. Project Shims offer the same functionality
 
 ### Proof of Concept
 
