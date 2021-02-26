@@ -570,8 +570,6 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
       bundles:
         - bundleDefinition:
             name: "sap-ui-custom.js"
-            defaultFileTypes:
-              - ".js"
             sections:
               - mode: raw
                 filters:
@@ -582,8 +580,6 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
             optimize: true
         - bundleDefinition:
             name: "app.js"
-            defaultFileTypes:
-              - ".js"
             sections:
               - mode: preload
                 filters:
@@ -607,7 +603,7 @@ Custom bundles can be defined in the `ui5.yaml`. Within the `builder/bundles` co
 A list of bundle definitions. A `bundleDefinition` contains of the following options:
 
 - `name`: The module bundle name
-- `defaultFileTypes`: List of default file types which should be included in the bundle
+- `defaultFileTypes`: List of default file types which should be included in the bundle. Defaults to: `.js`, `.control.xml`, `.fragment.html`, `.fragment.json`, `.fragment.xml`, `.view.html`, `.view.json` and `.view.xml`
   - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html#.generateBundle)) and lists the resources that should be in- or excluded from the section.
     - `mode`:  The embedding technology (e.g. provided, raw, preload)
     - `filters`: List of modules declared as glob patterns (resource name patterns) that should be in- or excluded. A pattern ending with a slash `/` will, similarly to the use of a single `*` or double `**` asterisk, denote an arbitrary number of characters or folder names. Excludes should be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
