@@ -154,9 +154,8 @@ declareOptionalDependency(fromProjectName, toProjectName) {}
 getDependencies(projectName) {}
 
 /**
- * Transforms any optional dependencies in the graph for which the target is referenced by
- * at least one non-optional project
- * into a non-optional dependency.
+ * Transforms any optional dependencies declared in the graph to non-optional dependency, if the target
+ * can already be reached from the root project.
  *
  * @public
  */
