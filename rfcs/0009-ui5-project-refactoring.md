@@ -5,7 +5,7 @@
     + [x] [ui5-builder](https://github.com/SAP/ui5-builder)
     + [x] [ui5-server](https://github.com/SAP/ui5-server)
     + [x] [ui5-cli](https://github.com/SAP/ui5-cli)
-    + [ ] [ui5-fs](https://github.com/SAP/ui5-fs)
+    + [x] [ui5-fs](https://github.com/SAP/ui5-fs)
     + [x] [ui5-project](https://github.com/SAP/ui5-project)
     + [ ] [ui5-logger](https://github.com/SAP/ui5-logger)
 
@@ -50,6 +50,7 @@ The following is a list of issues and requirements that the proposed refactoring
 1. Introduce easier maintainability of specification version updates
 1. "Formatters" should already access project resources via the `@ui5/fs` abstraction layer
     * Currently they use the native file system layer. This caused addional efforts while working on the ZipArchiveAdapter PoC
+1. Option to access resources of a project (typically the root project) in a "flat" (namespace-less) way ([related issue](https://github.com/SAP/ui5-tooling/issues/507))
 
 ## Detailed design
 
