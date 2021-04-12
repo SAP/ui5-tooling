@@ -160,7 +160,7 @@ getDependencies(projectName) {}
  *
  * @public
  */
-resolveOptionalDependencies() {}
+async resolveOptionalDependencies() {}
 
 /**
  * Callback for graph traversal operations
