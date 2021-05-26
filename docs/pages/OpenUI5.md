@@ -23,7 +23,7 @@ This configuration can be maintained by editing the file, or by using the UI5 CL
 
 **Example ui5.yaml of an application**
 ```yaml
-specVersion: "2.3"
+specVersion: "2.4"
 type: application
 metadata:
   name: some.project.name
@@ -39,7 +39,7 @@ framework:
 
 **Example ui5.yaml of a library**
 ```yaml
-specVersion: "2.3"
+specVersion: "2.4"
 type: library
 metadata:
   name: some.library
