@@ -3,7 +3,7 @@
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
 !!! info
-    This document describes the configuration of UI5 Tooling based projects and extensions. It represents **[Specification Version 2.4](#specification-versions)**.
+    This document describes the configuration of UI5 Tooling-based projects and extensions. It represents **[Specification Version 2.4](#specification-versions)**.
 
 ## Validation / IDE support
 
@@ -656,7 +656,7 @@ Version | UI5 CLI Release
 ### Specification Version 2.4
 **Features:**
 
-- Adds support for `bundleInfo` mode in bundle-definitions.
+- Adds support for `bundleInfo` mode in bundle definitions.
 
 Specification Version 2.4 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.11.0 and above.
 
