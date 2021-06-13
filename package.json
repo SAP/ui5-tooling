@@ -43,7 +43,7 @@
 		"@ui5/server": "^2.2.10"
 	},
 	"devDependencies": {
-		"@apidevtools/json-schema-ref-parser": "^9.0.7",
+		"@apidevtools/json-schema-ref-parser": "^9.0.9",
 		"docdash": "^1.2.0",
 		"handlebars": "^4.7.7",
 		"jsdoc": "^3.6.7",
