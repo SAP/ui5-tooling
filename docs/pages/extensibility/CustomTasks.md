@@ -12,14 +12,14 @@ You can configure your build process with additional build task. These custom ta
 
 To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Note that a custom task will only be executed if the referenced task is executed (i.e. is not disabled).
 
-In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.  
+In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.
 Another custom task called `generateMarkdownFiles` is then executed immediately after the standard task `uglify`.
 
 ### Example: Basic configuration
 
 ````yaml
 # In this example configuration two custom tasks are defined: 'babel' and 'generateMarkdownFiles'.
-specVersion: "2.4"
+specVersion: "2.5"
 type: library
 metadata:
   name: my.library
@@ -39,7 +39,7 @@ You can also connect multiple custom tasks with each other. The order in the con
 
 ````yaml
 # In this example 'myCustomTask2' gets executed after 'myCustomTask1'.
-specVersion: "2.4"
+specVersion: "2.5"
 type: library
 metadata:
   name: my.library
@@ -58,7 +58,7 @@ A custom task extension consists of a `ui5.yaml` and a [task implementation](#ta
 ### Example: ui5.yaml
 
 ````yaml
-specVersion: "2.4"
+specVersion: "2.5"
 kind: extension
 type: task
 metadata:
@@ -78,7 +78,7 @@ The task extension will then be automatically collected and processed during the
 
 ````yaml
 # Project configuration for the above example
-specVersion: "2.4"
+specVersion: "2.5"
 kind: project
 type: library
 metadata:
@@ -91,7 +91,7 @@ builder:
         color: blue
 ---
 # Task extension as part of your project
-specVersion: "2.4"
+specVersion: "2.5"
 kind: extension
 type: task
 metadata:
