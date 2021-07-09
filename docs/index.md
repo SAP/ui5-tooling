@@ -20,14 +20,14 @@ npm install --save-dev @ui5/cli
 
 #### ⚙️ Project Setup
 
-Configure your project for use with the UI5 Tooling.  
+Configure your project for use with the UI5 Tooling.
 *Also see the [Configuration Documentation](./pages/Configuration.md)*
 
 ```
 ❯ ui5 init
 Wrote ui5.yaml:
 
-specVersion: '2.4'
+specVersion: '2.5'
 metadata:
   name: my-app
 type: application
@@ -48,7 +48,7 @@ Added framework libraries sap.ui.core sap.m themelib_sap_fiori_3 as dependencies
 ```
 
 #### 🏄 Development Server
-Start a local development server to work on your project.  
+Start a local development server to work on your project.
 *Also see the [Server Documentation](./pages/Server.md)*
 
 ```
@@ -58,7 +58,7 @@ URL: http://localhost:8080
 ```
 
 #### 🛠 Build for Production
-Build an optimized version of your project.  
+Build an optimized version of your project.
 *Also see the [Builder Documentation](./pages/Builder.md)*
 
 ```
