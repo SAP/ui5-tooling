@@ -12,7 +12,7 @@ You can configure your build process with additional build task. These custom ta
 
 To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Note that a custom task will only be executed if the referenced task is executed (i.e. is not disabled).
 
-In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.
+In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.  
 Another custom task called `generateMarkdownFiles` is then executed immediately after the standard task `uglify`.
 
 ### Example: Basic configuration

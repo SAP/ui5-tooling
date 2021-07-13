@@ -3,7 +3,7 @@
 !!! info
     Make sure you have installed the UI5 CLI in Version 2.0 or later: `npm install --global @ui5/cli`
 
-    The minimum version of SAPUI5 that can be consumed by UI5 Tooling as described below is **1.76.0.**
+    The minimum version of SAPUI5 that can be consumed by UI5 Tooling as described below is **1.76.0.**  
     For lower versions, consider using the [CDN bootstrap](https://ui5.sap.com/#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae) or a custom middleware like [ui5-middleware-simpleproxy](https://www.npmjs.com/package/ui5-middleware-simpleproxy).
 
 ## Overview

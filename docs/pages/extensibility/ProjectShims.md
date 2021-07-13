@@ -122,7 +122,7 @@ application-a/
     \_ package.json
 ```
 
-**package.json (extract)**
+**package.json (extract)**  
 [napa](https://github.com/shama/napa) can install git repositories that are lacking a `package.json` with npm. Within `ui5-project`, the npm translator already detects dependencies defined in the `napa` section of a `package.json` and tries to resolve them.
 
 ```json
@@ -138,7 +138,7 @@ application-a/
 
 ```
 
-**ui5.yaml**
+**ui5.yaml**  
 The shim defined in the application configures the legacy libraries and defines their dependencies. This shim might as well be a standalone module that is added to the applications dependencies. That would be the typical reuse scenario for shims.
 
 ```yaml
