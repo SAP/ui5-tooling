@@ -49,7 +49,7 @@ With `serveCSPReports` set to `true`, the CSP reports are collected and can be d
 This middleware lists project files with URLs under several `/discovery` endpoints. This is exclusively used by the OpenUI5 test suite application.
 
 ### serveResources
-This middleware resolves requests using the [UI5 FS](./FS.md)-file system abstraction.
+This middleware resolves requests using the [ui5-fs](https://github.com/SAP/ui5-fs)-file system abstraction.
 
 It also escapes non-ASCII characters in `.properties` translation files based on a project's [configuration](./Configuration.md#encoding-of-properties-files).
 
