@@ -675,7 +675,8 @@ Version | UI5 CLI Release
 ### Specification Version 2.5
 **Features:**
 
-- Adds support for the build configuration ["includeDependency"](#include-dependencies)
+- Adds support for the build configuration [`includeDependency`](#include-dependencies)
+- Allows [server configuration](#server-configuration) in projects of type `module`
 
 Specification Version 2.5 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v2.12.0 and above.
 
