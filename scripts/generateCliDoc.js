@@ -87,8 +87,7 @@ function generateDoc() {
 	obj.commonOptions.shift();
 	for (let all of obj.commonOptions) {
 		let temp = checkChars(all);
-		let command, description;
-		({ command, description } = splitString(command, temp, description));
+		let { command, description } = splitString(temp);
 		optionObj.push({ commonOption: command, commonOptionDescription: description });
 	}
 
@@ -100,8 +99,7 @@ function generateDoc() {
 		if (temp == '') {
 			continue;
 		}
-		let command, description;
-		({ command, description } = splitString(command, temp, description));
+		let { command, description } = splitString(temp);
 		examplesObj.push({ commonExample: command, commonExampleDescription: description });
 	}
 
@@ -117,8 +115,7 @@ function generateDoc() {
 		if (!(obj.commands.length <= 1)) {
 			for (let all of obj.commands) {
 				let temp = checkChars(all);
-				let command, description;
-				({ command, description } = splitString(command, temp, description));
+				let { command, description } = splitString(temp);
 				commandsObj.push({ childCommand: command, commandDescription: description });
 			}
 		}
@@ -130,8 +127,7 @@ function generateDoc() {
 			let index = 0;
 			for (let all of obj.positionals) {
 				let temp = checkChars(all);
-				let command, description;
-				({ command, description } = splitString(command, temp, description));
+				let { command, description } = splitString(temp);
 				if (!(/\S/.test(command))) {
 					positionalObj[index - 1].positionalDescription = positionalObj[index - 1].positionalDescription.concat("<br>", description);
 					continue;
@@ -146,7 +142,7 @@ function generateDoc() {
 			for (let all of obj.addOptions) {
 				let temp = checkChars(all);
 				let command, description;
-				({ command, description } = splitString(command, temp, description));
+				({ command, description } = splitString(temp));
 				optionObj.push({ option: command, optionDescription: description });
 			}
 		}
@@ -159,8 +155,7 @@ function generateDoc() {
 				if (temp == '') {
 					continue;
 				}
-				let command, description;
-				({ command, description } = splitString(command, temp, description));
+				let { command, description } = splitString(temp);
 				exampleObj.push({ example: command, exampleDescription: description });
 			}
 		}
@@ -195,10 +190,27 @@ function generateDoc() {
 
 }
 
-function splitString(command, temp, description) {
-	command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0].trim();
-	description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1].trim();
-	return { command, description };
+function splitString(temp) {
+	try {
+		console.log("temp:");
+		console.log(temp);
+		const match = temp.trim().split("  ").filter((s) => s);
+		console.log("match:");
+		console.log(match);
+		let command, description;
+		if (match.length >= 2) {
+			command = match[0].trim();
+			description = match[1].trim();
+		} else {
+			description = match[0].trim();
+		}
+		return { command, description };
+	} catch (err) {
+		console.log("Error:");
+		console.log(temp);
+		throw err;
+	}
+
 }
 
 function checkChars(all) {
