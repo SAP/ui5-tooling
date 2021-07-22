@@ -205,7 +205,7 @@ function splitString(temp) {
 
 function checkChars(all) {
 	let clean = all.split("|").join("\\\|");
-	clean = clean.replace(/"\D+[di]\d{6,}/i, "\"$HOME/");
+	clean = clean.replace(/"\D+[di]\d{6,}/i, "\"~");
 	return clean;
 }
 
