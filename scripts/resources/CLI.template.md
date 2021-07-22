@@ -25,10 +25,10 @@ The CLI automatically checks for updates using [update-notifier](https://github.
 
 These options you can use with each command.
 
-| Option | Description |
-| --- | --- |
+| Option | Description | Details |
+| --- | --- | --- |
 {{#each commonOptions}}
-| {{commonOption}} | {{commonOptionDescription}} |
+| {{commonOption}} | {{commonOptionDescription}} | {{commonOptionDetails}} |
 {{/each}}
 
 ## Examples
@@ -68,20 +68,20 @@ These options you can use with each command.
 {{#if options}}
 **Options**
 
-| Option | Description |
-| --- | --- |
+| Option | Description | Details |
+| --- | --- | --- |
 {{#each options}}
-| {{option}} | {{optionDescription}} |
+| {{option}} | {{optionDescription}} | {{optionDetails}} |
 {{/each}}
 {{/if}}
 
 {{#if positionals}}
 **Positionals**
 
-| Positional | Description |
-| --- | --- |
+| Positional | Description | Details |
+| --- | --- | --- |
 {{#each positionals}}
-| {{positional}} | {{positionalDescription}} |
+| {{positional}} | {{positionalDescription}} | {{positionalDetails}} |
 {{/each}}
 {{/if}}
 
