@@ -191,26 +191,20 @@ function generateDoc() {
 }
 
 function splitString(temp) {
-	try {
-		console.log("temp:");
-		console.log(temp);
-		const match = temp.trim().split("  ").filter((s) => s);
-		console.log("match:");
-		console.log(match);
-		let command, description;
-		if (match.length >= 2) {
-			command = match[0].trim();
-			description = match[1].trim();
-		} else {
-			description = match[0].trim();
-		}
-		return { command, description };
-	} catch (err) {
-		console.log("Error:");
-		console.log(temp);
-		throw err;
+	let command, description, details;
+
+	const match = temp.trim().split("  ").filter((s) => s).map((s) => s.trim());
+	if (match.length && match[match.length - 1].startsWith("[") && match[match.length - 1].endsWith("]")) {
+		details = match.splice(match.length - 1, 1)[0];
+	}
+	description = match.length ? match.splice(match.length - 1, 1)[0] : "";
+	command = match.length ? match[match.length - 1] : "";
+
+	if (details) {
+		description = description + "  " + details;
 	}
 
+	return { command, description };
 }
 
 function checkChars(all) {
@@ -220,5 +214,3 @@ function checkChars(all) {
 }
 
 generateDoc();
-
-
