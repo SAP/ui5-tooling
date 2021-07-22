@@ -130,6 +130,7 @@ function generateDoc() {
 				let { command, description, details } = splitString(temp);
 				if (!(/\S/.test(command))) {
 					positionalObj[index - 1].positionalDescription = positionalObj[index - 1].positionalDescription.concat("<br>", description);
+					positionalObj[index - 1].positionalDetails = details;
 					continue;
 				}
 				positionalObj.push({ positional: command, positionalDescription: description, positionalDetails: details });
@@ -193,12 +194,12 @@ function generateDoc() {
 function splitString(temp) {
 	let command, description, details;
 
-	const match = temp.trim().split("  ").filter((s) => s).map((s) => s.trim());
+	const match = temp.split("  ").filter((s) => s).map((s) => s.trim());
 	if (match.length && match[match.length - 1].startsWith("[") && match[match.length - 1].endsWith("]")) {
-		details = match.splice(match.length - 1, 1)[0];
+		details = match.pop();
 	}
-	description = match.length ? match.splice(match.length - 1, 1)[0] : "";
-	command = match.length ? match[match.length - 1] : "";
+	description = match.pop() || "";
+	command = match.pop() || "";
 
 	return { command, description, details };
 }
