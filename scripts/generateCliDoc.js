@@ -142,8 +142,7 @@ function generateDoc() {
 		if (!(obj.addOptions.length <= 1)) {
 			for (let all of obj.addOptions) {
 				let temp = checkChars(all);
-				let command, description;
-				({ command, description, details } = splitString(temp));
+				let { command, description, details } = splitString(temp);
 				optionObj.push({ option: command, optionDescription: description, optionDetails: details });
 			}
 		}
