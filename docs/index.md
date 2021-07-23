@@ -20,7 +20,7 @@ npm install --save-dev @ui5/cli
 
 #### ⚙️ Project Setup
 
-Configure your project for use with the UI5 Tooling.  
+Configure your project for use with UI5 Tooling.  
 *Also see the [Configuration Documentation](./pages/Configuration.md)*
 
 ```
