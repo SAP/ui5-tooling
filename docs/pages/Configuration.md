@@ -10,7 +10,7 @@ A projects UI5 Tooling configuration is typically located in a [YAML](https://ya
 Starting with [Specification Version 2.0](#specification-version-20) the configuration is validated according to a JSON schema.  
 The current version of the schema can be found here: https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
 
-The schema is also part of the [JSON Schema Store catalog](http://schemastore.org/json/) which is used by the [YAML Language Server](https://github.com/redhat-developer/yaml-language-server).  
+The schema is also part of the [JSON Schema Store Catalog](http://schemastore.org/json/) which is used by the [YAML Language Server](https://github.com/redhat-developer/yaml-language-server).  
 See the list of [clients](https://github.com/redhat-developer/yaml-language-server/blob/master/README.md#clients) to find extensions for various IDEs and editors.
 
 ## Example
@@ -73,7 +73,7 @@ In addition, a project must define a `type`. This can be either `application`, `
 
 A project must have a `name` and might define a `copyright` string.
 
-In the UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `company.businessarea.project`.
+In UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `company.businessarea.project`.
 
 #### copyright
 
@@ -175,7 +175,7 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
             propertiesFileSourceEncoding: ISO-8859-1
         ````
 
-By default the UI5 Tooling expects different encodings for `*.properties` i18n files, depending on the project's specification version:
+By default UI5 Tooling expects different encodings for `*.properties` i18n files, depending on the project's specification version:
 
 Specification Version | Default `propertiesFileSourceEncoding`
 --- | ---
@@ -184,7 +184,7 @@ Specification Version | Default `propertiesFileSourceEncoding`
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
 
-The UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
+UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
 
 ## Custom Configuration
 
@@ -202,7 +202,7 @@ The UI5 Tooling will read the corresponding files of the project in the given en
         otherKey: otherValue
     ```
 
-Custom configuration that is ignored by the UI5 Tooling.  
+Custom configuration that is ignored by UI5 Tooling.  
 This can be used to store UI5 specific configuration for third-party tools.
 
 The "customConfiguration" value must be an object.  
@@ -640,7 +640,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
 
 ## Specification Versions
-A project must define a Specification Version by setting the `specVersion` property. The UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
+A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
 ````yaml
 specVersion: "2.5"
@@ -658,7 +658,7 @@ All changes are documented below.
 
 ### Compatibility Matrix
 
-Unless otherwise noted in the table below, the UI5 Tooling modules are backward compatible.
+Unless otherwise noted in the table below, UI5 Tooling modules are backward compatible.
 
 Version | UI5 CLI Release
 --- | ---
