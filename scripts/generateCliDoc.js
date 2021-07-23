@@ -87,9 +87,8 @@ function generateDoc() {
 	obj.commonOptions.shift();
 	for (let all of obj.commonOptions) {
 		let temp = checkChars(all);
-		let command, description;
-		({ command, description } = splitString(command, temp, description));
-		optionObj.push({ commonOption: command, commonOptionDescription: description });
+		let { command, description, details } = splitString(temp);
+		optionObj.push({ commonOption: command, commonOptionDescription: description, commonOptionDetails: details });
 	}
 
 	obj.examples.shift();
@@ -100,8 +99,7 @@ function generateDoc() {
 		if (temp == '') {
 			continue;
 		}
-		let command, description;
-		({ command, description } = splitString(command, temp, description));
+		let { command, description } = splitString(temp);
 		examplesObj.push({ commonExample: command, commonExampleDescription: description });
 	}
 
@@ -117,8 +115,7 @@ function generateDoc() {
 		if (!(obj.commands.length <= 1)) {
 			for (let all of obj.commands) {
 				let temp = checkChars(all);
-				let command, description;
-				({ command, description } = splitString(command, temp, description));
+				let { command, description } = splitString(temp);
 				commandsObj.push({ childCommand: command, commandDescription: description });
 			}
 		}
@@ -130,13 +127,13 @@ function generateDoc() {
 			let index = 0;
 			for (let all of obj.positionals) {
 				let temp = checkChars(all);
-				let command, description;
-				({ command, description } = splitString(command, temp, description));
+				let { command, description, details } = splitString(temp);
 				if (!(/\S/.test(command))) {
 					positionalObj[index - 1].positionalDescription = positionalObj[index - 1].positionalDescription.concat("<br>", description);
+					positionalObj[index - 1].positionalDetails = details;
 					continue;
 				}
-				positionalObj.push({ positional: command, positionalDescription: description });
+				positionalObj.push({ positional: command, positionalDescription: description, positionalDetails: details });
 				index++;
 			}
 		}
@@ -145,9 +142,8 @@ function generateDoc() {
 		if (!(obj.addOptions.length <= 1)) {
 			for (let all of obj.addOptions) {
 				let temp = checkChars(all);
-				let command, description;
-				({ command, description } = splitString(command, temp, description));
-				optionObj.push({ option: command, optionDescription: description });
+				let { command, description, details } = splitString(temp);
+				optionObj.push({ option: command, optionDescription: description, optionDetails: details });
 			}
 		}
 
@@ -159,8 +155,7 @@ function generateDoc() {
 				if (temp == '') {
 					continue;
 				}
-				let command, description;
-				({ command, description } = splitString(command, temp, description));
+				let { command, description } = splitString(temp);
 				exampleObj.push({ example: command, exampleDescription: description });
 			}
 		}
@@ -195,18 +190,23 @@ function generateDoc() {
 
 }
 
-function splitString(command, temp, description) {
-	command = temp.split(/[^\w.,]\s(?=[A-Z])/)[0].trim();
-	description = temp.split(/[^\w.,]\s(?=[A-Z])/)[1].trim();
-	return { command, description };
+function splitString(temp) {
+	let command, description, details;
+
+	const match = temp.split("  ").filter((s) => s).map((s) => s.trim());
+	if (match.length && match[match.length - 1].startsWith("[") && match[match.length - 1].endsWith("]")) {
+		details = match.pop();
+	}
+	description = match.pop() || "";
+	command = match.pop() || "";
+
+	return { command, description, details };
 }
 
 function checkChars(all) {
 	let clean = all.split("|").join("\\\|");
-	clean = clean.replace(/"\D+[di]\d{6,}/i, "\"$HOME/");
+	clean = clean.replace(/"\D+[di]\d{6,}/i, "\"~");
 	return clean;
 }
 
 generateDoc();
-
-
