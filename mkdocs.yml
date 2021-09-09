@@ -36,6 +36,8 @@ theme:
   logo: 'images/logo.svg'
   favicon: 'images/favicon.png'
   font: false
+  features:
+    - navigation.expand
 
 extra_css:
   - 'stylesheets/extra.css'
