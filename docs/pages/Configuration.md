@@ -507,6 +507,11 @@ These excludes are applied *before* any general builder excludes that have been 
 
 ### Include Dependencies
 
+!!! info
+    This configuration is available since UI5 CLI [`v2.12.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.12.0)
+    and applies only to projects defining [Specification Version](#specification-versions)
+    2.5 or higher.
+
 !!! example
     ````yaml
     builder:
