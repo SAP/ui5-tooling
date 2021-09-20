@@ -60,5 +60,10 @@ Please make sure that your project defines [Specification Version 2.0](./Configu
 
 For details, please see the corresponding [framework configuration documentation](./Configuration.md#framework-configuration).
 
+## Linking Framework Dependencies
+When working on UI5 applications or libraries that use OpenUI5, you can link a local OpenUI5 repository into that project. This allows you to make changes to the project itself as well as to the OpenUI5 libraries simultaneously and test them immediately.
+
+A detailed step-by-step guide on how to achieve such a setup with the OpenUI5 Sample App can be found [here](https://github.com/SAP/openui5-sample-app#working-with-local-dependencies).
+
 ## OpenUI5 Framework Development
 Please refer to the [OpenUI5 Framework Development Documentation](https://github.com/SAP/openui5/blob/master/docs/developing.md#developing-ui5).
