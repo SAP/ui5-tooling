@@ -7,4 +7,4 @@ echo "Changed directory to $(pwd)"
 
 npm run generate-cli-doc
 
-docker run --rm -it -p 8000:8000 -v $(pwd):/docs squidfunk/mkdocs-material:7.2.6
+docker run --rm -it -p 8000:8000 -v $(pwd):/docs squidfunk/mkdocs-material:6.0.2

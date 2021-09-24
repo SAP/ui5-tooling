@@ -95,10 +95,15 @@ html, body, h1, h2, h3, h4, h5, h6, p {
   margin-right: 0.5em;
 }
 
+.sap-icon-circle-task-2 {
+  font-family: SAP-icons;
+}
+
 .sap-icon-circle-task-2::before {
   font-family: SAP-icons;
   content: "\e255";
 }
+
 .sap-icon-circle-task-2-before::before {
   font-family: SAP-icons;
   content: "\e255";
