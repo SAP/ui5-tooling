@@ -55,6 +55,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 | escapeNonAsciiCharacters | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |  |
 | replaceCopyright | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
 | replaceVersion | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
+| replaceBuildtime |  | {: .sap-icon-circle-task-2 } |  |
 | generateJsdoc |  | {: .sap-icon-circle-task }^1^ |  |
 | executeJsdocSdkTransformation |  | {: .sap-icon-circle-task }^1^ |  |
 | generateFlexChangesBundle |  | {: .sap-icon-circle-task-2 } |  |
