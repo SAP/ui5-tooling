@@ -330,7 +330,7 @@ async getSpecifications() {}
 
 ### Introduce "Specification" Entities
 
-It is proposed to introduce the umbrella term "Specification" to refer to any entity that has a configuration (specification) based on which UI5 Tooling will derive a functionality from.
+It is proposed to introduce the umbrella term "Specification" to refer to any entity that has a configuration (specification) from which UI5 Tooling can derive a functionality.
 
 Currently, there are two kinds of specifications: projects and extensions. These are again subdivided into the different types. For example there are projects of type application, library, theme-library and module.
 
