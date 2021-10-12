@@ -15,16 +15,22 @@ async function main() {
 	const parser = new $RefParser();
 	const schema = await parser.bundle(SOURCE_SCHEMA_PATH);
 
-	// Remove $id from all nodes and $schema from all exept the root node.
+	// Remove $id from all nodes and $schema / $comment from all except the root node.
 	// Defining $id on the root is not required and as the URL will be a different one it might even cause issues.
 	// $schema only needs to be defined once per file.
 	traverse(schema).forEach(function(v) {
+
 		if (v && typeof v === "object" && !Array.isArray(v)) {
 			if (v.$id) {
 				delete v.$id;
 			}
-			if (!this.isRoot && v.$schema) {
-				delete v.$schema;
+			if (!this.isRoot) {
+				if (v.$schema) {
+					delete v.$schema;
+				}
+				if (v.$comment) {
+					delete v.$comment;
+				}
 			}
 			this.update(v);
 		}
