@@ -550,7 +550,7 @@ For projects of type `application` and `library` the minification is done for al
 
 List of modules declared as glob patterns (resource name patterns) that should be excluded from resource minification. A pattern ending with a slash `/` will, similarly to the use of a single `*` or double `**` asterisk, denote an arbitrary number of characters or folder names. Re-includes should be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
 
-Note that patterns are always applied relative to the project's virtual source directory `/resources/`. Re-includes must start with the project's namespace.
+Note that patterns are always applied relative to the project's virtual source directory `/resources/`.
 
 
 ## Server Configuration
