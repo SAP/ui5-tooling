@@ -146,33 +146,44 @@ In case of errors the promise should reject with an [Error object](https://devel
 
 ### Example: lib/tasks/generateMarkdownFiles.js
 
-The following code snippets shows an example how a task implementation could look like:
+The following code snippets shows an example how a task implementation could look like. This task uses a generic "toMarkdown" library to transform text to [markdown](https://daringfireball.net/projects/markdown/) and writes out the newly created markdown files.
 
 ````javascript
-// Task implementation
-const markdownGenerator = require("./markdownGenerator");
+const path = require("path");
+const {Resource} = require("@ui5/fs");
+const toMarkdown = require("./toMarkdown");
 
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
-	const textResources = await workspace.byGlob("**/*.txt");
-	const markdownResources = await markdownGenerator({
-		resources: textResources
-	});
-	await Promise.all(markdownResources.map((resource) => {
-		return workspace.write(resource);
-	}));
+  const textResources = await workspace.byGlob("**/*.txt")
+  await Promise.all(textResources.map(async (resource) => {
+    const markdownString = await toMarkdown(await resource.getString());
+
+    const textResourcePath = resource.getPath();
+
+    // Note: @ui5/fs virtual paths are always POSIX (on all systems)
+    const newResourceName = path.posix.basename(textResourcePath, ".txt") + ".md";
+    const newResourcePath = path.posix.join(path.posix.dirname(textResourcePath), newResourceName);
+
+    const markdownResource = new Resource({
+      path: newResourcePath,
+      string: markdownString
+    })
+    await workspace.write(markdownResource);
+  }));
 };
 ````
 
 ### Example: lib/tasks/bundlesOnly.js
 
-The following code snippets shows an example how a task implementation could look like:
+The following code snippet shows an example of a custom task, filtering for resources that are not bundles and tagging them for being omitted from the build result.
 
 ````javascript
 
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
-  await workspace.byGlob("**/*.js").forEach((resource) => {
+  const jsResources = await workspace.byGlob("**/*.js")
+  jsResources.forEach((resource) => {
     if (!taskUtil.getTag(resource, taskUtil.STANDARD_TAGS.IsBundle)) {
-      // JS-resource is not a Bundle => Remove it from the build result
+      // Resource is not a Bundle => Remove it from the build result
       taskUtil.setTag(resource, taskUtil.STANDARD_TAGS.OmitFromBuildResult);
     }
   });
