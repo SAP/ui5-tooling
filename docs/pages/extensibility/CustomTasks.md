@@ -146,7 +146,7 @@ In case of errors the promise should reject with an [Error object](https://devel
 
 ### Example: lib/tasks/generateMarkdownFiles.js
 
-The following code snippets shows an example how a task implementation could look like. This task uses a generic "toMarkdown" library to transform text to [markdown](https://daringfireball.net/projects/markdown/) and writes out the newly created markdown files.
+The following code snippet shows an example of what a task implementation might look like. This task uses a generic "toMarkdown" library to transform text to [markdown](https://daringfireball.net/projects/markdown/) and writes out the newly created markdown files.
 
 ````javascript
 const path = require("path");
