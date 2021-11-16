@@ -40,6 +40,8 @@ These tags are shared in a "global" build context, so that they can also be acce
 
 Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. By adding a new `filter()` API to the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) which internally creates a "ReaderFilter" with the current reader instance and a set of provided "filters" and returns it to the caller.
 
+This approach of filtering-out resources that should never be included in a specific bundle can also be used when exchanging the legacy-bundle-tooling with other tools like [Rollup](https://github.com/rollup/rollup), which also only expect the resources relevant for the bundle to be available.
+
 **Signature:**
 ```javascript
     /**
@@ -103,6 +105,12 @@ Deprecate the existing "uglify" and "createDebugFiles" tasks in favor of this ne
 
 ## How we teach this
 
+The new "minify" tasks and the deprecation of the old "uglify" and "createDebugFiles" tasks should be documented in the ["Standard Tasks"](https://sap.github.io/ui5-tooling/pages/Builder/#standard-tasks) chapter of the Builder documentation.
+
+Source map support should be documented in a separate chapter in the [Builder](https://sap.github.io/ui5-tooling/pages/Builder/) documentation. Especially with regards to further integration scenarios like projects that have already done a transpilation process (e.g. from TypeScript to JavaScript) and would like to provide us with source maps generated in the process.
+
+The new `ReaderFilter` API should be documented in JSDoc. The signatures of the existing `generateBundle` tasks (including `generateComponentPreload` and `generateLibraryPreload`) should ideally stay the same, only adding an **optional** `taskUtil` parameter for filtering based on the mentioned tags. This allows for continued easy direct consumption of the tasks.
+
 <!--
     What names and terminology work best for these concepts and why? How is this idea best presented?
 
@@ -113,6 +121,8 @@ Deprecate the existing "uglify" and "createDebugFiles" tasks in favor of this ne
 
 ## Drawbacks
 
+To be discussed.
+
 <!--
     Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
 
@@ -121,6 +131,7 @@ Deprecate the existing "uglify" and "createDebugFiles" tasks in favor of this ne
 
 ## Alternatives
 
+To be discussed.
 
 <!-- What other designs have been considered? What is the impact of not doing this? -->
 
