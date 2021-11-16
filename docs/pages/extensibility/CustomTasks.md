@@ -128,7 +128,7 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 
 - **`workspace`**: A [DuplexCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.DuplexCollection.html) to read and write [Resources](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) for the project that is currently being built
 - **`dependencies`**: A [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) to read [Resources](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) of the project's dependencies
-- **`taskUtil`**: See [details below](http://localhost:8000/pages/extensibility/CustomTasks/#helper-class-taskutil)
+- **`taskUtil`**: See [details below](https://sap.github.io/ui5-tooling/pages/extensibility/CustomTasks/#helper-class-taskutil)
 - **`options.projectName`**: The name of the project currently being built. *Example: `my.library`*
 - **`options.projectNamespace`**: The namespace of the project. *Example: `my/library`*
 - **`options.configuration`**: The task configuration as defined in the project's ui5.yaml. See [Configuration](#Configuration)
