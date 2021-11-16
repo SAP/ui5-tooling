@@ -146,27 +146,27 @@ In case of errors the promise should reject with an [Error object](https://devel
 
 ### Example: lib/tasks/generateMarkdownFiles.js
 
-The following code snippet shows an example of what a task implementation might look like. This task uses a generic "toMarkdown" library to transform text to [markdown](https://daringfireball.net/projects/markdown/) and writes out the newly created markdown files.
+The following code snippet shows an example of what a task implementation might look like. This task uses a generic "renderMarkdown" library to transform [markdown](https://daringfireball.net/projects/markdown/) files to HTML and writes out the newly created markdown files.
 
 ````javascript
 const path = require("path");
 const {Resource} = require("@ui5/fs");
-const toMarkdown = require("./toMarkdown");
+const renderMarkdown = require("./renderMarkdown");
 
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
-  const textResources = await workspace.byGlob("**/*.txt")
+  const textResources = await workspace.byGlob("**/*.md")
   await Promise.all(textResources.map(async (resource) => {
-    const markdownString = await toMarkdown(await resource.getString());
+    const htmlString = await renderMarkdown(await resource.getString());
 
-    const textResourcePath = resource.getPath();
+    const markdownResourcePath = resource.getPath();
 
     // Note: @ui5/fs virtual paths are always POSIX (on all systems)
-    const newResourceName = path.posix.basename(textResourcePath, ".txt") + ".md";
-    const newResourcePath = path.posix.join(path.posix.dirname(textResourcePath), newResourceName);
+    const newResourceName = path.posix.basename(markdownResourcePath, ".md") + ".html";
+    const newResourcePath = path.posix.join(path.posix.dirname(markdownResourcePath), newResourceName);
 
     const markdownResource = new Resource({
       path: newResourcePath,
-      string: markdownString
+      string: htmlString
     })
     await workspace.write(markdownResource);
   }));
