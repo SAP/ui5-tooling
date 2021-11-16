@@ -38,7 +38,37 @@ Depending on whether the requested bundle shall be "optimized", filter out all d
 
 These tags are shared in a "global" build context, so that they can also be accessed when working with resources of a dependency that has been built earlier.
 
-Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. By adding a new `filter()` API to the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html)
+Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. By adding a new `filter()` API to the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) which internally creates a "ReaderFilter" with the current reader instance and a set of provided "filters" and returns it to the caller.
+
+**Signature:**
+```javascript
+    /**
+     * ReaderFilter constructor
+     *
+     * @param {object} parameters Parameters
+     * @param {module:@ui5/fs.AbstractReader} parameters.reader A resource reader
+     * @param {module:@ui5/fs.ResourceTagCollection} parameters.resourceTagCollection Resource tag collection to apply filters onto
+     * @param {object[]} parameters.filters Filters
+     * @param {string} parameters.matchMode Whether to match "any", "all" or "none"
+     */
+
+     byPath(...)
+     byGlob(...)
+```
+
+**Example:**
+```javascript
+const filteredWorkspace = workspace.filter({
+    resourceTagCollection: taskUtil.getResourceTagCollection(),
+    matchMode: "none",
+    filters: [{
+        tag: taskUtil.STANDARD_TAGS.IsDebugVariant,
+        value: true,
+    }]
+});
+
+const resources = await filteredWorkspace.byGlob("**"); // Won't return any resources tagged as "IsDebugVariant"
+```
 
 ### Source Map support
 
@@ -52,12 +82,20 @@ In case bundled sources are modified (e.g. by adding characters), the relevant s
 
 For resources where no source map is provided, the bundling process should not generate one. Since it doesn't heavily modify resources (as of today) and since for most resources a source map should be provided by the preceding minification process, we currently don't expect any need for this.
 
+**Source Map Handling Activity:**
+
+![Source Map Handling](./resources/UI5_Builder-Bundling_Refactoring_-_Source_Map_Handling.png)
+
 ### Reorder- and reorganize build tasks
 To make the above possible, the minification (a.k.a. "uglification") as well as the debug-file creation tasks need to be done before the bundling process. Only this allows the bundling to make use of the minified resources and the accompanying source maps.
 
 Create a new "minify" task which takes care of creating a debug-variant, minifying the original resource (and creating a source map in the process) as well as tagging the resources as "IsDebugVariant" and "HasDebugVariant" accordingly.
 
 Deprecate the existing "uglify" and "createDebugFiles" tasks in favor of this new task. Either remove them or make them a noop, so that custom tasks can still reference them in their "beforeTask" or "afterTask" configuration.
+
+**"minify" Task Activity:**
+
+![minify Task Activity](./resources/UI5_Builder-Bundling_Refactoring_-_minify_task.png)
 
 <!--
     This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the UI5 Tooling to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here.
