@@ -54,8 +54,8 @@ This approach of filtering-out resources that should never be included in a spec
  * @param {string} parameters.matchMode Whether to match "any", "all" or "none"
  */
 
- byPath(...)
- byGlob(...)
+byPath(...)
+byGlob(...)
 ```
 
 **Example:**
