@@ -21,7 +21,7 @@ Refactor the bundle creation process of UI5 Tooling to make it more efficient an
 The current bundling process is lacking in multiple aspects. The main pain points are as follows:
 
 - *Efficiency:* **Minification** of resources is done as part of the bundling process, although the same resources are also minified in a following "uglify" task as part of the overall build process
-- *Features:* **Source maps** are neither generated nor are existing source maps used in a bundle resources
+- *Feature:* **Source maps** are neither generated nor are existing source maps used in a bundle resources
 - *Issue:* The bundle process can't **differentiate between resources and their debug-variants** (i.e. `-dbg.js` files). In some cases this can lead to both resources being included in a bundle.
 
 <!-- 
@@ -44,18 +44,18 @@ This approach of filtering-out resources that should never be included in a spec
 
 **Signature:**
 ```javascript
-    /**
-     * ReaderFilter constructor
-     *
-     * @param {object} parameters Parameters
-     * @param {module:@ui5/fs.AbstractReader} parameters.reader A resource reader
-     * @param {module:@ui5/fs.ResourceTagCollection} parameters.resourceTagCollection Resource tag collection to apply filters onto
-     * @param {object[]} parameters.filters Filters
-     * @param {string} parameters.matchMode Whether to match "any", "all" or "none"
-     */
+/**
+ * ReaderFilter constructor
+ *
+ * @param {object} parameters Parameters
+ * @param {module:@ui5/fs.AbstractReader} parameters.reader A resource reader
+ * @param {module:@ui5/fs.ResourceTagCollection} parameters.resourceTagCollection Resource tag collection to apply filters onto
+ * @param {object[]} parameters.filters Filters
+ * @param {string} parameters.matchMode Whether to match "any", "all" or "none"
+ */
 
-     byPath(...)
-     byGlob(...)
+ byPath(...)
+ byGlob(...)
 ```
 
 **Example:**
@@ -71,6 +71,18 @@ const filteredWorkspace = workspace.filter({
 
 const resources = await filteredWorkspace.byGlob("**"); // Won't return any resources tagged as "IsDebugVariant"
 ```
+
+### Reorder- and reorganize build tasks
+To make the above possible, the minification (a.k.a. "uglification") as well as the debug-file creation tasks need to be done before the bundling process. Only this allows the bundling to make use of the minified resources and the accompanying source maps.
+
+**Create a new "minify" task** which takes care of creating a debug-variant, minifying the original resource (and creating a source map in the process) as well as tagging the resources as "IsDebugVariant" and "HasDebugVariant" accordingly.
+
+**Deprecate the existing "uglify" and "createDebugFiles" tasks** in favor of this new task. Either remove them or make them a noop, so that custom tasks can still reference them in their "beforeTask" or "afterTask" configuration.
+
+**"minify" Task Activity:**
+
+![minify Task Activity](./resources/UI5_Builder-Bundling_Refactoring_-_minify_task.png)
+
 
 ### Source Map support
 
@@ -88,16 +100,6 @@ For resources where no source map is provided, the bundling process should not g
 
 ![Source Map Handling](./resources/UI5_Builder-Bundling_Refactoring_-_Source_Map_Handling.png)
 
-### Reorder- and reorganize build tasks
-To make the above possible, the minification (a.k.a. "uglification") as well as the debug-file creation tasks need to be done before the bundling process. Only this allows the bundling to make use of the minified resources and the accompanying source maps.
-
-Create a new "minify" task which takes care of creating a debug-variant, minifying the original resource (and creating a source map in the process) as well as tagging the resources as "IsDebugVariant" and "HasDebugVariant" accordingly.
-
-Deprecate the existing "uglify" and "createDebugFiles" tasks in favor of this new task. Either remove them or make them a noop, so that custom tasks can still reference them in their "beforeTask" or "afterTask" configuration.
-
-**"minify" Task Activity:**
-
-![minify Task Activity](./resources/UI5_Builder-Bundling_Refactoring_-_minify_task.png)
 
 <!--
     This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the UI5 Tooling to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here.
