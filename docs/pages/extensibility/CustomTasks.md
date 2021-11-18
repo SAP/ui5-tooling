@@ -109,46 +109,91 @@ A custom task implementation needs to return a function with the following signa
  * Custom task example
  *
  * @param {object} parameters Parameters
- * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
- * @param {module:@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write resources
+ * @param {module:@ui5/fs.AbstractReader} parameters.dependencies ReaderCollection to read dependency resources
  * @param {object} parameters.taskUtil Specification Version dependent interface to a
  *                [TaskUtil]{@link module:@ui5/builder.tasks.TaskUtil} instance
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
- * @param {string} [parameters.options.projectNamespace] Project namespace if available
+ * @param {string} [parameters.options.projectNamespace] Project namespace
  * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
- * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
+ * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written or rejecting in case of an error
  */
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	// [...]
 };
 ````
 
-The following code snippets shows an example how a task implementation could look like:
+**Parameters:**
 
-### Example: lib/tasks/generateMarkdownFiles.js
+- **`workspace`**: A [DuplexCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.DuplexCollection.html) to read and write [Resources](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) for the project that is currently being built
+- **`dependencies`**: A [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) to read [Resources](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) of the project's dependencies
+- **`taskUtil`**: See [details below](https://sap.github.io/ui5-tooling/pages/extensibility/CustomTasks/#helper-class-taskutil)
+- **`options.projectName`**: The name of the project currently being built. *Example: `my.library`*
+- **`options.projectNamespace`**: The namespace of the project. *Example: `my/library`*
+- **`options.configuration`**: The task configuration as defined in the project's ui5.yaml. See [Configuration](#Configuration)
 
-````javascript
-// Task implementation
-const markdownGenerator = require("./markdownGenerator");
 
-module.exports = async function({workspace, dependencies, taskUtil, options}) {
-	const textResources = await workspace.byGlob("**/*.txt");
-	const markdownResources = await markdownGenerator({
-		resources: textResources
-	});
-	await Promise.all(markdownResources.map((resource) => {
-		return workspace.write(resource);
-	}));
-};
-````
+**Returns:**
+
+A Promise that resolves once the task has completed and all new or modified resources have been written to the workspace.
+
+In case of errors the promise should reject with an [Error object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/Error), causing the build to abort. 
+
 
 !!! warning
     Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
 
+### Example: lib/tasks/generateMarkdownFiles.js
+
+The following code snippet shows an example of what a task implementation might look like. This task uses a generic "renderMarkdown" library to transform [markdown](https://daringfireball.net/projects/markdown/) files to HTML and writes out the newly created markdown files.
+
+````javascript
+const path = require("path");
+const {Resource} = require("@ui5/fs");
+const renderMarkdown = require("./renderMarkdown");
+
+module.exports = async function({workspace, dependencies, taskUtil, options}) {
+  const textResources = await workspace.byGlob("**/*.md")
+  await Promise.all(textResources.map(async (resource) => {
+    const htmlString = await renderMarkdown(await resource.getString());
+
+    const markdownResourcePath = resource.getPath();
+
+    // Note: @ui5/fs virtual paths are always POSIX (on all systems)
+    const newResourceName = path.posix.basename(markdownResourcePath, ".md") + ".html";
+    const newResourcePath = path.posix.join(path.posix.dirname(markdownResourcePath), newResourceName);
+
+    const markdownResource = new Resource({
+      path: newResourcePath,
+      string: htmlString
+    })
+    await workspace.write(markdownResource);
+  }));
+};
+````
+
+### Example: lib/tasks/bundlesOnly.js
+
+The following code snippet shows an example of a custom task, filtering for resources that are not bundles and tagging them for being omitted from the build result.
+
+````javascript
+
+module.exports = async function({workspace, dependencies, taskUtil, options}) {
+  const jsResources = await workspace.byGlob("**/*.js")
+  jsResources.forEach((resource) => {
+    if (!taskUtil.getTag(resource, taskUtil.STANDARD_TAGS.IsBundle)) {
+      // Resource is not a Bundle => Remove it from the build result
+      taskUtil.setTag(resource, taskUtil.STANDARD_TAGS.OmitFromBuildResult);
+    }
+  });
+};
+````
 
 ## Helper Class `TaskUtil`
 
 Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html) instance.
 
 In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html).
+
+Also see UI5 Tooling [RFC 0008 Resource Tagging During Build](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0008-resource-tagging-during-build.md) for details on resource tagging.
