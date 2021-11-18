@@ -140,6 +140,8 @@ To be discussed.
 ## Unresolved Questions and Bikeshedding
 *This section should be removed (i.e. resolved) before merging*
 
+Should we generate source maps during bundling if none is provided for a resource? This could be a simple mapping of only the first column of the first line to the original file.
+
 <!-- 
     Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made?
 -->
