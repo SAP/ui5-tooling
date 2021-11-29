@@ -142,6 +142,19 @@ To be discussed.
 
 Should we generate source maps during bundling if none is provided for a resource? This could be a simple mapping of only the first column of the first line to the original file.
 
+### resourceRoot-mappings
+
+When bundling modules via resourceRoot-mappings, it might become impossible to reference the original source from a bundle's source map. For example, for a bundle located in `/test-resources`, which includes modules from `/resources`, the source map must not reference the original module via `../../resources/x/y/z` as this path rather depends on the resourceRoot-mapping and might be different at runtime.
+
+This could still be solved at a later time, once resourceRoot-mappings are actually supported by the general bundling process.
+
+The actual impact of this behavior is uncritical, since it only causes affected source maps to not be found at runtime. The bundle itself as well as other source maps stay consistent.
+
+
+### Mapping of static code at end of bundle
+
+A "transient" source map needs to be generated for any statically generated "require"/"try-catch" code at the end of a bundle. The mapped' source needs to be defined in the "sourcesContent" field of the source map.
+
 <!-- 
     Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made?
 -->
