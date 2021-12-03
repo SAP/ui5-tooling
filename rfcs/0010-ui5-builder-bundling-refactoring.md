@@ -38,7 +38,7 @@ Depending on whether the requested bundle shall be "optimized", filter out all d
 
 These tags are shared in a "global" build context, so that they can also be accessed when working with resources of a dependency that has been built earlier.
 
-Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. By adding a new `filter()` API to the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) which internally creates a "ReaderFilter" with the current reader instance and a set of provided "filters" and returns it to the caller.
+Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. A new `filter()` API of the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) will provide a "ReaderFilter" instance *(which also implements `AbstractReader`)*, wrapping the given reader instance. For every resource retrieved through this ReaderFilter, a filter callback function is called, allowing filtering on tags or other parameters. 
 
 This approach of filtering-out resources that should never be included in a specific bundle can also be used when exchanging the legacy-bundle-tooling with other tools like [Rollup](https://github.com/rollup/rollup), which also only expect the resources relevant for the bundle to be available.
 
@@ -49,9 +49,8 @@ This approach of filtering-out resources that should never be included in a spec
  *
  * @param {object} parameters Parameters
  * @param {module:@ui5/fs.AbstractReader} parameters.reader A resource reader
- * @param {module:@ui5/fs.ResourceTagCollection} parameters.resourceTagCollection Resource tag collection to apply filters onto
- * @param {object[]} parameters.filters Filters
- * @param {string} parameters.matchMode Whether to match "any", "all" or "none"
+ * @param {Function} parameters.filterCallback
+ *          Filter function. Should return true for items to keep and false otherwise
  */
 
 byPath(...)
@@ -60,13 +59,8 @@ byGlob(...)
 
 **Example:**
 ```javascript
-const filteredWorkspace = workspace.filter({
-    resourceTagCollection: taskUtil.getResourceTagCollection(),
-    matchMode: "none",
-    filters: [{
-        tag: taskUtil.STANDARD_TAGS.IsDebugVariant,
-        value: true,
-    }]
+const filteredWorkspace = filter(function(resource) {
+    return !taskUtil.getTag(resource, taskUtil.STANDARD_TAGS.IsDebugVariant);
 });
 
 const resources = await filteredWorkspace.byGlob("**"); // Won't return any resources tagged as "IsDebugVariant"
