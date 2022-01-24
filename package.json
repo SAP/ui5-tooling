@@ -18,8 +18,8 @@
 		"tool"
 	],
 	"engines": {
-		"node": ">= 10",
-		"npm": ">= 5"
+		"node": ">= 16.13.2",
+		"npm": ">= 8"
 	},
 	"scripts": {
 		"test": "npm run jsdoc-generate && npm run schema-generate",
