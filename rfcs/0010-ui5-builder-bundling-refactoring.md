@@ -38,9 +38,41 @@ Depending on whether the requested bundle shall be "optimized", filter out all d
 
 These tags are shared in a "global" build context, so that they can also be accessed when working with resources of a dependency that has been built earlier.
 
-Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. A new `filter()` API of the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) will provide a "ReaderFilter" instance *(which also implements `AbstractReader`)*, wrapping the given reader instance. For every resource retrieved through this ReaderFilter, a filter callback function is called, allowing filtering on tags or other parameters. 
+#### `@ui5/fs.readers.Filter`
+
+Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. A new `filter()` API of the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) will provide a "reader.Filter" instance *(which also implements `AbstractReader`)*, wrapping the given reader instance. For every resource retrieved through this reader.Filter, a filter callback function is called, allowing filtering on tags or other parameters. 
 
 This approach of filtering-out resources that should never be included in a specific bundle can also be used when exchanging the legacy-bundle-tooling with other tools like [Rollup](https://github.com/rollup/rollup), which also only expect the resources relevant for the bundle to be available.
+
+**Signature:**
+```javascript
+/**
+ * Filter constructor
+ *
+ * @param {object} parameters Parameters
+ * @param {module:@ui5/fs.AbstractReader} parameters.reader A resource reader
+ * @param {Function} parameters.filterCallback
+ *          Filter function. Should return true for items to keep and false otherwise
+ */
+
+byPath(...)
+byGlob(...)
+```
+
+**Example:**
+```javascript
+const filteredWorkspace = workspace.filter(function(resource) {
+    return !taskUtil.getTag(resource, taskUtil.STANDARD_TAGS.IsDebugVariant);
+});
+
+const resources = await filteredWorkspace.byGlob("**"); // Won't return any resources tagged as "IsDebugVariant"
+```
+
+#### `@ui5/fs.readers.Transformer`
+
+Bundles can also be configured as `optimize: false`. This should create a bundle consisting of files that have not been minified. One can invert the above Filter logic to exclude any minified files that have a debug variant (tagged as `HasDebugVariant`). However the remaining files will have the suffix `-dbg` (for example the unminified resources for `MyControl.js` is named `MyControl-dbg.js`). Depending on the bundle configuration, this naming difference can cause resources to incorrectly be in- or excluded from the bundle.
+
+To solve this, an additional ReaderCollection concept is introduced in UI5 FS: A "Transformer". This 
 
 **Signature:**
 ```javascript
@@ -59,7 +91,7 @@ byGlob(...)
 
 **Example:**
 ```javascript
-const filteredWorkspace = filter(function(resource) {
+const filteredWorkspace = workspace.transform(function(resource) {
     return !taskUtil.getTag(resource, taskUtil.STANDARD_TAGS.IsDebugVariant);
 });
 
