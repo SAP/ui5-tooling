@@ -21,7 +21,7 @@ Refactor the bundle creation process of UI5 Tooling to make it more efficient an
 The current bundling process is lacking in multiple aspects. The main pain points are as follows:
 
 - *Efficiency:* **Minification** of resources is done as part of the bundling process, although the same resources are also minified in a following "uglify" task as part of the overall build process
-- *Feature:* **Source maps** are neither generated nor are existing source maps used in a bundle resources
+- *Feature:* **Source maps** are neither generated nor are existing source maps used in a bundle resource
 - *Issue:* The bundle process can't **differentiate between resources and their debug-variants** (i.e. `-dbg.js` files). In some cases this can lead to both resources being included in a bundle.
 
 <!-- 
