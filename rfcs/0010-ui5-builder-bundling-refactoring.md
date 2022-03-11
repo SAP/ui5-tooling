@@ -68,34 +68,26 @@ const filteredWorkspace = workspace.filter(function(resource) {
 const resources = await filteredWorkspace.byGlob("**"); // Won't return any resources tagged as "IsDebugVariant"
 ```
 
-#### `@ui5/fs.readers.Transformer`
+#### `@ui5/builder.processors.moduleBundler`
 
-Bundles can also be configured as `optimize: false`. This should create a bundle consisting of files that have not been minified. One can invert the above Filter logic to exclude any minified files that have a debug variant (tagged as `HasDebugVariant`). However the remaining files will have the suffix `-dbg` (for example the unminified resources for `MyControl.js` is named `MyControl-dbg.js`). Depending on the bundle configuration, this naming difference can cause resources to incorrectly be in- or excluded from the bundle.
+Bundles can also be configured as `optimize: false`. This should create a bundle consisting of files that have not been minified. One can invert the above Filter logic to exclude any minified files that have a debug variant (tagged as `HasDebugVariant`). However the remaining files will have the suffix `-dbg` (for example the unminified resource for `MyControl.js` is named `MyControl-dbg.js`). Depending on the bundle configuration, this naming difference can cause resources to incorrectly be in- or excluded from the bundle.
 
-To solve this, an additional ReaderCollection concept is introduced in UI5 FS: A "Transformer". This 
-
-**Signature:**
-```javascript
-/**
- * ReaderFilter constructor
- *
- * @param {object} parameters Parameters
- * @param {module:@ui5/fs.AbstractReader} parameters.reader A resource reader
- * @param {Function} parameters.filterCallback
- *          Filter function. Should return true for items to keep and false otherwise
- */
-
-byPath(...)
-byGlob(...)
-```
+To solve this, a new option `moduleNameMapping` is introduced to the `moduleBundler` processor.
+The mapping allows the processor to use the given module name instead of deriving the module name from the resource path.
 
 **Example:**
 ```javascript
-const filteredWorkspace = workspace.transform(function(resource) {
-    return !taskUtil.getTag(resource, taskUtil.STANDARD_TAGS.IsDebugVariant);
-});
 
-const resources = await filteredWorkspace.byGlob("**"); // Won't return any resources tagged as "IsDebugVariant"
+const bundles = await moduleBundler({
+    options: {
+        bundleDefinition,
+        bundleOptions,
+        moduleNameMapping: {
+            "/resources/MyControl-dbg.js": "MyControl.js"
+        }
+    },
+    resources // Contains resource with path /resources/MyControl-dbg.js
+});
 ```
 
 ### Reorder- and reorganize build tasks
