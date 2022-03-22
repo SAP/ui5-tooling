@@ -143,7 +143,11 @@ The new `ReaderFilter` API should be documented in JSDoc. The signatures of the 
 
 ## Drawbacks
 
-To be discussed.
+There is a gap in the minification process which causes a regression for some scenarios.
+JavaScript resources from other projects (dependencies) are not minified when not building the project with the `--all` flag.
+This is because the bundling task does not perform the minification but rather relies on this to be done by the `minify` task.
+
+Requiring to always build a project with `--all` is not favorable due to performance reasons. Therefore, a solution is needed to still perform the needed minification steps for the mentioned resources.
 
 <!--
     Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
@@ -152,10 +156,6 @@ To be discussed.
 -->
 
 ## Alternatives
-
-To be discussed.
-
-<!-- What other designs have been considered? What is the impact of not doing this? -->
 
 ## Unresolved Questions and Bikeshedding
 *This section should be removed (i.e. resolved) before merging*
