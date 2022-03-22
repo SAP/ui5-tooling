@@ -106,13 +106,13 @@ To make the above possible, the minification (a.k.a. "uglification") as well as 
 
 For every JavaScript resource that is being bundled, search for a "sourceMappingURL"-tag at the end of the file and try to load the referenced source map. For source maps located in separate files, this could look like `//# sourceMappingURL=DateFormat.js.map`. For inline source maps this might look like `//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ3XZJka...`.
 
-_**To be decided:** Also accept `//@` annotation? See [Conventions](http://sourcemaps.info/spec.html#h.lmz475t4mvbx) in the source map specification for details._
+The outdated annotation convention `//@` should not be supported. All known relevant tools (Terser, TypeScript compiler) are using the new convention. See [Conventions](http://sourcemaps.info/spec.html#h.lmz475t4mvbx) in the source map specification for details.
 
 Any source maps found for a resource shall be added to the source map of the bundle. Either use an [index map](http://sourcemaps.info/spec.html#h.535es3xeprgt), containing the individual source maps, or generate a new source map for the whole bundle based off them.
 
 In case bundled sources are modified (e.g. by adding characters), the relevant source map needs to be aligned with that change.
 
-For resources where no source map is provided, the bundling process should not generate one. Since it doesn't heavily modify resources (as of today) and since for most resources a source map should be provided by the preceding minification process, we currently don't expect any need for this.
+For resources where no source map is provided, the bundling process should generate one by mapping the content line by line.
 
 **Source Map Handling Activity:**
 
@@ -157,8 +157,6 @@ To be discussed.
 
 ## Unresolved Questions and Bikeshedding
 *This section should be removed (i.e. resolved) before merging*
-
-Should we generate source maps during bundling if none is provided for a resource? This could be a simple mapping of only the first column of the first line to the original file.
 
 ### resourceRoot-mappings
 
