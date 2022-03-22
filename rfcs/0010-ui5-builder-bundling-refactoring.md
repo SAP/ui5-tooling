@@ -24,12 +24,6 @@ The current bundling process is lacking in multiple aspects. The main pain point
 - *Feature:* **Source maps** are neither generated nor are existing source maps used in a bundle resource
 - *Issue:* The bundle process can't **differentiate between resources and their debug-variants** (i.e. `-dbg.js` files). In some cases this can lead to both resources being included in a bundle.
 
-<!-- 
-    Why are we doing this? What use cases does it support? What is the expected outcome?
-
-    Please focus on explaining the motivation so that if this RFC is not accepted, the motivation could be used to develop alternative solutions. In other words, enumerate the constraints you are trying to solve without coupling them too closely to the solution you have in mind.
--->
-
 ## Detailed design
 
 ### Correct handling of debug-files
@@ -120,11 +114,6 @@ A "transient" source map needs to be generated for any statically generated "req
 
 ![Source Map Handling](./resources/UI5_Builder-Bundling_Refactoring_-_Source_Map_Handling.png)
 
-
-<!--
-    This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the UI5 Tooling to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here.
- -->
-
 ## How we teach this
 
 The new "minify" tasks and the removal of the old "uglify" and "createDebugFiles" tasks should be documented in the ["Standard Tasks"](https://sap.github.io/ui5-tooling/pages/Builder/#standard-tasks) chapter of the Builder documentation.
@@ -133,32 +122,15 @@ Source map support should be documented in a separate chapter in the [Builder](h
 
 The new `ReaderFilter` API should be documented in JSDoc. The signatures of the existing `generateBundle` tasks (including `generateComponentPreload` and `generateLibraryPreload`) should ideally stay the same, only adding an **optional** `taskUtil` parameter for filtering based on the mentioned tags. This allows for continued easy direct consumption of the tasks.
 
-<!--
-    What names and terminology work best for these concepts and why? How is this idea best presented?
-
-    Would the acceptance of this proposal mean the UI5 Tooling or any of its sub-components documentation must be re-organized or altered?
-
-    How should this feature be introduced and taught to existing UI5 Tooling users?
--->
-
 ## Drawbacks
+
+### Missing minification for resources from dependencies
 
 There is a gap in the minification process which causes a regression for some scenarios.
 JavaScript resources from other projects (dependencies) are not minified when not building the project with the `--all` flag.
 This is because the bundling task does not perform the minification but rather relies on this to be done by the `minify` task.
 
 Requiring to always build a project with `--all` is not favorable due to performance reasons. Therefore, a solution is needed to still perform the needed minification steps for the mentioned resources.
-
-<!--
-    Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
-
-    There are trade-offs to choosing any path, please attempt to identify them here.
--->
-
-## Alternatives
-
-## Unresolved Questions and Bikeshedding
-*This section should be removed (i.e. resolved) before merging*
 
 ### resourceRoot-mappings
 
@@ -168,7 +140,6 @@ This could still be solved at a later time, once resourceRoot-mappings are actua
 
 The actual impact of this behavior is uncritical, since it only causes affected source maps to not be found at runtime. The bundle itself as well as other source maps stay consistent.
 
-<!-- 
-    Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made?
--->
+## Alternatives
 
+## Unresolved Questions and Bikeshedding
