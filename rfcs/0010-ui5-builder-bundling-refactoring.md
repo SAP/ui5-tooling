@@ -95,7 +95,7 @@ To make the above possible, the minification (a.k.a. "uglification") as well as 
 
 **Create a new "minify" task** which takes care of creating a debug-variant, minifying the original resource (and creating a source map in the process) as well as tagging the resources as "IsDebugVariant" and "HasDebugVariant" accordingly.
 
-**Deprecate the existing "uglify" and "createDebugFiles" tasks** in favor of this new task. Either remove them or make them a noop, so that custom tasks can still reference them in their "beforeTask" or "afterTask" configuration.
+**Remove the existing "uglify" and "createDebugFiles" tasks** in favor of this new task. Throw an error when those tasks are used, e.g. in a "beforeTask" or "afterTask" configuration.
 
 **"minify" Task Activity:**
 
@@ -108,11 +108,13 @@ For every JavaScript resource that is being bundled, search for a "sourceMapping
 
 The outdated annotation convention `//@` should not be supported. All known relevant tools (Terser, TypeScript compiler) are using the new convention. See [Conventions](http://sourcemaps.info/spec.html#h.lmz475t4mvbx) in the source map specification for details.
 
-Any source maps found for a resource shall be added to the source map of the bundle. Either use an [index map](http://sourcemaps.info/spec.html#h.535es3xeprgt), containing the individual source maps, or generate a new source map for the whole bundle based off them.
+Any source maps found for a resource shall be added to the source map of the bundle. Either use an [index map](http://sourcemaps.info/spec.html#h.535es3xeprgt), containing the individual source maps, or generate a new source map for the whole bundle based of them.
 
 In case bundled sources are modified (e.g. by adding characters), the relevant source map needs to be aligned with that change.
 
 For resources where no source map is provided, the bundling process should generate one by mapping the content line by line.
+
+A "transient" source map needs to be generated for any statically generated "require"/"try-catch" code at the end of a bundle. The mapped source needs to be defined in the "sourcesContent" field of the source map.
 
 **Source Map Handling Activity:**
 
@@ -125,7 +127,7 @@ For resources where no source map is provided, the bundling process should gener
 
 ## How we teach this
 
-The new "minify" tasks and the deprecation of the old "uglify" and "createDebugFiles" tasks should be documented in the ["Standard Tasks"](https://sap.github.io/ui5-tooling/pages/Builder/#standard-tasks) chapter of the Builder documentation.
+The new "minify" tasks and the removal of the old "uglify" and "createDebugFiles" tasks should be documented in the ["Standard Tasks"](https://sap.github.io/ui5-tooling/pages/Builder/#standard-tasks) chapter of the Builder documentation.
 
 Source map support should be documented in a separate chapter in the [Builder](https://sap.github.io/ui5-tooling/pages/Builder/) documentation. Especially with regards to further integration scenarios like projects that have already done a transpilation process (e.g. from TypeScript to JavaScript) and would like to provide us with source maps generated in the process.
 
@@ -165,11 +167,6 @@ When bundling modules via resourceRoot-mappings, it might become impossible to r
 This could still be solved at a later time, once resourceRoot-mappings are actually supported by the general bundling process.
 
 The actual impact of this behavior is uncritical, since it only causes affected source maps to not be found at runtime. The bundle itself as well as other source maps stay consistent.
-
-
-### Mapping of static code at end of bundle
-
-A "transient" source map needs to be generated for any statically generated "require"/"try-catch" code at the end of a bundle. The mapped' source needs to be defined in the "sourcesContent" field of the source map.
 
 <!-- 
     Optional, but suggested for first drafts. What parts of the design are still TBD? Are there any second priority decisions left to be made?
