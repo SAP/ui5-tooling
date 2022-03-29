@@ -1,6 +1,8 @@
 # Migrate to v3
 
-TBD: Add notice about current development state of v3 and how to install it.
+!!! warning
+    UI5 Tooling v3 is currently in development. Further breaking changes are expected.  
+    The latest development version can be installed via `npm i -D @ui5/cli@next`
 
 ## Breaking changes
 
