@@ -78,7 +78,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 *Enabled by default*
 {: .sap-icon-circle-task-2-before }
 
-*Disabled by default. Can be activated by certain build modes, project configuration or by using the `--include-task` [CLI parameter](./CLI.md#ui5-build). See footnotes where given* 
+*Disabled by default. Can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given*
 {: .sap-icon-circle-task-before }
 
 ---
