@@ -6,7 +6,7 @@
 
 ## Breaking changes
 
-**All UI5 Tooling Modules: Require Node.js >= 16.13.2 / npm >= 8**
+**All UI5 Tooling Modules Require Node.js >= 16.13.2 / npm >= 8**
 
 Support for older Node.js and npm releases has been dropped.
 Only Node.js v16.13.2 and npm v8 or higher are supported.
@@ -28,7 +28,7 @@ As a replacement, the new 'minify' task and 'minifier' processor can be
 used.
 
 Note: The minify task is executed earlier, before the bundling
-process takes place. Existing 'beforeTask' and 'afterTask' configuration of
+process takes place. Any existing 'beforeTask' or 'afterTask' configuration of
 custom tasks might need to be adapted to cater for this change.
 
 Updated list of standard tasks:
@@ -62,7 +62,7 @@ Updated list of standard tasks:
 *Enabled by default*
 {: .sap-icon-circle-task-2-before }
 
-*Disabled by default. Can be activated by certain build modes, project configuration or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
+*Disabled by default. Can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
 {: .sap-icon-circle-task-before }
 
 ---
