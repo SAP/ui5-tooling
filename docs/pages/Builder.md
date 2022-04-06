@@ -78,7 +78,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 *Enabled by default*
 {: .sap-icon-circle-task-2-before }
 
-*Disabled by default. Can be activated by certain build modes, project configuration or by using the `--include-task` [CLI parameter](./CLI.md#ui5-build). See footnotes where given* 
+*Disabled by default. Can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given*
 {: .sap-icon-circle-task-before }
 
 ---
@@ -95,6 +95,13 @@ Processors can be implemented generically. The string replacer is an example for
 Since string replacement is a common build step, it can be useful in different contexts, e.g. code, version, date, and copyright replacement. A concrete replacement operation could be achieved by passing a custom configuration to the processor. This way, multiple tasks can make use of the same processor to achieve their build step.
 
 Available processors are listed [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.processors.html).
+
+## Source Map support
+
+Source Maps will be supported by the upcoming v3.0.0 version which is currently in development.
+Files will be generated automatically for all bundles.
+
+See [Migrate to v3](../updates/migrate-v3.md) and [SAP/ui5-builder#695](https://github.com/SAP/ui5-builder/pull/695) for further details.
 
 ## Legacy Bundle Tooling (lbt)
 JavaScript port of the "legacy" Maven/Java based bundle tooling.
