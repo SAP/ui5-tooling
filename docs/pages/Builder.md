@@ -101,7 +101,7 @@ Available processors are listed [in the API reference](https://sap.github.io/ui5
 Source Maps will be supported by the upcoming v3.0.0 version which is currently in development.
 Files will be generated automatically for all bundles.
 
-See [Migrate to v3](../updates/migrate-v3.md) for further details.
+See [Migrate to v3](../updates/migrate-v3.md) and [SAP/ui5-builder#695](https://github.com/SAP/ui5-builder/pull/695) for further details.
 
 ## Legacy Bundle Tooling (lbt)
 JavaScript port of the "legacy" Maven/Java based bundle tooling.
