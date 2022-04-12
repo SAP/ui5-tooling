@@ -41,12 +41,12 @@ Updated list of standard tasks:
 | replaceBuildtime |  | {: .sap-icon-circle-task-2 } |  |
 | generateJsdoc |  | {: .sap-icon-circle-task }^1^ |  |
 | executeJsdocSdkTransformation |  | {: .sap-icon-circle-task }^1^ |  |
+| **ADDED:** minify | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |  |
 | generateFlexChangesBundle |  | {: .sap-icon-circle-task-2 } |  |
 | generateManifestBundle | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |  |
-| **ADDED:** minify | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |  |
 | generateLibraryManifest |  | {: .sap-icon-circle-task-2 } |  |
-| generateLibraryPreload |  | {: .sap-icon-circle-task-2 } |  |
 | generateComponentPreload | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task }^2^ |  |
+| generateLibraryPreload |  | {: .sap-icon-circle-task-2 } |  |
 | generateStandaloneAppBundle | {: .sap-icon-circle-task }^3^ |  |  |
 | transformBootstrapHtml | {: .sap-icon-circle-task }^3^ |  |  |
 | generateBundle | {: .sap-icon-circle-task }^4^ | {: .sap-icon-circle-task }^4^ |  |
