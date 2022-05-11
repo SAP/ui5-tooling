@@ -85,27 +85,14 @@ html, body, h1, h2, h3, h4, h5, h6, p {
   color: var(--md-primary-fg-color);
 }
 
-.sap-icon-circle-task::before {
-  font-family: SAP-icons;
-  content: "\e254";
-}
-.sap-icon-circle-task-before::before {
-  font-family: SAP-icons;
-  content: "\e254";
-  margin-right: 0.5em;
+.ui5-footer-item {
+  flex-grow: 0;
+  color: var(--md-footer-fg-color--lighter);
+  font-size: .64rem;
+  margin: auto 0.6rem;
+  padding: 0.4rem 0;
 }
 
-.sap-icon-circle-task-2 {
-  font-family: SAP-icons;
-}
-
-.sap-icon-circle-task-2::before {
-  font-family: SAP-icons;
-  content: "\e255";
-}
-
-.sap-icon-circle-task-2-before::before {
-  font-family: SAP-icons;
-  content: "\e255";
-  margin-right: 0.5em;
+.md-copyright {
+  flex-grow: 1;
 }

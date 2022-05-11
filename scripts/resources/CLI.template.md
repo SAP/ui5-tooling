@@ -115,9 +115,9 @@ This table illustrates which of the two installations is used in different scena
 
 | Current Working Directory | Command                         | Global UI5 CLI | Local UI5 CLI |
 | ------------------------- | ------------------------------- | :-----------------------------: | :----------------------------: |
-| `/`                       |  `ui5 --version`                |  {: .sap-icon-circle-task-2 }   |
-| `/my-application`         |  `ui5 --version`                |                                 |  {: .sap-icon-circle-task-2 }  |
-| `/my-application`         |  `ui5 serve`                    |                                 |  {: .sap-icon-circle-task-2 }  |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |  {: .sap-icon-circle-task-2 }   |
-| `/my-application`         |  `npm start`                    |                                 |  {: .sap-icon-circle-task-2 }  |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |  {: .sap-icon-circle-task-2 }  |
+| `/`                       |  `ui5 --version`                |  ⚫️   |
+| `/my-application`         |  `ui5 --version`                |                                 |  ⚫️  |
+| `/my-application`         |  `ui5 serve`                    |                                 |  ⚫️  |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |  ⚫️   |
+| `/my-application`         |  `npm start`                    |                                 |  ⚫️  |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |  ⚫️  |
