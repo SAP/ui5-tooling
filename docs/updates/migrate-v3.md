@@ -63,7 +63,7 @@ Updated list of standard tasks:
 
 ---
 
-^1^ *enabled* in `jsdoc` build, which disables most of the other tasks  
-^2^ *enabled* for projects defining a [component preload configuration](../pages/Configuration.md#component-preload-generation)  
-^3^ *enabled* in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
-^4^ *enabled* for projects defining a [bundle configuration](../pages/Configuration.md#custom-bundling)  
+^1^ Enabled in `jsdoc` build, which disables most of the other tasks  
+^2^ Enabled for projects defining a [component preload configuration](../pages/Configuration.md#component-preload-generation)  
+^3^ Enabled in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
+^4^ Enabled for projects defining a [bundle configuration](../pages/Configuration.md#custom-bundling)  

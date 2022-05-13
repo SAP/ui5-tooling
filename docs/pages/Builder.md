@@ -79,10 +79,10 @@ All available standard tasks are documented [in the API reference](https://sap.g
 
 ---
 
-^1^ *enabled* in `jsdoc` build, which disables most of the other tasks  
-^2^ *enabled* for projects defining a [component preload configuration](./Configuration.md#component-preload-generation)  
-^3^ *enabled* in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
-^4^ *enabled* for projects defining a [bundle configuration](./Configuration.md#custom-bundling)  
+^1^ Enabled in `jsdoc` build, which disables most of the other tasks  
+^2^ Enabled for projects defining a [component preload configuration](./Configuration.md#component-preload-generation)  
+^3^ Enabled in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
+^4^ Enabled for projects defining a [bundle configuration](./Configuration.md#custom-bundling)  
 
 ## Processors
 Processors work with provided resources. They contain the actual build step logic to apply specific modifications to supplied resources, or to make use of the resources' content to create new resources out of that.
