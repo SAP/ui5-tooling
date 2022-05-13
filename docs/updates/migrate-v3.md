@@ -35,35 +35,31 @@ Updated list of standard tasks:
 
 | Task | Type `application` | Type `library` | Type `theme-library` |
 | ---- | :----: | :----: | :----: |
-| escapeNonAsciiCharacters | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |  |
-| replaceCopyright | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
-| replaceVersion | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
-| replaceBuildtime |  | {: .sap-icon-circle-task-2 } |  |
-| generateJsdoc |  | {: .sap-icon-circle-task }^1^ |  |
-| executeJsdocSdkTransformation |  | {: .sap-icon-circle-task }^1^ |  |
-| **ADDED:** minify | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |  |
-| generateFlexChangesBundle |  | {: .sap-icon-circle-task-2 } |  |
-| generateManifestBundle | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |  |
-| generateLibraryManifest |  | {: .sap-icon-circle-task-2 } |  |
-| generateComponentPreload | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task }^2^ |  |
-| generateLibraryPreload |  | {: .sap-icon-circle-task-2 } |  |
-| generateStandaloneAppBundle | {: .sap-icon-circle-task }^3^ |  |  |
-| transformBootstrapHtml | {: .sap-icon-circle-task }^3^ |  |  |
-| generateBundle | {: .sap-icon-circle-task }^4^ | {: .sap-icon-circle-task }^4^ |  |
-| buildThemes |  | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
-| generateThemeDesignerResources |  | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |
+| escapeNonAsciiCharacters | *enabled* | *enabled* |  |
+| replaceCopyright | *enabled* | *enabled* | *enabled* |
+| replaceVersion | *enabled* | *enabled* | *enabled* |
+| replaceBuildtime |  | *enabled* |  |
+| generateJsdoc |  | *disabled* ^1^ |  |
+| executeJsdocSdkTransformation |  | *disabled* ^1^ |  |
+| **ADDED:** minify | *disabled* | *disabled* |  |
+| generateFlexChangesBundle |  | *enabled* |  |
+| generateManifestBundle | *disabled* | *disabled* |  |
+| generateLibraryManifest |  | *enabled* |  |
+| generateComponentPreload | *enabled* | *disabled* ^2^ |  |
+| generateLibraryPreload |  | *enabled* |  |
+| generateStandaloneAppBundle | *disabled* ^3^ |  |  |
+| transformBootstrapHtml | *disabled* ^3^ |  |  |
+| generateBundle | *disabled* ^4^ | *disabled* ^4^ |  |
+| buildThemes |  | *enabled* | *enabled* |
+| generateThemeDesignerResources |  | *disabled* | *disabled* |
 | **REMOVED:** ~~createDebugFiles~~ |  |  |  |
 | **REMOVED:** ~~uglify~~ |  |  |  |
-| generateVersionInfo | {: .sap-icon-circle-task-2 } |  |  |
-| generateCachebusterInfo | {: .sap-icon-circle-task } |  |  |
-| generateApiIndex | {: .sap-icon-circle-task }^1^ |  |  |
-| generateResourcesJson | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |
+| generateVersionInfo | *enabled* |  |  |
+| generateCachebusterInfo | *disabled* |  |  |
+| generateApiIndex | *disabled* ^1^ |  |  |
+| generateResourcesJson | *disabled* | *disabled* | *disabled* |
 
-*Enabled by default*
-{: .sap-icon-circle-task-2-before }
-
-*Disabled by default. Can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
-{: .sap-icon-circle-task-before }
+*Disabled tasks be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
 
 ---
 
