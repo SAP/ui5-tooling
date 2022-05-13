@@ -52,39 +52,37 @@ All available standard tasks are documented [in the API reference](https://sap.g
 
 | Task | Type `application` | Type `library` | Type `theme-library` |
 | ---- | :----: | :----: | :----: |
-| escapeNonAsciiCharacters | ⚫️ | ⚫️ |  |
-| replaceCopyright | ⚫️ | ⚫️ | ⚫️ |
-| replaceVersion | ⚫️ | ⚫️ | ⚫️ |
-| replaceBuildtime |  | ⚫️ |  |
-| generateJsdoc |  | ⚪️ ^1^ |  |
-| executeJsdocSdkTransformation |  | ⚪️ ^1^ |  |
-| generateFlexChangesBundle |  | ⚫️ |  |
-| generateManifestBundle | ⚪️ | ⚪️ |  |
-| generateLibraryManifest |  | ⚫️ |  |
-| generateComponentPreload | ⚫️ | ⚪️ ^2^ |  |
-| generateLibraryPreload |  | ⚫️ |  |
-| generateStandaloneAppBundle | ⚪️ ^3^ |  |  |
-| transformBootstrapHtml | ⚪️ ^3^ |  |  |
-| generateBundle | ⚪️ ^4^ | ⚪️ ^4^ |  |
-| buildThemes |  | ⚫️ | ⚫️ |
-| generateThemeDesignerResources |  | ⚪️ | ⚪️ |
-| createDebugFiles | ⚫️ | ⚫️ |  |
-| uglify | ⚫️ | ⚫️ |  |
-| generateVersionInfo | ⚫️ |  |  |
-| generateCachebusterInfo | ⚪️ |  |  |
-| generateApiIndex | ⚪️ ^1^ |  |  |
-| generateResourcesJson | ⚪️ | ⚪️ | ⚪️ |
+| escapeNonAsciiCharacters | *enabled* | *enabled* |  |
+| replaceCopyright | *enabled* | *enabled* | *enabled* |
+| replaceVersion | *enabled* | *enabled* | *enabled* |
+| replaceBuildtime |  | *enabled* |  |
+| generateJsdoc |  | *disabled* ^1^ |  |
+| executeJsdocSdkTransformation |  | *disabled* ^1^ |  |
+| generateFlexChangesBundle |  | *enabled* |  |
+| generateManifestBundle | *disabled* | *disabled* |  |
+| generateLibraryManifest |  | *enabled* |  |
+| generateComponentPreload | *enabled* | *disabled* ^2^ |  |
+| generateLibraryPreload |  | *enabled* |  |
+| generateStandaloneAppBundle | *disabled* ^3^ |  |  |
+| transformBootstrapHtml | *disabled* ^3^ |  |  |
+| generateBundle | *disabled* ^4^ | *disabled* ^4^ |  |
+| buildThemes |  | *enabled* | *enabled* |
+| generateThemeDesignerResources |  | *disabled* | *disabled* |
+| createDebugFiles | *enabled* | *enabled* |  |
+| uglify | *enabled* | *enabled* |  |
+| generateVersionInfo | *enabled* |  |  |
+| generateCachebusterInfo | *disabled* |  |  |
+| generateApiIndex | *disabled* ^1^ |  |  |
+| generateResourcesJson | *disabled* | *disabled* | *disabled* |
 
-⚫️ *Enabled by default*
-
-⚪️ *Disabled by default. Can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given*
+*Disabled tasks can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given*
 
 ---
 
-^1^ Enabled in `jsdoc` build, which disables most of the other tasks  
-^2^ Enabled for projects defining a [component preload configuration](./Configuration.md#component-preload-generation)  
-^3^ Enabled in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
-^4^ Enabled for projects defining a [bundle configuration](./Configuration.md#custom-bundling)  
+^1^ *enabled* in `jsdoc` build, which disables most of the other tasks  
+^2^ *enabled* for projects defining a [component preload configuration](./Configuration.md#component-preload-generation)  
+^3^ *enabled* in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
+^4^ *enabled* for projects defining a [bundle configuration](./Configuration.md#custom-bundling)  
 
 ## Processors
 Processors work with provided resources. They contain the actual build step logic to apply specific modifications to supplied resources, or to make use of the resources' content to create new resources out of that.

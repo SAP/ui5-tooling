@@ -1,3 +1,8 @@
+{#-
+  This file was initialy copied from https://github.com/squidfunk/mkdocs-material/blob/master/material/partials/footer.html
+  and adjusted to offer a customized footer according to the SAP Web Presence Policy.
+  See also the corresponding stylesheet content in /docs/stylesheets/extra.css.
+-#}
 <footer class="md-footer">
   {% if page.previous_page or page.next_page %}
     <nav class="md-footer__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
@@ -41,10 +46,13 @@
       {% if config.extra.social %}
         {% include "partials/social.html" %}
       {% endif %}
+
+      {#- BEGIN: MODIFIED BY SAP -#}
       <div class="ui5-footer-item"><a href="https://www.sap.com/corporate/en/legal/impressum.html" target="_blank" rel="noopener">Legal Disclosure</a></div>
       <div class="ui5-footer-item"><a href="https://www.sap.com/corporate/en/legal/terms-of-use.html" target="_blank" rel="noopener">Terms of Use</a></div>
       <div class="ui5-footer-item"><a href="{{ base_url }}/pages/Privacy/">Privacy</a></div>
       <div class="ui5-footer-item"><a href="https://www.sap.com/corporate/en/legal/trademark.html" target="_blank" rel="noopener">Trademarks</a></div>
+      {#- END: MODIFIED BY SAP -#}
     </div>
   </div>
 </footer>

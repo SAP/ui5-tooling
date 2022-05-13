@@ -1,3 +1,10 @@
+<?js
+// ##### BEGIN: MODIFIED BY SAP
+// This file was initialy copied from https://github.com/clenemt/docdash/blob/master/tmpl/layout.tmpl
+// and adjusted to offer a customized footer according to the SAP Web Presence Policy.
+// See also the corresponding stylesheet content in lib/jsdoc/plugin/template/custom.css.
+// ##### END: MODIFIED BY SAP
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,6 +80,7 @@
 
 <br class="clear">
 
+<?js // ##### BEGIN: MODIFIED BY SAP ?>
 <footer>
     <div class="ui5-footer-item ui5-footer-item-growing">
         <div>© Copyright 2022, SAP SE and UI5 Tooling Contributors</div>
@@ -99,6 +107,7 @@
     <div class="ui5-footer-item"><a href="../pages/Privacy/" target="_blank">Privacy</a></div>
     <div class="ui5-footer-item"><a href="https://www.sap.com/corporate/en/legal/trademark.html" target="_blank" rel="noopener">Trademarks</a></div>
 </footer>
+<?js // ##### END: MODIFIED BY SAP ?>
 
 <script>prettyPrint();</script>
 <script src="scripts/polyfill.js"></script>

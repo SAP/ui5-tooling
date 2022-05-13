@@ -115,9 +115,9 @@ This table illustrates which of the two installations is used in different scena
 
 | Current Working Directory | Command                         | Global UI5 CLI | Local UI5 CLI |
 | ------------------------- | ------------------------------- | :-----------------------------: | :----------------------------: |
-| `/`                       |  `ui5 --version`                |  ⚫️   |
-| `/my-application`         |  `ui5 --version`                |                                 |  ⚫️  |
-| `/my-application`         |  `ui5 serve`                    |                                 |  ⚫️  |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |  ⚫️   |
-| `/my-application`         |  `npm start`                    |                                 |  ⚫️  |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |  ⚫️  |
+| `/`                       |  `ui5 --version`                |  enabled   |
+| `/my-application`         |  `ui5 --version`                |                                 |  enabled  |
+| `/my-application`         |  `ui5 serve`                    |                                 |  enabled  |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |  enabled   |
+| `/my-application`         |  `npm start`                    |                                 |  enabled  |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |  enabled  |
