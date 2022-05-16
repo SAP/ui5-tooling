@@ -25,7 +25,8 @@ jobs:
     - name: Build Schema
       run: npm run schema-generate
     - name: Deploy docs to gh-pages
-      uses: maxheld83/ghpages@v0.3.0
-      env:
-        BUILD_DIR: site/
-        GH_PAT: ${{ secrets.GH_PAT }}
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        branch: gh-pages
+        folder: site
+        token: ${{ secrets.GH_PAT }}
