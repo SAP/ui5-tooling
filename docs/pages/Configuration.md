@@ -239,7 +239,7 @@ If you are not sure which framework is right for you, see our [documentation on 
 
 You can find an overview of the available versions for each framework here:
 
-- [**OpenUI5** Version Overview](https://openui5.hana.ondemand.com/versionoverview.html)
+- [**OpenUI5** Version Overview](https://sdk.openui5.org/versionoverview.html)
     - *The lowest version supported by UI5 Tooling is __1.52.5__*
 - [**SAPUI5** Version Overview](http://ui5.sap.com/versionoverview.html)
     - *The lowest version supported by UI5 Tooling is __1.76.0__*

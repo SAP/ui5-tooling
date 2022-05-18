@@ -72,7 +72,7 @@ If your project is not set up for use with the UI5 Tooling yet, follow these ste
 
     You can find a documentation of all libraries, including samples and more, in the Demo Kit:
    
-    - [**OpenUI5** Demo Kit](https://openui5.hana.ondemand.com/api)
+    - [**OpenUI5** Demo Kit](https://sdk.openui5.org/api)
     - [**SAPUI5** Demo Kit](https://ui5.sap.com/#/api)
     
 1. Start the server and work on your project! 🎉
