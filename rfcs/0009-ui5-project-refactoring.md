@@ -89,7 +89,7 @@ A rooted, directed graph representing a UI5 project, its dependencies and availa
 To be discussed: Should `ProjectGraph` have a `graphVersion`? Potentially equal to the version of ui5-project? This would allow ui5-builder and ui5-server to ensure compatibility with the provided `ProjectGraph` instance.
 
 ```js
-/**
+/** 
  * @public
  * @param {object} parameters Parameters
  * @param {string} parameters.rootProjectName Root project name
@@ -97,12 +97,16 @@ To be discussed: Should `ProjectGraph` have a `graphVersion`? Potentially equal 
 constructor({rootProjectName}) {}
 
 /**
+ * Get the root project of the graph
+ *
  * @public
  * @returns {module:@ui5/project.specification.Project} Root project
  */
 getRoot()  {}
 
 /**
+ * Add a project to the graph
+ *
  * @public
  * @param {module:@ui5/project.specification.Project} project Project which should be added to the graph
  * @param {boolean} [ignoreDuplicates=false] Whether an error should be thrown when a duplicate project is added
@@ -110,12 +114,22 @@ getRoot()  {}
 addProject(project, ignoreDuplicates) {}
 
 /**
+ * Retrieve a single project from the dependency graph
+ *
  * @public
  * @param {string} projectName Name of the project to retrieve
  * @returns {module:@ui5/project.specification.project|undefined}
  *                  project instance or undefined if the project is unknown to the graph
  */
 getProject(projectName) {}
+
+/**
+ * Get all projects as a nested array containing pairs of project name and -instance.
+ *
+ * @public
+ * @returns {Array<Array<string,module:@ui5/project.specifications.Project>>}
+ */
+getAllProjects() {}
 
 /**
  * @public
@@ -130,6 +144,14 @@ addExtension(extension) {}
  *                  Extension instance or undefined if the extension is unknown to the graph
  */
 getExtension(extensionName) {}
+
+/**
+ * Get all extensions as a nested array containing pairs of extension name and -instance.
+ *
+ * @public
+ * @returns {Array<Array<string,module:@ui5/project.specifications.Extension>>}
+ */
+getAllExtensions() {}
 
 /**
  * Declare a dependency from one project in the graph to another
@@ -150,11 +172,24 @@ declareDependency(fromProjectName, toProjectName) {}
 declareOptionalDependency(fromProjectName, toProjectName) {}
 
 /**
+ * Get all direct dependencies of a project as an array of project names
+ *
  * @public
  * @param {string} projectName Name of the project to retrieve the dependencies of
  * @returns {string[]} Project names of the given project's dependencies
  */
 getDependencies(projectName) {}
+
+/**
+ * Checks whether a dependency is optional or not.
+ * Currently only used in tests.
+ *
+ * @private
+ * @param {string} fromProjectName Name of the depending project
+ * @param {string} toProjectName Name of project on which the other depends
+ * @returns {boolean} True if the dependency is currently optional
+ */
+isOptionalDependency(fromProjectName, toProjectName) {
 
 /**
  * Transforms any optional dependencies declared in the graph to non-optional dependency, if the target
