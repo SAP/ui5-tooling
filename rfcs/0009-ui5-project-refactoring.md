@@ -81,6 +81,8 @@ The `projectGraphBuilder` is called with an instance of one of the aforementione
 
 ### Proposed "Graph" Entities in Detail
 
+![UI5 Project: Graph Components](./resources/UI5_Project_Graph_Components.png)
+
 #### ProjectGraph
 A rooted, directed graph representing a UI5 project, its dependencies and available extensions
 
@@ -339,6 +341,8 @@ By mapping this concept onto a class-based inheritance hierarchy, every project-
 This concept is similar to the already existing [Formatters](https://github.com/SAP/ui5-builder/blob/0fc364ded64eb5bae4085397dc1831e04b19edf4/lib/types/library/LibraryFormatter.js), which basically formatted the JSON representation of a project by modifying and adding attributes. However the proposed specification instances will have a much longer lifecycle. They are intended to represent a specification throughout an entire UI5 Tooling operation. They should be available to extensions, providing a public API to interact with project resources.
 
 Specifications should provide an API for accessing its resources via ui5-fs readers. This should make the [`@ui5/fs.resourceFactory#createCollectionsForTree`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree) API obsolete, leaving decisions like whether to include the projects namespace to the project itself.
+
+![UI5 Project: Specification Class Diagram](./resources/UI5_Project_Specification_Class_Overview.png)
 
 The proposed resource access APIs for specifications are as follows:
 
