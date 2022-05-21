@@ -381,12 +381,6 @@ Specifications should provide an API for accessing its resources via ui5-fs read
 
 The proposed resource access APIs for specifications are as follows:
 
-**To be discussed/To be done:**
-1. API Names
-1. Add DuplexCollection APIs to actually modify the resources of a project?
-    * Scenario: Modify resources using buildtime reader/writer and read them using runtime reader
-1. Specification version check API
-
 ```js
 /**
 * Get a resource reader for the root directory of the project
@@ -395,30 +389,39 @@ The proposed resource access APIs for specifications are as follows:
 * @returns {module:@ui5/fs.ReaderCollection} Reader collection
 */
 getRootReader() {}
+```
+
+And additionally for project specifications:
+
+```js
 
 /**
-* Get a resource reader for the sources of the project (excluding any test resources)
-*
-* @public
-* @returns {module:@ui5/fs.ReaderCollection} Reader collection
-*/
-getSourceReader() {}
+ * Get a [ReaderCollection]{@link module:@ui5/fs.ReaderCollection} for accessing all resources of the
+ * project in the specified "style":
+ *
+ * <ul>
+ * <li><b>buildtime</b>: Resource paths are always prefixed with <code>/resources/</code>
+ *  or <code>/test-resources/</code> followed by the project's namespace</li>
+ * <li><b>runtime</b>: Access resources the same way the UI5 runtime would do</li>
+ * <li><b>flat:</b> No prefix, no namespace</li>
+ * </ul>
+ *
+ * @public
+ * @param {object} [options]
+ * @param {string} [options.style=buildtime] Path style to access resources. Can be "buildtime", "runtime" or "flat"
+ *                                          This parameter might be ignored by some project types
+ * @returns {module:@ui5/fs.ReaderCollection} Reader collection allowing access to all resources of the project
+ */
+getReader(options) {}
 
 /**
-* Get a resource reader for accessing the project resources the same way the UI5 runtime would do
+* Get a [DuplexCollection]{@link module:@ui5/fs.DuplexCollection} for accessing and modifying a
+* project's resources. This is always of style <code>buildtime</code>.
 *
 * @public
-* @returns {module:@ui5/fs.ReaderCollection} Reader collection
+* @returns {module:@ui5/fs.DuplexCollection} DuplexCollection
 */
-getRuntimeReader() {}
-
-/**
-* Get a resource reader for accessing the project resources during the build process
-*
-* @public
-* @returns {module:@ui5/fs.ReaderCollection} Reader collection
-*/
-getBuildtimeReader() {}
+getWorkspace() {}
 ```
 
 ### Compatibility
