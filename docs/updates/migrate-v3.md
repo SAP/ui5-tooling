@@ -56,8 +56,7 @@ const {generateProjectGraph, builder} = require("@ui5/project");
 
 let graph = await generateProjectGraph.usingNodePackageDependencies({cwd: "."});
 
-await builder({
-    graph,
+await graph.build({
     destPath: "./dist",
     includedDependencies: ["*"], // Parameter "buildDependencies" has been removed
 });
