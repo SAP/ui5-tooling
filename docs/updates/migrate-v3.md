@@ -30,7 +30,7 @@ The JSON based, internal representation of a project dependency tree has been re
 
     Note that `devDependencies` and `optionalDependencies` are ignored for all but the current root project.
 
-Note that also the @ui5/server API has been changed. Instead of a `tree`, it now only accepts a `graph`.
+Note that also the @ui5/server API has been changed. Instead of a `tree`, it now only accepts a `graph` instance as the first parameter.
 
 ### Migrating your code
 
@@ -52,7 +52,7 @@ await builder.build({
 **@ui5/project v3**
 
 ````javascript
-const {generateProjectGraph, builder} = require("@ui5/project");
+const {generateProjectGraph} = require("@ui5/project");
 
 let graph = await generateProjectGraph.usingNodePackageDependencies({cwd: "."});
 
