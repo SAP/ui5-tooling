@@ -1,15 +1,20 @@
-/* eslint-disable no-console */
+import path from "node:path";
+import {fileURLToPath, pathToFileURL} from "node:url";
+import {writeFile} from "node:fs/promises";
+import mkdirp from "mkdirp";
+import $RefParser from "@apidevtools/json-schema-ref-parser";
+import traverse from "traverse";
 
-const path = require("path");
-const {promisify} = require("util");
-const fs = require("fs");
-const writeFile = promisify(fs.writeFile);
-const mkdirp = require("mkdirp");
-const $RefParser = require("@apidevtools/json-schema-ref-parser");
-const traverse = require("traverse");
+// Using CommonsJS require.resolve as long as import.meta.resolve is experimental
+import {createRequire} from "node:module";
+const require = createRequire(import.meta.url);
 
-const SOURCE_SCHEMA_PATH = require.resolve("@ui5/project/lib/validation/schema/ui5.json");
-const TARGET_SCHEMA_PATH = path.join(__dirname, "..", "site", "schema", "ui5.yaml.json");
+const SOURCE_SCHEMA_PATH = fileURLToPath(
+	new URL("./lib/validation/schema/ui5.json", pathToFileURL(require.resolve("@ui5/project")))
+);
+const TARGET_SCHEMA_PATH = fileURLToPath(
+	new URL(`../site/schema/ui5.yaml.json`, import.meta.url)
+);
 
 async function main() {
 	const parser = new $RefParser();
@@ -19,12 +24,13 @@ async function main() {
 	// Defining $id on the root is not required and as the URL will be a different one it might even cause issues.
 	// $schema only needs to be defined once per file.
 	traverse(schema).forEach(function(v) {
-
+		// eslint-disable-next-line no-invalid-this
+		const traverseContext = this;
 		if (v && typeof v === "object" && !Array.isArray(v)) {
 			if (v.$id) {
 				delete v.$id;
 			}
-			if (!this.isRoot) {
+			if (!traverseContext.isRoot) {
 				if (v.$schema) {
 					delete v.$schema;
 				}
@@ -32,7 +38,7 @@ async function main() {
 					delete v.$comment;
 				}
 			}
-			this.update(v);
+			traverseContext.update(v);
 		}
 	});
 

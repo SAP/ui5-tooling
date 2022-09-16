@@ -17,12 +17,14 @@
 		"development",
 		"tool"
 	],
+	"type": "module",
 	"engines": {
 		"node": ">= 16.13.2",
 		"npm": ">= 8"
 	},
 	"scripts": {
-		"test": "npm run jsdoc-generate && npm run schema-generate",
+		"test": "npm run lint && npm run jsdoc-generate && npm run schema-generate && npm run generate-cli-doc",
+		"lint": "eslint ./",
 		"jsdoc": "npm run jsdoc-generate && open-cli site/api/index.html",
 		"jsdoc-generate": "$(node -p 'path.relative(__dirname, path.dirname(require.resolve(\"@ui5/cli\"))).startsWith(\"..\") && process.exit(1); process.exit(0)') && npm run jsdoc-generate-local || npm run jsdoc-generate-workspace",
 		"jsdoc-generate-local": "jsdoc -c ./jsdoc.json -t $(node -p 'path.dirname(require.resolve(\"docdash\"))') ./ || (echo 'Error during JSDoc generation! Check log.' && exit 1)",
@@ -30,7 +32,8 @@
 		"docs": "bash ./scripts/serveDocs.sh",
 		"docs-generate": "bash ./scripts/buildDocs.sh && open-cli http://localhost:8000 && ws --compress -d site",
 		"schema-generate": "node ./scripts/buildSchema.js",
-		"generate-cli-doc": "node ./scripts/generateCliDoc.js"
+		"generate-cli-doc": "node ./scripts/generateCliDoc.js",
+		"depcheck": "depcheck --ignores @ui5/builder,@ui5/cli,@ui5/fs,@ui5/logger,@ui5/project,@ui5/server,docdash,local-web-server"
 	},
 	"repository": {
 		"type": "git",
@@ -46,7 +49,10 @@
 	},
 	"devDependencies": {
 		"@apidevtools/json-schema-ref-parser": "^9.0.9",
+		"depcheck": "^1.4.3",
 		"docdash": "^1.2.0",
+		"eslint": "^8.23.1",
+		"eslint-config-google": "^0.14.0",
 		"handlebars": "^4.7.7",
 		"jsdoc": "^3.6.7",
 		"local-web-server": "^5.1.1",
