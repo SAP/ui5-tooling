@@ -8,7 +8,7 @@
 		"includePattern": "ui5-[^\/]+\/(lib/.+|index)\\.js$"
 	},
 	"plugins": [
-		"jsdoc-plugin"
+		"jsdoc-plugin.cjs"
 	],
 	"opts": {
 		"encoding": "utf8",

@@ -9,7 +9,7 @@
 		"excludePattern": "node_modules/@ui5/.*/node_modules/@ui5"
 	},
 	"plugins": [
-		"./jsdoc-plugin"
+		"./jsdoc-plugin.cjs"
 	],
 	"opts": {
 		"encoding": "utf8",
