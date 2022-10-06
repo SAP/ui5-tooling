@@ -1,13 +1,9 @@
 /*
- * Removes JSDoc comments with TypeScript import() declarations (used in index.js)
+ * This plugin fixes unexpected JSDoc behavior that prevents us from using types that start with an at-sign (@).
+ * JSDoc doesn't see "{@" as a valid type expression, probably as there's also {@link ...}.
  */
-
-const IMPORT_PATTERN = /{(?:typeof )?import\(["'][^"']*["']\)[ .|}><,)=#\n]/;
-
 exports.handlers = {
 	jsdocCommentFound: function(e) {
-		if (IMPORT_PATTERN.test(e.comment)) {
-			e.comment = "";
-		}
+		e.comment = e.comment.replace(/{@ui5\//g, "{ @ui5/");
 	}
 };
