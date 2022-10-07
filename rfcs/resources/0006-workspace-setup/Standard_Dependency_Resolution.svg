@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 700 650" width="700" height="650">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="StickArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 0 M 0 -3 L 8 0 L 0 3" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Standard_Dependency_Resolution" stroke="none" fill="none" fill-opacity="1" stroke-dasharray="none" stroke-opacity="1">
+    <title>Standard_Dependency_Resolution</title>
+    <rect fill="white" x="0" y="-50" width="700" height="650"/>
+    <g id="Standard_Dependency_Resolution_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_103">
+        <rect x="0" y="-50" width="700" height="650" fill="white"/>
+      </g>
+      <g id="Graphic_20">
+        <text transform="translate(125 -35)" fill="black">
+          <tspan font-family="Arial" font-weight="bold" font-size="26" fill="black" x="16.968262" y="24">Standard Dependency Resolution</tspan>
+        </text>
+      </g>
+      <g id="Graphic_78">
+        <rect x="20" y="0" width="660" height="170" fill="#f8f8f8"/>
+        <rect x="20" y="0" width="660" height="170" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(25 5)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="588.95996" y="16">Internet</tspan>
+        </text>
+      </g>
+      <g id="Graphic_79">
+        <rect x="20" y="200" width="660" height="370" fill="#f8f8f8"/>
+        <rect x="20" y="200" width="660" height="370" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(25 205)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="555.9834" y="16">File System</tspan>
+        </text>
+      </g>
+      <g id="Graphic_80">
+        <rect x="30" y="420" width="640" height="140" fill="#e6e6e6"/>
+        <text transform="translate(35 425)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="374.8535" y="16">openui5-sample-app Repository</tspan>
+        </text>
+      </g>
+      <g id="Graphic_82">
+        <rect x="280" y="470" width="120" height="60" fill="white"/>
+        <rect x="280" y="470" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(285 482.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="23.86328" y="14">openui5-</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="13.199219" y="31.523438">sample-app</tspan>
+        </text>
+      </g>
+      <g id="Graphic_85">
+        <rect x="30" y="230" width="640" height="140" fill="#e6e6e6"/>
+        <text transform="translate(35 235)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="414.3955" y="16">~/.ui5/framework/packages</tspan>
+        </text>
+      </g>
+      <g id="Graphic_86">
+        <rect x="30" y="30" width="640" height="130" fill="#e6e6e6"/>
+        <text transform="translate(35 35)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="523.96875" y="16">npm Registry</tspan>
+        </text>
+      </g>
+      <g id="Line_87">
+        <path d="M 340 470 L 340 410 C 340 407.2386 337.76142 405 335 405 L 115 405 C 112.23858 405 110 402.7614 110 400 L 110 349.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_88">
+        <path d="M 340 470 L 340 410 C 340 407.2386 337.76142 405 335 405 L 275 405 C 272.23858 405 270 402.7614 270 400 L 270 349.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_89">
+        <path d="M 340 470 L 340 410 C 340 407.2386 342.23858 405 345 405 L 425 405 C 427.7614 405 430 402.7614 430 400 L 430 349.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_90">
+        <path d="M 340 470 L 340 410 C 340 407.2386 342.23858 405 345 405 L 585 405 C 587.7614 405 590 402.7614 590 400 L 590 349.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_91">
+        <rect x="50" y="280" width="120" height="60" fill="white"/>
+        <rect x="50" y="280" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(55 292.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="15.867188" y="31.523438">sap.ui.core</tspan>
+        </text>
+      </g>
+      <g id="Graphic_92">
+        <rect x="210" y="280" width="120" height="60" fill="white"/>
+        <rect x="210" y="280" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(215 292.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="33.214844" y="31.523438">sap.m</tspan>
+        </text>
+      </g>
+      <g id="Graphic_93">
+        <rect x="370" y="280" width="120" height="60" fill="white"/>
+        <rect x="370" y="280" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(375 292.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="10.082031" y="31.523438">sap.ui.layout</tspan>
+        </text>
+      </g>
+      <g id="Graphic_94">
+        <rect x="530" y="280" width="120" height="60" fill="white"/>
+        <rect x="530" y="280" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(535 301.23828)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="47" y="14">…</tspan>
+        </text>
+      </g>
+      <g id="Graphic_95">
+        <rect x="50" y="70" width="120" height="60" fill="white"/>
+        <rect x="50" y="70" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(55 82.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="15.867188" y="31.523438">sap.ui.core</tspan>
+        </text>
+      </g>
+      <g id="Graphic_96">
+        <rect x="210" y="70" width="120" height="60" fill="white"/>
+        <rect x="210" y="70" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(215 82.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="33.214844" y="31.523438">sap.m</tspan>
+        </text>
+      </g>
+      <g id="Graphic_97">
+        <rect x="370" y="70" width="120" height="60" fill="white"/>
+        <rect x="370" y="70" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(375 82.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="10.082031" y="31.523438">sap.ui.layout</tspan>
+        </text>
+      </g>
+      <g id="Graphic_98">
+        <rect x="530" y="70" width="120" height="60" fill="white"/>
+        <rect x="530" y="70" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(535 91.23828)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="47" y="14">…</tspan>
+        </text>
+      </g>
+      <g id="Line_99">
+        <line x1="430" y1="279.3" x2="430" y2="139.9" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_100">
+        <path d="M 590 280 L 590 275 C 590 272.23858 587.7614 270 585 270 L 445 270 C 442.2386 270 440 267.76142 440 265 L 440 195 C 440 192.23858 442.2386 190 445 190 L 585 190 C 587.7614 190 590 187.76142 590 185 L 590 139.9" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_101">
+        <line x1="110" y1="280" x2="110" y2="139.9" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_102">
+        <line x1="270" y1="279.3" x2="270" y2="139.9" marker-end="url(#StickArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

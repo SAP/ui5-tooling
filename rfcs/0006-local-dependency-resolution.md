@@ -27,130 +27,210 @@ Currently working with local npm/yarn links is hard:
 
 **Use cases:**
 - Local OpenUI5 library development (no external dependencies)
-- Local development of OpenUI5 Suite libraries (Dist layer)
-- Local app development against local OpenUI5 and OpenUI5 Suite libraries
+- Local app development against local OpenUI5 libraries
 - Local app development against local reuse library
-- Local app development against local reuse library that is not published to npm
 
-By using the workspace mode, it should be possible to use dependencies from local folders without the need to use the npm/yarn link feature.
+By using "UI5 Workspaces", it should be possible to use dependencies from local folders without the need to use the npm/yarn link feature.
 
 The required initial steps and configuration should be as minimal and easy as possible.
 
-It should be possible to provide a project with configuration that requires no extra steps from the developer to use (i.e. npm install && ui5 serve -o).
+It should be possible to provide a project setup with all necessary configuration so that no extra steps from the developer are required in order to use it (i.e. npm install && ui5 serve -o).
 
 It should be up to the project to decide whether this configuration is part of the project files (tracked via SCM) or individual configuration per developer.
 
-It should be possible to use only some local dependencies while others are consumed via standard node_modules resolution.
+It should be possible to use local copies of selected dependencies, while others are consumed via the standard node_modules resolution.
 
 ## Detailed design
 
-### Directory and Configuration Structure
-Recursive lookup of .ui5rc.yaml in the parent directories until one is found. There is no inheritance across multiple .ui5rc.yaml files.
+### Workspace Configuration File
 
-The current project is always ignored from any .ui5rc.yaml resolutions.
+A new kind of configuration file should be introduced, allowing to define "UI5 Workspaces". In a first step, and to address the key purpose of this RFC, this configuration shall allow for influencing the dependency resolution when working with a UI5 project.
 
-If a matching modules package.json contains a Yarn workspace configuration, resolve that as well. Nested Yarn workspaces must not be resolved.
+For this, it should be possible to define locations at which UI5 Tooling will look for a dependency first, before falling back to the regular dependency resolution:
 
-An additional package.json configuration should be used for resolving dependencies that are only present locally and not in any npm registry:
-```json
-"ui5": {
-    "local-dependencies": [
-        "my-first-library"
-    ]
-}
+![Standard dependency resolution without workspace configuration](./resources/0006-workspace-setup/Standard_Dependency_Resolution.svg)
+
+Without any workspace configuration, dependencies of the openui5-sample-app are retrieved from the npm registry, stored in a central directory on the file system and used from there.
+
+------
+
+![Workspace configuration for using local version of a single library](./resources/0006-workspace-setup/Workspace_Configuration_Single_Lib.svg)
+
+**ui5-workspace.yaml**
+```yaml
+specVersion: workspace/1.0
+metadata:
+    name: local-core
+dependencyManagement:
+    resolutionPaths:
+        - ../openui5/src/sap.ui.core
 ```
 
-#### Example A
+By configuring an additional resolution path, pointing to the directory of the sap.ui.core package within the OpenUI5 development repository, that package will be used instead of the one retrieved from the npm repository.
+
+------
+
+![Workspace configuration for using local version of all OpenUI5 libraries](./resources/0006-workspace-setup/Workspace_Configuration_All_OpenUI5.svg)
+
+**ui5-workspace.yaml**
+```yaml
+specVersion: workspace/1.0
+metadata:
+    name: local-openui5
+dependencyManagement:
+    resolutionPaths:
+        - ../openui5
 ```
-.ui5rc.yaml: local-resolution: ["./*"]
-my-first-app/
+
+For resolving all modules in OpenUI5, it should be enough to provide a path to the root directory. UI5 Tooling shall then use the [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) configuration in the [package.json](https://github.com/SAP/openui5/blob/b74d3c2f153d7a23a2c9b914280b14b7289d7880/package.json#L128) to resolve all libraries located in the repository. Alternatively, a dedicated `ui5.workspaces` configuration in the package.json can be used.
+
+------
+
+Since every workspace configuration is identifiable by a name, multiple workspaces can be configured in the same file:
+
+**Example:**
+
+```yaml
+specVersion: workspace/1.0
+metadata:
+    name: local-core
+dependencyManagement:
+    resolutionPaths:
+        - ../openui5/src/sap.ui.core
+---
+specVersion: workspace/1.0
+metadata:
+    name: local-openui5
+dependencyManagement:
+    resolutionPaths:
+        - ../openui5
+```
+
+Workspace names should be restricted in a reasonable matter (max length, only selected special characters). In addition, there shall be reserved names with special functionality:
+* `default`: This workspace should always be used, even if no `--workspace` parameter is provided to the CLI
+* `dev`: This workspace should always be used **unless**:
+    - there is a `default` workspace configured
+    - a production or CI environment is detected: **TODO: How?**
+
+### Key Design Decisions
+
+1. There can only be one active workspace at a time. Workspaces can not be combined (to be discussed)
+2. Default configuration file name and format is `ui5-workspace.yaml`. A different filename can be used by passing a parameter `--workspace-config workspace.yaml` to the UI5 CLI. The ui5-project Node.js API shall accept a JSON.
+1. If no `--workspace-config` parameter is given, UI5 Tooling shall search for a file named `ui5-workspace.yaml` in the current directory and in the directory of the `ui5.yaml` in use. UI5 Tooling shall never use more than one workspace configuration files.
+1. (Optional) To make workspace configurations reusable across projects, it should be possible to reference a workspace configuration located in an npm dependency. An additional parameter `--workspace-config-module` should allow for providing the name of an npm dependency which contains one or multiple workspace configurations. For example: `--workspace-config-module my-ui5-workspace-config-module --workspace-config workspace.yaml`
+1. Requested dependency versions do not matter (we may warn the user in some cases though)
+    * For example, when using a local version of OpenUI5 through a workspace configuration of a project, the OpenUI5 version specified in the ui5.yaml of that project should be ignored. In the future, UI5 Tooling might detect potential issues when using cominations of framework libraries in different versions and warn the user.
+1. Workspace configuration **must not** be located in a ui5.yaml. If workspace configuration is found in a ui5.yaml, this should cause an error.
+
+**Dependency resolution configuration**
+1. All paths must point to a directory
+1. Symlinks are followed
+1. (Optional) Dependency resolution paths must be relative paths. Absolute paths, or paths relative to the home directory (`~`), are not allowed. This is to ensure that workspace configuration files are easy to share and to reduce the change of them containing private information like usernames or large directory hierarchies.
+
+### UI5 CLI Enhancements
+
+UI5 CLI should allow to choose any workspace (or none) using a parameter like `ui5 server --workspace local-openui5`. To disable the use of implicit workspaces like "default", a parameter `--no-workspace` should be provided.
+
+In the future, additional CLI commands like `ui5 workspace create`, `ui5 workspace add ../openui5/src/sap.ui.core local-core`, etc. should make it easier for users to create and configure UI5 Workspaces.
+
+Commands like `ui5 workspace list` and `ui5 workspace describe <workspace>` should help working with workspaces. One lists all available workspaces by name, the other describes the configuration of a given workspace.
+
+## Examples
+### Example A
+```
+my-awesome-app/
     \_ package.json
-my-first-library/
+    \_ ui5-workspace.yaml
+my-awesome-library/
     \_ package.json
+```
+
+**Use case:**
+- my-awesome-app should use my-awesome-library  
+    **my-awesome-app/ui5-workspace.yaml**
+    ```yaml
+    specVersion: workspace/1.0
+    metadata:
+        name: "local-dev"
+    dependencyManagement:
+        resolutionPaths:
+            * ../my-awesome-library
+    ```
+
+
+### Example B
+```
+my-awesome-app/ (depends on sap.ui.core, sap.m and my-awesome-library)
+    \_ package.json
+    \_ ui5-workspace.yaml
+my-awesome-library/ (depends on sap.ui.table)
+    \_ package.json
+    \_ ui5-workspace.yaml
 openui5/
-    \_ .ui5rc.yaml: local-resolution: ["."]
     \_ package.json
     \_ src/
         \_ sap.ui.core/
             \_ package.json
         \_ sap.m/
             \_ package.json
+        \_ sap.ui.table/
+            \_ package.json
         \_ testsuite/
             \_ package.json
-openui5-suite/
-    \_ .ui5rc.yaml: local-resolution: [".", "../openui5"]
-    \_ package.json
-    \_ src/
-        \_ statusindicator/
-            \_ package.json
+            \_ ui5-workspace.yaml
 ```
 
 **Use case:**
-- All my-first-app and my-first-library dependencies should be resolved locally
-    - Solved if the developer has the parent .ui5rc.yaml
-- All OpenUI5 libraries should resolve their npm dependencies within the repository
-    - Solved in the OpenUI5 repository. No additional depeveloper action required
-- All OpenUI5 Suite libraries should use the local OpenUI5 libraries
-    - Solved in the OpenUI5 and OpenUI5 Suite repository. No additional depeveloper action required
+1. All my-awesome-app and my-awesome-library dependencies should be resolved locally
+    - Solved with workspace configurations in both projects:  
+        **my-awesome-app/ui5-workspace.yaml**
+        ```yaml
+        specVersion: workspace/1.0
+        metadata:
+            name: openui5
+        dependencyManagement:
+            resolutionPaths:
+                - ../openui5
+                - ../my-awesome-library 
+        ```
 
-#### Example B
-```
-my-first-app/
-    \_ .ui5rc.yaml: local-resolution ["../my-first-library"]
-    \_ package.json
-my-first-library/
-    \_ package.json
-```
-
-**Use case:**
-- my-first-app should use my-first-library
-    - Solved in the app repository if developer has located the library in the same directory
-- my-first-app and my-first-library should still use OpenUI5 and OpenUI5 Suite npm dependencies installed in node_modules
-
-#### Example C
-```
-my-first-app/
-    \_ .ui5rc.yaml: local-resolution ["../my-first-library"]
-    \_ package.json: ui5: local-dependencies: ["my-first-library]
-my-first-library/
-    \_ package.json
-```
-
-**Use case:**
-- my-first-app should use my-first-library but has no npm dependency defined in package.json
-    - Solved by defining ui5-specific dependency configuration in package.json
-    - Solved in the app repository if developer has located the library in the same directory
-
-### Dependency Resolution Changes
-
-Possibly breaking change of "translator" concept. Create "Project" class. Maybe change translators so that multiple translators can be executed in arbitrary, sequential order.
-
-### Activation of the workspace mode
-If .ui5rc.yaml file is present in any parent directory, it is used by default.
-
-Opt-out possible via CLI parameter: `--ignore-local-resolution`.
+        **my-awesome-library/ui5-workspace.yaml**
+        ```yaml
+        specVersion: workspace/1.0
+        metadata:
+            name: openui5
+        dependencyManagement:
+            resolutionPaths:
+                - ../openui5
+        ```
+1. OpenUI5 testsuite should resolve all dependencies within the repository
+    - Solved with default workspace configuration in testsuite  
+        **openui5/src/testsuite/ui5-workspace.yaml**
+        ```yaml
+        specVersion: workspace/1.0
+        metadata:
+            name: default
+        dependencyManagement:
+            resolutionPaths:
+                - ../../
+        ```
 
 ## How we teach this
-What names and terminology work best for these concepts and why? How is this idea best presented?
+### Terminology
 
-Would the acceptance of this proposal mean the UI5 Tooling or any of its subcomponents documentation must be re-organized or altered?
+* UI5 Workspace: **TODO**
 
-How should this feature be introduced and taught to existing UI5 Tooling users?
+### Documentation
+#### How-To guide for local development
 
 ## Drawbacks
-Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
+*Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.*
 
-There are tradeoffs to choosing any path, please attempt to identify them here.
+*There are tradeoffs to choosing any path, please attempt to identify them here.*
 
 ## Alternatives
-What other designs have been considered? What is the impact of not doing this?
+*What other designs have been considered? What is the impact of not doing this?*
 
 ## Unresolved Questions and Bikeshedding
 *This section should be removed (i.e. resolved) before merging*
 
-- Name for the .ui5rc.yaml configuration
-    - "workspace" not fully suitable
-        - Yarns "workspace" configuration is something slightly different
-        - You can't actually work *in* this kind of workspace
-    - "local-dependencies"
-    - "local-resolution"
