@@ -9,8 +9,9 @@ import traverse from "traverse";
 import {createRequire} from "node:module";
 const require = createRequire(import.meta.url);
 
+// Using @ui5/project/package.json export to calculate the path to the root ui5-project folder
 const SOURCE_SCHEMA_PATH = fileURLToPath(
-	new URL("./lib/validation/schema/ui5.json", pathToFileURL(require.resolve("@ui5/project")))
+	new URL("./lib/validation/schema/ui5.json", pathToFileURL(require.resolve("@ui5/project/package.json")))
 );
 const TARGET_SCHEMA_PATH = fileURLToPath(
 	new URL(`../site/schema/ui5.yaml.json`, import.meta.url)
