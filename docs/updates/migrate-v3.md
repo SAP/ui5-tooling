@@ -1,20 +1,20 @@
 # Migrate to v3
 
 !!! warning
-    UI5 Tooling v3 is currently in development. Further breaking changes are expected.  
-    The latest development version can be installed via `npm i -D @ui5/cli@next`
+    **UI5 Tooling v3 is currently in development.** Further breaking changes are expected.  
+    The latest development version can be installed via `npm i --save-dev @ui5/cli@next`
 
-## Node.js and npm version support
+## Node.js and npm Version Support
 
-Only Node.js v16.13.2 and npm v8 or higher are supported.
+**Only Node.js v16.13.2 and npm v8 or higher are supported.**
 Support for older Node.js and npm releases has been dropped.
 
-## Specification Versions support
+## Specification Versions Support
 
-Going forward, only Specification Versions 2.0 and higher are supported.
+Going forward, **only projects with Specification Versions 2.0 and higher are supported.**
 
-In case a legacy specification version is detected, an automatic migration is attempted.
-So your old projects might still work, unless they have non-standard configuration in their ui5.yaml.
+In case a legacy specification version is detected, **an automatic migration is attempted.**
+This means your old projects might still work. Unless they have non-standard configuration in their ui5.yaml.
 
 ## Changes to @ui5/project and @ui5/builder APIs
 
@@ -22,17 +22,17 @@ The `normalizer` and `projectTree` APIs have been removed. The `builder` API has
 
 The JSON based, internal representation of a project dependency tree has been replaced with a graph. This resulted in a major refactoring of @ui5/project and made us change the APIs in an incompatible way.
 
-!!! hint
-    As a nice side effect, the `ui5.dependencies` package.json configuration becomes obsolete and is ignored in UI5 Tooling v3.
+!!! note
+    The `ui5.dependencies` package.json configuration becomes obsolete and is ignored in UI5 Tooling v3.
 
-    `dependencies`, `devDependencies` and `optionalDependencies` are [automatically analyzed](https://github.com/SAP/ui5-project/blob/2a46b55a11ae4c32ea41e26df250068bddeedc4e/lib/graph/providers/NodePackageDependencies.js#L104).
+    `dependencies`, `devDependencies` and `optionalDependencies` are [automatically analyzed](https://github.com/SAP/ui5-project/blob/ff04ae4aeeb7f7d889dffd0c0e3e8774dd708c79/lib/graph/providers/NodePackageDependencies.js#L104).
     If a dependency can be configured as a UI5 project or UI5 Tooling extension, it is added to the graph and it's `dependencies` are analyzed.
 
     Note that `devDependencies` and `optionalDependencies` are ignored for all but the current root project.
 
 Note that also the @ui5/server API has been changed. Instead of a `tree`, it now only accepts a `graph` instance as the first parameter.
 
-### Migrating your code
+### Migrating Your Code
 
 **@ui5/project v2**
 
@@ -62,7 +62,7 @@ await graph.build({
 });
 ````
 
-## Removal of tasks and processors
+## Removal of Standard Tasks and Processors
 
 The following tasks have been removed:
 
@@ -78,11 +78,16 @@ The following processors have been removed:
 As a replacement, the new 'minify' task and 'minifier' processor can be
 used.
 
-Note: The minify task is executed earlier, before the bundling
-process takes place. Any existing 'beforeTask' or 'afterTask' configuration of
-custom tasks might need to be adapted to cater for this change.
+!!! note
+    The minify task is executed earlier, before the bundling
+    process takes place. Any existing 'beforeTask' or 'afterTask' configuration of
+    custom tasks might need to be adapted to cater for this change.
 
-Updated list of standard tasks:
+In addition, the task 'generateVersionInfo' is no longer executed for
+application projects by default. It can be re-enable by using the
+`--include-task` parameter.
+
+**Updated list of standard tasks:**
 
 | Task | Type `application` | Type `library` | Type `theme-library` |
 | ---- | :----: | :----: | :----: |
@@ -92,7 +97,7 @@ Updated list of standard tasks:
 | replaceBuildtime |  | *enabled* |  |
 | generateJsdoc |  | *disabled* ^1^ |  |
 | executeJsdocSdkTransformation |  | *disabled* ^1^ |  |
-| **ADDED:** minify | *disabled* | *disabled* |  |
+| **ADDED:** minify | *enabled* | *enabled* |  |
 | generateFlexChangesBundle |  | *enabled* |  |
 | generateManifestBundle | *disabled* | *disabled* |  |
 | generateLibraryManifest |  | *enabled* |  |
@@ -103,14 +108,14 @@ Updated list of standard tasks:
 | generateBundle | *disabled* ^4^ | *disabled* ^4^ |  |
 | buildThemes |  | *enabled* | *enabled* |
 | generateThemeDesignerResources |  | *disabled* | *disabled* |
-| **REMOVED:** ~~createDebugFiles~~ |  |  |  |
-| **REMOVED:** ~~uglify~~ |  |  |  |
-| generateVersionInfo | *enabled* |  |  |
+| **REMOVED:** ~~createDebugFiles~~ | *~~enabled~~* | *~~enabled~~* |  |
+| **REMOVED:** ~~uglify~~ | *~~enabled~~* | *~~enabled~~* |  |
+| generateVersionInfo | **disabled** |  |  |
 | generateCachebusterInfo | *disabled* |  |  |
 | generateApiIndex | *disabled* ^1^ |  |  |
 | generateResourcesJson | *disabled* | *disabled* | *disabled* |
 
-*Disabled tasks be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
+*Disabled tasks can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
 
 ---
 
