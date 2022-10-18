@@ -86,7 +86,7 @@ metadata:
 builder:
   customTasks:
     - name: generateMarkdownFiles
-      afterTask: uglify
+      afterTask: minify
       configuration:
         color: blue
 ---
@@ -109,8 +109,8 @@ A custom task implementation needs to return a function with the following signa
  * Custom task example
  *
  * @param {object} parameters Parameters
- * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
- * @param {module:@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
+ * @param {@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
  * @param {object} parameters.taskUtil Specification Version dependent interface to a
  *                [TaskUtil]{@link module:@ui5/builder.tasks.TaskUtil} instance
  * @param {object} parameters.options Options
@@ -119,7 +119,7 @@ A custom task implementation needs to return a function with the following signa
  * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
  * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
  */
-module.exports = async function({workspace, dependencies, taskUtil, options}) {
+export default async function({workspace, dependencies, taskUtil, options}) {
 	// [...]
 };
 ````
@@ -130,9 +130,9 @@ The following code snippets shows an example how a task implementation could loo
 
 ````javascript
 // Task implementation
-const markdownGenerator = require("./markdownGenerator");
+import markdownGenerator from "./markdownGenerator.js";
 
-module.exports = async function({workspace, dependencies, taskUtil, options}) {
+export default async function({workspace, dependencies, taskUtil, options}) {
 	const textResources = await workspace.byGlob("**/*.txt");
 	const markdownResources = await markdownGenerator({
 		resources: textResources
