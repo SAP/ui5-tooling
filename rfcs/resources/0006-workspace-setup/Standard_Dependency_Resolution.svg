@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="10 -90 660 640" width="660" height="640">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="29 -21 622 552" width="622" height="552">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
       <g>
@@ -15,17 +15,9 @@
   </defs>
   <g id="Standard_Dependency_Resolution" stroke-opacity="1" stroke-dasharray="none" stroke="none" fill-opacity="1" fill="none">
     <title>Standard_Dependency_Resolution</title>
-    <rect fill="white" x="10" y="-90" width="660" height="640"/>
+    <rect fill="white" x="29" y="-21" width="622" height="552"/>
     <g id="Standard_Dependency_Resolution_Layer_1">
       <title>Layer 1</title>
-      <g id="Graphic_103">
-        <rect x="10" y="-90" width="660" height="640" fill="white"/>
-      </g>
-      <g id="Graphic_20">
-        <text transform="translate(115 -75)" fill="black">
-          <tspan font-family="Arial" font-weight="bold" font-size="26" fill="black" x="16.968262" y="24">Standard Dependency Resolution</tspan>
-        </text>
-      </g>
       <g id="Graphic_78">
         <rect x="30" y="-20" width="620" height="190" fill="#f8f8f8"/>
         <rect x="30" y="-20" width="620" height="190" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>

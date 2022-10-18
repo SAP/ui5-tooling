@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="20 90 660 620" width="660" height="620">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="39 189 622 502" width="622" height="502">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
       <g>
@@ -10,23 +10,14 @@
   </defs>
   <g id="Workspace_Configuration_All_OpenUI5" stroke-opacity="1" stroke-dasharray="none" stroke="none" fill-opacity="1" fill="none">
     <title>Workspace_Configuration_All_OpenUI5</title>
-    <rect fill="white" x="20" y="90" width="660" height="620"/>
+    <rect fill="white" x="39" y="189" width="622" height="502"/>
     <g id="Workspace_Configuration_All_OpenUI5_Layer_1">
       <title>Layer 1</title>
-      <g id="Graphic_137">
-        <rect x="20" y="90" width="660" height="620" fill="white"/>
-      </g>
       <g id="Graphic_138">
         <rect x="40" y="190" width="620" height="500" fill="#f8f8f8"/>
         <rect x="40" y="190" width="620" height="500" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
         <text transform="translate(45 195)" fill="black">
           <tspan font-family="Arial" font-size="18" fill="black" x="515.9834" y="16">File System</tspan>
-        </text>
-      </g>
-      <g id="Graphic_125">
-        <text transform="translate(75 105)" fill="black">
-          <tspan font-family="Arial" font-weight="bold" font-size="26" fill="black" x="112.72852" y="24">Workspace Configuration:</tspan>
-          <tspan font-family="Arial" font-weight="bold" font-size="26" fill="black" x="11.794434" y="54.850586">Use Local Version of All OpenUI5 Libraries</tspan>
         </text>
       </g>
       <g id="Graphic_122">

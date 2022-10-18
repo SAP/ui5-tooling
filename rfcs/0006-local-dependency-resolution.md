@@ -46,15 +46,11 @@ It should be possible to use local copies of selected dependencies, while others
 
 A new kind of configuration file should be introduced, allowing to define "UI5 Workspaces". In a first step, and to address the key purpose of this RFC, this configuration shall allow for influencing the dependency resolution when working with a UI5 project.
 
-For this, it should be possible to define locations at which UI5 Tooling will look for a dependency first, before falling back to the regular dependency resolution:
+For this, it should be possible to define locations at which UI5 Tooling will look for a dependency first, before falling back to the regular dependency resolution.
 
-![Standard dependency resolution without workspace configuration](./resources/0006-workspace-setup/Standard_Dependency_Resolution.svg)
-
-Without any workspace configuration, dependencies of the openui5-sample-app are retrieved from the npm registry, stored in a central directory on the file system and used from there.
+**Examples:**
 
 ------
-
-![Workspace configuration for using local version of a single library](./resources/0006-workspace-setup/Workspace_Configuration_Single_Lib.svg)
 
 **ui5-workspace.yaml**
 ```yaml
@@ -66,11 +62,11 @@ dependencyManagement:
         - ../openui5/src/sap.ui.core
 ```
 
-By configuring an additional resolution path, pointing to the directory of the sap.ui.core package within the OpenUI5 development repository, that package will be used instead of the one retrieved from the npm repository.
+By configuring an additional resolution path, pointing to the directory of the sap.ui.core package within the OpenUI5 development repository, that package will be used instead of the one retrieved from the npm repository:
+
+![Workspace configuration for using local version of a single library](./resources/0006-workspace-setup/Workspace_Configuration_Single_Lib.svg)
 
 ------
-
-![Workspace configuration for using local version of all OpenUI5 libraries](./resources/0006-workspace-setup/Workspace_Configuration_All_OpenUI5.svg)
 
 **ui5-workspace.yaml**
 ```yaml
@@ -83,6 +79,14 @@ dependencyManagement:
 ```
 
 For resolving all modules in OpenUI5, it should be enough to provide a path to the root directory. UI5 Tooling shall then use the [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) configuration in the [package.json](https://github.com/SAP/openui5/blob/b74d3c2f153d7a23a2c9b914280b14b7289d7880/package.json#L128) to resolve all libraries located in the repository. Alternatively, a dedicated `ui5.workspaces` configuration in the package.json can be used.
+
+![Workspace configuration for using local version of all OpenUI5 libraries](./resources/0006-workspace-setup/Workspace_Configuration_All_OpenUI5.svg)
+
+------
+
+For reference, this is how a standard dependency resolution, without a workspace configuration looks like. Dependencies of the openui5-sample-app are retrieved from the npm registry, stored in a central directory on the file system and used from there:
+
+![Standard dependency resolution without workspace configuration](./resources/0006-workspace-setup/Standard_Dependency_Resolution.svg)
 
 ------
 
@@ -105,6 +109,8 @@ dependencyManagement:
     resolutionPaths:
         - ../openui5
 ```
+
+------
 
 Workspace names should be restricted in a reasonable matter (max length, only selected special characters). In addition, there shall be reserved names with special functionality:
 * `default`: This workspace should always be used, even if no `--workspace` parameter is provided to the CLI

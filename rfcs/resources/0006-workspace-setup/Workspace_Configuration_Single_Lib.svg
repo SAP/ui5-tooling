@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="20 100 660 470" width="660" height="470">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="39 199 622 352" width="622" height="352">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
       <g>
@@ -10,18 +10,9 @@
   </defs>
   <g id="Workspace_Configuration_Single_Lib" stroke-opacity="1" stroke-dasharray="none" stroke="none" fill-opacity="1" fill="none">
     <title>Workspace_Configuration_Single_Lib</title>
-    <rect fill="white" x="20" y="100" width="660" height="470"/>
+    <rect fill="white" x="39" y="199" width="622" height="352"/>
     <g id="Workspace_Configuration_Single_Lib_Layer_1">
       <title>Layer 1</title>
-      <g id="Graphic_130">
-        <rect x="20" y="100" width="660" height="470" fill="white"/>
-      </g>
-      <g id="Graphic_125">
-        <text transform="translate(125 115)" fill="black">
-          <tspan font-family="Arial" font-weight="bold" font-size="26" fill="black" x="62.728516" y="24">Workspace Configuration:</tspan>
-          <tspan font-family="Arial" font-weight="bold" font-size="26" fill="black" x="38.601074" y="54.850586">Use Local Version of a Library</tspan>
-        </text>
-      </g>
       <g id="Graphic_123">
         <rect x="40" y="200" width="620" height="350" fill="#f8f8f8"/>
         <rect x="40" y="200" width="620" height="350" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
