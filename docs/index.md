@@ -82,19 +82,16 @@ This allows you to rely on UI5 Tooling for UI5-specific build functionality and 
 All available APIs are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/api/index.html).
 
 ```js linenums="1"
-const {normalizer} = require("@ui5/project");
-const {builder} = require("@ui5/builder");
+import {graphFromPackageDependencies} from "@ui5/project/graph";
 
 async function buildApp(projectPath, destinationPath) {
-    const tree = await normalizer.generateProjectTree({
+    const graph = await graphFromPackageDependencies({
         cwd: projectPath
     });
-    await builder.build({
-        tree,
+    await graph.build({
         destPath: destinationPath,
         selfContained: true,
-        excludedTasks: ["transformBootstrapHtml"],
-        buildDependencies: true
+        excludedTasks: ["transformBootstrapHtml"]
     });
 }
 
