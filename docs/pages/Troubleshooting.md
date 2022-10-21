@@ -188,3 +188,101 @@ The following is a walk-through on how to evaluate the performance impact of an 
 1. You can now share these results on GitHub or wherever you might need them.
 
 **Happy benchmarking! 🏎**
+
+
+## ES6+ Limitations
+
+### Summary
+- Not supported ES6+ features: Computed properties, SpreadElement, TemplateLiteral with expression.
+- Arguments of Core#initLibrary call must consist of `Literal`s / `TemplateLiteral`s without expression only.
+- Identifiers are not processed, even when the variable is statically defined within the module.
+
+### Return Statemens
+
+With ES6+ there are a couple of new ways to return values from a function, apart from a `return` statement:
+- [Arrow function expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+- `yield` from a [generator function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield)
+
+#### JSDoc block with Arrow function expression
+In terms of JSDoc processing putting the JSDoc block in the correct place is essential.
+
+**⛔️ Not correct:**
+```javascript
+/**
+ * JSDoc block here (Not detected properly!)
+ */
+sap.ui.define(["Bar"], (Bar) => Bar.extends("Foo", {...}));
+```
+
+**✅ Correct:**
+
+```javascript
+sap.ui.define(["Bar"],
+    /**
+     * JSDoc block here
+     */
+    (Bar) => Bar.extends("Foo", {...})
+);
+```
+
+#### Class Definition
+
+JSDoc treats this declaration as `ReturnStatement` and does not recognize documentation if such is provided right above the `ClassDeclaration`.
+
+**⛔️ Not correct:**
+```javascript
+sap.ui.define(["Bar"], function(Bar){
+    /**
+     * JSDoc block here
+     */
+    return class Foo extends Bar {
+        make () {
+        ...
+        }
+    }
+});
+```
+
+**✅ Correct:**
+```javascript
+sap.ui.define(["Bar"], function(Bar){
+    /**
+     * JSDoc block here
+     */
+    class Foo extends Bar {
+        make () {
+        ...
+        }
+    }
+
+    return Foo;
+});
+```
+
+### ObjectExpression and SpreadElement
+
+Currently, `ObjectExpression` and `SpreadElement` are not supported as this requires scope knowledge. The code just ignores those nodes.
+
+**Example**
+```javascript
+const Bizz = "Object String Literal";
+
+const Foo = {
+    Bar: "Object Key"
+};
+
+const Buzz = {
+    [Foo.Bar]: 1,
+    [4 + 8]: 2,
+    [`key: ${Bizz}`]: 3
+};
+```
+### Template Litarals
+
+The issue with `TemplateLiteral`s with expression is the same as with the `ObjectExpression` and `SpreadElement`.
+The `TemplateLiteral`s without expressions are interpreted like strings.
+
+```javascript
+`sap.ui.define` // without expression
+`${s}.ui.define` // with expression
+```
