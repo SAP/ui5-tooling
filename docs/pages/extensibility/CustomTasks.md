@@ -109,10 +109,10 @@ A custom task implementation needs to return a function with the following signa
  * Custom task example
  *
  * @param {object} parameters Parameters
- * @param {@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
- * @param {@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {@ui5/fs/DuplexCollection} parameters.workspace DuplexCollection to read and write files
+ * @param {@ui5/fs/AbstractReader} parameters.dependencies Reader or Collection to read dependency files
  * @param {object} parameters.taskUtil Specification Version dependent interface to a
- *                [TaskUtil]{@link module:@ui5/builder.tasks.TaskUtil} instance
+ *                [TaskUtil]{@link @ui5/project/build/helpers/TaskUtil} instance
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
  * @param {string} [parameters.options.projectNamespace] Project namespace if available
