@@ -17,7 +17,7 @@ const TARGET_SCHEMA_PATH = fileURLToPath(
 	new URL(`../site/schema/ui5.yaml.json`, import.meta.url)
 );
 
-async function main() {
+try {
 	const parser = new $RefParser();
 	const schema = await parser.bundle(SOURCE_SCHEMA_PATH);
 
@@ -47,9 +47,8 @@ async function main() {
 	await writeFile(TARGET_SCHEMA_PATH, JSON.stringify(schema, null, 2));
 
 	console.log("Wrote bundled ui5.yaml schema file to " + TARGET_SCHEMA_PATH);
-}
-
-main().catch((error) => {
+} catch (error) {
 	console.log(error);
 	process.exit(1);
-});
+}
+
