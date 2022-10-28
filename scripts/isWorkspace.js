@@ -6,15 +6,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import {createRequire} from "node:module";
 const require = createRequire(import.meta.url);
 
-try {
-	const cPath = require.resolve("@ui5/cli/package.json");
-	const cliPath = path.relative(__dirname, path.dirname(cPath));
+const cPath = require.resolve("@ui5/cli/package.json");
+const cliPath = path.relative(__dirname, path.dirname(cPath));
 
-	// no workspace detected
-	if (!cliPath.startsWith("..")) {
-		process.exit(1);
-	}
-} catch (error) {
-	console.log(error);
+// no workspace detected
+if (!cliPath.startsWith("..")) {
 	process.exit(1);
 }
