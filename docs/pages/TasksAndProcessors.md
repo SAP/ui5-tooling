@@ -1,93 +1,57 @@
 # Tasks and Processors
 
-## Example: Minifier
+## Example: Uglifier
 #### Task
 ```js
-import minifier from "../processors/minifier.js"; // Import processor
+const uglifyProcessor = require("../processors/uglifier"); // Require to processor
 
-export default async function({workspace, taskUtil, options: {pattern, omitSourceMapResources = false}}) {
-	const resources = await workspace.byGlob(pattern);
-	const processedResources = await minifier({
-		resources,
-		options: {
-			addSourceMappingUrl: !omitSourceMapResources
-		}
-	});
-
-	return Promise.all(processedResources.map(async ({resource, dbgResource, sourceMapResource}) => {
-		if (taskUtil) {
-			taskUtil.setTag(resource, taskUtil.STANDARD_TAGS.HasDebugVariant);
-			taskUtil.setTag(dbgResource, taskUtil.STANDARD_TAGS.IsDebugVariant);
-			taskUtil.setTag(sourceMapResource, taskUtil.STANDARD_TAGS.HasDebugVariant);
-			if (omitSourceMapResources) {
-				taskUtil.setTag(sourceMapResource, taskUtil.STANDARD_TAGS.OmitFromBuildResult);
-			}
-		}
-		return Promise.all([
-			workspace.write(resource),
-			workspace.write(dbgResource),
-			workspace.write(sourceMapResource)
-		]);
-	}));
-}
+module.exports = function({workspace, options}) {       // "workspace" is a DuplexCollection that represents the projects source directory (e.g. /webapp)
+                                                        // When calling the standard APIs "byGlob" and "byPath" it will also return resources that have
+                                                        //  just been created by other tasks.
+                                                        // The uglify task intents to only process those resources present in the project source directory
+                                                        //  therefore it calls the API "byGlobSource".
+    return workspace.byGlobSource(options.pattern)      // Collect all resources that shall be uglified. The caller provides the necessary GLOB pattern.
+        .then((allResources) => {
+            return uglifyProcessor({                    // Call to the processor
+                resources: allResources                 // Pass all resources
+            });
+        })
+        .then((processedResources) => {                 // Receive list of changed and newly created resources
+            return Promise.all(
+                processedResources.map((resource) => {
+                    return workspace.write(resource);   // Write them back into the workspace DuplexCollection
+                })
+            );
+        });
+};
 ```
 
 #### Processor
 ```js
-import posixPath from "node:path/posix";
-import {minify} from "terser";
-import Resource from "@ui5/fs/Resource";
+const uglify = require("uglify-es");
+const copyrightCommentsPattern = /copyright|\(c\)(?:[0-9]+|\s+[0-9A-za-z])|released under|license|\u00a9/i;
 
-const copyrightCommentsAndBundleCommentPattern = /copyright|\(c\)(?:[0-9]+|\s+[0-9A-za-z])|released under|license|\u00a9|^@ui5-bundle-raw-include |^@ui5-bundle /i;
-const debugFileRegex = /((?:\.view|\.fragment|\.controller|\.designtime|\.support)?\.js)$/;
+module.exports = function({resources}) {                // Receive list of resources to uglify
+    return Promise.all(resources.map((resource) => {
+        return resource.getString().then((code) => {    // Get resource content as string
+            const result = uglify.minify({              // Call to the uglify module
+                [resource.getPath()]: code
+            }, {
+                warnings: false,
+                output: {
+                    comments: copyrightCommentsPattern
+                }
+            });
+            if (result.error) {
+                throw new Error(                        // Just throw errors if something fails
+                    `Uglification failed with error: ${result.error.message} in file ${result.error.filename} ` +
+                    `(line ${result.error.line}, col ${result.error.col}, pos ${result.error.pos})`);
+            }
 
-export default async function({resources, options: {addSourceMappingUrl = true} = {}}) {
-	return Promise.all(resources.map(async (resource) => {
-		const dbgPath = resource.getPath().replace(debugFileRegex, "-dbg$1");
-		const dbgResource = await resource.clone();
-		dbgResource.setPath(dbgPath);
-
-		const filename = posixPath.basename(resource.getPath());
-		const code = await resource.getString();
-		try {
-			const sourceMapOptions = {
-				filename
-			};
-			if (addSourceMappingUrl) {
-				sourceMapOptions.url = filename + ".map";
-			}
-			const dbgFilename = posixPath.basename(dbgPath);
-			const result = await minify({
-				// Use debug-name since this will be referenced in the source map "sources"
-				[dbgFilename]: code
-			}, {
-				output: {
-					comments: copyrightCommentsAndBundleCommentPattern,
-					wrap_func_args: false
-				},
-				compress: false,
-				mangle: {
-					reserved: [
-						"jQuery",
-						"jquery",
-						"sap",
-					]
-				},
-				sourceMap: sourceMapOptions
-			});
-			resource.setString(result.code);
-			const sourceMapResource = new Resource({
-				path: resource.getPath() + ".map",
-				string: result.map
-			});
-			return {resource, dbgResource, sourceMapResource};
-		} catch (err) {
-			// Note: err.filename contains the debug-name
-			throw new Error(
-				`Minification failed with error: ${err.message} in file ${filename} ` +
-				`(line ${err.line}, col ${err.col}, pos ${err.pos})`);
-		}
-	}));
-}
+            resource.setString(result.code);            // Update content of the resource
+            return resource;                            // Resolve with list of resources
+        });
+    }));
+};
 
 ```
