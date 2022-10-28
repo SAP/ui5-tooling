@@ -86,7 +86,7 @@ metadata:
 builder:
   customTasks:
     - name: generateMarkdownFiles
-      afterTask: minify
+      afterTask: uglify
       configuration:
         color: blue
 ---
@@ -109,17 +109,17 @@ A custom task implementation needs to return a function with the following signa
  * Custom task example
  *
  * @param {object} parameters Parameters
- * @param {@ui5/fs/DuplexCollection} parameters.workspace DuplexCollection to read and write files
- * @param {@ui5/fs/AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
+ * @param {module:@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
  * @param {object} parameters.taskUtil Specification Version dependent interface to a
- *                [TaskUtil]{@link @ui5/project/build/helpers/TaskUtil} instance
+ *                [TaskUtil]{@link module:@ui5/builder.tasks.TaskUtil} instance
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
  * @param {string} [parameters.options.projectNamespace] Project namespace if available
  * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
  * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
  */
-export default async function({workspace, dependencies, taskUtil, options}) {
+module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	// [...]
 };
 ````
@@ -130,9 +130,9 @@ The following code snippets shows an example how a task implementation could loo
 
 ````javascript
 // Task implementation
-import markdownGenerator from "./markdownGenerator.js";
+const markdownGenerator = require("./markdownGenerator");
 
-export default async function({workspace, dependencies, taskUtil, options}) {
+module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	const textResources = await workspace.byGlob("**/*.txt");
 	const markdownResources = await markdownGenerator({
 		resources: textResources
