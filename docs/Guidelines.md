@@ -10,7 +10,7 @@ During development, you might want to use `npm run unit` or `npm run unit-watch`
 
 ## Git Guidelines
 ### No Merge Commits
-Please use [rebase instead of merge](https://www.atlassian.com/git/tutorials/merging-vs-rebasing) to update a branch to the latest master. This helps keeping a clean commit history in the project.
+Please use [rebase instead of merge](https://www.atlassian.com/git/tutorials/merging-vs-rebasing) to update a branch to the latest main. This helps keeping a clean commit history in the project.
 
 ### Commit Message Style
 #### Commit Summary

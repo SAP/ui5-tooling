@@ -11,7 +11,7 @@ Starting with [Specification Version 2.0](#specification-version-20) the configu
 The current version of the schema can be found here: https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
 
 The schema is also part of the [JSON Schema Store Catalog](http://schemastore.org/json/) which is used by the [YAML Language Server](https://github.com/redhat-developer/yaml-language-server).  
-See the list of [clients](https://github.com/redhat-developer/yaml-language-server/blob/master/README.md#clients) to find extensions for various IDEs and editors.
+See the list of [clients](https://github.com/redhat-developer/yaml-language-server/blob/main/README.md#clients) to find extensions for various IDEs and editors.
 
 ## Example
 
@@ -184,7 +184,7 @@ Specification Version | Default `propertiesFileSourceEncoding`
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
 
-UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
+UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/main/rfcs/0007-properties-file-encoding.md) for details.
 
 ## Custom Configuration
 

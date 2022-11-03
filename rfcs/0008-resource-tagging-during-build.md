@@ -54,7 +54,7 @@ In the future, custom tasks shall be enabled to use self-defined tags for the pu
 
 ### New APIs in Detail
 
-The task facing API shall be wrapped in a new class "TaskUtil". Similarly to the [MiddlewareUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html) of the UI5 Server, it should provide a [specVersion-dependent interface](https://github.com/SAP/ui5-server/blob/master/lib/middleware/MiddlewareUtil.js#L21) to convenience functions as well as the new tagging APIs.
+The task facing API shall be wrapped in a new class "TaskUtil". Similarly to the [MiddlewareUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html) of the UI5 Server, it should provide a [specVersion-dependent interface](https://github.com/SAP/ui5-server/blob/main/lib/middleware/MiddlewareUtil.js#L21) to convenience functions as well as the new tagging APIs.
 
 An instance of TaskUtil will be passed to every standard task that requires it. To stay compatible for current consumers of those tasks, the new parameter must be treated as optional.
 
