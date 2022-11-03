@@ -156,7 +156,7 @@ shims:
 
 
 ## How we teach this
-Documentation in the [ui5-project repository](https://github.com/SAP/ui5-project/blob/master/docs/Configuration.md#project-shims).
+Documentation in the [ui5-project repository](https://github.com/SAP/ui5-project/blob/main/docs/Configuration.md#project-shims).
 
 ## Drawbacks
 When a shim overwrites the configuration of another project, changes made to the projects original configuration might be incompatible with the shim-configuration.

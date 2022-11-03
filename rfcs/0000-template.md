@@ -11,7 +11,7 @@
 
 
 # RFC 0000 Fancy Title
-*Disclaimer: This template is derived from the great [RFC template](https://github.com/yarnpkg/rfcs/blob/master/0000-template.md) that Yarn has come up with. (You may remove this disclaimer).*
+*Disclaimer: This template is derived from the great [RFC template](https://github.com/yarnpkg/rfcs/blob/main/0000-template.md) that Yarn has come up with. (You may remove this disclaimer).*
 
 ## Summary
 <!-- You can either remove the following explanatory text or move it into this comment for later reference -->

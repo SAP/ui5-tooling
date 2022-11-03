@@ -7,7 +7,7 @@ An HTTPS server or proxy that was previously running on a domain (e.g. `localhos
 You need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://net-internals/#hsts) by entering the domain name (e.g. `localhost`) and pressing "delete".
 
 ## Issues Not Listed Here
-Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/master/CONTRIBUTING.md#report-an-issue) on how to report an issue.
+Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/main/CONTRIBUTING.md#report-an-issue) on how to report an issue.
 
 ## UI5 Project
 ### Corrupt Framework Dependencies
@@ -64,7 +64,7 @@ The following is a walk-through on how to evaluate the performance impact of an 
         ```sh
         git clone git@github.com:SAP/ui5-builder.git
         ```
-        Make sure you check out the `master` branch, since we'll perform the baseline test first
+        Make sure you check out the `main` branch, since we'll perform the baseline test first
     1. Install npm dependencies in both directories
         ```sh
         (cd ui5-cli && npm install)
