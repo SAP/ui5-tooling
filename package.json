@@ -57,7 +57,7 @@
 		"jsdoc": "^3.6.7",
 		"local-web-server": "^5.1.1",
 		"mkdirp": "^1.0.4",
-		"open-cli": "^6.0.1",
+		"open-cli": "^7.1.0",
 		"traverse": "^0.6.6"
 	}
 }
