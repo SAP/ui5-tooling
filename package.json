@@ -54,7 +54,7 @@
 		"eslint": "^8.23.1",
 		"eslint-config-google": "^0.14.0",
 		"handlebars": "^4.7.7",
-		"jsdoc": "^3.6.7",
+		"jsdoc": "^3.6.11",
 		"local-web-server": "^5.1.1",
 		"mkdirp": "^1.0.4",
 		"open-cli": "^7.1.0",
