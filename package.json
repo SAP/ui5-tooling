@@ -58,6 +58,6 @@
 		"local-web-server": "^5.1.1",
 		"mkdirp": "^1.0.4",
 		"open-cli": "^7.1.0",
-		"traverse": "^0.6.6"
+		"traverse": "^0.6.7"
 	}
 }
