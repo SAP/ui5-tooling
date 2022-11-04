@@ -160,7 +160,7 @@ my-awesome-library/
         name: "local-dev"
     dependencyManagement:
         resolutionPaths:
-            * ../my-awesome-library
+            - ../my-awesome-library
     ```
 
 
