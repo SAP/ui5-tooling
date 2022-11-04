@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-11 9 1182 1062" width="1182" height="1062">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-222 9 1393 1062" width="1393" height="1062">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
       <g>
@@ -8,9 +8,9 @@
       </g>
     </marker>
   </defs>
-  <g id="UI5_Project" fill="none" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none">
+  <g id="UI5_Project" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
     <title>UI5_Project</title>
-    <rect fill="white" x="-11" y="9" width="1182" height="1062"/>
+    <rect fill="white" x="-222" y="9" width="1393" height="1062"/>
     <g id="UI5_Project_Layer_1">
       <title>Layer 1</title>
       <g id="Graphic_9">
@@ -59,7 +59,7 @@
         <rect x="10" y="320" width="180" height="60" fill="white"/>
         <rect x="10" y="320" width="180" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
         <text transform="translate(15 341.2383)" fill="black">
-          <tspan font-family="Arial" font-size="16" fill="black" x="6.285156" y="14">generateProjectGraph</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="64.53906" y="14">graph</tspan>
         </text>
       </g>
       <g id="Graphic_10">
@@ -268,6 +268,44 @@
         <rect x="129.5811" y="57.811535" width="78.05078" height="24.392578" fill="white"/>
         <text transform="translate(134.5811 62.811535)" fill="black">
           <tspan font-family="Arial" font-size="12" fill="black" x="0" y="11">«instantiate»</tspan>
+        </text>
+      </g>
+      <g id="Group_55">
+        <g id="Graphic_63">
+          <rect x="-160" y="190" width="60" height="80" fill="white"/>
+          <rect x="-160" y="190" width="60" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        </g>
+        <g id="Group_56">
+          <g id="Graphic_62">
+            <path d="M -137.42501 211.18988 L -137.42501 211.18988 C -137.425 207.3018 -134.10071 204.14988 -130 204.1499 C -125.8993 204.1499 -122.57502 207.3018 -122.57501 211.18988 L -122.57501 211.18988 C -122.57501 215.07796 -125.89929 218.22988 -130 218.2299 C -134.10072 218.2299 -137.42501 215.07798 -137.42501 211.1899 C -137.42501 211.1899 -137.42501 211.18988 -137.42501 211.18988 Z" fill="white"/>
+            <path d="M -137.42501 211.18988 L -137.42501 211.18988 C -137.425 207.3018 -134.10071 204.14988 -130 204.1499 C -125.8993 204.1499 -122.57502 207.3018 -122.57501 211.18988 L -122.57501 211.18988 C -122.57501 215.07796 -125.89929 218.22988 -130 218.2299 C -134.10072 218.2299 -137.42501 215.07798 -137.42501 211.1899 C -137.42501 211.1899 -137.42501 211.18988 -137.42501 211.18988 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_61">
+            <line x1="-130.00001" y1="218.2299" x2="-130.00001" y2="240.74616" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_60">
+            <line x1="-130.00002" y1="240.74616" x2="-146.50002" y2="258.00003" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_59">
+            <line x1="-130.00001" y1="240.74616" x2="-113.5" y2="258.00003" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_58">
+            <line x1="-130.00002" y1="228.61387" x2="-146.50002" y2="220.0368" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_57">
+            <line x1="-130" y1="228.61387" x2="-113.5" y2="220.0368" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+        </g>
+      </g>
+      <g id="Line_67">
+        <path d="M -130 270 L -130 345 C -130 347.76142 -127.76142 350 -125 350 L .1 350" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_68">
+        <rect x="-221.14247" y="323.60667" width="192.10938" height="52.785156" fill="white"/>
+        <text transform="translate(-216.14247 328.60667)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">graphFromPackageDependencies</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="37.03711" y="25">graphFromStaticFile</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="44.370117" y="39.39258">graphFromObject</tspan>
         </text>
       </g>
     </g>
