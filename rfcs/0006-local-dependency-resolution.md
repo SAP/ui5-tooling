@@ -1,5 +1,5 @@
 - Start Date: 2019-06-11
-- RFC PR: -
+- RFC PR: [#157](https://github.com/SAP/ui5-tooling/pull/157)
 - Issue: -
 - Affected components
     + [ ] [ui5-builder](https://github.com/SAP/ui5-builder)
@@ -58,8 +58,8 @@ specVersion: workspace/1.0
 metadata:
     name: local-core
 dependencyManagement:
-    resolutionPaths:
-        - ../openui5/src/sap.ui.core
+    resolutions:
+        - path: ../openui5/src/sap.ui.core
 ```
 
 By configuring an additional resolution path, pointing to the directory of the sap.ui.core package within the OpenUI5 development repository, that package will be used instead of the one retrieved from the npm repository:
@@ -74,8 +74,8 @@ specVersion: workspace/1.0
 metadata:
     name: local-openui5
 dependencyManagement:
-    resolutionPaths:
-        - ../openui5
+    resolutions:
+        - path: ../openui5
 ```
 
 For resolving all modules in OpenUI5, it should be enough to provide a path to the root directory. UI5 Tooling shall then use the [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) configuration in the [package.json](https://github.com/SAP/openui5/blob/b74d3c2f153d7a23a2c9b914280b14b7289d7880/package.json#L128) to resolve all libraries located in the repository. Alternatively, a dedicated `ui5.workspaces` configuration in the package.json can be used.
@@ -99,15 +99,15 @@ specVersion: workspace/1.0
 metadata:
     name: local-core
 dependencyManagement:
-    resolutionPaths:
-        - ../openui5/src/sap.ui.core
+    resolutions:
+        - path: ../openui5/src/sap.ui.core
 ---
 specVersion: workspace/1.0
 metadata:
     name: local-openui5
 dependencyManagement:
-    resolutionPaths:
-        - ../openui5
+    resolutions:
+        - path: ../openui5
 ```
 
 ------
@@ -153,14 +153,14 @@ my-awesome-library/
 
 **Use case:**
 - my-awesome-app should use my-awesome-library  
-    **my-awesome-app/ui5-workspace.yaml**
+    *my-awesome-app/ui5-workspace.yaml*
     ```yaml
     specVersion: workspace/1.0
     metadata:
         name: "local-dev"
     dependencyManagement:
-        resolutionPaths:
-            - ../my-awesome-library
+        resolutions:
+            - path:  ../my-awesome-library
     ```
 
 
@@ -189,36 +189,36 @@ openui5/
 **Use case:**
 1. All my-awesome-app and my-awesome-library dependencies should be resolved locally
     - Solved with workspace configurations in both projects:  
-        **my-awesome-app/ui5-workspace.yaml**
+        *my-awesome-app/ui5-workspace.yaml*
         ```yaml
         specVersion: workspace/1.0
         metadata:
             name: openui5
         dependencyManagement:
-            resolutionPaths:
-                - ../openui5
-                - ../my-awesome-library 
+            resolutions:
+                - path: ../openui5
+                - path: ../my-awesome-library 
         ```
 
-        **my-awesome-library/ui5-workspace.yaml**
+        *my-awesome-library/ui5-workspace.yaml*
         ```yaml
         specVersion: workspace/1.0
         metadata:
             name: openui5
         dependencyManagement:
-            resolutionPaths:
-                - ../openui5
+            resolutions:
+                - path: ../openui5
         ```
 1. OpenUI5 testsuite should resolve all dependencies within the repository
     - Solved with default workspace configuration in testsuite  
-        **openui5/src/testsuite/ui5-workspace.yaml**
+        *openui5/src/testsuite/ui5-workspace.yaml*
         ```yaml
         specVersion: workspace/1.0
         metadata:
             name: default
         dependencyManagement:
-            resolutionPaths:
-                - ../../
+            resolutions:
+                - path: ../../
         ```
 
 ## How we teach this
