@@ -51,7 +51,7 @@
 		"@apidevtools/json-schema-ref-parser": "^9.0.9",
 		"depcheck": "^1.4.3",
 		"docdash": "^1.2.0",
-		"eslint": "^8.23.1",
+		"eslint": "^8.27.0",
 		"eslint-config-google": "^0.14.0",
 		"handlebars": "^4.7.7",
 		"jsdoc": "^3.6.7",
