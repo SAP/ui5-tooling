@@ -67,15 +67,17 @@ await graph.build({
 The following tasks have been removed:
 
 - createDebugFiles
+- generateManifestBundle
 - uglify
 
 The following processors have been removed:
 
 - debugFileCreator
+- manifestBundler
 - resourceCopier
 - uglifier
 
-As a replacement, the new 'minify' task and 'minifier' processor can be
+As a replacement for uglify/uglifier, the new 'minify' task and 'minifier' processor can be
 used.
 
 !!! note
@@ -99,7 +101,7 @@ application projects by default. It can be re-enable by using the
 | executeJsdocSdkTransformation |  | *disabled* ^1^ |  |
 | **ADDED:** minify | *enabled* | *enabled* |  |
 | generateFlexChangesBundle |  | *enabled* |  |
-| generateManifestBundle | *disabled* | *disabled* |  |
+| **REMOVED:** ~~generateManifestBundle~~ | *~~disabled~~* | *~~disabled~~* |  |
 | generateLibraryManifest |  | *enabled* |  |
 | generateComponentPreload | *enabled* | *disabled* ^2^ |  |
 | generateLibraryPreload |  | *enabled* |  |
