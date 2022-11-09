@@ -48,3 +48,13 @@ After the commit summary there should be an empty line followed by the commit bo
 Fixes: #42
 Fixes: #45
 ```
+
+## Work on Release Branches
+Major releases are typically prepared on dedicated branches like `next`.
+
+There are some things to be aware of when working on these branches.
+
+### Implementing Changes in Multiple Code Lines
+While working on a new major release (e.g. `5.0.0`), any fixes or new features implemented on the **current** (main) code line (e.g. 4.x) should be cherry-picked as `[INTERNAL]` to the dedicated (pre-)release branch (typically `next`). This is to prevent changes declared as `[FEATURE]` or `[FIX]` from appearing in the changelog twice, which can be confusing since the new major version has not yet been released and should naturally contain any fixes or features released in any of the preceding releases. Listing them twice might confuse users. Note that our changelog is generated based on all tags of the repository, independent of the currently checked out branch (also see [git-chglog/issues/123](https://github.com/git-chglog/git-chglog/issues/123)).
+
+However, once a new major release becomes **current** (i.e. "main", not a pre-release), any changes applied to multiple code lines should be cherry picked with the original prefix, so that they appear for multiple versions in the changelog.
