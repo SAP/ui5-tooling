@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-222 9 1393 1062" width="1393" height="1062">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="UI5_Project" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>UI5_Project</title>
+    <rect fill="white" x="-222" y="9" width="1393" height="1062"/>
+    <g id="UI5_Project_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_9">
+        <rect x="770" y="620" width="400" height="450" fill="#f8f8f8"/>
+        <rect x="770" y="620" width="400" height="450" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(774 624)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="280.9414" y="16">Specifications</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <rect x="-10" y="10" width="990" height="540" fill="#f8f8f8"/>
+        <rect x="-10" y="10" width="990" height="540" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(-6 14)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="931.9727" y="16">Graph</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <rect x="220" y="50" width="460" height="120" fill="#e1e1e1"/>
+        <text transform="translate(224 54)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="375.9746" y="16">Providers</tspan>
+        </text>
+      </g>
+      <g id="Graphic_2">
+        <rect x="360" y="320" width="180" height="60" fill="white"/>
+        <rect x="360" y="320" width="180" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(365 341.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="13.851562" y="14">projectGraphBuilder</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="240" y="90" width="180" height="60" fill="white"/>
+        <rect x="240" y="90" width="180" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(245 111.23828)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="23.92578" y="14">DependencyTree</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <rect x="480" y="90" width="180" height="60" fill="white"/>
+        <rect x="480" y="90" width="180" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(485 102.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="32.078125" y="14">NodePackage-</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="33.851562" y="31.523438">Dependencies</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <rect x="10" y="320" width="180" height="60" fill="white"/>
+        <rect x="10" y="320" width="180" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(15 341.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="64.53906" y="14">graph</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <rect x="390" y="470" width="120" height="60" fill="white"/>
+        <rect x="390" y="470" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(395 491.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="1.6445312" y="14">ShimCollection</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <rect x="790" y="370" width="120" height="60" fill="white"/>
+        <rect x="790" y="370" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(795 391.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="28.76172" y="14">Module</tspan>
+        </text>
+      </g>
+      <g id="Line_13">
+        <path d="M 450 320 L 450 240 C 450 237.23858 447.7614 235 445 235 L 335 235 C 332.23858 235 330 232.76142 330 230 L 330 159.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_12">
+        <rect x="278.29785" y="183.69369" width="103.4043" height="38.785156" fill="white"/>
+        <text transform="translate(283.29785 188.69369)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="25.6875" y="11">getRoot</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="25.392578">getDependencies</tspan>
+        </text>
+      </g>
+      <g id="Line_15">
+        <path d="M 450 320 L 450 240 C 450 237.23858 452.2386 235 455 235 L 565 235 C 567.7614 235 570 232.76142 570 230 L 570 159.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_14">
+        <rect x="518.29785" y="181.55498" width="103.4043" height="38.785156" fill="white"/>
+        <text transform="translate(523.29785 186.55498)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="25.6875" y="11">getRoot</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="25.392578">getDependencies</tspan>
+        </text>
+      </g>
+      <g id="Graphic_16">
+        <rect x="790" y="270" width="120" height="60" fill="white"/>
+        <rect x="790" y="270" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(795 291.23828)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="7.8671875" y="14">ProjectGraph</tspan>
+        </text>
+      </g>
+      <g id="Line_18">
+        <path d="M 540 340 L 575 340 C 577.7614 340 580 337.76142 580 335 L 580 305 C 580 302.23858 582.2386 300 585 300 L 780.1 300" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_17">
+        <rect x="626.45805" y="266.21484" width="116.74023" height="67.57031" fill="white"/>
+        <text transform="translate(631.45805 271.21484)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="19.344727" y="11">«instantiate»</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="24.685547" y="25.392578">addProject</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="17.009766" y="39.785156">addExtension</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="54.177734">declareDependency</tspan>
+        </text>
+      </g>
+      <g id="Graphic_19">
+        <rect x="740" y="50" width="220" height="120" fill="#e1e1e1"/>
+        <text transform="translate(744 54)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="149.97559" y="16">Helpers</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="760" y="90" width="180" height="60" fill="white"/>
+        <rect x="760" y="90" width="180" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(765 111.23828)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="8.53125" y="14">ui5Framework Helper</tspan>
+        </text>
+      </g>
+      <g id="Line_22">
+        <line x1="850" y1="150" x2="850" y2="260.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_21">
+        <rect x="791.6299" y="186.44011" width="116.74023" height="53.177734" fill="white"/>
+        <text transform="translate(796.6299 191.44011)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="15.020508" y="11">traverseGraph</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="24.685547" y="25.392578">addProject</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="39.785156">declareDependency</tspan>
+        </text>
+      </g>
+      <g id="Line_24">
+        <path d="M 540 360 L 575 360 C 577.7614 360 580 362.23858 580 365 L 580 395 C 580 397.76142 582.2386 400 585 400 L 780.1 400" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_23">
+        <rect x="640.1995" y="380.6074" width="94.7207" height="38.785156" fill="white"/>
+        <text transform="translate(645.1995 385.6074)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="8.334961" y="11">«instantiate»</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="25.392578">getSpecification</tspan>
+        </text>
+      </g>
+      <g id="Line_26">
+        <line x1="450" y1="380" x2="450" y2="460.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_25">
+        <rect x="406.64453" y="406.16715" width="86.71094" height="38.785156" fill="white"/>
+        <text transform="translate(411.64453 411.16715)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="4.330078" y="11">«instantiate»</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="25.392578">add/get Shims</tspan>
+        </text>
+      </g>
+      <g id="Line_33">
+        <line x1="850" y1="430" x2="850" y2="650.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_34">
+        <rect x="826.9912" y="459.984" width="46.01758" height="24.392578" fill="white"/>
+        <text transform="translate(831.9912 464.984)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="11">Create</tspan>
+        </text>
+      </g>
+      <g id="Line_36">
+        <path d="M 850 720 L 850 789.1372 C 850 791.8986 852.2386 794.1372 855 794.1372 L 1105 794.1372 C 1107.7614 794.1372 1110 796.3758 1110 799.1372 L 1110 980.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_27">
+        <rect x="790" y="660" width="120" height="60" fill="white"/>
+        <rect x="790" y="660" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(795 681.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="9.640625" y="14">Specification</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <rect x="790" y="830" width="120" height="60" fill="white"/>
+        <rect x="790" y="830" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(795 851.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="15.863281" y="14">Application</tspan>
+        </text>
+      </g>
+      <g id="Graphic_29">
+        <rect x="850" y="870" width="120" height="60" fill="white"/>
+        <rect x="850" y="870" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(855 891.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="30.546875" y="14">Library</tspan>
+        </text>
+      </g>
+      <g id="Graphic_30">
+        <rect x="910" y="910" width="120" height="60" fill="white"/>
+        <rect x="910" y="910" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(915 931.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="38.55078" y="14">Task</tspan>
+        </text>
+      </g>
+      <g id="Graphic_31">
+        <rect x="970" y="950" width="120" height="60" fill="white"/>
+        <rect x="970" y="950" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(975 971.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="11.875" y="14">ProjectShim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_32">
+        <rect x="1030" y="990" width="120" height="60" fill="white"/>
+        <rect x="1030" y="990" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(1035 1011.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="47" y="14">…</tspan>
+        </text>
+      </g>
+      <g id="Line_40">
+        <path d="M 850 720 L 850 789.2316 C 850 791.993 852.2386 794.2316 855 794.2316 L 1045 794.2316 C 1047.7614 794.2316 1050 796.4702 1050 799.2316 L 1050 940.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_41">
+        <path d="M 850 720 L 850 789.2755 C 850 792.037 852.2386 794.2755 855 794.2755 L 985 794.2755 C 987.7614 794.2755 990 796.5141 990 799.2755 L 990 900.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_42">
+        <path d="M 850 720 L 850 789.49355 C 850 792.255 852.2386 794.49355 855 794.49355 L 925 794.49355 C 927.7614 794.49355 930 796.7321 930 799.49355 L 930 860.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_43">
+        <line x1="850" y1="720" x2="850" y2="820.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_44">
+        <rect x="810.9746" y="729.99745" width="78.05078" height="24.392578" fill="white"/>
+        <text transform="translate(815.9746 734.99745)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="11">«instantiate»</tspan>
+        </text>
+      </g>
+      <g id="Line_45">
+        <path d="M 810 430 L 810 495 C 810 497.7614 807.7614 500 805 500 L 519.9 500" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_46">
+        <rect x="658.0609" y="487.8037" width="66.015625" height="24.392578" fill="white"/>
+        <text transform="translate(663.0609 492.8037)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="11">Get Shims</tspan>
+        </text>
+      </g>
+      <g id="Line_47">
+        <line x1="190" y1="350" x2="350.1" y2="350" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_48">
+        <rect x="209.20048" y="337.8037" width="108.0332" height="24.392578" fill="white"/>
+        <text transform="translate(214.20048 342.8037)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="11">Calls with provider</tspan>
+        </text>
+      </g>
+      <g id="Line_49">
+        <path d="M 100 320 L 100 75 C 100 72.23858 102.23858 70 105 70 L 159.99773 70 C 159.99924 70 160.00076 70 160.00227 70 L 265.00455 70.09546 C 267.7642 70.09797 270 72.33581 270 75.09546 L 270 80.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_51">
+        <path d="M 100 320 L 100 75 C 100 72.23858 102.23858 70 105 70 L 439.99643 70 C 439.9988 70 440.0012 70 440.00357 70.000005 L 505.00714 70.09287 C 507.7658 70.09681 510 72.33423 510 75.09286 L 510 80.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_53">
+        <path d="M 40 320 L 40 35 C 40 32.238576 42.238576 30 45 30 L 845 30 C 847.7614 30 850 32.238576 850 35 L 850 80.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_54">
+        <rect x="74.038975" y="17.80371" width="113.38281" height="24.392578" fill="white"/>
+        <text transform="translate(79.038975 22.80371)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="11">enrichProjectGraph</tspan>
+        </text>
+      </g>
+      <g id="Graphic_50">
+        <rect x="129.5811" y="57.811535" width="78.05078" height="24.392578" fill="white"/>
+        <text transform="translate(134.5811 62.811535)" fill="black">
+          <tspan font-family="Arial" font-size="12" fill="black" x="0" y="11">«instantiate»</tspan>
+        </text>
+      </g>
+      <g id="Group_55">
+        <g id="Graphic_63">
+          <rect x="-160" y="190" width="60" height="80" fill="white"/>
+          <rect x="-160" y="190" width="60" height="80" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        </g>
+        <g id="Group_56">
+          <g id="Graphic_62">
+            <path d="M -137.42501 211.18988 L -137.42501 211.18988 C -137.425 207.3018 -134.10071 204.14988 -130 204.1499 C -125.8993 204.1499 -122.57502 207.3018 -122.57501 211.18988 L -122.57501 211.18988 C -122.57501 215.07796 -125.89929 218.22988 -130 218.2299 C -134.10072 218.2299 -137.42501 215.07798 -137.42501 211.1899 C -137.42501 211.1899 -137.42501 211.18988 -137.42501 211.18988 Z" fill="white"/>
+            <path d="M -137.42501 211.18988 L -137.42501 211.18988 C -137.425 207.3018 -134.10071 204.14988 -130 204.1499 C -125.8993 204.1499 -122.57502 207.3018 -122.57501 211.18988 L -122.57501 211.18988 C -122.57501 215.07796 -125.89929 218.22988 -130 218.2299 C -134.10072 218.2299 -137.42501 215.07798 -137.42501 211.1899 C -137.42501 211.1899 -137.42501 211.18988 -137.42501 211.18988 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_61">
+            <line x1="-130.00001" y1="218.2299" x2="-130.00001" y2="240.74616" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_60">
+            <line x1="-130.00002" y1="240.74616" x2="-146.50002" y2="258.00003" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_59">
+            <line x1="-130.00001" y1="240.74616" x2="-113.5" y2="258.00003" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_58">
+            <line x1="-130.00002" y1="228.61387" x2="-146.50002" y2="220.0368" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+          <g id="Line_57">
+            <line x1="-130" y1="228.61387" x2="-113.5" y2="220.0368" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".7"/>
+          </g>
+        </g>
+      </g>
+      <g id="Line_67">
+        <path d="M -130 270 L -130 345 C -130 347.76142 -127.76142 350 -125 350 L .1 350" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_68">
+        <rect x="-221.14247" y="323.60667" width="192.10938" height="52.785156" fill="white"/>
+        <text transform="translate(-216.14247 328.60667)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">graphFromPackageDependencies</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="37.03711" y="25">graphFromStaticFile</tspan>
+          <tspan font-family="Arial" font-size="12" fill="black" x="44.370117" y="39.39258">graphFromObject</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

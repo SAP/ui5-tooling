@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-461 -1 923 552" width="923" height="552">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="UMLInheritance_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -8 14 16" markerWidth="14" markerHeight="16" color="black">
+      <g>
+        <path d="M 12 0 L 0 -7 L 0 7 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="UI5_Project_Specifications" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>UI5_Project_Specifications</title>
+    <rect fill="white" x="-461" y="-1" width="923" height="552"/>
+    <g id="UI5_Project_Specifications_Layer_1">
+      <title>Layer 1</title>
+      <g id="Line_102">
+        <path d="M 250 220 L 250 175 C 250 172.23858 247.76142 170 245 170 L 5 170 C 2.2385763 170 33817688e-23 167.76142 0 165 L 0 143.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_112">
+        <rect x="190" y="220" width="120" height="60" fill="#f8f8f8"/>
+        <rect x="190" y="220" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(195 241.23828)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="19.867188" y="14">Extension</tspan>
+        </text>
+      </g>
+      <g id="Group_147">
+        <g id="Graphic_157">
+          <rect x="-60" y="17763568e-22" width="120" height="29.976476" fill="#f8f8f8"/>
+          <text transform="translate(-55 6.226519)" fill="black">
+            <tspan font-family="Arial" font-size="16" fill="black" x="9.640625" y="14">Specification</tspan>
+          </text>
+        </g>
+        <g id="Graphic_156">
+          <rect x="-60" y="29.976476" width="120" height="79.93727" fill="white"/>
+          <text transform="translate(-55 34.976476)" fill="black">
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="9">Name</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="20.327148">Kind</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="31.654297">Type</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="42.981445">SpecVersion</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="54.308594">Version</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="65.63574">Root Path</tspan>
+          </text>
+        </g>
+        <g id="Graphic_155">
+          <rect x="-60" y="109.91375" width="120" height="19.984317" fill="white"/>
+          <text transform="translate(-55 114.91375)" fill="black">
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="9">getRootReader</tspan>
+          </text>
+        </g>
+        <g id="Group_148">
+          <g id="Line_154">
+            <line x1="-60" y1="29.976476" x2="60" y2="29.976476" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Line_153">
+            <line x1="-60" y1="109.91375" x2="60" y2="109.91375" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Line_152">
+            <path d="M -60 129.89806 L -25.576077 130 L 60 129.89806" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_151">
+            <line x1="60" y1="14210855e-21" x2="60" y2="129.89806" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_150">
+            <line x1="-60" y1="14210855e-21" x2="-60" y2="129.89806" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_149">
+            <line x1="-60" y1="71609385e-22" x2="60" y2="71609385e-22" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_169">
+        <g id="Graphic_179">
+          <rect x="-310" y="200" width="120" height="30" fill="#f8f8f8"/>
+          <text transform="translate(-305 206.23828)" fill="black">
+            <tspan font-family="Arial" font-size="16" fill="black" x="30.101562" y="14">Project</tspan>
+          </text>
+        </g>
+        <g id="Graphic_178">
+          <rect x="-310" y="230" width="120" height="40" fill="white"/>
+          <text transform="translate(-305 235)" fill="black">
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="9">Namespace</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="20.327148">Custom Configuration</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="31.654297">Source Path</tspan>
+          </text>
+        </g>
+        <g id="Graphic_177">
+          <rect x="-310" y="270" width="120" height="40" fill="white"/>
+          <text transform="translate(-305 275)" fill="black">
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="9">getReader</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="20.327148">getWorkspace</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="31.654297">isFrameworkProject</tspan>
+          </text>
+        </g>
+        <g id="Group_170">
+          <g id="Line_176">
+            <line x1="-310" y1="230" x2="-190" y2="230" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Line_175">
+            <line x1="-310" y1="270" x2="-190" y2="270" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Line_174">
+            <line x1="-310" y1="310" x2="-190" y2="310" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_173">
+            <line x1="-190" y1="200" x2="-190" y2="310" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_172">
+            <line x1="-310" y1="200" x2="-310" y2="310" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_171">
+            <line x1="-310" y1="200" x2="-190" y2="200" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+        </g>
+      </g>
+      <g id="Graphic_180">
+        <rect x="-310" y="370" width="120" height="60" fill="#f8f8f8"/>
+        <rect x="-310" y="370" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(-305 382.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="13.640625" y="14">Component </tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="30.101562" y="31.523438">Project</tspan>
+        </text>
+      </g>
+      <g id="Graphic_181">
+        <rect x="-160" y="370" width="120" height="60" fill="#f8f8f8"/>
+        <rect x="-160" y="370" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(-155 391.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="28.76172" y="14">Module</tspan>
+        </text>
+      </g>
+      <g id="Graphic_182">
+        <rect x="-460" y="370" width="120" height="60" fill="#f8f8f8"/>
+        <rect x="-460" y="370" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(-455 391.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="3.4257812" y="14">Theme Library</tspan>
+        </text>
+      </g>
+      <g id="Graphic_183">
+        <rect x="-460" y="490" width="120" height="60" fill="#f8f8f8"/>
+        <rect x="-460" y="490" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(-455 511.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="15.863281" y="14">Application</tspan>
+        </text>
+      </g>
+      <g id="Graphic_184">
+        <rect x="-310" y="490" width="120" height="60" fill="#f8f8f8"/>
+        <rect x="-310" y="490" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(-305 511.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="30.546875" y="14">Library</tspan>
+        </text>
+      </g>
+      <g id="Graphic_185">
+        <rect x="-160" y="490" width="120" height="60" fill="#f8f8f8"/>
+        <rect x="-160" y="490" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(-155 511.2383)" fill="black">
+          <tspan font-family="Arial" font-style="italic" font-size="16" fill="black" x="10.527344" y="14">Component*</tspan>
+        </text>
+      </g>
+      <g id="Line_186">
+        <path d="M -250 200 L -250 175 C -250 172.23858 -247.76142 170 -245 170 L -5 170 C -2.2385763 170 0 167.76142 0 165 L 0 143.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_187">
+        <path d="M -400 370 L -400 345 C -400 342.23858 -397.76142 340 -395 340 L -255 340 C -252.23858 340 -250 337.76142 -250 335 L -250 323.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_188">
+        <line x1="-250" y1="370" x2="-250" y2="323.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_189">
+        <path d="M -100 370 L -100 345 C -100 342.23858 -102.23858 340 -105 340 L -245 340 C -247.76142 340 -250 337.76142 -250 335 L -250 323.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_190">
+        <path d="M -400 490 L -400 465 C -400 462.2386 -397.76142 460 -395 460 L -255 460 C -252.23858 460 -250 457.7614 -250 455 L -250 443.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_191">
+        <line x1="-250" y1="490" x2="-250" y2="443.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_192">
+        <path d="M -100 490 L -100 465 C -100 462.2386 -102.23858 460 -105 460 L -245 460 C -247.76142 460 -250 457.7614 -250 455 L -250 443.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_193">
+        <path d="M 100 370 L 100 330 C 100 327.23858 102.23858 325 105 325 L 245 325 C 247.76142 325 250 322.76142 250 320 L 250 293.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_194">
+        <line x1="250" y1="370" x2="250" y2="293.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_195">
+        <path d="M 400 370 L 400 330 C 400 327.23858 397.76142 325 395 325 L 255 325 C 252.23858 325 250 322.76142 250 320 L 250 293.5" marker-end="url(#UMLInheritance_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Group_196">
+        <g id="Graphic_204">
+          <rect x="40" y="370" width="120" height="35" fill="#f8f8f8"/>
+          <text transform="translate(45 378.7383)" fill="black">
+            <tspan font-family="Arial" font-size="16" fill="black" x="38.55078" y="14">Task</tspan>
+          </text>
+        </g>
+        <g id="Graphic_203">
+          <rect x="40" y="405" width="120" height="35" fill="white"/>
+          <text transform="translate(45 416.83643)" fill="black">
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="9">getTask</tspan>
+          </text>
+        </g>
+        <g id="Group_197">
+          <g id="Line_202">
+            <line x1="40" y1="405" x2="160" y2="405" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Line_201">
+            <line x1="40" y1="440" x2="160" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_200">
+            <line x1="160" y1="370" x2="160" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_199">
+            <line x1="40" y1="370" x2="40" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_198">
+            <line x1="40" y1="370" x2="160" y2="370" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_205">
+        <g id="Graphic_213">
+          <rect x="190" y="370" width="120" height="35" fill="#f8f8f8"/>
+          <text transform="translate(195 369.97656)" fill="black">
+            <tspan font-family="Arial" font-size="16" fill="black" x="31.4375" y="14">Server </tspan>
+            <tspan font-family="Arial" font-size="16" fill="black" x="14.09375" y="31.523438">Middleware</tspan>
+          </text>
+        </g>
+        <g id="Graphic_212">
+          <rect x="190" y="405" width="120" height="35" fill="white"/>
+          <text transform="translate(195 416.83643)" fill="black">
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="9">getMiddleware</tspan>
+          </text>
+        </g>
+        <g id="Group_206">
+          <g id="Line_211">
+            <line x1="190" y1="405" x2="310" y2="405" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Line_210">
+            <line x1="190" y1="440" x2="310" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_209">
+            <line x1="310" y1="370" x2="310" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_208">
+            <line x1="190" y1="370" x2="190" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_207">
+            <line x1="190" y1="370" x2="310" y2="370" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_214">
+        <g id="Graphic_222">
+          <rect x="340" y="370" width="120" height="35" fill="#f8f8f8"/>
+          <text transform="translate(345 378.7383)" fill="black">
+            <tspan font-family="Arial" font-size="16" fill="black" x="11.875" y="14">ProjectShim</tspan>
+          </text>
+        </g>
+        <g id="Graphic_221">
+          <rect x="340" y="405" width="120" height="35" fill="white"/>
+          <text transform="translate(345 405.5093)" fill="black">
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="9">getDependencyShims</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="20.327148">getConfigurationShims</tspan>
+            <tspan font-family="Arial" font-size="10" fill="black" x="0" y="31.654297">getCollectionShims</tspan>
+          </text>
+        </g>
+        <g id="Group_215">
+          <g id="Line_220">
+            <line x1="340" y1="405" x2="460" y2="405" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          </g>
+          <g id="Line_219">
+            <line x1="340" y1="440" x2="460" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_218">
+            <line x1="460" y1="370" x2="460" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_217">
+            <line x1="340" y1="370" x2="340" y2="440" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+          <g id="Line_216">
+            <line x1="340" y1="370" x2="460" y2="370" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
