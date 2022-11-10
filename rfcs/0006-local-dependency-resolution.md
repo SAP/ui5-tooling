@@ -19,9 +19,9 @@ This should work on top of the already existing npm dependency resolution.
 
 ## Motivation
 Currently working with local npm/yarn links is hard:
-- initial linking setup needs to be executed in the right order
-    - becomes more and more complex when working with a lot of different repositories
-- links may disappear when doing npm installs
+- Initial linking setup needs to be executed in the right order
+    - Becomes more and more complex when working with a lot of different repositories
+- Links may disappear when doing npm installs
 - yarn and npm links can't be mixed
 - Linking can be automated with scripts, but requires knowledge about the location of projects
 
@@ -224,18 +224,25 @@ openui5/
 ## How we teach this
 ### Terminology
 
-* UI5 Workspace: **TODO**
+* UI5 Workspace: A configured environment to use when working with a UI5 Project
 
 ### Documentation
-#### How-To guide for local development
+
+* Update [Development Guide](https://sap.github.io/ui5-tooling/pages/Overview/)
+* How-To guide for local development
 
 ## Drawbacks
-*Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.*
+### Transitive Dependency Resolution for Framework Projects
 
-*There are tradeoffs to choosing any path, please attempt to identify them here.*
+This concept overrides the path from which single projects are used. However, in case of **SAPUI5 framework libraries,** it can't resolve dependencies that are only declared in the workspace version of the library.
+
+**Example:** Given a project with a dependency to framework library `sap.m` in version `1.108.0`. When overriding the resolution of `sap.m` to a local copy, which defines an additional dependency another framework library like `sap.ui.codeeditor` in its package.json (or ui5.yaml for SAPUI5 libraries), that dependency might not be available and an error will be thrown.
+
+Such cases can be resolved by temporarily adding the missing library to the dependencies of the root project. In general, once a dependency is part of the "normal" dependency graph of the project, in can also be referenced by projects resolved via workspace resolutions.
 
 ## Alternatives
-*What other designs have been considered? What is the impact of not doing this?*
+
+* [npm linking](https://docs.npmjs.com/cli/v8/commands/npm-link)
 
 ## Unresolved Questions and Bikeshedding
 *This section should be removed (i.e. resolved) before merging*
