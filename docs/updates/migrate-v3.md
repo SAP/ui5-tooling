@@ -67,53 +67,52 @@ await graph.build({
 The following tasks have been removed:
 
 - createDebugFiles
+- generateManifestBundle
 - uglify
 
 The following processors have been removed:
 
 - debugFileCreator
+- manifestBundler
 - resourceCopier
 - uglifier
 
-As a replacement, the new 'minify' task and 'minifier' processor can be
-used.
+**Task Migration**
 
-!!! note
-    The minify task is executed earlier, before the bundling
-    process takes place. Any existing 'beforeTask' or 'afterTask' configuration of
-    custom tasks might need to be adapted to cater for this change.
+| UI5 Tooling v2              | UI5 Tooling v3              | Note |
+| --------------------------- | --------------------------- | ------------------------- |
+| createDebugFiles<br/>uglify | minify                      | The minify task is executed earlier, before the bundling process takes place. Any existing 'beforeTask' or 'afterTask' configuration of custom tasks might need to be adapted to cater for this change. |
+| generateVersionInfo         | generateVersionInfo         | The task is no longer executed for application projects by default. It can be re-enable by using the `--include-task` parameter. |
+| generateManifestBundle      | *None*                      | This task was only needed for the HTML5 repository in Cloud Foundry. In the meantime the HTML5 repository implemented an own mechanism, so the task is no longer needed |
 
-In addition, the task 'generateVersionInfo' is no longer executed for
-application projects by default. It can be re-enable by using the
-`--include-task` parameter.
 
 **Updated list of standard tasks:**
 
-| Task | Type `application` | Type `library` | Type `theme-library` |
-| ---- | :----: | :----: | :----: |
-| escapeNonAsciiCharacters | *enabled* | *enabled* |  |
-| replaceCopyright | *enabled* | *enabled* | *enabled* |
-| replaceVersion | *enabled* | *enabled* | *enabled* |
-| replaceBuildtime |  | *enabled* |  |
-| generateJsdoc |  | *disabled* ^1^ |  |
-| executeJsdocSdkTransformation |  | *disabled* ^1^ |  |
-| **ADDED:** minify | *enabled* | *enabled* |  |
-| generateFlexChangesBundle |  | *enabled* |  |
-| generateManifestBundle | *disabled* | *disabled* |  |
-| generateLibraryManifest |  | *enabled* |  |
-| generateComponentPreload | *enabled* | *disabled* ^2^ |  |
-| generateLibraryPreload |  | *enabled* |  |
-| generateStandaloneAppBundle | *disabled* ^3^ |  |  |
-| transformBootstrapHtml | *disabled* ^3^ |  |  |
-| generateBundle | *disabled* ^4^ | *disabled* ^4^ |  |
-| buildThemes |  | *enabled* | *enabled* |
-| generateThemeDesignerResources |  | *disabled* | *disabled* |
-| **REMOVED:** ~~createDebugFiles~~ | *~~enabled~~* | *~~enabled~~* |  |
-| **REMOVED:** ~~uglify~~ | *~~enabled~~* | *~~enabled~~* |  |
-| generateVersionInfo | **disabled** |  |  |
-| generateCachebusterInfo | *disabled* |  |  |
-| generateApiIndex | *disabled* ^1^ |  |  |
-| generateResourcesJson | *disabled* | *disabled* | *disabled* |
+| Task                      | Type `application` | Type `library` | Type `theme-library` |
+| ------------------------- | :----------------: | :------------: | :------------------: |
+| escapeNonAsciiCharacters  | *enabled*          | *enabled*      |                      |
+| replaceCopyright          | *enabled*          | *enabled*      | *enabled*            |
+| replaceVersion            | *enabled*          | *enabled*      | *enabled*            |
+| replaceBuildtime          |                    | *enabled*      |                      |
+| generateJsdoc             |                    | *disabled* ^1^ |                      |
+| executeJsdocSdkTransformation |                | *disabled* ^1^ |                      |
+| **ADDED:** minify         | *enabled*          | *enabled*      |                      |
+| generateFlexChangesBundle |                    | *enabled*      |                      |
+| **REMOVED:** ~~generateManifestBundle~~ | *~~disabled~~* | *~~disabled~~* |            |
+| generateLibraryManifest   |                    | *enabled*      |                      |
+| generateComponentPreload  | *enabled*          | *disabled* ^2^ |                      |
+| generateLibraryPreload    |                    | *enabled*      |                      |
+| generateStandaloneAppBundle | *disabled* ^3^   |                |                      |
+| transformBootstrapHtml    | *disabled* ^3^     |                |                      |
+| generateBundle            | *disabled* ^4^     | *disabled* ^4^ |                      |
+| buildThemes               |                    | *enabled*      | *enabled*            |
+| generateThemeDesignerResources |               | *disabled*     | *disabled*           |
+| **REMOVED:** ~~createDebugFiles~~ | *~~enabled~~* | *~~enabled~~* |                    | 
+| **REMOVED:** ~~uglify~~   | *~~enabled~~*      | *~~enabled~~*  |                      |
+| generateVersionInfo       | **disabled**       |                |                      |
+| generateCachebusterInfo   | *disabled*         |                |                      |
+| generateApiIndex          | *disabled* ^1^     |                |                      |
+| generateResourcesJson     | *disabled*         | *disabled*     | *disabled*           |
 
 *Disabled tasks can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
 
