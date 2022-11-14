@@ -79,10 +79,10 @@ The following processors have been removed:
 
 **Task Migration**
 
-| UI5 Tooling V2              | UI5 Tooling V3              | Note |
+| UI5 Tooling v2              | UI5 Tooling v3              | Note |
 | --------------------------- | --------------------------- | ------------------------- |
 | createDebugFiles<br/>uglify | minify                      | The minify task is executed earlier, before the bundling process takes place. Any existing 'beforeTask' or 'afterTask' configuration of custom tasks might need to be adapted to cater for this change. |
-| generateVersionInfo         | generateVersionInfo         | In addition, the task 'generateVersionInfo' is no longer executed for application projects by default. It can be re-enable by using the `--include-task` parameter. |
+| generateVersionInfo         | generateVersionInfo         | The task is no longer executed for application projects by default. It can be re-enable by using the `--include-task` parameter. |
 | generateManifestBundle      | *None*                      | This task was only needed for the HTML5 repository in Cloud Foundry. In the meantime the HTML5 repository implemented an own mechanism, so the task is no longer needed |
 
 
