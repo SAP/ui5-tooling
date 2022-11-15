@@ -236,7 +236,7 @@ openui5/
 
 This concept overrides the path from which single projects are used. However, in case of **SAPUI5 framework libraries,** it can't resolve dependencies that are only declared in the workspace version of the library.
 
-**Example:** Given a project with a dependency to framework library `sap.m` in version `1.108.0`. When overriding the resolution of `sap.m` to a local copy, which defines an additional dependency another framework library like `sap.ui.codeeditor` in its package.json (or ui5.yaml for SAPUI5 libraries), that dependency might not be available and an error will be thrown.
+**Example:** Given a project with a dependency to framework library `sap.m` in version `1.108.0`. When overriding the resolution of `sap.m` to a local copy, which defines an additional dependency to another framework library like `sap.ui.codeeditor` in its package.json (or ui5.yaml for SAPUI5 libraries), that dependency might not be available and an error will be thrown.
 
 Such cases can be resolved by temporarily adding the missing library to the dependencies of the root project. In general, once a dependency is part of the "normal" dependency graph of the project, in can also be referenced by projects resolved via workspace resolutions.
 
