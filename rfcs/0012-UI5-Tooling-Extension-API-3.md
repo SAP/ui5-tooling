@@ -146,8 +146,8 @@ UI5 Tooling v3 has switched the internal project handling from a JSON-hierarchy 
 * `getName`: Returns the name of the project
 * `getNamespace`: Returns the detected namespace of the project. E.g. `x/y/z`
 * `getVersion`: Typically returns the package.json version of the project
-* *async* `getRootReader`: Returns an `@ui5/fs/AbsatractReader` instance for the root directory of the project. Typically the same directory that contains the ui5.yaml
-* *async* `getReader`: Returns an `@ui5/fs/AbsatractReader` instance for the resources of the project
+* `getRootReader`: Returns an `@ui5/fs/AbsatractReader` instance for the root directory of the project. Typically the same directory that contains the ui5.yaml
+* `getReader`: Returns an `@ui5/fs/AbsatractReader` instance for the resources of the project
 * `getCustomConfiguration`: Returns the custom configuration of the project
 * `isFrameworkProject`: Returns true if the project is a UI5 framework (theme-)library
 
