@@ -81,8 +81,9 @@ The new APIs should be provided via the existing helper classes [`taskUtil`](htt
 #### New API
 * taskUtil|middlewareUtil.**getLogger(**_optionalModuleNameAppendix_**)**
     * The logger instance will automatically have the name of the custom task or middleware. An optionally provided name will be appended accordingly.
-* taskUtil|middlewareUtil.**createResource(**_{...}_**)**
+* taskUtil|middlewareUtil.**getResourceFactory()**.**createResource(**_{...}_**)**
     * Creates and returns a `Resource` with an interface signature according to the Specification Version of the extension.
+    * This implies a `getResourceFactory()` function which provides Specification Version-dependent access to functions of the [`@ui5/fs/resourceFactory`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html)
 
 #### Solution Example
 
@@ -96,6 +97,7 @@ const renderMarkdown = require("./renderMarkdown");
 
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
 +  const log = taskUtil.getLogger(); // Logger will automatically have a name like "builder:custom-task:generateMarkdownFiles"
++  const {createResource} = taskUtil.getResourceFactory();
   const textResources = await workspace.byGlob("**/*.md")
   await Promise.all(textResources.map(async (resource) => {
     const htmlString = await renderMarkdown(await resource.getString());
@@ -108,7 +110,7 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
     const newResourcePath = path.posix.join(path.posix.dirname(markdownResourcePath), newResourceName);
 
 -    const markdownResource = new Resource({
-+    const markdownResource = taskUtil.createResource({
++    const markdownResource = createResource({
       path: newResourcePath,
       string: htmlString
     });
