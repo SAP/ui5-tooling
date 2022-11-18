@@ -79,11 +79,12 @@ In a future **UI5 Tooling version 4**, extensions defining **Specification Versi
 The new APIs should be provided via the existing helper classes [`taskUtil`](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html) and [`middlewareUtil`](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html).
 
 #### New API
-* taskUtil|middlewareUtil.**getLogger(**_optionalModuleNameAppendix_**)**
-    * The logger instance will automatically have the name of the custom task or middleware. An optionally provided name will be appended accordingly.
-* taskUtil|middlewareUtil.**getResourceFactory()**.**createResource(**_{...}_**)**
+* New parameter **log**
+    * The provided logger instance will automatically have the name of the custom task or middleware.
+    * Additional sub-loggers can be crated using `log.createSubLogger("name suffix")`
+* taskUtil|middlewareUtil.**resourceFactory.createResource(**_{...}_**)**
     * Creates and returns a `Resource` with an interface signature according to the Specification Version of the extension.
-    * This implies a `getResourceFactory()` function which provides Specification Version-dependent access to functions of the [`@ui5/fs/resourceFactory`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html)
+    * This implies a new `resourceFactory` object which provides Specification Version-dependent access to functions of the [`@ui5/fs/resourceFactory`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html)
 
 #### Solution Example
 
@@ -95,15 +96,15 @@ const path = require("path");
 -const log = require("@ui5/logger").getLogger("builder:customtask:markdown");
 const renderMarkdown = require("./renderMarkdown");
 
-module.exports = async function({workspace, dependencies, taskUtil, options}) {
-+  const log = taskUtil.getLogger(); // Logger will automatically have a name like "builder:custom-task:generateMarkdownFiles"
-+  const {createResource} = taskUtil.getResourceFactory();
+-module.exports = async function({workspace, dependencies, taskUtil, options}) {
++module.exports = async function({workspace, dependencies, log, taskUtil, options}) {
++  const {createResource} = taskUtil.resourceFactory;
   const textResources = await workspace.byGlob("**/*.md")
   await Promise.all(textResources.map(async (resource) => {
     const htmlString = await renderMarkdown(await resource.getString());
 
     const markdownResourcePath = resource.getPath();
-    log.info(`Rendering markdown file ${markdownResourcePath}...`)
+    log.info(`Rendering markdown file ${markdownResourcePath}...`) // Provided logger will automatically have a name like "builder:custom-task:generateMarkdownFiles"
 
     // Note: @ui5/fs virtual paths are always POSIX (on all systems)
     const newResourceName = path.posix.basename(markdownResourcePath, ".md") + ".html";
