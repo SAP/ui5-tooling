@@ -16,6 +16,7 @@ jobs:
 
     - name: Install npm dependencies
       run: npm ci
+
     - name: Update CLI Doc
       run: npm run generate-cli-doc
 
@@ -29,16 +30,17 @@ jobs:
       run: |
         chmod +x ./scripts/buildImage.sh
         ./scripts/buildImage.sh
-    - name: Build mkdocs
+
+    - name: Build MkDocs with Mike (versioning)
       run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
 
-    - name: Publish MkDocs
+    - name: Publish MkDocs with Mike (versioning)
       run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default $MIKE_VERSION --push
 
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
     - name: Build JSDoc
-      run: npm run jsdoc-generate-local #jsdoc-generate
+      run: npm run jsdoc-generate
     - name: Build Schema
       run: npm run schema-generate
 
@@ -47,7 +49,7 @@ jobs:
       with:
         ref: gh-pages
         path: gh-pages
-    - name: Copy JSDoc to the folder
+    - name: Copy the API to gh-pages
       run: cp -R ./site/api ./gh-pages/$MIKE_VERSION/api
     - name: Publish API
       run: |
