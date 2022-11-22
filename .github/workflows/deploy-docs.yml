@@ -11,11 +11,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install npm dependencies
       run: npm ci
-    - name: Sync gh-pages
+    - name: GitHub Configuration
       run: |
         git fetch origin gh-pages --depth=1
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
+        git config --global --add safe.directory /github/workspace
 
     - name: Build Mike Image
       run: |
@@ -23,7 +24,10 @@ jobs:
         ./scripts/buildImage.sh
 
     - name: Build mkdocs
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
+      uses: docker://squidfunk/mkdocs-material:8.5.9
+      with:
+        args: mike deploy 0.9 latest --rebase --update-aliases
+      # run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
 
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
@@ -32,5 +36,11 @@ jobs:
     - name: Build Schema
       run: npm run schema-generate
 
+    - name: List files
+      run: ls -l
+
     - name: Set default version and publish
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default 0.9 --push
+      # run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default 0.9 --push
+      uses: docker://squidfunk/mkdocs-material:8.5.9
+      with:
+        args: mike set-default 0.9 --push
