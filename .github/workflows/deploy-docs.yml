@@ -27,7 +27,7 @@ jobs:
 
     - name: Set /site ownership to current user
       run: |
-        ls -l
+        mkdir site
         sudo chown -R $(id -u):$(id -g) ./site
 
     - name: Build mkdocs
