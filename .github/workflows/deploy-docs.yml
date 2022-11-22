@@ -13,10 +13,25 @@ jobs:
       run: npm ci
     - name: Sync gh-pages
       run: git fetch origin gh-pages --depth=1
-    - name: Build Documentation
+
+    - name: Build Mike Image
       run: |
-        chmod +x ./scripts/buildDocs.sh
-        ./scripts/buildDocs.sh
-      env:
-        MIKE_VERSION: 0.9-zzz
-        MIKE_ALIAS: latest
+        chmod +x ./scripts/buildImage.sh
+        ./scripts/buildImage.sh
+
+    - name: Build mkdocs
+      uses: docker://squidfunk/mkdocs-material:8.5.9
+      with:
+        args: mike deploy 0.9 latest --rebase --update-aliases
+
+    - name: Set /site ownership to current user
+      run: sudo chown -R $(id -u):$(id -g) ./site
+    - name: Build JSDoc
+      run: npm run jsdoc-generate
+    - name: Build Schema
+      run: npm run schema-generate
+
+    - name: Set default version and publish
+      uses: docker://squidfunk/mkdocs-material:8.5.9
+      with:
+        args: mike set-default 0.9 --push

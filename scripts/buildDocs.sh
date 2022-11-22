@@ -20,11 +20,11 @@ if [[ $MIKE_ALIAS ]]; then
 	echo "Alias set to" $MIKE_ALIAS;
 fi
 
+npm run generate-cli-doc
+
 # Build with MkDocs/Mike
 docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
 
-# Build the rest of the documentation
-npm run generate-cli-doc
 npm run jsdoc-generate
 
 # Set default versioning and publish
