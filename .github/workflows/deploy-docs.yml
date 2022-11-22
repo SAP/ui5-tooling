@@ -28,9 +28,9 @@ jobs:
     # - name: Build mkdocs
     #   run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
 
-    - name: Set /site ownership to current user
-      run: |
-        sudo chown -R $(id -u):$(id -g) ./site
+    # - name: Set /site ownership to current user
+    #   run: |
+    #     sudo chown -R $(id -u):$(id -g) ./site
 
     - name: Build JSDoc
       run: npm run jsdoc-generate-local #jsdoc-generate
