@@ -25,8 +25,8 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git fetch origin gh-pages --depth=1
 
-    - name: Build mkdocs
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
+    # - name: Build mkdocs
+    #   run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
 
     - name: Set /site ownership to current user
       run: |
