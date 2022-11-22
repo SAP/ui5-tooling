@@ -32,7 +32,7 @@ jobs:
     - name: Build mkdocs
       run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
 
-    - name: Tag release
+    - name: Publish MkDocs
       run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default $MIKE_VERSION --push
 
     - name: Set /site ownership to current user
@@ -49,7 +49,7 @@ jobs:
         path: gh-pages
     - name: Copy JSDoc to the folder
       run: cp -R ./site/api ./gh-pages/$MIKE_VERSION/api
-    - name: Publish
+    - name: Publish API
       run: |
         cd ./gh-pages
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
