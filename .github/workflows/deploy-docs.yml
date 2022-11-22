@@ -14,8 +14,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        ref: docs-versioning
-        path: docs-versioning
+        ref: ${{ github.ref_name }}
+        path: ${{ github.ref_name }}
 
     - name: Checkout gh-pages
       uses: actions/checkout@v3
@@ -23,13 +23,13 @@ jobs:
         ref: gh-pages
         path: gh-pages
 
+    - name: Go inside main repo
+      run: cd ./${{ github.ref_name }}
+
     - name: GitHub Configuration
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-
-    - name: Go inside main repo
-      run: cd ./docs-versioning
 
     - name: Install npm dependencies
       run: npm ci
