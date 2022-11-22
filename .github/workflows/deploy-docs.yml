@@ -26,6 +26,9 @@ jobs:
     - name: Go inside main repo
       run: cd ./${{ github.ref_name }}
 
+    - name: LS
+      run: ls -l
+
     - name: GitHub Configuration
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
