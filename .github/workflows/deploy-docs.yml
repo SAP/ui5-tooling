@@ -39,7 +39,7 @@ jobs:
     - name: List files
       run: |
         ls -l ./site
-        ls -l ./docs
+        ls -l ./docs/site
 
     - name: Build JSDoc
       run: npm run jsdoc-generate
@@ -47,7 +47,7 @@ jobs:
     - name: List files
       run: |
         ls -l ./site
-        ls -l ./docs
+        ls -l ./docs/site
 
     - name: Build Schema
       run: npm run schema-generate
@@ -55,7 +55,7 @@ jobs:
     - name: List files
       run: |
         ls -l ./site
-        ls -l ./docs
+        ls -l ./docs/site
 
     - name: Set default version and publish
       run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default 0.9 --push
@@ -66,4 +66,4 @@ jobs:
     - name: List files
       run: |
         ls -l ./site
-        ls -l ./docs
+        ls -l ./docs/site
