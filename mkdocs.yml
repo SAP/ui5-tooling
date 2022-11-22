@@ -42,23 +42,23 @@ theme:
 extra_css:
   - 'stylesheets/extra.css'
 
-# extra:
-#   version:
-#     provider: mike
+extra:
+  version:
+    provider: mike
 
 plugins:
   - search
   - minify:
       minify_html: true
-  # - mike:
-  #     # These fields are all optional; the defaults are as below...
-  #     # alias_type: symlink
-  #     # redirect_template: null
-  #     # deploy_prefix: ""
-  #     canonical_version: null
-  #     version_selector: true
-  #     css_dir: stylesheets
-  #     javascript_dir: js
+  - mike:
+      # These fields are all optional; the defaults are as below...
+      # alias_type: symlink
+      # redirect_template: null
+      # deploy_prefix: ""
+      canonical_version: null
+      version_selector: true
+      css_dir: stylesheets
+      javascript_dir: js
 
 markdown_extensions:
   - admonition
