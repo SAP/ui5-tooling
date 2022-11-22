@@ -49,7 +49,7 @@ jobs:
         ref: gh-pages
         path: gh-pages
     - name: Copy JSDoc to the folder
-      run: cp -R ./api ./gh-pages/$MIKE_VERSION/api
+      run: cp -R ./site/api ./gh-pages/$MIKE_VERSION/api
     - name: Publish
       run: |
         cd ./gh-pages
