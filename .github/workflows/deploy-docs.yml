@@ -13,12 +13,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-
-    - name: Checkout gh-pages
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3 # Fix for known Mike in CI issue
       with:
         ref: gh-pages
-        path: gh-pages
+        fetch-depth: 1
 
     - name: GitHub Configuration
       run: |
@@ -35,9 +33,10 @@ jobs:
         chmod +x ./scripts/buildImage.sh
         ./scripts/buildImage.sh
     - name: Build mkdocs
-      run: |
-        docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
-        docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default $MIKE_VERSION --push
+      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
+
+    - name: Tag release
+      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default $MIKE_VERSION --push
 
     - name: Set /site ownership to current user
       run: |
@@ -46,5 +45,16 @@ jobs:
       run: npm run jsdoc-generate-local #jsdoc-generate
     - name: Build Schema
       run: npm run schema-generate
+
+    - name: Checkout gh-pages
+      uses: actions/checkout@v3
+      with:
+        ref: gh-pages
+        path: gh-pages
     - name: Copy JSDoc to the folder
-      run: ls -l
+      run: cp -R ./api ./gh-pages/${{ github.ref_name }}/api
+    - name: Publish
+      run: |
+        cd ./gh-pages
+        git commit -m "zzz"
+        git push --force
