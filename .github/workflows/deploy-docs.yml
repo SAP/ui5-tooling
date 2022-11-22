@@ -1,0 +1,45 @@
+name: Build and Deploy Docs
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install npm dependencies
+      run: npm ci
+    # - name: Update CLI Doc
+    #   run: npm run generate-cli-doc
+    # - name: Build mkdocs
+    #   uses: docker://squidfunk/mkdocs-material:6.0.2
+    #   with:
+    #     args: build
+    # - name: Set /site ownership to current user
+    #   run: sudo chown -R $(id -u):$(id -g) ./site
+
+    # - name: Build JSDoc
+    #   run: npm run jsdoc-generate
+    # - name: Build Schema
+    #   run: npm run schema-generate
+    # - name: Deploy docs to gh-pages
+    #   uses: maxheld83/ghpages@v0.3.0
+    #   env:
+    #     BUILD_DIR: site/
+    #     GH_PAT: ${{ secrets.GH_PAT }}
+
+    - name: Sync gh-pages
+      run: git fetch origin gh-pages --depth=1
+    - name: Build Custom Docker Image
+      run: |
+        chmod +x ./scripts/buildImage.sh
+        ./scripts/buildImage.sh
+    - name: Build Documentation
+      run: |
+        chmod +x ./scripts/deploy.sh
+        ./scripts/deploy.sh
+      env:
+        MIKE_VERSION: 0.9-zzz
+        MIKE_ALIAS: latest
