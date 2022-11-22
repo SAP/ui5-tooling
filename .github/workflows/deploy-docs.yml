@@ -7,8 +7,30 @@ jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-20.04
+    env:
+      MIKE_VERSION: 0.9
+      MIKE_ALIAS: latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: docs-versioning
+        path: docs-versioning
+
+    - name: Checkout gh-pages
+      uses: actions/checkout@v3
+      with:
+        ref: gh-pages
+        path: gh-pages
+
+    - name: GitHub Configuration
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+
+    - name: Go inside main repo
+      run: cd ./docs-versioning
+
     - name: Install npm dependencies
       run: npm ci
     - name: Update CLI Doc
@@ -18,30 +40,17 @@ jobs:
       run: |
         chmod +x ./scripts/buildImage.sh
         ./scripts/buildImage.sh
-
-    - name: GitHub Configuration
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git fetch origin gh-pages --depth=1
-
     - name: Build mkdocs
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
+      run: |
+        docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
+        docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default $MIKE_VERSION --push
 
     - name: Set /site ownership to current user
       run: |
         sudo chown -R $(id -u):$(id -g) ./site
-
     - name: Build JSDoc
       run: npm run jsdoc-generate-local #jsdoc-generate
-
     - name: Build Schema
       run: npm run schema-generate
-
-    - name: List asda
-      run: |
-        ls -l
-        ls -l ./site
-
-    - name: Set default version and publish
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default 0.9 --push
+    - name: Copy JSDoc to the folder
+      run: ls -l
