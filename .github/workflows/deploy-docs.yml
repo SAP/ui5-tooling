@@ -22,5 +22,17 @@ jobs:
 
     - name: Build JSDoc
       run: npm run jsdoc-generate
+
+    - name: List files
+      run: |
+        ls -l ./site
+        ls -l ./docs
+
     - name: Build Schema
       run: npm run schema-generate
+
+
+    - name: List files
+      run: |
+        ls -l ./site
+        ls -l ./docs
