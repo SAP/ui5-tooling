@@ -30,18 +30,28 @@ jobs:
       #   args: mike deploy 0.9 latest --rebase --update-aliases
       run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
 
+    - name: List files
+      run: ls -l ./site
+
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
     - name: Build JSDoc
       run: npm run jsdoc-generate
+
+    - name: List files
+      run: ls -l ./site
+
     - name: Build Schema
       run: npm run schema-generate
 
     - name: List files
-      run: ls -l
+      run: ls -l ./site
 
     - name: Set default version and publish
       run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default 0.9 --push
       # uses: docker://squidfunk/mkdocs-material:8.5.9
       # with:
       #   args: mike set-default 0.9 --push
+
+    - name: List files
+      run: ls -l ./site
