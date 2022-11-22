@@ -24,7 +24,7 @@ jobs:
         path: gh-pages
 
     - name: Go inside main repo
-      run: cd ./${{ github.ref_name }}
+      run: cd ${{ github.ref_name }}
 
     - name: LS
       run: ls -l
