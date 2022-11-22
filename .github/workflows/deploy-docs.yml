@@ -13,58 +13,14 @@ jobs:
       run: npm ci
     - name: Update CLI Doc
       run: npm run generate-cli-doc
-
-    - name: Build Mike Image
-      run: |
-        chmod +x ./scripts/buildImage.sh
-        ./scripts/buildImage.sh
-
-    - name: GitHub Configuration
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git fetch origin gh-pages --depth=1
-
     - name: Build mkdocs
-      # uses: docker://squidfunk/mkdocs-material:8.5.9
-      # with:
-      #   args: mike deploy 0.9 latest --rebase --update-aliases
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy 0.9 latest --rebase --update-aliases
-
+      uses: docker://squidfunk/mkdocs-material:6.0.2
+      with:
+        args: build
     - name: Set /site ownership to current user
-      run: |
-        sudo chown -R $(id -u):$(id -g) ./site
-
-    - name: List files
-      run: |
-        ls -l ./site
-        ls -l ./docs
+      run: sudo chown -R $(id -u):$(id -g) ./site
 
     - name: Build JSDoc
-      run: |
-        npm install
-        npm run jsdoc-generate
-
-    - name: List files
-      run: |
-        ls -l ./site
-        ls -l ./docs
-
+      run: npm run jsdoc-generate
     - name: Build Schema
       run: npm run schema-generate
-
-    - name: List files
-      run: |
-        ls -l ./site
-        ls -l ./docs
-
-    - name: Set default version and publish
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default 0.9 --push
-      # uses: docker://squidfunk/mkdocs-material:8.5.9
-      # with:
-      #   args: mike set-default 0.9 --push
-
-    - name: List files
-      run: |
-        ls -l ./site
-        ls -l ./docs
