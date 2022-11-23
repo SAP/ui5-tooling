@@ -32,6 +32,10 @@ The JSON based, internal representation of a project dependency tree has been re
 
 Note that also the @ui5/server API has been changed. Instead of a `tree`, it now only accepts a `graph` instance as the first parameter.
 
+## JSDoc processor now fails when JSDoc reports an error
+
+The `jsdocGenerator` processor and the corresponding `generateJsdoc` task will now throw an error when JSDoc reports an error (exit code != 0). This will also fail the build when running `ui5 build jsdoc`.
+
 ### Migrating Your Code
 
 **@ui5/project v2**
