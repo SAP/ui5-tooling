@@ -1,12 +1,15 @@
 #!/bin/bash
 set -e
 
+# Store docker image name
+DOCKER_IMAGE=squidfunk/mkdocs-material:8.5.9
+
 cd "$(dirname -- "$0")/.."
 
 echo "Changed directory to $(pwd)"
 
 # Build image if not existent
-if [[ "$(docker images -q squidfunk/mkdocs-material:8.5.9 2> /dev/null)" == "" ]]; then
+if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
   bash ./scripts/buildImage.sh
 fi
 
@@ -23,10 +26,10 @@ fi
 npm run generate-cli-doc
 
 # Build with MkDocs/Mike
-docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
+docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
 
 npm run jsdoc-generate
 
 # Set default versioning and publish
-docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default $MIKE_VERSION --push
+docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION --push
 echo "Documentation build & tagged"
