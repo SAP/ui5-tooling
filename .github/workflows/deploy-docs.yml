@@ -54,7 +54,9 @@ jobs:
         ref: gh-pages
         path: gh-pages
     - name: Copy the API to gh-pages
-      run: cp -R ./site/api ./gh-pages/$MIKE_VERSION/api
+      run: |
+        cp -R ./site/api ./gh-pages/$MIKE_VERSION/api
+        cp ./scripts/resources/custom404.html ./gh-pages/404.html
     - name: Publish API
       run: |
         cd ./gh-pages
