@@ -8,8 +8,12 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-20.04
     env:
-      MIKE_VERSION: 0.9
+      MIKE_VERSION: v2
       MIKE_ALIAS: latest
+      DOCKER_IMAGE: squidfunk/mkdocs-material:8.5.9
+      GH_NAME: "OpenUI5 Bot"
+      GH_EMAIL: "openui5@sap.com"
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -23,8 +27,8 @@ jobs:
     - name: GitHub Configuration
       run: |
         git fetch origin gh-pages --depth=1
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+        git config --local user.email $GH_EMAIL
+        git config --local user.name $GH_NAME
 
     - name: Build Mike Image
       run: |
@@ -32,10 +36,10 @@ jobs:
         ./scripts/buildImage.sh
 
     - name: Build MkDocs with Mike (versioning)
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
+      run: docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
 
     - name: Publish MkDocs with Mike (versioning)
-      run: docker run --rm -v $(pwd):/docs squidfunk/mkdocs-material:8.5.9 mike set-default $MIKE_VERSION --push
+      run: docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION --push
 
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
@@ -54,8 +58,8 @@ jobs:
     - name: Publish API
       run: |
         cd ./gh-pages
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+        git config --local user.email $GH_EMAIL
+        git config --local user.name $GH_NAME
         git add .
         git commit -m "$(git log -1 --pretty=%B)"
         git push --force
