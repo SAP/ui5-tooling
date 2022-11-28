@@ -14,8 +14,8 @@ if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
 fi
 
 # Mike configuration
-git config --local user.email "github-actions[bot]@users.noreply.github.com"
-git config --local user.name "github-actions[bot]"
+# git config --local user.email "openui5@sap.com"
+# git config --local user.name "OpenUI5 Bot"
 
 echo "Setting up build of documentation and tagging it with version" $MIKE_VERSION;
 
@@ -31,5 +31,5 @@ docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike deploy $MIKE_VERSION $MIKE_AL
 npm run jsdoc-generate
 
 # Set default versioning and publish
-docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION --push
+docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION
 echo "Documentation build & tagged"
