@@ -185,13 +185,13 @@ However, in order to optimize the build time, UI5 Tooling v3 now differentiates 
 
 #### Solution
 
-Custom tasks defining Specification Version 3.0 shall not receive a `dependencies` AbstractReader, unless they request dependencies to be available to them. They can do so by exporting an additional callback function `requireDependencies`. Before the task is executed, this function will be called with the current build parameters and available dependencies. It can then return an array of dependencies if requires access to. Or an empty array if no dependency access is required.
+Custom tasks defining Specification Version 3.0 shall not receive a `dependencies` AbstractReader, unless they request dependencies to be available to them. They can do so by exporting an additional callback function `determineRequiredDependencies`. Before the task is executed, this function will be called with the current build parameters and available dependencies. It can then return an array of dependencies if requires access to. Or an empty array if no dependency access is required.
 
 By default, legacy custom tasks defining Specification Versions **lower than 3.0** are expected to require dependencies. However, even they can provide the described callback to opt-out.
 
 #### New API
 
-* Custom task export: *async* **requiresDependencies(**_{availableDependencies, getProject, getDependencies, options}_**)**
+* Custom task export: *async* **determineRequiredDependencies(**_{availableDependencies, getProject, getDependencies, options}_**)**
     * `availableDependencies`: Array containing the names of all direct dependencies of the project currently being built. By returning this array unmodified, all dependencies will be available to the task.
     * `getProject`, `getDependencies`: Identical to [`taskUtil.getProject` and `taskUtil.getDependencies`](#2-access-to-project-information)
     * `options`: Same as for the main task function. `{projectName, projectNamespace, configuration}`
@@ -204,7 +204,7 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
   // Task implementation
 };
 
-module.exports.requireDependencies = async function({availableDependencies, getProject, getDependencies, options})}) {
+module.exports.determineRequiredDependencies = async function({availableDependencies, getProject, getDependencies, options})}) {
   // "availableDependencies" could look like this: ["sap.ui.core", "sap.m", "my.lib"]
 
   // One could for example ignore all non-framework libraries:
