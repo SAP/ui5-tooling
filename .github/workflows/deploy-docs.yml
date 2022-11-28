@@ -2,13 +2,13 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-20.04
     env:
-      MIKE_VERSION: v2
+      MIKE_VERSION: v3
       MIKE_ALIAS: latest
       DOCKER_IMAGE: squidfunk/mkdocs-material:8.5.9
       GH_NAME: "OpenUI5 Bot"
