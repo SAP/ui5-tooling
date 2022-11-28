@@ -192,9 +192,9 @@ By default, legacy custom tasks defining Specification Versions **lower than 3.0
 #### New API
 
 * Custom task export: *async* **determineRequiredDependencies(**_{availableDependencies, getProject, getDependencies, options}_**)**
-    * `availableDependencies`: Array containing the names of all direct dependencies of the project currently being built. By returning this array unmodified, all dependencies will be available to the task.
+    * `availableDependencies`: [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) containing the names of all direct dependencies of the project currently being built. For example by returning it unmodified, all dependencies will be available to the task.
     * `getProject`, `getDependencies`: Identical to [`taskUtil.getProject` and `taskUtil.getDependencies`](#2-access-to-project-information)
-    * `options`: Same as for the main task function. `{projectName, projectNamespace, configuration}`
+    * `options`: Same as for the main task function. `{projectName, projectNamespace, configuration, taskName}`
     * Returns: List of dependencies that should be made available to the task. UI5 Tooling will ensure that those dependencies have been built before executing the task.
 
 #### Solution Example
@@ -207,12 +207,14 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 module.exports.determineRequiredDependencies = async function({availableDependencies, getProject, getDependencies, options})}) {
   // "availableDependencies" could look like this: ["sap.ui.core", "sap.m", "my.lib"]
 
-  // One could for example ignore all non-framework libraries:
-  return availableDependencies.filter((depName) => {
-    return getProject(depName).isFrameworkProject();
+  // One could for example ignore all framework libraries:
+  availableDependencies.forEach((depName) => {
+    if (getProject(depName).isFrameworkProject()) {
+        availableDependencies.delete(depName)
+    }
   });
-
-  // => Resources of project "my.lib" will not be available to the task
+  // => Only resources of project "my.lib" will be available to the task
+  return availableDependencies;
 };
 ```
 
