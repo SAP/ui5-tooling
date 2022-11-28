@@ -13,10 +13,6 @@ if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
   bash ./scripts/buildImage.sh
 fi
 
-# Mike configuration
-# git config --local user.email "openui5@sap.com"
-# git config --local user.name "OpenUI5 Bot"
-
 echo "Setting up build of documentation and tagging it with version" $MIKE_VERSION;
 
 if [[ $MIKE_ALIAS ]]; then
