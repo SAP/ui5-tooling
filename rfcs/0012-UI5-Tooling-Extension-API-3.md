@@ -144,7 +144,6 @@ UI5 Tooling v3 has switched the internal project handling from a JSON-hierarchy 
     
 `Project` interface for Specification Version 3:
 
-* `getSpecVersion`: Returns the specification version of the project. E.g. "3.0"
 * `getType`: Returns the type of the project. E.g. "library", "application", etc.
 * `getName`: Returns the name of the project
 * `getNamespace`: Returns the detected namespace of the project. E.g. `x/y/z`
