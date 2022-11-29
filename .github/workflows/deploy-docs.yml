@@ -21,9 +21,6 @@ jobs:
     - name: Install npm dependencies
       run: npm ci
 
-    - name: Update CLI Doc
-      run: npm run generate-cli-doc
-
     - name: GitHub Configuration
       run: |
         git fetch origin gh-pages --depth=1
