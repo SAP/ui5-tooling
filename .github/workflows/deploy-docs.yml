@@ -10,7 +10,7 @@ jobs:
     env:
       MIKE_VERSION: v3
       MIKE_ALIAS: latest
-      DOCKER_IMAGE: squidfunk/mkdocs-material:8.5.9
+      DOCKER_IMAGE: squidfunk/mkdocs-material-modified:8.5.9
       GH_NAME: "OpenUI5 Bot"
       GH_EMAIL: "openui5@sap.com"
 
