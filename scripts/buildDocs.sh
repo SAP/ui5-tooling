@@ -32,6 +32,4 @@ docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike deploy $MIKE_VERSION $MIKE_AL
 
 npm run jsdoc-generate
 
-# Set default versioning and publish
-docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION
 echo "Documentation build & tagged"
