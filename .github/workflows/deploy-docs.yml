@@ -51,7 +51,7 @@ jobs:
       run: |
         cp -R ./site/api ./gh-pages/$MIKE_VERSION/api
         cp ./scripts/resources/custom404.html ./gh-pages/404.html
-    - name: Publish API
+    - name: Publish Docs
       run: |
         cd ./gh-pages
         git config --local user.email $GH_EMAIL
