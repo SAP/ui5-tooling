@@ -30,16 +30,10 @@ jobs:
         git config --local user.email $GH_EMAIL
         git config --local user.name $GH_NAME
 
-    - name: Build Mike Image
+    - name: Build docs with Mike
       run: |
-        chmod +x ./scripts/buildImage.sh
-        ./scripts/buildImage.sh
-
-    - name: Build MkDocs with Mike (versioning)
-      run: docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
-
-    - name: Publish MkDocs with Mike (versioning)
-      run: docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION --push
+        chmod +x ./scripts/buildDocs.sh
+        ./scripts/buildDocs.sh
 
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
