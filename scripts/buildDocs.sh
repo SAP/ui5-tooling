@@ -4,6 +4,12 @@ set -e
 # Store docker image name
 DOCKER_IMAGE=squidfunk/mkdocs-material-modified:8.5.9
 
+# If not provided, set default values for building the docs
+if [[ -z "${MIKE_VERSION}" ]]; then
+	MIKE_VERSION=v3
+	MIKE_ALIAS=latest
+fi
+
 cd "$(dirname -- "$0")/.."
 
 echo "Changed directory to $(pwd)"
