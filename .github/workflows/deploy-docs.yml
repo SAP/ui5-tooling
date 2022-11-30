@@ -10,9 +10,9 @@ jobs:
     env:
       MIKE_VERSION: v3
       MIKE_ALIAS: latest
-      DOCKER_IMAGE: squidfunk/mkdocs-material-modified:8.5.9
-      GH_NAME: "OpenUI5 Bot"
-      GH_EMAIL: "openui5@sap.com"
+      DOCKER_IMAGE: ui5-tooling/mkdocs-material:8.5.9
+      GIT_COMMITTER_NAME: "OpenUI5 Bot"
+      GIT_COMMITTER_EMAIL: "openui5@sap.com"
 
     steps:
     - name: Checkout
@@ -24,13 +24,11 @@ jobs:
     - name: GitHub Configuration
       run: |
         git fetch origin gh-pages --depth=1
-        git config --local user.email $GH_EMAIL
-        git config --local user.name $GH_NAME
+        git config --local user.email $GIT_COMMITTER_EMAIL
+        git config --local user.name $GIT_COMMITTER_NAME
 
     - name: Build docs with Mike
-      run: |
-        chmod +x ./scripts/buildDocs.sh
-        ./scripts/buildDocs.sh
+      run: ./scripts/buildDocs.sh
 
     - name: Publish docs
       run: docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION --push
@@ -54,8 +52,8 @@ jobs:
     - name: Publish Docs
       run: |
         cd ./gh-pages
-        git config --local user.email $GH_EMAIL
-        git config --local user.name $GH_NAME
+        git config --local user.email $GIT_COMMITTER_EMAIL
+        git config --local user.name $GIT_COMMITTER_NAME
         git add .
         git commit -m "$(git log -1 --pretty=%B)"
         git push --force
