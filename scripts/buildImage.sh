@@ -5,7 +5,7 @@ cd "$(dirname -- "$0")/../"
 echo "Changed directory to $(pwd)"
 
 echo "Building image..."
-docker build -t squidfunk/mkdocs-material-modified:8.5.9 -f scripts/Dockerfile .
+docker build -t ui5-tooling/mkdocs-material:8.5.9 -f scripts/Dockerfile .
 echo "Done building image."
 
 exit 0
