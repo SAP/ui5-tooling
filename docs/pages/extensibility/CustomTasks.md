@@ -106,19 +106,21 @@ A custom task implementation needs to return a function with the following signa
 
 ````javascript
 /**
- * Custom task example
+ * Custom task API
  *
  * @param {object} parameters Parameters
  * @param {module:@ui5/fs.DuplexCollection} parameters.workspace
- *      Reader/Writer to access and modify resources of the project currently being built
+ *      Reader/Writer to access and modify resources of the
+ *      project currently being built
  * @param {module:@ui5/fs.AbstractReader} parameters.dependencies
  *      Reader to access resources of the project's dependencies
  * @param {@ui5/builder.tasks.TaskUtil} parameters.taskUtil
- *      Specification Version dependent interface to a
- *      TaskUtil instance. See the corresponding API reference for details.
+ *      Specification Version dependent interface to a TaskUtil instance.
+ *      See the corresponding API reference for details.
  * @param {@ui5/logger/GroupLogger} parameters.log
- *      Logger instance for use in the custom task. This method is only available
- *      to custom task extensions defining Specification Version 3.0 and later.
+ *      Logger instance for use in the custom task.
+ *      This method is only available to custom task extensions
+ *      defining Specification Version 3.0 and later.
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName
  *      Name of the project currently being built
@@ -130,7 +132,8 @@ A custom task implementation needs to return a function with the following signa
  *      Name of the custom task.
  *      This parameter is only provided to custom task extensions
  *      defining Specification Version 3.0 and later.
- * @returns {Promise<undefined>} Promise resolving once the task has finished its work
+ * @returns {Promise<undefined>}
+ *      Promise resolving once the task has finished its work
  */
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	// [...]

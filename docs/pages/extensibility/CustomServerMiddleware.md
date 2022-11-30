@@ -85,7 +85,7 @@ middleware:
 A custom middleware implementation needs to return a function with the following signature:
 ````javascript
 /**
- * Custom UI5 Server middleware example
+ * Custom UI5 Server middleware API
  *
  * @param {object} parameters Parameters
  * @param {object} parameters.resources Readers for accessing resources
@@ -99,8 +99,9 @@ A custom middleware implementation needs to return a function with the following
  *      Specification version dependent interface to a
  *      MiddlewareUtil instance. See the corresponding API reference for details.
  * @param {@ui5/logger/GroupLogger} parameters.log
- *      Logger instance for use in the custom middleware. This method is only available
- *      to custom middleware extensions defining Specification Version 3.0 and later.
+ *      Logger instance for use in the custom middleware.
+ *      This parameter is only provided to custom middleware
+ *      extensions defining Specification Version 3.0 and later.
  * @param {object} parameters.options Options
  * @param {string} parameters.options.configuration
  *      Custom middleware configuration, as defined in the project's ui5.yaml
