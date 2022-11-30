@@ -2,7 +2,7 @@
 set -e
 
 # Store docker image name
-DOCKER_IMAGE=ui5-tooling/mkdocs-material:8.5.9
+DOCKER_IMAGE=ui5-tooling/mkdocs-material
 
 # If not provided, set default values for building the docs
 if [[ -z "${MIKE_VERSION}" ]]; then

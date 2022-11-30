@@ -2,7 +2,7 @@
 set -e
 
 # Store docker image name
-DOCKER_IMAGE=ui5-tooling/mkdocs-material:8.5.9
+DOCKER_IMAGE=ui5-tooling/mkdocs-material
 
 cd "$(dirname -- "$0")/.."
 
