@@ -19,7 +19,7 @@ Another custom task called `generateMarkdownFiles` is then executed immediately 
 
 ````yaml
 # In this example configuration two custom tasks are defined: 'babel' and 'generateMarkdownFiles'.
-specVersion: "2.6"
+specVersion: "3.0"
 type: library
 metadata:
   name: my.library
@@ -39,7 +39,7 @@ You can also connect multiple custom tasks with each other. The order in the con
 
 ````yaml
 # In this example 'myCustomTask2' gets executed after 'myCustomTask1'.
-specVersion: "2.6"
+specVersion: "3.0"
 type: library
 metadata:
   name: my.library
@@ -58,7 +58,7 @@ A custom task extension consists of a `ui5.yaml` and a [task implementation](#ta
 ### Example: ui5.yaml
 
 ````yaml
-specVersion: "2.6"
+specVersion: "3.0"
 kind: extension
 type: task
 metadata:
@@ -78,7 +78,7 @@ The task extension will then be automatically collected and processed during the
 
 ````yaml
 # Project configuration for the above example
-specVersion: "2.6"
+specVersion: "3.0"
 kind: project
 type: library
 metadata:
@@ -91,7 +91,7 @@ builder:
         color: blue
 ---
 # Task extension as part of your project
-specVersion: "2.6"
+specVersion: "3.0"
 kind: extension
 type: task
 metadata:
@@ -109,15 +109,28 @@ A custom task implementation needs to return a function with the following signa
  * Custom task example
  *
  * @param {object} parameters Parameters
- * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
- * @param {module:@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
- * @param {object} parameters.taskUtil Specification Version dependent interface to a
- *                [TaskUtil]{@link module:@ui5/builder.tasks.TaskUtil} instance
+ * @param {module:@ui5/fs.DuplexCollection} parameters.workspace
+ *      Reader/Writer to access and modify resources of the project currently being built
+ * @param {module:@ui5/fs.AbstractReader} parameters.dependencies
+ *      Reader to access resources of the project's dependencies
+ * @param {@ui5/builder.tasks.TaskUtil} parameters.taskUtil
+ *      Specification Version dependent interface to a
+ *      TaskUtil instance. See the corresponding API reference for details.
+ * @param {@ui5/logger/GroupLogger} parameters.log
+ *      Logger instance for use in the custom task. This method is only available
+ *      to custom task extensions defining Specification Version 3.0 and later.
  * @param {object} parameters.options Options
- * @param {string} parameters.options.projectName Project name
- * @param {string} [parameters.options.projectNamespace] Project namespace if available
- * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
- * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
+ * @param {string} parameters.options.projectName
+ *      Name of the project currently being built
+ * @param {string} parameters.options.projectNamespace
+ *      Namespace of the project currently being built
+ * @param {string} parameters.options.configuration
+ *      Custom task configuration, as defined in the project's ui5.yaml
+ * @param {string} parameters.options.taskName
+ *      Name of the custom task.
+ *      This parameter is only provided to custom task extensions
+ *      defining Specification Version 3.0 and later.
+ * @returns {Promise<undefined>} Promise resolving once the task has finished its work
  */
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	// [...]
