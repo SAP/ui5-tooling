@@ -13,12 +13,12 @@ You can configure your build process with additional build task. These custom ta
 To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Note that a custom task will only be executed if the referenced task is executed (i.e. is not disabled).
 
 In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.  
-Another custom task called `generateMarkdownFiles` is then executed immediately after the standard task `uglify`.
+Another custom task called `renderMarkdownFiles` is then executed immediately after the standard task `uglify`.
 
 ### Example: Basic configuration
 
 ````yaml
-# In this example configuration two custom tasks are defined: 'babel' and 'generateMarkdownFiles'.
+# In this example configuration two custom tasks are defined: 'babel' and 'renderMarkdownFiles'.
 specVersion: "3.0"
 type: library
 metadata:
@@ -27,10 +27,11 @@ builder:
   customTasks:
     - name: babel
       beforeTask: generateComponentPreload
-    - name: generateMarkdownFiles
+    - name: renderMarkdownFiles
       afterTask: uglify
       configuration:
-        color: blue
+        markdownStyle:
+            firstH1IsTitle: true
 ````
 
 ### Example: Connect multiple custom tasks
@@ -62,9 +63,9 @@ specVersion: "3.0"
 kind: extension
 type: task
 metadata:
-  name: generateMarkdownFiles
+  name: renderMarkdownFiles
 task:
-  path: lib/tasks/generateMarkdownFiles.js
+  path: lib/tasks/renderMarkdownFiles.js
 ````
 
 Task extensions can be **standalone modules** which are handled as dependencies.
@@ -85,19 +86,20 @@ metadata:
   name: my.library
 builder:
   customTasks:
-    - name: generateMarkdownFiles
+    - name: renderMarkdownFiles
       afterTask: uglify
       configuration:
-        color: blue
+        markdownStyle:
+            firstH1IsTitle: true
 ---
 # Task extension as part of your project
 specVersion: "3.0"
 kind: extension
 type: task
 metadata:
-  name: generateMarkdownFiles
+  name: renderMarkdownFiles
 task:
-  path: lib/tasks/generateMarkdownFiles.js
+  path: lib/tasks/renderMarkdownFiles.js
 ````
 
 ## Task Implementation
@@ -142,26 +144,90 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 
 The following code snippets shows an example how a task implementation could look like:
 
-### Example: lib/tasks/generateMarkdownFiles.js
+### Example: lib/tasks/renderMarkdownFiles.js
 
 ````javascript
-// Task implementation
-const markdownGenerator = require("./markdownGenerator");
+const path = require("path");
+const renderMarkdown = require("./renderMarkdown");
 
-module.exports = async function({workspace, dependencies, taskUtil, options}) {
-	const textResources = await workspace.byGlob("**/*.txt");
-	const markdownResources = await markdownGenerator({
-		resources: textResources
-	});
-	await Promise.all(markdownResources.map((resource) => {
-		return workspace.write(resource);
+/*
+ * Render all .md (Markdown) files in the project to HTML
+ */
+module.exports = async function({workspace, dependencies, log, taskUtil, options}) {
+	const {createResource} = taskUtil.resourceFactory;
+	const textResources = await workspace.byGlob("**/*.md")
+	await Promise.all(textResources.map(async (resource) => {
+		const markdownResourcePath = resource.getPath();
+
+		log.info(`Rendering markdown file ${markdownResourcePath}...`);
+		const htmlString = await renderMarkdown(await resource.getString(), options.configuration);
+
+		// Note: @ui5/fs virtual paths are always (on *all* platforms) POSIX. Therefore using path.posix here
+		const newResourceName = path.posix.basename(markdownResourcePath, ".md") + ".html";
+		const newResourcePath = path.posix.join(path.posix.dirname(markdownResourcePath), newResourceName);
+
+		const markdownResource = createResource({
+			path: newResourcePath,
+			string: htmlString
+		});
+		await workspace.write(markdownResource);
 	}));
 };
 ````
 
 !!! warning
-    Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
+    Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module in case it is used.
+    In general, tasks should try to use the provided reader and writer APIs for working with project resources.
 
+### Example: lib/tasks/compileLicenseSummary.js
+
+````javascript
+const path = require("path");
+
+/*
+ * Compile a list of all licenses of the project's dependencies
+ * and write it to a "dependency-license-summary.json"
+ */
+module.exports = async function({workspace, dependencies, log, taskUtil, options}) {
+	const {createResource} = taskUtil.resourceFactory;
+	const licenses = new Map();
+	const projectsVisited = new Set();
+
+	async function processProject(project) {
+		return Promise.all(taskUtil.getDependencies().map(async (projectName) => {
+			if (projectsVisited.has(projectName)) {
+				return;
+			}
+			projectsVisited.add(projectName);
+			const project = taskUtil.getProject(projectName);
+			const pkgResource = await project.getRootReader().byPath("/package.json");
+			if (pkgResource) {
+				const pkg = JSON.parse(await pkgResource.getString())
+
+				// Add project to list of licenses
+				if (licenses.has(pkg.license)) {
+					licenses.get(pkg.license).push(project.getName());
+				} else {
+					// License not yet in map. Define it
+					licenses.set(pkg.license, [project.getName()]);
+				}
+
+			} else {
+				log.info(`Could not find package.json file in project ${project.getName()}`);
+			}
+			return processProject(project);
+		}));
+	}
+	// Start processing dependencies of the root project
+	await processProject(taskUtil.getProject());
+
+	const summaryResource = createResource({
+		path: "/dependency-license-summary.json",
+		string: JSON.stringify(Object.fromEntries(licenses), null, "\t")
+	});
+	await workspace.write(summaryResource);
+};
+````
 
 ## Helper Class `TaskUtil`
 
