@@ -22,16 +22,13 @@ jobs:
       run: npm ci
 
     - name: GitHub Configuration
-      run: |
-        git fetch origin gh-pages --depth=1
-        git config --local user.email $GIT_COMMITTER_EMAIL
-        git config --local user.name $GIT_COMMITTER_NAME
+      run: git fetch origin gh-pages --depth=1
 
     - name: Build docs with Mike
       run: ./scripts/buildDocs.sh
 
     - name: Publish docs
-      run: docker run --rm -v $(pwd):/docs $DOCKER_IMAGE mike set-default $MIKE_VERSION --push
+      run: docker run --rm -v $(pwd):/docs --env GIT_COMMITTER_NAME --env GIT_COMMITTER_EMAIL $DOCKER_IMAGE mike set-default $MIKE_VERSION --push
 
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
