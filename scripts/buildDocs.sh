@@ -3,8 +3,11 @@ set -e
 
 # Store docker image name
 DOCKER_IMAGE=ui5-tooling/mkdocs-material
-GIT_COMMITTER_NAME: "OpenUI5 Bot"
-GIT_COMMITTER_EMAIL: "openui5@sap.com"
+
+if [[ -z "${GIT_COMMITTER_NAME}" ]]; then
+	GIT_COMMITTER_NAME="OpenUI5 Bot"
+	GIT_COMMITTER_EMAIL="openui5@sap.com"
+fi
 
 # If not provided, set default values for building the docs
 if [[ -z "${MIKE_VERSION}" ]]; then
@@ -18,7 +21,7 @@ echo "Changed directory to $(pwd)"
 
 # Build image if not existent
 if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
-  bash ./scripts/buildImage.sh
+  ./scripts/buildImage.sh
 fi
 
 echo "Setting up build of documentation and tagging it with version" $MIKE_VERSION;
