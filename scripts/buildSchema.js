@@ -1,7 +1,6 @@
 import path from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
-import {writeFile} from "node:fs/promises";
-import mkdirp from "mkdirp";
+import {writeFile, mkdir} from "node:fs/promises";
 import $RefParser from "@apidevtools/json-schema-ref-parser";
 import traverse from "traverse";
 
@@ -43,7 +42,7 @@ try {
 		}
 	});
 
-	await mkdirp(path.dirname(TARGET_SCHEMA_PATH));
+	await mkdir(path.dirname(TARGET_SCHEMA_PATH), {recursive: true});
 	await writeFile(TARGET_SCHEMA_PATH, JSON.stringify(schema, null, 2));
 
 	console.log("Wrote bundled ui5.yaml schema file to " + TARGET_SCHEMA_PATH);
