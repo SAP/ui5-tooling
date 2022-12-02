@@ -1,0 +1,28 @@
+name: Security Audit
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "1 1 */1 * *" # Run once a day
+
+jobs:
+  security-scan:
+    name: Security Audit
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        branch: ["v2"] # List of branches to run the security audit uppon
+
+    steps:
+      - name: Checkout '${{ matrix.branch }}' branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: Use audit-ci
+        run: npx audit-ci@^6 --config ./audit-ci.jsonc
