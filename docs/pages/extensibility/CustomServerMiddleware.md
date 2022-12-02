@@ -96,7 +96,7 @@ A custom middleware implementation needs to return a function with the following
  * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies
  *      Reader to access resources of the project's dependencies
  * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
- *      Specification version dependent interface to a
+ *      Specification version-dependent interface to a
  *      MiddlewareUtil instance. See the corresponding API reference for details.
  * @param {@ui5/logger/GroupLogger} parameters.log
  *      Logger instance for use in the custom middleware.

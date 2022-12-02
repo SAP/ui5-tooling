@@ -117,11 +117,11 @@ A custom task implementation needs to return a function with the following signa
  * @param {module:@ui5/fs.AbstractReader} parameters.dependencies
  *      Reader to access resources of the project's dependencies
  * @param {@ui5/builder.tasks.TaskUtil} parameters.taskUtil
- *      Specification Version dependent interface to a TaskUtil instance.
+ *      Specification Version-dependent interface to a TaskUtil instance.
  *      See the corresponding API reference for details.
  * @param {@ui5/logger/GroupLogger} parameters.log
  *      Logger instance for use in the custom task.
- *      This method is only available to custom task extensions
+ *      This parameter is only available to custom task extensions
  *      defining Specification Version 3.0 and later.
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName
@@ -135,7 +135,7 @@ A custom task implementation needs to return a function with the following signa
  *      This parameter is only provided to custom task extensions
  *      defining Specification Version 3.0 and later.
  * @returns {Promise<undefined>}
- *      Promise resolving once the task has finished its work
+ *      Promise resolving once the task has finished
  */
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	// [...]
@@ -177,7 +177,7 @@ module.exports = async function({workspace, dependencies, log, taskUtil, options
 
 !!! warning
     Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module in case it is used.
-    In general, tasks should try to use the provided reader and writer APIs for working with project resources.
+    In general, tasks should try to use the provided reader/writer APIs for working with project resources.
 
 ### Example: lib/tasks/compileLicenseSummary.js
 
@@ -186,7 +186,7 @@ const path = require("path");
 
 /*
  * Compile a list of all licenses of the project's dependencies
- * and write it to a "dependency-license-summary.json"
+ * and write it to "dependency-license-summary.json"
  */
 module.exports = async function({workspace, dependencies, log, taskUtil, options}) {
 	const {createResource} = taskUtil.resourceFactory;
