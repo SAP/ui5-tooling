@@ -1,9 +1,6 @@
 name: Security Audit
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: "36 4 * * *" # Run once a day
 
