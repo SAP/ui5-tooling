@@ -15,10 +15,6 @@ if [[ -z "${MIKE_VERSION}" ]]; then
 	MIKE_ALIAS=latest
 fi
 
-cd "$(dirname -- "$0")/.."
-
-echo "Changed directory to $(pwd)"
-
 # Build image if not existent
 if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
   ./scripts/buildImage.sh
@@ -33,7 +29,9 @@ fi
 npm run generate-cli-doc
 
 # Build with MkDocs/Mike
-docker run --rm -v $(pwd):/docs -e GIT_COMMITTER_NAME=$GIT_COMMITTER_NAME -e GIT_COMMITTER_EMAIL=$GIT_COMMITTER_EMAIL $DOCKER_IMAGE mike deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
+docker run --rm -v $(pwd):/docs --entrypoint mike \
+	--env GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME}" --env GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL}"  \
+	$DOCKER_IMAGE deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
 
 npm run jsdoc-generate
 

@@ -1,14 +1,19 @@
 FROM squidfunk/mkdocs-material:8.5.9
 
-# ENV mike version 2 is required in order to enable ENV vars for the container. By the time mike 2 is released we'd use a specific dev version
-RUN pip install "mike>=2" || pip install -e git+https://github.com/jimporter/mike.git@2faa33ca4cf0da62c9c0ac7fbe8b60688733d7f1#egg=mike
+# mike version 2 is required in order to enable ENV vars for the container. By the time mike 2 is released we'd
+# use a specific dev version: https://github.com/jimporter/mike/issues/125
+#
+# An alternative to
+# RUN pip install -e git+https://github.com/jimporter/mike.git@e77357960886f9d9bf2e6ecbc39c7ca6991a2179#egg=mike
+# The command above always checks out the repo in "./src/mike" and ignores --target or --root flags. During container build
+# mike command would be available, but after running it again it is not there anymore.
+RUN cd /usr/local/lib/python3.9/site-packages/ && \
+	mkdir mike && \
+	git clone https://github.com/jimporter/mike.git && \
+	cd mike && \
+	git checkout e77357960886f9d9bf2e6ecbc39c7ca6991a2179 && \
+	pip install -e .
 
-# Define env variables to for mike
+# Define env variables for mike
 ENV GIT_COMMITTER_NAME="OpenUI5 Bot"
 ENV GIT_COMMITTER_EMAIL="openui5@sap.com"
-
-# Overwrite ENTRYPOINT from squidfunk/mkdocs-material:8.5.9
-ENTRYPOINT [""]
-
-# Start mkdocs development server by default
-CMD [ "mkdocs", "serve", "--dev-addr=0.0.0.0:8000" ]
