@@ -185,7 +185,7 @@ However, in order to optimize the build time, UI5 Tooling v3 now differentiates 
 
 #### Solution
 
-Custom tasks defining Specification Version 3.0 shall not receive a `dependencies` AbstractReader, unless they request dependencies to be available to them. They can do so by exporting an additional callback function `determineRequiredDependencies`. Before the task is executed, this function will be called with the current build parameters and available dependencies. It can then return an array of dependencies if requires access to. Or an empty array if no dependency access is required.
+Custom tasks defining Specification Version 3.0 shall not receive a `dependencies` AbstractReader, unless they request dependencies to be available to them. They can do so by exporting an additional callback function `determineRequiredDependencies`. Before the task is executed, this function will be called with the current build parameters and available dependencies. It can then return a Set of dependencies if requires access to. Or an empty Set if no dependency access is required.
 
 By default, legacy custom tasks defining Specification Versions **lower than 3.0** are expected to require dependencies. However, even they can provide the described callback to opt-out.
 
@@ -195,7 +195,7 @@ By default, legacy custom tasks defining Specification Versions **lower than 3.0
     * `availableDependencies`: [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) containing the names of all direct dependencies of the project currently being built. For example by returning it unmodified, all dependencies will be available to the task.
     * `getProject`, `getDependencies`: Identical to [`taskUtil.getProject` and `taskUtil.getDependencies`](#2-access-to-project-information)
     * `options`: Same as for the main task function. `{projectName, projectNamespace, configuration, taskName}`
-    * Returns: List of dependencies that should be made available to the task. UI5 Tooling will ensure that those dependencies have been built before executing the task.
+    * Returns: Set containing all dependencies that should be made available to the task. UI5 Tooling will ensure that those dependencies have been built before executing the task.
 
 #### Solution Example
 
@@ -204,8 +204,8 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
   // Task implementation
 };
 
-module.exports.determineRequiredDependencies = async function({availableDependencies, getProject, getDependencies, options})}) {
-  // "availableDependencies" could look like this: ["sap.ui.core", "sap.m", "my.lib"]
+module.exports.determineRequiredDependencies = async function({availableDependencies, getProject, getDependencies, options}) {
+  // "availableDependencies" could look like this: Set(3) { "sap.ui.core", "sap.m", "my.lib" }
 
   // One could for example ignore all framework libraries:
   availableDependencies.forEach((depName) => {
