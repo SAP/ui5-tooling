@@ -13,13 +13,21 @@ jobs:
         branch: ["v2"] # List of branches to run the security audit uppon
 
     steps:
+      - name: Checkout the default branch (security configuration)
+        uses: actions/checkout@v3
+
       - name: Checkout '${{ matrix.branch }}' branch
         uses: actions/checkout@v3
         with:
           ref: ${{ matrix.branch }}
+          path: ${{ matrix.branch }}
 
-      - name: install dependencies
-        run: npm ci
+      - name: Install '${{ matrix.branch }}' dependencies
+        run: |
+          cd ${{ matrix.branch }}
+          npm ci
 
-      - name: Use audit-ci
-        run: npx audit-ci@^6 --config ./audit-ci.jsonc
+      - name: Security check for '${{ matrix.branch }}' branch
+        run: |
+          cd ${{ matrix.branch }}
+          npx audit-ci@^6 --config ../audit-ci.jsonc
