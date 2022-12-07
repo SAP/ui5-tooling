@@ -110,7 +110,7 @@ A custom task implementation needs to return a function with the following signa
 /**
  * Custom task API
  *
- * @param {object} parameters Parameters
+ * @param {object} parameters
  * @param {module:@ui5/fs.DuplexCollection} parameters.workspace
  *      Reader/Writer to access and modify resources of the
  *      project currently being built
@@ -140,9 +140,66 @@ A custom task implementation needs to return a function with the following signa
 module.exports = async function({workspace, dependencies, taskUtil, options}) {
 	// [...]
 };
+
 ````
 
-The following code snippets shows an example how a task implementation could look like:
+### Required Dependencies
+
+!!! info
+    This functionality has been added with UI5 CLI [`v3.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.0.0)
+
+Custom tasks can export an optional callback function `determineRequiredDependencies` to control which dependency-resources are made available through the `dependencies`-reader that is provided to the task. By reducing the amount of required dependencies or by not requiring any, UI5 Tooling might be able to build a project faster.
+
+Before executing a task, UI5 Tooling will ensure that all required dependencies have been built.
+
+If this callback is not provided, UI5 Tooling will make an assumption as to whether the custom task requires access to any resources of dependencies based on the defined Specification Version of the custom task extension:
+
+* **Specification Version 3.0 and later:** If no callback is provided, UI5 Tooling assumes that no dependencies are required. In this case, the `dependencies` parameter will be omitted.
+* **Specification Versions before 3.0:** If no callback is provided, UI5 Tooling assumes that all dependencies are required.
+
+
+*For more details, see also [RFC 0012 UI5 Tooling Extension API v3](https://github.com/SAP/ui5-tooling/blob/rfc-ui5-tooling-extension-api-v3/rfcs/0012-UI5-Tooling-Extension-API-3.md#3-tasks-requiring-dependencies)*
+
+````javascript
+/**
+ * Callback function to define the list of required dependencies
+ *
+ * @param {object} parameters
+ * @param {Set} parameters.availableDependencies
+ *      Set containing the names of all direct dependencies of
+ *      the project currently being built.
+ * @param {function} parameters.getProject
+ *      Identical to TaskUtil#getProject.
+ *      Retrieves a Project-instance for a given project name.
+ * @param {function} parameters.getDependencies
+ *      Identical to TaskUtil#getDependencies.
+ *      Creates a list of names of all direct dependencies
+ *      of a given project.
+ * @params {object} parameters.options
+ *      Identical to the options given to the standard task function.
+ * @returns {Promise<Set>}
+ *      Promise resolving with a Set containing all dependencies
+ *      that should be made available to the task.
+ *      UI5 Tooling will ensure that those dependencies have been
+ *      built before executing the task.
+ */
+module.exports.determineRequiredDependencies = async function({availableDependencies, getProject, getDependencies, options}) {
+	// "availableDependencies" could look like this: Set(3) { "sap.ui.core", "sap.m", "my.lib" }
+
+	// Reduce list of required dependencies: Do not require any UI5 framework projects
+	availableDependencies.forEach((depName) => {
+		if (getProject(depName).isFrameworkProject()) {
+		    availableDependencies.delete(depName)
+		}
+	});
+	// => Only resources of project "my.lib" will be available to the task
+	return availableDependencies;
+}
+````
+
+### Examples
+
+The following code snippets show examples for custom task implementations.
 
 ### Example: lib/tasks/renderMarkdownFiles.js
 
@@ -177,7 +234,8 @@ module.exports = async function({workspace, dependencies, log, taskUtil, options
 
 !!! warning
     Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module in case it is used.
-    In general, tasks should try to use the provided reader/writer APIs for working with project resources.
+
+    Tasks should ideally use the reader/writer APIs provided by UI5 Tooling for working with project resources.
 
 ### Example: lib/tasks/compileLicenseSummary.js
 
