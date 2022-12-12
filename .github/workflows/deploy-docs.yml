@@ -42,7 +42,7 @@ jobs:
       with:
         ref: gh-pages
         path: gh-pages
-    - name: Copy the API & JSON Schem to gh-pages
+    - name: Copy the API & JSON Schema to gh-pages
       run: |
         cp -R ./site/schema ./gh-pages/ 2>/dev/null || :
         cp -R ./site/api ./gh-pages/$MIKE_VERSION/ 2>/dev/null || :
