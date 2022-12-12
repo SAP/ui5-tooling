@@ -212,7 +212,7 @@ const renderMarkdown = require("./renderMarkdown");
  */
 module.exports = async function({workspace, dependencies, log, taskUtil, options}) {
 	const {createResource} = taskUtil.resourceFactory;
-	const textResources = await workspace.byGlob("**/*.md")
+	const textResources = await workspace.byGlob("**/*.md");
 	await Promise.all(textResources.map(async (resource) => {
 		const markdownResourcePath = resource.getPath();
 
