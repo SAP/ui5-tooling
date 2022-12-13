@@ -12,6 +12,25 @@
 
 # RFC 0012 UI5 Tooling Extension API v3
 
+## Table of Contents
+
+- [Summary](#summary)
+- [Motivation](#motivation)
+- [General Changes in UI5 Tooling](#general-changes-in-ui5-tooling)
+  * [💡 Notice 1: ESM Support](#-notice-1-esm-support)
+  * [💡 Notice 2: UI5 Tooling Dependency Resolution Improvements](#-notice-2-ui5-tooling-dependency-resolution-improvements)
+- [Proposed Enhancements](#proposed-enhancements)
+  * [1. Dependencies to UI5 Tooling Modules](#1-dependencies-to-ui5-tooling-modules)
+  * [2. Access to Project Information](#2-access-to-project-information)
+  * [3. Tasks Requiring Dependencies](#3-tasks-requiring-dependencies)
+  * [4. Middleware Serving Resources](#4-middleware-serving-resources)
+  * [5. Scheduling of Extension Executions](#5-scheduling-of-extension-executions)
+  * [6. Restrictions for Project and Extension Names](#6-restrictions-for-project-and-extension-names)
+  * [7. Provide Extension Name *(minor)*](#7-provide-extension-name-minor)
+- [How we teach this](#how-we-teach-this)
+- [Drawbacks](#drawbacks)
+- [Unresolved Questions and Bikeshedding](#unresolved-questions-and-bikeshedding)
+
 ## Summary
 <!-- You can either remove the following explanatory text or move it into this comment for later reference -->
 
