@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+cd "$(dirname -- "$0")/.."
+echo "Changed directory to $(pwd)"
+
 # Store docker image name
 DOCKER_IMAGE=ui5-tooling/mkdocs-material
 
@@ -8,9 +11,6 @@ DOCKER_IMAGE=ui5-tooling/mkdocs-material
 if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
   ./scripts/buildImage.sh
 fi
-
-cd "$(dirname -- "$0")/.."
-echo "Changed directory to $(pwd)"
 
 npm run generate-cli-doc
 

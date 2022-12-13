@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+cd "$(dirname -- "$0")/.."
+echo "Changed directory to $(pwd)"
+
 # Store docker image name
 DOCKER_IMAGE=ui5-tooling/mkdocs-material
 
