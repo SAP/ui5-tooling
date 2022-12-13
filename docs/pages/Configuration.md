@@ -662,11 +662,14 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 
 **bundleOptions**
 
-- `optimize`: By default set to `false`. If set to `true`, the module bundle gets minified
+- `optimize`: If set to `true`, the module bundle gets minified.
+  - Since UI5 Tooling `v3.0.0` defaults to `true`. 
+  - Prior UI5 Tooling `v3.0.0` defaults to `false`.
 - `decorateBootstrapModule`: By default set to `false`. If set to `true`, the module will be decorated with an optimization marker
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
+- `sourceMap`: By default set to `true`. Adds source maps support to the bundle. Available since UI5 Tooling `v3.0.0`
 
 ## Specification Versions
 A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
@@ -706,11 +709,14 @@ Version | UI5 CLI Release
 ### Specification Version 3.0
 **Breaking changes:**
 
-`@ui5/builder/processors/bundlers/moduleBundler` `ModuleBundleOptions` has been modified:
+[bundleOptions](#custom-bundling) has been modified:
 
-- `bundleOption.debugMode` has been removed
-- `bundleOption.sourceMap` has been added, defaulting to `true`
-- `bundleOption.optimize` now always defaults to `true` [#685](https://github.com/SAP/ui5-builder/pull/685)
+- `debugMode` has been removed
+- `optimize` now always defaults to `true` [#685](https://github.com/SAP/ui5-builder/pull/685)
+
+**Features:**
+
+- Adds support for `sourceMap` configuration for the application and library [bundleOptions](#properties)
 
 Specification Version 3.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
 
