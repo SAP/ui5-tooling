@@ -8,7 +8,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-20.04
     env:
-      MIKE_VERSION: v2
+      MIKE_VERSION: v3
       MIKE_ALIAS: latest
       DOCKER_IMAGE: ui5-tooling/mkdocs-material
       GIT_COMMITTER_NAME: "OpenUI5 Bot"
@@ -21,7 +21,7 @@ jobs:
     - name: Install npm dependencies
       run: npm ci
 
-    - name: GitHub Configuration
+    - name: Fetch gh-pages branch
       run: git fetch origin gh-pages --depth=1
 
     - name: Build docs with Mike
@@ -44,7 +44,9 @@ jobs:
         path: gh-pages
     - name: Copy the API & JSON Schema to gh-pages
       run: |
+        rm -rf ./gh-pages/schema
         cp -R ./site/schema ./gh-pages/ 2>/dev/null || :
+        rm -rf ./gh-pages/$MIKE_VERSION/api
         cp -R ./site/api ./gh-pages/$MIKE_VERSION/ 2>/dev/null || :
         cp ./scripts/resources/custom404.html ./gh-pages/404.html
     - name: Publish Docs
@@ -53,5 +55,5 @@ jobs:
         git config --local user.email $GIT_COMMITTER_EMAIL
         git config --local user.name $GIT_COMMITTER_NAME
         git add .
-        git commit -m "$(git log -1 --pretty=%B)"
+        git commit --amend --no-edit
         git push --force
