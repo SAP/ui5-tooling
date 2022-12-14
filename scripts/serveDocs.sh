@@ -8,9 +8,7 @@ echo "Changed directory to $(pwd)"
 DOCKER_IMAGE=ui5-tooling/mkdocs-material
 
 # Build image if not existent
-if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
-  ./scripts/buildImage.sh
-fi
+./scripts/buildImage.sh
 
 npm run generate-cli-doc
 
