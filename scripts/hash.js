@@ -5,9 +5,9 @@
  * Usage:
  * node hash.js /path/to/file
  */
-import crypto from "crypto";
-import fs from "fs";
-import path from "path";
+const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
 
 const filename = path.resolve(process.argv[2]);
 
