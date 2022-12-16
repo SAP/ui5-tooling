@@ -8,6 +8,10 @@
 [![Travis CI Build Status](https://travis-ci.org/SAP/ui5-tooling.svg?branch=main)](https://travis-ci.org/SAP/ui5-tooling)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
+> :warning: There are two major versions of UI5 Tooling currently available:
+> - [UI5 Tooling v2](https://sap.github.io/ui5-tooling/stable)- Stable version.
+> - [UI5 Tooling v3](https://sap.github.io/ui5-tooling/next)- Development version.
+
 ## Resources
 - [Documentation](https://sap.github.io/ui5-tooling/)
 - [API Reference](https://sap.github.io/ui5-tooling/api/)
