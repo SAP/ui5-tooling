@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       MIKE_VERSION: v3
-      MIKE_ALIAS: latest
+      MIKE_ALIAS: next
       DOCKER_IMAGE: ui5-tooling/mkdocs-material
       GIT_COMMITTER_NAME: "OpenUI5 Bot"
       GIT_COMMITTER_EMAIL: "openui5@sap.com"
@@ -28,7 +28,7 @@ jobs:
       run: ./scripts/buildDocs.sh
 
     - name: Publish docs
-      run: docker run --rm -v $(pwd):/docs --entrypoint mike --env GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME}" --env GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL}" $DOCKER_IMAGE set-default $MIKE_VERSION --push
+      run: docker run --rm -v $(pwd):/docs --entrypoint mike --env GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME}" --env GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL}" $DOCKER_IMAGE set-default stable --push
 
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
@@ -42,12 +42,12 @@ jobs:
       with:
         ref: gh-pages
         path: gh-pages
-    - name: Copy the API & JSON Schema to gh-pages
+    - name: Copy the additional resources to gh-pages
       run: |
         rm -rf ./gh-pages/schema
-        cp -R ./site/schema ./gh-pages/ 2>/dev/null || :
+        cp -R ./site/schema ./gh-pages/
         rm -rf ./gh-pages/$MIKE_VERSION/api
-        cp -R ./site/api ./gh-pages/$MIKE_VERSION/ 2>/dev/null || :
+        cp -R ./site/api ./gh-pages/$MIKE_VERSION/
         cp ./scripts/resources/custom404.html ./gh-pages/404.html
     - name: Publish Docs
       run: |
