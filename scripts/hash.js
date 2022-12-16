@@ -1,5 +1,5 @@
 /**
- * Utility to resolve hash of a file
+ * Utility to resolve the hash of a file
  * Used to check whether Dockerfile has been changed and if we need to rebuild it
  *
  * Usage:
