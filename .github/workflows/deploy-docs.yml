@@ -1,0 +1,59 @@
+name: Build and Deploy Docs
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-20.04
+    env:
+      MIKE_VERSION: v3
+      MIKE_ALIAS: next
+      DOCKER_IMAGE: ui5-tooling/mkdocs-material
+      GIT_COMMITTER_NAME: "OpenUI5 Bot"
+      GIT_COMMITTER_EMAIL: "openui5@sap.com"
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Fetch gh-pages branch
+      run: git fetch origin gh-pages --depth=1
+
+    - name: Build docs with Mike
+      run: ./scripts/buildDocs.sh
+
+    - name: Publish docs
+      run: docker run --rm -v $(pwd):/docs --entrypoint mike --env GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME}" --env GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL}" $DOCKER_IMAGE set-default stable --push
+
+    - name: Set /site ownership to current user
+      run: sudo chown -R $(id -u):$(id -g) ./site
+    - name: Build JSDoc
+      run: npm run jsdoc-generate
+    - name: Build Schema
+      run: npm run schema-generate
+
+    - name: Checkout gh-pages
+      uses: actions/checkout@v3
+      with:
+        ref: gh-pages
+        path: gh-pages
+    - name: Copy the additional resources to gh-pages
+      run: |
+        rm -rf ./gh-pages/schema
+        cp -R ./site/schema ./gh-pages/
+        rm -rf ./gh-pages/$MIKE_VERSION/api
+        cp -R ./site/api ./gh-pages/$MIKE_VERSION/
+        cp ./scripts/resources/custom404.html ./gh-pages/404.html
+    - name: Publish Docs
+      run: |
+        cd ./gh-pages
+        git config --local user.email $GIT_COMMITTER_EMAIL
+        git config --local user.name $GIT_COMMITTER_NAME
+        git add .
+        git commit --amend --no-edit
+        git push --force
