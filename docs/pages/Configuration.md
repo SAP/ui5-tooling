@@ -669,7 +669,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
-- `sourceMap`: By default set to `true`. Adds source maps support to the bundle. Available since UI5 Tooling `v3.0.0`
+- `sourceMap`: By default set to `true`. Adds source map support to the bundle. Available since UI5 Tooling `v3.0.0`
 
 ## Specification Versions
 A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
