@@ -14,7 +14,7 @@ npm run generate-cli-doc
 
 
 if [[ $MIKE_VERSION ]]; then # Build with Mike (versioning)
-	echo "Start building & versioning Docs with Mike version: ${MIKE_VERSION}; alias: ${MIKE_ALIAS}..."
+	echo "Starting building & versioning Docs with Mike version: ${MIKE_VERSION}; alias: ${MIKE_ALIAS}..."
 	docker run --rm -v $(pwd):/docs --entrypoint mike \
 		--env GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME}" --env GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL}"  \
 		$DOCKER_IMAGE deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
@@ -27,4 +27,4 @@ fi
 
 npm run jsdoc-generate
 
-echo "Documentation build"
+echo "Documentation has been built"
