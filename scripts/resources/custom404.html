@@ -11,7 +11,7 @@
 		var url = new URL(window.location);
 		var path = url.pathname.split("/");
 
-		// To prevent infinite loop redirect to the root folder if already redirected to a non-existing path.
+		// To prevent an infinite loop, redirect to the root folder if already redirected to a non-existing path.
 		// From there mike would "know" what to do.
 		if (url.searchParams.get("404redirect")) {
 			path.splice(2, (path.length - 3));
