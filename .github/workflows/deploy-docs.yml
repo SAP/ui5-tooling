@@ -7,28 +7,48 @@ jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-20.04
+    env:
+      MIKE_VERSION: v2
+      MIKE_ALIAS: stable
+      DOCKER_IMAGE: ui5-tooling/mkdocs-material
+      GIT_COMMITTER_NAME: "OpenUI5 Bot"
+      GIT_COMMITTER_EMAIL: "openui5@sap.com"
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Install npm dependencies
       run: npm ci
-    - name: Update CLI Doc
-      run: npm run generate-cli-doc
-    - name: Build mkdocs
-      uses: docker://squidfunk/mkdocs-material:8.5.6
-      with:
-        args: build
+
+    - name: Fetch gh-pages branch
+      run: git fetch origin gh-pages --depth=1
+
+    - name: Build docs with Mike
+      run: ./scripts/buildDocs.sh
+
+    - name: Publish docs
+      run: docker run --rm -v $(pwd):/docs --entrypoint mike --env GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME}" --env GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL}" $DOCKER_IMAGE set-default stable --push
+
     - name: Set /site ownership to current user
       run: sudo chown -R $(id -u):$(id -g) ./site
-    
     - name: Build JSDoc
       run: npm run jsdoc-generate
-    - name: Build Schema
-      run: npm run schema-generate
-    - name: Deploy docs to gh-pages
-      uses: JamesIves/github-pages-deploy-action@v4.4.1
+
+    - name: Checkout gh-pages
+      uses: actions/checkout@v3
       with:
-        branch: gh-pages
-        folder: site
-        token: ${{ secrets.GH_PAT }}
-        git-config-name: OpenUI5 Bot
-        git-config-email: openui5@sap.com
+        ref: gh-pages
+        path: gh-pages
+    - name: Copy the additional resources to gh-pages
+      run: |
+        rm -rf ./gh-pages/$MIKE_VERSION/api
+        cp -R ./site/api ./gh-pages/$MIKE_VERSION/
+    - name: Publish Docs
+      run: |
+        cd ./gh-pages
+        git config --local user.email $GIT_COMMITTER_EMAIL
+        git config --local user.name $GIT_COMMITTER_NAME
+        git add .
+        git commit --amend --no-edit
+        git push --force
