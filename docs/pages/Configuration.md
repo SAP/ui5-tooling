@@ -664,7 +664,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 
 - `optimize`: If set to `true`, the module bundle gets minified.
   - Since UI5 Tooling `v3.0.0` defaults to `true`. 
-  - Prior UI5 Tooling `v3.0.0` defaults to `false`.
+  - Prior to UI5 Tooling `v3.0.0` defaults to `false`.
 - `decorateBootstrapModule`: By default set to `false`. If set to `true`, the module will be decorated with an optimization marker
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
