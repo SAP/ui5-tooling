@@ -20,7 +20,7 @@ if [[ $MIKE_VERSION ]]; then # Build with Mike (versioning)
 		$DOCKER_IMAGE deploy $MIKE_VERSION $MIKE_ALIAS --rebase --update-aliases
 
 else # Build with MkDocs
-	echo "Start building Docs with MkDocs..."
+	echo "Starting building Docs with MkDocs..."
 	docker run --rm -v $(pwd):/docs $DOCKER_IMAGE build
 
 fi
