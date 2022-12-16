@@ -6,7 +6,7 @@ echo "Changed directory to $(pwd)"
 
 # Store docker image name
 DOCKER_IMAGE=ui5-tooling/mkdocs-material
-# If Dockerfile has been modified, then we need to rebuild the image
+# If Dockerfile has been modified, we need to rebuild the image
 DOCKER_TAG=$(node ./hash.js ./Dockerfile)
 
 if [[ "$(docker images -q $DOCKER_IMAGE:$DOCKER_TAG 2> /dev/null)" != "" ]]; then
