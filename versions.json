@@ -1,0 +1,16 @@
+[
+  {
+    "version": "v3",
+    "title": "v3",
+    "aliases": [
+      "next"
+    ]
+  },
+  {
+    "version": "v2",
+    "title": "v2",
+    "aliases": [
+      "stable"
+    ]
+  }
+]
