@@ -23,7 +23,7 @@ jobs:
 
     - name: Fetch gh-pages branch
       run: git fetch origin gh-pages --depth=1
-      
+
     - name: Set /site ownership to current user
       run: |
         mkdir site
