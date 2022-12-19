@@ -23,7 +23,6 @@ nav:
       - Builder: pages/Builder.md
       - Project: pages/Project.md
     - Upgrade Guides:
-      - Migrate to v3: updates/migrate-v3.md
       - Migrate to v2: updates/migrate-v2.md
       - Migrate to v1: updates/migrate-v1.md
     - FAQ: pages/FAQ.md
@@ -45,10 +44,19 @@ theme:
 extra_css:
   - 'stylesheets/extra.css'
 
+extra:
+  version:
+    provider: mike
+
 plugins:
   - search
   - minify:
       minify_html: true
+  - mike:
+      canonical_version: null
+      version_selector: true
+      css_dir: stylesheets
+      javascript_dir: js
 
 markdown_extensions:
   - admonition
