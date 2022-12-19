@@ -13,7 +13,7 @@ You can configure your build process with additional build task. These custom ta
 To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Note that a custom task will only be executed if the referenced task is executed (i.e. is not disabled).
 
 In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.  
-Another custom task called `renderMarkdownFiles` is then executed immediately after the standard task `uglify`.
+Another custom task called `renderMarkdownFiles` is then executed immediately after the standard task `minify`.
 
 ### Example: Basic configuration
 
@@ -28,7 +28,7 @@ builder:
     - name: babel
       beforeTask: generateComponentPreload
     - name: renderMarkdownFiles
-      afterTask: uglify
+      afterTask: minify
       configuration:
         markdownStyle:
             firstH1IsTitle: true
@@ -87,7 +87,7 @@ metadata:
 builder:
   customTasks:
     - name: renderMarkdownFiles
-      afterTask: uglify
+      afterTask: minify
       configuration:
         markdownStyle:
             firstH1IsTitle: true
@@ -118,7 +118,8 @@ A custom task implementation needs to return a function with the following signa
  *      Reader to access resources of the project's dependencies
  * @param {@ui5/builder.tasks.TaskUtil} parameters.taskUtil
  *      Specification Version-dependent interface to a TaskUtil instance.
- *      See the corresponding API reference for details.
+ *      See the corresponding API reference for details:
+ *      https://sap.github.io/ui5-tooling/stable/api/module-@ui5_builder.tasks.TaskUtil.html
  * @param {@ui5/logger/GroupLogger} parameters.log
  *      Logger instance for use in the custom task.
  *      This parameter is only available to custom task extensions
@@ -169,10 +170,12 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
  *      Set containing the names of all direct dependencies of
  *      the project currently being built.
  * @param {function} parameters.getProject
- *      Identical to TaskUtil#getProject.
+ *      Identical to TaskUtil#getProject
+ * 		(see https://sap.github.io/ui5-tooling/stable/api/module-@ui5_builder.tasks.TaskUtil.html).
  *      Retrieves a Project-instance for a given project name.
  * @param {function} parameters.getDependencies
- *      Identical to TaskUtil#getDependencies.
+ *      Identical to TaskUtil#getDependencies
+ * 		(see https://sap.github.io/ui5-tooling/stable/api/module-@ui5_builder.tasks.TaskUtil.html).
  *      Creates a list of names of all direct dependencies
  *      of a given project.
  * @params {object} parameters.options

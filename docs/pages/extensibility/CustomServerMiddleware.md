@@ -97,7 +97,8 @@ A custom middleware implementation needs to return a function with the following
  *      Reader to access resources of the project's dependencies
  * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
  *      Specification version-dependent interface to a
- *      MiddlewareUtil instance. See the corresponding API reference for details.
+ *      MiddlewareUtil instance. See the corresponding API reference for details:
+ *      https://sap.github.io/ui5-tooling/stable/api/module-@ui5_server.middleware.MiddlewareUtil.html
  * @param {@ui5/logger/GroupLogger} parameters.log
  *      Logger instance for use in the custom middleware.
  *      This parameter is only provided to custom middleware
