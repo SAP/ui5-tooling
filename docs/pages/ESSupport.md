@@ -170,19 +170,206 @@ When declaring a `XMLComposite` using a `Template Literal` with one or more expr
 
 #### Template Literal in sap/ui/core/Core#initLibrary call
 
+Typically in the `library.js` of your library the library is initialized. The object which is given to the `sap/ui/core/Core#initLibrary` call musst not include any `Template Literal` with one or more expressions in the name of the library.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.getCore().initLibrary({
+        name: "my.lib"
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="5"
+    const libraryName = `lib`;
+    sap.ui.getCore().initLibrary({
+        name: `my.${libraryName}`
+    });
+    ```
+
 ### Spread Element
 
 Spread Elements can be used in all places except in following places.
 
 #### Spread Element in `sap.ui.define` or `sap.ui.require`
 
+Spread Elements inside a `sap.ui.define` or `sap.ui.require` call are not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "ModuleA",
+        "ModuleB"
+    ], function(ModuleA, ModuleB) {
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="3"
+    const dependencies = ["ModuleA", "ModuleB"];
+    sap.ui.define([
+        ...dependencies
+    ], function(ModuleA, ModuleB) {
+    });
+    ```
+
 #### Spread Element in Fiori Elements Template declaration
+
+When declaring a `Fiori Elements Template` using a `Spread Element` in the configuration of the `Fiori Elements Template` is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "sap/fe/core/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        return TemplateAssembler.getTemplateComponent(getMethods, 
+            "sap.fe.templates.Page.Component", {
+                metadata: {
+                    properties: {
+                        templateName: {
+                            type: "string",
+                            defaultValue: "sap.fe.templates.Page.view.Page"
+                        }
+                    },
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="14"
+    sap.ui.define([
+        "sap/fe/core/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        const myTemplate = {
+            templateName: {
+                type: "string",
+                defaultValue: "sap.fe.templates.Page.view.Page"
+            }
+        };
+        return TemplateAssembler.getTemplateComponent(getMethods,
+            "sap.fe.templates.Page.Component", {
+                metadata: {
+                    properties: {
+                        ...myTemplate
+                    },
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
 
 #### Spread Element in Smart Template declaration
 
+When declaring a `Smart Template` using a `Spread Element` in the configuration of the `Smart Template` is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "sap/suite/ui/generic/template/lib/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        return TemplateAssembler.getTemplateComponent(getMethods, 
+            "sap.suite.ui.generic.templates.Page.Component", {
+                metadata: {
+                    properties: {
+                        templateName: {
+                            type: "string",
+                            defaultValue: "sap.suite.ui.generic.templates.Page.view.Page"
+                        }
+                    },
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="6"
+    sap.ui.define([
+        "sap/suite/ui/generic/template/lib/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        const myTemplate = {
+            templateName: {
+                type: "string",
+                defaultValue: "sap.suite.ui.generic.templates.Page.view.Page"
+            }
+        };
+        return TemplateAssembler.getTemplateComponent(getMethods,
+            `sap.suite.ui.generic.templates.Page.${name}`, {
+                metadata: {
+                    properties: {
+                        ...myTemplate
+                    }
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
+
 #### Spread Element in XMLComposite declaration
 
+When declaring a `XMLComposite` using a `XMLComposite` in the configuration of the `XMLComposite` is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "sap/ui/core/XMLComposite"
+    ], function(XMLComposite) {
+        return XMLComposite.extend("composites.MyComposite", {} 
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="5"
+    sap.ui.define([
+        "sap/ui/core/XMLComposite"
+    ], function(XMLComposite) {
+        const myXMLComposite = {
+              fragment: "composites.custom.MyComposite"
+        };
+        return XMLComposite.extend(`composites.MyComposite`, {
+            ...myXMLComposite
+        });
+    });
+    ```
+
 #### Spread Element in sap/ui/core/Core#initLibrary call
+
+Typically in the `library.js` of your library the library is initialized. The object which is given to the `sap/ui/core/Core#initLibrary` call musst not include any `Spread Element`.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.getCore().initLibrary({
+        name: "my.lib"
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="5"
+    const mylib = {
+        name: "my.lib"
+    };
+    sap.ui.getCore().initLibrary({
+        ...mylib
+    });
+    ```
 
 ### Object Expression
 
