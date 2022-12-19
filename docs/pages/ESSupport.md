@@ -191,11 +191,11 @@ Typically in the `library.js` of your library the library is initialized. The ob
 
 ### Spread Element
 
-Spread Elements can be used in all places except in following places.
+A `Spread Element` can be used in all places except in following places.
 
 #### Spread Element in `sap.ui.define` or `sap.ui.require`
 
-Spread Elements inside a `sap.ui.define` or `sap.ui.require` call are not supported.
+A `Spread Element` as a parameter in a `sap.ui.define` or `sap.ui.require` call is not supported.
 
 === "Supported"
 
@@ -321,7 +321,7 @@ When declaring a `Smart Template` using a `Spread Element` in the configuration 
 
 #### Spread Element in XMLComposite declaration
 
-When declaring a `XMLComposite` using a `XMLComposite` in the configuration of the `XMLComposite` is not supported.
+When declaring a `XMLComposite` using a `Spread Element` in the configuration of the `XMLComposite` is not supported.
 
 === "Supported"
 
@@ -373,21 +373,185 @@ Typically in the `library.js` of your library the library is initialized. The ob
 
 ### Object Expression
 
+An `Object Expression` can be used in all places except in following places.
+
 #### Object Expression in `sap.ui.define` or `sap.ui.require`
+
+An `Object Expression` as a parameter in a `sap.ui.define` or `sap.ui.require` call is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "Bar"
+    ], function(Bar){
+    });
+
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="3"
+    const dependency = "Bar";
+    sap.ui.define([
+        dependency
+    ], function(Bar){
+    });
+    ```
 
 #### Object Expression in Fiori Elements Template declaration
 
+When declaring a `Fiori Elements Template` using an `Object Expression` in the configuration of the `Fiori Elements Template` is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "sap/fe/core/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        return TemplateAssembler.getTemplateComponent(getMethods, 
+            "sap.fe.templates.Page.Component", {
+                metadata: {
+                    properties: {
+                        templateName: {
+                            type: "string",
+                            defaultValue: "sap.fe.templates.Page.view.Page"
+                        }
+                    },
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="9"
+    sap.ui.define([
+        "sap/fe/core/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        const key = "templateName";
+        return TemplateAssembler.getTemplateComponent(getMethods,
+            "sap.fe.templates.Page.Component", {
+                metadata: {
+                    properties: {
+                        [key]: {
+                            type: "string",
+                            defaultValue: "sap.fe.templates.Page.view.Page"
+                        }
+                    },
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
+
 #### Object Expression in Smart Template declaration
+
+When declaring a `Smart Template` using an `Object Expression` in the configuration of the `Smart Template` is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "sap/suite/ui/generic/template/lib/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        return TemplateAssembler.getTemplateComponent(getMethods, 
+            "sap.suite.ui.generic.templates.Page.Component", {
+                metadata: {
+                    properties: {
+                        templateName: {
+                            type: "string",
+                            defaultValue: "sap.suite.ui.generic.templates.Page.view.Page"
+                        }
+                    },
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="9"
+    sap.ui.define([
+        "sap/suite/ui/generic/template/lib/TemplateAssembler"
+    ], function(TemplateAssembler) {
+        const key = "templateName"
+        return TemplateAssembler.getTemplateComponent(getMethods,
+            `sap.suite.ui.generic.templates.Page.${name}`, {
+                metadata: {
+                    properties: {
+                        [key]: {
+                            type: "string",
+                            defaultValue: "sap.suite.ui.generic.templates.Page.view.Page"
+                        }
+                    }
+                    manifest: "json"
+                }
+            }
+        );
+    });
+    ```
 
 #### Object Expression in XMLComposite declaration
 
+When declaring a `XMLComposite` using an `Object Expression` in the configuration of the `XMLComposite` is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "sap/ui/core/XMLComposite"
+    ], function(XMLComposite) {
+        return XMLComposite.extend("composites.MyComposite", {
+            fragment: "composites.custom.MyComposite"
+        } 
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="6"
+    sap.ui.define([
+        "sap/ui/core/XMLComposite"
+    ], function(XMLComposite) {
+        const key = "fragment";
+        return XMLComposite.extend(`composites.MyComposite`, {
+            [key]: "composites.custom.MyComposite"
+        });
+    });
+    ```
+
 #### Object Expression in sap/ui/core/Core#initLibrary call
+
+Typically in the `library.js` of your library the library is initialized. The object which is given to the `sap/ui/core/Core#initLibrary` call musst not include any `Object Expression`.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.getCore().initLibrary({
+        name: "my.lib"
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="3"
+    const key = "name";
+    sap.ui.getCore().initLibrary({
+        [key]: "my.lib"
+    });
+    ```
 
 ### Class Definition
 
 ### Arrow Function Expression
 
-## Code Analyzing
+## Code Analysis
 
 ### Dependency Analysis
 
