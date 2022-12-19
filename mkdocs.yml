@@ -45,10 +45,19 @@ theme:
 extra_css:
   - 'stylesheets/extra.css'
 
+extra:
+  version:
+    provider: mike
+
 plugins:
   - search
   - minify:
       minify_html: true
+  - mike:
+      canonical_version: null
+      version_selector: true
+      css_dir: stylesheets
+      javascript_dir: js
 
 markdown_extensions:
   - admonition
