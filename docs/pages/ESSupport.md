@@ -51,15 +51,15 @@ When declaring a `Fiori Elements Template` using a `Template Literal` with one o
 
     ```javascript
     sap.ui.define([
-        "sap/fe/core/TemplateAssembler"
+        `sap/fe/core/TemplateAssembler`
     ], function(TemplateAssembler) {
         return TemplateAssembler.getTemplateComponent(getMethods, 
-            "sap.fe.templates.Page.Component", {
+            `sap.fe.templates.Page.Component`, {
                 metadata: {
                     properties: {
                         templateName: {
-                            type: "string",
-                            defaultValue: "sap.fe.templates.Page.view.Page"
+                            type: `string`,
+                            defaultValue: `sap.fe.templates.Page.view.Page`
                         }
                     },
                     manifest: "json"
@@ -73,19 +73,19 @@ When declaring a `Fiori Elements Template` using a `Template Literal` with one o
 
     ```javascript hl_lines="6"
     sap.ui.define([
-        "sap/fe/core/TemplateAssembler"
+        `sap/fe/core/TemplateAssembler`
     ], function(TemplateAssembler) {
-        const name = "Component";
+        const name = `Component`;
         return TemplateAssembler.getTemplateComponent(getMethods,
             `sap.fe.templates.Page.${name}`, {
                 metadata: {
                     properties: {
                         templateName: {
-                            type: "string",
-                            defaultValue: "sap.fe.templates.Page.view.Page"
+                            type: `string`,
+                            defaultValue: `sap.fe.templates.Page.view.Page`
                         }
                     },
-                    manifest: "json"
+                    manifest: `json`
                 }
             }
         );
@@ -100,18 +100,18 @@ When declaring a `Smart Template` using a `Template Literal` with one or more ex
 
     ```javascript
     sap.ui.define([
-        "sap/suite/ui/generic/template/lib/TemplateAssembler"
+        `sap/suite/ui/generic/template/lib/TemplateAssembler`
     ], function(TemplateAssembler) {
         return TemplateAssembler.getTemplateComponent(getMethods, 
-            "sap.suite.ui.generic.templates.Page.Component", {
+            `sap.suite.ui.generic.templates.Page.Component`, {
                 metadata: {
                     properties: {
                         templateName: {
-                            type: "string",
-                            defaultValue: "sap.suite.ui.generic.templates.Page.view.Page"
+                            type: `string`,
+                            defaultValue: `sap.suite.ui.generic.templates.Page.view.Page`
                         }
                     },
-                    manifest: "json"
+                    manifest: `json`
                 }
             }
         );
@@ -122,19 +122,19 @@ When declaring a `Smart Template` using a `Template Literal` with one or more ex
 
     ```javascript hl_lines="6"
     sap.ui.define([
-        "sap/suite/ui/generic/template/lib/TemplateAssembler"
+        `sap/suite/ui/generic/template/lib/TemplateAssembler`
     ], function(TemplateAssembler) {
-        const name = "Component";
+        const name = `Component`;
         return TemplateAssembler.getTemplateComponent(getMethods,
             `sap.suite.ui.generic.templates.Page.${name}`, {
                 metadata: {
                     properties: {
                         templateName: {
-                            type: "string",
-                            defaultValue: "sap.suite.ui.generic.templates.Page.view.Page"
+                            type: `string`,
+                            defaultValue: `sap.suite.ui.generic.templates.Page.view.Page`
                         }
                     },
-                    manifest: "json"
+                    manifest: `json`
                 }
             }
         );
@@ -151,9 +151,9 @@ When declaring a `XMLComposite` using a `Template Literal` with one or more expr
 
     ```javascript
     sap.ui.define([
-        "sap/ui/core/XMLComposite"
+        `sap/ui/core/XMLComposite`
     ], function(XMLComposite) {
-        return XMLComposite.extend("composites.MyComposite", {} 
+        return XMLComposite.extend(`composites.MyComposite`, {} 
     });
     ```
 
@@ -161,9 +161,9 @@ When declaring a `XMLComposite` using a `Template Literal` with one or more expr
 
     ```javascript hl_lines="5"
     sap.ui.define([
-        "sap/ui/core/XMLComposite"
+        `sap/ui/core/XMLComposite`
     ], function(XMLComposite) {
-        const name = "MyComposite";
+        const name = `MyComposite`;
         return XMLComposite.extend(`composites.${name}`, {});
     });
     ```
@@ -176,7 +176,7 @@ Typically in the `library.js` of your library the library is initialized. The ob
 
     ```javascript
     sap.ui.getCore().initLibrary({
-        name: "my.lib"
+        name: `my.lib`
     });
     ```
 
@@ -329,7 +329,9 @@ When declaring a `XMLComposite` using a `Spread Element` in the configuration of
     sap.ui.define([
         "sap/ui/core/XMLComposite"
     ], function(XMLComposite) {
-        return XMLComposite.extend("composites.MyComposite", {} 
+        return XMLComposite.extend("composites.MyComposite", {
+            fragment: "composites.custom.MyComposite"
+        } 
     });
     ```
 
@@ -520,7 +522,7 @@ When declaring a `XMLComposite` using an `Object Expression` in the configuratio
         "sap/ui/core/XMLComposite"
     ], function(XMLComposite) {
         const key = "fragment";
-        return XMLComposite.extend(`composites.MyComposite`, {
+        return XMLComposite.extend("composites.MyComposite", {
             [key]: "composites.custom.MyComposite"
         });
     });
@@ -561,9 +563,7 @@ If you want to generate a JSDoc build of your project and using a `Class Declara
          * JSDoc block here
          */
         class Foo extends Bar {
-            make () {
-
-            }
+            make () {}
         }
 
         return Foo;
@@ -580,9 +580,7 @@ If you want to generate a JSDoc build of your project and using a `Class Declara
          * JSDoc block here
          */
         return class Foo extends Bar {
-            make () {
-
-            }
+            make () {}
         }
     });
     ```
@@ -620,7 +618,11 @@ If you want to generate a JSDoc build of your project and use an `Arrow Function
 
 ## Code Analysis
 
+While a `ui5 build` is executed, the UI5 Tooling analyses the code on a few places. The following sections explain the analysing parts more detailed.
+
 ### Dependency Analysis
+
+For declaring dependencies e.g. as a parameter in a `sap.ui.define` call, the UI5 Tooling
 
 ### Library Initialization
 
