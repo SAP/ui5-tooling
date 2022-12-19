@@ -1,0 +1,12 @@
+{#-
+  This file was initialy copied from https://squidfunk.github.io/mkdocs-material/customization/#overriding-blocks
+  It displays a message for the non-default branch
+-#}
+{% extends "base.html" %}
+
+{% block announce %}
+  You're currently viewing the development version of UI5 Tooling (v3).
+  <a href="{{ '../v2/' ~ base_url }}"> 
+    <strong>Click here to go to the stable version (v2).</strong>
+  </a>
+{% endblock %}

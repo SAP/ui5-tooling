@@ -10,6 +10,6 @@ const cPath = require.resolve("@ui5/cli/package.json");
 const cliPath = path.relative(__dirname, path.dirname(cPath));
 
 // no workspace detected
-if (!cliPath.startsWith("..")) {
+if (!cliPath.startsWith(path.join("..", ".."))) {
 	process.exit(1);
 }

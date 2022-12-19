@@ -4,32 +4,35 @@ repo_name: 'SAP/ui5-tooling'
 repo_url: 'https://github.com/SAP/ui5-tooling'
 docs_dir: 'docs' # default
 site_dir: 'site' # default
+copyright: '© Copyright 2022, SAP SE and UI5 Tooling Contributors'
 nav:
-  - Home: index.md
-  - Getting Started: pages/GettingStarted.md
-  - Configuration: pages/Configuration.md
-  - UI5 CLI: pages/CLI.md
-  - Development:
+    - Home: index.md
+    - Getting Started: pages/GettingStarted.md
+    - Configuration: pages/Configuration.md
+    - UI5 CLI: pages/CLI.md
+    - Development:
       - Overview: pages/Overview.md
       - OpenUI5: pages/OpenUI5.md
       - SAPUI5: pages/SAPUI5.md
-  - Extensibility:
+    - Extensibility:
       - Custom Tasks: pages/extensibility/CustomTasks.md
       - Custom Server Middleware: pages/extensibility/CustomServerMiddleware.md
       - Project Shims: pages/extensibility/ProjectShims.md
-  - Modules:
+    - Modules:
       - Server: pages/Server.md
       - Builder: pages/Builder.md
       - Project: pages/Project.md
-  - Upgrade Guides:
+    - Upgrade Guides:
+      - Migrate to v3: updates/migrate-v3.md
       - Migrate to v2: updates/migrate-v2.md
       - Migrate to v1: updates/migrate-v1.md
-  - FAQ: pages/FAQ.md
-  - Troubleshooting: pages/Troubleshooting.md
-  - API Reference: 'api/index.html' # only available in final build, not serve
+    - FAQ: pages/FAQ.md
+    - Troubleshooting: pages/Troubleshooting.md
+    - API Reference: 'api/index.html' # only available in final build, not serve
 
 theme:
   name: 'material'
+  custom_dir: 'overrides'
   palette:
     primary: 'blue'
     accent: 'blue'
@@ -72,7 +75,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.keys
   - pymdownx.smartsymbols
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
