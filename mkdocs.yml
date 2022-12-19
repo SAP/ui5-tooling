@@ -22,13 +22,15 @@ nav:
       - Server: pages/Server.md
       - Builder: pages/Builder.md
       - Project: pages/Project.md
-    - ECMAScript Version Support: pages/ESSupport.md
     - Upgrade Guides:
       - Migrate to v3: updates/migrate-v3.md
       - Migrate to v2: updates/migrate-v2.md
       - Migrate to v1: updates/migrate-v1.md
     - FAQ: pages/FAQ.md
-    - Troubleshooting: pages/Troubleshooting.md
+    - Miscellaneous:
+      - Troubleshooting: pages/Troubleshooting.md
+      - Benchmarking: pages/Benchmarking.md
+      - ECMAScript Support: pages/ESSupport.md
     - API Reference: 'api/index.html' # only available in final build, not serve
 
 theme:
