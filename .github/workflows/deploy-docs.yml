@@ -57,4 +57,4 @@ jobs:
         git config --local user.name $GIT_COMMITTER_NAME
         git add .
         git commit -m "Updating supplemental resources for ${MIKE_VERSION} documentation deployment"
-        git push --force
+        git push
