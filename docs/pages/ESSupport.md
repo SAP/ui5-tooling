@@ -547,9 +547,76 @@ Typically in the `library.js` of your library the library is initialized. The ob
     });
     ```
 
-### Class Definition
+### Class Declaration
+
+If you want to generate a JSDoc build of your project and using a `Class Declaration` the class declaration should not be returned directly. Declare the class and return the class in a separate statement. If not JSDoc treats the the class declaration as a return statement and does not recognize any JSDoc if such is provided right above the class declaration.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "Bar"
+    ], function(Bar){
+        /**
+         * JSDoc block here
+         */
+        class Foo extends Bar {
+            make () {
+
+            }
+        }
+
+        return Foo;
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="7"
+    sap.ui.define([
+        "Bar"
+    ], function(Bar){
+        /**
+         * JSDoc block here
+         */
+        return class Foo extends Bar {
+            make () {
+
+            }
+        }
+    });
+    ```
 
 ### Arrow Function Expression
+
+If you want to generate a JSDoc build of your project and use an `Arrow Function Expression` the JSDoc has to be written above the arrow function and not above the `sap.ui.define/sap.ui.require` command.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "Bar"
+    ], 
+    /**
+     * JSDoc block here
+     */
+    (Bar) => Bar.extends("Foo", {
+
+    }));
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="1 2 3"
+    /**
+     * JSDoc block here
+     */
+    sap.ui.define([
+        "Bar"
+    ], (Bar) => Bar.extends("Foo", {
+
+    }));
+    ```
 
 ## Code Analysis
 
