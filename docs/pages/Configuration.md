@@ -694,7 +694,7 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward comp
 
 Version | UI5 CLI Release
 --- | ---
-**3.0 [beta]** | v3.0.0+
+[**3.0 [beta]**](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/) | v3.0.0+
 **2.6** | v2.14.0+
 **2.5** | v2.12.0+
 **2.4** | v2.11.0+
@@ -709,7 +709,7 @@ Version | UI5 CLI Release
 ### Specification Version 3.0 [beta]
 
 !!! info
-    **Note:** UI5 Tooling version 3.0 is currently in development.
+    **Note:** UI5 Tooling version 3.0 is currently in development. If you wish to migrate to the latest UI5 Tooling, please check the [Upgrade Guide for v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)
 
 **Breaking changes:**
 
