@@ -694,7 +694,7 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward comp
 
 Version | UI5 CLI Release
 --- | ---
-**3.0** | v3.0.0+
+**3.0 [beta]** | v3.0.0+
 **2.6** | v2.14.0+
 **2.5** | v2.12.0+
 **2.4** | v2.11.0+
@@ -706,7 +706,11 @@ Version | UI5 CLI Release
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
 
-### Specification Version 3.0
+### Specification Version 3.0 [beta]
+
+!!! info
+    **Note:** UI5 Tooling version 3.0 is currently in development.
+
 **Breaking changes:**
 
 [bundleOptions](#custom-bundling) has been modified:
