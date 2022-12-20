@@ -711,7 +711,7 @@ Version | UI5 CLI Release
 **Breaking changes:**
 
 - Removes the `/proxy` endpoint and the corresponding
-[**connectUi5Proxy**](https://sap.github.io/ui5-tooling/v2/pages/Server/#connectui5proxy) middleware from the standard [ui5-server](https://github.com/SAP/ui5-server).  More sophisticated proxy solutions for [ui5-server](https://github.com/SAP/ui5-server) are already available in the form of custom middleware extensions from the UI5-community.  For more information on how to transition your project to UI5 Tooling v3, please check the [v3 Migration Guide](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)
+[**connectUi5Proxy**](https://sap.github.io/ui5-tooling/v2/pages/Server/#connectui5proxy) middleware from the standard [ui5-server](https://github.com/SAP/ui5-server). More sophisticated proxy solutions for [ui5-server](https://github.com/SAP/ui5-server) are already available in the form of custom middleware extensions from the UI5-community. For more information on how to transition your project to UI5 Tooling v3, please check the [v3 Migration Guide](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)
 
 
 Specification Version 3.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
