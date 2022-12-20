@@ -13,7 +13,7 @@ A middleware may be executed before or after any other middleware. This can eith
 
 ### Example: Basic configuration
 ```yaml
-specVersion: "2.6"
+specVersion: "3.0"
 type: application
 metadata:
   name: my.application
@@ -41,7 +41,7 @@ A custom middleware extension consists of a `ui5.yaml` and a [custom middleware 
 ### Example: ui5.yaml
 
 ````yaml
-specVersion: "2.6"
+specVersion: "3.0"
 kind: extension
 type: server-middleware
 metadata:
@@ -61,7 +61,7 @@ The UI5 Server will detect the custom middleware configuration of the project an
 
 ````yaml
 # Project configuration for the above example
-specVersion: "2.6"
+specVersion: "3.0"
 kind: project
 type: application
 metadata:
@@ -72,7 +72,7 @@ server:
       beforeMiddleware: serveResources
 ---
 # Custom middleware extension as part of your project
-specVersion: "2.6"
+specVersion: "3.0"
 kind: extension
 type: server-middleware
 metadata:
@@ -85,23 +85,34 @@ middleware:
 A custom middleware implementation needs to return a function with the following signature:
 ````javascript
 /**
- * Custom UI5 Server middleware example
+ * Custom UI5 Server middleware API
  *
  * @param {object} parameters Parameters
- * @param {object} parameters.resources Resource collections
- * @param {module:@ui5/fs.AbstractReader} parameters.resources.all Reader or Collection to read resources of the
- *                                        root project and its dependencies
- * @param {module:@ui5/fs.AbstractReader} parameters.resources.rootProject Reader or Collection to read resources of
- *                                        the project the server is started in
- * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies Reader or Collection to read resources of
- *                                        the projects dependencies
- * @param {object} parameters.middlewareUtil Specification version dependent interface to a
- *                                        [MiddlewareUtil]{@link module:@ui5/server.middleware.MiddlewareUtil} instance
+ * @param {object} parameters.resources Readers for accessing resources
+ * @param {module:@ui5/fs.AbstractReader} parameters.resources.all
+ *      Reader to access resources of the root project and its dependencies
+ * @param {module:@ui5/fs.AbstractReader} parameters.resources.rootProject
+ *      Reader to access resources of the root project
+ * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies
+ *      Reader to access resources of the project's dependencies
+ * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
+ *      Specification version-dependent interface to a
+ *      MiddlewareUtil instance. See the corresponding API reference for details:
+ *      https://sap.github.io/ui5-tooling/stable/api/module-@ui5_server.middleware.MiddlewareUtil.html
+ * @param {@ui5/logger/GroupLogger} parameters.log
+ *      Logger instance for use in the custom middleware.
+ *      This parameter is only provided to custom middleware
+ *      extensions defining Specification Version 3.0 and later.
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {string} parameters.options.configuration
+ *      Custom middleware configuration, as defined in the project's ui5.yaml
+ * @param {string} parameters.options.middlewareName
+ *      Name of the custom middleware.
+ *      This parameter is only provided to custom middleware extensions
+ *      defining Specification Version 3.0 and later.
  * @returns {function} Middleware function to use
  */
-module.exports = function({resources, middlewareUtil, options}) {
+module.exports = function({resources, middlewareUtil, log, options}) {
     return function (req, res, next) {
         // [...]
     }
@@ -112,7 +123,7 @@ module.exports = function({resources, middlewareUtil, options}) {
 ````javascript
 // Custom middleware implementation
 
-module.exports = function({resources, middlewareUtil, options}) {
+module.exports = function({resources, middlewareUtil, log, options}) {
     const MarkdownIt = require('markdown-it');
     const md = new MarkdownIt();
     return function (req, res, next) {
@@ -128,6 +139,7 @@ module.exports = function({resources, middlewareUtil, options}) {
                 next();
                 return;
             }
+            log.info(`Rendering markdown for ${resource.getPath()}`);
             const markdown = await resource.getBuffer();
             // Generate HTML from markdown string
             const html = md.render(markdown.toString());
