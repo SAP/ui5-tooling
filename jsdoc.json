@@ -22,7 +22,11 @@
 		"cleverLinks": false,
 		"monospaceLinks": false,
 		"default": {
-			"useLongnameInNav": true
+			"useLongnameInNav": true,
+			"layoutFile": "lib/jsdoc/plugin/template/layout.tmpl",
+			"staticFiles": {
+				"include": ["lib/jsdoc/plugin/template/custom.css"]
+			}
 		}
 	},
 	"openGraph": {
