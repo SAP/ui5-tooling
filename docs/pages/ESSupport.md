@@ -761,7 +761,7 @@ The `XMLComposite` is deprecated since UI5 Version 1.88. Nevertheless the UI5 To
 
 ### Library Initialization
 
-This analyzer checks every JavaScript file for occurences of a sap.ui.getCore().initLibrary() call. If so, the following information will be set:
+This analyzer checks every JavaScript file for occurences of a `sap.ui.getCore().initLibrary()` call. If so, the following information will be set:
 
 - noLibraryCSS: false when the noLibraryCSS property had been set in the initLibrary info object
 - types: string array with the names of the types contained in the library
@@ -770,3 +770,5 @@ This analyzer checks every JavaScript file for occurences of a sap.ui.getCore().
 - interfaces: string array with the names of the interfaces defined in the library
 
 ### JSDoc
+
+The UI5 Tooling offers a JSDoc build, which is enhanced by UI5 specific JSDoc features.
