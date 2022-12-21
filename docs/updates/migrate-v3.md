@@ -137,7 +137,7 @@ The following middlewares have been removed:
 
 | UI5 Tooling v2              | UI5 Tooling v3              | Note |
 | --------------------------- | --------------------------- | ------------------------- |
-| connectUi5Proxy | *None* | More sophisticated proxy solutions for [ui5-server](https://github.com/SAP/ui5-server) are already available in the form of custom middleware extensions from the UI5-community. Please refactor any custom middleware that attaches to `beforeMiddleware` or `afterMiddleware` of `connectUi5Proxy` to reference some other middleware. |
+| connectUi5Proxy | *None* | More sophisticated proxy solutions for ui5-server are already available in the form of [custom middleware extensions from the UI5-community](https://bestofui5.org/#/packages?tokens=proxy:tag). Please refactor any custom middleware that attaches to `beforeMiddleware` or `afterMiddleware` of `connectUi5Proxy` to reference some other middleware. |
 
 
 **Updated list of standard middlewares:**
