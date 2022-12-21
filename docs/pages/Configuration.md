@@ -705,6 +705,24 @@ Version | UI5 CLI Release
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
 
+### Specification Version 3.0 [beta]
+
+!!! info
+    **Note:** UI5 Tooling version 3.0 is currently in development. If you wish to migrate to the latest UI5 Tooling, please check the [Upgrade Guide for v3](/v3/updates/migrate-v3/)
+
+**Breaking changes:**
+
+[bundleOptions](#custom-bundling) has been modified:
+
+- `debugMode` has been removed
+- `optimize` now always defaults to `true` [#685](https://github.com/SAP/ui5-builder/pull/685)
+
+**Features:**
+
+- Adds support for `sourceMap` configuration for the application and library [bundleOptions](#properties)
+
+Specification Version 3.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
+
 ### Specification Version 2.6
 **Features:**
 
