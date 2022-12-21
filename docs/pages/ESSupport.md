@@ -555,6 +555,57 @@ Typically in the `library.js` of your library the library is initialized. The ob
     });
     ```
 
+### Computed Property
+
+A `Computed Property` can be used in all places except in following places.
+
+#### Computed Property when using `extend`
+
+One or more `Computed Property` as a parameter in an UI5 Module `extend` call is not supported.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "Bar"
+    ], function(Bar){
+        return Bar.extend("my.Bar" {});
+    });
+
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="3"
+    const name = "my";
+    sap.ui.define([
+        "Bar"
+    ], function(Bar){
+        return Bar.extend(name + ".Bar", {});
+    });
+    ```
+
+#### Computed Properties in sap/ui/core/Core#initLibrary call
+
+Typically in the `library.js` of your library the library is initialized. The object which is given to the `sap/ui/core/Core#initLibrary` call musst not include any `Computed Property`.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.getCore().initLibrary({
+        name: "my.lib"
+    });
+    ```
+
+=== "Not supported"
+
+    ```javascript hl_lines="3"
+    const name = "my";
+    sap.ui.getCore().initLibrary({
+        name: name + ".lib"
+    });
+    ```
+
 ### Class Declaration
 
 If you want to generate a JSDoc build of your project and using a `Class Declaration` the class declaration should not be returned directly. Declare the class and return the class in a separate statement. If not JSDoc treats the the class declaration as a return statement and does not recognize any JSDoc if such is provided right above the class declaration.
