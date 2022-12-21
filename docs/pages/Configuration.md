@@ -651,7 +651,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 
 - `name`: The module bundle name
 - `defaultFileTypes`: List of default file types which should be included in the bundle. Defaults to: `.js`, `.control.xml`, `.fragment.html`, `.fragment.json`, `.fragment.xml`, `.view.html`, `.view.json` and `.view.xml`
-  - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html#.generateBundle)) and lists the resources that should be in- or excluded from the section.
+  - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](../../api/module-@ui5_builder.tasks.html#.generateBundle)) and lists the resources that should be in- or excluded from the section.
     - `mode`:  The embedding technology (e.g. provided, raw, preload)
     - `filters`: List of modules declared as glob patterns (resource name patterns) that are in- or excluded. Similarly to the use of a single `*` or double `**` asterisk, a pattern ending with a slash `/` denotes an arbitrary number of characters or folder names. Excludes have to be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
     - `resolve`: Setting resolve to `true` will also include all (transitive) dependencies of the files
@@ -662,11 +662,14 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 
 **bundleOptions**
 
-- `optimize`: By default set to `false`. If set to `true`, the module bundle gets minified
+- `optimize`: If set to `true`, the module bundle gets minified.
+  - Since UI5 Tooling `v3.0.0` defaults to `true`. 
+  - Prior to UI5 Tooling `v3.0.0` defaults to `false`.
 - `decorateBootstrapModule`: By default set to `false`. If set to `true`, the module will be decorated with an optimization marker
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
+- `sourceMap`: By default set to `true`. Adds source map support to the bundle. Available since UI5 Tooling `v3.0.0`
 
 ## Specification Versions
 A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
@@ -701,6 +704,24 @@ Version | UI5 CLI Release
 **1.1** | v1.13.0+
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
+
+### Specification Version 3.0 [beta]
+
+!!! info
+    **Note:** UI5 Tooling version 3.0 is currently in development. If you wish to migrate to the latest UI5 Tooling, please check the [Upgrade Guide for v3](../../updates/migrate-v3/)
+
+**Breaking changes:**
+
+[bundleOptions](#custom-bundling) has been modified:
+
+- `debugMode` has been removed
+- `optimize` now always defaults to `true` [#685](https://github.com/SAP/ui5-builder/pull/685)
+
+**Features:**
+
+- Adds support for `sourceMap` configuration for the application and library [bundleOptions](#properties)
+
+Specification Version 3.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
 
 ### Specification Version 2.6
 **Features:**
