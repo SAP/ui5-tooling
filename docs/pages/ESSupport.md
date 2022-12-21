@@ -617,8 +617,8 @@ If you want to generate a JSDoc build of your project and using a `Class Declara
         "Bar"
     ], function(Bar){
         /**
-         JSDoc block here
-        /
+         * JSDoc block here
+         */
         class Foo extends Bar {
             make () {}
         }
@@ -634,8 +634,8 @@ If you want to generate a JSDoc build of your project and using a `Class Declara
         "Bar"
     ], function(Bar){
         /**
-         JSDoc block here
-        /
+         * JSDoc block here
+         */
         return class Foo extends Bar {
             make () {}
         }
@@ -653,8 +653,8 @@ If you want to generate a JSDoc build of your project and use an `Arrow Function
         "Bar"
     ], 
     /**
-     JSDoc block here
-    /
+     * JSDoc block here
+     */
     (Bar) => Bar.extends("Foo", {
 
     }));
@@ -664,8 +664,8 @@ If you want to generate a JSDoc build of your project and use an `Arrow Function
 
     ```javascript hl_lines="1 2 3"
     /**
-     JSDoc block here
-    /
+     * JSDoc block here
+     */
     sap.ui.define([
         "Bar"
     ], (Bar) => Bar.extends("Foo", {
