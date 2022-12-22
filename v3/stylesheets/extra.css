@@ -1,66 +1,167 @@
 @font-face {
-  font-family: '72-Regular';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.svg#72-Regular") format("svg");
-  /* Legacy iOS */ }
+    font-family: "SAP-icons";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/SAP-icons.woff2") format("woff2"), local("SAP-icons");
+    font-weight: normal;
+    font-style: normal;
+}
 @font-face {
-  font-family: '72-Bold';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.svg#72-Bold") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72";
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Regular.woff2") format("woff2"), local("72");
+}
 @font-face {
-  font-family: '72-Italic';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Italic.svg#72-Italic") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72full";
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Regular-full.woff2") format("woff2");
+}
 @font-face {
-  font-family: '72-Light';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Light.svg#72-Light") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72";
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Bold.woff2") format("woff2"), local("72-Bold");
+}
 @font-face {
-  font-family: '72-BoldItalic';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-BoldItalic.svg#72-BoldItalic") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72full";
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Bold-full.woff2") format("woff2");
+}
 @font-face {
-  font-family: '72-Condensed';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Condensed.svg#72-Condensed") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72";
+    font-style: normal;
+    font-weight: 300;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Light.woff2") format("woff2"), local("72-Light");
+}
 @font-face {
-  font-family: '72-CondensedBold';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-CondensedBold.svg#72-CondensedBold") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72full";
+    font-style: normal;
+    font-weight: 300;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Light-full.woff2") format("woff2");
+}
 @font-face {
-  font-family: '72-Black';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.svg#72-Black") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72-Bold";
+    font-style: normal;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Bold.woff2") format("woff2"), local("72-Bold");
+}
 @font-face {
-  font-family: '72-Black';
-  src: url("webfont.eot");
-  /* IE9 Compat Modes */
-  src: url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.eot?#iefix") format("embedded-opentype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff2") format("woff2"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.woff") format("woff"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.ttf") format("truetype"), url("https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/72-Black.svg#72-Black") format("svg");
-  /* Legacy iOS */ }
+    font-family: "72-Boldfull";
+    font-style: normal;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Bold-full.woff2") format("woff2");
+}
 @font-face {
-  font-family: "SAP-icons";
-  src:
-    url('https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/SAP-icons.woff2') format('woff2'), /* Chrome 36+, Firefox 39+, Safari 10+, Edge 14+, Chrome 51+ for Android */
-    url('https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/SAP-icons.woff') format('woff'), /* IE9+, Safari 5.1+, iOS 5.1+, Android Browser 4.4+, IE Mobile 11+ */
-    url('https://openui5.hana.ondemand.com/resources/sap/ui/core/themes/sap_belize/fonts/SAP-icons.ttf') format('truetype'), /* Fallback for any older browser (except IE8 and below which are not supported anyway) */
-    local('SAP-icons'); /* fallback to local installed font in case it can't be loaded (e.g. font download is disabled due to browser security settings) */
-  font-weight: normal;
-  font-style: normal;
+    font-family: "72-Light";
+    font-style: normal;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Light.woff2") format("woff2"), local("72-Light");
+}
+@font-face {
+    font-family: "72-Lightfull";
+    font-style: normal;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Light-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72Mono";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72Mono-Regular.woff2") format("woff2"), local("72Mono");
+}
+@font-face {
+    font-family: "72Monofull";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72Mono-Regular-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72Mono-Bold";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72Mono-Bold.woff2") format("woff2"), local("72Mono-Bold");
+}
+@font-face {
+    font-family: "72Mono-Boldfull";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72Mono-Bold-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72Black";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Black.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72Blackfull";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Black-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72-SemiboldDuplex";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-SemiboldDuplex.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72-SemiboldDuplexfull";
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-SemiboldDuplex-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72";
+    font-style: normal;
+    font-weight: 400;
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Regular-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72";
+    font-style: normal;
+    font-weight: 700;
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Bold-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72";
+    font-style: normal;
+    font-weight: 300;
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Light-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72-Bold";
+    font-style: normal;
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Bold-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72-Light";
+    font-style: normal;
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Light-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72Mono";
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72Mono-Regular-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72Mono-Bold";
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72Mono-Bold-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72Black";
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-Black-full.woff2") format("woff2");
+}
+@font-face {
+    font-family: "72-SemiboldDuplex";
+    unicode-range: U+0102-0103, U+010F, U+013D, U+013E, U+0165, U+01A0-01A1,
+        U+01AF-01B0, U+1EA0-1EB7, U+1EB8-1EC7, U+1EC8-1ECB, U+1ECC-1EE3,
+        U+1EE4-1EF1, U+1EF4-1EF7;
+    src: url("https://sdk.openui5.org/resources/sap/ui/core/themes/sap_horizon/fonts/72-SemiboldDuplex-full.woff2") format("woff2");
 }
 
 html, body, h1, h2, h3, h4, h5, h6, p {
@@ -85,27 +186,14 @@ html, body, h1, h2, h3, h4, h5, h6, p {
   color: var(--md-primary-fg-color);
 }
 
-.sap-icon-circle-task::before {
-  font-family: SAP-icons;
-  content: "\e254";
-}
-.sap-icon-circle-task-before::before {
-  font-family: SAP-icons;
-  content: "\e254";
-  margin-right: 0.5em;
+.ui5-footer-item {
+  flex-grow: 0;
+  color: var(--md-footer-fg-color--lighter);
+  font-size: .64rem;
+  margin: auto 0.6rem;
+  padding: 0.4rem 0;
 }
 
-.sap-icon-circle-task-2 {
-  font-family: SAP-icons;
-}
-
-.sap-icon-circle-task-2::before {
-  font-family: SAP-icons;
-  content: "\e255";
-}
-
-.sap-icon-circle-task-2-before::before {
-  font-family: SAP-icons;
-  content: "\e255";
-  margin-right: 0.5em;
+.md-copyright {
+  flex-grow: 1;
 }
