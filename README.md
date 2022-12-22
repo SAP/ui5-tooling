@@ -8,10 +8,10 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 ## Resources
-- [Documentation](https://sap.github.io/ui5-tooling/)
-- [API Reference](https://sap.github.io/ui5-tooling/api/)
-- [CLI Documentation](https://sap.github.io/ui5-tooling/pages/CLI/)
-- [Project Configuration](https://sap.github.io/ui5-tooling/pages/Configuration/)
+- [Documentation v2](https://sap.github.io/ui5-tooling/v2/)
+- [API Reference v2](https://sap.github.io/ui5-tooling/v2/api/)
+- [CLI Documentation v2](https://sap.github.io/ui5-tooling/v2/pages/CLI/)
+- [Project Configuration v2](https://sap.github.io/ui5-tooling/v2/pages/Configuration/)
 - 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
 - 🎬 [UI5con@SAP 2020 Talk](https://www.youtube.com/watch?v=8IHoVJLKN34)
 - [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/master/CONTRIBUTING.md)

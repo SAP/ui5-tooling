@@ -34,7 +34,7 @@ These tags are shared in a "global" build context, so that they can also be acce
 
 #### `@ui5/fs.readers.Filter`
 
-Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. A new `filter()` API of the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) will provide a "reader.Filter" instance *(which also implements `AbstractReader`)*, wrapping the given reader instance. For every resource retrieved through this reader.Filter, a filter callback function is called, allowing filtering on tags or other parameters. 
+Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. A new `filter()` API of the [AbstractReader](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.AbstractReader.html) will provide a "reader.Filter" instance *(which also implements `AbstractReader`)*, wrapping the given reader instance. For every resource retrieved through this reader.Filter, a filter callback function is called, allowing filtering on tags or other parameters. 
 
 This approach of filtering-out resources that should never be included in a specific bundle can also be used when exchanging the legacy-bundle-tooling with other tools like [Rollup](https://github.com/rollup/rollup), which also only expect the resources relevant for the bundle to be available.
 

@@ -126,8 +126,8 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 
 **Parameters:**
 
-- **`workspace`**: A [DuplexCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.DuplexCollection.html) to read and write [Resources](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) for the project that is currently being built
-- **`dependencies`**: A [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) to read [Resources](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) of the project's dependencies
+- **`workspace`**: A [DuplexCollection](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.DuplexCollection.html) to read and write [Resources](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.Resource.html) for the project that is currently being built
+- **`dependencies`**: A [ReaderCollection](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.ReaderCollection.html) to read [Resources](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.Resource.html) of the project's dependencies
 - **`taskUtil`**: See [details below](https://sap.github.io/ui5-tooling/pages/extensibility/CustomTasks/#helper-class-taskutil)
 - **`options.projectName`**: The name of the project currently being built. *Example: `my.library`*
 - **`options.projectNamespace`**: The namespace of the project. *Example: `my/library`*
@@ -192,8 +192,8 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 
 ## Helper Class `TaskUtil`
 
-Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html) instance.
+Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_builder.tasks.TaskUtil.html) instance.
 
-In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html).
+In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_builder.tasks.TaskUtil.html).
 
 Also see UI5 Tooling [RFC 0008 Resource Tagging During Build](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0008-resource-tagging-during-build.md) for details on resource tagging.
