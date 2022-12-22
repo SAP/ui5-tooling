@@ -1,7 +1,7 @@
 
 # ECMAScript Support
 
-The UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, the UI5 Tooling analyses the code on a few places. Depending on the project type you have to consider some restrictions regarding the used ECMAScript syntax. The UI5 Tooling does only analyze files declared with type `script`. Files declared as `module` are not analyzed.
+UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the used of certain ECMAScript syntax. In general, UI5 Tooling only analyzes **JavaScript** files of type `script`. [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) are not analyzed.
 
 | UI5 Tooling Version | Supported ECMAScript Version |
 |------------------- |---------------------------- |
