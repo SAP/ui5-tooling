@@ -18,19 +18,6 @@ The following sections describe the limitations grouped by the ECMAScript langua
 
 In general, UI5 Tooling only analyzes **JavaScript** files of type `script`. [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) are not analyzed.
 
-Therefore, the `package.json` should not mention the `module` in property `type`.
-
-=== "Supported"
-
-    ```json title="package.json"
-    { "type" : "script" }
-    ```
-=== "Not Supported"
-
-    ```json title="package.json" hl_lines="1"
-    { "type" : "module" }
-    ```
-
 UI5 Tooling and the UI5 Runtime does not support the usage of `export` and `import` of JavaScript Modules. Therefore, `sap.ui.define` has to be used.
 
 === "Supported"
