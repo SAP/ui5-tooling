@@ -119,7 +119,7 @@ A custom task implementation needs to return a function with the following signa
  * @param {@ui5/builder.tasks.TaskUtil} parameters.taskUtil
  *      Specification Version-dependent interface to a TaskUtil instance.
  *      See the corresponding API reference for details:
- *      https://sap.github.io/ui5-tooling/stable/api/module-@ui5_builder.tasks.TaskUtil.html
+ *      https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html
  * @param {@ui5/logger/GroupLogger} parameters.log
  *      Logger instance for use in the custom task.
  *      This parameter is only available to custom task extensions
@@ -171,11 +171,11 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
  *      the project currently being built.
  * @param {function} parameters.getProject
  *      Identical to TaskUtil#getProject
- * 		(see https://sap.github.io/ui5-tooling/stable/api/module-@ui5_builder.tasks.TaskUtil.html).
+ * 		(see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
  *      Retrieves a Project-instance for a given project name.
  * @param {function} parameters.getDependencies
  *      Identical to TaskUtil#getDependencies
- * 		(see https://sap.github.io/ui5-tooling/stable/api/module-@ui5_builder.tasks.TaskUtil.html).
+ * 		(see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
  *      Creates a list of names of all direct dependencies
  *      of a given project.
  * @params {object} parameters.options
@@ -292,6 +292,6 @@ module.exports = async function({workspace, dependencies, log, taskUtil, options
 
 ## Helper Class `TaskUtil`
 
-Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html) instance.
+Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html) instance.
 
-In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html).
+In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
