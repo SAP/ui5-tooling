@@ -2,14 +2,14 @@
 
 The [UI5 Project](https://github.com/SAP/ui5-project) module provides functionality to build a UI5 project's dependency tree, including the validated project configurations. It is also responsible for installing and managing framework dependencies. Also see [Development Overview: Project Dependencies](./Overview.md#project-dependencies).
 
-[**API Reference**](https://sap.github.io/ui5-tooling/api/module-@ui5_project.html){: .md-button .sap-icon-initiative }
+[**API Reference**](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }
 
 ## Normalizer
-The purpose of the normalizer is to collect dependency information and to enrich it with project configuration (both done in [generateProjectTree](https://sap.github.io/ui5-tooling/api/module-@ui5_project.normalizer.html#.generateProjectTree)).
+The purpose of the normalizer is to collect dependency information and to enrich it with project configuration (both done in [generateProjectTree](https://sap.github.io/ui5-tooling/v3/api/module-@ui5_project.normalizer.html#.generateProjectTree)).
 
 [Translators](#translators) are used to collect dependency information. The [Project Preprocessor](#project-preprocessor) enriches this dependency information with project configuration, typically from a `ui5.yaml` file. A development server and build process can use this information to locate project and dependency resources.
 
-If you want to retrieve the project dependency graph without any configuration, you may use use the [generateDependencyTree](https://sap.github.io/ui5-tooling/api/module-@ui5_project.normalizer.html#.generateDependencyTree) API.
+If you want to retrieve the project dependency graph without any configuration, you may use use the [generateDependencyTree](https://sap.github.io/ui5-tooling/v3/api/module-@ui5_project.normalizer.html#.generateDependencyTree) API.
 
 ## Translators
 Translators collect recursively all dependencies on a package manager specific layer and return information about them in a well-defined tree structure.

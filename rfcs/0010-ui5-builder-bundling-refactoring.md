@@ -34,7 +34,7 @@ These tags are shared in a "global" build context, so that they can also be acce
 
 #### `@ui5/fs.readers.Filter`
 
-Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. A new `filter()` API of the [AbstractReader](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.AbstractReader.html) will provide a "reader.Filter" instance *(which also implements `AbstractReader`)*, wrapping the given reader instance. For every resource retrieved through this reader.Filter, a filter callback function is called, allowing filtering on tags or other parameters. 
+Filtering resources based on a tag can be achieved by enhancing on the [ReaderCollection](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.ReaderCollection.html) concept of the UI5 FS. A new `filter()` API of the [AbstractReader](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.AbstractReader.html) will provide a "reader.Filter" instance *(which also implements `AbstractReader`)*, wrapping the given reader instance. For every resource retrieved through this reader.Filter, a filter callback function is called, allowing filtering on tags or other parameters. 
 
 This approach of filtering-out resources that should never be included in a specific bundle can also be used when exchanging the legacy-bundle-tooling with other tools like [Rollup](https://github.com/rollup/rollup), which also only expect the resources relevant for the bundle to be available.
 
@@ -116,9 +116,9 @@ A "transient" source map needs to be generated for any statically generated "req
 
 ## How we teach this
 
-The new "minify" tasks and the removal of the old "uglify" and "createDebugFiles" tasks should be documented in the ["Standard Tasks"](https://sap.github.io/ui5-tooling/pages/Builder/#standard-tasks) chapter of the Builder documentation.
+The new "minify" tasks and the removal of the old "uglify" and "createDebugFiles" tasks should be documented in the ["Standard Tasks"](https://sap.github.io/ui5-tooling/v2/pages/Builder/#standard-tasks) chapter of the Builder documentation.
 
-Source map support should be documented in a separate chapter in the [Builder](https://sap.github.io/ui5-tooling/pages/Builder/) documentation. Especially with regards to further integration scenarios like projects that have already done a transpilation process (e.g. from TypeScript to JavaScript) and would like to provide us with source maps generated in the process.
+Source map support should be documented in a separate chapter in the [Builder](https://sap.github.io/ui5-tooling/v2/pages/Builder/) documentation. Especially with regards to further integration scenarios like projects that have already done a transpilation process (e.g. from TypeScript to JavaScript) and would like to provide us with source maps generated in the process.
 
 The new `ReaderFilter` API should be documented in JSDoc. The signatures of the existing `generateBundle` tasks (including `generateComponentPreload` and `generateLibraryPreload`) should ideally stay the same, only adding an **optional** `taskUtil` parameter for filtering based on the mentioned tags. This allows for continued easy direct consumption of the tasks.
 

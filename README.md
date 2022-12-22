@@ -13,10 +13,10 @@
 > - [UI5 Tooling v3](https://sap.github.io/ui5-tooling/next)- Development version.
 
 ## Resources
-- [Documentation](https://sap.github.io/ui5-tooling/)
-- [API Reference](https://sap.github.io/ui5-tooling/api/)
-- [CLI Documentation](https://sap.github.io/ui5-tooling/pages/CLI/)
-- [Project Configuration](https://sap.github.io/ui5-tooling/pages/Configuration/)
+- [Documentation](https://sap.github.io/ui5-tooling/v3/)
+- [API Reference](https://sap.github.io/ui5-tooling/v3/api/)
+- [CLI Documentation](https://sap.github.io/ui5-tooling/v3/pages/CLI/)
+- [Project Configuration](https://sap.github.io/ui5-tooling/v3/pages/Configuration/)
 - 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
 - 🎬 [UI5con@SAP 2020 Talk](https://www.youtube.com/watch?v=8IHoVJLKN34)
 - [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/main/CONTRIBUTING.md)

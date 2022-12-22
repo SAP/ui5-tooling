@@ -18,7 +18,7 @@ Provide a functionality to store simple information for a resource during the bu
 ## Motivation
 This concept was initially created as a solution for the requirement stated in [SAP/ui5-fs#155](https://github.com/SAP/ui5-fs/issues/155) for an "API to remove resources". Which in turn was created based on a use case of the UI5 Flexibility Area, which would like to remove resources *from the build result*.
 
-Since *removing* resources is not trivial due to the layered structure of the "workspace" [DuplexCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.DuplexCollection.html), a resource might have multiple sources and should not be removed from all of them. A tagging mechanism that rather focuses on the handling of a resource, e.g. that it should not be included into the build result, seems better suited to solve the above use case.
+Since *removing* resources is not trivial due to the layered structure of the "workspace" [DuplexCollection](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.DuplexCollection.html), a resource might have multiple sources and should not be removed from all of them. A tagging mechanism that rather focuses on the handling of a resource, e.g. that it should not be included into the build result, seems better suited to solve the above use case.
 
 There are also other use cases for such a tagging mechanism. For example it would be useful for some tasks to know whether a resource should not be minified (e.g. some bundles).
 
@@ -54,7 +54,7 @@ In the future, custom tasks shall be enabled to use self-defined tags for the pu
 
 ### New APIs in Detail
 
-The task facing API shall be wrapped in a new class "TaskUtil". Similarly to the [MiddlewareUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html) of the UI5 Server, it should provide a [specVersion-dependent interface](https://github.com/SAP/ui5-server/blob/main/lib/middleware/MiddlewareUtil.js#L21) to convenience functions as well as the new tagging APIs.
+The task facing API shall be wrapped in a new class "TaskUtil". Similarly to the [MiddlewareUtil](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_server.middleware.MiddlewareUtil.html) of the UI5 Server, it should provide a [specVersion-dependent interface](https://github.com/SAP/ui5-server/blob/v2/lib/middleware/MiddlewareUtil.js#L21) to convenience functions as well as the new tagging APIs.
 
 An instance of TaskUtil will be passed to every standard task that requires it. To stay compatible for current consumers of those tasks, the new parameter must be treated as optional.
 
@@ -70,7 +70,7 @@ taskUtil.getTag(resource, OmitFromBuildResult);
 
 #### TaskUtil#setTag(resource, tagName, value)
 
-* The resource must be of type [@ui5/fs.Resource](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html)
+* The resource must be of type [@ui5/fs.Resource](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.Resource.html)
 * Throws an error if the tag name does not follow the naming conventions and restrictions outlined [above](#tags)
 * Value must be primitive. If no value is supplied, it defaults to true (hence can't be undefined)
 * Returns undefined
@@ -132,7 +132,7 @@ Dependencies can be tagged, but might have already been processed. Therefore, de
 What other designs have been considered? What is the impact of not doing this?
 -->
 
-As outlined in the [Motivation](#motivation), an actual `remove` function could be added to the [ReaderCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.ReaderCollection.html) or [DuplexCollection](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.DuplexCollection.html) classes. However, due to the layered structure of ui5-fs, it needs to be decided whether `remove` should actually remove a resource from its source or just ignore it at a higher level. Removing from source might not be intended. Ignoring a resource on a higher level could cause confusion since it might not be ignored when asking a different ReaderCollection for it.
+As outlined in the [Motivation](#motivation), an actual `remove` function could be added to the [ReaderCollection](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.ReaderCollection.html) or [DuplexCollection](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.DuplexCollection.html) classes. However, due to the layered structure of ui5-fs, it needs to be decided whether `remove` should actually remove a resource from its source or just ignore it at a higher level. Removing from source might not be intended. Ignoring a resource on a higher level could cause confusion since it might not be ignored when asking a different ReaderCollection for it.
 
 ## Unresolved Questions and Bikeshedding
 

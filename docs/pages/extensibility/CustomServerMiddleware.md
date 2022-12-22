@@ -98,7 +98,7 @@ A custom middleware implementation needs to return a function with the following
  * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
  *      Specification version-dependent interface to a
  *      MiddlewareUtil instance. See the corresponding API reference for details:
- *      https://sap.github.io/ui5-tooling/stable/api/module-@ui5_server.middleware.MiddlewareUtil.html
+ *      https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html
  * @param {@ui5/logger/GroupLogger} parameters.log
  *      Logger instance for use in the custom middleware.
  *      This parameter is only provided to custom middleware
@@ -156,6 +156,6 @@ Live demo of the above example: https://github.com/SAP/openui5-sample-app/tree/d
 
 ## Helper Class `MiddlewareUtil`
 
-Custom middleware defining [Specification Version](../Configuration.md#specification-versions) 2.0 or higher have access to an interface of a [MiddlewareUtil](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html) instance.
+Custom middleware defining [Specification Version](../Configuration.md#specification-versions) 2.0 or higher have access to an interface of a [MiddlewareUtil](https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html) instance.
 
-In this case, a `middlewareUtil` object is provided as a part of the custom middleware's [parameters](#custom-middleware-implementation). Depending on the specification version of the custom middleware, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [MiddlewareUtil API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html).
+In this case, a `middlewareUtil` object is provided as a part of the custom middleware's [parameters](#custom-middleware-implementation). Depending on the specification version of the custom middleware, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [MiddlewareUtil API reference](https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html).
