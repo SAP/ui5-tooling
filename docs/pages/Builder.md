@@ -48,38 +48,32 @@ A project can add custom tasks to the build by using the [Custom Tasks Extensibi
 
 ### Standard Tasks
 
-All available standard tasks are documented [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html) and are listed below in the order of their execution:
+All available standard tasks are documented [in the API reference](https://sap.github.io/ui5-tooling/v3/api/index.html). Search for `@ui5/builder/tasks/` to filter the API reference for all available tasks. The list below offers the actual order of their execution:
 
-| Task | Type `application` | Type `library` | Type `theme-library` |
-| ---- | :----: | :----: | :----: |
-| escapeNonAsciiCharacters | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |  |
-| replaceCopyright | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
-| replaceVersion | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
-| replaceBuildtime |  | {: .sap-icon-circle-task-2 } |  |
-| generateJsdoc |  | {: .sap-icon-circle-task }^1^ |  |
-| executeJsdocSdkTransformation |  | {: .sap-icon-circle-task }^1^ |  |
-| generateFlexChangesBundle |  | {: .sap-icon-circle-task-2 } |  |
-| generateManifestBundle | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |  |
-| generateLibraryManifest |  | {: .sap-icon-circle-task-2 } |  |
-| generateLibraryPreload |  | {: .sap-icon-circle-task-2 } |  |
-| generateComponentPreload | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task }^2^ |  |
-| generateStandaloneAppBundle | {: .sap-icon-circle-task }^3^ |  |  |
-| transformBootstrapHtml | {: .sap-icon-circle-task }^3^ |  |  |
-| generateBundle | {: .sap-icon-circle-task }^4^ | {: .sap-icon-circle-task }^4^ |  |
-| buildThemes |  | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |
-| generateThemeDesignerResources |  | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |
-| createDebugFiles | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |  |
-| uglify | {: .sap-icon-circle-task-2 } | {: .sap-icon-circle-task-2 } |  |
-| generateVersionInfo | {: .sap-icon-circle-task-2 } |  |  |
-| generateCachebusterInfo | {: .sap-icon-circle-task } |  |  |
-| generateApiIndex | {: .sap-icon-circle-task }^1^ |  |  |
-| generateResourcesJson | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } | {: .sap-icon-circle-task } |
+| Task                      | Type `application` | Type `library` | Type `theme-library` |
+| ------------------------- | :----------------: | :------------: | :------------------: |
+| escapeNonAsciiCharacters  | *enabled*          | *enabled*      |                      |
+| replaceCopyright          | *enabled*          | *enabled*      | *enabled*            |
+| replaceVersion            | *enabled*          | *enabled*      | *enabled*            |
+| replaceBuildtime          |                    | *enabled*      |                      |
+| generateJsdoc             |                    | *disabled* ^1^ |                      |
+| executeJsdocSdkTransformation |                | *disabled* ^1^ |                      |
+| minify                    | *enabled*          | *enabled*      |                      |
+| generateFlexChangesBundle |                    | *enabled*      |                      |
+| generateLibraryManifest   |                    | *enabled*      |                      |
+| generateComponentPreload  | *enabled*          | *disabled* ^2^ |                      |
+| generateLibraryPreload    |                    | *enabled*      |                      |
+| generateStandaloneAppBundle | *disabled* ^3^   |                |                      |
+| transformBootstrapHtml    | *disabled* ^3^     |                |                      |
+| generateBundle            | *disabled* ^4^     | *disabled* ^4^ |                      |
+| buildThemes               |                    | *enabled*      | *enabled*            |
+| generateThemeDesignerResources |               | *disabled*     | *disabled*           |
+| generateVersionInfo       | *disabled*         |                |                      |
+| generateCachebusterInfo   | *disabled*         |                |                      |
+| generateApiIndex          | *disabled* ^1^     |                |                      |
+| generateResourcesJson     | *disabled*         | *disabled*     | *disabled*           |
 
-*Enabled by default*
-{: .sap-icon-circle-task-2-before }
-
-*Disabled by default. Can be activated by certain build modes, project configuration or by using the `--include-task` [CLI parameter](./CLI.md#ui5-build). See footnotes where given* 
-{: .sap-icon-circle-task-before }
+*Disabled tasks can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](./CLI.md#ui5-build). See footnotes where given*
 
 ---
 
@@ -94,7 +88,7 @@ Processors work with provided resources. They contain the actual build step logi
 Processors can be implemented generically. The string replacer is an example for that.
 Since string replacement is a common build step, it can be useful in different contexts, e.g. code, version, date, and copyright replacement. A concrete replacement operation could be achieved by passing a custom configuration to the processor. This way, multiple tasks can make use of the same processor to achieve their build step.
 
-Available processors are listed [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.processors.html).
+To get a list of all available processors, please visit [the API reference](https://sap.github.io/ui5-tooling/v3/api/index.html) and search for `@ui5/builder/processors/`.
 
 ## Legacy Bundle Tooling (lbt)
 JavaScript port of the "legacy" Maven/Java based bundle tooling.

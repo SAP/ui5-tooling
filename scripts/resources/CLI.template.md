@@ -113,11 +113,11 @@ You have installed the UI5 CLI globally. In addition, the project's `package.jso
 
 This table illustrates which of the two installations is used in different scenarios. Note how the UI5 CLI always tries to prefer the version installed in the project.
 
-| Current Working Directory | Command                         | Global UI5 CLI | Local UI5 CLI |
+| Current Working Directory | Command                         | Global UI5 CLI | Local UI5 CLI  |
 | ------------------------- | ------------------------------- | :-----------------------------: | :----------------------------: |
-| `/`                       |  `ui5 --version`                |  {: .sap-icon-circle-task-2 }   |
-| `/my-application`         |  `ui5 --version`                |                                 |  {: .sap-icon-circle-task-2 }  |
-| `/my-application`         |  `ui5 serve`                    |                                 |  {: .sap-icon-circle-task-2 }  |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |  {: .sap-icon-circle-task-2 }   |
-| `/my-application`         |  `npm start`                    |                                 |  {: .sap-icon-circle-task-2 }  |
-| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |  {: .sap-icon-circle-task-2 }  |
+| `/`                       |  `ui5 --version`                |  enabled                        |
+| `/my-application`         |  `ui5 --version`                |                                 |  enabled                       |
+| `/my-application`         |  `ui5 serve`                    |                                 |  enabled                       |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X ui5 serve` |  enabled                        |
+| `/my-application`         |  `npm start`                    |                                 |  enabled                       |
+| `/my-application`         |  `UI5_CLI_NO_LOCAL=X npm start` |                                 |  enabled                       |
