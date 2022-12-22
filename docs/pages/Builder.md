@@ -6,7 +6,7 @@ Based on a project's type, the UI5 Builder defines a series of build steps to ex
 
 For every type there is a set of default tasks. You can disable single tasks using the `--exclude-task` [CLI parameter](./CLI.md#ui5-build), and you can include tasks using the `--include-task` parameter.
 
-[**API Reference**](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.html){: .md-button .sap-icon-initiative }
+[**API Reference**](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_builder.html){: .md-button .sap-icon-initiative }
 
 ## Types
 Types define how a project can be configured and how it is built. A type orchestrates a set of tasks and defines the order in which they get applied during build phase. Furthermore, it takes care of formatting and validating the project-specific configuration.
@@ -48,7 +48,7 @@ A project can add custom tasks to the build by using the [Custom Tasks Extensibi
 
 ### Standard Tasks
 
-All available standard tasks are documented [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.html) and are listed below in the order of their execution:
+All available standard tasks are documented [in the API reference](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_builder.tasks.html) and are listed below in the order of their execution:
 
 | Task | Type `application` | Type `library` | Type `theme-library` |
 | ---- | :----: | :----: | :----: |
@@ -90,7 +90,7 @@ Processors work with provided resources. They contain the actual build step logi
 Processors can be implemented generically. The string replacer is an example for that.
 Since string replacement is a common build step, it can be useful in different contexts, e.g. code, version, date, and copyright replacement. A concrete replacement operation could be achieved by passing a custom configuration to the processor. This way, multiple tasks can make use of the same processor to achieve their build step.
 
-Available processors are listed [in the API reference](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.processors.html).
+Available processors are listed [in the API reference](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_builder.processors.html).
 
 ## Source Map support
 
