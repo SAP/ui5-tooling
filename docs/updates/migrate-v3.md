@@ -129,7 +129,7 @@ The following processors have been removed:
 
 ## Removal of Standard Middleware
 
-The following middlewares have been removed:
+The following middlewares have been removed from the [standard middlewares list](../../pages/Server/#standard-middleware):
 
 - connectUi5Proxy
 
@@ -138,18 +138,3 @@ The following middlewares have been removed:
 | UI5 Tooling v2              | UI5 Tooling v3              | Note |
 | --------------------------- | --------------------------- | ------------------------- |
 | connectUi5Proxy | *None* | More sophisticated proxy solutions for ui5-server are already available in the form of [custom middleware extensions from the UI5-community](https://bestofui5.org/#/packages?tokens=proxy:tag). Please refactor any custom middleware that attaches to `beforeMiddleware` or `afterMiddleware` of `connectUi5Proxy` to reference some other middleware. |
-
-
-**Updated list of standard middlewares:**
-
-- compression
-- cors
-- csp
-- serveResources
-- serveIndex
-- discovery
-- versionInfo
-- **REMOVED** ~~connectUi5Proxy~~
-- serveThemes
-- testRunner
-- nonReadRequests
