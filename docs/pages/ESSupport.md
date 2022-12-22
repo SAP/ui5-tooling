@@ -1,7 +1,7 @@
 
 # ECMAScript Support
 
-UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the used of certain ECMAScript syntax. In general, UI5 Tooling only analyzes **JavaScript** files of type `script`. [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) are not analyzed.
+UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the used of certain ECMAScript syntax.
 
 | UI5 Tooling Version | Supported ECMAScript Version | Note |
 |-------------------- |----------------------------- | ---- |
@@ -13,6 +13,44 @@ In section [Language Features with Limitations](#language-features-with-limitati
 ## Language Features with Limitations
 
 The following sections describe the limitations grouped by the ECMAScript language feature.
+
+### JavaScript modules
+
+In general, UI5 Tooling only analyzes **JavaScript** files of type `script`. [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) are not analyzed.
+
+Therefore, the `package.json` should not mention the `module` in property `type`.
+
+=== "Supported"
+
+    ```json title="package.json"
+    { "type" : "script" }
+    ```
+=== "Not Supported"
+
+    ```json title="package.json" hl_lines="1"
+    { "type" : "module" }
+    ```
+
+UI5 Tooling and the UI5 Runtime does not support the usage of `export` and `import` of JavaScript Modules. Therefore, `sap.ui.define` has to be used.
+
+=== "Supported"
+
+    ```javascript
+    sap.ui.define([
+        "ModuleA",
+        "ModuleB"
+    ], function(ModuleA, ModuleB) {
+        return ModuleA.extend("ModuleC", {});
+    });
+    ```
+
+=== "Not Supported"
+
+    ```javascript hl_lines="1 2 3"
+    import ModuleA from "ModuleA";
+    import ModuleB from "ModuleB";
+    export default class ModuleC extends ModuleA {};
+    ```
 
 ### Template Literal
 
