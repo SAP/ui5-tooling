@@ -10,6 +10,7 @@
   "properties": {
     "specVersion": {
       "enum": [
+        "3.0",
         "2.6",
         "2.5",
         "2.4",
@@ -21,13 +22,14 @@
         "1.0",
         "0.1"
       ],
-      "errorMessage": "Unsupported \"specVersion\"\nYour UI5 CLI installation might be outdated.\nSupported specification versions: \"2.6\", \"2.5\", \"2.4\", \"2.3\", \"2.2\", \"2.1\", \"2.0\", \"1.1\", \"1.0\", \"0.1\"\nFor details see: https://sap.github.io/ui5-tooling/pages/Configuration/#specification-versions"
+      "errorMessage": "Unsupported \"specVersion\"\nYour UI5 CLI installation might be outdated.\nSupported specification versions: \"3.0\", \"2.6\", \"2.5\", \"2.4\", \"2.3\", \"2.2\", \"2.1\", \"2.0\", \"1.1\", \"1.0\", \"0.1\"\nFor details see: https://sap.github.io/ui5-tooling/pages/Configuration/#specification-versions"
     }
   },
   "if": {
     "properties": {
       "specVersion": {
         "enum": [
+          "3.0",
           "2.6",
           "2.5",
           "2.4",
@@ -47,6 +49,7 @@
     "properties": {
       "specVersion": {
         "enum": [
+          "3.0",
           "2.6",
           "2.5",
           "2.4",
@@ -83,6 +86,7 @@
       "properties": {
         "specVersion": {
           "enum": [
+            "3.0",
             "2.6",
             "2.5",
             "2.4",
@@ -134,7 +138,7 @@
             "properties": {
               "specVersion": {
                 "enum": [
-                  "2.6"
+                  "3.0"
                 ]
               }
             }
@@ -144,7 +148,7 @@
             "properties": {
               "specVersion": {
                 "enum": [
-                  "2.6"
+                  "3.0"
                 ]
               },
               "kind": {
@@ -168,7 +172,7 @@
                 "$ref": "#/then/then/else/then/definitions/resources"
               },
               "builder": {
-                "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.6"
+                "$ref": "#/then/then/else/then/definitions/builder-specVersion-3.0"
               },
               "server": {
                 "$ref": "#/then/then/definitions/server"
@@ -184,7 +188,7 @@
               "properties": {
                 "specVersion": {
                   "enum": [
-                    "2.5"
+                    "2.6"
                   ]
                 }
               }
@@ -194,7 +198,7 @@
               "properties": {
                 "specVersion": {
                   "enum": [
-                    "2.5"
+                    "2.6"
                   ]
                 },
                 "kind": {
@@ -218,7 +222,7 @@
                   "$ref": "#/then/then/else/then/definitions/resources"
                 },
                 "builder": {
-                  "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.5"
+                  "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.6"
                 },
                 "server": {
                   "$ref": "#/then/then/definitions/server"
@@ -234,7 +238,7 @@
                 "properties": {
                   "specVersion": {
                     "enum": [
-                      "2.4"
+                      "2.5"
                     ]
                   }
                 }
@@ -244,7 +248,7 @@
                 "properties": {
                   "specVersion": {
                     "enum": [
-                      "2.4"
+                      "2.5"
                     ]
                   },
                   "kind": {
@@ -268,7 +272,7 @@
                     "$ref": "#/then/then/else/then/definitions/resources"
                   },
                   "builder": {
-                    "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.4"
+                    "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.5"
                   },
                   "server": {
                     "$ref": "#/then/then/definitions/server"
@@ -284,7 +288,7 @@
                   "properties": {
                     "specVersion": {
                       "enum": [
-                        "2.3"
+                        "2.4"
                       ]
                     }
                   }
@@ -294,7 +298,7 @@
                   "properties": {
                     "specVersion": {
                       "enum": [
-                        "2.3"
+                        "2.4"
                       ]
                     },
                     "kind": {
@@ -318,7 +322,7 @@
                       "$ref": "#/then/then/else/then/definitions/resources"
                     },
                     "builder": {
-                      "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.3"
+                      "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.4"
                     },
                     "server": {
                       "$ref": "#/then/then/definitions/server"
@@ -334,8 +338,7 @@
                     "properties": {
                       "specVersion": {
                         "enum": [
-                          "2.1",
-                          "2.2"
+                          "2.3"
                         ]
                       }
                     }
@@ -345,8 +348,7 @@
                     "properties": {
                       "specVersion": {
                         "enum": [
-                          "2.1",
-                          "2.2"
+                          "2.3"
                         ]
                       },
                       "kind": {
@@ -370,7 +372,7 @@
                         "$ref": "#/then/then/else/then/definitions/resources"
                       },
                       "builder": {
-                        "$ref": "#/then/then/else/then/definitions/builder"
+                        "$ref": "#/then/then/else/then/definitions/builder-specVersion-2.3"
                       },
                       "server": {
                         "$ref": "#/then/then/definitions/server"
@@ -382,38 +384,91 @@
                     }
                   },
                   "else": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "specVersion": {
-                        "enum": [
-                          "2.0"
-                        ]
-                      },
-                      "kind": {
-                        "enum": [
-                          "project",
-                          null
-                        ]
-                      },
-                      "type": {
-                        "enum": [
-                          "application"
-                        ]
-                      },
-                      "metadata": {
-                        "$ref": "#/then/then/definitions/metadata"
-                      },
-                      "framework": {
-                        "$ref": "#/then/then/definitions/framework"
-                      },
-                      "resources": {
-                        "$ref": "#/then/then/else/then/definitions/resources"
-                      },
-                      "builder": {
-                        "$ref": "#/then/then/else/then/definitions/builder"
-                      },
-                      "server": {
-                        "$ref": "#/then/then/definitions/server"
+                    "if": {
+                      "properties": {
+                        "specVersion": {
+                          "enum": [
+                            "2.1",
+                            "2.2"
+                          ]
+                        }
+                      }
+                    },
+                    "then": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "specVersion": {
+                          "enum": [
+                            "2.1",
+                            "2.2"
+                          ]
+                        },
+                        "kind": {
+                          "enum": [
+                            "project",
+                            null
+                          ]
+                        },
+                        "type": {
+                          "enum": [
+                            "application"
+                          ]
+                        },
+                        "metadata": {
+                          "$ref": "#/then/then/definitions/metadata"
+                        },
+                        "framework": {
+                          "$ref": "#/then/then/definitions/framework"
+                        },
+                        "resources": {
+                          "$ref": "#/then/then/else/then/definitions/resources"
+                        },
+                        "builder": {
+                          "$ref": "#/then/then/else/then/definitions/builder"
+                        },
+                        "server": {
+                          "$ref": "#/then/then/definitions/server"
+                        },
+                        "customConfiguration": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      }
+                    },
+                    "else": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "specVersion": {
+                          "enum": [
+                            "2.0"
+                          ]
+                        },
+                        "kind": {
+                          "enum": [
+                            "project",
+                            null
+                          ]
+                        },
+                        "type": {
+                          "enum": [
+                            "application"
+                          ]
+                        },
+                        "metadata": {
+                          "$ref": "#/then/then/definitions/metadata"
+                        },
+                        "framework": {
+                          "$ref": "#/then/then/definitions/framework"
+                        },
+                        "resources": {
+                          "$ref": "#/then/then/else/then/definitions/resources"
+                        },
+                        "builder": {
+                          "$ref": "#/then/then/else/then/definitions/builder"
+                        },
+                        "server": {
+                          "$ref": "#/then/then/definitions/server"
+                        }
                       }
                     }
                   }
@@ -604,6 +659,42 @@
                   "$ref": "#/then/then/definitions/builder-settings"
                 }
               }
+            },
+            "builder-specVersion-3.0": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "resources": {
+                  "$ref": "#/then/then/definitions/builder-resources"
+                },
+                "cachebuster": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "signatureType": {
+                      "enum": [
+                        "time",
+                        "hash"
+                      ]
+                    }
+                  }
+                },
+                "bundles": {
+                  "$ref": "#/then/then/definitions/builder-bundles-3.0"
+                },
+                "componentPreload": {
+                  "$ref": "#/then/then/definitions/builder-componentPreload-specVersion-2.3"
+                },
+                "customTasks": {
+                  "$ref": "#/then/then/definitions/customTasks"
+                },
+                "minification": {
+                  "$ref": "#/then/then/definitions/builder-minification"
+                },
+                "settings": {
+                  "$ref": "#/then/then/definitions/builder-settings"
+                }
+              }
             }
           }
         },
@@ -626,7 +717,7 @@
               "properties": {
                 "specVersion": {
                   "enum": [
-                    "2.6"
+                    "3.0"
                   ]
                 }
               }
@@ -636,7 +727,7 @@
               "properties": {
                 "specVersion": {
                   "enum": [
-                    "2.6"
+                    "3.0"
                   ]
                 },
                 "kind": {
@@ -660,7 +751,7 @@
                   "$ref": "#/then/then/else/else/then/definitions/resources"
                 },
                 "builder": {
-                  "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.6"
+                  "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-3.0"
                 },
                 "server": {
                   "$ref": "#/then/then/definitions/server"
@@ -676,7 +767,7 @@
                 "properties": {
                   "specVersion": {
                     "enum": [
-                      "2.5"
+                      "2.6"
                     ]
                   }
                 }
@@ -686,7 +777,7 @@
                 "properties": {
                   "specVersion": {
                     "enum": [
-                      "2.5"
+                      "2.6"
                     ]
                   },
                   "kind": {
@@ -710,7 +801,7 @@
                     "$ref": "#/then/then/else/else/then/definitions/resources"
                   },
                   "builder": {
-                    "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.5"
+                    "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.6"
                   },
                   "server": {
                     "$ref": "#/then/then/definitions/server"
@@ -726,7 +817,7 @@
                   "properties": {
                     "specVersion": {
                       "enum": [
-                        "2.4"
+                        "2.5"
                       ]
                     }
                   }
@@ -736,7 +827,7 @@
                   "properties": {
                     "specVersion": {
                       "enum": [
-                        "2.4"
+                        "2.5"
                       ]
                     },
                     "kind": {
@@ -760,7 +851,7 @@
                       "$ref": "#/then/then/else/else/then/definitions/resources"
                     },
                     "builder": {
-                      "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.4"
+                      "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.5"
                     },
                     "server": {
                       "$ref": "#/then/then/definitions/server"
@@ -776,7 +867,7 @@
                     "properties": {
                       "specVersion": {
                         "enum": [
-                          "2.3"
+                          "2.4"
                         ]
                       }
                     }
@@ -786,7 +877,7 @@
                     "properties": {
                       "specVersion": {
                         "enum": [
-                          "2.3"
+                          "2.4"
                         ]
                       },
                       "kind": {
@@ -810,7 +901,7 @@
                         "$ref": "#/then/then/else/else/then/definitions/resources"
                       },
                       "builder": {
-                        "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.3"
+                        "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.4"
                       },
                       "server": {
                         "$ref": "#/then/then/definitions/server"
@@ -826,8 +917,7 @@
                       "properties": {
                         "specVersion": {
                           "enum": [
-                            "2.1",
-                            "2.2"
+                            "2.3"
                           ]
                         }
                       }
@@ -837,8 +927,7 @@
                       "properties": {
                         "specVersion": {
                           "enum": [
-                            "2.1",
-                            "2.2"
+                            "2.3"
                           ]
                         },
                         "kind": {
@@ -862,7 +951,7 @@
                           "$ref": "#/then/then/else/else/then/definitions/resources"
                         },
                         "builder": {
-                          "$ref": "#/then/then/else/else/then/definitions/builder"
+                          "$ref": "#/then/then/else/else/then/definitions/builder-specVersion-2.3"
                         },
                         "server": {
                           "$ref": "#/then/then/definitions/server"
@@ -874,38 +963,91 @@
                       }
                     },
                     "else": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "specVersion": {
-                          "enum": [
-                            "2.0"
-                          ]
-                        },
-                        "kind": {
-                          "enum": [
-                            "project",
-                            null
-                          ]
-                        },
-                        "type": {
-                          "enum": [
-                            "library"
-                          ]
-                        },
-                        "metadata": {
-                          "$ref": "#/then/then/definitions/metadata"
-                        },
-                        "framework": {
-                          "$ref": "#/then/then/definitions/framework"
-                        },
-                        "resources": {
-                          "$ref": "#/then/then/else/else/then/definitions/resources"
-                        },
-                        "builder": {
-                          "$ref": "#/then/then/else/else/then/definitions/builder"
-                        },
-                        "server": {
-                          "$ref": "#/then/then/definitions/server"
+                      "if": {
+                        "properties": {
+                          "specVersion": {
+                            "enum": [
+                              "2.1",
+                              "2.2"
+                            ]
+                          }
+                        }
+                      },
+                      "then": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "specVersion": {
+                            "enum": [
+                              "2.1",
+                              "2.2"
+                            ]
+                          },
+                          "kind": {
+                            "enum": [
+                              "project",
+                              null
+                            ]
+                          },
+                          "type": {
+                            "enum": [
+                              "library"
+                            ]
+                          },
+                          "metadata": {
+                            "$ref": "#/then/then/definitions/metadata"
+                          },
+                          "framework": {
+                            "$ref": "#/then/then/definitions/framework"
+                          },
+                          "resources": {
+                            "$ref": "#/then/then/else/else/then/definitions/resources"
+                          },
+                          "builder": {
+                            "$ref": "#/then/then/else/else/then/definitions/builder"
+                          },
+                          "server": {
+                            "$ref": "#/then/then/definitions/server"
+                          },
+                          "customConfiguration": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        }
+                      },
+                      "else": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "specVersion": {
+                            "enum": [
+                              "2.0"
+                            ]
+                          },
+                          "kind": {
+                            "enum": [
+                              "project",
+                              null
+                            ]
+                          },
+                          "type": {
+                            "enum": [
+                              "library"
+                            ]
+                          },
+                          "metadata": {
+                            "$ref": "#/then/then/definitions/metadata"
+                          },
+                          "framework": {
+                            "$ref": "#/then/then/definitions/framework"
+                          },
+                          "resources": {
+                            "$ref": "#/then/then/else/else/then/definitions/resources"
+                          },
+                          "builder": {
+                            "$ref": "#/then/then/else/else/then/definitions/builder"
+                          },
+                          "server": {
+                            "$ref": "#/then/then/definitions/server"
+                          }
                         }
                       }
                     }
@@ -1078,6 +1220,36 @@
                     "$ref": "#/then/then/definitions/builder-settings"
                   }
                 }
+              },
+              "builder-specVersion-3.0": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "resources": {
+                    "$ref": "#/then/then/definitions/builder-resources"
+                  },
+                  "jsdoc": {
+                    "$ref": "#/then/then/else/else/then/definitions/builder-jsdoc"
+                  },
+                  "bundles": {
+                    "$ref": "#/then/then/definitions/builder-bundles-3.0"
+                  },
+                  "componentPreload": {
+                    "$ref": "#/then/then/definitions/builder-componentPreload-specVersion-2.3"
+                  },
+                  "libraryPreload": {
+                    "$ref": "#/then/then/definitions/builder-libraryPreload"
+                  },
+                  "customTasks": {
+                    "$ref": "#/then/then/definitions/customTasks"
+                  },
+                  "minification": {
+                    "$ref": "#/then/then/definitions/builder-minification"
+                  },
+                  "settings": {
+                    "$ref": "#/then/then/definitions/builder-settings"
+                  }
+                }
               }
             }
           },
@@ -1101,7 +1273,8 @@
                   "specVersion": {
                     "enum": [
                       "2.5",
-                      "2.6"
+                      "2.6",
+                      "3.0"
                     ]
                   }
                 }
@@ -1112,7 +1285,8 @@
                   "specVersion": {
                     "enum": [
                       "2.5",
-                      "2.6"
+                      "2.6",
+                      "3.0"
                     ]
                   },
                   "kind": {
@@ -1290,7 +1464,8 @@
                     "specVersion": {
                       "enum": [
                         "2.5",
-                        "2.6"
+                        "2.6",
+                        "3.0"
                       ]
                     }
                   }
@@ -1301,7 +1476,8 @@
                     "specVersion": {
                       "enum": [
                         "2.5",
-                        "2.6"
+                        "2.6",
+                        "3.0"
                       ]
                     },
                     "kind": {
@@ -1502,72 +1678,7 @@
             "additionalProperties": false,
             "properties": {
               "bundleDefinition": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": [
-                  "name"
-                ],
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "defaultFileTypes": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "sections": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "required": [
-                        "mode",
-                        "filters"
-                      ],
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "mode": {
-                          "enum": [
-                            "raw",
-                            "preload",
-                            "require",
-                            "provided"
-                          ]
-                        },
-                        "filters": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "resolve": {
-                          "type": "boolean",
-                          "default": false
-                        },
-                        "resolveConditional": {
-                          "type": "boolean",
-                          "default": false
-                        },
-                        "renderer": {
-                          "type": "boolean",
-                          "default": false
-                        },
-                        "sort": {
-                          "type": "boolean",
-                          "default": true
-                        },
-                        "declareRawModules": {
-                          "type": "boolean",
-                          "default": false
-                        }
-                      }
-                    }
-                  }
-                }
+                "$ref": "#/then/then/definitions/builder-bundles-bundleDefinition"
               },
               "bundleOptions": {
                 "$ref": "#/then/then/definitions/builder-bundles-bundleOptions"
@@ -1583,76 +1694,163 @@
             "additionalProperties": false,
             "properties": {
               "bundleDefinition": {
+                "$ref": "#/then/then/definitions/builder-bundles-bundleDefinition-2.4"
+              },
+              "bundleOptions": {
+                "$ref": "#/then/then/definitions/builder-bundles-bundleOptions"
+              }
+            }
+          }
+        },
+        "builder-bundles-3.0": {
+          "type": "array",
+          "additionalProperties": false,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "bundleDefinition": {
+                "$ref": "#/then/then/definitions/builder-bundles-bundleDefinition-2.4"
+              },
+              "bundleOptions": {
+                "$ref": "#/then/then/definitions/builder-bundles-bundleOptions-3.0"
+              }
+            }
+          }
+        },
+        "builder-bundles-bundleDefinition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "defaultFileTypes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sections": {
+              "type": "array",
+              "items": {
                 "type": "object",
                 "additionalProperties": false,
                 "required": [
-                  "name"
+                  "mode",
+                  "filters"
                 ],
                 "properties": {
                   "name": {
                     "type": "string"
                   },
-                  "defaultFileTypes": {
+                  "mode": {
+                    "enum": [
+                      "raw",
+                      "preload",
+                      "require",
+                      "provided"
+                    ]
+                  },
+                  "filters": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     }
                   },
-                  "sections": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "required": [
-                        "mode",
-                        "filters"
-                      ],
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "mode": {
-                          "enum": [
-                            "raw",
-                            "preload",
-                            "require",
-                            "provided",
-                            "bundleInfo"
-                          ]
-                        },
-                        "filters": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "resolve": {
-                          "type": "boolean",
-                          "default": false
-                        },
-                        "resolveConditional": {
-                          "type": "boolean",
-                          "default": false
-                        },
-                        "renderer": {
-                          "type": "boolean",
-                          "default": false
-                        },
-                        "sort": {
-                          "type": "boolean",
-                          "default": true
-                        },
-                        "declareRawModules": {
-                          "type": "boolean",
-                          "default": false
-                        }
-                      }
-                    }
+                  "resolve": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "resolveConditional": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "renderer": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "sort": {
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "declareRawModules": {
+                    "type": "boolean",
+                    "default": false
                   }
                 }
-              },
-              "bundleOptions": {
-                "$ref": "#/then/then/definitions/builder-bundles-bundleOptions"
+              }
+            }
+          }
+        },
+        "builder-bundles-bundleDefinition-2.4": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "defaultFileTypes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sections": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode",
+                  "filters"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "mode": {
+                    "enum": [
+                      "raw",
+                      "preload",
+                      "require",
+                      "provided",
+                      "bundleInfo"
+                    ]
+                  },
+                  "filters": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "resolve": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "resolveConditional": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "renderer": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "sort": {
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "declareRawModules": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
               }
             }
           }
@@ -1680,6 +1878,36 @@
             "numberOfParts": {
               "type": "number",
               "default": 1
+            }
+          }
+        },
+        "builder-bundles-bundleOptions-3.0": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "optimize": {
+              "type": "boolean",
+              "default": true
+            },
+            "decorateBootstrapModule": {
+              "type": "boolean",
+              "default": true
+            },
+            "addTryCatchRestartWrapper": {
+              "type": "boolean",
+              "default": false
+            },
+            "usePredefineCalls": {
+              "type": "boolean",
+              "default": false
+            },
+            "numberOfParts": {
+              "type": "number",
+              "default": 1
+            },
+            "sourceMap": {
+              "type": "boolean",
+              "default": true
             }
           }
         },
@@ -2000,6 +2228,7 @@
         "properties": {
           "specVersion": {
             "enum": [
+              "3.0",
               "2.6",
               "2.5",
               "2.4",
@@ -2059,7 +2288,8 @@
                     "2.3",
                     "2.4",
                     "2.5",
-                    "2.6"
+                    "2.6",
+                    "3.0"
                   ]
                 }
               }
@@ -2074,7 +2304,8 @@
                     "2.3",
                     "2.4",
                     "2.5",
-                    "2.6"
+                    "2.6",
+                    "3.0"
                   ]
                 },
                 "kind": {
@@ -2163,7 +2394,8 @@
                       "2.3",
                       "2.4",
                       "2.5",
-                      "2.6"
+                      "2.6",
+                      "3.0"
                     ]
                   }
                 }
@@ -2178,7 +2410,8 @@
                       "2.3",
                       "2.4",
                       "2.5",
-                      "2.6"
+                      "2.6",
+                      "3.0"
                     ]
                   },
                   "kind": {
@@ -2267,7 +2500,8 @@
                         "2.3",
                         "2.4",
                         "2.5",
-                        "2.6"
+                        "2.6",
+                        "3.0"
                       ]
                     }
                   }
@@ -2282,7 +2516,8 @@
                         "2.3",
                         "2.4",
                         "2.5",
-                        "2.6"
+                        "2.6",
+                        "3.0"
                       ]
                     },
                     "kind": {
