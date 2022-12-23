@@ -434,7 +434,7 @@ The same rule applies also for the usage of deprecated or no longer recommended 
 
 #### Object Expression in Fiori Elements Template Declaration
 
-When declaring a **Fiori Elements Template** using an **Object Expression** in the configuration of the **Fiori Elements Template** is not supported.
+When declaring a **Fiori Elements Template**, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
@@ -483,7 +483,7 @@ When declaring a **Fiori Elements Template** using an **Object Expression** in t
 
 #### Object Expression in Smart Template Declaration
 
-When declaring a **Smart Template** using an **Object Expression** in the configuration of the **Smart Template** is not supported.
+When declaring a **Smart Template*, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
@@ -532,7 +532,7 @@ When declaring a **Smart Template** using an **Object Expression** in the config
 
 #### Object Expression in XMLComposite Declaration
 
-When declaring a **XMLComposite** using an **Object Expression** in the configuration of the **XMLComposite** is not supported.
+When declaring a **XMLComposite*, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
