@@ -126,3 +126,15 @@ The following processors have been removed:
 ^2^ Enabled for projects defining a [component preload configuration](../pages/Configuration.md#component-preload-generation)  
 ^3^ Enabled in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
 ^4^ Enabled for projects defining a [bundle configuration](../pages/Configuration.md#custom-bundling)  
+
+## Removal of Standard Middleware
+
+The following middlewares have been removed from the [standard middlewares list](../../pages/Server/#standard-middleware):
+
+- connectUi5Proxy
+
+**Middleware Migration**
+
+| UI5 Tooling v2              | UI5 Tooling v3              | Note |
+| --------------------------- | --------------------------- | ------------------------- |
+| connectUi5Proxy | *None* | More sophisticated proxy solutions for ui5-server are already available in the form of [custom middleware extensions from the UI5-community](https://bestofui5.org/#/packages?tokens=proxy:tag). Please refactor any custom middleware that attaches to `beforeMiddleware` or `afterMiddleware` of `connectUi5Proxy` to reference some other middleware. |
