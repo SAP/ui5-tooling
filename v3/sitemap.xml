@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://sap.github.io/ui5-tooling/v3/pages/Benchmarking/</loc>
+         <lastmod>2022-12-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://sap.github.io/ui5-tooling/v3/pages/Builder/</loc>
          <lastmod>2022-12-23</lastmod>
          <changefreq>daily</changefreq>
@@ -27,6 +32,11 @@
     </url>
     <url>
          <loc>https://sap.github.io/ui5-tooling/v3/pages/Configuration/</loc>
+         <lastmod>2022-12-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sap.github.io/ui5-tooling/v3/pages/ESSupport/</loc>
          <lastmod>2022-12-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
