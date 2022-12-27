@@ -7,11 +7,13 @@ The UI5 community already created many custom middleware packages which you can 
 Please note that custom middleware packages from third parties can not only modify how your project is served but also execute arbitrary code on your system. In fact, this is the case for all npm packages you install. Always act with the according care and follow best practices.
 
 ## Configuration
+
 In a projects `ui5.yaml` file, you can define additional server middleware modules that will be executed when the request is received by the server. This configuration exclusively affects the server started in this project. Custom middleware configurations defined in any dependencies are ignored.
 
 A middleware may be executed before or after any other middleware. This can either be a [standard middleware](../Server.md#standard-middleware) or another custom middleware.
 
 ### Example: Basic configuration
+
 ```yaml
 specVersion: "3.0"
 type: application
@@ -33,9 +35,11 @@ There can be optional configuration parameters which are passed directly to the 
 An optional mountPath for which the middleware function is invoked can be provided. It will be passed to the `app.use` call (see [express API reference](https://expressjs.com/en/4x/api.html#app.use)).
 
 ### Execution order
+
 Note that middleware configurations are applied in the order they are defined. When referencing another custom middleware, it has to be defined *before* that reference.
 
 ## Custom Middleware Extension
+
 A custom middleware extension consists of a `ui5.yaml` and a [custom middleware implementation](#custom-middleware-implementation). It can be a standalone module or part of an existing UI5 project.
 
 ### Example: ui5.yaml
@@ -82,7 +86,9 @@ middleware:
 ````
 
 ## Custom Middleware Implementation
+
 A custom middleware implementation needs to return a function with the following signature:
+
 ````javascript
 /**
  * Custom UI5 Server middleware API
@@ -112,19 +118,20 @@ A custom middleware implementation needs to return a function with the following
  *      defining Specification Version 3.0 and later.
  * @returns {function} Middleware function to use
  */
-module.exports = function({resources, middlewareUtil, log, options}) {
-    return function (req, res, next) {
+export default function({resources, middlewareUtil, log, options}) {
+    return async function (req, res, next) {
         // [...]
     }
 };
 ````
 
 ### Example: lib/middleware/markdownHandler.js
+
 ````javascript
 // Custom middleware implementation
 
-module.exports = function({resources, middlewareUtil, log, options}) {
-    const MarkdownIt = require('markdown-it');
+export default async function({resources, middlewareUtil, log, options}) {
+    const MarkdownIt = await import('markdown-it');
     const md = new MarkdownIt();
     return function (req, res, next) {
         if (!req.path.endsWith(".html")) {
