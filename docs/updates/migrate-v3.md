@@ -77,9 +77,9 @@ await builder.build({
 **New: @ui5/project v3**
 
 ````javascript
-const {generateProjectGraph} = require("@ui5/project");
+import {graphFromPackageDependencies} from "@ui5/project/graph";
 
-let graph = await generateProjectGraph.usingNodePackageDependencies({cwd: "."});
+let graph = await graphFromPackageDependencies({cwd: "."});
 
 await graph.build({
     destPath: "./dist",

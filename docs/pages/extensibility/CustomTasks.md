@@ -138,8 +138,8 @@ A custom task implementation needs to return a function with the following signa
  * @returns {Promise<undefined>}
  *      Promise resolving once the task has finished
  */
-module.exports = async function({workspace, dependencies, taskUtil, options}) {
-	// [...]
+export default async function({workspace, dependencies, taskUtil, options}) {
+    // [...]
 };
 
 ````
@@ -171,11 +171,11 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
  *      the project currently being built.
  * @param {function} parameters.getProject
  *      Identical to TaskUtil#getProject
- * 		(see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
+ *         (see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
  *      Retrieves a Project-instance for a given project name.
  * @param {function} parameters.getDependencies
  *      Identical to TaskUtil#getDependencies
- * 		(see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
+ *         (see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
  *      Creates a list of names of all direct dependencies
  *      of a given project.
  * @params {object} parameters.options
@@ -186,17 +186,17 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
  *      UI5 Tooling will ensure that those dependencies have been
  *      built before executing the task.
  */
-module.exports.determineRequiredDependencies = async function({availableDependencies, getProject, getDependencies, options}) {
-	// "availableDependencies" could look like this: Set(3) { "sap.ui.core", "sap.m", "my.lib" }
+export async function determineRequiredDependencies({availableDependencies, getProject, getDependencies, options}) {
+    // "availableDependencies" could look like this: Set(3) { "sap.ui.core", "sap.m", "my.lib" }
 
-	// Reduce list of required dependencies: Do not require any UI5 framework projects
-	availableDependencies.forEach((depName) => {
-		if (getProject(depName).isFrameworkProject()) {
-		    availableDependencies.delete(depName)
-		}
-	});
-	// => Only resources of project "my.lib" will be available to the task
-	return availableDependencies;
+    // Reduce list of required dependencies: Do not require any UI5 framework projects
+    availableDependencies.forEach((depName) => {
+        if (getProject(depName).isFrameworkProject()) {
+            availableDependencies.delete(depName)
+        }
+    });
+    // => Only resources of project "my.lib" will be available to the task
+    return availableDependencies;
 }
 ````
 
@@ -207,31 +207,31 @@ The following code snippets show examples for custom task implementations.
 ### Example: lib/tasks/renderMarkdownFiles.js
 
 ````javascript
-const path = require("path");
-const renderMarkdown = require("./renderMarkdown");
+import path from "node:path";
+import renderMarkdown from "./renderMarkdown.js";
 
 /*
  * Render all .md (Markdown) files in the project to HTML
  */
-module.exports = async function({workspace, dependencies, log, taskUtil, options}) {
-	const {createResource} = taskUtil.resourceFactory;
-	const textResources = await workspace.byGlob("**/*.md");
-	await Promise.all(textResources.map(async (resource) => {
-		const markdownResourcePath = resource.getPath();
+export default async function({workspace, dependencies, log, taskUtil, options}) {
+    const {createResource} = taskUtil.resourceFactory;
+    const textResources = await workspace.byGlob("**/*.md");
+    await Promise.all(textResources.map(async (resource) => {
+        const markdownResourcePath = resource.getPath();
 
-		log.info(`Rendering markdown file ${markdownResourcePath}...`);
-		const htmlString = await renderMarkdown(await resource.getString(), options.configuration);
+        log.info(`Rendering markdown file ${markdownResourcePath}...`);
+        const htmlString = await renderMarkdown(await resource.getString(), options.configuration);
 
-		// Note: @ui5/fs virtual paths are always (on *all* platforms) POSIX. Therefore using path.posix here
-		const newResourceName = path.posix.basename(markdownResourcePath, ".md") + ".html";
-		const newResourcePath = path.posix.join(path.posix.dirname(markdownResourcePath), newResourceName);
+        // Note: @ui5/fs virtual paths are always (on *all* platforms) POSIX. Therefore using path.posix here
+        const newResourceName = path.posix.basename(markdownResourcePath, ".md") + ".html";
+        const newResourcePath = path.posix.join(path.posix.dirname(markdownResourcePath), newResourceName);
 
-		const markdownResource = createResource({
-			path: newResourcePath,
-			string: htmlString
-		});
-		await workspace.write(markdownResource);
-	}));
+        const markdownResource = createResource({
+            path: newResourcePath,
+            string: htmlString
+        });
+        await workspace.write(markdownResource);
+    }));
 };
 ````
 
@@ -243,50 +243,50 @@ module.exports = async function({workspace, dependencies, log, taskUtil, options
 ### Example: lib/tasks/compileLicenseSummary.js
 
 ````javascript
-const path = require("path");
+import path from "node:path";
 
 /*
  * Compile a list of all licenses of the project's dependencies
  * and write it to "dependency-license-summary.json"
  */
-module.exports = async function({workspace, dependencies, log, taskUtil, options}) {
-	const {createResource} = taskUtil.resourceFactory;
-	const licenses = new Map();
-	const projectsVisited = new Set();
+export default async function({workspace, dependencies, log, taskUtil, options}) {
+    const {createResource} = taskUtil.resourceFactory;
+    const licenses = new Map();
+    const projectsVisited = new Set();
 
-	async function processProject(project) {
-		return Promise.all(taskUtil.getDependencies().map(async (projectName) => {
-			if (projectsVisited.has(projectName)) {
-				return;
-			}
-			projectsVisited.add(projectName);
-			const project = taskUtil.getProject(projectName);
-			const pkgResource = await project.getRootReader().byPath("/package.json");
-			if (pkgResource) {
-				const pkg = JSON.parse(await pkgResource.getString())
+    async function processProject(project) {
+        return Promise.all(taskUtil.getDependencies().map(async (projectName) => {
+            if (projectsVisited.has(projectName)) {
+                return;
+            }
+            projectsVisited.add(projectName);
+            const project = taskUtil.getProject(projectName);
+            const pkgResource = await project.getRootReader().byPath("/package.json");
+            if (pkgResource) {
+                const pkg = JSON.parse(await pkgResource.getString())
 
-				// Add project to list of licenses
-				if (licenses.has(pkg.license)) {
-					licenses.get(pkg.license).push(project.getName());
-				} else {
-					// License not yet in map. Define it
-					licenses.set(pkg.license, [project.getName()]);
-				}
+                // Add project to list of licenses
+                if (licenses.has(pkg.license)) {
+                    licenses.get(pkg.license).push(project.getName());
+                } else {
+                    // License not yet in map. Define it
+                    licenses.set(pkg.license, [project.getName()]);
+                }
 
-			} else {
-				log.info(`Could not find package.json file in project ${project.getName()}`);
-			}
-			return processProject(project);
-		}));
-	}
-	// Start processing dependencies of the root project
-	await processProject(taskUtil.getProject());
+            } else {
+                log.info(`Could not find package.json file in project ${project.getName()}`);
+            }
+            return processProject(project);
+        }));
+    }
+    // Start processing dependencies of the root project
+    await processProject(taskUtil.getProject());
 
-	const summaryResource = createResource({
-		path: "/dependency-license-summary.json",
-		string: JSON.stringify(Object.fromEntries(licenses), null, "\t")
-	});
-	await workspace.write(summaryResource);
+    const summaryResource = createResource({
+        path: "/dependency-license-summary.json",
+        string: JSON.stringify(Object.fromEntries(licenses), null, "\t")
+    });
+    await workspace.write(summaryResource);
 };
 ````
 
