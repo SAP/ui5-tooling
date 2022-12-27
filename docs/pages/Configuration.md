@@ -708,7 +708,7 @@ Version | UI5 CLI Release
 ### Specification Version 3.0 [beta]
 
 !!! info
-    **Note:** UI5 Tooling version 3.0 is currently in development. If you wish to migrate to the latest UI5 Tooling, please check the [Upgrade Guide for v3](../../updates/migrate-v3/)
+    **Note:** UI5 Tooling version 3.0 is currently in development. If you wish to migrate to the latest UI5 Tooling, check the [Upgrade Guide for v3](../../updates/migrate-v3/)
 
 **Breaking changes:**
 
