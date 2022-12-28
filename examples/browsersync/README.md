@@ -7,7 +7,7 @@ This example shows how to use `ui5 serve` in combination with [Browsersync](http
 1. Install all dependencies
    ```sh
    npm install
-   ````
+   ```
 2. Run the server
    ```
    npm start
