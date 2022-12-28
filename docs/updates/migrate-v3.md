@@ -24,10 +24,10 @@ This means your old projects might still work. Unless they have non-standard con
 For extensions defining the latest **Specification Versions 3.0 and higher**, some changes and improvements apply:
 
 * **Breaking Change:** Custom Tasks need to request access to dependency resources
-    * By default, resources of dependencies can't be accessed. A custom task requiring such access needs to implement a callback function `determineRequiredDependencies`, in which it can also define the scope of dependency-access. Please refer to the [Custom Task: Required Dependencies documentation](../pages/extensibility/CustomTasks.md#required-dependencies)
+  * By default, resources of dependencies can't be accessed. A custom task requiring such access needs to implement a callback function `determineRequiredDependencies`, in which it can also define the scope of dependency-access. Please refer to the [Custom Task: Required Dependencies documentation](../pages/extensibility/CustomTasks.md#required-dependencies)
 * **Features:** Enhanced TaskUtil and MiddlewareUtil API
-    * For example providing access to a [project's root directory](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
-    * See also [Custom Tasks](../pages/extensibility/CustomTasks.md) and [Custom Server Middleware](../pages/extensibility/CustomServerMiddleware.md)
+  * For example providing access to a [project's root directory](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
+  * See also [Custom Tasks](../pages/extensibility/CustomTasks.md) and [Custom Server Middleware](../pages/extensibility/CustomServerMiddleware.md)
 
 ## Changes to @ui5/project and @ui5/builder API
 
@@ -42,13 +42,13 @@ The JSON based, internal representation of a project dependency tree has been re
 
     ```diff title="package.json"
     {
-    	[...]
-    - 	  "ui5": {
-	-	    "dependencies": [
-	-	      "my-package"
-	-	    ]
-	-	  }
-		[...]
+        [...]
+    -     "ui5": {
+    -       "dependencies": [
+    -         "my-package"
+    -       ]
+    -     }
+        [...]
     }
     ```
 
@@ -61,7 +61,7 @@ The JSON based, internal representation of a project dependency tree has been re
 
 **Old: @ui5/project v2**
 
-````javascript
+```js
 const {normalizer} = require("@ui5/project");
 const {builder} = require("@ui5/builder");
 
@@ -72,20 +72,35 @@ await builder.build({
     destPath: "./dist",
     buildDependencies: true,
 });
-````
+```
 
 **New: @ui5/project v3**
 
-````javascript
-import {graphFromPackageDependencies} from "@ui5/project/graph";
+=== "CommonJS"
 
-let graph = await graphFromPackageDependencies({cwd: "."});
+    ```js
+    const {graphFromPackageDependencies} = await import("@ui5/project/graph");
 
-await graph.build({
-    destPath: "./dist",
-    includedDependencies: ["*"], // Parameter "buildDependencies" has been removed
-});
-````
+    let graph = await graphFromPackageDependencies({cwd: "."});
+
+    await graph.build({
+        destPath: "./dist",
+        includedDependencies: ["*"], // Parameter "buildDependencies" has been removed
+    });
+    ```
+
+=== "ESM"
+
+    ```js
+    import {graphFromPackageDependencies} from "@ui5/project/graph";
+
+    let graph = await graphFromPackageDependencies({cwd: "."});
+
+    await graph.build({
+        destPath: "./dist",
+        includedDependencies: ["*"], // Parameter "buildDependencies" has been removed
+    });
+    ```
 
 Also the @ui5/server API has been changed. Instead of a `tree`, it now only accepts a `graph` instance as the first parameter.
 
@@ -104,24 +119,24 @@ Especially for projects of type `library`, where standard tasks like [`buildThem
 In the future, a caching mechanism should help and improve build times with this new behavior.
 
 !!! info
-	The CLI flags `-a` and `--all` are still present and now an alias for `--include-all-dependencies`. This flag (along with `--include-dependency*` and `--exclude-dependency*`) mainly controls the **build output**. Use it to define whether dependency resources should be part of the build result.
+    The CLI flags `-a` and `--all` are still present and now an alias for `--include-all-dependencies`. This flag (along with `--include-dependency*` and `--exclude-dependency*`) mainly controls the **build output**. Use it to define whether dependency resources should be part of the build result.
 
-	Please also refer to the [`ui5 build` documentation](../pages/CLI.md#ui5-build).
+    Please also refer to the [`ui5 build` documentation](../pages/CLI.md#ui5-build).
 
 ## Removal of Standard Tasks and Processors
 
 The following tasks have been removed:
 
-- createDebugFiles
-- generateManifestBundle
-- uglify
+* createDebugFiles
+* generateManifestBundle
+* uglify
 
 The following processors have been removed:
 
-- debugFileCreator
-- manifestBundler
-- resourceCopier
-- uglifier
+* debugFileCreator
+* manifestBundler
+* resourceCopier
+* uglifier
 
 **Task Migration**
 
@@ -130,7 +145,6 @@ The following processors have been removed:
 | createDebugFiles<br/>uglify | minify                      | The minify task is executed earlier, before the bundling process takes place. Any existing 'beforeTask' or 'afterTask' configuration of custom tasks might need to be adapted to cater for this change. |
 | generateVersionInfo         | generateVersionInfo         | The task is no longer executed by default for application projects. It can be re-enabled by using the `--include-task` parameter. |
 | generateManifestBundle      | *None*                      | This task was only needed for the HTML5 repository in Cloud Foundry. Meanwhile, the HTML5 repository implemented its own mechanism, so the task is no longer needed |
-
 
 **Updated list of standard tasks:**
 
@@ -173,7 +187,7 @@ The following processors have been removed:
 
 The following middleware has been removed from the [standard middlewares list](../../pages/Server/#standard-middleware):
 
-- connectUi5Proxy
+* connectUi5Proxy
 
 **Middleware Migration**
 

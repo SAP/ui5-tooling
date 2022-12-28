@@ -1,13 +1,15 @@
 ![UI5 logo](images/UI5_logo_wide.png)
 
 # UI5 Tooling
+
 An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
 [**Get Started**](./pages/GettingStarted.md){: .md-button .md-button--primary .sap-icon-initiative }
 
-
 ## Main Features
+
 ### 💻 UI5 CLI
+
 *Also see the [UI5 CLI Documentation](./pages/CLI.md)*
 
 ```sh
@@ -48,6 +50,7 @@ Added framework libraries sap.ui.core sap.m themelib_sap_fiori_3 as dependencies
 ```
 
 #### 🏄 Development Server
+
 Start a local development server to work on your project.  
 *Also see the [Server Documentation](./pages/Server.md)*
 
@@ -58,6 +61,7 @@ URL: http://localhost:8080
 ```
 
 #### 🛠 Build for Production
+
 Build an optimized version of your project.  
 *Also see the [Builder Documentation](./pages/Builder.md)*
 
@@ -76,25 +80,44 @@ Build succeeded in 363 ms
 ```
 
 ### 🧪 Node.js API
+
 Most UI5 Tooling modules provide JavaScript APIs for direct consumption in other Node.js projects.
 This allows you to rely on UI5 Tooling for UI5-specific build functionality and project handling, while creating your own tools to perfectly match the needs of your project.
 
 All available APIs are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/v3/api/index.html).
 
-```js linenums="1"
-import {graphFromPackageDependencies} from "@ui5/project/graph";
+=== "CommonJS"
 
-async function buildApp(projectPath, destinationPath) {
-    const graph = await graphFromPackageDependencies({
-        cwd: projectPath
-    });
-    await graph.build({
-        destPath: destinationPath,
-        selfContained: true,
-        excludedTasks: ["transformBootstrapHtml"],
-        includedDependencies: ["*"]
-    });
-}
+    ```js linenums="1"
+    async function buildApp(projectPath, destinationPath) {
+        const {graphFromPackageDependencies} = 
+            await import("@ui5/project/graph");
+        const graph = await graphFromPackageDependencies({
+            cwd: projectPath
+        });
+        await graph.build({
+            destPath: destinationPath,
+            selfContained: true,
+            excludedTasks: ["transformBootstrapHtml"],
+            includedDependencies: ["*"]
+        });
+    }
+    ```
 
-[...]
-```
+=== "ESM"
+
+    ```js linenums="1"
+    import {graphFromPackageDependencies} from "@ui5/project/graph";
+
+    async function buildApp(projectPath, destinationPath) {
+        const graph = await graphFromPackageDependencies({
+            cwd: projectPath
+        });
+        await graph.build({
+            destPath: destinationPath,
+            selfContained: true,
+            excludedTasks: ["transformBootstrapHtml"],
+            includedDependencies: ["*"]
+        });
+    }
+    ```

@@ -15,12 +15,12 @@ See the list of [clients](https://github.com/redhat-developer/yaml-language-serv
 
 ## Example
 
-````yaml
+```yaml
 specVersion: "2.6"
 type: application|library|theme-library|module
 metadata:
   name: some.project.name
-````
+```
 
 ## General Configuration
 A project must define a specification version (`specVersion`), to which its configuration is compatible to. Also see [Specification Versions](#specification-versions).
@@ -31,43 +31,43 @@ In addition, a project must define a `type`. This can be either `application`, `
 
     === "application"
 
-        ````yaml
+        ```yaml
         specVersion: "2.6"
         type: application
-        ````
+        ```
 
     === "library"
 
-        ````yaml
+        ```yaml
         specVersion: "2.6"
         type: library
-        ````
+        ```
 
     === "theme-library"
 
-        ````yaml
+        ```yaml
         specVersion: "2.6"
         type: theme-library
-        ````
+        ```
 
     === "module"
 
-        ````yaml
+        ```yaml
         specVersion: "2.6"
         type: module
-        ````
+        ```
 
 ### Metadata
 
 !!! example
-    ````yaml
+    ```yaml
     metadata:
       name: my.company.project
       copyright: |-
        My Project
         * (c) Copyright 2009-${currentYear} My Company
         * Licensed under the XYZ License, Version n - see LICENSE.txt.
-    ````
+    ```
 
 #### name
 
@@ -98,25 +98,25 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
     - `webapp`: Mapped to runtime path `/` (root)
 
     *Default configuration:*
-    ````yaml
+    ```yaml
     resources:
       configuration:
         paths:
           webapp: webapp
-    ````
+    ```
 
 === "Libraries"
     - `src`: Mapped to runtime path `/resources`
     - `test`: Mapped to runtime path `/test-resources`
 
     *Default configuration:*
-    ````yaml
+    ```yaml
     resources:
       configuration:
         paths:
           src: src
           test: test
-    ````
+    ```
 
 === "Modules"
     Any virtual paths can be mapped to any physical path.
@@ -124,33 +124,33 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
     However, it is recommended that modules include their namespace in the virtual path and use the `/resources` prefix (e.g. `/resources/my/library/module-xy/`).
 
     *Example configuration:*
-    ````yaml
+    ```yaml
     resources:
       configuration:
         paths:
           /resources/my/library/module-xy/: lib
           /resources/my/library/module-xy-min/: dist
-    ````
+    ```
 
 !!! example
     For an application project with the following directory structure, you need the path mapping configuration given below:
 
     *Directory Structure*
-    ```` hl_lines="3 4 5"
+    ``` hl_lines="3 4 5"
     my-app/
     \_ ui5.yaml
     \_ lib/
       \_ js/
         \_ app/
-    ````
+    ```
 
     *Path Mapping Configuration*
-    ````yaml hl_lines="4"
+    ```yaml hl_lines="4"
     resources:
       configuration:
         paths:
           webapp: lib/js/app
-    ````
+    ```
 
 
 ### Encoding of `*.properties` files
@@ -161,19 +161,19 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
 !!! example
     === "UTF-8"
 
-        ````yaml
+        ```yaml
         resources:
           configuration:
             propertiesFileSourceEncoding: UTF-8
-        ````
+        ```
 
     === "ISO-8859-1"
 
-        ````yaml
+        ```yaml
         resources:
           configuration:
             propertiesFileSourceEncoding: ISO-8859-1
-        ````
+        ```
 
 By default UI5 Tooling expects different encodings for `*.properties` i18n files, depending on the project's specification version:
 
@@ -340,14 +340,14 @@ You can choose which theme library to use by the application that is consuming t
 ### Exclude Resources
 
 !!! example
-    ````yaml
+    ```yaml
     builder:
       resources:
         excludes:
           - "/resources/some/project/name/test_results/**"
           - "/test-resources/**"
           - "!/test-resources/some/project/name/demo-app/**"
-    ````
+    ```
 
 You can exclude a projects resources from the build process using a list of glob patterns. Matching resources will be ignored by the builder and all build tasks.
 
@@ -357,17 +357,17 @@ Patterns are applied to the **virtual** path of resources (i.e. the UI5 runtime 
 
 !!! example
     === "time (default)"
-        ````yaml
+        ```yaml
         builder:
           cachebuster:
             signatureType: time
-        ````
+        ```
     === "hash"
-        ````yaml
+        ```yaml
         builder:
           cachebuster:
             signatureType: hash
-        ````
+        ```
 
 By default, the generated cachebuster info file signatures are based on timestamps (`time`). In setups like CI environments, a mechanism based on file hashes (`hash`) might be more reliable. Also see [PR #241](https://github.com/SAP/ui5-builder/pull/241) for more details.
 
@@ -468,7 +468,7 @@ Note that patterns are always applied relative to the project's virtual source d
 ### Custom Tasks
 
 !!! example
-    ````yaml
+    ```yaml
     builder:
       customTasks:
         - name: custom-task-1
@@ -479,7 +479,7 @@ Note that patterns are always applied relative to the project's virtual source d
           afterTask: custom-task-1
           configuration:
             color: blue
-    ````
+    ```
 
 You can define custom build tasks that will be executed for the project. Please refer to the [Custom Tasks Documentation](./extensibility/CustomTasks.md) for a detailed explanation and examples of the build extensibility.
 
@@ -492,12 +492,12 @@ Optionally, arbitrary `configuration` can be passed to the custom task.
 ### JSDoc
 
 !!! example
-    ````yaml
+    ```yaml
     builder:
       jsdoc:
         excludes:
           - "some/project/name/thirdparty/**"
-    ````
+    ```
 
 You can exclude the resources of a project from the JSDoc build process using a list of glob patterns. Matching resources will be ignored by the JSDoc build task.
 
@@ -513,7 +513,7 @@ These excludes are applied *before* any general builder excludes that have been 
     2.5 or higher.
 
 !!! example
-    ````yaml
+    ```yaml
     builder:
       settings:
         includeDependency:
@@ -522,7 +522,7 @@ These excludes are applied *before* any general builder excludes that have been 
           - ^com\.namespace
         includeDependencyTree:
           - sap.m
-    ````
+    ```
 
 You can include certain dependencies into the build process using the `includeDependency` builder setting. By using `includeDependencyRegExp`, a regular expression can be used, for example to specify a namespace to dynamically select a group of dependencies that have to be included into the build result. By using `includeDependencyTree`, a selected dependency including all of its sub-dependencies is used.
 
@@ -556,12 +556,12 @@ Note that patterns are always applied relative to the project's virtual source d
 ## Server Configuration
 
 !!! example
-    ````yaml
+    ```yaml
     server:
       settings:
         httpPort: 1337
         httpsPort: 1443
-    ````
+    ```
 
 By default, UI5 Tooling will serve applications using Port `8080`. When running in HTTP/2 or HTTPS mode, Port `8443` will be used.
 
@@ -574,7 +574,7 @@ The default and configured server ports can always be overwritten with the CLI p
 ## Extension Configuration
 
 !!! example
-    ````yaml
+    ```yaml
     specVersion: "2.6"
     type: application
     metadata:
@@ -596,7 +596,7 @@ The default and configured server ports can always be overwritten with the CLI p
             configuration:
               paths:
                 /resources/my/application/thirdparty/: ""
-    ````
+    ```
 
 Extensions configuration can be added to any projects `ui5.yaml`. For better readability, it should to be located *after* the projects configuration, separated by [three dashes](https://yaml.org/spec/1.2/spec.html#id2760395) "`---`".
 
@@ -612,7 +612,7 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
 ## Custom Bundling
 
 !!! example
-    ````yaml
+    ```yaml
     builder:
       bundles:
         - bundleDefinition:
@@ -639,7 +639,7 @@ Extensions can be identified by the `kind: extension` configuration. Note that i
                 resolve: true
           bundleOptions:
             optimize: true
-    ````
+    ```
 
 Custom bundles can be defined in the `ui5.yaml`. Within the `builder/bundles` configuration a list of `bundleDefinitions` can be described.
 
@@ -674,10 +674,10 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 ## Specification Versions
 A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
-````yaml
+```yaml
 specVersion: "2.6"
 [...]
-````
+```
 
 To use new features, a project might need to update the `specVersion` property.
 
