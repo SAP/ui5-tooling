@@ -174,7 +174,7 @@ A custom middleware implementation needs to return a function with the following
         const MarkdownIt = require("markdown-it");
         const md = new MarkdownIt();
         return function (req, res, next) {
-            if (!req.path.endsWith(".html")) {
+            if (!req.path || !req.path.endsWith(".html")) {
                 // Do not handle non-HTML requests
                 next();
                 return;
@@ -198,7 +198,7 @@ A custom middleware implementation needs to return a function with the following
         }
     };
     ```
-    Live demo of the above example: https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility-v3
+    Live demo of the above example: [openui5-sample-app with custom middleware](https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility-v3)
 
 === "ESM"
 
@@ -208,7 +208,7 @@ A custom middleware implementation needs to return a function with the following
     export default async function({log, middlewareUtil, options, resources}) {
         const md = new MarkdownIt();
         return function (req, res, next) {
-            if (!req.path.endsWith(".html")) {
+            if (!req.path || !req.path.endsWith(".html")) {
                 // Do not handle non-HTML requests
                 next();
                 return;
@@ -232,7 +232,7 @@ A custom middleware implementation needs to return a function with the following
         }
     };
     ```
-    Live demo of the above example: https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility-v3-esm
+    Live demo of the above example: [openui5-sample-app with custom middleware](https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility-v3-esm)
 
 ## Helper Class `MiddlewareUtil`
 
