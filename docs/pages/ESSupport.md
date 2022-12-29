@@ -8,7 +8,7 @@ UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui
 | v3.0+               | ECMAScript 2022              |      |
 | v2.0+               | ECMAScript 2009/ES5          | Note that code up to ECMAScript 2020 can be parsed, however required code analysis might not work correctly for specific language features |
 
-In section [Language Features with Limitations](#language-features-with-limitations) all limitations grouped by the kind of ECMAScript artefact are described. In section [Code Analyzing](#code-analyzing) there is a more detailed explaination what kind of code analysis is done by the UI5 Tooling.
+In section [Language Features with Limitations](#language-features-with-limitations) all limitations grouped by the kind of ECMAScript artefact are described. In section [Code Analysis](#code-analysis) there is a more detailed explaination what kind of code analysis is done by the UI5 Tooling.
 
 ## Language Features with Limitations
 
@@ -483,7 +483,7 @@ When declaring a **Fiori Elements Template**, the usage of an **Object Expressio
 
 #### Object Expression in Smart Template Declaration
 
-When declaring a **Smart Template*, the usage of an **Object Expression** in the configuration is not supported.
+When declaring a **Smart Template**, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
@@ -532,7 +532,7 @@ When declaring a **Smart Template*, the usage of an **Object Expression** in the
 
 #### Object Expression in XMLComposite Declaration
 
-When declaring a **XMLComposite*, the usage of an **Object Expression** in the configuration is not supported.
+When declaring a **XMLComposite**, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
@@ -866,16 +866,33 @@ Following artefacts are part of the JSDoc build:
   The resulting index resources (e.g. `api-index.json`,  `api-index-deprecated.json`,
   `api-index-experimental.json` and `api-index-since.json`) are mainly to be used in the UI5 SDK.
 
-#### JSDoc: UI5 Demokit
+#### JSDoc: UI5 SDK
 
-The UI5 Demokit can be build locally. To get more insights about the local UI5 Demokit build setup, have a look at the[Developer Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
+The UI5 SDK can be build locally. To get more insights about the local UI5 SDK build setup, have a look at the [Developer Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
 
-Currently, the resources needed for the UI5 Demokit build are stored in the OpenUI5 project and in the UI5 builder project. This is needed because these files are not part of the sap.ui.core library artefact, so building any custom library has no access to the needed resources. Therefore it is necessary to have these resources also available in the ui5 builder. This might chance in future.
+Currently, the resources needed for the UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. Therefore it is necessary to have these resources also available in the *ui5-builder*. This might chance in future.
 
-Following artefacts are part of the UI5 Demokit build:
+Following artefacts are part of the UI5 SDK build:
 
-- [createIndexFiles.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/createIndexFiles.cjs)
-- [transformApiJson.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/transformApiJson.cjs)
-- [plugin.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/plugin.cjs)
-- [publish.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/publish.cjs)
-- [versionUtil.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/utils/versionUtil.cjs)
+- [createIndexFiles.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/createIndexFiles.cjs): Creates several index files (e.g. `sap-ui-version.json`).
+- [transformApiJson.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/transformApiJson.cjs): Preprocesses `api.json` files for use in the UI5 SDKs. Transforms the `api.json` as created by the JSDoc build into a pre-processed `api.json` file suitable for the SDK. The pre-processing includes formatting of type references, rewriting of links and other time consuming calculations.
+- [plugin.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/plugin.cjs): UI5 plugin for JSDoc3. The plugin adds the following UI5 specific tag definitions to JSDoc3.
+
+    - disclaimer
+    - experimental
+    - final
+    - interface
+    - implements
+
+    It furthermore listens to the following JSDoc3 events to implement additional functionality
+
+    - parseBegin: to create short names for all file that are to be parsed
+    - fileBegin: to write some line to the log (kind of a progress indicator)
+    - jsdocCommentFound: to pre-process comments, empty lines are used as paragraph markers a default visibility is added, legacy tag combinations used in JSdoc2 are converted to JSDoc3 conventions
+    - newDoclet
+    - parseComplete: remove undocumented/ignored/private doclets or duplicate doclets
+
+    Last but not least, it implements an astNodeVisitor to detect UI5 specific "extend" calls and to create documentation for the properties, aggregations etc. that are created with the "extend" call.
+
+- [publish.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/publish.cjs): JSDoc3 template for UI5 documentation generation.
+- [versionUtil.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/utils/versionUtil.cjs): Provides helper methods to determine version related information.
