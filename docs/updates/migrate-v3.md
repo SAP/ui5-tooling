@@ -76,10 +76,10 @@ await builder.build({
 
 **New: @ui5/project v3**
 
-=== "CommonJS"
+=== "ESM"
 
     ```js
-    const {graphFromPackageDependencies} = await import("@ui5/project/graph");
+    import {graphFromPackageDependencies} from "@ui5/project/graph";
 
     let graph = await graphFromPackageDependencies({cwd: "."});
 
@@ -89,10 +89,10 @@ await builder.build({
     });
     ```
 
-=== "ESM"
+=== "CommonJS"
 
     ```js
-    import {graphFromPackageDependencies} from "@ui5/project/graph";
+    const {graphFromPackageDependencies} = await import("@ui5/project/graph");
 
     let graph = await graphFromPackageDependencies({cwd: "."});
 

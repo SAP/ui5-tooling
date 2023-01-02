@@ -86,12 +86,12 @@ This allows you to rely on UI5 Tooling for UI5-specific build functionality and 
 
 All available APIs are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/v3/api/index.html).
 
-=== "CommonJS"
+=== "ESM"
 
     ```js linenums="1"
+    import {graphFromPackageDependencies} from "@ui5/project/graph";
+
     async function buildApp(projectPath, destinationPath) {
-        const {graphFromPackageDependencies} = 
-            await import("@ui5/project/graph");
         const graph = await graphFromPackageDependencies({
             cwd: projectPath
         });
@@ -104,12 +104,12 @@ All available APIs are documented in the [UI5 Tooling API Reference](https://sap
     }
     ```
 
-=== "ESM"
+=== "CommonJS"
 
     ```js linenums="1"
-    import {graphFromPackageDependencies} from "@ui5/project/graph";
-
     async function buildApp(projectPath, destinationPath) {
+        const {graphFromPackageDependencies} = 
+            await import("@ui5/project/graph");
         const graph = await graphFromPackageDependencies({
             cwd: projectPath
         });
