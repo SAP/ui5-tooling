@@ -89,44 +89,6 @@ middleware:
 
 A custom middleware implementation needs to return a function with the following signature:
 
-=== "CommonJS"
-
-    ```js linenums="1"
-    /**
-     * Custom UI5 Server middleware API
-     * 
-     * @param {object} parameters Parameters
-     * @param {@ui5/logger/StandardLogger} parameters.log
-     *      Logger instance for use in the custom middleware.
-     *      This parameter is only provided to custom middleware
-     *      extensions defining Specification Version 3.0 and later.
-     * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
-     *      Specification version-dependent interface to a
-     *      MiddlewareUtil instance. See the corresponding API reference for details:
-     *      https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html
-     * @param {object} parameters.options Options
-     * @param {string} parameters.options.configuration
-     *      Custom middleware configuration, as defined in the project's ui5.yaml
-     * @param {string} parameters.options.middlewareName
-     *      Name of the custom middleware.
-     *      This parameter is only provided to custom middleware extensions
-     *      defining Specification Version 3.0 and later
-     * @param {object} parameters.resources Readers for accessing resources
-     * @param {module:@ui5/fs.AbstractReader} parameters.resources.all
-     *      Reader to access resources of the root project and its dependencies
-     * @param {module:@ui5/fs.AbstractReader} parameters.resources.rootProject
-     *      Reader to access resources of the root project
-     * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies
-     *      Reader to access resources of the project's dependencies.
-     * @returns {function} Middleware function to use
-     */
-    module.exports = function({log, middlewareUtil, options, resources}) {
-        return async function (req, res, next) {
-            // [...]
-        }
-    };
-    ```
-
 === "ESM"
 
     ```js linenums="1"
@@ -165,40 +127,45 @@ A custom middleware implementation needs to return a function with the following
     };
     ```
 
-### Example: lib/middleware/markdownHandler.(m)js
-
 === "CommonJS"
 
     ```js linenums="1"
-    module.exports = async function({log, middlewareUtil, options, resources}) {
-        const MarkdownIt = require("markdown-it");
-        const md = new MarkdownIt();
-        return function (req, res, next) {
-            if (!req.path || !req.path.endsWith(".html")) {
-                // Do not handle non-HTML requests
-                next();
-                return;
-            }
-            // Try to read a corresponding markdown file
-            resources.rootProject.byPath(req.path.replace(".html", ".md")).then(async (resource) => {
-                if (!resource) {
-                    // No file found, hand over to next middleware
-                    next();
-                    return;
-                }
-                log.info(`Rendering markdown for ${resource.getPath()}`);
-                const markdown = await resource.getBuffer();
-                // Generate HTML from markdown string
-                const html = md.render(markdown.toString());
-                res.type('.html');
-                res.end(html);
-            }).catch((err) => {
-                next(err);
-            });
+    /**
+     * Custom UI5 Server middleware API
+     * 
+     * @param {object} parameters Parameters
+     * @param {@ui5/logger/StandardLogger} parameters.log
+     *      Logger instance for use in the custom middleware.
+     *      This parameter is only provided to custom middleware
+     *      extensions defining Specification Version 3.0 and later.
+     * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
+     *      Specification version-dependent interface to a
+     *      MiddlewareUtil instance. See the corresponding API reference for details:
+     *      https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html
+     * @param {object} parameters.options Options
+     * @param {string} parameters.options.configuration
+     *      Custom middleware configuration, as defined in the project's ui5.yaml
+     * @param {string} parameters.options.middlewareName
+     *      Name of the custom middleware.
+     *      This parameter is only provided to custom middleware extensions
+     *      defining Specification Version 3.0 and later
+     * @param {object} parameters.resources Readers for accessing resources
+     * @param {module:@ui5/fs.AbstractReader} parameters.resources.all
+     *      Reader to access resources of the root project and its dependencies
+     * @param {module:@ui5/fs.AbstractReader} parameters.resources.rootProject
+     *      Reader to access resources of the root project
+     * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies
+     *      Reader to access resources of the project's dependencies.
+     * @returns {function} Middleware function to use
+     */
+    module.exports = function({log, middlewareUtil, options, resources}) {
+        return async function (req, res, next) {
+            // [...]
         }
     };
     ```
-    Live demo of the above example: [openui5-sample-app with custom middleware](https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility-v3)
+
+### Example: lib/middleware/markdownHandler.(m)js
 
 === "ESM"
 
@@ -233,6 +200,39 @@ A custom middleware implementation needs to return a function with the following
     };
     ```
     Live demo of the above example: [openui5-sample-app with custom middleware](https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility-v3-esm)
+
+=== "CommonJS"
+
+    ```js linenums="1"
+    module.exports = async function({log, middlewareUtil, options, resources}) {
+        const MarkdownIt = require("markdown-it");
+        const md = new MarkdownIt();
+        return function (req, res, next) {
+            if (!req.path || !req.path.endsWith(".html")) {
+                // Do not handle non-HTML requests
+                next();
+                return;
+            }
+            // Try to read a corresponding markdown file
+            resources.rootProject.byPath(req.path.replace(".html", ".md")).then(async (resource) => {
+                if (!resource) {
+                    // No file found, hand over to next middleware
+                    next();
+                    return;
+                }
+                log.info(`Rendering markdown for ${resource.getPath()}`);
+                const markdown = await resource.getBuffer();
+                // Generate HTML from markdown string
+                const html = md.render(markdown.toString());
+                res.type('.html');
+                res.end(html);
+            }).catch((err) => {
+                next(err);
+            });
+        }
+    };
+    ```
+    Live demo of the above example: [openui5-sample-app with custom middleware](https://github.com/SAP/openui5-sample-app/tree/demo-server-middleware-extensibility-v3)
 
 ## Helper Class `MiddlewareUtil`
 
