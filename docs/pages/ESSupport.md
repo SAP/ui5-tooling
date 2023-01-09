@@ -843,7 +843,7 @@ The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless 
 
 ### Library Initialization
 
-The [Library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every JavaScript file for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be set:
+The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every JavaScript file for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be set:
 
 - noLibraryCSS: false when the noLibraryCSS property had been set in the initLibrary info object
 - types: string array with the names of the types contained in the library
