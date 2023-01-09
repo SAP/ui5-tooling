@@ -864,18 +864,18 @@ Following artefacts are part of the JSDoc build:
 - [apiIndexGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/apiIndexGenerator.js)
   Compiles API index resources from all `api.json` resources available in the given test resources directory.
   The resulting index resources (e.g. `api-index.json`,  `api-index-deprecated.json`,
-  `api-index-experimental.json` and `api-index-since.json`) are mainly to be used in the UI5 SDK.
+  `api-index-experimental.json` and `api-index-since.json`) are mainly to be used in a UI5 SDK.
 
 #### JSDoc: UI5 SDK
 
-The UI5 SDK can be build locally. To get more insights about the local UI5 SDK build setup, have a look at the [Developer Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
+a UI5 SDK can be build locally. To get more insights about the local UI5 SDK build setup, have a look at the [Developer Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
 
-Currently, the resources needed for the UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. Therefore it is necessary to have these resources also available in the *ui5-builder*. This might chance in future.
+Currently, the resources needed for a UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. Therefore it is necessary to have these resources also available in the *ui5-builder*. This might chance in future.
 
-Following artefacts are part of the UI5 SDK build:
+Following artefacts are part of a UI5 SDK build:
 
-- [createIndexFiles.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/createIndexFiles.cjs): Creates several index files (e.g. `sap-ui-version.json`).
-- [transformApiJson.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/transformApiJson.cjs): Preprocesses `api.json` files for use in the UI5 SDKs. Transforms the `api.json` as created by the JSDoc build into a pre-processed `api.json` file suitable for the SDK. The pre-processing includes formatting of type references, rewriting of links and other time consuming calculations.
+- [createIndexFiles.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/createIndexFiles.cjs): Creates several index files by interpreting the `sap-ui-version.json`.
+- [transformApiJson.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/transformApiJson.cjs): Preprocesses `api.json` files for use in a UI5 SDKs. Transforms the `api.json` as created by the JSDoc build into a pre-processed `api.json` file suitable for the SDK. The pre-processing includes formatting of type references, rewriting of links and other time consuming calculations.
 - [plugin.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/plugin.cjs): UI5 plugin for JSDoc3. The plugin adds the following UI5 specific tag definitions to JSDoc3.
 
     - disclaimer
