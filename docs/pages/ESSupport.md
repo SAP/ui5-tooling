@@ -8,7 +8,7 @@ UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui
 | v3.0+               | ECMAScript 2022              |      |
 | v2.0+               | ECMAScript 2009/ES5          | Note that code up to ECMAScript 2020 can be parsed, however required code analysis might not work correctly for specific language features |
 
-In section [Language Features with Limitations](#language-features-with-limitations) all limitations grouped by the kind of ECMAScript artefact are described. In section [Code Analysis](#code-analysis) there is a more detailed explaination what kind of code analysis is done by the UI5 Tooling.
+In section [Language Features with Limitations](#language-features-with-limitations) all limitations grouped by the kind of ECMAScript artefact are described. In section [Code Analysis](#code-analysis) there is a more detailed explanation what kind of code analysis is done by the UI5 Tooling.
 
 ## Language Features with Limitations
 
@@ -532,7 +532,7 @@ When declaring a **Smart Template**, the usage of an **Object Expression** in th
 
 #### Object Expression in XMLComposite Declaration
 
-When declaring a **XMLComposite**, the usage of an **Object Expression** in the configuration is not supported.
+When declaring an **XMLComposite**, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
@@ -711,6 +711,16 @@ UI5 Tooling extracts dependency information from a project's code as outlined in
 The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/JSModuleAnalyzer.js) uses the ["Abstract Syntax Tree"](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) of a JavaScript file to decide whether a code block is executed *conditionally* or *unconditionally*.
 Besides this information, which is inherent to the JavaScript language, the analyzer uses additional knowledge about special API. For example, the factory function of an AMD-module is known to be executed when the module is executed, an IIFE is known to be executed immediately etc.
 
+Following APIs are analyzed by the JSModule Analyzer:
+
+- sap.ui.define
+- sap.ui.require
+- jQuery.sap.declare (deprecated)
+- jQuery.sap.require (deprecated)
+- sap.ui.requireSync (deprecated)
+- sap.ui.preload (restricted)
+- sap.ui.require.preload (restricted)
+
 #### Component Analyzer
 
 The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` in the same folder. If one is found, the `sap.ui5` section will be evaluated in the following way
@@ -811,6 +821,8 @@ category, this analyzer uses a ResourcePool (provided by the caller and usually 
 library classpath). When the qualified node name is contained in the pool, it is assumed to
 represent a control, otherwise it is ignored.
 
+In an XMLView, aggregations of cardinality 0..1 (single) also appear as element nodes in the XML, they just must not contain more than one element.
+
 In certain cases this might give wrong results, but loading the metadata for each control
 to implement the exactly same logic as used in the runtime XMLTemplateProcessor would be to
 expensive and require too much runtime.
@@ -843,7 +855,7 @@ The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless 
 
 ### Library Initialization
 
-The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every JavaScript file for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be set:
+The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every JavaScript file for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be placed in the generated manifest.json:
 
 - noLibraryCSS: false when the noLibraryCSS property had been set in the initLibrary info object
 - types: string array with the names of the types contained in the library
@@ -855,7 +867,7 @@ The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/a
 
 The UI5 Tooling offers a JSDoc build, which is enhanced by UI5 specific JSDoc features.
 
-Following artefacts are part of the JSDoc build:
+Following artefacts contributing to the JSDoc build:
 
 - [jsdocGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/jsdocGenerator.js)
   Executes the actual JSDoc build and creates the `api.json`.
@@ -864,13 +876,13 @@ Following artefacts are part of the JSDoc build:
 - [apiIndexGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/apiIndexGenerator.js)
   Compiles API index resources from all `api.json` resources available in the given test resources directory.
   The resulting index resources (e.g. `api-index.json`,  `api-index-deprecated.json`,
-  `api-index-experimental.json` and `api-index-since.json`) are mainly to be used in a UI5 SDK.
+  `api-index-experimental.json` and `api-index-since.json`) are only to be used in a UI5 SDK.
 
 #### JSDoc: UI5 SDK
 
-a UI5 SDK can be build locally. To get more insights about the local UI5 SDK build setup, have a look at the [Developer Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
+An UI5 SDK can be build locally. To get more insights about the local UI5 SDK build setup, have a look at the [Developer Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
 
-Currently, the resources needed for a UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. Therefore it is necessary to have these resources also available in the *ui5-builder*. This might chance in future.
+Currently, the resources needed for a UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This double maintenance is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. Therefore it is necessary to have these resources also available in the *ui5-builder*. This might change in future.
 
 Following artefacts are part of a UI5 SDK build:
 
@@ -883,6 +895,7 @@ Following artefacts are part of a UI5 SDK build:
     - final
     - interface
     - implements
+	- ui5-restricted and more
 
     It furthermore listens to the following JSDoc3 events to implement additional functionality
 
@@ -895,4 +908,12 @@ Following artefacts are part of a UI5 SDK build:
     Last but not least, it implements an astNodeVisitor to detect UI5 specific "extend" calls and to create documentation for the properties, aggregations etc. that are created with the "extend" call.
 
 - [publish.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/publish.cjs): JSDoc3 template for UI5 documentation generation.
+
+    - adds missing namespaces
+    - determines the exports names of exported APIs
+    - writes out the `api.json` from the collected JSDoc information
+	- calculates the inheritance hierarchy
+	- checks for cyclic dependencies
+	- removes unnecessary whitespace from an HTML document
+
 - [versionUtil.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/utils/versionUtil.cjs): Provides helper methods to determine version related information.
