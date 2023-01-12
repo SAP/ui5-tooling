@@ -7,6 +7,7 @@ import traverse from "traverse";
 // Using CommonsJS require.resolve as long as import.meta.resolve is experimental
 import {createRequire} from "node:module";
 const require = createRequire(import.meta.url);
+// Provide schema name as CLI argument
 const schemaName = process.argv[2] || "ui5";
 
 // Using @ui5/project/package.json export to calculate the path to the root ui5-project folder
