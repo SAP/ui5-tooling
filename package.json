@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@apidevtools/json-schema-ref-parser": "^9.1.0",
 		"depcheck": "^1.4.3",
-		"docdash": "^2.0.0",
+		"docdash": "^2.0.1",
 		"eslint": "^8.31.0",
 		"eslint-config-google": "^0.14.0",
 		"handlebars": "^4.7.7",
