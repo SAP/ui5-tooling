@@ -13,7 +13,7 @@
 
 			var url = new URL(window.location);
 			var path = url.pathname.split("/");
-			var pathRegex = /\/ui5-tooling\/(v[1-9]+|stable|next)/gi
+			var pathRegex = /\/ui5-tooling\/(v[0-9]+|stable|next)/gi
 
 			// For "old" links- keep the path but try to redirect to the stable release
 			if (!url.pathname.match(pathRegex)) {
