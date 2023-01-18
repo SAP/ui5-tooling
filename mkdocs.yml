@@ -22,6 +22,7 @@ nav:
       - Server: pages/Server.md
       - Builder: pages/Builder.md
       - Project: pages/Project.md
+      - File System: pages/FileSystem.md
     - Upgrade Guides:
       - Migrate to v3: updates/migrate-v3.md
       - Migrate to v2: updates/migrate-v2.md
