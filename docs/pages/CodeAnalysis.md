@@ -123,14 +123,14 @@ Additionally, some special dependencies are handled:
 - component referenced via ComponentContainer control
 - embedded fragments or views
 
-In an XMLView, there usually exist 3 categories of element nodes: controls, aggregations
+In an XMLView/XMLFragment, there usually exist 3 categories of element nodes: controls, aggregations
 of cardinality 'multiple' and non-UI5 nodes (e.g. XHTML or SVG). The third category usually
 can be identified by its namespace. To distinguish between the first and the second
 category, this analyzer uses a ResourcePool (provided by the caller and usually derived from the
 library classpath). When the qualified node name is contained in the pool, it is assumed to
 represent a control, otherwise it is ignored.
 
-In an XMLView, aggregations of cardinality 0..1 (single) also appear as element nodes in the XML, they just must not contain more than one element.
+In an XMLView/XMLFragment, aggregations of cardinality 0..1 (single) also appear as element nodes in the XML, they just must not contain more than one element.
 
 In certain cases this might give wrong results, but loading the metadata for each control
 to implement the exactly same logic as used in the runtime XMLTemplateProcessor would be to
