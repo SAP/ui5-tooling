@@ -184,17 +184,19 @@ Currently, the resources needed for a UI5 SDK build are stored in [openui5](http
 
 Following artefacts contributing to the JSDoc build:
 
-- [jsdocGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/jsdocGenerator.js)
-  Executes the actual JSDoc build and creates the `api.json`.
-- [sdkTransformer.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/sdkTransformer.js)
-  Transforms the `api.json` for usage in a UI5 SDK.
-- [apiIndexGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/apiIndexGenerator.js)
-  Compiles API index resources from all `api.json` resources available in the given test resources directory.
-  The resulting index resources (e.g. `api-index.json`,  `api-index-deprecated.json`,
+- [jsdocGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/jsdocGenerator.js):
+  Executes the actual JSDoc build. UI5 Tooling wrapper for `plugin.cjs`.
+- [sdkTransformer.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/sdkTransformer.js):
+  UI5 Tooling wrapper for `transformApiJson.cjs`.
+- [apiIndexGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/apiIndexGenerator.js):
+  UI5 Tooling wrapper for `createIndexFiles.cjs`.
+- [createIndexFiles.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/createIndexFiles.cjs):
+  Creates API index resources from all `api.json` resources and by interpreting the `sap-ui-version.json` available in the given test resources directory. The resulting index resources (e.g. `api-index.json`,  `api-index-deprecated.json`,
   `api-index-experimental.json` and `api-index-since.json`) are only to be used in a UI5 SDK.
-- [createIndexFiles.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/createIndexFiles.cjs): Creates several index files by interpreting the `sap-ui-version.json`.
-- [transformApiJson.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/transformApiJson.cjs): Preprocesses `api.json` files for use in a UI5 SDKs. Transforms the `api.json` as created by the JSDoc build into a pre-processed `api.json` file suitable for the SDK. The pre-processing includes formatting of type references, rewriting of links and other time consuming calculations.
-- [plugin.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/plugin.cjs): UI5 plugin for JSDoc3. The plugin adds the following UI5 specific tag definitions to JSDoc3.
+- [transformApiJson.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/transformApiJson.cjs): 
+  Preprocesses `api.json` files for use in a UI5 SDKs. Transforms the `api.json` as created by the JSDoc build into a pre-processed `api.json` file suitable for the SDK. The pre-processing includes formatting of type references, rewriting of links and other time consuming calculations.
+- [plugin.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/plugin.cjs):
+  UI5 plugin for JSDoc3. The plugin adds the following UI5 specific tag definitions to JSDoc3.
 
     - disclaimer
     - experimental
