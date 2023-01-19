@@ -33,6 +33,7 @@ nav:
       - Troubleshooting: pages/Troubleshooting.md
       - Benchmarking: pages/Benchmarking.md
       - ECMAScript Support: pages/ESSupport.md
+      - Code Analysis: pages/CodeAnalysis.md
     - API Reference: 'api/index.html' # only available in final build, not serve
 
 theme:
