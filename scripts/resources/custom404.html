@@ -21,7 +21,7 @@
 			} else {
 				// Path is not found in the stable release and no version is provided. 
 				// Then show the versioned 404 page, so the end user would still be in the same version
-				var versionIndex = path.findIndex((elem) => elem.match(/^(v[1-9]+|stable|next)$/))
+				var versionIndex = path.findIndex((elem) => elem.match(/^(v[0-9]+|stable|next)$/))
 				
 				if (versionIndex > -1) {
 					path.splice((versionIndex + 1), path.length, "404")
