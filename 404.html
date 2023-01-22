@@ -5,28 +5,40 @@
 	<meta charset="utf-8">
 	<title>Redirecting</title>
 	<noscript>
-		<meta http-equiv="refresh" content="1; url=stable/" />
+		<meta http-equiv="refresh" content="1; url=https://sap.github.io/ui5-tooling" />
 	</noscript>
 	<script>
-		var url = new URL(window.location);
-		var path = url.pathname.split("/");
+		(function name(params) {
+			"use strict";
 
-		// To prevent an infinite loop, redirect to the root folder if already redirected to a non-existing path.
-		// From there mike would "know" what to do.
-		if (url.searchParams.get("404redirect")) {
-			path.splice(2, (path.length - 3));
-		} else {
-			path.splice(2, 0, "stable"); // Redirect to the stable release
-			url.searchParams.set("404redirect", "true");
-		}
+			var url = new URL(window.location);
+			var path = url.pathname.split("/");
+			var pathRegex = /\/ui5-tooling\/(v[0-9]+|stable|next)/gi
 
-		url.pathname = path.join("/");
-		window.location = url.toString();
+			// For "old" links- keep the path but try to redirect to the stable release
+			if (!url.pathname.match(pathRegex)) {
+				path.splice(2, 0, "stable");
+			} else {
+				// Path is not found in the stable release and no version is provided. 
+				// Then show the versioned 404 page, so the end user would still be in the same version
+				var versionIndex = path.findIndex((elem) => elem.match(/^(v[0-9]+|stable|next)$/))
+				
+				if (versionIndex > -1) {
+					path.splice((versionIndex + 1), path.length, "404")
+				} else {
+					// Edge case: redirect to the stable version i.e. /ui5-tooling/v28372389/
+					path = ["ui5-tooling", "stable", "404"]; 
+				}
+			}
+
+			url.pathname = path.join("/");
+			window.location = url.toString();
+		})()
 	</script>
 </head>
 
 <body>
-	Redirecting to <a href="stable/">the stable docs release/</a>...
+	Redirect to <a href="https://sap.github.io/ui5-tooling/stable/">the stable docs release/</a>...
 </body>
 
 </html>
