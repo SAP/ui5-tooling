@@ -7,7 +7,7 @@ on:
 jobs:
   security-scan:
     name: Security Audit
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         branch: ["v2"] # List of branches to run the security audit uppon

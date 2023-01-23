@@ -6,7 +6,7 @@ on:
 jobs:
   build-and-deploy:
     name: Build and Deploy
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       MIKE_VERSION: v3
       MIKE_ALIAS: next
@@ -17,6 +17,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: Use Node.js LTS 18.x
+      uses: actions/setup-node@v3.6.0
+      with:
+        node-version: 18.x
 
     - name: Install npm dependencies
       run: npm ci
