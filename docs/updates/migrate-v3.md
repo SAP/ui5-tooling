@@ -16,18 +16,30 @@ Going forward, **only projects with Specification Versions 2.0 and higher are su
 In case a legacy specification version is detected, **an automatic migration is attempted.**
 This means your old projects might still work. Unless they have non-standard configuration in their ui5.yaml.
 
+## Changes for Projects
+
+!!! info
+    ✅ Projects defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v3**
+
+For projects defining the latest **Specification Versions 3.0 and higher**, some changes apply:
+
+* **Breaking Change:** The `metadata.name` property is now restricted to contain only certain characters and no uppercase letters. See [Configuration: `name`](../pages/Configuration.md#name) for details
+
+Also see [Configuration: Specification Version 3.0](../pages/Configuration.md#specification-version-30-beta).
+
 ## Changes for Extensions
 
 !!! info
-    ✅ Custom Tasks and -Middleware defining **Specification Version 2.x and lower** are expected to be **fully compatible with UI5 Tooling v3**
+    ✅ Custom Tasks and -Middleware defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v3**
 
 For extensions defining the latest **Specification Versions 3.0 and higher**, some changes and improvements apply:
 
 * **Breaking Change:** Custom Tasks need to request access to dependency resources
-  * By default, resources of dependencies can't be accessed. A custom task requiring such access needs to implement a callback function `determineRequiredDependencies`, in which it can also define the scope of dependency-access. Please refer to the [Custom Task: Required Dependencies documentation](../pages/extensibility/CustomTasks.md#required-dependencies)
+    * By default, resources of dependencies can't be accessed. A custom task requiring such access needs to implement a callback function with the export name `determineRequiredDependencies`. In this function it can define the scope of dependency-access. Please refer to the [Custom Task: Required Dependencies](../pages/extensibility/CustomTasks.md#required-dependencies) documentation for details
+* **Breaking Change:** The `metadata.name` property is now restricted to contain only certain characters and no uppercase letters. See [Configuration: `name`](../pages/Configuration.md#name) for details
 * **Features:** Enhanced TaskUtil and MiddlewareUtil API
-  * For example providing access to a [project's root directory](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
-  * See also [Custom Tasks](../pages/extensibility/CustomTasks.md) and [Custom Server Middleware](../pages/extensibility/CustomServerMiddleware.md)
+    * For example providing access to a [project's root directory](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
+    * See also [Custom Tasks](../pages/extensibility/CustomTasks.md) and [Custom Server Middleware](../pages/extensibility/CustomServerMiddleware.md)
 
 ## Changes to @ui5/project and @ui5/builder API
 
