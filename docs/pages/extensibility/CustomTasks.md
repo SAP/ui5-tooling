@@ -116,7 +116,7 @@ A custom task implementation needs to return a function with the following signa
      * 
      * @param {module:@ui5/fs.AbstractReader} parameters.dependencies
      *      Reader to access resources of the project's dependencies
-     * @param {@ui5/logger/StandardLogger} parameters.log
+     * @param {@ui5/logger/loggers/Logger} parameters.log
      *      Logger instance for use in the custom task.
      *      This parameter is only available to custom task extensions
      *      defining Specification Version 3.0 and later.
@@ -156,7 +156,7 @@ A custom task implementation needs to return a function with the following signa
      * 
      * @param {module:@ui5/fs.AbstractReader} parameters.dependencies
      *      Reader to access resources of the project's dependencies
-     * @param {@ui5/logger/StandardLogger} parameters.log
+     * @param {@ui5/logger/loggers/Logger} parameters.log
      *      Logger instance for use in the custom task.
      *      This parameter is only available to custom task extensions
      *      defining Specification Version 3.0 and later.
