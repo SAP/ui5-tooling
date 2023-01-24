@@ -7,13 +7,15 @@ import traverse from "traverse";
 // Using CommonsJS require.resolve as long as import.meta.resolve is experimental
 import {createRequire} from "node:module";
 const require = createRequire(import.meta.url);
+// Provide schema name as CLI argument
+const schemaName = process.argv[2] || "ui5";
 
 // Using @ui5/project/package.json export to calculate the path to the root ui5-project folder
 const SOURCE_SCHEMA_PATH = fileURLToPath(
-	new URL("./lib/validation/schema/ui5.json", pathToFileURL(require.resolve("@ui5/project/package.json")))
+	new URL(`./lib/validation/schema/${schemaName}.json`, pathToFileURL(require.resolve("@ui5/project/package.json")))
 );
 const TARGET_SCHEMA_PATH = fileURLToPath(
-	new URL(`../site/schema/ui5.yaml.json`, import.meta.url)
+	new URL(`../site/schema/${schemaName}.yaml.json`, import.meta.url)
 );
 
 try {
@@ -45,7 +47,7 @@ try {
 	await mkdir(path.dirname(TARGET_SCHEMA_PATH), {recursive: true});
 	await writeFile(TARGET_SCHEMA_PATH, JSON.stringify(schema, null, 2));
 
-	console.log("Wrote bundled ui5.yaml schema file to " + TARGET_SCHEMA_PATH);
+	console.log(`Wrote bundled ${schemaName}.yaml schema file to ${TARGET_SCHEMA_PATH}`);
 } catch (error) {
 	console.log(error);
 	process.exit(1);
