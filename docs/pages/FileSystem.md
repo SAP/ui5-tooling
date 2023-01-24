@@ -1,39 +1,42 @@
 # UI5 FS
 
-The [UI5 FS](https://github.com/SAP/ui5-fs) provides a UI5-specific file system abstraction
+The [UI5 FS](https://github.com/SAP/ui5-fs) provides a UI5-specific file system abstraction.
 
 [**API Reference**](https://sap.github.io/ui5-tooling/v3/api/){: .md-button .sap-icon-initiative }
 
-### Resources
-During the build phase, a modified resource is kept in memory for further processing in other build steps.
+## Overview
 
-This ensures performance, as physical read and write access for a high number of resources are kept to a minimum.
+The virtual file system "UI5 FS" offers an abstraction layer from the physical file system. Among other features, it can combine a set of scattered file locations into a well defined, virtual structure.
 
-The virtual file system offers an abstraction layer from the physical file system. Amongst others, it can combine a bunch of scattered file locations into a well defined, virtualized structure.
+### Resource
+
+A [Resource](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_Resource.html) basically represents a file. Besides providing access to the file content, it also carries metadata like the **virtual path** of the Resource.
+
+Resources are typically created and stored in [Adapters](#adapters). Once read from a physical file system, they are typically kept in memory for further processing in other modules.
+
+This ensures a high build performance, as physical read and write access for a high number of resources are kept to a minimum.
 
 ### Adapters
+
 Adapters abstract access to different resource locations.
 
-The [memory adapter](lib/resources/adapters/Memory.js) represents a virtual file system, which maintains respective resources inside a data structure, whereas the [file system adapter](lib/resources/adapters/FileSystem.js) has direct access to the physical file system.
+The [Memory Adapter](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_adapters_Memory.html) represents a virtual file system, which maintains respective [Resources](#resource) inside a virtual data structure.
 
-### Resource Readers
-Maps virtual to physical paths.
+The [File System Adapter](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_adapters_FileSystem.html) on the other hand has direct access to the physical file system. It maps a "virtual base path" to a given physical path.
 
-### Collections
-Multiple resource readers can be bundled to a collection. There are multiple types of collections which differ in their capability of having read or write access and in the order of how they obtain resources.
+Both adapters provide API to retrieve and persist [Resources](#resource). Namely an API to retrieve a single resource by its virtual path:`byPath()`. One to retrieve many resources based on patterns: `byGlob()`. And one to persist a single resource: `write()`.
 
-#### Collection
-The collection has only read access.
+### Reader Collections
 
-The collection takes a list of readers. Readers are accessed in parallel: the reader which returns the resource first is used.
+Reader collections allow grouped access to multiple adapters. Those might even be nested in other reader collections.
 
-#### Prioritized Collection
-The prioritized collection has only read access.
+They implement the same API for **retrieving** Resources as Adapters (`byPath` and `byGlob`). There are multiple flavors:
 
-The collection takes a list of readers.
-The readers are accessed prioritized in the same order as they are passed to the collection.
+* [ReaderCollection](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_ReaderCollection.html): The most basic collection. Allows parallel read access to multiple readers (i.e. adapters or collections)
+* [ReaderCollectionPrioritized](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_ReaderCollectionPrioritized.html): Contains a list of readers, which are searched in-order. This allows one reader to "overlay" resources of another
+* [DuplexCollection](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_DuplexCollection.html): Contains a single reader and a single "writer". It therefore also implements the Adapter API for **persisting** resources (`write()`). When retrieving resources, the writer is prioritized over the reader when retrieving files
+* [WriterCollection](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_WriterCollection.html): Contains a set of writers and a mapping for each of them. When writing a resource, the writer is chosen based on the resource's virtual path.
 
-#### Duplex Collection
-The duplex collection has read and write access.
+### Readers
 
-The collection takes a single reader or collection of readers and a writer instance for writing results.
+TODO
