@@ -3,7 +3,7 @@
 A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
 !!! info
-    This document describes the configuration of UI5 Tooling-based projects and extensions. It represents **[Specification Version 2.6](#specification-versions)**.
+    This document describes the configuration of UI5 Tooling-based projects and extensions. It represents **[Specification Version 3.0](#specification-versions)**.
 
 ## Validation / IDE support
 
@@ -16,7 +16,7 @@ See the list of [clients](https://github.com/redhat-developer/yaml-language-serv
 ## Example
 
 ```yaml
-specVersion: "2.6"
+specVersion: "3.0"
 type: application|library|theme-library|module
 metadata:
   name: some.project.name
@@ -32,28 +32,28 @@ In addition, a project must define a `type`. This can be either `application`, `
     === "application"
 
         ```yaml
-        specVersion: "2.6"
+        specVersion: "3.0"
         type: application
         ```
 
     === "library"
 
         ```yaml
-        specVersion: "2.6"
+        specVersion: "3.0"
         type: library
         ```
 
     === "theme-library"
 
         ```yaml
-        specVersion: "2.6"
+        specVersion: "3.0"
         type: theme-library
         ```
 
     === "module"
 
         ```yaml
-        specVersion: "2.6"
+        specVersion: "3.0"
         type: module
         ```
 
@@ -252,7 +252,7 @@ You can find an overview of the available versions for each framework here:
 !!! example
     === "application"
         ```yaml
-        specVersion: "2.6"
+        specVersion: "3.0"
         type: application
         metadata:
           name: my.company.app
@@ -268,7 +268,7 @@ You can find an overview of the available versions for each framework here:
 
     === "library"
         ```yaml
-        specVersion: "2.6"
+        specVersion: "3.0"
         type: library
         metadata:
           name: my.company.library
@@ -575,12 +575,12 @@ The default and configured server ports can always be overwritten with the CLI p
 
 !!! example
     ```yaml
-    specVersion: "2.6"
+    specVersion: "3.0"
     type: application
     metadata:
       name: my.application
     ---
-    specVersion: "2.6"
+    specVersion: "3.0"
     kind: extension
     type: project-shim
     metadata:
@@ -588,7 +588,7 @@ The default and configured server ports can always be overwritten with the CLI p
     shims:
       configurations:
         lodash:
-          specVersion: "2.6"
+          specVersion: "3.0"
           type: module
           metadata:
             name: lodash
@@ -675,7 +675,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
 ```yaml
-specVersion: "2.6"
+specVersion: "3.0"
 [...]
 ```
 
@@ -694,6 +694,7 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward comp
 
 Version | UI5 CLI Release
 --- | ---
+**3.0** | v3.0.0+
 **2.6** | v2.14.0+
 **2.5** | v2.12.0+
 **2.4** | v2.11.0+
