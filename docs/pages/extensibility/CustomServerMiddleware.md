@@ -96,7 +96,7 @@ A custom middleware implementation needs to return a function with the following
      * Custom UI5 Server middleware API
      * 
      * @param {object} parameters Parameters
-     * @param {@ui5/logger/StandardLogger} parameters.log
+     * @param {@ui5/logger/loggers/Logger} parameters.log
      *      Logger instance for use in the custom middleware.
      *      This parameter is only provided to custom middleware
      *      extensions defining Specification Version 3.0 and later.
@@ -134,7 +134,7 @@ A custom middleware implementation needs to return a function with the following
      * Custom UI5 Server middleware API
      * 
      * @param {object} parameters Parameters
-     * @param {@ui5/logger/StandardLogger} parameters.log
+     * @param {@ui5/logger/loggers/Logger} parameters.log
      *      Logger instance for use in the custom middleware.
      *      This parameter is only provided to custom middleware
      *      extensions defining Specification Version 3.0 and later.
