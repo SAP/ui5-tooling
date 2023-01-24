@@ -354,19 +354,45 @@ These names are used in various placed within UI5 Tooling. Certain names can hav
 
 New boundary conditions for names of projects and extensions (as defined in the metadata.name attribute):
 
-* Names must start lowercase
-* Names must start with an alphabetic characters
-* Names must only contain alphanumeric characters, dashes and underscores
-* Names must be no longer than 50 characters
+* Names must be **at least 3 characters** long
+* Names must be **no longer than 50 characters**
+* Names must contain **lowercase characters only**
+* Names must contain **alphanumeric characters, dash, underscore, period only**
+    - Exception: `@` and `/` are allowed at certain positions as explained below
+* Names must **start with an alphabetic character or an `@`-character**
+* If a name starts with an `@`-character, it must contain exactly one forward-slash `/`
+    - This is aligned with the npm concept for package scopes
+    - e.g. `@org/lib.name`
 
-Similar restrictions should be implemented for other configurations too.
+The current proposal of a regular expression for the above is `^(?:@[0-9a-z-_.]+/)?[a-z][0-9a-z-_.]*$`.
+
+**Examples for allowed names:**
+* `sky.app`
+* `@org/heavy.lib`
+* `ui5-task-fearless-rock`
+* `ui5-middleware-fluffy-star`
+
+**Examples for disallowed names:**
+* `笑.app` (contains a non-alphabetic character)
+* `Heavy Lib` (contains uppercase characters and a space)
+* `ui5~task/fearless-rock` (contains special characters `~` and `/`)
+
+In the future, similar restrictions should be implemented for other configuration properties.
 
 #### To be Discussed
 
-* This would disallow the use of any UTF-8 characters. Including Chinese characters, Emojis, etc. Is this still matching with developer expectations?
+* ✅ This would disallow the use of any UTF-8 characters. Including Chinese characters, Emojis, etc. Is this still matching with developer expectations?
+    - npm package names already follow similar restrictions. Currently we do not expect to fail anyone's expectations with this change.
 
 #### Prior-Art
 
+* **[npm `package.json`](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#name)**
+  > * The name must be less than or equal to 214 characters. This includes the scope for scoped packages.
+  > * The names of scoped packages can begin with a dot or an underscore. This is not permitted without a scope.
+  > * New packages must not have uppercase letters in the name.
+  > * The name ends up being part of a URL, an argument on the command line, and a folder name. Therefore, the name can't contain any non-URL-safe characters.
+  > * **Unofficial** [JSON schema](https://json.schemastore.org/package) defines the following pattern:  
+  `(?:@[a-z0-9-*~][a-z0-9-*._~]*/)?[a-z0-9-~][a-z0-9-._~]*$`
 * **[Kubernetes Object Names and IDs:](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)**
   > * contain at most 63 characters  
   > * contain only lowercase alphanumeric characters or '-'  
