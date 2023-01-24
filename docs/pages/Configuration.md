@@ -71,9 +71,23 @@ In addition, a project must define a `type`. This can be either `application`, `
 
 #### name
 
-A project must have a `name` and might define a `copyright` string.
+A project must have a `name`.
 
-In UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `company.businessarea.project`.
+In UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `organization.product.project` for UI5 projects or `ui5-task-heavy-boulder` for extension-projects.
+
+The `name` property of **projects defining Specification Version 3.0 and above** must satisfy the following conditions:
+
+* Must be at least 3 characters long
+* Must be no longer than 50 characters
+* Must contain lowercase characters only
+* Must contain alphanumeric characters, dash, underscore and period only
+    - Exception: `@` and `/` are allowed at certain positions as
+      explained below
+* Must start with an alphabetic character or an `@`-character
+* If it starts with an `@`-character, it must contain exactly one
+  forward-slash `/`
+    - This is aligned with the npm concept for package scopes
+    - e.g. `@org/lib.name`
 
 #### copyright
 
@@ -97,8 +111,7 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
 === "Applications"
     - `webapp`: Mapped to runtime path `/` (root)
 
-    *Default configuration:*
-    ```yaml
+    ```yaml title="Default Configuration"
     resources:
       configuration:
         paths:
@@ -109,8 +122,7 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
     - `src`: Mapped to runtime path `/resources`
     - `test`: Mapped to runtime path `/test-resources`
 
-    *Default configuration:*
-    ```yaml
+    ```yaml title="Default Configuration"
     resources:
       configuration:
         paths:
@@ -119,12 +131,11 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
     ```
 
 === "Modules"
-    Any virtual paths can be mapped to any physical path.
+    Modules can map any virtual paths to any physical path within the project.
 
-    However, it is recommended that modules include their namespace in the virtual path and use the `/resources` prefix (e.g. `/resources/my/library/module-xy/`).
+    However, it is recommended that modules include their namespace in the virtual path and use the `/resources` prefix (e.g. `/resources/my/library/module-xy/`) to avoid name clashes with other projects.
 
-    *Example configuration:*
-    ```yaml
+    ```yaml title="Example Configuration"
     resources:
       configuration:
         paths:
@@ -135,8 +146,7 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
 !!! example
     For an application project with the following directory structure, you need the path mapping configuration given below:
 
-    *Directory Structure*
-    ``` hl_lines="3 4 5"
+    ``` hl_lines="3 4 5" title="Directory Structure"
     my-app/
     \_ ui5.yaml
     \_ lib/
@@ -144,8 +154,7 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
         \_ app/
     ```
 
-    *Path Mapping Configuration*
-    ```yaml hl_lines="4"
+    ```yaml hl_lines="4" title="Path Mapping Configuration"
     resources:
       configuration:
         paths:
