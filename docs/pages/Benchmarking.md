@@ -45,7 +45,7 @@ The following is a walk-through on how to evaluate the performance impact of an 
 
         For example:
         ```
-        2.6.6 (from /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js)
+        3.0.0 (from /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs)
         ```
 
 1. Prepare your test project (we choose the [openui5-sample-app](https://github.com/SAP/openui5-sample-app))
@@ -64,13 +64,13 @@ The following is a walk-through on how to evaluate the performance impact of an 
         Note: We won't link UI5 CLI into this project. Instead, we'll call it directly.
     1. Verify that the previously installed UI5 CLI can be called with the following command:
         ```sh
-        UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js --version
+        UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs --version
         ```
         On Windows:
         ```sh
-        set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js --version
+        set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs --version
         ```
-        *(Replace the path to ui5.js with the one shown in the previous `ui5 --version` output)*
+        *(Replace the path to ui5.cjs with the one shown in the previous `ui5 --version` output)*
 
 ## Benchmarking
 
@@ -84,20 +84,20 @@ The following is a walk-through on how to evaluate the performance impact of an 
     1. In the project, start your first benchmark
         ```sh
         hyperfine --warmup 1 \
-        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs build' \
         --export-markdown ./baseline.md
         ```
         On Windows:
         ```sh
         hyperfine --warmup 1 \
-        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs build' \
         --export-markdown ./baseline.md
         ```
     1. Your baseline benchmark is now stored in `baseline.md` and should look similar to this:
 
         | Command | Mean [s] | Min [s] | Max [s] | Relative |
         |:---|---:|---:|---:|---:|
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 | 1.00 |
+        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs build` | 1.439 ± 0.036 | 1.400 | 1.507 | 1.00 |
 
 1. Prepare your change
     1. Switch to the branch that contains your change
@@ -114,13 +114,13 @@ The following is a walk-through on how to evaluate the performance impact of an 
     1. In the project, start your second benchmark
         ```sh
         hyperfine --warmup 1 \
-        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs build' \
         --export-markdown ./my_change.md
         ```
         On Windows:
         ```sh
         hyperfine --warmup 1 \
-        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.cjs build' \
         --export-markdown ./my_change.md
         ```
     1. Your change's benchmark is now stored in `my_change.md`
@@ -128,20 +128,35 @@ The following is a walk-through on how to evaluate the performance impact of an 
 ## Compile Results
 
 1. Merge both measurements into one markdown
-    1. Either remove the `Relative` column or calculate the relative difference yourself.
+    1. In this setup, Hyperfine can't correctly calculate the relative difference between results. The respective column always reads "1". Either remove the "Relative" column or calculate the relative difference yourself:  
+        * Use this formula to calculate the percentage increase based on the *Mean* result:  
+            `(newMean - baselineMean) / baselineMean * 100`  
+           ^^JavaScript function:^^  
+            `#!js function calcDiff(baseVal, newVal) {return (newVal - baseVal) / baseVal * 100;}`
+
+        * **Example for a performance improvement:**  
+            Baseline of 10 seconds decreased to 7 seconds:  
+            `(7-10)/10*100 = -30` => **-30%** change
+
+        * **Example for a performance deterioration:**  
+            Baseline of 10 seconds increased to 12 seconds:    
+            `(12-10)/10*100 = 20` => **+20%** change
+
+    1. Change the unit in the Mean/Min/Max column headers to seconds or milliseconds according to your results.
+    1. Change the command column to only contain the relevant `ui5 build` command, including any parameters. E.g. `ui5 build --all`
     1. You should end up with a markdown like this:
         ```md
-        | Command | Mean [s] | Min [s] | Max [s] |
-        |:---|---:|---:|---:|
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 |
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.584 ± 0.074 | 1.477 | 1.680 |
+        ui5-builder Ref | Command | Mean [s] | Min [s] | Max [s] | Relative
+        |:---|:---|---:|---:|---:|---:|
+        | main ([`1234567`](https://github.com/SAP/ui5-builder/commit/<sha>)) | `ui5 build` | 1.439 ± 0.036 | 1.400 | 1.507 | Baseline |
+        | feature-duck ([`9101112`](https://github.com/SAP/ui5-builder/commit/<sha>)) | `ui5 build` | 1.584 ± 0.074 | 1.477 | 1.680 | **+10%** |
         ```
         Rendering like this:
 
-        | Command | Mean [s] | Min [s] | Max [s] |
-        |:---|---:|---:|---:|
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 |
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.584 ± 0.074 | 1.477 | 1.680 |
+        | ui5-builder Ref | Command | Mean [s] | Min [s] | Max [s] | Relative |
+        |:---|:---|---:|---:|---:|---:|
+        | main ([`1234567`](https://github.com/SAP/ui5-builder/commit/<sha>)) | `ui5 build` | 1.439 ± 0.036 | 1.400 | 1.507 | Baseline |
+        | feature-duck ([`9101112`](https://github.com/SAP/ui5-builder/commit/<sha>)) | `ui5 build` | 1.584 ± 0.074 | 1.477 | 1.680 | **+10%** |
 
 1. You can now share these results on GitHub or wherever you might need them.
 
