@@ -8,8 +8,9 @@ copyright: '© Copyright 2023, SAP SE and UI5 Tooling Contributors'
 nav:
     - Home: index.md
     - Getting Started: pages/GettingStarted.md
-    - Configuration: pages/Configuration.md
     - UI5 CLI: pages/CLI.md
+    - Configuration: pages/Configuration.md
+    - Workspace: pages/Workspace.md
     - Development:
       - Overview: pages/Overview.md
       - OpenUI5: pages/OpenUI5.md
