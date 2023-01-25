@@ -48,12 +48,10 @@ A new kind of configuration file should be introduced, allowing to define "UI5 W
 
 For this, it should be possible to define locations at which UI5 Tooling will look for a dependency first, before falling back to the regular dependency resolution.
 
-**Examples:**
+#### Example: Overwrite Resolution of a Single Library
 
-------
-
-**ui5-workspace.yaml**
 ```yaml
+# ui5-workspace.yaml
 specVersion: workspace/1.0
 metadata:
     name: local-core
@@ -66,10 +64,10 @@ By configuring an additional resolution path, pointing to the directory of the s
 
 ![Workspace configuration for using local version of a single library](./resources/0006-workspace-setup/Workspace_Configuration_Single_Lib.svg)
 
-------
+#### Example: Overwrite Resolution of a Multiple Libraries
 
-**ui5-workspace.yaml**
 ```yaml
+# ui5-workspace.yaml
 specVersion: workspace/1.0
 metadata:
     name: local-openui5
@@ -78,21 +76,30 @@ dependencyManagement:
         - path: ../openui5
 ```
 
-For resolving all modules in OpenUI5, it should be enough to provide a path to the root directory. UI5 Tooling shall then use the [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) configuration in the [package.json](https://github.com/SAP/openui5/blob/b74d3c2f153d7a23a2c9b914280b14b7289d7880/package.json#L128) to resolve all libraries located in the repository. Alternatively, a dedicated `ui5.workspaces` configuration in the package.json can be used.
+For resolving all modules in OpenUI5, it should be enough to provide a path to the root directory. UI5 Tooling shall then use the [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) configuration in the [package.json](https://github.com/SAP/openui5/blob/b74d3c2f153d7a23a2c9b914280b14b7289d7880/package.json#L128) to resolve all libraries located in the repository. Alternatively, an equivalent `ui5.workspaces` configuration in the package.json can be used. If a `ui5.workspaces` configuration is found, the standard npm workspace configuration shall be ignored.
 
 ![Workspace configuration for using local version of all OpenUI5 libraries](./resources/0006-workspace-setup/Workspace_Configuration_All_OpenUI5.svg)
 
-------
+```jsonc
+// package.json in OpenUI5 repository root directory
+{
+  "name": "openui5",
+  // [...]
+  "workspaces": [
+    "src/!(testsuite-utils)"
+  ]
+}
+```
+
+#### Example: Standard Dependency Resolution
 
 For reference, this is how a standard dependency resolution, without a workspace configuration looks like. Dependencies of the openui5-sample-app are retrieved from the npm registry, stored in a central directory on the file system and used from there:
 
 ![Standard dependency resolution without workspace configuration](./resources/0006-workspace-setup/Standard_Dependency_Resolution.svg)
 
-------
+#### Example: Multiple Workspace Configurations
 
 Since every workspace configuration is identifiable by a name, multiple workspaces can be configured in the same file:
-
-**Example:**
 
 ```yaml
 specVersion: workspace/1.0
@@ -110,13 +117,13 @@ dependencyManagement:
         - path: ../openui5
 ```
 
-------
+#### Workspace Names
 
 Workspace names should be restricted in a reasonable matter (max length, only selected special characters). In addition, there shall be reserved names with special functionality:
 * `default`: This workspace should always be used, even if no `--workspace` parameter is provided to the CLI
-* `dev`: This workspace should always be used **unless**:
-    - there is a `default` workspace configured
-    - a production or CI environment is detected: **TODO: How?**
+* _~`dev`: This workspace should always be used **unless**:~_
+    - _~there is a `default` workspace configured~_
+    - _~a production or CI environment is detected: **TODO: How?**~_
 
 ### Key Design Decisions
 
@@ -131,7 +138,7 @@ Workspace names should be restricted in a reasonable matter (max length, only se
 **Dependency resolution configuration**
 1. All paths must point to a directory
 1. Symlinks are followed
-1. (Optional) Dependency resolution paths must be relative paths. Absolute paths, or paths relative to the home directory (`~`), are not allowed. This is to ensure that workspace configuration files are easy to share and to reduce the change of them containing private information like usernames or large directory hierarchies.
+1. (Optional) Dependency resolution paths must be relative paths. Absolute paths, or paths relative to the home directory (`~`), are not allowed. This is to ensure that workspace configuration files are easy to share and to reduce the chance of them containing private information like usernames or large directory hierarchies.
 
 ### UI5 CLI Enhancements
 
