@@ -104,7 +104,7 @@ Depending on the project type, UI5 Tooling expects your projects source files to
 
 If your project's sources are located in different directories, you need to configure the path mapping accordingly. Depending on the type of project, there are several different path mappings available.
 
-Note that all configured paths must be written in POSIX (i.e. using only forward slashes `/`) and relative to the project's root directory.
+Note that all configured paths must be written in POSIX (i.e. using only forward slashes `/` as path segment separators) and relative to the project's root directory.
 
 #### Available Path Mappings
 

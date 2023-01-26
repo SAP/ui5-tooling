@@ -15,13 +15,13 @@
 
 ## General Concept
 
-UI5 Workspaces can be used to create a personalized local development environment for UI5 Projects. They allow to use UI5 dependencies from local directories without the need to use the link features of package managers like npm. "UI5 dependencies" generally refers to projects that have a `ui5.yaml`.
+UI5 Workspaces can be used to create a personalized local development environment for a UI5 Project. They allow to use UI5 dependencies from local directories without the need to use the link features of package managers like npm. "UI5 dependencies" generally refers to projects that have a `ui5.yaml`.
 
 Workspaces are typically configured in a `ui5-workspace.yaml` file, located next to the project's `ui5.yaml`. The file can contain one or many workspace configurations, each separated by [three dashes](https://yaml.org/spec/1.2.2/#22-structures).
 
 If there is a workspace configuration named `default`, it will be used automatically. Otherwise the workspace to use needs to be specified using the UI5 CLI parameter `--workspace`.
 
-Workspaces can only be used in the project that is currently being worked on. UI5 Workspace configurations of dependencies are ignored.
+Workspaces can only be used in the project that is currently being worked on. I.e. the current root project. Workspace configurations of dependencies are ignored.
 
 This concept has been discussed in an RFC: [RFC 0006 Local Dependency Resolution](https://github.com/SAP/ui5-tooling/blob/rfc-local-dependency-resolution/rfcs/0006-local-dependency-resolution.md)
 
@@ -48,7 +48,7 @@ A workspace must have a `name`. This allows for addressing individual workspace 
 
 If a workspace is named `default`, **it will be used automatically** unless a different workspace is selected using the `--workspace` CLI parameter.
 
-The `name` property of must satisfy the following conditions. They are identical to [project names](./Configuration.md#name):
+The `name` property of a workspace must satisfy the following conditions. They are identical to [project names](./Configuration.md#name):
 
 * Must be at least 3 characters long
 * Must be no longer than 50 characters
@@ -86,13 +86,13 @@ dependencyManagement:
        	- path: ../test.library
 ```
 
-Resolution paths will be used by UI5 Tooling to look for project dependencies. Any dependencies found via these paths will be used over the ones found using the regular dependency resolution mechanisms.
+Resolution paths will be used by UI5 Tooling to look for project dependencies. Any dependencies found via these paths will be used over the ones found with the regular dependency resolution mechanism.
 
 Paths must point to a directory, which must contain a `package.json`. UI5 Tooling will attempt to find a UI5 Project here. However, if the `package.json` contains a |`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces) or equivalent `ui5.workspaces` configuration (which overrules the first), UI5 Tooling will resolve the workspace first and attempt to find UI5 Projects in the configured "npm workspaces". This is commonly used in monorepos. An example can be found in the [OpenUI5 repository](https://github.com/SAP/openui5/blob/b4267488e5d3546de4cd9577ccac4208482d71e0/package.json#L130-L132).
 
-Paths **must be relative** and will be resolved to the current working directory. Absolute paths, or paths relative to the home directory (`~`) are not allowed. This is to ensure that workspace configuration files are easy to share and to reduce the chance of them containing private information like usernames or large directory hierarchies.
+Paths must be written in POSIX (i.e. using only forward slashes `/` as path segment separators) and must be **relative to the workspace configuration file**. Absolute paths, or paths relative to the home directory (`~`) are not allowed. This is to ensure that workspace configuration files are easy to share and to reduce the chance of them exposing sensitive information like usernames or large directory hierarchies. Symbolic links are followed.
 
-Symbolic links are followed.
+Note that this configuration only affects the resolution of dependencies which have been already found during the regular dependency resolution process of a project. For example, if a workspace resolution path resolves to a project that would otherwise not be part of the dependency tree of the current root project, it will not be added to the dependency tree. Also, transitive dependencies of resolved projects are not being followed.
 
 ## Workspace Specification Versions
 A workspace configuration must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a workspace's configuration.
