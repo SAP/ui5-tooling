@@ -48,19 +48,18 @@ A workspace must have a `name`. This allows for addressing individual workspace 
 
 If a workspace is named `default`, **it will be used automatically** unless a different workspace is selected using the `--workspace` CLI parameter.
 
-The `name` property of a workspace must satisfy the following conditions. They are identical to [project names](./Configuration.md#name):
+The `name` property must satisfy the following conditions. They are identical to [project names](./Configuration.md#name):
 
 * Must be at least 3 characters long
 * Must be no longer than 50 characters
 * Must contain lowercase characters only
 * Must contain alphanumeric characters, dash, underscore and period only
-    - Exception: `@` and `/` are allowed at certain positions as
+    - Exception: The `@` and `/` characters are allowed at certain positions as
       explained below
-* Must start with an alphabetic character or an `@`-character
-* If it starts with an `@`-character, it must contain exactly one
-  forward-slash `/`
-    - This is aligned with the npm concept for package scopes
-    - e.g. `@org/lib.name`
+* Must start with an alphabetic character or an `@` character
+* If it starts with an `@` character, it must contain exactly one
+  forward slash `/`
+    - This is aligned with the npm concept for package scopes, for example `@org/lib.name`
 
 ## Dependency Management
 
