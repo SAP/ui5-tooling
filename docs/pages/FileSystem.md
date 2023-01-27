@@ -36,7 +36,3 @@ They implement the same API for **retrieving** Resources as Adapters (`byPath` a
 * [ReaderCollectionPrioritized](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_ReaderCollectionPrioritized.html): Contains a list of readers, which are searched in-order. This allows one reader to "overlay" resources of another
 * [DuplexCollection](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_DuplexCollection.html): Contains a single reader and a single "writer". It therefore also implements the Adapter API for **persisting** resources (`write()`). When retrieving resources, the writer is prioritized over the reader when retrieving files
 * [WriterCollection](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_WriterCollection.html): Contains a set of writers and a mapping for each of them. When writing a resource, the writer is chosen based on the resource's virtual path.
-
-### Readers
-
-TODO
