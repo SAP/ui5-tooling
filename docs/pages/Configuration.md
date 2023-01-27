@@ -75,19 +75,18 @@ A project must have a `name`.
 
 In UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `organization.product.project` for UI5 projects or `ui5-task-heavy-boulder` for extension-projects.
 
-The `name` property of **projects defining Specification Version 3.0 and above** must satisfy the following conditions:
+The `name` property of **projects defining Specification Version 3.0 and higher** must satisfy the following conditions:
 
 * Must be at least 3 characters long
 * Must be no longer than 50 characters
 * Must contain lowercase characters only
 * Must contain alphanumeric characters, dash, underscore and period only
-    - Exception: `@` and `/` are allowed at certain positions as
+    - Exception: The `@` and `/` characters are allowed at certain positions as
       explained below
-* Must start with an alphabetic character or an `@`-character
-* If it starts with an `@`-character, it must contain exactly one
-  forward-slash `/`
-    - This is aligned with the npm concept for package scopes
-    - e.g. `@org/lib.name`
+* Must start with an alphabetic character or an `@` character
+* If it starts with an `@` character, it must contain exactly one
+  forward slash `/`
+    - This is aligned with the npm concept for package scopes, for example `@org/lib.name`
 
 #### copyright
 
