@@ -6,9 +6,9 @@ During the build process, UI5 Tooling executes a static code analysis of a proje
 - Numeric Literal
 - Boolean Literal
 - `null` / `undefined`
-- Template Literal without placeholders
+- Template Literal without any expression
 - Arrays of the previous, spread operators will be ignored (not taken into account)
-- Object Literals with simple literals as keys and values (again, spread operators will be ignored / not taken into account)
+- Object Literals with "Simple Literals" as keys and values (again, spread operators will be ignored / not taken into account)
 
 ## Dependency Analysis
 
@@ -29,7 +29,15 @@ Following APIs are analyzed by the JSModule Analyzer:
 
 The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/JSModuleAnalyzer.js) uses the ["Abstract Syntax Tree"](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) of a JavaScript file to decide whether a code block is executed *conditionally* or *unconditionally*.
 
-Besides this information, which is inherent to the JavaScript language, the analyzer uses additional knowledge about special APIs. For example, the factory function of an AMD-module is known to be executed when the module is executed, an IIFE is known to be executed immediately, etc.
+The analyzer uses a set of rules to decide whether one of the above APIs is immediately called when the module is executed or whether the API is only called under certain conditions.
+
+For example, top-level code is always executed. Flow-control statements in JavaScript imply that certain blocks of code are only executed under certain conditions (e.g. if block, else block, ...). Besides those inherent JavaScript rules, further common patterns are known to the analyzer, e.g. immediately invoked function expressions or the factor function of AMD modules.
+
+Any dependencies that are found in code that - according to those rules - is always executed, are collected as eager (or standard) dependencies. Dependencies that are found on a code path that depends on certain conditions are collected as conditional dependencies.
+
+The bundling implemented by the UI5 tooling can either follow only eager dependencies (resolve:`true`) or also conditional dependencies (resolveConditional). For further information see [Custom Bundling](https://sap.github.io/ui5-tooling/v3/pages/Configuration/#custom-bundling).
+
+When a dependency in one of the mentioned APIs is not a "Simple Literal" but an expression, the corresponding module is marked as "having dynamic dependencies". This marker is currently not further evaluated by the tooling.
 
 ### Component Analyzer
 
