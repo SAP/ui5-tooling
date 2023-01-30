@@ -18,7 +18,7 @@ The APIs described in the following sections requiring the usage of "Simple Lite
 ### JSModule Analyzer
 
 The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/JSModuleAnalyzer.js) uses the ["Abstract Syntax Tree"](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) of a JavaScript file to decide whether a code block is executed *conditionally* or *unconditionally*.
-Besides this information, which is inherent to the JavaScript language, the analyzer uses additional knowledge about special API. For example, the factory function of an AMD-module is known to be executed when the module is executed, an IIFE is known to be executed immediately etc.
+Besides this information, which is inherent to the JavaScript language, the analyzer uses additional knowledge about special APIs. For example, the factory function of an AMD-module is known to be executed when the module is executed, an IIFE is known to be executed immediately, etc.
 
 Following APIs are analyzed by the JSModule Analyzer:
 
