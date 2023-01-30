@@ -6,7 +6,7 @@ During the build process, UI5 Tooling executes a static code analysis of a proje
 - Numeric Literal
 - Boolean Literal
 - `null` / `undefined`
-- Template Literal
+- Template Literal without placeholders
 - Arrays of the previous, spread operators will be ignored (not taken into account)
 - Object Literals with simple literals as keys and values (again, spread operators will be ignored / not taken into account)
 
@@ -16,9 +16,6 @@ UI5 Tooling extracts dependency information from a project's code as outlined in
 The APIs described in the following sections requiring the usage of "Simple Literals" when declaring dependencies.
 
 ### JSModule Analyzer
-
-The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/JSModuleAnalyzer.js) uses the ["Abstract Syntax Tree"](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) of a JavaScript file to decide whether a code block is executed *conditionally* or *unconditionally*.
-Besides this information, which is inherent to the JavaScript language, the analyzer uses additional knowledge about special APIs. For example, the factory function of an AMD-module is known to be executed when the module is executed, an IIFE is known to be executed immediately, etc.
 
 Following APIs are analyzed by the JSModule Analyzer:
 
@@ -30,14 +27,18 @@ Following APIs are analyzed by the JSModule Analyzer:
 - sap.ui.preload (restricted)
 - sap.ui.require.preload (restricted)
 
+The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/JSModuleAnalyzer.js) uses the ["Abstract Syntax Tree"](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) of a JavaScript file to decide whether a code block is executed *conditionally* or *unconditionally*.
+
+Besides this information, which is inherent to the JavaScript language, the analyzer uses additional knowledge about special APIs. For example, the factory function of an AMD-module is known to be executed when the module is executed, an IIFE is known to be executed immediately, etc.
+
 ### Component Analyzer
 
 The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` in the same folder. If one is found, the `sap.ui5` section will be evaluated in the following way
 
-- any library dependency is added as a dependency to the library.js module of that library. If the library dependency is modelled as 'lazy', the
+- any library dependency is added as a dependency to the `library.js` module of that library. If the library dependency is modeled as 'lazy', the
  module dependency will be added as 'conditional'
-- any component dependency is added as a dependency to the Component.js module of that component. If the Component dependency is modeled as 'lazy', the module dependency will be added as 'conditional'
-- for each configured UI5 module, for which a type is configured, a module dependency to that type is added
+- any component dependency is added as a dependency to a file named `Component.js`. If the dependency is modeled as 'lazy', the module dependency will be added as 'conditional'
+- for each configured UI5 model, for which a type is configured, a module dependency to that type is added
 - for each route that contains a view name, a module dependency to that view will be added
 
 ### Fiori Elements Analyzer
@@ -97,9 +98,8 @@ but as of June 2017, this possibility is currently not used.
 The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` in the same folder. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way
 
 - for each page configuration, the configured component is added as a dependency to the template app module
-- If the page configuration contains a templateName, a dependency to that template view is added to the app
-- Otherwise, the class definition of the component is analyzed to find a default template view name
-   If found, a dependency to that view is added to the app module
+- if the page configuration contains a templateName, a dependency to that template view is added to the app
+- otherwise, the class definition of the component is analyzed to find a default template view name. if found, a dependency to that view is added to the app module
 
 The template component is analyzed in the following way:
 
@@ -119,7 +119,7 @@ The [XML Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt
 Additionally, some special dependencies are handled:
 
 - controller of the view
-- resource bundle (note: locale dependent dependencies can't be modeled yet in ModuleInfo)
+- resource bundle (note: `sap/ui/core/Locale.js` dependent dependencies can't be modeled yet in ModuleInfo)
 - component referenced via ComponentContainer control
 - embedded fragments or views
 
@@ -164,7 +164,7 @@ The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless 
 
 ## Library Initialization
 
-The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every JavaScript file for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be placed in the generated manifest.json:
+The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every `library.js` file in the namespace of a library for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be placed in the generated manifest.json:
 
 - noLibraryCSS: false when the noLibraryCSS property had been set in the initLibrary info object
 - types: string array with the names of the types contained in the library
@@ -173,6 +173,8 @@ The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/a
 - interfaces: string array with the names of the interfaces defined in the library
 
 When using `sap/ui/core/Core#initLibrary` requires the usage of "Simple Literals" for the parameter passed to this function call.
+
+Note: currently only the usage via the global `sap.ui.getCore().initLibrary` is supported by this analyzer. Requiring the `sap/ui/core/Core` and then call `Core.initLibrary` is not catched by this analyzer.
 
 ## JSDoc
 
