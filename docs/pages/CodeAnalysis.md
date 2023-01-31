@@ -171,7 +171,7 @@ The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/a
 
 When using `sap/ui/core/Core#initLibrary` requires the usage of "Simple Literals" for the parameter passed to this function call.
 
-Note: currently only the usage via the global `sap.ui.getCore().initLibrary` is supported by this analyzer. Requiring the `sap/ui/core/Core` and then call `Core.initLibrary` is not catched by this analyzer.
+Note: currently only the usage via the global `sap.ui.getCore().initLibrary` is supported by this analyzer. Requiring the `sap/ui/core/Core` and then call `Core.initLibrary` is not recognized by this analyzer.
 
 ## JSDoc
 
