@@ -8,11 +8,11 @@ UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui
 | v3.0+               | ECMAScript 2022              |      |
 | v2.0+               | ECMAScript 2009/ES5          | Note that code up to ECMAScript 2020 can be parsed, however required code analysis might not work correctly for specific language features |
 
-The following section describes all limitations grouped by the kind of ECMAScript language feature. To get more insights into the code analysing executed by UI5 Tooling check out [Code Analysis](./CodeAnalysis.md).
+The following section describes all restrictions grouped by the kind of ECMAScript language feature. To get more insights into the code analysing executed by UI5 Tooling check out [Code Analysis](./CodeAnalysis.md).
 
-## Language Features with Limitations
+## Language Features with Restrictions
 
-The following sections describe the limitations grouped by the ECMAScript language feature.
+The following sections describe the restrictions grouped by the ECMAScript language feature.
 
 ### JavaScript modules
 
