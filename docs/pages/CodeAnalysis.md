@@ -1,23 +1,23 @@
 # Code Analysis
 
-During the build process, UI5 Tooling executes a static code analysis of a project. In this and following sections the term "Simple Literial" is used. "Simple Literial" means following language fetaures:
+During the build process, UI5 Tooling executes a static code analysis of your project. In the following sections the term "simple literal" is used for the following language features:
 
-- String Literal
-- Numeric Literal
-- Boolean Literal
+- string literals
+- numeric literals
+- Boolean literals
 - `null` / `undefined`
-- Template Literal without any expression
-- Arrays of the previous, spread operators will be ignored (not taken into account)
-- Object Literals with "Simple Literals" as keys and values (again, spread operators will be ignored / not taken into account)
+- template literals without any expressions
+- arrays of the previous (spread operators are ignored)
+- object literals with "simple literals" used as keys and values (again, spread operators are ignored)
 
 ## Dependency Analysis
 
-UI5 Tooling extracts dependency information from a project's code as outlined in the following chapters.
-The APIs described in the following sections requiring the usage of "Simple Literals" when declaring dependencies.
+UI5 Tooling extracts dependency information from a project's code as outlined in the following sections.
+The APIs described there require the usage of "simple literals" when declaring dependencies.
 
 ### JSModule Analyzer
 
-Following APIs are analyzed by the JSModule Analyzer:
+The following APIs are analyzed by the JSModule Analyzer:
 
 - sap.ui.define
 - sap.ui.require
@@ -29,36 +29,36 @@ Following APIs are analyzed by the JSModule Analyzer:
 
 The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/JSModuleAnalyzer.js) uses the ["Abstract Syntax Tree"](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) of a JavaScript file to decide whether a code block is executed *conditionally* or *unconditionally*.
 
-The analyzer uses a set of rules to decide whether one of the above APIs is immediately called when the module is executed or whether the API is only called under certain conditions.
+The analyzer uses a set of rules to decide whether one of the above APIs is called whenever the module is executed or whether the API is only called under certain conditions.
 
-For example, top-level code is always executed. Flow-control statements in JavaScript imply that certain blocks of code are only executed under certain conditions (e.g. if block, else block, ...). Besides those inherent JavaScript rules, further common patterns are known to the analyzer, e.g. immediately invoked function expressions or the factor function of AMD modules.
+For example, top-level code is always executed. Flow-control statements in JavaScript imply that certain blocks of code are only executed under certain conditions (for example, `if` blocks, `else` blocks, ...). Besides these inherent JavaScript rules, further common patterns are known to the analyzer, e.g. immediately invoked function expressions or the factor function of AMD modules.
 
-Any dependencies that are found in code that - according to those rules - is always executed, are collected as eager (or standard) dependencies. Dependencies that are found on a code path that depends on certain conditions are collected as conditional dependencies.
+Any dependencies found that - according to these rules - are always executed, are collected as eager (or standard) dependencies. Dependencies that are found on a code path that depends on certain conditions are collected as conditional dependencies.
 
-The bundling implemented by the UI5 tooling can either follow only eager dependencies (resolve:`true`) or also conditional dependencies (resolveConditional). For further information see [Custom Bundling](https://sap.github.io/ui5-tooling/v3/pages/Configuration/#custom-bundling).
+The bundling implemented by UI5 Tooling can either follow only eager dependencies (resolve:`true`) or additionally conditional dependencies (resolveConditional). For more information, see [Custom Bundling](https://sap.github.io/ui5-tooling/v3/pages/Configuration/#custom-bundling).
 
-When a dependency in one of the mentioned APIs is not a "Simple Literal" but an expression, the corresponding module is marked as "having dynamic dependencies". This marker is currently not further evaluated by the tooling.
+When a dependency in one of the mentioned APIs is not a "simple literal" but an expression, the corresponding module is marked as "having dynamic dependencies". This marker is currently not further evaluated by the tooling.
 
 ### Component Analyzer
 
-The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` in the same folder. If one is found, the `sap.ui5` section will be evaluated in the following way
+The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` in the same folder. If one is found, the `sap.ui5` section is evaluated in the following way:
 
-- any library dependency is added as a dependency to the `library.js` module of that library. If the library dependency is modeled as 'lazy', the
- module dependency will be added as 'conditional'
-- any component dependency is added as a dependency to a file named `Component.js`. If the dependency is modeled as 'lazy', the module dependency will be added as 'conditional'
-- for each configured UI5 model, for which a type is configured, a module dependency to that type is added
-- for each route that contains a view name, a module dependency to that view will be added
+- Any library dependency is added as a dependency to the `library.js` module of that library. If the library dependency is modeled as 'lazy', the
+ module dependency will be added as 'conditional',
+- any component dependency is added as a dependency to a file named `Component.js`. If the dependency is modeled as 'lazy', the module dependency will be added as 'conditional',
+- for each UI5 model for which a type is configured, a module dependency to that type is added,
+- for each route that contains a view name, a module dependency to that view will be added.
 
 ### Fiori Elements Analyzer
 
 The [Fiori Elements Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/FioriElementsAnalyzer.js) analyzes a FioriElements app and its underlying template components to collect dependency information. It searches for a `manifest.json` in the same folder. If one is found the `sap.fe` section will be evaluated in the following way:
 
-- for each entity set in the `entitySets` object, each sub-entry is checked for a `default.template` property
-- if found, the containing string is interpreted as the short name of a template component in the `sap.fe.templates` library
-- a dependency to that template component is added to the analyzed app
+- For each entity set in the `entitySets` object, each sub-entry is checked for a `default.template` property,
+- if one is found, the containing string is interpreted as the short name of a template component in the `sap.fe.templates` library,
+- a dependency to that template component is added to the analyzed app.
 
 For a full analysis, "routing" also should be taken into account. Only when a sub-entry of the entity set
-is referenced by a route, then the template for that entry will be used. Routes thereby could form entry points.
+is referenced by a route, the template for that entry will be used. Routes thereby could form entry points.
 
 ```json
 {
@@ -90,54 +90,54 @@ is referenced by a route, then the template for that entry will be used. Routes 
 
 The template component is analyzed in the following way:
 
-- precondition: template component class is defined in an AMD-style module, using define or sap.ui.define
+- precondition: the template component class is defined in an AMD-style module, using define or sap.ui.define
 - precondition: the module 'sap/fe/core/TemplateAssembler' is imported
 - precondition: a call to TemplateAssembler.getTemplateComponent is used to define the component class
-- precondition: that call is used in a top level return statement of the factory function
+- precondition: that call is used in a top-level return statement of the factory function
 - precondition: necessary parameters to that call are given as an object literal (no further coding)
-- precondition: the settings define a managed property property 'metadata.properties.templateName' with a
+- precondition: the settings define a managed property 'metadata.properties.templateName' with a
                 defaultValue of type string
 The default value of the property represents the template view of the template component.
-The manifest of the template app in theory could specify an alternative template as setting.templateName,
+The manifest of the template app could in theory specify an alternative template as setting.templateName,
 but as of June 2017, this possibility is currently not used.
 
 ### Smart Template Analyzer
 
 The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` in the same folder. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way
 
-- for each page configuration, the configured component is added as a dependency to the template app module
-- if the page configuration contains a templateName, a dependency to that template view is added to the app
-- otherwise, the class definition of the component is analyzed to find a default template view name. if found, a dependency to that view is added to the app module
+- For each page configuration, the configured component is added as a dependency to the template app module,
+- if the page configuration contains a `templateName`, a dependency to that template view is added to the app,
+- otherwise, the class definition of the component is analyzed to find a default template view name. if found, a dependency to that view is added to the app module.
 
 The template component is analyzed in the following way:
 
-- precondition: template component class is defined in an AMD-style module, using define or sap.ui.define
+- precondition: the template component class is defined in an AMD-style module, using define or sap.ui.define
 - precondition: the module 'sap/suite/ui/generic/template/lib/TemplateAssembler' is imported
 - precondition: a call to TemplateAssembler.getTemplateComponent is used to define the component class
-- precondition: that call is used in a top level return statement of the factory function
+- precondition: that call is used in a top-level return statement of the factory function
 - precondition: necessary parameters to that call are given as an object literal (no further coding)
-- precondition: the settings define a managed property property 'metadata.properties.templateName' with a defaultValue of type string
+- precondition: the settings define a managed property 'metadata.properties.templateName' with a defaultValue of type string
 The default value of the property represents the template view of the template component.
-The manifest of the template app in theory could specify an alternative template in
+The manifest of the template app could in theory specify an alternative template in
 component.settings.templateName.
 
 ### XML Template Analyzer
 
-The [XML Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLTemplateAnalyzer.js) tackles XMLViews and XMLFragments. It parses the XML, collects controls and adds them as dependency to the ModuleInfo object.
+The [XML Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLTemplateAnalyzer.js) tackles XMLViews and XMLFragments. It parses the XML, collects controls, and adds them as dependency to the ModuleInfo object.
 Additionally, some special dependencies are handled:
 
-- controller of the view
-- resource bundle (note: as locale dependent dependencies can't be modelled yet in the ModuleInfo, only a dependency to the development version (aka raw language) of the bundle will be added)
-- component referenced via ComponentContainer control
-- embedded fragments or views
+- Controller of the view,
+- resource bundle (note: as locale-dependent dependencies can't be modelled yet in the ModuleInfo, only a dependency to the development version (aka raw language) of the bundle will be added),
+- component referenced via ComponentContainer control,
+- embedded fragments or views.
 
-In an XMLView/XMLFragment, there usually exist 3 categories of element nodes: controls, aggregations and non-UI5 nodes (e.g. XHTML or SVG).
+In an XMLView/XMLFragment, usually 3 categories of element nodes exist: Controls, aggregations, and non-UI5 nodes (e.g. XHTML or SVG).
 
 ### XML Composite Analyzer
 
-The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project. The [XML Composite Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLCompositeAnalyzer.js) searches for the name of the configured fragment containing the **XMLComposite** control.
+The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless, UI5 Tooling will attempt to analyze the declaration of any such controls in a project. The [XML Composite Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLCompositeAnalyzer.js) searches for the name of the configured fragment containing the **XMLComposite** control.
 
-=== "Name of the XMLComposite is equal with fragment name"
+=== "Name of the XMLComposite is equal to fragment name"
 
     ```javascript hl_lines="4"
     sap.ui.define([
@@ -161,7 +161,7 @@ The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless 
 
 ## Library Initialization
 
-The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every `library.js` file in the namespace of a library for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be placed in the generated manifest.json:
+The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/analyzeLibraryJS.js) checks every `library.js` file in the namespace of a library for occurences of a `sap/ui/core/Core#initLibrary` call. If found, the following information will be placed in the generated manifest.json:
 
 - noLibraryCSS: false when the noLibraryCSS property had been set in the initLibrary info object
 - types: string array with the names of the types contained in the library
@@ -169,19 +169,19 @@ The [library.js Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/a
 - elements: string array with the names of the elements defined in the library
 - interfaces: string array with the names of the interfaces defined in the library
 
-When using `sap/ui/core/Core#initLibrary` requires the usage of "Simple Literals" for the parameter passed to this function call.
+`sap/ui/core/Core#initLibrary` requires the usage of "simple literals" for the parameters passed to this function call.
 
-Note: currently only the usage via the global `sap.ui.getCore().initLibrary` is supported by this analyzer. Requiring the `sap/ui/core/Core` and then call `Core.initLibrary` is not recognized by this analyzer.
+Note: Currently only the usage via the global `sap.ui.getCore().initLibrary` is supported by this analyzer. Requiring `sap/ui/core/Core` and then calling `Core.initLibrary` is not recognized by this analyzer.
 
 ## JSDoc
 
-The UI5 Tooling offers a JSDoc build, which is enhanced by UI5 specific JSDoc features.
+The UI5 Tooling offers a JSDoc build, which is enhanced by UI5-specific JSDoc features.
 
-An UI5 SDK can be build locally. To get more insights about the local UI5 SDK build setup, have a look at the [Developer Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
+An UI5 SDK can be built locally. To get more insight into the local UI5 SDK build setup, have a look at our [Developer's Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
 
-Currently, the resources needed for a UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This double maintenance is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. Therefore it is necessary to have these resources also available in the *ui5-builder*. This might change in future.
+Currently, the resources needed for a UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This double maintenance is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. It's therefore necessary to have these resources also available in the *ui5-builder*. This might change in the future.
 
-Following artefacts contributing to the JSDoc build:
+The following artefacts contribute to the JSDoc build:
 
 - [jsdocGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/jsdocGenerator.js):
   Executes the actual JSDoc build. UI5 Tooling wrapper for `plugin.cjs`.
@@ -193,34 +193,34 @@ Following artefacts contributing to the JSDoc build:
   Creates API index resources from all `api.json` resources and by interpreting the `sap-ui-version.json` available in the given test resources directory. The resulting index resources (e.g. `api-index.json`,  `api-index-deprecated.json`,
   `api-index-experimental.json` and `api-index-since.json`) are only to be used in a UI5 SDK.
 - [transformApiJson.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/transformApiJson.cjs): 
-  Preprocesses `api.json` files for use in a UI5 SDKs. Transforms the `api.json` as created by the JSDoc build into a pre-processed `api.json` file suitable for the SDK. The pre-processing includes formatting of type references, rewriting of links and other time consuming calculations.
+  Preprocesses `api.json` files for use in UI5 SDKs. Transforms the `api.json` as created by the JSDoc build into a pre-processed `api.json` file suitable for the SDK. The pre-processing includes formatting of type references, rewriting of links, and other time-consuming calculations.
 - [plugin.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/plugin.cjs):
-  UI5 plugin for JSDoc3. The plugin adds the following UI5 specific tag definitions to JSDoc3.
+  UI5 plugin for JSDoc3. The plugin adds the following UI5-specific tag definitions to JSDoc3:
 
     - disclaimer
     - experimental
     - final
     - interface
     - implements
-	- ui5-restricted and more
+	- ui5-restricted, and more
 
-    It furthermore listens to the following JSDoc3 events to implement additional functionality
+    It furthermore listens to the following JSDoc3 events to implement additional functionality:
 
-    - parseBegin: to create short names for all file that are to be parsed
-    - fileBegin: to write some line to the log (kind of a progress indicator)
-    - jsdocCommentFound: to pre-process comments, empty lines are used as paragraph markers a default visibility is added, legacy tag combinations used in JSdoc2 are converted to JSDoc3 conventions
+    - parseBegin: to create short names for all files that are to be parsed
+    - fileBegin: to write to the log (a kind of progress indicator)
+    - jsdocCommentFound: to pre-process comments, empty lines are used as paragraph markers, a default visibility is added, and legacy tag combinations used in JSDoc2 are converted to JSDoc3 conventions
     - newDoclet
     - parseComplete: remove undocumented/ignored/private doclets or duplicate doclets
 
-    Last but not least, it implements an astNodeVisitor to detect UI5 specific "extend" calls and to create documentation for the properties, aggregations etc. that are created with the "extend" call.
+    Last but not least, it implements an astNodeVisitor to detect UI5-specific "extend" calls and to create documentation for the properties, aggregations, etc. that are created with the "extend" call.
 
 - [publish.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/publish.cjs): JSDoc3 template for UI5 documentation generation.
 
     - adds missing namespaces
-    - determines the exports names of exported APIs
+    - determines the export names of exported APIs
     - writes out the `api.json` from the collected JSDoc information
 	- calculates the inheritance hierarchy
 	- checks for cyclic dependencies
 	- removes unnecessary whitespace from an HTML document
 
-- [versionUtil.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/utils/versionUtil.cjs): Provides helper methods to determine version related information.
+- [versionUtil.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/ui5/template/utils/versionUtil.cjs): Provides helper methods to determine version-related information.
