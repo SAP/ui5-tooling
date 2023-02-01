@@ -44,18 +44,18 @@ When a dependency in one of the mentioned APIs is not a "simple literal" but an 
 The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` located in the same folder as the `Component.js`. If one is found, the `sap.ui5` section is evaluated in the following way:
 
 - Any library dependency is added as a dependency to the `library.js` module of that library. If the library dependency is modeled as 'lazy', the
- module dependency will be added as 'conditional',
-- any component dependency is added as a dependency to a file named `Component.js`. If the dependency is modeled as 'lazy', the module dependency will be added as 'conditional',
-- for each UI5 model for which a type is configured, a module dependency to that type is added,
-- for each route that contains a view name, a module dependency to that view will be added.
+ module dependency will be added as 'conditional'.
+- Any component dependency is added as a dependency to a file named `Component.js`. If the dependency is modeled as 'lazy', the module dependency will be added as 'conditional'.
+- For each UI5 model for which a type is configured, a module dependency to that type is added.
+- For each route that contains a view name, a module dependency to that view is added.
 
 ### Fiori Elements Analyzer
 
 The [Fiori Elements Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/FioriElementsAnalyzer.js) analyzes a FioriElements app and its underlying template components to collect dependency information. It searches for a `manifest.json` located in the same folder as the `Component.js`. If one is found the `sap.fe` section will be evaluated in the following way:
 
-- For each entity set in the `entitySets` object, each sub-entry is checked for a `default.template` property,
-- if one is found, the containing string is interpreted as the short name of a template component in the `sap.fe.templates` library,
-- a dependency to that template component is added to the analyzed app.
+- For each entity set in the `entitySets` object, each sub-entry is checked for a `default.template` property.
+- If one is found, the containing string is interpreted as the short name of a template component in the `sap.fe.templates` library.
+- A dependency to that template component is added to the analyzed app.
 
 For a full analysis, "routing" also should be taken into account. Only when a sub-entry of the entity set
 is referenced by a route, the template for that entry will be used. Routes thereby could form entry points.
@@ -103,11 +103,11 @@ but as of June 2017, this possibility is currently not used.
 
 ### Smart Template Analyzer
 
-The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` located in the same folder as the `Component.js`. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way
+The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` located in the same folder as the `Component.js`. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way:
 
-- For each page configuration, the configured component is added as a dependency to the template app module,
-- if the page configuration contains a `templateName`, a dependency to that template view is added to the app,
-- otherwise, the class definition of the component is analyzed to find a default template view name. if found, a dependency to that view is added to the app module.
+- For each page configuration, the configured component is added as a dependency to the template app module.
+- If the page configuration contains a `templateName`, a dependency to that template view is added to the app.
+- Otherwise, the class definition of the component is analyzed to find a default template view name. if found, a dependency to that view is added to the app module.
 
 The template component is analyzed in the following way:
 
@@ -126,10 +126,10 @@ component.settings.templateName.
 The [XML Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLTemplateAnalyzer.js) tackles XMLViews and XMLFragments. It parses the XML, collects controls, and adds them as dependency to the ModuleInfo object.
 Additionally, some special dependencies are handled:
 
-- Controller of the view,
-- resource bundle (note: as locale-dependent dependencies can't be modelled yet in the ModuleInfo, only a dependency to the development version (aka raw language) of the bundle will be added),
-- component referenced via ComponentContainer control,
-- embedded fragments or views.
+- controller of the view
+- resource bundle (note: as locale-dependent dependencies can't be modelled yet in the ModuleInfo, only a dependency to the development version (aka raw language) of the bundle will be added)
+- component referenced via the ComponentContainer control
+- embedded fragments or views
 
 In an XMLView/XMLFragment, usually 3 categories of element nodes exist: Controls, aggregations, and non-UI5 nodes (e.g. XHTML or SVG).
 
