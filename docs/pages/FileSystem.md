@@ -26,16 +26,16 @@ The [File System Adapter](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_adapt
 
 Both adapters provide APIs to retrieve and persist [Resources](#resource), namely 
 
-- to retrieve a single resource by its virtual path:`byPath()`,  
-- to retrieve many resources based on patterns: `byGlob()`,
-- to persist a single resource: `write()`.
+- to retrieve a single resource by its virtual path use `byPath()`,  
+- to retrieve many resources based on patterns use `byGlob()`,
+- to persist a single resource use `write()`.
 
 
 ### Reader Collections
 
 Reader collections allow grouped access to multiple adapters, which might even be nested in other reader collections.
 
-They implement the same API for **retrieving** Resources as Adapters (`byPath` and `byGlob`). Multiple flavors exist:
+They implement the same API for **retrieving** resources as adapters (`byPath` and `byGlob`). Multiple flavors exist:
 
 * [ReaderCollection](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_ReaderCollection.html): The most basic collection. Allows parallel read access to multiple readers (i.e. adapters or collections)
 * [ReaderCollectionPrioritized](https://sap.github.io/ui5-tooling/v3/api/@ui5_fs_ReaderCollectionPrioritized.html): Contains a list of readers which are searched in-order. This allows one reader to "overlay" resources of another

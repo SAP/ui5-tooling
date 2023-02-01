@@ -25,7 +25,6 @@ Workspaces can only be used in the project that is currently being worked on, i.
 
 This concept has been discussed in an RFC: [RFC 0006 Local Dependency Resolution](https://github.com/SAP/ui5-tooling/blob/rfc-local-dependency-resolution/rfcs/0006-local-dependency-resolution.md)
 
-
 ## Configuration
 A UI5 Workspace configuration must define a specification version (`specVersion`) compatible with its configuration. For more information, see [Workspace Specification Versions](#workspace-specification-versions).
 
@@ -70,7 +69,7 @@ UI5 Workspace configurations allow to influence the dependency resolution when w
     specVersion: workspace/1.0
     metadata:
         name: dolphin
-	dependencyManagement:
+    dependencyManagement:
    		resolutions:
        		- path: ../light.library
        		- path: ../heavy.library
