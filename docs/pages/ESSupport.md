@@ -1,7 +1,7 @@
 
 # ECMAScript Support
 
-UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the used of certain ECMAScript syntax.
+UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the usage of certain ECMAScript syntax.
 
 | UI5 Tooling Version | Supported ECMAScript Version | Note |
 |-------------------- |----------------------------- | ---- |
@@ -170,7 +170,7 @@ When declaring a **Smart Template** using a **Template Literal** with one or mor
 
 #### Template Literal in XMLComposite Declaration
 
-The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
 
 Declaring an **XMLComposite** control using a **Template Literal** with one or more expressions in the name, is not supported.
 
@@ -349,6 +349,8 @@ When declaring a **Smart Template**, the usage of a **Spread Element** in the co
     ```
 
 #### Spread Element in XMLComposite Declaration
+
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
 
 When declaring an **XMLComposite**, the usage of a **Spread Element** in the configuration is not supported.
 
@@ -531,6 +533,8 @@ When declaring a **Smart Template**, the usage of an **Object Expression** in th
     ```
 
 #### Object Expression in XMLComposite Declaration
+
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
 
 When declaring an **XMLComposite**, the usage of an **Object Expression** in the configuration is not supported.
 

@@ -91,39 +91,38 @@ is referenced by a route, the template for that entry will be used. Routes there
 The template component is analyzed in the following way:
 
 - precondition: the template component class is defined in an AMD-style module, using define or sap.ui.define
-- precondition: the module 'sap/fe/core/TemplateAssembler' is imported
-- precondition: a call to TemplateAssembler.getTemplateComponent is used to define the component class
+- precondition: the module `sap/fe/core/TemplateAssembler` is imported
+- precondition: a call to `TemplateAssembler.getTemplateComponent` is used to define the component class
 - precondition: that call is used in a top-level return statement of the factory function
 - precondition: necessary parameters to that call are given as an object literal (no further coding)
-- precondition: the settings define a managed property 'metadata.properties.templateName' with a
+- precondition: the settings define a managed property `metadata.properties.templateName` with a
                 defaultValue of type string
 The default value of the property represents the template view of the template component.
-The manifest of the template app could in theory specify an alternative template as setting.templateName,
-but as of June 2017, this possibility is currently not used.
+The manifest of the template app could in theory specify an alternative template as `setting.templateName`, but this possibility is currently not used.
 
 ### Smart Template Analyzer
 
-The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` located in the same folder as the `Component.js`. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way:
+The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` located in the same folder as the `Component.js`. If it is found and if it is valid JSON, an `sap.ui.generic.app` section is searched and evaluated in the following way:
 
 - For each page configuration, the configured component is added as a dependency to the template app module.
 - If the page configuration contains a `templateName`, a dependency to that template view is added to the app.
-- Otherwise, the class definition of the component is analyzed to find a default template view name. if found, a dependency to that view is added to the app module.
+- Otherwise, the class definition of the component is analyzed to find a default template view name. If found, a dependency to that view is added to the app module.
 
 The template component is analyzed in the following way:
 
 - precondition: the template component class is defined in an AMD-style module, using define or sap.ui.define
-- precondition: the module 'sap/suite/ui/generic/template/lib/TemplateAssembler' is imported
-- precondition: a call to TemplateAssembler.getTemplateComponent is used to define the component class
+- precondition: the module `sap/suite/ui/generic/template/lib/TemplateAssembler` is imported
+- precondition: a call to `TemplateAssembler.getTemplateComponent` is used to define the component class
 - precondition: that call is used in a top-level return statement of the factory function
 - precondition: necessary parameters to that call are given as an object literal (no further coding)
-- precondition: the settings define a managed property 'metadata.properties.templateName' with a defaultValue of type string
+- precondition: the settings define a managed property `metadata.properties.templateName` with a defaultValue of type string
 The default value of the property represents the template view of the template component.
 The manifest of the template app could in theory specify an alternative template in
-component.settings.templateName.
+`component.settings.templateName`.
 
 ### XML Template Analyzer
 
-The [XML Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLTemplateAnalyzer.js) tackles XMLViews and XMLFragments. It parses the XML, collects controls, and adds them as dependency to the ModuleInfo object.
+The [XML Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLTemplateAnalyzer.js) tackles `XMLView` and `XMLFragment`. It parses the XML, collects controls, and adds them as dependency to the ModuleInfo object.
 Additionally, some special dependencies are handled:
 
 - controller of the view
@@ -131,11 +130,13 @@ Additionally, some special dependencies are handled:
 - component referenced via the ComponentContainer control
 - embedded fragments or views
 
-In an XMLView/XMLFragment, usually 3 categories of element nodes exist: Controls, aggregations, and non-UI5 nodes (e.g. XHTML or SVG).
+In an XMLView/XMLFragment, usually three categories of element nodes exist: Controls, aggregations, and non-UI5 nodes (e.g. XHTML or SVG).
 
 ### XML Composite Analyzer
 
-The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless, UI5 Tooling will attempt to analyze the declaration of any such controls in a project. The [XML Composite Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLCompositeAnalyzer.js) searches for the name of the configured fragment containing the **XMLComposite** control.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless, UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+
+The [XML Composite Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLCompositeAnalyzer.js) searches for the name of the configured fragment containing the **XMLComposite** control.
 
 === "Name of the XMLComposite is equal to fragment name"
 
