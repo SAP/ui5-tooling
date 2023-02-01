@@ -30,7 +30,7 @@ Also see [Configuration: Specification Version 3.0](../pages/Configuration.md#sp
 ## Changes for Extensions
 
 !!! info
-    ✅ Custom Tasks and -Middleware defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v3**
+    ✅ Custom Tasks and Custom Middleware defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v3**
 
 For extensions defining the latest **Specification Versions 3.0 and higher**, some changes and improvements apply:
 
