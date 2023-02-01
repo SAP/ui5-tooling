@@ -41,7 +41,7 @@ When a dependency in one of the mentioned APIs is not a "simple literal" but an 
 
 ### Component Analyzer
 
-The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` in the same folder. If one is found, the `sap.ui5` section is evaluated in the following way:
+The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` located in the same folder as the `Component.js`. If one is found, the `sap.ui5` section is evaluated in the following way:
 
 - Any library dependency is added as a dependency to the `library.js` module of that library. If the library dependency is modeled as 'lazy', the
  module dependency will be added as 'conditional',
@@ -51,7 +51,7 @@ The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/an
 
 ### Fiori Elements Analyzer
 
-The [Fiori Elements Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/FioriElementsAnalyzer.js) analyzes a FioriElements app and its underlying template components to collect dependency information. It searches for a `manifest.json` in the same folder. If one is found the `sap.fe` section will be evaluated in the following way:
+The [Fiori Elements Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/FioriElementsAnalyzer.js) analyzes a FioriElements app and its underlying template components to collect dependency information. It searches for a `manifest.json` located in the same folder as the `Component.js`. If one is found the `sap.fe` section will be evaluated in the following way:
 
 - For each entity set in the `entitySets` object, each sub-entry is checked for a `default.template` property,
 - if one is found, the containing string is interpreted as the short name of a template component in the `sap.fe.templates` library,
@@ -103,7 +103,7 @@ but as of June 2017, this possibility is currently not used.
 
 ### Smart Template Analyzer
 
-The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` in the same folder. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way
+The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` located in the same folder as the `Component.js`. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way
 
 - For each page configuration, the configured component is added as a dependency to the template app module,
 - if the page configuration contains a `templateName`, a dependency to that template view is added to the app,
