@@ -680,7 +680,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `sourceMap`: By default set to `true`. Adds source map support to the bundle. Available since UI5 Tooling `v3.0.0`
 
 ## Specification Versions
-A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a project's configuration.
+A project must define a specification version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a project's configuration.
 
 ```yaml
 specVersion: "3.0"
