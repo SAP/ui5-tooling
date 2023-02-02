@@ -6,8 +6,8 @@
 
 ## Node.js and npm Version Support
 
-**Only Node.js v18.0.0 and npm v8 or higher are supported.**
-Support for older Node.js and npm releases has been dropped.
+**This release requires Node.js versions v16.18.0, v18.12.0 or higher as well as npm v8 or higher.**
+Support for older Node.js and npm releases has been dropped and will cause an error to be shown.
 
 ## Specification Versions Support
 
