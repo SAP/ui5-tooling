@@ -10,11 +10,11 @@ nav:
     - Getting Started: pages/GettingStarted.md
     - UI5 CLI: pages/CLI.md
     - Configuration: pages/Configuration.md
-    - Workspace: pages/Workspace.md
     - Development:
       - Overview: pages/Overview.md
       - OpenUI5: pages/OpenUI5.md
       - SAPUI5: pages/SAPUI5.md
+      - Workspace: pages/Workspace.md
     - Extensibility:
       - Custom Tasks: pages/extensibility/CustomTasks.md
       - Custom Server Middleware: pages/extensibility/CustomServerMiddleware.md
