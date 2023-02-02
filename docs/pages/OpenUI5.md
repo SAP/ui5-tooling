@@ -66,4 +66,4 @@ When working on UI5 applications or libraries that use OpenUI5, you can link a l
 A detailed step-by-step guide on how to achieve such a setup with the OpenUI5 Sample App can be found [here](https://github.com/SAP/openui5-sample-app#working-with-local-dependencies).
 
 ## OpenUI5 Framework Development
-Please refer to the [OpenUI5 Framework Development Documentation](https://github.com/SAP/openui5/blob/master/docs/developing.md#developing-ui5).
+Please refer to the [OpenUI5 Framework Development Documentation](https://github.com/SAP/openui5/blob/-/docs/developing.md#developing-ui5).
