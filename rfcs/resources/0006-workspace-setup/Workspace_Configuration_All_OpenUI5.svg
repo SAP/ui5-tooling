@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="39 189 622 502" width="622" height="502">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Workspace_Configuration_All_OpenUI5" stroke-opacity="1" stroke-dasharray="none" stroke="none" fill-opacity="1" fill="none">
+    <title>Workspace_Configuration_All_OpenUI5</title>
+    <rect fill="white" x="39" y="189" width="622" height="502"/>
+    <g id="Workspace_Configuration_All_OpenUI5_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_138">
+        <rect x="40" y="190" width="620" height="500" fill="#f8f8f8"/>
+        <rect x="40" y="190" width="620" height="500" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(45 195)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="515.9834" y="16">File System</tspan>
+        </text>
+      </g>
+      <g id="Graphic_122">
+        <rect x="60" y="420" width="260" height="130" fill="#e6e6e6"/>
+        <text transform="translate(62 425)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x=".8535156" y="16">openui5-sample-app Repository</tspan>
+        </text>
+      </g>
+      <g id="Graphic_121">
+        <rect x="130" y="470" width="120" height="60" fill="white"/>
+        <rect x="130" y="470" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(135 482.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="23.86328" y="14">openui5-</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="13.199219" y="31.523438">sample-app</tspan>
+        </text>
+      </g>
+      <g id="Graphic_120">
+        <rect x="60" y="230" width="580" height="150" fill="#e6e6e6"/>
+        <text transform="translate(65 235)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="354.3955" y="16">~/.ui5/framework/packages</tspan>
+        </text>
+      </g>
+      <g id="Line_118">
+        <path d="M 250 500 L 345 500 C 347.76142 500 350 497.7614 350 495 L 350 375 C 350 372.23858 347.76142 370 345 370 L 145 370 C 142.23858 370 140 367.76142 140 365 L 140 339.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Line_117">
+        <path d="M 250 500 L 345 500 C 347.76142 500 350 497.7614 350 495 L 350 375 C 350 372.23858 347.76142 370 345 370 L 285 370 C 282.23858 370 280 367.76142 280 365 L 280 339.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Line_116">
+        <path d="M 250 500 L 345 500 C 347.76142 500 350 497.7614 350 495 L 350 375 C 350 372.23858 352.23858 370 355 370 L 415 370 C 417.7614 370 420 367.76142 420 365 L 420 339.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Line_115">
+        <path d="M 250 500 L 345 500 C 347.76142 500 350 497.7614 350 495 L 350 375 C 350 372.23858 352.23858 370 355 370 L 555 370 C 557.7614 370 560 367.76142 560 365 L 560 339.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_114">
+        <rect x="80" y="270" width="120" height="60" fill="white"/>
+        <rect x="80" y="270" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(85 282.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="15.867188" y="31.523438">sap.ui.core</tspan>
+        </text>
+      </g>
+      <g id="Graphic_113">
+        <rect x="220" y="270" width="120" height="60" fill="white"/>
+        <rect x="220" y="270" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(225 282.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="33.214844" y="31.523438">sap.m</tspan>
+        </text>
+      </g>
+      <g id="Graphic_112">
+        <rect x="360" y="270" width="120" height="60" fill="white"/>
+        <rect x="360" y="270" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(365 282.47656)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="16.183594" y="14">@openui5/</tspan>
+          <tspan font-family="Arial" font-size="16" fill="black" x="10.082031" y="31.523438">sap.ui.layout</tspan>
+        </text>
+      </g>
+      <g id="Graphic_111">
+        <rect x="500" y="270" width="120" height="60" fill="white"/>
+        <rect x="500" y="270" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(505 291.23828)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="47" y="14">…</tspan>
+        </text>
+      </g>
+      <g id="Graphic_126">
+        <rect x="360" y="420" width="280" height="250" fill="#e6e6e6"/>
+        <text transform="translate(365 425)" fill="black">
+          <tspan font-family="Arial" font-size="18" fill="black" x="114.89941" y="16">openui5 Repository</tspan>
+        </text>
+      </g>
+      <g id="Graphic_127">
+        <rect x="410" y="470" width="120" height="60" fill="white"/>
+        <rect x="410" y="470" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(415 491.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="15.867188" y="14">sap.ui.core</tspan>
+        </text>
+      </g>
+      <g id="Line_128">
+        <line x1="250" y1="500" x2="400.1" y2="500" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_131">
+        <rect x="440" y="510" width="120" height="60" fill="white"/>
+        <rect x="440" y="510" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(445 531.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="33.214844" y="14">sap.m</tspan>
+        </text>
+      </g>
+      <g id="Graphic_132">
+        <rect x="470" y="550" width="120" height="60" fill="white"/>
+        <rect x="470" y="550" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(475 571.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="10.082031" y="14">sap.ui.layout</tspan>
+        </text>
+      </g>
+      <g id="Graphic_133">
+        <rect x="500" y="590" width="120" height="60" fill="white"/>
+        <rect x="500" y="590" width="120" height="60" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <text transform="translate(505 611.2383)" fill="black">
+          <tspan font-family="Arial" font-size="16" fill="black" x="47" y="14">…</tspan>
+        </text>
+      </g>
+      <g id="Line_134">
+        <path d="M 250 500 L 375 500 C 377.76142 500 380 502.2386 380 505 L 380 535 C 380 537.7614 382.23858 540 385 540 L 430.1 540" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_135">
+        <path d="M 250 500 L 375 500 C 377.76142 500 380 502.2386 380 505 L 380 575 C 380 577.7614 382.23858 580 385 580 L 460.1 580" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_136">
+        <path d="M 250 500 L 375 500 C 377.76142 500 380 502.2386 380 505 L 380 615 C 380 617.7614 382.23858 620 385 620 L 490.1 620" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
