@@ -1,7 +1,7 @@
 # UI5 Workspaces
 
-!!! warning
-    **UI5 Workspaces is a feature currently in development.** It is not part of any UI5 Tooling release and therefore cannot be used yet.  
+!!! info
+    **UI5 Workspaces is a new feature only available since UI5 CLI [`v3.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.0.0)** 
 
 !!! example
     ```yaml title="ui5-workspace.yaml"
@@ -21,7 +21,7 @@ Workspaces are typically configured in a `ui5-workspace.yaml` file, located next
 
 If a workspace configuration named `default` exists, it will be used automatically; otherwise the workspace must be specified using the UI5 CLI parameter `--workspace`.
 
-Workspaces can only be used in the project that is currently being worked on, i.e. the current root project. Workspace configurations of dependencies are ignored.
+Workspaces can only be used in the project that is currently being worked on, i.e. the current root project. Workspace configurations of dependencies are ignored. The workspace file however, does not necessary have to be located within the project. You can reference any workspace configuration file using the UI5 CLI parameter `--workspace-config`.
 
 This concept has been discussed in an RFC: [RFC 0006 Local Dependency Resolution](https://github.com/SAP/ui5-tooling/blob/rfc-local-dependency-resolution/rfcs/0006-local-dependency-resolution.md)
 
@@ -84,7 +84,7 @@ dependencyManagement:
        	- path: ../test.library
 ```
 
-Resolution paths will be used by UI5 Tooling to look for project dependencies. Any dependencies found via these paths will be used over the ones found with the regular dependency resolution mechanism.
+Resolution paths will be used by UI5 Tooling to look for project dependencies. Any dependencies found via these paths will be used over the ones found with the regular dependency resolution mechanism. This includes UI5 Tooling extensions.
 
 Paths must point to a directory containing a `package.json`. UI5 Tooling will attempt to find a UI5 project here. However, if the `package.json` contains a [`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces), or equivalently, `ui5.workspaces` configuration (which overrules the first), UI5 Tooling will resolve the workspace first and attempt to find UI5 projects in the configured "npm workspaces". This is commonly used in mono-repos. An example can be found in the [OpenUI5 repository](https://github.com/SAP/openui5/blob/b4267488e5d3546de4cd9577ccac4208482d71e0/package.json#L130-L132).
 
@@ -115,10 +115,10 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward-comp
 
 Version | UI5 CLI Release
 --- | ---
-**workspace/1.0** | v3.0.0+
+**`workspace/1.0`** | v3.0.0+
 
-### Specification Version workspace/1.0
+### Specification Version `workspace/1.0`
 
 Initial version.
 
-Specification Version workspace/1.0 configurations are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
+Specification Version `workspace/1.0` configurations are compatible with [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
