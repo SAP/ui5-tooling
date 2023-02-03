@@ -671,8 +671,8 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 **bundleOptions**
 
 - `optimize`: If set to `true`, the module bundle gets minified.
-  - Since UI5 Tooling `v3.0.0` defaults to `true`. 
-  - Prior to UI5 Tooling `v3.0.0` defaults to `false`.
+  - Projects defining [Specification Version](#specification-versions) 3.0 and higher: Defaults to `true`. 
+  - Projects defining [Specification Version](#specification-versions) lower than 3.0: Defaults to `false`. 
 - `decorateBootstrapModule`: By default set to `false`. If set to `true`, the module will be decorated with an optimization marker
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
@@ -714,17 +714,14 @@ Version | UI5 CLI Release
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
 
-### Specification Version 3.0 [beta]
-
-!!! info
-    **Note:** UI5 Tooling version 3.0 is currently in development. If you wish to migrate to the latest UI5 Tooling, check the [Upgrade Guide for v3](../../updates/migrate-v3/)
+### Specification Version 3.0
 
 **Breaking changes:**
 
-[bundleOptions](#custom-bundling) has been modified:
-
-- `debugMode` has been removed
-- `optimize` now always defaults to `true` [#685](https://github.com/SAP/ui5-builder/pull/685)
+- The `metadata.name` property is now restricted to contain only certain characters and no uppercase letters. See [`name`](#name) for details
+- [bundleOptions](#custom-bundling) has been modified:
+	* `debugMode` has been removed
+	* `optimize` now always defaults to `true` [#685](https://github.com/SAP/ui5-builder/pull/685)
 
 **Features:**
 
