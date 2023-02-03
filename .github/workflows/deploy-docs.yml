@@ -6,10 +6,9 @@ on:
 jobs:
   build-and-deploy:
     name: Build and Deploy
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       MIKE_VERSION: v2
-      MIKE_ALIAS: stable
       DOCKER_IMAGE: ui5-tooling/mkdocs-material
       GIT_COMMITTER_NAME: "OpenUI5 Bot"
       GIT_COMMITTER_EMAIL: "openui5@sap.com"
