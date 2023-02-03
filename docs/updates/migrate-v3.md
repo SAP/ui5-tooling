@@ -41,6 +41,11 @@ For extensions defining the latest **Specification Versions 3.0 and higher**, so
     * For example providing access to a [project's root directory](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
     * See also [Custom Tasks](../pages/extensibility/CustomTasks.md) and [Custom Server Middleware](../pages/extensibility/CustomServerMiddleware.md)
 
+## Changes to @ui5/cli
+
+* The CLI option `--translator` has been removed. For static dependency resolution, use the new option `--dependency-definition` to provide a file with static dependency information.
+* The `ui5 build dev` command has been removed. Use `ui5 build --exclude-task=* --include-task=replaceCopyright replaceVersion replaceBuildtime buildThemes` instead.
+
 ## Changes to @ui5/project and @ui5/builder API
 
 The `normalizer` and `projectTree` modules have been removed. The `builder` API has been moved from @ui5/builder to @ui5/project.
