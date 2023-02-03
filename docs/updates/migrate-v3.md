@@ -25,7 +25,7 @@ For projects defining the latest **Specification Versions 3.0 and higher**, some
 
 * **Breaking Change:** The `metadata.name` property is now restricted to contain only certain characters and no uppercase letters. See [Configuration: `name`](../pages/Configuration.md#name) for details
 
-Also see [Configuration: Specification Version 3.0](../pages/Configuration.md#specification-version-30-beta).
+Also see [Configuration: Specification Version 3.0](../pages/Configuration.md#specification-version-30).
 
 ## Changes for Extensions
 
