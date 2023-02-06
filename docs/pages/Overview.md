@@ -20,7 +20,7 @@ Would you like to work on an application project and one or more of its dependen
 ### UI5 Workspaces
 The recommended approach for setting up a development environment where simultaneous work on multiple UI5 projects is required.
 
-Head over to the [UI5 Workspaces](./Workspace.md) documentation for all the details. Below is an example based on a simple scenario with an application and a reuse library project:
+Head over to the [UI5 Workspaces](./Workspace.md) documentation for the details. Below is an example based on a simple scenario with an application and a reuse library project:
 
 **Example: Your Directory Structure**
 ```
@@ -50,13 +50,13 @@ dependencyManagement:
         - path: ../my-reuse-library
 ```
 
-That's it! Start a server using `ui5 serve` and you will see any changes you make in `my-reuse-library` are immediately visible in `my-app`.
+That's it! Start a server via `ui5 serve`, and you will see that any changes you make in `my-reuse-library` are immediately visible in `my-app`.
 
 ## Package Managers
 
-By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](./FAQ.md#why-packagejson-why-npm)) you have a variety of other options for linking dependencies into your project..
+By leaving dependency management up to the tool of your choice (see [FAQ: Why package.json? / Why npm?](./FAQ.md#why-packagejson-why-npm)) you have a variety of other options for linking dependencies into your project.
 
-Here is an example using the [npm CLI](https://www.npmjs.com/get-npm) in version 8, an application, and a reuse library project:
+Here is an example using the [npm CLI](https://www.npmjs.com/get-npm) in Version 8, an application, and a reuse library project:
 
 **Example: Your Directory Structure**
 ```

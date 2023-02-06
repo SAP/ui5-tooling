@@ -1,7 +1,7 @@
 # UI5 Workspaces
 
 !!! info
-    **UI5 Workspaces is a new feature only available since UI5 CLI [`v3.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.0.0)** 
+    **UI5 Workspaces is a new feature available since UI5 CLI [`v3.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.0.0)** 
 
 !!! example
     ```yaml title="ui5-workspace.yaml"
@@ -21,7 +21,7 @@ Workspaces are typically configured in a `ui5-workspace.yaml` file, located next
 
 If a workspace configuration named `default` exists, it will be used automatically; otherwise the workspace must be specified using the UI5 CLI parameter `--workspace`.
 
-Workspaces can only be used in the project that is currently being worked on, i.e. the current root project. Workspace configurations of dependencies are ignored. The workspace file however, does not necessary have to be located within the project. You can reference any workspace configuration file using the UI5 CLI parameter `--workspace-config`.
+Workspaces can only be used in the project that is currently being worked on, i.e. the current root project. Workspace configurations of dependencies are ignored. The workspace file, however, does not necessarily have to be located within the project. You can reference any workspace configuration file via the UI5 CLI parameter `--workspace-config`.
 
 This concept has been discussed in an RFC: [RFC 0006 Local Dependency Resolution](https://github.com/SAP/ui5-tooling/blob/rfc-local-dependency-resolution/rfcs/0006-local-dependency-resolution.md)
 
