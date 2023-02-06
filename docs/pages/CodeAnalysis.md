@@ -130,7 +130,8 @@ Additionally, some special dependencies are handled:
 - component referenced via the ComponentContainer control
 - embedded fragments or views
 
-In an XMLView/XMLFragment, usually three categories of element nodes exist: Controls, aggregations, and non-UI5 nodes (e.g. XHTML or SVG).
+In an XMLView/XMLFragment, usually three categories of element nodes exist: Controls, aggregations, and non-UI5 nodes (e.g. XHTML or SVG). The third category usually can be identified by its namespace. To distinguish between the first two categories, the analyzer checks whether a resource exists in the project or its dependencies whose name matches the qualified node name.
+For example, if the qualified node name is `sap.m.Text`, the analyzer checks whether `sap/m/Text.js` exists. If so, UI5 Tooling detects this node as a control, otherwise as an aggregation.
 
 ### XML Composite Analyzer
 
