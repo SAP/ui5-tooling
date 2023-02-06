@@ -17,7 +17,26 @@
 
 UI5 Workspaces can be used to create a personalized local development environment for a UI5 project. They allow to use UI5 dependencies from local directories without the need to use the link features of package managers like npm. "UI5 dependencies" generally refers to projects that have a `ui5.yaml`.
 
-Workspaces are typically configured in a `ui5-workspace.yaml` file, located next to the project's `ui5.yaml`. The file can contain one or many workspace configurations, each separated by [three dashes](https://yaml.org/spec/1.2.2/#22-structures).
+Workspaces are typically configured in a `ui5-workspace.yaml` file, located next to the project's `ui5.yaml`. The file can contain one or many workspace configurations, each separated by [three dashes](https://yaml.org/spec/1.2.2/#22-structures). For example:
+
+!!! example
+    ```yaml title="ui5-workspace.yaml"
+    specVersion: workspace/1.0
+    metadata:
+        name: default
+    dependencyManagement:
+   	    resolutions:
+       	    - path: ../heavy.library
+    ---
+    specVersion: workspace/1.0
+    metadata:
+        name: extended
+    dependencyManagement:
+   	    resolutions:
+       	    - path: ../heavy.library
+       	    - path: ../light.library
+       	    - path: ../test.library
+    ```
 
 If a workspace configuration named `default` exists, it will be used automatically; otherwise the workspace must be specified using the UI5 CLI parameter `--workspace`.
 
