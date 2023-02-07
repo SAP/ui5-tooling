@@ -31,6 +31,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://sap.github.io/ui5-tooling/v3/pages/CodeAnalysis/</loc>
+         <lastmod>2023-02-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://sap.github.io/ui5-tooling/v3/pages/Configuration/</loc>
          <lastmod>2023-02-07</lastmod>
          <changefreq>daily</changefreq>
