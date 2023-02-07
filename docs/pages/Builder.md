@@ -37,7 +37,7 @@ A project of type `theme-library` must have a source directory (typically named 
 The source directory must contain a directory structure representing the namespaces of the libraries it provides theme resources for. For example, a theme library named `my_custom_theme`, providing resources for a library named `my.library` should have these resources in a directory path `my/library/themes/my_custom_theme/`.
 
 ### module
-The `module` type is meant for usage with non-UI5 resources like third party libraries. Their path mapping can be configured freely. During a build, their resources are copied without modifications.
+The `module` type is meant for usage with non-UI5 resources like third-party libraries. Their path mapping can be configured freely. During a build, their resources are copied without modifications.
 
 ## Tasks
 Tasks are specific build steps to be executed during build phase.
