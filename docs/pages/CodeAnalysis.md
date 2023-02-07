@@ -31,7 +31,7 @@ The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/ana
 
 The analyzer uses a set of rules to decide whether one of the above APIs is called whenever the module is executed or whether the API is only called under certain conditions.
 
-For example, top-level code is always executed. Flow-control statements in JavaScript imply that certain blocks of code are only executed under certain conditions (for example, `if` blocks, `else` blocks, ...). Besides these inherent JavaScript rules, further common patterns are known to the analyzer, e.g. immediately invoked function expressions or the factor function of AMD modules.
+For example, top-level code is always executed. Flow-control statements in JavaScript imply that certain blocks of code are only executed under certain conditions (for example, `if` blocks, `else` blocks, ...). Besides these inherent JavaScript rules, further common patterns are known to the analyzer, e.g. immediately invoked function expressions or the factory function of AMD modules.
 
 Any dependencies found that - according to these rules - are always executed, are collected as eager (or standard) dependencies. Dependencies that are found on a code path that depends on certain conditions are collected as conditional dependencies.
 
