@@ -1,18 +1,18 @@
 
 # ECMAScript Support
 
-UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the used of certain ECMAScript syntax.
+UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the usage of certain ECMAScript syntax.
 
 | UI5 Tooling Version | Supported ECMAScript Version | Note |
 |-------------------- |----------------------------- | ---- |
 | v3.0+               | ECMAScript 2022              |      |
 | v2.0+               | ECMAScript 2009/ES5          | Note that code up to ECMAScript 2020 can be parsed, however required code analysis might not work correctly for specific language features |
 
-In section [Language Features with Limitations](#language-features-with-limitations) all limitations grouped by the kind of ECMAScript artefact are described. In section [Code Analyzing](#code-analyzing) there is a more detailed explaination what kind of code analysis is done by the UI5 Tooling.
+The following section describes all restrictions grouped by the kind of ECMAScript language feature. To get more insights into the code analysing executed by UI5 Tooling check out [Code Analysis](./CodeAnalysis.md).
 
-## Language Features with Limitations
+## Language Features with Restrictions
 
-The following sections describe the limitations grouped by the ECMAScript language feature.
+The following sections describe the restrictions grouped by the ECMAScript language feature.
 
 ### JavaScript modules
 
@@ -170,7 +170,7 @@ When declaring a **Smart Template** using a **Template Literal** with one or mor
 
 #### Template Literal in XMLComposite Declaration
 
-The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
 
 Declaring an **XMLComposite** control using a **Template Literal** with one or more expressions in the name, is not supported.
 
@@ -350,6 +350,8 @@ When declaring a **Smart Template**, the usage of a **Spread Element** in the co
 
 #### Spread Element in XMLComposite Declaration
 
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+
 When declaring an **XMLComposite**, the usage of a **Spread Element** in the configuration is not supported.
 
 === "Supported"
@@ -483,7 +485,7 @@ When declaring a **Fiori Elements Template**, the usage of an **Object Expressio
 
 #### Object Expression in Smart Template Declaration
 
-When declaring a **Smart Template*, the usage of an **Object Expression** in the configuration is not supported.
+When declaring a **Smart Template**, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
@@ -532,7 +534,9 @@ When declaring a **Smart Template*, the usage of an **Object Expression** in the
 
 #### Object Expression in XMLComposite Declaration
 
-When declaring a **XMLComposite*, the usage of an **Object Expression** in the configuration is not supported.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+
+When declaring an **XMLComposite**, the usage of an **Object Expression** in the configuration is not supported.
 
 === "Supported"
 
@@ -697,160 +701,3 @@ If you want to generate a JSDoc build of your project and use an **Arrow Functio
 
     }));
     ```
-
-## Code Analysis
-
-During the build process, UI5 Tooling execute a static code analysis of a project. The following sections explain that process in more detail.
-
-### Dependency Analysis
-
-UI5 Tooling extracts dependency information from a project's code as outlined in the following chapters
-
-#### JSModule Analyzer
-
-The [JSModule Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/JSModuleAnalyzer.js) uses the ["Abstract Syntax Tree"](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) of a JavaScript file to decide whether a code block is executed *conditionally* or *unconditionally*.
-Besides this information, which is inherent to the JavaScript language, the analyzer uses additional knowledge about special API. For example, the factory function of an AMD-module is known to be executed when the module is executed, an IIFE is known to be executed immediately etc.
-
-#### Component Analyzer
-
-The [Component Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/ComponentAnalyzer.js) analyzes JavaScript files named `Component.js` to collect dependency information by searching for a `manifest.json` in the same folder. If one is found, the `sap.ui5` section will be evaluated in the following way
-
-- any library dependency is added as a dependency to the library.js module of that library. If the library dependency is modelled as 'lazy', the
- module dependency will be added as 'conditional'
-- any component dependency is added as a dependency to the Component.js module of that component. If the Component dependency is modeled as 'lazy', the module dependency will be added as 'conditional'
-- for each configured UI5 module, for which a type is configured, a module dependency to that type is added
-- for each route that contains a view name, a module dependency to that view will be added
-
-#### Fiori Elements Analyzer
-
-The [Fiori Elements Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/FioriElementsAnalyzer.js) analyzes a FioriElements app and its underlying template components to collect dependency information. It searches for a `manifest.json` in the same folder. If one is found the `sap.fe` section will be evaluated in the following way:
-
-- for each entity set in the `entitySets` object, each sub-entry is checked for a `default.template` property
-- if found, the containing string is interpreted as the short name of a template component in the `sap.fe.templates` library
-- a dependency to that template component is added to the analyzed app
-
-For a full analysis, "routing" also should be taken into account. Only when a sub-entry of the entity set
-is referenced by a route, then the template for that entry will be used. Routes thereby could form entry points.
-
-```json
-{
-    "sap.fe" : {
-        "entitySets" : {
-            "C_AIVS_MDBU_ArtistTP" : {
-                "feed": {
-                    "default": {
-                        "template": "ListReport"
-                    }
-                },
-                "entry" : {
-                    "default" : {
-                        "outbound" : "musicV2Display"
-                    }
-                }
-            }
-        },
-        "routing" : {
-            "routes" :{
-                "ArtistList": {
-                    "target": "C_AIVS_MDBU_ArtistTP/feed"
-                }
-            }
-        }
-    }
-}
-```
-
-The template component is analyzed in the following way:
-
-- precondition: template component class is defined in an AMD-style module, using define or sap.ui.define
-- precondition: the module 'sap/fe/core/TemplateAssembler' is imported
-- precondition: a call to TemplateAssembler.getTemplateComponent is used to define the component class
-- precondition: that call is used in a top level return statement of the factory function
-- precondition: necessary parameters to that call are given as an object literal (no further coding)
-- precondition: the settings define a managed property property 'metadata.properties.templateName' with a
-                defaultValue of type string
-The default value of the property represents the template view of the template component.
-The manifest of the template app in theory could specify an alternative template as setting.templateName,
-but as of June 2017, this possibility is currently not used.
-
-#### Smart Template Analyzer
-
-The [Smart Template Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/SmartTemplateAnalyzer.js) analyzes a Smart Template app and its underlying template components to collect dependency information. It searches for a `manifest.json` in the same folder. If it is found and if it is a valid JSON, an "sap.ui.generic.app" section is searched and evaluated in the following way
-
-- for each page configuration, the configured component is added as a dependency to the template app module
-- If the page configuration contains a templateName, a dependency to that template view is added to the app
-- Otherwise, the class definition of the component is analyzed to find a default template view name
-   If found, a dependency to that view is added to the app module
-
-The template component is analyzed in the following way:
-
-- precondition: template component class is defined in an AMD-style module, using define or sap.ui.define
-- precondition: the module 'sap/suite/ui/generic/template/lib/TemplateAssembler' is imported
-- precondition: a call to TemplateAssembler.getTemplateComponent is used to define the component class
-- precondition: that call is used in a top level return statement of the factory function
-- precondition: necessary parameters to that call are given as an object literal (no further coding)
-- precondition: the settings define a managed property property 'metadata.properties.templateName' with a defaultValue of type string
-The default value of the property represents the template view of the template component.
-The manifest of the template app in theory could specify an alternative template in
-component.settings.templateName.
-
-#### XML Template Analyzer
-
-The XML Template Analyzer tackles XMLViews and XMLFragments. It parses the XML, collects controls and adds them as dependency to the ModuleInfo object.
-Additionally, some special dependencies are handled:
-
-- controller of the view
-- resource bundle (note: locale dependent dependencies can't be modeled yet in ModuleInfo)
-- component referenced via ComponentContainer control
-- embedded fragments or views
-
-In an XMLView, there usually exist 3 categories of element nodes: controls, aggregations
-of cardinality 'multiple' and non-UI5 nodes (e.g. XHTML or SVG). The third category usually
-can be identified by its namespace. To distinguish between the first and the second
-category, this analyzer uses a ResourcePool (provided by the caller and usually derived from the
-library classpath). When the qualified node name is contained in the pool, it is assumed to
-represent a control, otherwise it is ignored.
-
-In certain cases this might give wrong results, but loading the metadata for each control
-to implement the exactly same logic as used in the runtime XMLTemplateProcessor would be to
-expensive and require too much runtime.
-
-#### XML Composite Analyzer
-
-The **XMLComposite** control is deprecated since UI5 Version 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project. The Analyzer searches for the name of the configured fragment containing the **XMLComposite** control.
-
-=== "Name of the XMLComposite is equal with fragment name"
-
-    ```javascript hl_lines="4"
-    sap.ui.define([
-        "sap/ui/core/XMLComposite"
-    ], function(XMLComposite) {
-        return XMLComposite.extend("composites.MyComposite", {} 
-    });
-    ```
-
-=== "Dedicated fragment name"
-
-    ```javascript hl_lines="5"
-    sap.ui.define([
-        "sap/ui/core/XMLComposite"
-    ], function(XMLComposite) {
-        return XMLComposite.extend("composites.MyComposite", {
-            fragment: "composites.custom.MyComposite"
-        } 
-    });
-    ```
-
-### Library Initialization
-
-This analyzer checks every JavaScript file for occurences of a `sap/ui/core/Core#initLibrary` call. If so, the following information will be set:
-
-- noLibraryCSS: false when the noLibraryCSS property had been set in the initLibrary info object
-- types: string array with the names of the types contained in the library
-- controls: string array with the names of the controls defined in the library
-- elements: string array with the names of the elements defined in the library
-- interfaces: string array with the names of the interfaces defined in the library
-
-### JSDoc
-
-The UI5 Tooling offers a JSDoc build, which is enhanced by UI5 specific JSDoc features.
