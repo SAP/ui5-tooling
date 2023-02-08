@@ -183,7 +183,7 @@ The following processors have been removed:
 | transformBootstrapHtml    | *disabled* ^3^     |                |                      |
 | generateBundle            | *disabled* ^4^     | *disabled* ^4^ |                      |
 | buildThemes               |                    | *enabled*      | *enabled*            |
-| generateThemeDesignerResources |               | *disabled*     | *disabled*           |
+| generateThemeDesignerResources |               | *disabled* ^5^ | *disabled* ^5^       |
 | **REMOVED:** ~~createDebugFiles~~ | *~~enabled~~* | *~~enabled~~* |                    | 
 | **REMOVED:** ~~uglify~~   | *~~enabled~~*      | *~~enabled~~*  |                      |
 | generateVersionInfo       | **disabled**       |                |                      |
@@ -199,6 +199,7 @@ The following processors have been removed:
 ^2^ Enabled for projects defining a [component preload configuration](../pages/Configuration.md#component-preload-generation)  
 ^3^ Enabled in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
 ^4^ Enabled for projects defining a [bundle configuration](../pages/Configuration.md#custom-bundling)  
+^5^ Can be enabled for framework projects via `includeTask` option. For other projects the task is always skipped  
 
 ## Removal of Standard Middleware
 
