@@ -37,7 +37,7 @@ my-reuse-library/
     \_ package.json
 ```
 
-In its `package.json`, `my-app` should already define a dependency to `my-reuse-library`. So, after running the `npm install` command, a copy of the "my-reuse-library"-package should be retrieved from the package registry and added to my-app's `node_modules/` directory.
+In its `package.json`, `my-app` should already define a dependency to `my-reuse-library`. So, after running the `npm install` command, a copy of the `my-reuse-library`-package should be retrieved from the package registry and added to my-app's `node_modules/` directory.
 
 In the `my-app` directory, create a new file named `ui5-workspace.yaml` with the following content:
 
