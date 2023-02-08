@@ -45,7 +45,7 @@
 		"@ui5/cli": "^3.0.0-rc.5",
 		"@ui5/fs": "^3.0.0-rc.6",
 		"@ui5/logger": "^3.0.1-rc.3",
-		"@ui5/project": "^3.0.0-rc.8",
+		"@ui5/project": "^3.0.0-rc.9",
 		"@ui5/server": "^3.0.0-rc.3"
 	},
 	"devDependencies": {
