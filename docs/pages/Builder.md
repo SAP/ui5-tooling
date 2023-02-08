@@ -67,7 +67,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 | transformBootstrapHtml    | *disabled* ^3^     |                |                      |
 | generateBundle            | *disabled* ^4^     | *disabled* ^4^ |                      |
 | buildThemes               |                    | *enabled*      | *enabled*            |
-| generateThemeDesignerResources |               | *disabled*     | *disabled*           |
+| generateThemeDesignerResources |               | *disabled* ^5^ | *disabled* ^5^       |
 | generateVersionInfo       | *disabled*         |                |                      |
 | generateCachebusterInfo   | *disabled*         |                |                      |
 | generateApiIndex          | *disabled* ^1^     |                |                      |
@@ -81,6 +81,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 ^2^ Enabled for projects defining a [component preload configuration](./Configuration.md#component-preload-generation)  
 ^3^ Enabled in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
 ^4^ Enabled for projects defining a [bundle configuration](./Configuration.md#custom-bundling)  
+^5^ Can be enabled for framework projects via `includeTask` option. For other projects the task is always skipped  
 
 ## Processors
 Processors work with provided resources. They contain the actual build step logic to apply specific modifications to supplied resources, or to make use of the resources' content to create new resources out of that.
