@@ -78,7 +78,7 @@ In UI5 Tooling, a project is typically identified by the configured `name`. It m
 The `name` property of **projects defining Specification Version 3.0 and higher** must satisfy the following conditions:
 
 * Must be at least 3 characters long
-* Must be no longer than 50 characters
+* Must be no longer than 80 characters
 * Must contain lowercase characters only
 * Must contain alphanumeric characters, dash, underscore and period only
     - Exception: The `@` and `/` characters are allowed at certain positions as

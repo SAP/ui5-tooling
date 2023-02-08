@@ -69,7 +69,7 @@ If a workspace is named `default`, **it will be used automatically**, unless a d
 The `name` property must satisfy the following conditions. They are identical to [project names](./Configuration.md#name):
 
 * Must be at least 3 characters long
-* Must be no longer than 50 characters
+* Must be no longer than 80 characters
 * Must contain lowercase characters only
 * Must contain alphanumeric characters, dash, underscore and period only
     - Exception: The `@` and `/` characters are allowed at certain positions as
