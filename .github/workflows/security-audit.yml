@@ -3,7 +3,7 @@ name: Security Audit
 on:
   schedule:
     - cron: "36 4 * * *" # Run once a day
-
+  workflow_dispatch:
 jobs:
   security-scan:
     name: Security Audit

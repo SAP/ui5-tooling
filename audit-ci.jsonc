@@ -1,9 +1,0 @@
-{
-	// $schema provides code completion hints to IDEs.
-	"$schema": "https://github.com/IBM/audit-ci/raw/main/docs/schema.json",
-	"low": true,
-	"allowlist": [
-		// Taffdb is only used during jsdoc build and contains only data for jsdoc generation. After jsdoc build finished, db is destroyed
-		"GHSA-mxhp-79qh-mcx6"
-	]
-  }
