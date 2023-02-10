@@ -7,9 +7,10 @@
 [![OpenUI5 Community Slack (#tooling channel)](https://img.shields.io/badge/slack-join-44cc11.svg)](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
-> :warning: There are two major versions of UI5 Tooling currently available:
-> - [UI5 Tooling v2](https://sap.github.io/ui5-tooling/stable)- Stable version.
-> - [UI5 Tooling v3](https://sap.github.io/ui5-tooling/next)- Development version.
+> There are two major versions of UI5 Tooling currently available:
+> - [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3)- Latest and stable version 🎉
+> - [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2)- In maintenance ⚠️
+
 
 ## Resources
 - [Documentation](https://sap.github.io/ui5-tooling/v3/)
