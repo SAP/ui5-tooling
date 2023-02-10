@@ -1,8 +1,6 @@
 # Migrate to v3
 
-!!! warning
-    **UI5 Tooling v3 is currently in development.** Further breaking changes are expected.  
-    The latest development version can be installed via `npm i --save-dev @ui5/cli@next`
+v3.0.0 of the UI5 Tooling was released on February 9, 2023.
 
 ## Node.js and npm Version Support
 
