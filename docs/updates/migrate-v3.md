@@ -1,6 +1,11 @@
 # Migrate to v3
 
-v3.0.0 of the UI5 Tooling was released on February 9, 2023.
+!!! tip "Now Released"
+	**UI5 Tooling 3.0 has been released February 9, 2023 🎉**
+
+	Install the latest version via: `npm i --save-dev @ui5/cli@latest`
+
+	And find the announcement blog post here: **[SAP Community: UI5 Tooling 3.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
 
 ## Node.js and npm Version Support
 
