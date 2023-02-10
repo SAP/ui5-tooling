@@ -1,6 +1,7 @@
 # UI5 CLI
 ## Requirements
-- [Node.js](https://nodejs.org/) Version 10 or later
+- [Node.js](https://nodejs.org/) Version v16.18.0, v18.12.0 or higher
+- [npm](https://www.npmjs.com/) Version v8.0.0 or higher
 
 ## Installation
 
