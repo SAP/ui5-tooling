@@ -16,8 +16,8 @@
 		// However, this configured npm registry is already considered a trusted connection as code is downloaded and run by the client.
 		"GHSA-rc47-6667-2j5j",
 		
-		// "cacheable-request" has a dependency "http-cache-semantics" ("GHSA-rc47-6667-2j5j") and that's 
-		// why is considered as high severity
+		// "cacheable-request" has a dependency to "http-cache-semantics" (GHSA-rc47-6667-2j5j) which is 
+		// why it is considered as high severity. Not applicable as described above for GHSA-rc47-6667-2j5j.
 		"GHSA-8x6c-cv3v-vp6g"
 	]
   }
