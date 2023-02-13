@@ -14,6 +14,10 @@
 		// It is used by the "make-fetch-happen" and "got" packages which are only used to communicate with the npm registry configured by the user (registry.npmjs.org by default).
 		// Although this ReDoS attack is mainly applicable to servers, in theory a server could also send malicious headers to the client (UI5 Tooling) to cause an unexpected slowdown.
 		// However, this configured npm registry is already considered a trusted connection as code is downloaded and run by the client.
-		"GHSA-rc47-6667-2j5j"
+		"GHSA-rc47-6667-2j5j",
+		
+		// "cacheable-request" has a dependency "http-cache-semantics" ("GHSA-rc47-6667-2j5j") and that's 
+		// why is considered as high severity
+		"GHSA-8x6c-cv3v-vp6g"
 	]
   }
