@@ -271,7 +271,7 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
      *      UI5 Tooling will ensure that those dependencies have been
      *      built before executing the task.
      */
-    module.exports = async function determineRequiredDependencies({availableDependencies, getDependencies, getProject, options}) {
+    module.exports.determineRequiredDependencies = async function({availableDependencies, getDependencies, getProject, options}) {
         // "availableDependencies" could look like this: Set(3) { "sap.ui.core", "sap.m", "my.lib" }
 
         // Reduce list of required dependencies: Do not require any UI5 framework projects
