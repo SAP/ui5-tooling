@@ -213,15 +213,15 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
      * @param {Set} parameters.availableDependencies
      *      Set containing the names of all direct dependencies of
      *      the project currently being built.
-     * @param {function} parameters.getProject
-     *      Identical to TaskUtil#getProject
-     *         (see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
-     *      Retrieves a Project-instance for a given project name.
      * @param {function} parameters.getDependencies
      *      Identical to TaskUtil#getDependencies
      *         (see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
      *      Creates a list of names of all direct dependencies
      *      of a given project.
+     * @param {function} parameters.getProject
+     *      Identical to TaskUtil#getProject
+     *         (see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
+     *      Retrieves a Project-instance for a given project name.
      * @params {object} parameters.options
      *      Identical to the options given to the standard task function.
      * @returns {Promise<Set>}
