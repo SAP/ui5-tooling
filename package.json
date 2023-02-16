@@ -55,7 +55,7 @@
 		"eslint": "^8.34.0",
 		"eslint-config-google": "^0.14.0",
 		"handlebars": "^4.7.7",
-		"jsdoc": "^4.0.0",
+		"jsdoc": "^4.0.1",
 		"local-web-server": "^5.3.0",
 		"open-cli": "^7.1.0",
 		"traverse": "^0.6.7"
