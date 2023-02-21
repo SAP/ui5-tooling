@@ -44,16 +44,7 @@ For extensions defining the latest **Specification Versions 3.0 and higher**, so
     * For example providing access to a [project's root directory](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
     * See also [Custom Tasks](../pages/extensibility/CustomTasks.md) and [Custom Server Middleware](../pages/extensibility/CustomServerMiddleware.md)
 
-## Changes to @ui5/cli
-
-* The CLI option `--translator` has been removed. For static dependency resolution, use the new option `--dependency-definition` to provide a file with static dependency information.
-* The `ui5 build dev` command has been removed. Use `ui5 build --exclude-task=* --include-task=replaceCopyright replaceVersion replaceBuildtime buildThemes` instead.
-
-## Changes to @ui5/project and @ui5/builder API
-
-The `normalizer` and `projectTree` modules have been removed. The `builder` API has been moved from @ui5/builder to @ui5/project.
-
-The JSON based, internal representation of a project dependency tree has been replaced with a graph. This is the result of a major refactoring of @ui5/project which lead to a series of API changes.
+## Changes to Dependency Configuration
 
 !!! info
     ✅ The **`ui5.dependencies` package.json configuration** becomes obsolete and is ignored in UI5 Tooling v3.
@@ -73,11 +64,23 @@ The JSON based, internal representation of a project dependency tree has been re
     ```
 
     `dependencies`, `devDependencies` and `optionalDependencies` are now [automatically analyzed](https://github.com/SAP/ui5-project/blob/ff04ae4aeeb7f7d889dffd0c0e3e8774dd708c79/lib/graph/providers/NodePackageDependencies.js#L104).
-    If a dependency can be configured as a UI5 project or UI5 Tooling extension, it is added to the graph and it's `dependencies` are analyzed.
+    If a dependency can be configured as a UI5 project or UI5 Tooling extension, it is added to the graph and its `dependencies` are analyzed.
 
-    Note that `devDependencies` and `optionalDependencies` are ignored for all but the current root project. For project's that are intended to be consumed in other projects (for example libraries), this means that any required custom tasks must be added to `dependencies`.
+    Note that `devDependencies` and `optionalDependencies` are ignored for all but the current root project. For projects that are intended to be consumed in other projects (for example libraries), this means that any required custom tasks must be added to `dependencies`.
 
-### Migrating Your Code
+## Changes to Module API
+
+The `normalizer` and `projectTree` modules have been removed. The `builder` API has been moved from @ui5/builder to @ui5/project.
+
+The JSON based, internal representation of a project dependency tree has been replaced with a graph. This is the result of a major refactoring of @ui5/project which lead to a series of API changes.
+
+Also the @ui5/server API has been changed. Instead of a `tree`, it now only accepts a `graph` instance as the first parameter.
+
+### Migrate Your Code
+
+The tooling modules such as @ui5/builder, etc. have been transformed to ES Modules ("ESM"). Therefore, they no longer use a CommonJS export and cannot be included via `require`.
+If your code is in CommonJS format, it needs to use dynamic imports or be converted to [ES Modules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+
 
 **Old: @ui5/project v2**
 
@@ -122,7 +125,10 @@ await builder.build({
     });
     ```
 
-Also the @ui5/server API has been changed. Instead of a `tree`, it now only accepts a `graph` instance as the first parameter.
+## Changes to @ui5/cli
+
+* The CLI option `--translator` has been removed. For static dependency resolution, use the new option `--dependency-definition` to provide a file with static dependency information.
+* The `ui5 build dev` command has been removed. Use `ui5 build --exclude-task=* --include-task=replaceCopyright replaceVersion replaceBuildtime buildThemes` instead.
 
 ## JSDoc Processor Fails When JSDoc Reports an Error
 
