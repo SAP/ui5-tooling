@@ -33,7 +33,7 @@ E.g. `/index.html?sap-ui-xx-csp-policy=sap-target-level-1:report-only`
 
 #### The SAPtargetCSP parameter
 The default CSP policies can be modified using parameter `sendSAPTargetCSP` (`--sap-csp-policies` when using the CLI).
-With `sendSAPTargetCSP` set to `true` the policies `sap-target-level-1` and `sap-target-level-2` policies are activated and send as report-only.
+With `sendSAPTargetCSP` set to `true` the policies `sap-target-level-1` and `sap-target-level-3` policies are activated and send as report-only.
 
 #### Serve CSP Reports
 
