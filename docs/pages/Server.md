@@ -31,15 +31,11 @@ The header `content-security-policy` can be set by adding URL parameter `sap-ui-
 To set the policy to report-only, append `:report-only` or `:ro` to the policy name.
 E.g. `/index.html?sap-ui-xx-csp-policy=sap-target-level-1:report-only`
 
-#### The SAPtargetCSP parameter
+#### sendSAPTargetCSP parameter
 The default CSP policies can be modified using parameter `sendSAPTargetCSP` (`--sap-csp-policies` when using the CLI).
 With `sendSAPTargetCSP` set to `true` the policies `sap-target-level-1` and `sap-target-level-3` policies are activated and send as report-only.
 
 #### Serve CSP Reports
-
-!!! info
-    This option is available since UI5 CLI [`v2.3.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.3.0)
-    
 Serving of CSP reports can be activated with parameter `serveCSPReports` (`--serve-csp-reports` when using the CLI).
 With `serveCSPReports` set to `true`, the CSP reports are collected and can be downloaded from the server path `/.ui5/csp/csp-reports.json`.
 
