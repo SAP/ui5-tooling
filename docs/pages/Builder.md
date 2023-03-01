@@ -68,7 +68,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 | generateBundle            | *disabled* ^4^     | *disabled* ^4^ |                      |
 | buildThemes               |                    | *enabled*      | *enabled*            |
 | generateThemeDesignerResources |               | *disabled* ^5^ | *disabled* ^5^       |
-| generateVersionInfo       | *disabled*         |                |                      |
+| generateVersionInfo       | *disabled* ^1^     |                |                      |
 | generateCachebusterInfo   | *disabled*         |                |                      |
 | generateApiIndex          | *disabled* ^1^     |                |                      |
 | generateResourcesJson     | *disabled*         | *disabled*     | *disabled*           |
