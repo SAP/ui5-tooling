@@ -12,7 +12,7 @@ Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/b
 ## UI5 Project
 ### Corrupt Framework Dependencies
 
-When using the UI5 CLI in versions lower than `v2.9.1` or the `@ui5/project` module in versions lower than `v2.2.6` you might experience build- or runtime issues caused by missing or corrupt files in one or more UI5 framework dependencies. Note that this does not affect other project dependencies, such as reuse libraries, which are installed via external package managers like npm or Yarn.
+When using the UI5 CLI in versions lower than `v2.9.1` or the `@ui5/project` module in versions lower than `v2.2.6` you might experience build- or runtime issues caused by missing or corrupt files in one or more UI5 framework dependencies. Note that this does not affect other project dependencies, such as reuse libraries, which are installed via external package managers e.g. npm.
 
 These issues can be the result of an aborted install during a preceding UI5 Tooling execution. Because of [a bug](https://github.com/SAP/ui5-tooling/issues/478) that has since been fixed, UI5 Tooling assumes that the preceding install was successful and uses the potentially corrupted dependency.
 
