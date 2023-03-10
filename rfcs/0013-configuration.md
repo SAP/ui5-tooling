@@ -67,7 +67,7 @@ A dedicated method, potentially located in the same `Configuration.js` module as
 
 ### Changing Configuration
 
-To initialize and change configuration, @ui5/cli shall implement dedicated functionality to create and update the described `.ui5rc` files. It seems likely that no interaction with the `Configuration` module in @ui5/project will be necessary for you.
+To initialize and change configuration, @ui5/cli shall implement dedicated functionality to create and update the described `.ui5rc` files. It seems likely that no interaction with the `Configuration` module in @ui5/project will be necessary.
 
 The implementation might be similar to that for updating ui5.yaml files.
 
