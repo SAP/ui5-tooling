@@ -8,3 +8,18 @@ You need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://n
 
 ## Issues Not Listed Here
 Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/main/CONTRIBUTING.md#report-an-issue) on how to report an issue.
+
+## UI5 Project
+### `~/.ui5` Taking too Much Disk Space
+
+There are possibly many versions of UI5 framework dependencies installed on your system, taking a large amount of disk space.
+
+#### Resolution
+
+Remove the `.ui5/framework/` directory from your user's home directory:
+
+```sh
+rm -rf ~/.ui5/framework/
+```
+
+Any missing framework dependencies will be downloaded again during the next UI5 Tooling invocation.
