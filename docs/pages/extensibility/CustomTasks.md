@@ -222,7 +222,7 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
      *      Identical to TaskUtil#getProject
      *         (see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
      *      Retrieves a Project-instance for a given project name.
-     * @params {object} parameters.options
+     * @param {object} parameters.options
      *      Identical to the options given to the standard task function.
      * @returns {Promise<Set>}
      *      Promise resolving with a Set containing all dependencies
@@ -263,7 +263,7 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
      *      Identical to TaskUtil#getProject
      *         (see https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html).
      *      Retrieves a Project-instance for a given project name.
-     * @params {object} parameters.options
+     * @param {object} parameters.options
      *      Identical to the options given to the standard task function.
      * @returns {Promise<Set>}
      *      Promise resolving with a Set containing all dependencies
