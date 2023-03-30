@@ -538,28 +538,18 @@ This configuration can be overwritten more precisely with the CLI parameters `--
 
 ### Minification
 
-For projects of type `application` and `library` the minification is done for all JavaScript files. This minification includes by default the [standard build tasks](./Builder.md#tasks) `uglify` and `createDebugFiles`.
-
-#### excludes
+For projects of type `application` and `library` the minification is done for all JavaScript files. While the minfication step debug-variants are created, original resources are minified and source maps are created. It is possible to disable the source map creation.
 
 !!! info
-    This configuration is available since UI5 CLI [`v2.14.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.14.0)
+    This configuration is available since UI5 CLI [`v3.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.0.0)
     and applies only to projects defining [Specification Version](#specification-versions)
-    2.6 or higher.
-
+    3.0 or higher.
 !!! example
     ```yaml
     builder:
-      minification:
-        excludes:
-          - "my/lib/thirdparty/"
-          - "!my/lib/thirdparty/NotExcluded.js"
+      settings:
+        omitSourceMapResources: true
     ```
-
-List of modules declared as glob patterns (resource name patterns) that are excluded from resource minification. Re-includes have to be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
-
-Note that patterns are always applied relative to the project's virtual source directory `/resources/`.
-
 
 ## Server Configuration
 
