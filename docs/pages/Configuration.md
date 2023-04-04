@@ -536,21 +536,6 @@ You can include certain dependencies into the build process using the `includeDe
 
 This configuration can be overwritten more precisely with the CLI parameters `--include-dependency`, `--include-dependency-regexp`, `--include-dependency-tree`, `--exclude-dependency`, `--exclude-dependency-regexp` and `--exclude-dependency-tree`.
 
-### Minification
-
-For projects of type `application` and `library` the minification is done for all JavaScript files. While the minfication step debug-variants are created, original resources are minified and source maps are created. It is possible to disable the source map creation.
-
-!!! info
-    This configuration is available since UI5 CLI [`v3.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.0.0)
-    and applies only to projects defining [Specification Version](#specification-versions)
-    3.0 or higher.
-!!! example
-    ```yaml
-    builder:
-      settings:
-        omitSourceMapResources: true
-    ```
-
 ## Server Configuration
 
 !!! example
