@@ -52,7 +52,7 @@ Ideally, interaction with the `Configuration` class in UI5 Tooling is limited to
 
 UI5 Tooling configuration shall be persisted in a `.ui5rc` file located in the user's home directory. In the future, an inheritance mechanism might be implemented, where `.ui5rc` files located in a project can override configuration of the "global" `.ui5rc`.
 
-A dedicated method, potentially located in the same `Configuration.js` module as the `Configuration` class, shall read this file and create a `Configuration` instance based on the content.
+Dedicated methods, located in the same `Configuration.js` module as the `Configuration` class, shall interact with this file. They should be able to create a `Configuration` instance based on the content and respectively save a `Configuration` into the `.ui5rc`
 
 **Example structure of a `.ui5rc` file:**
 
@@ -67,11 +67,14 @@ A dedicated method, potentially located in the same `Configuration.js` module as
 
 ### Changing Configuration
 
-To initialize and change configuration, @ui5/cli shall implement dedicated functionality to create and update the described `.ui5rc` files. It seems likely that no interaction with the `Configuration` module in @ui5/project will be necessary.
+To initialize and change configuration, @ui5/cli shall implement dedicated functionality to create and update the described `.ui5rc` files. It would need to interact with the `Configuration` module in @ui5/project as it would be the interface to modify the `.ui5rc` files.
 
-The implementation might be similar to that for updating ui5.yaml files.
+CLI commands and arguments ideally should be similar to the syntax of `git config` and `npm config`.
+The following commands would be helpful for maintaining the configuration:
 
-**TODO:** Decide on CLI commands and arguments. Ideally similar to the syntax of `git config` and `npm config`.
+- `ui5 config list`: Lists the configurations, stored in `.ui5rc`
+- `ui5 config get <key>`: Retrieves a record from `.ui5rc`
+- `ui5 config set <key> <value>`: Sets a record to the `.ui5rc`
 
 ## How we teach this
 
