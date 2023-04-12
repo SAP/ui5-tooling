@@ -43,13 +43,13 @@
 		"@ui5/server": "^2.4.1"
 	},
 	"devDependencies": {
-		"@apidevtools/json-schema-ref-parser": "^9.0.9",
+		"@apidevtools/json-schema-ref-parser": "^9.1.2",
 		"docdash": "^1.2.0",
 		"handlebars": "^4.7.7",
 		"jsdoc": "^3.6.11",
-		"local-web-server": "^5.2.1",
+		"local-web-server": "^5.3.0",
 		"mkdirp": "^1.0.4",
-		"open-cli": "^7.1.0",
+		"open-cli": "^7.2.0",
 		"traverse": "^0.6.7"
 	}
 }
