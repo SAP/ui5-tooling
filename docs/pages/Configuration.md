@@ -538,7 +538,7 @@ This configuration can be overwritten more precisely with the CLI parameters `--
 
 ### Minification
 
-For projects of type `application` and `library` the minification is done for all JavaScript files. While the minification step debug-variants are created, original resources are minified and source maps are created. You can exclude the resources of a project from the minification step using a list of glob patterns. Matching resources won't be minified, no debug variants and no source maps are created.
+For projects of types `application` and `library`, minification is done for all JavaScript files. During the minification step debug variants are created, original resources are minified, and source maps are created. You can exclude the resources of a project from minification using a list of glob patterns. Matching resources won't be minified, and no debug variants or source maps will be created.
 
 !!! info
     This configuration is available since UI5 CLI [`v2.14.0`](https://github.com/SAP/ui5-cli/releases/tag/v2.14.0)
