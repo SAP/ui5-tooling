@@ -58,9 +58,7 @@ Dedicated methods, located in the same `Configuration.js` module as the `Configu
 
 ```json
 {
-	"baseDir": "~/.ui5"
-	"frameworkDir": "/some/other/path/ui5/framework"
-	"buildCacheDir": "/some/other/path/ui5/cache"
+	"homeDir": "~/.ui5",
 	"mavenSnapshotEndpointUrl": "https://<hostname>/artifactory/build-snapshots/"
 }
 ```
@@ -72,9 +70,10 @@ To initialize and change configuration, @ui5/cli shall implement dedicated funct
 CLI commands and arguments ideally should be similar to the syntax of `git config` and `npm config`.
 The following commands would be helpful for maintaining the configuration:
 
-- `ui5 config list`: Lists the configurations, stored in `.ui5rc`
+- `ui5 config list`: Lists the configurations stored in `.ui5rc`
 - `ui5 config get <key>`: Retrieves a record from `.ui5rc`
-- `ui5 config set <key> <value>`: Sets a record to the `.ui5rc`
+- `ui5 config set <key> <value>`: Sets a record in the `.ui5rc`
+- `ui5 config set <key>`: By omitting the value, a record is removed from the `.ui5rc`
 
 ## How we teach this
 
@@ -86,8 +85,6 @@ The following commands would be helpful for maintaining the configuration:
 <!-- Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
 
 There are trade-offs to choosing any path, please attempt to identify them here. -->
-
-TODO
 
 ## Alternatives
 
