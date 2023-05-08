@@ -8,7 +8,7 @@
 
 ## Overview
 
-SAPUI5 libraries are hosted on the public npm registry at `registry.npmjs.org`. However, you should not install them using node package managers like npm or Yarn. Instead, please let the UI5 Tooling handle them by following this guide.
+SAPUI5 libraries are hosted on the public npm registry at `registry.npmjs.org`. However, you should not install them using node package managers such as npm. Let UI5 Tooling handle them instead by following this guide.
 
 !!! note
     For more background information also see the Blog Post ["UI5ers Buzz #49: The UI5 Tooling and SAPUI5 – The Next Step"](https://blogs.sap.com/2020/04/01/ui5ers-buzz-49-the-ui5-tooling-and-sapui5-the-next-step/)
