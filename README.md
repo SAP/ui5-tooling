@@ -1,6 +1,10 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
 # UI5 Tooling
+> [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprectaed 🚫  
+> Please migrate your projects to [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
+
+
 > An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/ui5-tooling)](https://api.reuse.software/info/github.com/SAP/ui5-tooling)
