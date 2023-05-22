@@ -1,6 +1,7 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
 # UI5 Tooling
+> [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is the latest and stable version 🎉
 > [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
 > Please migrate your projects to [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
 
