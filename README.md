@@ -1,16 +1,29 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
 # UI5 Tooling
-> [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is the latest and stable version 🎉  
-> [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
-> Please migrate your projects to [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
-
 
 > An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/ui5-tooling)](https://api.reuse.software/info/github.com/SAP/ui5-tooling)
 [![OpenUI5 Community Slack (#tooling channel)](https://img.shields.io/badge/slack-join-44cc11.svg)](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com/)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
+## Deprecation
+
+> [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is the latest and stable version 🎉
+
+> [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫
+
+> Please migrate your projects to [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
+
+The reason to deprecate **UI5 Tooling Version 2** and enforce the migration to **UI5 Tooling Version 3** is rooted in our efforts to allow the usage of the latest ECMAScript syntax in the UI5 framework. OpenUI5 and SAPUI5 libraries will make use of modern ECMAScript syntax up to and including "ES2022". UI5 Tooling comes with comprehensive [ECMAScript support](https://sap.github.io/ui5-tooling/v3/pages/ESSupport/) only with Version 3. 
+
+Beginning with releases of **OpenUI5** and **SAPUI5 1.116**, UI5 Framework libraries will start using modern ECMAScript syntax and define **"Specification Version 3.0"** in their UI5 Tooling configuration. 
+
+If you are using UI5 Tooling in your projects, this means you will have to upgrade to UI5 Tooling Version 3. 
+
+If you are using additional build scripts or UI5 Tooling extensions, you should ensure their support for ECMAScript 2022. 
+
 
 ## Resources
 - [Documentation v2](https://sap.github.io/ui5-tooling/v2/)
