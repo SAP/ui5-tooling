@@ -18,7 +18,7 @@
 
 The reason to deprecate **UI5 Tooling Version 2** and enforce the migration to **UI5 Tooling Version 3** is rooted in our efforts to allow the usage of the latest ECMAScript syntax in the UI5 framework. OpenUI5 and SAPUI5 libraries will make use of modern ECMAScript syntax up to and including "ES2022". UI5 Tooling comes with comprehensive [ECMAScript support](https://sap.github.io/ui5-tooling/v3/pages/ESSupport/) only with Version 3. 
 
-Beginning with releases of **OpenUI5** and **SAPUI5 1.116**, UI5 Framework libraries will start using modern ECMAScript syntax and define **"Specification Version 3.0"** in their UI5 Tooling configuration. 
+Beginning with release **1.116** of **OpenUI5** and **SAPUI5**, UI5 Framework libraries will start using modern ECMAScript syntax and define **"Specification Version 3.0"** in their UI5 Tooling configuration. 
 
 If you are using UI5 Tooling in your projects, this means you will have to upgrade to UI5 Tooling Version 3. 
 
