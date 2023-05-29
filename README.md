@@ -11,9 +11,9 @@
 ## Deprecation
 
 > [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is the latest and stable version 🎉
-
-> [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫
-
+>
+> [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
+>
 > Please migrate your projects to [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
 
 The reason to deprecate **UI5 Tooling Version 2** and enforce the migration to **UI5 Tooling Version 3** is rooted in our efforts to allow the usage of the latest ECMAScript syntax in the UI5 framework. OpenUI5 and SAPUI5 libraries will make use of modern ECMAScript syntax up to and including "ES2022". UI5 Tooling comes with comprehensive [ECMAScript support](https://sap.github.io/ui5-tooling/v3/pages/ESSupport/) only with Version 3. 
