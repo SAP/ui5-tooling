@@ -115,14 +115,17 @@ await builder.build({
 === "CommonJS"
 
     ```js
-    const {graphFromPackageDependencies} = await import("@ui5/project/graph");
+    // Since CommonJS does not suport top-level await, the code must be wrapped in an asynchronous function
+    async function buildProject() {
+	    const {graphFromPackageDependencies} = await import("@ui5/project/graph");
 
-    let graph = await graphFromPackageDependencies({cwd: "."});
+	    let graph = await graphFromPackageDependencies({cwd: "."});
 
-    await graph.build({
-        destPath: "./dist",
-        includedDependencies: ["*"], // Parameter "buildDependencies" has been removed
-    });
+	    await graph.build({
+	        destPath: "./dist",
+	        includedDependencies: ["*"], // Parameter "buildDependencies" has been removed
+	    });
+    }
     ```
 
 ## Changes to @ui5/cli
