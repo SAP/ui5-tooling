@@ -360,25 +360,25 @@ You can choose which theme library to use by the application that is consuming t
 !!! example
     === "application"
         ```yaml
-	    builder:
-	      resources:
-	        excludes:
-	          # You can specify paths relative to the configured "webapp" directory
-	          - "index.html"
-	          # When defining absolute paths, make sure to specify the namespace, plus the "/resources/" prefix
-	          - "/resources/my/project/namespace/test/**"
+        builder:
+          resources:
+            excludes:
+              # You can specify paths relative to the configured "webapp" directory
+              - "index.html"
+              # When defining absolute paths, make sure to specify the namespace, plus the "/resources/" prefix
+              - "/resources/my/project/namespace/test/**"
         ```
 
     === "library or theme-library"
         ```yaml
-	    builder:
-	      resources:
-	        excludes:
-	          # For libraries, all paths must be absolute, except for wildcards
-	          - "/resources/some/project/name/test_results/**"
-	          - "/test-resources/**"
-	          - "!/test-resources/some/project/name/demo-app/**"
-	          - "**/*.svg"
+        builder:
+          resources:
+            excludes:
+              # For libraries, all paths must be absolute, except for wildcards
+              - "/resources/some/project/name/test_results/**"
+              - "/test-resources/**"
+              - "!/test-resources/some/project/name/demo-app/**"
+              - "**/*.svg"
         ```
 
 You can exclude a projects resources from the build process using a list of glob patterns. Matching resources will be ignored by the builder and all build tasks.
