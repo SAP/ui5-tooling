@@ -23,9 +23,13 @@ metadata:
 ```
 
 ## General Configuration
+
+### Specification Version and -Type
 A project must define a specification version (`specVersion`), to which its configuration is compatible to. Also see [Specification Versions](#specification-versions).
 
-In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` (since Specification Version 1.1) or `module`. The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
+In addition, a project must define a `type`. This can be either `application`, `library`, `theme-library` (since Specification Version 1.1) or `module`.
+
+The type defines the default path mappings and build tasks. See [UI5 Builder: Types](./Builder.md#types) for details.
 
 !!! example
 
@@ -56,6 +60,12 @@ In addition, a project must define a `type`. This can be either `application`, `
         specVersion: "3.0"
         type: module
         ```
+
+### Kind
+
+The configuration may also contain a `kind` property. This is used to differentiate between projects and extensions.
+
+This configuration defaults to `kind: project`. Which means you typically only need to specify it for extensions, like [Custom Tasks](./extensibility//CustomTasks.md#custom-task-extension).
 
 ### Metadata
 
@@ -348,18 +358,34 @@ You can choose which theme library to use by the application that is consuming t
 ### Exclude Resources
 
 !!! example
-    ```yaml
-    builder:
-      resources:
-        excludes:
-          - "/resources/some/project/name/test_results/**"
-          - "/test-resources/**"
-          - "!/test-resources/some/project/name/demo-app/**"
-    ```
+    === "application"
+        ```yaml
+	    builder:
+	      resources:
+	        excludes:
+	          # You can specify paths relative to the configured "webapp" directory
+	          - "index.html"
+	          # When defining absolute paths, make sure to specify the namespace, plus the "/resources/" prefix
+	          - "/resources/my/project/namespace/test/**"
+        ```
+
+    === "library or theme-library"
+        ```yaml
+	    builder:
+	      resources:
+	        excludes:
+	          # For libraries, all paths must be absolute, except for wildcards
+	          - "/resources/some/project/name/test_results/**"
+	          - "/test-resources/**"
+	          - "!/test-resources/some/project/name/demo-app/**"
+	          - "**/*.svg"
+        ```
 
 You can exclude a projects resources from the build process using a list of glob patterns. Matching resources will be ignored by the builder and all build tasks.
 
-Patterns are applied to the **virtual** path of resources (i.e. the UI5 runtime paths). Exclude patterns are always applied after any includes.
+Patterns are applied to the **virtual resource paths** (i.e. the UI5 runtime paths). Exclude patterns are always applied after any includes.
+
+Resource excludes are currently not supported for projects of type `module`.
 
 ### Cachebuster
 
