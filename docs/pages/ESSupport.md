@@ -70,55 +70,6 @@ Template Literals with one or more expressions inside a `sap.ui.define` or `sap.
 
 The same rule applies also for the usage of deprecated or no longer recommended APIs `jQuery.sap.declare`, `jQuery.sap.declare`, `define`, `require`, `require.predefine`, `sap.ui.predefine`, `sap.ui.requireSync` and `sap.ui.require.preload`.
 
-#### Template Literal in Fiori Elements Template Declaration
-
-When declaring a **Fiori Elements Template** using a **Template Literal** with one or more expressions in the name of the **Fiori Elements Template** is not supported.
-
-=== "Supported"
-
-    ```javascript
-    sap.ui.define([
-        `sap/fe/core/TemplateAssembler`
-    ], function(TemplateAssembler) {
-        return TemplateAssembler.getTemplateComponent(getMethods, 
-            `sap.fe.templates.Page.Component`, {
-                metadata: {
-                    properties: {
-                        templateName: {
-                            type: `string`,
-                            defaultValue: `sap.fe.templates.Page.view.Page`
-                        }
-                    },
-                    manifest: `json`
-                }
-            }
-        );
-    });
-    ```
-
-=== "Not Supported"
-
-    ```javascript hl_lines="6"
-    sap.ui.define([
-        `sap/fe/core/TemplateAssembler`
-    ], function(TemplateAssembler) {
-        const name = `Component`;
-        return TemplateAssembler.getTemplateComponent(getMethods,
-            `sap.fe.templates.Page.${name}`, {
-                metadata: {
-                    properties: {
-                        templateName: {
-                            type: `string`,
-                            defaultValue: `sap.fe.templates.Page.view.Page`
-                        }
-                    },
-                    manifest: `json`
-                }
-            }
-        );
-    });
-    ```
-
 #### Template Literal in Smart Template Declaration
 
 When declaring a **Smart Template** using a **Template Literal** with one or more expressions in the name of the **Smart Template** is not supported.
@@ -245,57 +196,6 @@ A **Spread Element** as a parameter in a `sap.ui.define` or `sap.ui.require` cal
     ```
 
 The same rule applies also for the usage of deprecated or no longer recommended APIs `jQuery.sap.declare`, `jQuery.sap.declare`, `define`, `require`, `require.predefine`, `sap.ui.predefine`, `sap.ui.requireSync` and `sap.ui.require.preload`.
-
-#### Spread Element in Fiori Elements Template Declaration
-
-When declaring a **Fiori Elements Template**, the usage of a **Spread Element** in the configuration is not supported.
-
-=== "Supported"
-
-    ```javascript
-    sap.ui.define([
-        "sap/fe/core/TemplateAssembler"
-    ], function(TemplateAssembler) {
-        return TemplateAssembler.getTemplateComponent(getMethods, 
-            "sap.fe.templates.Page.Component", {
-                metadata: {
-                    properties: {
-                        templateName: {
-                            type: "string",
-                            defaultValue: "sap.fe.templates.Page.view.Page"
-                        }
-                    },
-                    manifest: "json"
-                }
-            }
-        );
-    });
-    ```
-
-=== "Not Supported"
-
-    ```javascript hl_lines="14"
-    sap.ui.define([
-        "sap/fe/core/TemplateAssembler"
-    ], function(TemplateAssembler) {
-        const myTemplate = {
-            templateName: {
-                type: "string",
-                defaultValue: "sap.fe.templates.Page.view.Page"
-            }
-        };
-        return TemplateAssembler.getTemplateComponent(getMethods,
-            "sap.fe.templates.Page.Component", {
-                metadata: {
-                    properties: {
-                        ...myTemplate
-                    },
-                    manifest: "json"
-                }
-            }
-        );
-    });
-    ```
 
 #### Spread Element in Smart Template Declaration
 
@@ -433,55 +333,6 @@ An **Object Expression** as a parameter in a `sap.ui.define` or `sap.ui.require`
     ```
 
 The same rule applies also for the usage of deprecated or no longer recommended APIs `jQuery.sap.declare`, `jQuery.sap.declare`, `define`, `require`, `require.predefine`, `sap.ui.predefine`, `sap.ui.requireSync` and `sap.ui.require.preload`.
-
-#### Object Expression in Fiori Elements Template Declaration
-
-When declaring a **Fiori Elements Template**, the usage of an **Object Expression** in the configuration is not supported.
-
-=== "Supported"
-
-    ```javascript
-    sap.ui.define([
-        "sap/fe/core/TemplateAssembler"
-    ], function(TemplateAssembler) {
-        return TemplateAssembler.getTemplateComponent(getMethods, 
-            "sap.fe.templates.Page.Component", {
-                metadata: {
-                    properties: {
-                        templateName: {
-                            type: "string",
-                            defaultValue: "sap.fe.templates.Page.view.Page"
-                        }
-                    },
-                    manifest: "json"
-                }
-            }
-        );
-    });
-    ```
-
-=== "Not Supported"
-
-    ```javascript hl_lines="9"
-    sap.ui.define([
-        "sap/fe/core/TemplateAssembler"
-    ], function(TemplateAssembler) {
-        const key = "templateName";
-        return TemplateAssembler.getTemplateComponent(getMethods,
-            "sap.fe.templates.Page.Component", {
-                metadata: {
-                    properties: {
-                        [key]: {
-                            type: "string",
-                            defaultValue: "sap.fe.templates.Page.view.Page"
-                        }
-                    },
-                    manifest: "json"
-                }
-            }
-        );
-    });
-    ```
 
 #### Object Expression in Smart Template Declaration
 
