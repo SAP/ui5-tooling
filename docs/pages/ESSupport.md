@@ -167,6 +167,30 @@ A library is typically initialized via an accompanying `library.js`. Within that
     });
     ```
 
+#### Reserved Variable Names in a Template Literal
+
+Template Literals with an expression requires to relinquish following variable names:
+
+- `version`
+- `project.version`
+- `buildtime`
+- `copyright`
+
+=== "Supported"
+
+    ```javascript
+    const myVersion = `1.2`;
+    const transformedVersion `v${myVersion}`
+    ```
+
+=== "Not Supported"
+
+    ```javascript hl_lines="3"
+    const version = `1.2`;
+    const transformedVersion `v${version}`
+    ```
+
+
 ### Spread Element
 
 A [Spread Element](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) can be used in all places, except the following.
