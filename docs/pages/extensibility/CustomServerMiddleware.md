@@ -239,3 +239,16 @@ A custom middleware implementation needs to return a function with the following
 Custom middleware defining [Specification Version](../Configuration.md#specification-versions) 2.0 or higher have access to an interface of a [MiddlewareUtil](https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html) instance.
 
 In this case, a `middlewareUtil` object is provided as a part of the custom middleware's [parameters](#custom-middleware-implementation). Depending on the specification version of the custom middleware, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [MiddlewareUtil API reference](https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html).
+
+## Integration with `karma-ui5`
+
+!!! Warning
+    **Note:** The Karma project has been [deprecated](https://github.com/karma-runner/karma#karma-is-deprecated-and-is-not-accepting-new-features-or-general-bug-fixes)
+
+[`karma-ui5`](https://github.com/SAP/karma-ui5) is a plugin for the popular [Karma test runner](https://karma-runner.github.io/). Based on your [configuration](https://github.com/SAP/karma-ui5#url), it can fetch resources from a dedicated server or start an internal server using parts of UI5 Tooling.
+
+In case of the latter, any custom middleware configured in the default `ui5.yaml` of the project will be used automatically.
+
+However, since Karma uses the [`connect`](https://github.com/senchalabs/connect) framework, opposing to the [`express`](https://github.com/expressjs/express) framework used by UI5 Tooling, custom middleware might not always work as expected. `express` is based on `connect` but provides additional functionality. If you plan to use custom middleware in an integrated scenario with karma-ui5, please **restrict the middleware to using `connect` API only**.
+
+Alternatively, you can start a server with the usual `ui5 serve` command, and [configure the corresponding URL](https://github.com/SAP/karma-ui5#url) for use by `karma-ui5`.
