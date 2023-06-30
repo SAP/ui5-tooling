@@ -89,7 +89,29 @@ npm link my-reuse-library
 _**Note:** "my-reuse-library" is the name defined in the `package.json` and not necessarily the directory or `ui5.yaml` name_
 
 That's it. You can check whether the linking worked by executing `ui5 tree` in the `my-app` directory and looking for the path attributes in its output.
-  
+
+## Static Dependency Definition
+
+As an alternative to defining your project dependencies in the `package.json`, you can define a static dependency hierarchy for the project in a YAML file. This is typically only advised in special cases where none of the other concepts work.
+
+To use such a file in UI5 CLI, provide a path to it using the [`--dependency-definition`](./CLI.md#common-options) parameter. Note that all `package.json` dependencies will be ignored (including UI5 Tooling extensions), but UI5 framework dependencies defined in `ui5.yaml` will still be used.
+
+**Example: `projectDependencies.yaml`**
+
+```yaml
+id: my.app
+version: "local"
+path: "."
+dependencies:
+  - id: my.lib
+    version: "local"
+    path: "../my.lib"
+```
+
+By placing this file in the root directory of the `my.app` application project, you can start a server with a local copy of the `my.lib` dependency, located in the same parent directory, using the command `ui5 serve --dependency-definition ./projectDependencies.yaml`.
+
+The structure of the dependency definition file follows that of the [`@ui5/project/graph/providers/DependencyTree~TreeNode`](https://sap.github.io/ui5-tooling/stable/api/@ui5_project_graph_providers_DependencyTree.html#~TreeNode) type.
+
 ## HTTP/2 Development Webserver
 The UI5 Tooling contains a web server to serve the project via HTTP/2 protocol.
 
