@@ -169,7 +169,7 @@ A library is typically initialized via an accompanying `library.js`. Within that
 
 #### Reserved Variable Names in a Template Literal
 
-Template Literals with an expression requires to relinquish following variable names:
+While UI5 Tooling performs a build placeholders are replaced with a values offered by the build. For example `${version}` is replaced with the actual version defined in the package.json of the project. Thereore it is required to not use any **Template Literal** where any expression contains variable with folloing names:
 
 - `version`
 - `project.version`
@@ -190,6 +190,7 @@ Template Literals with an expression requires to relinquish following variable n
     const transformedVersion `v${version}`
     ```
 
+UI5 Tooling searches for the exact match of `${version}`, so with adding whitespaces before and after the variable name `${ version }` UI5 Tooling won't replace this occurence. This can be enforced by the dedicated ESLint config [template-curly-spacing](https://eslint.org/docs/latest/rules/template-curly-spacing) with option `always`.
 
 ### Spread Element
 
