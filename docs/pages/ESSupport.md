@@ -169,7 +169,7 @@ A library is typically initialized via an accompanying `library.js`. Within that
 
 #### Reserved Variable Names in a Template Literal
 
-While UI5 Tooling performs a build placeholders are replaced with a values offered by the build. For example `${version}` is replaced with the actual version defined in the package.json of the project. Thereore it is required to not use any **Template Literal** where any expression contains variable with folloing names:
+While UI5 Tooling performs a build placeholders are replaced with a values offered by the build. For example `${version}` is replaced with the actual version defined in the package.json of the project. Therefore it is required to not use any **Template Literal** where any expression contains variable with following names:
 
 - `version`
 - `project.version`
