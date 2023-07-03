@@ -18,6 +18,13 @@
 		
 		// "cacheable-request" has a dependency to "http-cache-semantics" (GHSA-rc47-6667-2j5j) which is 
 		// why it is considered as high severity. Not applicable as described above for GHSA-rc47-6667-2j5j.
-		"GHSA-8x6c-cv3v-vp6g"
+		"GHSA-8x6c-cv3v-vp6g",
+		
+		// "semver" vulnerable to Regular Expression Denial of Service.
+		// "semver" is a dependency of "make-dir" that's only used in v2 branch. As we have decided to
+		// deprecate the v2 branch and encourage people to migrate their projects to v3, we are not
+		// considering fix for this.
+		"GHSA-c2qf-rxjj-qqgw|make-dir>semver>",
+		"GHSA-c2qf-rxjj-qqgw|*>make-dir>semver>*"
 	]
   }
