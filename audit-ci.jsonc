@@ -24,7 +24,9 @@
 		// "semver" is a dependency of "make-dir" that's only used in v2 branch. As we have decided to
 		// deprecate the v2 branch and encourage people to migrate their projects to v3, we are not
 		// considering fix for this.
-		"GHSA-c2qf-rxjj-qqgw|make-dir>semver>",
-		"GHSA-c2qf-rxjj-qqgw|*>make-dir>semver>*"
+		"GHSA-c2qf-rxjj-qqgw|semver>", // Direct path
+		"GHSA-c2qf-rxjj-qqgw|*make-dir>semver*",
+		"GHSA-c2qf-rxjj-qqgw|*>normalize-package-data>semver*",
+		"GHSA-c2qf-rxjj-qqgw|*npm-package-arg>semver*"
 	]
   }
