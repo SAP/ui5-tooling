@@ -167,6 +167,31 @@ A library is typically initialized via an accompanying `library.js`. Within that
     });
     ```
 
+#### Reserved Variable Names in a Template Literal
+
+While UI5 Tooling performs a build placeholders are replaced with a values offered by the build. For example `${version}` is replaced with the actual version defined in the package.json of the project. Therefore it is required to not use any **Template Literal** where any expression contains variable with following names:
+
+- `version`
+- `project.version`
+- `buildtime`
+- `copyright`
+
+=== "Supported"
+
+    ```javascript
+    const myVersion = `1.2`;
+    const transformedVersion `v${myVersion}`
+    ```
+
+=== "Not Supported"
+
+    ```javascript hl_lines="3"
+    const version = `1.2`;
+    const transformedVersion `v${version}`
+    ```
+
+UI5 Tooling searches for the exact match of `${version}`, so with adding whitespaces before and after the variable name `${ version }` UI5 Tooling won't replace this occurence. This can be enforced by the dedicated ESLint config [template-curly-spacing](https://eslint.org/docs/latest/rules/template-curly-spacing) with option `always`.
+
 ### Spread Element
 
 A [Spread Element](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) can be used in all places, except the following.
