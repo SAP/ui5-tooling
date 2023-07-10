@@ -249,7 +249,7 @@ In this case, a `middlewareUtil` object is provided as a part of the custom midd
 
 In the latter case, any custom middleware configured in the default `ui5.yaml` of the project will be used automatically.
 
-However, since Karma uses the [`connect`](https://github.com/senchalabs/connect) framework, as opposed to UI5 Tooling's [`express`](https://github.com/expressjs/express), custom middleware might not always work as expected. Compared to `connect`, the `express` framework provides a greater API to middleware.
+However, since Karma uses the [`connect`](https://github.com/senchalabs/connect) framework, as opposed to UI5 Tooling's [`express`](https://github.com/expressjs/express), custom middleware might not always work as expected. Compared to `connect`, the `express` framework provides a more versatile API to middleware.
 
 Therefore, if you plan to use custom middleware in an integrated scenario with `karma-ui5`, you must **restrict the middleware to using the [`connect`](https://github.com/senchalabs/connect) API only** to ensure compatibility.
 
