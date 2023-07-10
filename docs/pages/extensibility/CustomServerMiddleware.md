@@ -243,14 +243,14 @@ In this case, a `middlewareUtil` object is provided as a part of the custom midd
 ## Integration with `karma-ui5`
 
 !!! Warning
-    **Note:** The Karma project has been [deprecated](https://github.com/karma-runner/karma#karma-is-deprecated-and-is-not-accepting-new-features-or-general-bug-fixes) as of 2023
+    The Karma project has been [deprecated](https://github.com/karma-runner/karma#karma-is-deprecated-and-is-not-accepting-new-features-or-general-bug-fixes) as of 2023
 
 [`karma-ui5`](https://github.com/SAP/karma-ui5) is a plugin for the popular [Karma test runner](https://karma-runner.github.io/). Based on your [configuration](https://github.com/SAP/karma-ui5#url), it can fetch resources from a dedicated server or start an internal server using parts of UI5 Tooling.
 
-In case of the latter, any custom middleware configured in the default `ui5.yaml` of the project will be used automatically.
+In the latter case, any custom middleware configured in the default `ui5.yaml` of the project will be used automatically.
 
-However, since Karma uses the [`connect`](https://github.com/senchalabs/connect) framework, opposing to [`express`](https://github.com/expressjs/express) used by UI5 Tooling, custom middleware might not always work as expected. Compared to `connect`, the `express` framework provides a greater API to middleware.
+However, since Karma uses the [`connect`](https://github.com/senchalabs/connect) framework, as opposed to UI5 Tooling's [`express`](https://github.com/expressjs/express), custom middleware might not always work as expected. Compared to `connect`, the `express` framework provides a greater API to middleware.
 
-Therefore, if you plan to use custom middleware in an integrated scenario with `karma-ui5`, you must **restrict the middleware to using [`connect`](https://github.com/senchalabs/connect) API only** to ensure compatibility.
+Therefore, if you plan to use custom middleware in an integrated scenario with `karma-ui5`, you must **restrict the middleware to using the [`connect`](https://github.com/senchalabs/connect) API only** to ensure compatibility.
 
-Alternatively, you can start a server with the usual `ui5 serve` command, and [configure the corresponding URL](https://github.com/SAP/karma-ui5#url) for use by `karma-ui5`.
+Alternatively, you can start a server with the usual `ui5 serve` command and [configure the corresponding URL](https://github.com/SAP/karma-ui5#url) for use by `karma-ui5`.
