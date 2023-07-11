@@ -15,11 +15,11 @@
 		// Although this ReDoS attack is mainly applicable to servers, in theory a server could also send malicious headers to the client (UI5 Tooling) to cause an unexpected slowdown.
 		// However, this configured npm registry is already considered a trusted connection as code is downloaded and run by the client.
 		"GHSA-rc47-6667-2j5j",
-		
+
 		// "cacheable-request" has a dependency to "http-cache-semantics" (GHSA-rc47-6667-2j5j) which is 
 		// why it is considered as high severity. Not applicable as described above for GHSA-rc47-6667-2j5j.
 		"GHSA-8x6c-cv3v-vp6g",
-		
+
 		// "semver" vulnerable to Regular Expression Denial of Service.
 		// "semver" is a dependency of "make-dir" that's only used in v2 branch. As we have decided to
 		// deprecate the v2 branch and encourage people to migrate their projects to v3, we are not
@@ -28,6 +28,9 @@
 		"GHSA-c2qf-rxjj-qqgw|*make-dir>semver*",
 		"GHSA-c2qf-rxjj-qqgw|*>normalize-package-data>semver*",
 		"GHSA-c2qf-rxjj-qqgw|*npm-package-arg>semver*",
+
+		// All versions of the package word-wrap are vulnerable to Regular Expression Denial of Service (ReDoS) 
+		// due to the usage of an insecure regular expression within the result variable.
 		"GHSA-j8xg-fqg3-53r7|optionator>word-wrap"
 	]
   }
