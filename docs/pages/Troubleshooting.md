@@ -23,3 +23,22 @@ rm -rf ~/.ui5/framework/
 ```
 
 Any missing framework dependencies will be downloaded again during the next UI5 Tooling invocation.
+
+## UI5 CLI
+### Change Log Level via environment variable
+
+In CI environments or in a combination with other tools, the usage of [UI5 CLI's `--log-level`](https://sap.github.io/ui5-tooling/stable/pages/CLI/#common-options) command parameter might be inconvenient and even impossible.
+
+#### Resolution
+
+Replace UI5 Tooling's `--log-level` option, with the `UI5_LOG_LVL` environment variable.
+
+For example:
+
+`UI5_LOG_LVL=silly ui5 build`
+
+on Windows:
+
+`set UI5_LOG_LVL=silly ui5 build`
+
+**Note**: Combination of `UI5_LOG_LVL` & `--log-level` CLI parameter might lead to unexpected results. The should be used interchangeably, but not together. The CLI parameter has precedence over `UI5_LOG_LVL` env variable.
