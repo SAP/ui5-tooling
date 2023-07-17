@@ -41,4 +41,4 @@ on Windows:
 
 `set UI5_LOG_LVL=silly ui5 build`
 
-**Note**: Combination of `UI5_LOG_LVL` & `--log-level` CLI parameter might lead to unexpected results. The should be used interchangeably, but not together. The CLI parameter has precedence over `UI5_LOG_LVL` env variable.
+**Note**: Combination of `UI5_LOG_LVL` & `--log-level` CLI parameter might lead to unexpected results. They should be used interchangeably, but not together. The CLI parameter has precedence over `UI5_LOG_LVL` env variable.
