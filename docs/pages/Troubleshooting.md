@@ -37,7 +37,7 @@ Example:
 
 `UI5_LOG_LVL=silly ui5 build`
 
-on Windows:
+On Windows:
 
 `set UI5_LOG_LVL=silly ui5 build`
 
