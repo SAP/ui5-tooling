@@ -33,7 +33,7 @@ In CI environments or in a combination with other tools, the usage of [UI5 CLI's
 
 Replace UI5 Tooling's `--log-level` option with the `UI5_LOG_LVL` environment variable.
 
-For example:
+Example:
 
 `UI5_LOG_LVL=silly ui5 build`
 
