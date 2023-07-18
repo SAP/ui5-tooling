@@ -24,8 +24,8 @@ rm -rf ~/.ui5/framework/
 
 Any missing framework dependencies will be downloaded again during the next UI5 Tooling invocation.
 
-## UI5 CLI
-### Changing the Log Level via Environment Variable
+## Environment Variables
+### Changing the Log Level
 
 In CI environments or in a combination with other tools, the usage of [UI5 CLI's `--log-level`](https://sap.github.io/ui5-tooling/stable/pages/CLI/#common-options) command parameter might be inconvenient and even impossible.
 
