@@ -23,3 +23,32 @@ rm -rf ~/.ui5/framework/
 ```
 
 Any missing framework dependencies will be downloaded again during the next UI5 Tooling invocation.
+
+## Environment Variables
+### Changing the Log Level
+
+In CI environments or in a combination with other tools, the usage of [UI5 CLI's `--log-level`](https://sap.github.io/ui5-tooling/stable/pages/CLI/#common-options) command parameter might be inconvenient and even impossible.
+
+#### Resolution
+
+Replace UI5 Tooling's `--log-level` option with the `UI5_LOG_LVL` environment variable.
+
+Example:
+
+`UI5_LOG_LVL=silly ui5 build`
+
+On Windows:
+
+`set UI5_LOG_LVL=silly ui5 build`
+
+Cross Environment via [cross-env](https://www.npmjs.com/package/cross-env):
+
+`cross-env UI5_LOG_LVL=silly ui5 build`
+
+UI5 + Karma:
+
+`cross-env UI5_LOG_LVL=verbose npm run karma`
+
+
+!!! warning
+    The combination of the `UI5_LOG_LVL` environment variable with the `--log-level` CLI parameter might lead to unexpected results; they should be used interchangeably but not together. The CLI parameter takes precedence over the `UI5_LOG_LVL` environment variable.
