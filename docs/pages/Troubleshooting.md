@@ -52,3 +52,15 @@ UI5 + Karma:
 
 !!! warning
     The combination of the `UI5_LOG_LVL` environment variable with the `--log-level` CLI parameter might lead to unexpected results; they should be used interchangeably but not together. The CLI parameter takes precedence over the `UI5_LOG_LVL` environment variable.
+
+### Changing UI5 Tooling's Home directory
+
+UI5 Tooling's Home directory is by default in `~/.ui5`. In some cases and environments this is not a convenient place and the user needs to provide a better location. This location is provided via the `UI5_DATA_DIR` environment variable.
+
+Example:
+
+`UI5_DATA_DIR=/my/custom/location/ ui5 build`
+
+On Windows:
+
+`set UI5_DATA_DIR="C:\\my\\custom\\location" ui5 build`
