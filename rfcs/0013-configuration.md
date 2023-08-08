@@ -58,7 +58,7 @@ Dedicated methods, located in the same `Configuration.js` module as the `Configu
 
 ```json
 {
-	"homeDir": "~/.ui5",
+	"dataDir": "~/.ui5",
 	"mavenSnapshotEndpointUrl": "https://<hostname>/artifactory/build-snapshots/"
 }
 ```
