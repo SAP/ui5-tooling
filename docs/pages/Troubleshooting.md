@@ -60,6 +60,8 @@ In some cases and environments this is not a convenient location and the user ne
 
 Example:
 
+Unix-style:
+
 `UI5_DATA_DIR=/my/custom/location/ ui5 build`
 
 On Windows:
