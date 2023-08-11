@@ -379,13 +379,25 @@ You can choose which theme library to use by the application that is consuming t
               - "/test-resources/**"
               - "!/test-resources/some/project/name/demo-app/**"
               - "**/*.svg"
+		```
+
+    === "module"
+        !!! info
+            For projects of type `module`, this configuration is available since UI5 CLI [`v3.5.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.5.0)
+            and applies only to projects defining [Specification Version](#specification-versions) 3.1 or higher.
+        ```yaml
+        builder:
+          resources:
+            excludes:
+              # For modules, all paths must be absolute, except for wildcards
+              - "/resources/my/library/module-xy/min/**"
+              - "!/resources/my/library/module-xy/min/module-xy-bundle.js"
+              - "**/*.svg"
         ```
 
 You can exclude a projects resources from the build process using a list of glob patterns. Matching resources will be ignored by the builder and all build tasks.
 
 Patterns are applied to the **virtual resource paths** (i.e. the UI5 runtime paths). Exclude patterns are always applied after any includes.
-
-Resource excludes are currently not supported for projects of type `module`.
 
 ### Cachebuster
 
