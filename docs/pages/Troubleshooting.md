@@ -55,15 +55,34 @@ UI5 + Karma:
 
 ### Changing UI5 Tooling's Data Directory
 
-UI5 Tooling's data directory is by default at `~/.ui5`. It's the place where the framework artefacts are stored.
-In some cases and environments this is not a convenient location and the user needs to provide a better one. The path to it is provided via the `UI5_DATA_DIR` environment variable.
+UI5 Tooling's data directory is by default at `~/.ui5`. It's the place where the framework artifacts are stored.
+In some cases and environments this is not a convenient location and the user needs to provide a better one.
 
-Example:
+The path to it can either be provided via environment variable or permanently set in the configuration.
 
-Unix-style:
+!!! info
+    Paths are resolved relative to the current root project path (i.e. where the package.json is located).
 
-`UI5_DATA_DIR=/my/custom/location/ ui5 build`
+#### Environment variable  `UI5_DATA_DIR`
 
-On Windows:
+Unix:
+```sh
+UI5_DATA_DIR=/my/custom/location/.ui5 ui5 build
+```
 
-`set UI5_DATA_DIR="C:\\my\\custom\\location" ui5 build`
+Windows:
+```sh
+set UI5_DATA_DIR="C:\\my\\custom\\location\\.ui5" ui5 build
+```
+
+#### Configuration `ui5DataDir`
+
+Configure a custom directory:
+```sh
+ui5 config set ui5DataDir /my/custom/location/.ui5
+```
+
+Unset the configuration to switch back to the default directory:
+```sh
+ui5 config set ui5DataDir
+```
