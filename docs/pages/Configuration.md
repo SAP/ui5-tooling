@@ -737,6 +737,7 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward comp
 
 Version | UI5 CLI Release
 --- | ---
+**3.1** | v3.5.0+
 **3.0** | v3.0.0+
 **2.6** | v2.14.0+
 **2.5** | v2.12.0+
@@ -748,6 +749,12 @@ Version | UI5 CLI Release
 **1.1** | v1.13.0+
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
+
+### Specification Version 3.1
+
+**Features:**
+
+- Adds support for maintaining the [`builder.resources.excludes`](#exclude-resources) configuration for projects of type `module`
 
 ### Specification Version 3.0
 
