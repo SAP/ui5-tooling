@@ -29,7 +29,7 @@ Configure your project for use with UI5 Tooling.
 ❯ ui5 init
 Wrote ui5.yaml:
 
-specVersion: '3.0'
+specVersion: '3.1'
 metadata:
   name: my-app
 type: application
@@ -40,9 +40,9 @@ type: application
 UI5 framework dependencies are managed by the tooling. All other dependencies are managed by your favorite node package manager.
 
 ```
-❯ ui5 use SAPUI5@1.76.0
+❯ ui5 use SAPUI5@1.117.0
 Updated configuration written to ui5.yaml
-This project is now using SAPUI5 version 1.76.0
+This project is now using SAPUI5 version 1.117.0
 
 ❯ ui5 add sap.ui.core sap.m themelib_sap_fiori_3
 Updated configuration written to ui5.yaml
@@ -67,7 +67,7 @@ Build an optimized version of your project.
 
 ``` bash
 ❯ ui5 build
-info graph:helpers:ui5Framework Using OpenUI5 version: 1.111.1
+info graph:helpers:ui5Framework Using OpenUI5 version: 1.117.0
 info ProjectBuilder Preparing build for project my-app
 info ProjectBuilder   Target directory: ./dist
 info ProjectBuilder Cleaning target directory...

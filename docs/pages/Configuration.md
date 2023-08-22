@@ -16,7 +16,7 @@ See the list of [clients](https://github.com/redhat-developer/yaml-language-serv
 ## Example
 
 ```yaml
-specVersion: "3.0"
+specVersion: "3.1"
 type: application|library|theme-library|module
 metadata:
   name: some.project.name
@@ -36,28 +36,28 @@ The type defines the default path mappings and build tasks. See [UI5 Builder: Ty
     === "application"
 
         ```yaml
-        specVersion: "3.0"
+        specVersion: "3.1"
         type: application
         ```
 
     === "library"
 
         ```yaml
-        specVersion: "3.0"
+        specVersion: "3.1"
         type: library
         ```
 
     === "theme-library"
 
         ```yaml
-        specVersion: "3.0"
+        specVersion: "3.1"
         type: theme-library
         ```
 
     === "module"
 
         ```yaml
-        specVersion: "3.0"
+        specVersion: "3.1"
         type: module
         ```
 
@@ -270,7 +270,7 @@ You can find an overview of the available versions for each framework here:
 !!! example
     === "application"
         ```yaml
-        specVersion: "3.0"
+        specVersion: "3.1"
         type: application
         metadata:
           name: my.company.app
@@ -286,7 +286,7 @@ You can find an overview of the available versions for each framework here:
 
     === "library"
         ```yaml
-        specVersion: "3.0"
+        specVersion: "3.1"
         type: library
         metadata:
           name: my.company.library
@@ -618,12 +618,12 @@ The default and configured server ports can always be overwritten with the CLI p
 
 !!! example
     ```yaml
-    specVersion: "3.0"
+    specVersion: "3.1"
     type: application
     metadata:
       name: my.application
     ---
-    specVersion: "3.0"
+    specVersion: "3.1"
     kind: extension
     type: project-shim
     metadata:
@@ -631,7 +631,7 @@ The default and configured server ports can always be overwritten with the CLI p
     shims:
       configurations:
         lodash:
-          specVersion: "3.0"
+          specVersion: "3.1"
           type: module
           metadata:
             name: lodash
@@ -718,7 +718,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 A project must define a specification version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a project's configuration.
 
 ```yaml
-specVersion: "3.0"
+specVersion: "3.1"
 [...]
 ```
 
