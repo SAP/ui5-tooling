@@ -6,13 +6,13 @@ npm install --save-dev @ui5/cli
 </code></pre></div> <h4 id=project-setup>⚙️ Project Setup<a class=headerlink href=#project-setup title="Permanent link">&para;</a></h4> <p>Configure your project for use with UI5 Tooling.<br> <em>Also see the <a href=pages/Configuration/ >Configuration Documentation</a></em></p> <div class=highlight><pre><span></span><code>❯ ui5 init
 Wrote ui5.yaml:
 
-specVersion: &#39;3.0&#39;
+specVersion: &#39;3.1&#39;
 metadata:
   name: my-app
 type: application
-</code></pre></div> <h4 id=dependency-management>🚚 Dependency Management<a class=headerlink href=#dependency-management title="Permanent link">&para;</a></h4> <p>UI5 framework dependencies are managed by the tooling. All other dependencies are managed by your favorite node package manager.</p> <div class=highlight><pre><span></span><code>❯ ui5 use SAPUI5@1.76.0
+</code></pre></div> <h4 id=dependency-management>🚚 Dependency Management<a class=headerlink href=#dependency-management title="Permanent link">&para;</a></h4> <p>UI5 framework dependencies are managed by the tooling. All other dependencies are managed by your favorite node package manager.</p> <div class=highlight><pre><span></span><code>❯ ui5 use SAPUI5@1.117.0
 Updated configuration written to ui5.yaml
-This project is now using SAPUI5 version 1.76.0
+This project is now using SAPUI5 version 1.117.0
 
 ❯ ui5 add sap.ui.core sap.m themelib_sap_fiori_3
 Updated configuration written to ui5.yaml
@@ -21,7 +21,7 @@ Added framework libraries sap.ui.core sap.m themelib_sap_fiori_3 as dependencies
 Server started
 URL: http://localhost:8080
 </code></pre></div> <h4 id=build-for-production>🛠 Build for Production<a class=headerlink href=#build-for-production title="Permanent link">&para;</a></h4> <p>Build an optimized version of your project.<br> <em>Also see the <a href=pages/Builder/ >Builder Documentation</a></em></p> <div class=highlight><pre><span></span><code>❯ ui5 build
-info graph:helpers:ui5Framework Using OpenUI5 version: <span class=m>1</span>.111.1
+info graph:helpers:ui5Framework Using OpenUI5 version: <span class=m>1</span>.117.0
 info ProjectBuilder Preparing build <span class=k>for</span> project my-app
 info ProjectBuilder   Target directory: ./dist
 info ProjectBuilder Cleaning target directory...
