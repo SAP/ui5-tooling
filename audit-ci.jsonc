@@ -30,7 +30,10 @@
 		"GHSA-c2qf-rxjj-qqgw|*npm-package-arg>semver*",
 		
 		// @adobe/css-tools Regular Expression Denial of Service (ReDOS) while Parsing CSS
-		// Used in ui5-server -> connect-openui5 -> less-openui5
+		// Used in ui5-server -> connect-openui5 -> less-openui5. connect-openui5 is no longer
+		// dependency of ui5-server in UI5 Tooling v3. As we have decided to
+		// deprecate the v2 branch and encourage people to migrate their projects to v3, we are not
+		// considering fix for this.
 		"GHSA-hpx4-r86g-5jrg|@adobe/css-tools"
 	]
-  }
+}
