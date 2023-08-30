@@ -1,39 +1,6 @@
 {
 	// $schema provides code completion hints to IDEs.
 	"$schema": "https://github.com/IBM/audit-ci/raw/main/docs/schema.json",
-	"low": true,
-	"allowlist": [
-
-		// The package "taffydb" is only used during jsdoc build and contains only data for jsdoc generation.
-		// After jsdoc build finished, db is destroyed.
-		// According to JSDoc, this should not be considered a security risk:
-		// https://github.com/jsdoc/jsdoc/tree/main/packages/jsdoc-salty#taffydb-jsdoc-and-security
-		"GHSA-mxhp-79qh-mcx6",
-
-		// The package "http-cache-semantics" is vulnerable to a Regular Expression Denial of Service (ReDoS) attack.
-		// It is used by the "make-fetch-happen" and "got" packages which are only used to communicate with the npm registry configured by the user (registry.npmjs.org by default).
-		// Although this ReDoS attack is mainly applicable to servers, in theory a server could also send malicious headers to the client (UI5 Tooling) to cause an unexpected slowdown.
-		// However, this configured npm registry is already considered a trusted connection as code is downloaded and run by the client.
-		"GHSA-rc47-6667-2j5j",
-
-		// "cacheable-request" has a dependency to "http-cache-semantics" (GHSA-rc47-6667-2j5j) which is 
-		// why it is considered as high severity. Not applicable as described above for GHSA-rc47-6667-2j5j.
-		"GHSA-8x6c-cv3v-vp6g",
-
-		// "semver" vulnerable to Regular Expression Denial of Service.
-		// "semver" is a dependency of "make-dir" that's only used in v2 branch. As we have decided to
-		// deprecate the v2 branch and encourage people to migrate their projects to v3, we are not
-		// considering fix for this.
-		"GHSA-c2qf-rxjj-qqgw|semver", // Direct path
-		"GHSA-c2qf-rxjj-qqgw|*make-dir>semver*",
-		"GHSA-c2qf-rxjj-qqgw|*>normalize-package-data>semver*",
-		"GHSA-c2qf-rxjj-qqgw|*npm-package-arg>semver*",
-		
-		// @adobe/css-tools Regular Expression Denial of Service (ReDOS) while Parsing CSS
-		// Used in ui5-server -> connect-openui5 -> less-openui5. connect-openui5 is no longer
-		// dependency of ui5-server in UI5 Tooling v3. As we have decided to
-		// deprecate the v2 branch and encourage people to migrate their projects to v3, we are not
-		// considering fix for this.
-		"GHSA-hpx4-r86g-5jrg|@adobe/css-tools"
-	]
+	"high": true,
+	"allowlist": []
 }
