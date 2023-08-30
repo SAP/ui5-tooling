@@ -2,5 +2,18 @@
 	// $schema provides code completion hints to IDEs.
 	"$schema": "https://github.com/IBM/audit-ci/raw/main/docs/schema.json",
 	"high": true,
-	"allowlist": []
-}
+	"allowlist": [
+
+		// The package "taffydb" is only used during jsdoc build and contains only data for jsdoc generation.
+		// After jsdoc build finished, db is destroyed.
+		// According to JSDoc, this should not be considered a security risk:
+		// https://github.com/jsdoc/jsdoc/tree/main/packages/jsdoc-salty#taffydb-jsdoc-and-security
+		"GHSA-mxhp-79qh-mcx6",
+
+		// The package "http-cache-semantics" is vulnerable to a Regular Expression Denial of Service (ReDoS) attack.
+		// It is used by the "make-fetch-happen" and "got" packages which are only used to communicate with the npm registry configured by the user (registry.npmjs.org by default).
+		// Although this ReDoS attack is mainly applicable to servers, in theory a server could also send malicious headers to the client (UI5 Tooling) to cause an unexpected slowdown.
+		// However, this configured npm registry is already considered a trusted connection as code is downloaded and run by the client.
+		"GHSA-rc47-6667-2j5j"
+	]
+  }
