@@ -10,7 +10,8 @@ Please note that custom tasks from third parties can not only modify your projec
 
 You can configure your build process with additional build task. These custom tasks are defined in the project [configuration](../Configuration.md).
 
-To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Disabled standard tasks, although not executed, can still be referenced by custom tasks that will be carried out on the correct position.
+To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. 
+Standard tasks that are disabled, even though they are not executed, can still be referenced by custom tasks, which will be performed in their designated position.
 
 In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.  
 Another custom task called `render-markdown-files` is then executed immediately after the standard task `minify`.
