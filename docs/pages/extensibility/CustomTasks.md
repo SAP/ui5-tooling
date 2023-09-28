@@ -19,7 +19,7 @@ Another custom task called `render-markdown-files` is then executed immediately 
 ### Example: Basic configuration
 
 ```yaml
-# In this example configuration two custom tasks are defined: 'babel' and 'render-markdown-files'.
+# In this example configuration, two custom tasks are defined: 'babel' and 'render-markdown-files'.
 specVersion: "3.1"
 type: library
 metadata:
