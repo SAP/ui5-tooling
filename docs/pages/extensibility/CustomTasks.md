@@ -40,7 +40,7 @@ builder:
 You can also connect multiple custom tasks with each other. The order in the configuration is important in this case. You have to make sure that a task is defined *before* you reference it via `beforeTask` or `afterTask`.
 
 ```yaml
-# In this example 'my-custom-task-2' gets executed after 'my-custom-task-1'.
+# In this example, 'my-custom-task-2' gets executed after 'my-custom-task-1'.
 specVersion: "3.1"
 type: library
 metadata:
