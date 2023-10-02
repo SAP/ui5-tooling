@@ -10,15 +10,16 @@ Please note that custom tasks from third parties can not only modify your projec
 
 You can configure your build process with additional build task. These custom tasks are defined in the project [configuration](../Configuration.md).
 
-To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. Note that a custom task will only be executed if the referenced task is executed (i.e. is not disabled).
+To hook your custom tasks into the different build phases of a project, they need to reference other tasks to be executed before or after. This can be a [standard task](../Builder.md#standard-tasks) or another custom task. 
+Standard tasks that are disabled, even though they are not executed, can still be referenced by custom tasks, which will be performed in their designated position.
 
 In the below example, when building the library `my.library` the custom `babel` task will be executed before the standard task `generateComponentPreload`.  
-Another custom task called `renderMarkdownFiles` is then executed immediately after the standard task `minify`.
+Another custom task called `render-markdown-files` is then executed immediately after the standard task `minify`.
 
 ### Example: Basic configuration
 
 ```yaml
-# In this example configuration two custom tasks are defined: 'babel' and 'renderMarkdownFiles'.
+# In this example configuration, two custom tasks are defined: 'babel' and 'render-markdown-files'.
 specVersion: "3.1"
 type: library
 metadata:
@@ -27,7 +28,7 @@ builder:
   customTasks:
     - name: babel
       beforeTask: generateComponentPreload
-    - name: renderMarkdownFiles
+    - name: render-markdown-files
       afterTask: minify
       configuration:
         markdownStyle:
@@ -39,17 +40,17 @@ builder:
 You can also connect multiple custom tasks with each other. The order in the configuration is important in this case. You have to make sure that a task is defined *before* you reference it via `beforeTask` or `afterTask`.
 
 ```yaml
-# In this example 'myCustomTask2' gets executed after 'myCustomTask1'.
+# In this example, 'my-custom-task-2' gets executed after 'my-custom-task-1'.
 specVersion: "3.1"
 type: library
 metadata:
   name: my.library
 builder:
   customTasks:
-    - name: myCustomTask1
+    - name: my-custom-task-1
       beforeTask: generateComponentPreload
-    - name: myCustomTask2
-      afterTask: myCustomTask1
+    - name: my-custom-task-2
+      afterTask: my-custom-task-1
 ```
 
 ## Custom Task Extension
@@ -63,7 +64,7 @@ specVersion: "3.1"
 kind: extension
 type: task
 metadata:
-  name: renderMarkdownFiles
+  name: render-markdown-files
 task:
   path: lib/tasks/renderMarkdownFiles.js
 ```
@@ -86,7 +87,7 @@ metadata:
   name: my.library
 builder:
   customTasks:
-    - name: renderMarkdownFiles
+    - name: render-markdown-files
       afterTask: minify
       configuration:
         markdownStyle:
@@ -97,7 +98,7 @@ specVersion: "3.1"
 kind: extension
 type: task
 metadata:
-  name: renderMarkdownFiles
+  name: render-markdown-files
 task:
   path: lib/tasks/renderMarkdownFiles.js
 ```

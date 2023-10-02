@@ -171,7 +171,7 @@ The following processors have been removed:
 
 | UI5 Tooling v2              | UI5 Tooling v3              | Note |
 | --------------------------- | --------------------------- | ------------------------- |
-| createDebugFiles<br/>uglify | minify                      | The minify task is executed earlier, before the bundling process takes place. Any existing 'beforeTask' or 'afterTask' configuration of custom tasks might need to be adapted to cater for this change. |
+| createDebugFiles<br/>uglify | minify                      | The minify task is executed earlier, before the bundling process takes place. Any existing `beforeTask` or `afterTask` configuration of custom tasks might need to be adapted to cater for this change. <br>To adapt, you can use the `generateResourcesJson` task for subscription before or after the last standard task. By default, `generateResourcesJson` is disabled, but you can still subscribe to it, ensuring your custom tasks execute in the correct order. |
 | generateVersionInfo         | generateVersionInfo         | The task is no longer executed by default for application projects. It can be re-enabled by using the `--include-task` parameter. |
 | generateManifestBundle      | *None*                      | This task was only needed for the HTML5 repository in Cloud Foundry. Meanwhile, the HTML5 repository implemented its own mechanism, so the task is no longer needed |
 
