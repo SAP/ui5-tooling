@@ -1,7 +1,7 @@
 import path from "node:path";
 import {fileURLToPath, pathToFileURL} from "node:url";
 import {writeFile, mkdir} from "node:fs/promises";
-import $RefParser from "@apidevtools/json-schema-ref-parser";
+import {$RefParser} from "@apidevtools/json-schema-ref-parser";
 import traverse from "traverse";
 
 // Using CommonsJS require.resolve as long as import.meta.resolve is experimental
