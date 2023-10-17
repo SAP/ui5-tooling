@@ -102,6 +102,13 @@ For projects facilitating transpilation (such as TypeScript-based projects), it 
 
 UI5 Tooling's `minify` task will then find this reference and incorporate the source map into the minification process. In the end, the minified JavaScript resources will reference an updated source map, which reflects the transpilation as well as the minification. The browser can use this to map every statement back to the original TypeScript file, making debugging a breeze.
 
+!!! warning
+    If a resource has been modified by another build task before `minify` is executed, any referenced source map will be ignored. This is to ensure the integrity of the source maps in the build result.
+
+    It is possible that the modification of the resource content is not reflected in the associated source map, rendering it corrupted. A corrupt source map can make it impossible to properly analyze and debug a resource in the browser development tools.
+
+    Standard tasks which may modify resources without updating the associated source maps currently include `replaceVersion`, `replaceCopyright` and `replaceBuildtime`.
+
 Expand the block below to view a diagram illustrating the minification process and source map handling.
 
 ??? info "Minification Activity Diagram"
