@@ -50,14 +50,14 @@ npm install @ui5/cli@^1
 
 ### ui5.yaml
 
-#### `specVersion: '1.0'`
+#### `specVersion: "1.0"`
 
 We have introduced the [specification version `1.0`](../pages/Configuration.md#specification-version-10).
 New features will only be available for projects with specVersion `1.0` or newer.  
 The specVersion `0.1` will be compatible with the UI5 CLI v1.0.0, but we still recommend to adopt your projects.
 
 ```yaml
-specVersion: '1.0'
+specVersion: "1.0"
 metadata:
   name: <project-name>
 type: <project-type>
