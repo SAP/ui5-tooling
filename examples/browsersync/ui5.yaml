@@ -1,4 +1,4 @@
-specVersion: '1.0'
+specVersion: "1.0"
 metadata:
   name: ui5-tooling-example-browsersync
 type: application
