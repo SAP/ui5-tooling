@@ -1,5 +1,5 @@
 - Start Date: 2023-11-08
-- RFC PR: -
+- RFC PR: [#897](https://github.com/SAP/ui5-tooling/pull/897)
 - Issue: -
 - Affected components <!-- Check affected components by writing an "X" into the brackets -->
     + [x] [ui5-builder](https://github.com/SAP/ui5-builder)
