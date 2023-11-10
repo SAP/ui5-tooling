@@ -35,6 +35,8 @@ The pool should also be re-used when multiple projects are being built, either i
 * `Dispatcher`: A ui5-project singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage `Worker` instances in order to have them execute any `Task Processor` requested by the build task
 	- Handles the `Worker` lifecycle
 
+![](./resources/0014-task-workers.png)
+
 ### Key Design Decisions
 
 * Task Processors shall be called with a well defined signature as described [below](#task-processor)
