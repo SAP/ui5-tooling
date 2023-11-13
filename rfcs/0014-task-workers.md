@@ -30,9 +30,11 @@ The pool should also be re-used when multiple projects are being built, either i
 ### Terminology
 
 * `Worker`: A Node.js [Worker thread](https://nodejs.org/api/worker_threads.html) instance
-* `Task Processor`: A module associated with a UI5 Tooling build task (standard or custom) that can be executed in a `Worker`
+* `Build Task`: A UI5 Tooling build task such as "minify" or "buildThemes" (standard tasks) or any [custom task](https://sap.github.io/ui5-tooling/stable/pages/extensibility/CustomTasks/)
+* `Task Processor`: A module associated with a UI5 Tooling Build Task (standard or custom) that can be executed in a `Worker`
+* `Dispatch Broker`: A ui5-project module coupled to the lifecycle of a Graph Build (similar to the `ProjectBuildContext`). It forwards requests from Build Tasks
 * `Thread Runner`: A ui5-project module that will be loaded in a `Worker`. It handles communication with the main thread and executes a `Task Processor` on request
-* `Dispatcher`: A ui5-project singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage `Worker` instances in order to have them execute any `Task Processor` requested by the build task
+* `Dispatcher`: A ui5-project singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage `Worker` instances in order to have them execute any `Task Processor` requested by the Build Task
 	- Handles the `Worker` lifecycle
 
 ![](./resources/0014-task-workers.png)
@@ -58,7 +60,7 @@ The pool should also be re-used when multiple projects are being built, either i
 
 Similar to Tasks, Task Processors shall be invoked with a well defined signature:
 
-* `resources`: An array of `@ui5/fs/Resource` provided by the build task
+* `resources`: An array of `@ui5/fs/Resource` provided by the Build Task
 * `options`: An object provided by the build task
 * `workspace`: Reader to read project files
 * `dependencies`: Reader or collection to read dependency files
@@ -113,7 +115,9 @@ module.exports = function({workspace, options, processors}) {
     const res = await processors.execute("computePi", {
     	options: {
     		digits: 1000000
-    	}
+    	},
+    	workspace, // optional overwrite of the workspace parameter
+    	dependencies, // optional overwrite of the dependencies parameter
     });
    // [...] 
 };
