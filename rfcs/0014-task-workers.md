@@ -29,12 +29,12 @@ The pool should also be re-used when multiple projects are being built, either i
 
 ### Terminology
 
-* `Worker`: A Node.js [Worker thread](https://nodejs.org/api/worker_threads.html) instance
-* `Build Task`: A UI5 Tooling build task such as "minify" or "buildThemes" (standard tasks) or any [custom task](https://sap.github.io/ui5-tooling/stable/pages/extensibility/CustomTasks/)
-* `Task Processor`: A module associated with a UI5 Tooling Build Task (standard or custom) that can be executed in a `Worker`
-* `Build Context`: An already existing ui5-project module, coupled to the lifecycle of a Graph Build. It shall be extended to provide access to the `Work Dispatcher` by forwarding requests from `Build Tasks`
-* `Thread Runner`: A ui5-project module that will be loaded in a `Worker`. It handles communication with the main thread and executes a `Task Processor` on request
-* `Work Dispatcher`: A ui5-project singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage `Worker` instances in order to have them execute any `Task Processor` requested by the Build Task
+* **`Worker`**: A Node.js [Worker thread](https://nodejs.org/api/worker_threads.html) instance
+* **`Build Task`**: A UI5 Tooling build task such as "minify" or "buildThemes" (standard tasks) or any [custom task](https://sap.github.io/ui5-tooling/stable/pages/extensibility/CustomTasks/)
+* **`Task Processor`**: A module associated with a UI5 Tooling Build Task (standard or custom) that can be executed in a `Worker`
+* **`Build Context`**: An already existing ui5-project module, coupled to the lifecycle of a Graph Build. It shall be extended to provide access to the `Work Dispatcher` by forwarding requests from `Build Tasks`
+* **`Thread Runner`**: A ui5-project module that will be loaded in a `Worker`. It handles communication with the main thread and executes a `Task Processor` on request
+* **`Work Dispatcher`**: A ui5-project singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage `Worker` instances in order to have them execute any `Task Processor` requested by the Build Task
 	- Handles the `Worker` lifecycle
 
 ![](./resources/0014-task-workers/Overview.png)
@@ -60,12 +60,12 @@ The pool should also be re-used when multiple projects are being built, either i
 
 Similar to Tasks, Task Processors shall be invoked with a well defined signature:
 
-* `resources`: An array of `@ui5/fs/Resource` provided by the Build Task
-* `options`: An object provided by the Build Task
-* `fs`: An optional fs-interface provided by the Build Task
-* *[To be discussed] `workspace`: An optional workspace __reader__ provided by the Build Task*
-* *[To be discussed] `dependencies`: An optional dependencies reader provided by the Build Task*
-* *[To be discussed] `reader`: An optional generic reader provided by the Build Task*
+* **`resources`**: An array of `@ui5/fs/Resource` provided by the Build Task
+* **`options`**: An object provided by the Build Task
+* **`fs`**: An optional fs-interface provided by the Build Task
+* *[To be discussed] **`workspace`**: An optional workspace __reader__ provided by the Build Task*
+* *[To be discussed] **`dependencies`**: An optional dependencies reader provided by the Build Task*
+* *[To be discussed] **`reader`**: An optional generic reader provided by the Build Task*
 
 ```js
 /**
