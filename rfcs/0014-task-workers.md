@@ -32,12 +32,12 @@ The pool should also be re-used when multiple projects are being built, either i
 * `Worker`: A Node.js [Worker thread](https://nodejs.org/api/worker_threads.html) instance
 * `Build Task`: A UI5 Tooling build task such as "minify" or "buildThemes" (standard tasks) or any [custom task](https://sap.github.io/ui5-tooling/stable/pages/extensibility/CustomTasks/)
 * `Task Processor`: A module associated with a UI5 Tooling Build Task (standard or custom) that can be executed in a `Worker`
-* `Dispatch Broker`: A ui5-project module coupled to the lifecycle of a Graph Build (similar to the `ProjectBuildContext`). It forwards requests from Build Tasks
+* `Build Context`: An already existing ui5-project module, coupled to the lifecycle of a Graph Build. It shall be extended to provide access to the `Work Dispatcher` by forwarding requests from `Build Tasks`
 * `Thread Runner`: A ui5-project module that will be loaded in a `Worker`. It handles communication with the main thread and executes a `Task Processor` on request
-* `Dispatcher`: A ui5-project singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage `Worker` instances in order to have them execute any `Task Processor` requested by the Build Task
+* `Work Dispatcher`: A ui5-project singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage `Worker` instances in order to have them execute any `Task Processor` requested by the Build Task
 	- Handles the `Worker` lifecycle
 
-![](./resources/0014-task-workers.png)
+![](./resources/0014-task-workers/Overview.png)
 
 ### Key Design Decisions
 
@@ -61,21 +61,23 @@ The pool should also be re-used when multiple projects are being built, either i
 Similar to Tasks, Task Processors shall be invoked with a well defined signature:
 
 * `resources`: An array of `@ui5/fs/Resource` provided by the Build Task
-* `options`: An object provided by the build task
-* `workspace`: Reader to read project files
-* `dependencies`: Reader or collection to read dependency files
+* `options`: An object provided by the Build Task
+* `fs`: An optional fs-interface provided by the Build Task
+* *[To be discussed] `workspace`: An optional workspace __reader__ provided by the Build Task*
+* *[To be discussed] `dependencies`: An optional dependencies reader provided by the Build Task*
+* *[To be discussed] `reader`: An optional generic reader provided by the Build Task*
 
 ```js
 /**
  * Task Processor example
  *
  * @param {Object} parameters Parameters
- * @param {DuplexCollection} parameters.workspace DuplexCollection to read and write files
- * @param {AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {@ui5/fs/Resource[]} parameters.resources Array of resources provided by the build task
  * @param {Object} parameters.options Options provided by the calling task
- * @returns {Promise<object>} Promise resolving with an object containing the result of the process in an arbitrary format
+ * @param {@ui5/fs/fsInterface} parameters.fs [fs interface]{@link module:@ui5/fs/fsInterface}-like class that internally handles communication with the main thread
+ * @returns {Promise<object|@ui5/fs/Resource[]>} Promise resolving with either a flat object containing Resource instances as values, or an array of Resources
  */
-module.exports = function({resources, workspace, dependencies, options}) {
+module.exports = function({resources, options, fs}) {
     // [...]
 };
 ````
@@ -113,12 +115,13 @@ task:
  */
 module.exports = function({workspace, options, processors}) {
     const res = await processors.execute("computePi", {
+    	resources: [workspace.byPath("/already-computed.txt")]
     	options: {
-    		digits: 1000000
+    		digits: 1_000_000_000_000_000_000_000
     	},
-    	workspace, // optional overwrite of the workspace parameter
-    	dependencies, // optional overwrite of the dependencies parameter
+    	fs: fsInterface(workspace) // To allow reading additional files if necessary
     });
+    await workspace.write(res);
    // [...] 
 };
 ````
