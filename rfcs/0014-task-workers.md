@@ -44,6 +44,10 @@ The pool should also be re-used when multiple projects are being built, either i
 * Task Processors shall be called with a well defined signature as described [below](#task-processor)
 * A Task Processor should not be exposed to Worker-specific API
 	- I.e. it can be executed on the main thread as well as in a Worker
+	- This allows users as well as UI5 Tooling logic to control whether Workers are used or not
+	- For example in CI environments where only one CPU core is available to the build, Workers are expected to produce overhead
+	- Users might want to disable Workers to easily debug issues in Processors
+	- The UI5 Tooling build itself might already be running in a Worker
 * The Work Dispatcher and Thread Runner modules will handle all inter-process communication
 	- This includes serializing and de-serializing `@ui5/fs/Resource` instances
 * Custom tasks can opt into this feature by defining one ore more "Task Processor" modules in its ui5.yaml
