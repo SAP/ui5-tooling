@@ -78,6 +78,8 @@ For mode details, see also the [Migrate to v3](https://sap.github.io/ui5-tooling
 
 ### 1. Dependencies to UI5 Tooling Modules
 
+✅ This has been realized with [UI5 Tooling v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+
 #### Description
 
 It is common for extensions to require UI5 Tooling modules like `@ui5/fs` or `@ui5/logger`. For example to create [`Resource`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) entities, or to log messages to the console.
@@ -141,6 +143,8 @@ const renderMarkdown = require("./renderMarkdown");
 
 ### 2. Access to Project Information
 
+✅ This has been realized with [UI5 Tooling v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+
 #### Description
 
 Extensions can not access information about the current project directly. Except for what is provided via the `options` argument (namely `projectName`and `projectNamespace`) or in the extension's configuration.
@@ -191,6 +195,8 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 
 ### 3. Tasks Requiring Dependencies
 
+✅ This has been realized with [UI5 Tooling v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+
 #### Description
 
 With UI5 Tooling v3, tasks can rely on the fact that the resources provided by dependencies are always built. With UI5 Tooling v2, this was only the fact if the build command specified dependencies to be built (e.g. `ui5 build --all`).
@@ -239,6 +245,8 @@ module.exports.determineRequiredDependencies = async function({availableDependen
 
 ### 4. Middleware Serving Resources
 
+**NOTE: The concept described in this chapter has not been implemented with UI5 Tooling v3. It might become part of a future RFC though**
+
 #### Description
 
 Custom middleware that would like to respond with an `@ui5/fs/Resource` needs to implement a lot of common logic in order to properly do that. I.e. the correct content type and E-Tag headers need to be set.
@@ -274,6 +282,8 @@ module.exports = function({resources, middlewareUtil, options}) {
 ```
 
 ### 5. Scheduling of Extension Executions
+
+**NOTE: The concept described in this chapter has not been implemented with UI5 Tooling v3. It might become part of a future RFC though**
 
 #### Description
 
@@ -335,6 +345,8 @@ server:
 ```
 
 ### 6. Restrictions for Project and Extension Names
+
+✅ This has been realized with [UI5 Tooling v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
 
 #### Description
 
@@ -402,6 +414,8 @@ In the future, similar restrictions should be implemented for other configuratio
   > A tag name must be valid ASCII and may contain lowercase and uppercase letters, digits, underscores, periods and dashes. A tag name may not start with a period or a dash and may contain a maximum of 128 characters.
 
 ### 7. Provide Extension Name *(minor)*
+
+✅ This has been realized with [UI5 Tooling v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
 
 #### Description
 
