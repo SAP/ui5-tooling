@@ -54,7 +54,8 @@ The pool should also be re-used when multiple projects are being built, either i
 * A task can only invoke its own task processor(s)
 * The work dispatcher or thread runners have no understanding of dependencies between the workloads
 	- Tasks are responsible for waiting on the completion of their processors
-	- Task processors should be executed in a first in, first out order
+	- The execution of task processors should be dispatched to workers in a first in, first out order
+	- Task processors can finish in any order, and the result is supplied to the task immediately. A long running processor might therefore finish either before or also after another processor that has been started after it
 
 ### Assumptions
 
