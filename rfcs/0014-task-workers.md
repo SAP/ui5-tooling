@@ -75,6 +75,7 @@ With this RFC, we extend this concept to custom tasks. A task can define one or 
 * **`resources`**: An array of `@ui5/fs/Resource` provided by the task
 * **`options`**: An object provided by the task
 * **`fs`**: An optional fs-interface provided by the task
+* **`log`**: A @ui5/logger instance. TODO: Should the log messages be printed directly or sent back to the main thread (and grouped there)?
 * **`resourceFactory`** Specification-version dependent object providing helper functions to create and manage resources.
 	- **`resourceFactory.createResource`** Creates a `@ui5/fs/Resource` (similar to [TaskUtil#resourceFactory.createResource](https://sap.github.io/ui5-tooling/stable/api/@ui5_project_build_helpers_TaskUtil.html#~resourceFactory))
 	- No other API for now and now general "ProcessorUtil" or similar, since processors should remain as UI5 Tooling independent as possible
@@ -133,7 +134,7 @@ return [
 ]
 ```
 
-#### Example
+#### Processor Example
 
 ```js
 /**
@@ -146,7 +147,7 @@ return [
  * @param {@ui5/project/ProcessorResourceFactory} parameters.resourceFactory Helper object providing functions for creating and managing resources
  * @returns {Promise<object|Array|@ui5/fs/Resource|@ui5/fs/Resource[]>} Promise resolving with either a flat object containing Resource instances as values, or an array of Resources
  */
-module.exports = function({resources, options, fs, resourceFactory}) {
+module.exports = function({resources, options, fs, log, resourceFactory}) {
     // [...]
 };
 ````
@@ -161,9 +162,23 @@ metadata:
     name: pi
 task:
     path: lib/tasks/pi.js
+    # Option 1
     processors:
     	computePi: lib/tasks/piProcessor.js
+
+ 	# Option 2
+    processors:
+    	- name: computePi
+    	  path: lib/tasks/piProcessor.js
+
+
+ 	# Option 3
+    processors:
+    	computePi:
+    	  path: lib/tasks/piProcessor.js
 ```
+
+**TODO:** Decide on configuration style. Option 1 does not allow for introducing additional per-processor configuration in the future (e.g. max CPU threads, priority, etc.)
 
 ### Task API
 
@@ -177,6 +192,8 @@ The `processors.execute` function shall accept the following parameters:
 
 The `execute` function shall validate that `resources` only contains `@ui5/fs/Resource` instances and that `options` adheres to the requirements stated in [Serializing Data](#serializing-data).
 
+#### Task Example
+
 ```js
 /**
  * Custom task example
@@ -184,13 +201,14 @@ The `execute` function shall validate that `resources` only contains `@ui5/fs/Re
  * @param {Object} parameters Parameters
  * @param {DuplexCollection} parameters.workspace DuplexCollection to read and write files
  * @param {AbstractReader} parameters.dependencies Reader or Collection to read dependency files
+ * @param {@ui5/project/build/helpers/TaskUtil|object} [parameters.taskUtil] TaskUtil
+ * @param {object} processors
  * @param {Object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
  * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
- * @param {object} processors
  * @returns {Promise<undefined>} Promise resolving with undefined once data has been written
  */
-module.exports = function({workspace, options, processors}) {
+module.exports = function({workspace, taskUtil, processors, options}) {
     const res = await processors.execute("computePi", {
     	resources: [workspace.byPath("/already-computed.txt")] // Input resources
     	options: { // Processor configuration
