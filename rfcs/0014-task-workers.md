@@ -35,7 +35,7 @@ The pool should also be re-used when multiple projects are being built, either i
 * **`Build Context`**: An already existing ui5-project module, coupled to the lifecycle of a Graph Build. It shall be extended to provide access to the Work Dispatcher` by forwarding requests from tasks
 * **`Thread Runner`**: A `@ui5/project` module that will be loaded in a worker. It handles communication with the main thread and executes a task processor on request
 * **`Work Dispatcher`**: A `@ui5/project` singleton module which uses a library like [`workerpool`](https://github.com/josdejong/workerpool) to spawn and manage worker instances in order to have them execute any task processor requested by the task
-	- Handles the worker lifecycle
+    - Handles the worker lifecycle
 
 ![](./resources/0014-task-workers/Overview.png)
 
@@ -43,24 +43,24 @@ The pool should also be re-used when multiple projects are being built, either i
 
 * Task processors shall be called with a defined signature as described [below](#task-processor)
 * A task processor should not be exposed to Worker-specific API
-	- i.e. it can be executed on the main thread as well as in a Worker
-	- This allows UI5 Tooling to dynamically decide whether to use Workers or not
-		+ For example in CI environments where only one CPU core is available to the build, Workers might cause unnecessary overhead
-		+ Users might want to disable Workers to easily debug issues in processors
-		+ The UI5 Tooling build itself might already be running in a Worker
+    - i.e. it can be executed on the main thread as well as in a Worker
+    - This allows UI5 Tooling to dynamically decide whether to use Workers or not
+        + For example in CI environments where only one CPU core is available to the build, Workers might cause unnecessary overhead
+        + Users might want to disable Workers to easily debug issues in processors
+        + The UI5 Tooling build itself might already be running in a Worker
 * The work dispatcher and thread runner modules will handle all inter-process communication
-	- This includes serializing and de-serializing `@ui5/fs/Resource` instances
+    - This includes serializing and de-serializing `@ui5/fs/Resource` instances
 * Custom tasks can opt into this feature by defining one ore more task processor modules in their ui5.yaml
 * A task can only invoke its own task processor(s)
 * The work dispatcher or thread runners have no understanding of dependencies between the workloads
-	- Tasks are responsible for waiting on the completion of their processors
-	- The execution of task processors should be dispatched to workers in a first in, first out order
-	- Task processors can finish in any order, and the result is supplied to the task immediately. A long running processor might therefore finish either before or also after another processor that has been started after it
+    - Tasks are responsible for waiting on the completion of their processors
+    - The execution of task processors should be dispatched to workers in a first in, first out order
+    - Task processors can finish in any order, and the result is supplied to the task immediately. A long running processor might therefore finish either before or also after another processor that has been started after it
 
 ### Assumptions
 
 * A task processor is assumed to utilize a single CPU thread by 90-100%
-	- Accordingly they are also assumed to execute little to no I/O operations
+    - Accordingly they are also assumed to execute little to no I/O operations
 * A Worker should never execute more than one task processor at a time
 * Task processors are generally stateless
 
@@ -77,8 +77,8 @@ With this RFC, we extend this concept to custom tasks. A task can define one or 
 * **`fs`**: An optional fs-interface provided by the task
 * **`log`**: A @ui5/logger instance. TODO: Should the log messages be printed directly or sent back to the main thread (and grouped there)?
 * **`resourceFactory`** Specification-version dependent object providing helper functions to create and manage resources.
-	- **`resourceFactory.createResource`** Creates a `@ui5/fs/Resource` (similar to [TaskUtil#resourceFactory.createResource](https://sap.github.io/ui5-tooling/stable/api/@ui5_project_build_helpers_TaskUtil.html#~resourceFactory))
-	- No other API for now and now general "ProcessorUtil" or similar, since processors should remain as UI5 Tooling independent as possible
+    - **`resourceFactory.createResource`** Creates a `@ui5/fs/Resource` (similar to [TaskUtil#resourceFactory.createResource](https://sap.github.io/ui5-tooling/stable/api/@ui5_project_build_helpers_TaskUtil.html#~resourceFactory))
+    - No other API for now and now general "ProcessorUtil" or similar, since processors should remain as UI5 Tooling independent as possible
 
 **_Potential future additions:_**
 * _**`workspace`**: An optional workspace __reader__ provided by the task_
@@ -99,8 +99,8 @@ Note that nested objects or nested arrays must not be allowed until we become aw
 Processors should be able to return primitives and `@ui5/fs/Resource` instances directly:
 ```js 
 return createResource({
-	path: "resource/path"
-	string: "content"
+    path: "resource/path"
+    string: "content"
 });
 ````
 
@@ -108,13 +108,13 @@ It should also be possible to return simple objects with primitive values or `@u
 
 ```js
 return {
-	code: "string",
-	map: "string",
-	counter: 3,
-	someResource: createResource({
-		path: "resource/path"
-		string: "content"
-	}),
+    code: "string",
+    map: "string",
+    counter: 3,
+    someResource: createResource({
+        path: "resource/path"
+        string: "content"
+    }),
 }
 ```
 
@@ -122,15 +122,15 @@ Alternatively, processors might also return a lists of primitives or `@ui5/fs/Re
 
 ```js
 return [
-	createResource({
-		path: "resource/path"
-		string: "content"
-	}),
-	createResource({
-		path: "resource/path"
-		string: "content"
-	}),
-	//...
+    createResource({
+        path: "resource/path"
+        string: "content"
+    }),
+    createResource({
+        path: "resource/path"
+        string: "content"
+    }),
+    //...
 ]
 ```
 
@@ -162,20 +162,21 @@ metadata:
     name: pi
 task:
     path: lib/tasks/pi.js
+
     # Option 1
     processors:
-    	computePi: lib/tasks/piProcessor.js
+        computePi: lib/tasks/piProcessor.js
 
- 	# Option 2
+    # Option 2
     processors:
-    	- name: computePi
-    	  path: lib/tasks/piProcessor.js
+        - name: computePi
+          path: lib/tasks/piProcessor.js
 
 
- 	# Option 3
+    # Option 3
     processors:
-    	computePi:
-    	  path: lib/tasks/piProcessor.js
+        computePi:
+          path: lib/tasks/piProcessor.js
 ```
 
 **TODO:** Decide on configuration style. Option 1 does not allow for introducing additional per-processor configuration in the future (e.g. max CPU threads, priority, etc.)
@@ -210,11 +211,11 @@ The `execute` function shall validate that `resources` only contains `@ui5/fs/Re
  */
 module.exports = function({workspace, taskUtil, processors, options}) {
     const res = await processors.execute("computePi", {
-    	resources: [workspace.byPath("/already-computed.txt")] // Input resources
-    	options: { // Processor configuration
-    		digits: 1_000_000_000_000_000_000_000
-    	},
-    	reader: workspace // To allow the processor to read additional files if necessary
+        resources: [workspace.byPath("/already-computed.txt")] // Input resources
+        options: { // Processor configuration
+            digits: 1_000_000_000_000_000_000_000
+        },
+        reader: workspace // To allow the processor to read additional files if necessary
     });
     await workspace.write(res);
    // [...] 
