@@ -695,7 +695,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `name`: The module bundle name
 - `defaultFileTypes`: List of default file types which should be included in the bundle. Defaults to: `.js`, `.control.xml`, `.fragment.html`, `.fragment.json`, `.fragment.xml`, `.view.html`, `.view.json` and `.view.xml`
   - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/v3/api/module-@ui5_builder_processors_bundlers_moduleBundler.html#~ModuleBundleDefinition)) and lists the resources that should be in- or excluded from the section.
-    - `mode`:  The embedding technology (e.g. provided, raw, preload)
+    - `mode`:  The embedding technology (e.g. provided, raw, preload, depCache)
     - `filters`: List of modules declared as glob patterns (resource name patterns) that are in- or excluded. Similarly to the use of a single `*` or double `**` asterisk, a pattern ending with a slash `/` denotes an arbitrary number of characters or folder names. Excludes have to be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
     - `resolve`: Setting resolve to `true` will also include all (transitive) dependencies of the files
     - `resolveConditional`: Whether conditional dependencies of modules should be resolved and added to the module set for this section. By default set to `false`
@@ -737,6 +737,7 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward comp
 
 Version | UI5 CLI Release
 --- | ---
+**3.2** | v3.8.0+
 **3.1** | v3.5.0+
 **3.0** | v3.0.0+
 **2.6** | v2.14.0+
@@ -749,6 +750,12 @@ Version | UI5 CLI Release
 **1.1** | v1.13.0+
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
+
+### Specification Version 3.2
+
+**Features:**
+
+- Adds a new bundling mode in sections for providing a dependencies cache: [`builder.bundles.bundleDefinition.sections.mode=depCache`](#properties) configuration for projects of type `module`
 
 ### Specification Version 3.1
 
