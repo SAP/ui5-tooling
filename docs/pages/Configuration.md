@@ -755,7 +755,7 @@ Version | UI5 CLI Release
 
 **Features:**
 
-- Adds a new bundling mode in sections for providing a dependencies cache: [`builder.bundles.bundleDefinition.sections.mode=depCache`](#properties) configuration for projects of type `module`
+- Adds a new bundling mode `depCache` for providing a dependencies cache: [`builder.bundles.bundleDefinition.sections.mode=depCache`](#properties)
 
 ### Specification Version 3.1
 
