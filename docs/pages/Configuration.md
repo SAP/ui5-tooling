@@ -757,7 +757,7 @@ Version | UI5 CLI Release
 
 - Adds a new bundling mode `depCache` for providing a dependencies cache: [`builder.bundles.bundleDefinition.sections.mode=depCache`](#properties)
 
-Specification Version 3.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
+Specification Version 3.2 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.8.0 and above.
 
 ### Specification Version 3.1
 
@@ -765,7 +765,7 @@ Specification Version 3.0 projects are supported by [UI5 CLI](https://github.com
 
 - Adds support for maintaining the [`builder.resources.excludes`](#exclude-resources) configuration for projects of type `module`
 
-Specification Version 3.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.0.0 and above.
+Specification Version 3.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.5.0 and above.
 
 ### Specification Version 3.0
 
