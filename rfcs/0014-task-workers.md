@@ -177,6 +177,19 @@ task:
     processors:
         computePi:
           path: lib/tasks/piProcessor.js
+
+    # Option 4: Make this configuration part of the task? See below
+```
+
+Another alternative would be programmatic configuration like this:
+
+```js
+// Option 4
+export const processors = {
+    computePi: {
+        path: "../piProcessor.js"
+    }
+};
 ```
 
 **TODO:** Decide on configuration style. Option 1 does not allow for introducing additional per-processor configuration in the future (e.g. max CPU threads, priority, etc.)
@@ -209,7 +222,7 @@ The `execute` function shall validate that `resources` only contains `@ui5/fs/Re
  * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
  * @returns {Promise<undefined>} Promise resolving with undefined once data has been written
  */
-module.exports = function({workspace, taskUtil, processors, options}) {
+export default async function({workspace, taskUtil, processors, options}) {
     const res = await processors.execute("computePi", {
         resources: [workspace.byPath("/already-computed.txt")] // Input resources
         options: { // Processor configuration
@@ -221,6 +234,8 @@ module.exports = function({workspace, taskUtil, processors, options}) {
    // [...] 
 };
 ````
+
+Additional helper functions should be provided to create objects that can be supplied for the `taskUtil` and `processors` parameters when using the task outside UI5 Tooling.
 
 ### Serializing Data
 
