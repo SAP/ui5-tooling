@@ -91,33 +91,5 @@ Since string replacement is a common build step, it can be useful in different c
 
 To get a list of all available processors, please visit [the API reference](https://sap.github.io/ui5-tooling/v3/api/index.html) and search for `@ui5/builder/processors/`.
 
-## Build Output Style
-
-The Build Output Style offers developers control over their project's build output folder. Namespaces like `sap.m` or `sap.ui.core` can be streamlined, producing a more concise and flat output. For example, a resource like `/resources/sap/m/RangeSlider.js` will be transformed into `./RangeSlider.js`. And vice versa, applications that are built by default with `Flat` output, can leverage the namespaces they have. 
-
-**Note**: Build Output Style is applied only over root project's output folder structure. Any dependencies included in the build would remain with their `Default` output style.
-
-In the table below are the available combinations between project type & build output style.
-
-| Requested Output Style / Project Type | Resulting Style |
-|---|---|
-| **Default** | |
-| `application` | Root project is written `Flat`-style, dependencies in their respective `Default`-style |
-| `library` | Root project is written `Namespace`-style, dependencies in their respective `Default`-style |
-| `theme-library` | Root project is written in the style of the sources (multiple namespaces), dependencies in their respective `Default`-style |
-| `module` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings), dependencies in their respective `Default`-style |
-| **Flat** | |
-| `application` | Same as `Default` |
-| `library` | Root project is written `Flat`-style (without it's namespace, logging warnings for resources outside of it), dependencies in their respective `Default`-style |
-| `theme-library` | **Unsupported** since a theme-library almost always has more than one namespace |
-| `module` | **Unsupported** since modules have explicit path mappings configured and no namespace concept |
-| **Namespace** | |
-| `application` | Root project is written `Namespace`-style (resources are prefixed with the project's namespace), dependencies are written in their respective `Default`-style |
-| `library` | Same as `Default` |
-| `theme-library` | **Unsupported** since a theme-library almost always has more than one namespace |
-| `module` | **Unsupported** since modules have explicit path mappings configured and no namespace concept |
-
-
-
 ## Legacy Bundle Tooling (lbt)
 JavaScript port of the "legacy" Maven/Java based bundle tooling.
