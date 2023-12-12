@@ -45,20 +45,20 @@ In the table below are the available combinations between project type & build o
 | Requested Output Style / Project Type | Resulting Style |
 |---|---|
 | **Default** | |
-| `application` | Root project is written `Flat`-style, dependencies in their respective `Default`-style |
+| `application` | Root project is written `Flat`-style, dependencies in their respective `Default`-style  |
 | `library` | Root project is written `Namespace`-style, dependencies in their respective `Default`-style |
-| `theme-library` | Root project is written in the style of the sources (multiple namespaces), dependencies in their respective `Default`-style |
+| `theme-library` | Root project is written in the style of the sources (multiple namespaces), dependencies in their respective `Default`-style  |
 | `module` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings), dependencies in their respective `Default`-style |
 | **Flat** | |
 | `application` | Same as `Default` |
-| `library` | Root project is written `Flat`-style (without it's namespace, logging warnings for resources outside of it), dependencies in their respective `Default`-style |
-| `theme-library` | **Unsupported** since a theme-library almost always has more than one namespace |
-| `module` | **Unsupported** since modules have explicit path mappings configured and no namespace concept |
+| `library` | Root project is written `Flat`-style (without its namespace, logging warnings for resources outside of it), dependencies in their respective `Default`-style |
+| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace |
+| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept |
 | **Namespace** | |
 | `application` | Root project is written `Namespace`-style (resources are prefixed with the project's namespace), dependencies are written in their respective `Default`-style |
 | `library` | Same as `Default` |
-| `theme-library` | **Unsupported** since a theme-library almost always has more than one namespace |
-| `module` | **Unsupported** since modules have explicit path mappings configured and no namespace concept |
+| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace |
+| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept  |
 
 
 [**API Reference**](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }
