@@ -16,7 +16,7 @@ See the list of [clients](https://github.com/redhat-developer/yaml-language-serv
 ## Example
 
 ```yaml
-specVersion: "3.1"
+specVersion: "3.2"
 type: application|library|theme-library|module
 metadata:
   name: some.project.name
@@ -36,28 +36,28 @@ The type defines the default path mappings and build tasks. See [UI5 Builder: Ty
     === "application"
 
         ```yaml
-        specVersion: "3.1"
+        specVersion: "3.2"
         type: application
         ```
 
     === "library"
 
         ```yaml
-        specVersion: "3.1"
+        specVersion: "3.2"
         type: library
         ```
 
     === "theme-library"
 
         ```yaml
-        specVersion: "3.1"
+        specVersion: "3.2"
         type: theme-library
         ```
 
     === "module"
 
         ```yaml
-        specVersion: "3.1"
+        specVersion: "3.2"
         type: module
         ```
 
@@ -270,7 +270,7 @@ You can find an overview of the available versions for each framework here:
 !!! example
     === "application"
         ```yaml
-        specVersion: "3.1"
+        specVersion: "3.2"
         type: application
         metadata:
           name: my.company.app
@@ -286,7 +286,7 @@ You can find an overview of the available versions for each framework here:
 
     === "library"
         ```yaml
-        specVersion: "3.1"
+        specVersion: "3.2"
         type: library
         metadata:
           name: my.company.library
@@ -618,12 +618,12 @@ The default and configured server ports can always be overwritten with the CLI p
 
 !!! example
     ```yaml
-    specVersion: "3.1"
+    specVersion: "3.2"
     type: application
     metadata:
       name: my.application
     ---
-    specVersion: "3.1"
+    specVersion: "3.2"
     kind: extension
     type: project-shim
     metadata:
@@ -631,7 +631,7 @@ The default and configured server ports can always be overwritten with the CLI p
     shims:
       configurations:
         lodash:
-          specVersion: "3.1"
+          specVersion: "3.2"
           type: module
           metadata:
             name: lodash
@@ -695,7 +695,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `name`: The module bundle name
 - `defaultFileTypes`: List of default file types which should be included in the bundle. Defaults to: `.js`, `.control.xml`, `.fragment.html`, `.fragment.json`, `.fragment.xml`, `.view.html`, `.view.json` and `.view.xml`
   - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/v3/api/module-@ui5_builder_processors_bundlers_moduleBundler.html#~ModuleBundleDefinition)) and lists the resources that should be in- or excluded from the section.
-    - `mode`:  The embedding technology (e.g. provided, raw, preload)
+    - `mode`:  The embedding technology (e.g. provided, raw, preload, bundleInfo, depCache)
     - `filters`: List of modules declared as glob patterns (resource name patterns) that are in- or excluded. Similarly to the use of a single `*` or double `**` asterisk, a pattern ending with a slash `/` denotes an arbitrary number of characters or folder names. Excludes have to be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
     - `resolve`: Setting resolve to `true` will also include all (transitive) dependencies of the files
     - `resolveConditional`: Whether conditional dependencies of modules should be resolved and added to the module set for this section. By default set to `false`
@@ -718,7 +718,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 A project must define a specification version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a project's configuration.
 
 ```yaml
-specVersion: "3.1"
+specVersion: "3.2"
 [...]
 ```
 
@@ -737,6 +737,7 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward comp
 
 Version | UI5 CLI Release
 --- | ---
+**3.2** | v3.8.0+
 **3.1** | v3.5.0+
 **3.0** | v3.0.0+
 **2.6** | v2.14.0+
@@ -750,11 +751,21 @@ Version | UI5 CLI Release
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
 
+### Specification Version 3.2
+
+**Features:**
+
+- Adds a new bundling mode `depCache` for providing a dependencies cache: [`builder.bundles.bundleDefinition.sections.mode=depCache`](#properties)
+
+Specification Version 3.2 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.8.0 and above.
+
 ### Specification Version 3.1
 
 **Features:**
 
 - Adds support for maintaining the [`builder.resources.excludes`](#exclude-resources) configuration for projects of type `module`
+
+Specification Version 3.1 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v3.5.0 and above.
 
 ### Specification Version 3.0
 
