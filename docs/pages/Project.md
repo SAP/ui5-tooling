@@ -36,29 +36,30 @@ The `module` type is meant for usage with non-UI5 resources like third-party lib
 
 ## Build Output Style
 
-The Build Output Style offers developers control over their project's build output folder. Namespaces like `sap.m` or `sap.ui.core` can be streamlined, producing a more concise and flat output. For example, a resource like `/resources/sap/m/RangeSlider.js` will be transformed into `./RangeSlider.js`. And vice versa, applications that are built by default with `Flat` output, can leverage the namespaces they have. 
+The Output Style offers developers control over their project's build output folder. Namespaces like `sap.m` or `sap.ui.core` can be streamlined, producing a more concise and flat output. For example, a resource like `/resources/sap/m/RangeSlider.js` will be transformed into `./RangeSlider.js`. And vice versa, applications that are built by default with `Flat` output, can leverage the namespaces they have. 
 
-**Note**: Build Output Style is applied only over root project's output folder structure. Any dependencies included in the build would remain with their `Default` output style.
-
-In the table below are the available combinations between project type & build output style.
+In the table below are the available combinations between project type & output style.
 
 | Requested Output Style / Project Type | Resulting Style |
 |---|---|
 | **Default** | |
-| `application` | Root project is written `Flat`-style, dependencies in their respective `Default`-style  |
-| `library` | Root project is written `Namespace`-style, dependencies in their respective `Default`-style |
-| `theme-library` | Root project is written in the style of the sources (multiple namespaces), dependencies in their respective `Default`-style  |
-| `module` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings), dependencies in their respective `Default`-style |
+| `application` | Root project is written `Flat`-style. ^1^ |
+| `library` | Root project is written `Namespace`-style. ^1^ |
+| `theme-library` | Root project is written in the style of the sources (multiple namespaces). ^1^ |
+| `module` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings). ^1^ |
 | **Flat** | |
-| `application` | Same as `Default` |
-| `library` | Root project is written `Flat`-style (without its namespace, logging warnings for resources outside of it), dependencies in their respective `Default`-style |
-| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace |
-| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept |
+| `application` | Same as `Default`. |
+| `library` | Root project is written `Flat`-style (without its namespace, logging warnings for resources outside of it). ^1^ |
+| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
+| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
 | **Namespace** | |
-| `application` | Root project is written `Namespace`-style (resources are prefixed with the project's namespace), dependencies are written in their respective `Default`-style |
-| `library` | Same as `Default` |
-| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace |
-| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept  |
+| `application` | Root project is written `Namespace`-style (resources are prefixed with the project's namespace). ^1^ |
+| `library` | Same as `Default`. |
+| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
+| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
+
+
+^1^ Output Style is applied only over root project's output folder structure. Any dependencies included in the build would remain with their `Default` output style.
 
 
 [**API Reference**](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }
