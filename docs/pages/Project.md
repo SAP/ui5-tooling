@@ -52,14 +52,16 @@ In the table below you can find the available combinations of project type & out
 | `Namespace` | Same as `Default`. |
 | **theme-library** | |
 | `Default` | Root project is written in the style of the sources (multiple namespaces). ^1^ |
-| `Flat` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
-| `Namespace` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
+| `Flat` | **Unsupported** ^2^ |
+| `Namespace` | **Unsupported** ^2^ |
 | **module** | |
 | `Default` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings). ^1^ |
-| `Flat` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
-| `Namespace` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
+| `Flat` | **Unsupported** ^3^  |
+| `Namespace` | **Unsupported**  ^3^ |
 
 ^1^ The Output Style is only applied to the root project's output folder structure. Any dependencies included in the build would retain their `Default` output style.
+^2^ Theme libraries in most cases have more than one namespace.
+^3^ Modules have explicit path mappings configured and no namespace concept.
 
 
 [**API Reference**](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }
