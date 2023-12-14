@@ -59,9 +59,9 @@ In the table below you can find the available combinations of project type & out
 | `Flat` | **Unsupported** ^3^  |
 | `Namespace` | **Unsupported**  ^3^ |
 
-^1^ The Output Style is only applied to the root project's output folder structure. Any dependencies included in the build would retain their `Default` output style.
-^2^ Theme libraries in most cases have more than one namespace.
-^3^ Modules have explicit path mappings configured and no namespace concept.
+^1^ The Output Style is only applied to the root project's output folder structure. Any dependencies included in the build would retain their `Default` output style.  
+^2^ Theme libraries in most cases have more than one namespace.  
+^3^ Modules have explicit path mappings configured and no namespace concept.  
 
 
 [**API Reference**](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }
