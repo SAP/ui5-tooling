@@ -59,7 +59,7 @@ In the table below you can find the available combinations of project type & out
 | `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
 
 
-^1^ Output Style is applied only over root project's output folder structure. Any dependencies included in the build would remain with their `Default` output style.
+^1^ The Output Style is only applied to the root project's output folder structure. Any dependencies included in the build would retain their `Default` output style.
 
 
 [**API Reference**](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }
