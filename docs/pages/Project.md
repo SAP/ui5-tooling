@@ -40,24 +40,24 @@ The _Output Style_ offers you control over your project's build output folder. N
 
 In the table below you can find the available combinations of project type & output style.
 
-| Requested Output Style / Project Type | Resulting Style |
+| Project Type / Requested Output Style | Resulting Style |
 |---|---|
-| **Default** | |
-| `application` | Root project is written `Flat`-style. ^1^ |
-| `library` | Root project is written `Namespace`-style. ^1^ |
-| `theme-library` | Root project is written in the style of the sources (multiple namespaces). ^1^ |
-| `module` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings). ^1^ |
-| **Flat** | |
-| `application` | Same as `Default`. |
-| `library` | Root project is written `Flat`-style (without its namespace, logging warnings for resources outside of it). ^1^ |
-| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
-| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
-| **Namespace** | |
-| `application` | Root project is written `Namespace`-style (resources are prefixed with the project's namespace). ^1^ |
-| `library` | Same as `Default`. |
-| `theme-library` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
-| `module` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
-
+| **application** | |
+| `Default` | Root project is written `Flat`-style. ^1^ |
+| `Flat` | Same as `Default`. |
+| `Namespace` | Root project is written `Namespace`-style (resources are prefixed with the project's namespace). ^1^ |
+| **library** | |
+| `Default` | Root project is written `Namespace`-style. ^1^ |
+| `Flat` | Root project is written `Flat`-style (without its namespace, logging warnings for resources outside of it). ^1^ |
+| `Namespace` | Same as `Default`. |
+| **theme-library** | |
+| `Default` | Root project is written in the style of the sources (multiple namespaces). ^1^ |
+| `Flat` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
+| `Namespace` | **Unsupported**, since a theme-library in most cases has more than one namespace. |
+| **module** | |
+| `Default` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings). ^1^ |
+| `Flat` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
+| `Namespace` | **Unsupported**, since modules have explicit path mappings configured and no namespace concept. |
 
 ^1^ The Output Style is only applied to the root project's output folder structure. Any dependencies included in the build would retain their `Default` output style.
 
