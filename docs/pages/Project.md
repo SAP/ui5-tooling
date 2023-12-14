@@ -36,7 +36,7 @@ The `module` type is meant for usage with non-UI5 resources like third-party lib
 
 ## Build Output Style
 
-The Output Style offers developers control over their project's build output folder. Namespaces like `sap.m` or `sap.ui.core` can be streamlined, producing a more concise and flat output. For example, a resource like `/resources/sap/m/RangeSlider.js` will be transformed into `./RangeSlider.js`. And vice versa, applications that are built by default with `Flat` output, can leverage the namespaces they have. 
+The _Output Style_ offers you control over your project's build output folder. Namespaces like `sap.m` or `sap.ui.core` can be streamlined, producing a more concise and flat output. For example, a resource like `/resources/sap/m/RangeSlider.js` will be transformed into `./RangeSlider.js`. And vice versa, applications that are built by default with `Flat` output, can leverage any namespaces they might have. 
 
 In the table below are the available combinations between project type & output style.
 
