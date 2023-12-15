@@ -14,6 +14,13 @@
 		// It is used by the "make-fetch-happen" and "got" packages which are only used to communicate with the npm registry configured by the user (registry.npmjs.org by default).
 		// Although this ReDoS attack is mainly applicable to servers, in theory a server could also send malicious headers to the client (UI5 Tooling) to cause an unexpected slowdown.
 		// However, this configured npm registry is already considered a trusted connection as code is downloaded and run by the client.
-		"GHSA-rc47-6667-2j5j"
+		"GHSA-rc47-6667-2j5j",
+		
+		// The package "local-web-server" uses an open CORS policy that can easily be exploited.
+		// In essence, if a "Access-Control-Allow-Origin" header is not provided, it will return a 
+		// header with the value of the origin from the request.
+		// This shouldn't be an issue here as this package is in devDependencies and used to
+		// be for local development. Currently, it doesn't seem to be used anywhere in the repo.
+		"GHSA-qxrj-hx23-xp82",
 	]
   }
