@@ -192,7 +192,11 @@ export const processors = {
 };
 ```
 
-**TODO:** Decide on configuration style. Option 1 does not allow for introducing additional per-processor configuration in the future (e.g. max CPU threads, priority, etc.)
+Option 1 does not allow for introducing additional per-processor configuration in the future (e.g. max CPU threads, priority, etc.). Option 4 can't make use of the existing schema validation of ui5.yaml-based configuration.
+
+Option 3 is very similar to the configuration of the task itself.
+
+**Decision:** Go with **Option 3**.
 
 ### Task API
 
@@ -202,7 +206,6 @@ The `processors.execute` function shall accept the following parameters:
 * `resources` _(optional)_: Array of `@ui5/fs/Resource` instances if required by the processor
 * `options` _(optional)_: An object with configuration for the processor. 
 * `reader` _(optional)_: An instance of `@ui5/fs/AbstractReader` which will be used to read resources requested by the task processor. If supplied, the task processor will be provided with a `fs` parameter to read those resources
-
 
 The `execute` function shall validate that `resources` only contains `@ui5/fs/Resource` instances and that `options` adheres to the requirements stated in [Serializing Data](#serializing-data).
 
