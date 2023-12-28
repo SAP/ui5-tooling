@@ -41,28 +41,30 @@ The pool should also be re-used when multiple projects are being built, either i
 
 ### Key Design Decisions
 
-* Task processors shall be called with a defined signature as described [below](#task-processor)
-* A task processor should not be exposed to Worker-specific API
-    - i.e. it can be executed on the main thread as well as in a Worker
-    - This allows UI5 Tooling to dynamically decide whether to use Workers or not
-        + For example in CI environments where only one CPU core is available to the build, Workers might cause unnecessary overhead
-        + Users might want to disable Workers to easily debug issues in processors
-        + The UI5 Tooling build itself might already be running in a Worker
-* The work dispatcher and thread runner modules will handle all inter-process communication
+* Task processors shall be invoked with a well defined signature as described [below](#task-processor)
+* A task processor implementation should not be exposed to Worker-specific API
+    - It should be possible to execute the task processor on the main thread as well as in a Worker
+    - This would ultimately allow UI5 Tooling to dynamically decide whether to use Workers or not for a specific tasks
+        + For example in CI environments where only one CPU core is available, the use of Workers might have a negative effect on the build time due to their overhead
+        + Users might want to disable Workers to easily analyze and debug issues in processors
+        + In some setups, the UI5 Tooling build itself might already be running in a Worker
+* The "work dispatcher" and "thread runner" modules shall exclusively handle all inter-process communication
     - This includes serializing and de-serializing `@ui5/fs/Resource` instances
-* Custom tasks can opt into this feature by defining one ore more task processor modules in their ui5.yaml
+* Custom tasks may opt into this feature by defining one ore more "task processor" modules in their ui5.yaml configuration (see [Task Configuration](#task-configuration))
 * A task can only invoke its own task processor(s)
-* The work dispatcher or thread runners have no understanding of dependencies between the workloads
-    - Tasks are responsible for waiting on the completion of their processors
-    - The execution of task processors should be dispatched to workers in a first in, first out order
-    - Task processors can finish in any order, and the result is supplied to the task immediately. A long running processor might therefore finish either before or also after another processor that has been started after it
+* Neither the "work dispatcher" nor the "thread runner" modules shall have any knowledge regarding possible dependencies between workloads
+    - Tasks are ultimately responsible for waiting on the completion of their invoked task processors
+    - Tasks may invoke multiple task processors in parallel
+    - The work dispatcher shall dispatch the workload in a first in, first out order
+    - Task processors can finish in any order, and the result is supplied to the task immediately. Therefore a task processor might finish before or after another one that has been requested at a later time.
+* A single Worker shall never execute more than one task processor at a time
+* A task processors must be stateless
 
 ### Assumptions
 
 * A task processor is assumed to utilize a single CPU thread by 90-100%
-    - Accordingly they are also assumed to execute little to no I/O operations
-* A Worker should never execute more than one task processor at a time
-* Task processors are generally stateless
+* A task processor is assumed to execute little to no I/O operations
+* A task processor is assumed to make little use of UI5 Tooling modules other than those provided directly to the task processor
 
 ### Task Processor
 
@@ -75,7 +77,7 @@ With this RFC, we extend this concept to custom tasks. A task can define one or 
 * **`resources`**: An array of `@ui5/fs/Resource` provided by the task
 * **`options`**: An object provided by the task
 * **`fs`**: An optional fs-interface provided by the task
-* **`log`**: A @ui5/logger instance. TODO: Should the log messages be printed directly or sent back to the main thread (and grouped there)?
+* **`log`**: A `@ui5/logger`-interface which sends any messages to the main thread for logging them there
 * **`resourceFactory`** Specification-version dependent object providing helper functions to create and manage resources.
     - **`resourceFactory.createResource`** Creates a `@ui5/fs/Resource` (similar to [TaskUtil#resourceFactory.createResource](https://sap.github.io/ui5-tooling/stable/api/@ui5_project_build_helpers_TaskUtil.html#~resourceFactory))
     - No other API for now and now general "ProcessorUtil" or similar, since processors should remain as UI5 Tooling independent as possible
@@ -144,6 +146,7 @@ return [
  * @param {@ui5/fs/Resource[]} parameters.resources Array of resources provided by the task
  * @param {Object} parameters.options Options provided by the calling task
  * @param {@ui5/fs/fsInterface} parameters.fs [fs interface]{@link module:@ui5/fs/fsInterface}-like class that internally handles communication with the main thread
+ * @param {@ui5/project/ProcessorLogger} parameters.log @ui5/logger-like instance for logging purposes
  * @param {@ui5/project/ProcessorResourceFactory} parameters.resourceFactory Helper object providing functions for creating and managing resources
  * @returns {Promise<object|Array|@ui5/fs/Resource|@ui5/fs/Resource[]>} Promise resolving with either a flat object containing Resource instances as values, or an array of Resources
  */
