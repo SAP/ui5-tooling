@@ -124,4 +124,4 @@ This requires an SSL certificate. You are guided through the automatic generatio
 ## Integration in Other Tools
 One of the key features of the UI5 Tooling is its modularization. Single parts of the tooling can easily be integrated in other `Node.js`-based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).
 
-All JavaScript APIs available for direct consumption are listed [here](https://sap.github.io/ui5-tooling/v3/api/index.html). However, for standard UI5 development, the [UI5 CLI](./CLI.md) should always be the first choice.
+All JavaScript APIs available for direct consumption are listed [here](https://sap.github.io/ui5-tooling/v4/api/index.html). However, for standard UI5 development, the [UI5 CLI](./CLI.md) should always be the first choice.

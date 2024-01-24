@@ -694,7 +694,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 
 - `name`: The module bundle name
 - `defaultFileTypes`: List of default file types which should be included in the bundle. Defaults to: `.js`, `.control.xml`, `.fragment.html`, `.fragment.json`, `.fragment.xml`, `.view.html`, `.view.json` and `.view.xml`
-  - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/v3/api/module-@ui5_builder_processors_bundlers_moduleBundler.html#~ModuleBundleDefinition)) and lists the resources that should be in- or excluded from the section.
+  - `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/v4/api/module-@ui5_builder_processors_bundlers_moduleBundler.html#~ModuleBundleDefinition)) and lists the resources that should be in- or excluded from the section.
     - `mode`:  The embedding technology (e.g. provided, raw, preload, bundleInfo, depCache)
     - `filters`: List of modules declared as glob patterns (resource name patterns) that are in- or excluded. Similarly to the use of a single `*` or double `**` asterisk, a pattern ending with a slash `/` denotes an arbitrary number of characters or folder names. Excludes have to be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
     - `resolve`: Setting resolve to `true` will also include all (transitive) dependencies of the files
@@ -712,7 +712,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
 - `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
-- `sourceMap`: By default set to `true`. Adds source map support to the bundle. Available since UI5 Tooling `v3.0.0`
+- `sourceMap`: By default set to `true`. Adds source map support to the bundle. Available since UI5 Tooling `v4.0.0`
 
 ## Specification Versions
 A project must define a specification version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a project's configuration.

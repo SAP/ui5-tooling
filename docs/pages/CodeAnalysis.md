@@ -35,7 +35,7 @@ For example, top-level code is always executed. Flow-control statements in JavaS
 
 Any dependencies found that - according to these rules - are always executed, are collected as eager (or standard) dependencies. Dependencies that are found on a code path that depends on certain conditions are collected as conditional dependencies.
 
-The bundling implemented by UI5 Tooling can either follow only eager dependencies (`resolve`: `true`) or additionally conditional dependencies (`resolveConditional`). For more information, see [Custom Bundling](https://sap.github.io/ui5-tooling/v3/pages/Configuration/#custom-bundling).
+The bundling implemented by UI5 Tooling can either follow only eager dependencies (`resolve`: `true`) or additionally conditional dependencies (`resolveConditional`). For more information, see [Custom Bundling](https://sap.github.io/ui5-tooling/v4/pages/Configuration/#custom-bundling).
 
 When a dependency in one of the mentioned APIs is not a "simple literal" but an expression, the corresponding module is marked as "having dynamic dependencies". This marker is currently not further evaluated by the tooling.
 
@@ -128,9 +128,9 @@ Note: Currently only the usage via the global `sap.ui.getCore().initLibrary` is 
 
 The UI5 Tooling offers a JSDoc build, which is enhanced by UI5-specific JSDoc features.
 
-An UI5 SDK can be built locally. To get more insight into the local UI5 SDK build setup, have a look at our [Developer's Guide](https://github.com/SAP/openui5/blob/master/docs/developing.md#building-the-openui5-sdk-demo-kit).
+An UI5 SDK can be built locally. To get more insight into the local UI5 SDK build setup, have a look at our [Developer's Guide](https://github.com/SAP/openui5/blob/-/docs/developing.md#building-the-openui5-sdk-demo-kit).
 
-Currently, the resources needed for a UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/master/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This double maintenance is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. It's therefore necessary to have these resources also available in the *ui5-builder*. This might change in the future.
+Currently, the resources needed for a UI5 SDK build are stored in [openui5](https://github.com/SAP/openui5/tree/-/lib/jsdoc) and in [ui5-builder](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc). This double maintenance is needed because these files are not part of the `sap.ui.core` library artefact, so building JSDoc for any library has no access to the needed resources. It's therefore necessary to have these resources also available in the *ui5-builder*. This might change in the future.
 
 The following artefacts contribute to the JSDoc build:
 

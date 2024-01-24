@@ -103,7 +103,7 @@ A custom middleware implementation needs to return a function with the following
      * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
      *      Specification version-dependent interface to a
      *      MiddlewareUtil instance. See the corresponding API reference for details:
-     *      https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html
+     *      https://sap.github.io/ui5-tooling/v4/api/@ui5_server_middleware_MiddlewareUtil.html
      * @param {object} parameters.options Options
      * @param {string} parameters.options.configuration
      *      Custom middleware configuration, as defined in the project's ui5.yaml
@@ -141,7 +141,7 @@ A custom middleware implementation needs to return a function with the following
      * @param {@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil
      *      Specification version-dependent interface to a
      *      MiddlewareUtil instance. See the corresponding API reference for details:
-     *      https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html
+     *      https://sap.github.io/ui5-tooling/v4/api/@ui5_server_middleware_MiddlewareUtil.html
      * @param {object} parameters.options Options
      * @param {string} parameters.options.configuration
      *      Custom middleware configuration, as defined in the project's ui5.yaml
@@ -236,9 +236,9 @@ A custom middleware implementation needs to return a function with the following
 
 ## Helper Class `MiddlewareUtil`
 
-Custom middleware defining [Specification Version](../Configuration.md#specification-versions) 2.0 or higher have access to an interface of a [MiddlewareUtil](https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html) instance.
+Custom middleware defining [Specification Version](../Configuration.md#specification-versions) 2.0 or higher have access to an interface of a [MiddlewareUtil](https://sap.github.io/ui5-tooling/v4/api/@ui5_server_middleware_MiddlewareUtil.html) instance.
 
-In this case, a `middlewareUtil` object is provided as a part of the custom middleware's [parameters](#custom-middleware-implementation). Depending on the specification version of the custom middleware, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [MiddlewareUtil API reference](https://sap.github.io/ui5-tooling/v3/api/@ui5_server_middleware_MiddlewareUtil.html).
+In this case, a `middlewareUtil` object is provided as a part of the custom middleware's [parameters](#custom-middleware-implementation). Depending on the specification version of the custom middleware, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [MiddlewareUtil API reference](https://sap.github.io/ui5-tooling/v4/api/@ui5_server_middleware_MiddlewareUtil.html).
 
 ## Integration with `karma-ui5`
 

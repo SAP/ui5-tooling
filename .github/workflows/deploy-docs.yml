@@ -8,7 +8,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     env:
-      MIKE_VERSION: v3
+      MIKE_VERSION: v4
       MIKE_ALIAS: next
       DOCKER_IMAGE: ui5-tooling/mkdocs-material
       GIT_COMMITTER_NAME: "OpenUI5 Bot"

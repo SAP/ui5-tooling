@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        branch: ["v2"] # List of branches to run the security audit uppon
+        branch: ["v3"] # List of branches to run the security audit uppon
 
     steps:
       - name: Checkout '${{ matrix.branch }}' branch

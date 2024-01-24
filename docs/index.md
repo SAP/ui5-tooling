@@ -4,6 +4,13 @@
 
 An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
+!!! tip "In Development"
+	**UI5 Tooling V4 is still in development 🎉**
+
+	Please use UI5 Tooling V3 by installing the latest version via: `npm i --save-dev @ui5/cli@latest`
+
+	And find the announcement blog post here: **[SAP Community: UI5 Tooling 3.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
+
 [**Get Started**](./pages/GettingStarted.md){: .md-button .md-button--primary .sap-icon-initiative }
 
 ## Main Features
@@ -87,7 +94,7 @@ info ProjectBuilder Executing cleanup tasks...
 Most UI5 Tooling modules provide JavaScript APIs for direct consumption in other Node.js projects.
 This allows you to rely on UI5 Tooling for UI5-specific build functionality and project handling, while creating your own tools to perfectly match the needs of your project.
 
-All available APIs are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/v3/api/index.html).
+All available APIs are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/v4/api/index.html).
 
 === "ESM"
 
