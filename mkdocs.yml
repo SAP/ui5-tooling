@@ -2,7 +2,7 @@ site_name: UI5 Tooling
 site_url: 'https://sap.github.io/ui5-tooling/' # required for working 404 page
 repo_name: 'SAP/ui5-tooling'
 repo_url: 'https://github.com/SAP/ui5-tooling'
-edit_uri: ./edit/main/docs # default points to master branch
+edit_uri: ./edit/main/docs # default points to "master" branch
 docs_dir: 'docs' # default
 site_dir: 'site' # default
 copyright: '© Copyright 2024, SAP SE and UI5 Tooling Contributors'
@@ -26,6 +26,7 @@ nav:
       - Project: pages/Project.md
       - File System: pages/FileSystem.md
     - Upgrade Guides:
+      - Migrate to v4: updates/migrate-v4.md
       - Migrate to v3: updates/migrate-v3.md
       - Migrate to v2: updates/migrate-v2.md
       - Migrate to v1: updates/migrate-v1.md
