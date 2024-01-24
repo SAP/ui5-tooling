@@ -2,14 +2,14 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - main
+      - v3
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
     env:
       MIKE_VERSION: v3
-      MIKE_ALIAS: next
+      MIKE_ALIAS: stable
       DOCKER_IMAGE: ui5-tooling/mkdocs-material
       GIT_COMMITTER_NAME: "OpenUI5 Bot"
       GIT_COMMITTER_EMAIL: "openui5@sap.com"
