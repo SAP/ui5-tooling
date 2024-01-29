@@ -119,6 +119,6 @@ This DCO replaces the previously used CLA ("Contributor License Agreement") as w
 ### Multi Branch Development
 There are phases when UI5 Tooling has already started developing a new major version of its projects but haven't yet released a new major version. This situation requires a special handling of pull requests / commits if the actual coding change should be part of the current (e.g. Version 3) and the new major version (e.g. Version 4).
 
-1. Create a pull request for the current version (e.g. Version 3) with the desired commit message header `[FEATURE]`, `[FIX]` or [INTERNAL]
+1. Create a pull request for the current version (e.g. Version 3) with the desired commit message header `[FEATURE]`, `[FIX]` or `[INTERNAL]`
 2. Rebase and merge the PR in the current version
 3. Cherry-pick this commit to the new major version (e.g. Version 4) and change the commit message header to `[INTERNAL]`. With this it is ensured the coding change appears in the changelog of the new major version
