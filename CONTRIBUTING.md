@@ -116,7 +116,7 @@ This DCO replaces the previously used CLA ("Contributor License Agreement") as w
 1. Once the change has been approved and merged, we will inform you in a comment.
 1. Celebrate! 🎉
 
-### Multi Branch Development
+### Multi-Branch Development
 There are phases when development of a new major version of UI5 Tooling has already started, but this new major version hasn't been released yet. This situation requires a special handling of pull requests / commits if the actual coding change should be both part of the current (e.g. Version 3) and the new major version (e.g. Version 4).
 
 1. Create a pull request for the current version (e.g. Version 3) with the desired commit message header `[FEATURE]`, `[FIX]` or `[INTERNAL]`.
