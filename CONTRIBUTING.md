@@ -115,3 +115,10 @@ This DCO replaces the previously used CLA ("Contributor License Agreement") as w
     - Note that the UI5 developers have many duties. So, depending on the required effort for reviewing, testing, and clarification, this may take a while.
 1. Once the change has been approved and merged, we will inform you in a comment.
 1. Celebrate! 🎉
+
+### Multi-Branch Development
+There are phases when development of a new major version of UI5 Tooling has already started, but this new major version hasn't been released yet. This situation requires a special handling of pull requests / commits if the actual coding change should be both part of the current (e.g. Version 3) and the new major version (e.g. Version 4).
+
+1. Create a pull request for the current version (e.g. Version 3) with the desired commit message header `[FEATURE]`, `[FIX]` or `[INTERNAL]`.
+2. Rebase and merge the PR in the current version.
+3. Cherry-pick this commit to the new major version (e.g. Version 4) and change the commit message header to `[INTERNAL]`. With this, you ensure that the coding change does not appear in the changelog of the new major version.
