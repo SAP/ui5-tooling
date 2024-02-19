@@ -1,18 +1,15 @@
 import path from "node:path";
-import {fileURLToPath, pathToFileURL} from "node:url";
+import {fileURLToPath} from "node:url";
 import {writeFile, mkdir} from "node:fs/promises";
 import {$RefParser} from "@apidevtools/json-schema-ref-parser";
 import traverse from "traverse";
 
-// Using CommonsJS require.resolve as long as import.meta.resolve is experimental
-import {createRequire} from "node:module";
-const require = createRequire(import.meta.url);
 // Provide schema name as CLI argument
 const schemaName = process.argv[2] || "ui5";
 
 // Using @ui5/project/package.json export to calculate the path to the root ui5-project folder
 const SOURCE_SCHEMA_PATH = fileURLToPath(
-	new URL(`./lib/validation/schema/${schemaName}.json`, pathToFileURL(require.resolve("@ui5/project/package.json")))
+	new URL(`./lib/validation/schema/${schemaName}.json`, import.meta.resolve("@ui5/project/package.json"))
 );
 const TARGET_SCHEMA_PATH = fileURLToPath(
 	new URL(`../site/schema/${schemaName}.yaml.json`, import.meta.url)
