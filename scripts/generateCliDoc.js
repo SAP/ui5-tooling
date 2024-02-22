@@ -184,10 +184,12 @@ function generateDoc() {
 	try {
 		writeFileSync("./docs/pages/CLI.md", content);
 	} catch (err) {
-		console.error(`Failed to generate docs/pages/CLI.md: ${err.message}.`);
+		process.stderr.write(`Failed to generate docs/pages/CLI.md: ${err.message}.`);
+		process.stderr.write("\n");
 		throw err;
 	}
-	console.log("Generated docs/pages/CLI.md");
+	process.stderr.write("Generated docs/pages/CLI.md");
+	process.stderr.write("\n");
 }
 
 function splitString(temp) {

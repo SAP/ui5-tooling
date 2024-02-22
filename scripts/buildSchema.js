@@ -44,9 +44,10 @@ try {
 	await mkdir(path.dirname(TARGET_SCHEMA_PATH), {recursive: true});
 	await writeFile(TARGET_SCHEMA_PATH, JSON.stringify(schema, null, 2));
 
-	console.log(`Wrote bundled ${schemaName}.yaml schema file to ${TARGET_SCHEMA_PATH}`);
+	process.stderr.write(`Wrote bundled ${schemaName}.yaml schema file to ${TARGET_SCHEMA_PATH}\n`);
 } catch (error) {
-	console.log(error);
+	process.stderr.write(error);
+	process.stderr.write("\n");
 	process.exit(1);
 }
 

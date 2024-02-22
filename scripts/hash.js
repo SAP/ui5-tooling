@@ -15,4 +15,5 @@ const fileBuffer = fs.readFileSync(filename);
 const hashSum = crypto.createHash("md5");
 hashSum.update(fileBuffer);
 
-console.log(hashSum.digest("hex"));
+process.stderr.write(hashSum.digest("hex"));
+process.stderr.write("\n");
