@@ -33,28 +33,28 @@ To be defined
 
 **Updated list of standard tasks:**
 
-| Task                      | Type `application` | Type `library` | Type `theme-library` |
-| ------------------------- | :----------------: | :------------: | :------------------: |
-| escapeNonAsciiCharacters  | *enabled*          | *enabled*      |                      |
-| replaceCopyright          | *enabled*          | *enabled*      | *enabled*            |
-| replaceVersion            | *enabled*          | *enabled*      | *enabled*            |
-| replaceBuildtime          |                    | *enabled*      |                      |
-| generateJsdoc             |                    | *disabled* ^1^ |                      |
-| executeJsdocSdkTransformation |                | *disabled* ^1^ |                      |
-| minify                    | *enabled*          | *enabled*      |                      |
-| generateFlexChangesBundle |                    | *enabled*      |                      |
-| generateLibraryManifest   |                    | *enabled*      |                      |
-| generateComponentPreload  | *enabled*          | *disabled* ^2^ |                      |
-| generateLibraryPreload    |                    | *enabled*      |                      |
-| generateStandaloneAppBundle | *disabled* ^3^   |                |                      |
-| transformBootstrapHtml    | *disabled* ^3^     |                |                      |
-| generateBundle            | *disabled* ^4^     | *disabled* ^4^ |                      |
-| buildThemes               |                    | *enabled*      | *enabled*            |
-| generateThemeDesignerResources |               | *disabled* ^5^ | *disabled* ^5^       |
-| generateVersionInfo       | *disabled**        |                |                      |
-| generateCachebusterInfo   | *disabled*         |                |                      |
-| generateApiIndex          | *disabled* ^1^     |                |                      |
-| generateResourcesJson     | *disabled*         | *disabled*     | *disabled*           |
+| Task                           | Type `application` | Type `library` | Type `theme-library` |
+| ------------------------------ | :----------------: | :------------: | :------------------: |
+| escapeNonAsciiCharacters       | *enabled*          | *enabled*      |                      |
+| replaceCopyright               | *enabled*          | *enabled*      | *enabled*            |
+| replaceVersion                 | *enabled*          | *enabled*      | *enabled*            |
+| replaceBuildtime               |                    | *enabled*      |                      |
+| generateJsdoc                  |                    | *disabled* ^1^ |                      |
+| executeJsdocSdkTransformation  |                    | *disabled* ^1^ |                      |
+| minify                         | *enabled*          | *enabled*      |                      |
+| generateFlexChangesBundle      | *enabled*          | *enabled*      |                      |
+| generateLibraryManifest        |                    | *enabled*      |                      |
+| generateComponentPreload       | *enabled*          | *disabled* ^2^ |                      |
+| generateLibraryPreload         |                    | *enabled*      |                      |
+| generateStandaloneAppBundle    | *disabled* ^3^     |                |                      |
+| transformBootstrapHtml         | *disabled* ^3^     |                |                      |
+| generateBundle                 | *disabled* ^4^     | *disabled* ^4^ |                      |
+| buildThemes                    |                    | *enabled*      | *enabled*            |
+| generateThemeDesignerResources |                    | *disabled* ^5^ | *disabled* ^5^       |
+| generateVersionInfo            | *disabled*         |                |                      |
+| generateCachebusterInfo        | *disabled*         |                |                      |
+| generateApiIndex               | *disabled* ^1^     |                |                      |
+| generateResourcesJson          | *disabled*         | *disabled*     | *disabled*           |
 
 *Disabled tasks can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
 

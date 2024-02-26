@@ -186,7 +186,7 @@ The following processors have been removed:
 | generateJsdoc             |                    | *disabled* ^1^ |                      |
 | executeJsdocSdkTransformation |                | *disabled* ^1^ |                      |
 | **ADDED:** minify         | *enabled*          | *enabled*      |                      |
-| generateFlexChangesBundle |                    | *enabled*      |                      |
+| generateFlexChangesBundle | *enabled*          | *enabled*      |                      |
 | **REMOVED:** ~~generateManifestBundle~~ | *~~disabled~~* | *~~disabled~~* |            |
 | generateLibraryManifest   |                    | *enabled*      |                      |
 | generateComponentPreload  | *enabled*          | *disabled* ^2^ |                      |
