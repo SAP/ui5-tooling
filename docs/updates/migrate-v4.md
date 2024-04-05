@@ -1,7 +1,7 @@
 # Migrate to v4
 
 !!! tip "In Development"
-	**UI5 Tooling V4 is still in development 🎉**
+	**UI5 Tooling V4 is still in development 🚧**
 
 	Please use UI5 Tooling V3 by installing the latest version via: `npm i --save-dev @ui5/cli@latest`
 
