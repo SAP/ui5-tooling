@@ -58,6 +58,6 @@
 		"jsdoc": "^4.0.2",
 		"local-web-server": "^5.3.3",
 		"open-cli": "^8.0.0",
-		"traverse": "^0.6.8"
+		"traverse": "^0.6.9"
 	}
 }
