@@ -41,15 +41,15 @@
 		"url": "git@github.com:SAP/ui5-tooling.git"
 	},
 	"dependencies": {
-		"@ui5/builder": "^3.3.1",
-		"@ui5/cli": "^3.9.2",
+		"@ui5/builder": "^3.4.0",
+		"@ui5/cli": "^3.10.0",
 		"@ui5/fs": "^3.0.5",
 		"@ui5/logger": "^3.0.0",
 		"@ui5/project": "^3.9.1",
-		"@ui5/server": "^3.1.5"
+		"@ui5/server": "^3.2.0"
 	},
 	"devDependencies": {
-		"@apidevtools/json-schema-ref-parser": "^11.5.5",
+		"@apidevtools/json-schema-ref-parser": "^11.6.1",
 		"depcheck": "^1.4.7",
 		"docdash": "^2.0.2",
 		"eslint": "^8.57.0",
