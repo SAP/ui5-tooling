@@ -710,7 +710,6 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
     - Projects defining [Specification Version](#specification-versions) lower than 3.0: Defaults to `false`
 - `decorateBootstrapModule`: By default set to `false`. If set to `true`, the module will be decorated with an optimization marker
 - `addTryCatchRestartWrapper`: By default set to `false`. If set to `true`, bootable module bundles gets wrapped with a try/catch to filter "Restart" errors
-- `usePredefineCalls`: If set to `true`, `sap.ui.predefine` is used for UI5 modules
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
 - `sourceMap`: By default set to `true`. Adds source map support to the bundle. Available since UI5 Tooling `v4.0.0`
 
