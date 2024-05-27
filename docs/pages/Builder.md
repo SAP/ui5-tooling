@@ -30,6 +30,7 @@ All available standard tasks are documented [in the API reference](https://sap.g
 | minify                         | *enabled*          | *enabled*      |                      |
 | generateFlexChangesBundle      | *enabled*          | *enabled*      |                      |
 | generateLibraryManifest        |                    | *enabled*      |                      |
+| enhanceManifest                | *enabled*          | *enabled*      |                      |
 | generateComponentPreload       | *enabled*          | *disabled* ^2^ |                      |
 | generateLibraryPreload         |                    | *enabled*      |                      |
 | generateStandaloneAppBundle    | *disabled* ^3^     |                |                      |
@@ -82,6 +83,61 @@ Expand the block below to view a diagram illustrating the minification process a
 
 ??? info "Minification Activity Diagram"
     ![minify Task Activity](../images/UI5_Tooling/Task_Minify.svg){ loading=lazy }
+
+
+### Generation of Supported Locales
+
+The `enhanceManifest` task fills the `supportedLocales` property in the `manifest.json` of a UI5 library/application automatically with the available locales determined by the existence of the respective `.properties` translation files. To disable the automatic generation of the `supportedLocales`, set `supportedLocales` to any desired value. For further resource bundle configuration options, see [Supported Locales and Fallback Chain](https://ui5.sap.com/#/topic/ec753bc539d748f689e3ac814e129563).
+
+#### Requirements
+
+This feature only becomes active under the following conditions:
+- The `_version` property in the `manifest.json` is set to `1.21.0` or higher
+- The specified resource bundle is located inside the project and within the namespace defined in the `manifest.json`
+
+#### Scenario: Application
+
+```txt
+- webapp/i18n/
+  - i18n.properties
+  - i18n_en.properties
+  - i18n_en_US.properties
+  - i18n_de.properties
+  - i18n_de_DE.properties 
+```
+
+In the `manifest.json` the `supportedLocales` property will be enhanced as follows:
+
+**Source**
+```json
+"models": {
+  "i18n": {
+    "type": "sap.ui.model.resource.ResourceModel",
+    "settings": {
+	    "bundleName": "my.app.i18n.i18n"
+    }
+  }
+}
+```
+
+**Build Result**
+```json
+"models": {
+  "i18n": {
+    "type": "sap.ui.model.resource.ResourceModel",
+    "settings": {
+	    "bundleName": "my.app.i18n.i18n",
+	    "supportedLocales": [
+        "",
+        "de",
+        "de_DE",
+        "en",
+        "en_US"
+      ]
+    }
+  }
+}
+```
 
 ## Processors
 Processors work with provided resources. They contain the actual build step logic to apply specific modifications to supplied resources, or to make use of the resources' content to create new resources out of that.
