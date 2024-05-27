@@ -46,7 +46,10 @@ This middleware lists project files with URLs under several `/discovery` endpoin
 ### serveResources
 This middleware resolves requests using the [ui5-fs](https://github.com/SAP/ui5-fs)-file system abstraction.
 
-It also escapes non-ASCII characters in `.properties` translation files based on a project's [configuration](./Configuration.md#encoding-of-properties-files).
+The following file content transformations are executed:
+
+- Escaping non-ASCII characters in `.properties` translation files based on a project's [configuration](./Configuration.md#encoding-of-properties-files)
+- Enhancing the `manifest.json` with supported locales determined by available `.properties` [translation files](./Builder.md#generation-of-supported-locales)
 
 ### testRunner
 Serves a static version of the UI5 QUnit TestRunner at `/test-resources/sap/ui/qunit/testrunner.html`.
