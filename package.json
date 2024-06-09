@@ -49,7 +49,7 @@
 		"@ui5/server": "^3.2.1"
 	},
 	"devDependencies": {
-		"@apidevtools/json-schema-ref-parser": "^11.6.3",
+		"@apidevtools/json-schema-ref-parser": "^11.6.4",
 		"depcheck": "^1.4.7",
 		"docdash": "^2.0.2",
 		"eslint": "^8.57.0",
