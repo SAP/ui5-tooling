@@ -755,19 +755,8 @@ Version | UI5 CLI Release
 
 **Breaking changes:**
 
-- @ui5/builder: Remove bundle option [`usePredefineCalls`](#properties) 
-- @ui5/builder: ui5-builder: New option “async“ for [builder.bundles.bundleDefinition.section](#properties)
-- @ui5/builder: Task API "namespace" option got renamed to ["projectNamespace"](https://sap.github.io/ui5-tooling/v4/api/module-@ui5_builder_tasks_bundlers_generateStandaloneAppBundle.html)
-- @ui5/project: Set default workspaceName to ["default" for API usage](https://sap.github.io/ui5-tooling/v4/api/module-@ui5_project_graph.html#.graphFromPackageDependencies)
-- @ui5/project: Rename `ui5HomeDir` to [`ui5DataDir`](https://sap.github.io/ui5-tooling/v4/api/@ui5_project_config_Configuration.html#getUi5DataDir)
-- @ui5/fs: Remove non-public DuplexCollection#byGlobSource API
-- Occurrences of native console now use `stderr` instead of `stdout`
-- Node version support `^20.11.0 || >=21.2.0`
-- NPM version support `>= 10`
-
-**Features:**
-
-- `supportedLocales` property in the manifest.json of a UI5 library/application will be filled automatically with the available locales determined by the existence of the respective `.properties` file.
+- Remove bundle option [`usePredefineCalls`](#properties) 
+- New option “async“ for [builder.bundles.bundleDefinition.section](#properties)
 
 Specification Version 4.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v4.0.0 and above.
 
