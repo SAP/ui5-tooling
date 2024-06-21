@@ -755,7 +755,7 @@ Version | UI5 CLI Release
 
 **Breaking changes:**
 
-- Remove bundle option [`usePredefineCalls`](#properties) 
+- Remove bundle option [`usePredefineCalls`](#properties). UI5 CLI v4.0.0 and above will always use predefine calls in bundles, making this option obsolete.
 - New option “async“ for [builder.bundles.bundleDefinition.section](#properties)
 
 Specification Version 4.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v4.0.0 and above.
