@@ -32,19 +32,19 @@ For projects defining the latest **Specification Versions 4.0 and higher**, some
 
 See also [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
 
-### Migrate Your Code 
+## Migrate Your Code 
 
 
-## Changes to @ui5/cli
+### Changes to @ui5/cli
 
 Occurrences of `console.log` in the codebase are replaced with `process.stderr`.
 Аny scripts that capture the output from `console.log` need to be adjusted to rely on `process.stderr`.
 
-## Changes to @ui5/fs
+### Changes to @ui5/fs
 
 Non-public DuplexCollection#byGlobSource API has been removed.
 
-## Changes to @ui5/builder
+### Changes to @ui5/builder
 
 - **Bundling**: The `usePredefineCalls` option has been removed. Bundling now enforces the use of `sap.ui.predefine` instead of function wrappers.  
 
@@ -67,7 +67,7 @@ Non-public DuplexCollection#byGlobSource API has been removed.
                 async: true
     ```
 
-## Changes to @ui5/project
+### Changes to @ui5/project
 
 - **Default Workspace Name**: The default `workspaceName` is now `"default"` for API usage.
 
