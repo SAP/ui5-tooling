@@ -16,7 +16,7 @@ See the list of [clients](https://github.com/redhat-developer/yaml-language-serv
 ## Example
 
 ```yaml
-specVersion: "3.2"
+specVersion: "4.0"
 type: application|library|theme-library|module
 metadata:
   name: some.project.name
@@ -36,28 +36,28 @@ The type defines the default path mappings and build tasks. See [UI5 Builder: Ty
     === "application"
 
         ```yaml
-        specVersion: "3.2"
+        specVersion: "4.0"
         type: application
         ```
 
     === "library"
 
         ```yaml
-        specVersion: "3.2"
+        specVersion: "4.0"
         type: library
         ```
 
     === "theme-library"
 
         ```yaml
-        specVersion: "3.2"
+        specVersion: "4.0"
         type: theme-library
         ```
 
     === "module"
 
         ```yaml
-        specVersion: "3.2"
+        specVersion: "4.0"
         type: module
         ```
 
@@ -270,7 +270,7 @@ You can find an overview of the available versions for each framework here:
 !!! example
     === "application"
         ```yaml
-        specVersion: "3.2"
+        specVersion: "4.0"
         type: application
         metadata:
           name: my.company.app
@@ -286,7 +286,7 @@ You can find an overview of the available versions for each framework here:
 
     === "library"
         ```yaml
-        specVersion: "3.2"
+        specVersion: "4.0"
         type: library
         metadata:
           name: my.company.library
@@ -618,12 +618,12 @@ The default and configured server ports can always be overwritten with the CLI p
 
 !!! example
     ```yaml
-    specVersion: "3.2"
+    specVersion: "4.0"
     type: application
     metadata:
       name: my.application
     ---
-    specVersion: "3.2"
+    specVersion: "4.0"
     kind: extension
     type: project-shim
     metadata:
@@ -631,7 +631,7 @@ The default and configured server ports can always be overwritten with the CLI p
     shims:
       configurations:
         lodash:
-          specVersion: "3.2"
+          specVersion: "4.0"
           type: module
           metadata:
             name: lodash
@@ -702,6 +702,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
     - `declareRawModules`: Whether raw modules should be declared after jQuery.sap.global became available. With the usage of the ui5loader, this flag should be set to 'false'. By default set to `false`
     - `renderer`: Whether renderers for controls should be added to the module set. By default set to `false`
     - `sort`:  By default, modules are sorted by their dependencies. The sorting can be suppressed by setting the option to `false`
+    - `async`: Specifies whether the require section of the module should be asynchronous. When set to `true`, the modules will be loaded using sap.ui.require instead of sap.ui.requireSync. The latter API is not available in UI5 version 2.x. **Note:** This property is available only for `mode=require`
 
 **bundleOptions**
 
@@ -717,7 +718,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 A project must define a specification version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a project's configuration.
 
 ```yaml
-specVersion: "3.2"
+specVersion: "4.0"
 [...]
 ```
 
@@ -736,6 +737,7 @@ Unless otherwise noted in the table below, UI5 Tooling modules are backward comp
 
 Version | UI5 CLI Release
 --- | ---
+**4.0** | v4.0.0+
 **3.2** | v3.8.0+
 **3.1** | v3.5.0+
 **3.0** | v3.0.0+
@@ -749,6 +751,15 @@ Version | UI5 CLI Release
 **1.1** | v1.13.0+
 **1.0** | v1.0.0+
 **0.1** | v0.0.1+
+
+### Specification Version 4.0
+
+**Breaking changes:**
+
+- Remove bundle option [`usePredefineCalls`](#properties). UI5 CLI v4.0.0 and above will always use predefine calls in bundles, making this option obsolete.
+- New option “async“ for [builder.bundles.bundleDefinition.section](#properties)
+
+Specification Version 4.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v4.0.0 and above.
 
 ### Specification Version 3.2
 
