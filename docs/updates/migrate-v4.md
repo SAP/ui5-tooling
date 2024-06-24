@@ -9,59 +9,85 @@
 
 ## Node.js and npm Version Support
 
-To be defined
+**This release requires Node.js versions v20.11.0, v21.2.0 or higher as well as npm v10 or higher.**
+Support for older Node.js and npm releases has been dropped and will cause an error to be shown.
 
 ## Specification Versions Support
 
-To be defined
+Going forward, **only projects with Specification Versions 2.0 and higher are supported.**
+
+In case a legacy specification version is detected, **an automatic migration is attempted.**
+This means your old projects might still work. Unless they have non-standard configuration in their ui5.yaml.
 
 ## Changes for Projects
 
-To be defined
+!!! info
+    ✅ Projects defining **Specification Version 3.x** are expected to be **fully compatible with UI5 Tooling v4**
 
-### Migrate Your Code
+For projects defining the latest **Specification Versions 4.0 and higher**, some changes apply:
 
-To be defined
+* **Breaking Change:** Remove bundle option `usePredefineCalls`. UI5 CLI v4.0.0 and above will always use predefine calls in bundles, making this option obsolete. See [Configuration](../pages/Configuration.md#properties) for details.
+
+* **Breaking Change:** New option `async` for `builder.bundles.bundleDefinition.section`. Only applicable if mode = “require”. Default value `true`. See [Configuration: `bundleDefinition.section`](../pages/Configuration.md#properties) for details.
+
+See also [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
+
+### Migrate Your Code 
+
 
 ## Changes to @ui5/cli
 
-To be defined
+Occurrences of `console.log` in the codebase are replaced with `process.stderr`.
+Аny scripts that capture the output from `console.log` need to be adjusted to rely on `process.stderr`.
 
-## Update of Standard Tasks and Processors
+## Changes to @ui5/fs
 
-To be defined
+Non-public DuplexCollection#byGlobSource API has been removed.
 
-**Updated list of standard tasks:**
+## Changes to @ui5/builder
 
-| Task                           | Type `application` | Type `library` | Type `theme-library` |
-| ------------------------------ | :----------------: | :------------: | :------------------: |
-| escapeNonAsciiCharacters       | *enabled*          | *enabled*      |                      |
-| replaceCopyright               | *enabled*          | *enabled*      | *enabled*            |
-| replaceVersion                 | *enabled*          | *enabled*      | *enabled*            |
-| replaceBuildtime               |                    | *enabled*      |                      |
-| generateJsdoc                  |                    | *disabled* ^1^ |                      |
-| executeJsdocSdkTransformation  |                    | *disabled* ^1^ |                      |
-| minify                         | *enabled*          | *enabled*      |                      |
-| generateFlexChangesBundle      | *enabled*          | *enabled*      |                      |
-| generateLibraryManifest        |                    | *enabled*      |                      |
-| generateComponentPreload       | *enabled*          | *disabled* ^2^ |                      |
-| generateLibraryPreload         |                    | *enabled*      |                      |
-| generateStandaloneAppBundle    | *disabled* ^3^     |                |                      |
-| transformBootstrapHtml         | *disabled* ^3^     |                |                      |
-| generateBundle                 | *disabled* ^4^     | *disabled* ^4^ |                      |
-| buildThemes                    |                    | *enabled*      | *enabled*            |
-| generateThemeDesignerResources |                    | *disabled* ^5^ | *disabled* ^5^       |
-| generateVersionInfo            | *disabled*         |                |                      |
-| generateCachebusterInfo        | *disabled*         |                |                      |
-| generateApiIndex               | *disabled* ^1^     |                |                      |
-| generateResourcesJson          | *disabled*         | *disabled*     | *disabled*           |
+- **Bundling**: The `usePredefineCalls` option has been removed. Bundling now enforces the use of `sap.ui.predefine` instead of function wrappers.  
 
-*Disabled tasks can be activated by certain build modes, the project configuration, or by using the `--include-task` [CLI parameter](../pages/CLI.md#ui5-build). See footnotes where given* 
+- **Task API**: The `namespace` option has been renamed to `projectNamespace`. Check documentation for [CustomTasks API](../pages/extensibility/CustomTasks.md#task-implementation)  
 
----
+- **New Option**: Added a new `async` option for `builder.bundles.bundleDefinition.section`.
 
-^1^ Enabled in `jsdoc` build, which disables most of the other tasks  
-^2^ Enabled for projects defining a [component preload configuration](../pages/Configuration.md#component-preload-generation)  
-^3^ Enabled in `self-contained` build, which disables `generateComponentPreload` and `generateLibraryPreload`  
-^4^ Enabled for projects defining a [bundle configuration](../pages/Configuration.md#custom-bundling)  
-^5^ Can be enabled for framework projects via the `includeTask` option. For other projects, this task is skipped
+!!! example
+    ```yaml
+    builder:
+      bundles:
+        - bundleDefinition:
+            name: "app.js"
+            sections:
+              - mode: require
+                filters:
+                  - some/app/Component.js
+                resolve: true
+                sort: true
+                async: true
+    ```
+
+## Changes to @ui5/project
+
+- **Default Workspace Name**: The default `workspaceName` is now `"default"` for API usage.
+
+!!! example
+    ```js
+    import {graphFromPackageDependencies} from "@ui5/project/graph";
+	
+	graphFromPackageDependencies({
+		/* workspaceName: "default" */
+	});
+    ```
+
+- **Directory Naming**: The `ui5HomeDir` has been renamed to `ui5DataDir` in APIs.
+
+!!! example
+    ```js
+    import Resolver from "@ui5/project/ui5Framework/Openui5Resolver";
+
+    await Resolver.resolveVersion("1.120.15", {
+        ui5DataDir: "~/.ui5",
+        cwd: process.cwd()
+    });
+    ```
