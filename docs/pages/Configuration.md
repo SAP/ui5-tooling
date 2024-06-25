@@ -702,7 +702,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
     - `declareRawModules`: Whether raw modules should be declared after jQuery.sap.global became available. With the usage of the ui5loader, this flag should be set to 'false'. By default set to `false`
     - `renderer`: Whether renderers for controls should be added to the module set. By default set to `false`
     - `sort`:  By default, modules are sorted by their dependencies. The sorting can be suppressed by setting the option to `false`
-    - `async`: Specifies whether the require section of the module should be asynchronous. When set to `true`, the modules will be loaded using sap.ui.require instead of sap.ui.requireSync. The latter API is not available in UI5 version 2.x. **Note:** This property is available only for `mode=require`
+    - `async`: Specifies whether the require section of the module should be asynchronous. When set to `true`, the modules will be loaded using sap.ui.require instead of sap.ui.requireSync. The latter API is not available in UI5 version 2.x. **Note:** This property is available only for `mode=require` and defaults to `true`
 
 **bundleOptions**
 
