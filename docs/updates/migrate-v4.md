@@ -28,7 +28,7 @@ For projects defining the latest **Specification Versions 4.0 and higher**, some
 
 * **Breaking Change:** Remove the bundle option `usePredefineCalls`. UI5 CLI v4.0.0 and above will always use `sap.ui.predefine` calls in bundles, making this option obsolete. See [Configuration](../pages/Configuration.md#properties) for details.
 
-* **Breaking Change:** New `async` option for `builder.bundles.bundleDefinition.section` with default value = `true`; only applicable if mode = “require”. See [Configuration: `bundleDefinition.section`](../pages/Configuration.md#properties) for details.
+* **Breaking Change:** New `async` option for `builder.bundles.bundleDefinition.section` with default value = `true`; only applicable if mode = "require". See [Configuration: `bundleDefinition.section`](../pages/Configuration.md#properties) for details.
 
 See also [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
 
