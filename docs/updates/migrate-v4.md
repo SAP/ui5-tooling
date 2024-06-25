@@ -17,7 +17,7 @@ Support for older Node.js and npm releases has been dropped and will cause an er
 Going forward, **only projects with Specification Versions 2.0 and higher are supported.**
 
 If a legacy specification version is detected, **an automatic migration is attempted.**
-This means your old projects might still work. Unless they have non-standard configuration in their ui5.yaml.
+Your old projects might therefore still work unless they have a non-standard configuration in their ui5.yaml.
 
 ## Changes for Projects
 
