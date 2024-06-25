@@ -22,7 +22,7 @@ Your old projects might therefore still work unless they have a non-standard con
 ## Changes for Projects
 
 !!! info
-    ✅ Projects defining **Specification Version 3.x** are expected to be **fully compatible with UI5 Tooling v4**
+    ✅ Projects defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v4**
 
 For projects defining the latest **Specification Versions 4.0 and higher**, some changes apply:
 
