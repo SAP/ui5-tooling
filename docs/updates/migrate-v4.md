@@ -48,7 +48,7 @@ Non-public DuplexCollection#byGlobSource API has been removed.
 
 - **Bundling**: The `usePredefineCalls` option has been removed. Bundling now enforces the use of `sap.ui.predefine` instead of function wrappers.  
 
-- **Task API**: The `namespace` option has been renamed to `projectNamespace`. Check documentation for [CustomTasks API](../pages/extensibility/CustomTasks.md#task-implementation)  
+- **Task API**: The `namespace` option has been renamed to `projectNamespace`. For more information, check the documentation for [CustomTasks API](../pages/extensibility/CustomTasks.md#task-implementation)  
 
 - **New Option**: Added a new `async` option for `builder.bundles.bundleDefinition.section`.
 
