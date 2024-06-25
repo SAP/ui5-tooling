@@ -10,7 +10,7 @@
 ## Node.js and npm Version Support
 
 **This release requires Node.js versions v20.11.0, v21.2.0 or higher as well as npm v10 or higher.**
-Support for older Node.js and npm releases has been dropped and will cause an error to be shown.
+Support for older Node.js and npm releases has been dropped and will cause an error.
 
 ## Specification Versions Support
 
