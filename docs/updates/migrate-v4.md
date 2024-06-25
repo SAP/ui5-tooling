@@ -42,7 +42,7 @@ Occurrences of `console.log` in the code base are replaced with `process.stderr`
 
 ### Changes to @ui5/fs
 
-Non-public DuplexCollection#byGlobSource API has been removed.
+Non-public `DuplexCollection#byGlobSource` API has been removed.
 
 ### Changes to @ui5/builder
 
