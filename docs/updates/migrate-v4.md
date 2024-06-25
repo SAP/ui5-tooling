@@ -37,7 +37,7 @@ See also [Configuration: Specification Version 4.0](../pages/Configuration.md#sp
 
 ### Changes to @ui5/cli
 
-Occurrences of `console.log` in the codebase are replaced with `process.stderr`.
+Occurrences of `console.log` in the code base are replaced with `process.stderr`.
 Аny scripts that capture the output from `console.log` need to be adjusted to rely on `process.stderr`.
 
 ### Changes to @ui5/fs
