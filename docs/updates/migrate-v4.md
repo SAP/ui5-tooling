@@ -91,3 +91,7 @@ Non-public `DuplexCollection#byGlobSource` API has been removed.
         cwd: process.cwd()
     });
     ```
+
+- **Dependencies**: The `@ui5/builder` is now an optional dependency to the `@ui5/project`
+
+Consumers of the Node.js API that make use of the `ProjectGraph#build` method need to declare a dependency to `@ui5/builder` in their respective `package.json`. The package manager should ensure that the version fulfills the range specified in the `package.json` of `@ui5/project`.
