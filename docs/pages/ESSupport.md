@@ -1,10 +1,11 @@
 
 # ECMAScript Support
 
-UI5 Tooling offers general support for `ES2022` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the usage of certain ECMAScript syntax.
+UI5 Tooling offers general support for `ES2023` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the usage of certain ECMAScript syntax.
 
 | UI5 Tooling Version | Supported ECMAScript Version | Note |
 |-------------------- |----------------------------- | ---- |
+| v3.11+              | ECMAScript 2023              |      |
 | v3.0+               | ECMAScript 2022              |      |
 | v2.0+               | ECMAScript 2009/ES5          | Note that code up to ECMAScript 2020 can be parsed, however required code analysis might not work correctly for specific language features |
 
