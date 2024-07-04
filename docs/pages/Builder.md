@@ -149,3 +149,28 @@ To get a list of all available processors, please visit [the API reference](http
 
 ## Legacy Bundle Tooling (lbt)
 JavaScript port of the "legacy" Maven/Java based bundle tooling.
+
+
+### JavaScript files requiring top level scope
+UI5 Tooling packages JavaScript files requiring top level scope as a string as long as your project using specVersion lower than `4.0`. This stringified code is evaluated via [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) at runtime. This behavior ensures that the script works as expected, e.g. with regards to implicit globals. However this `eval` runtime feature will be discontinued with UI5 2.x because of security best practices (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) and to comply with stricter CSP settings (`unsafe-eval`). When your project defines [Specification Version 4.0](./Configuration.md#specification-version-40) or higher files requiring top level scope are no longer part of the created bundle and an error is logged by UI5 Tooling. Therefore, please adjust your code with the help of one of the following options:
+
+**Option 1**: Use [ui5-tooling-modules](https://www.npmjs.com/package/ui5-tooling-modules) to bundle third-party `npm` packages. It converts files to `sap.ui.define` modules automatically.
+
+**Option 2**: Wrap the respective files manually in `sap.ui.define` modules.
+
+*Before*:
+```js
+const myFancyModule = {};
+```
+
+*After*:
+```js
+sap.ui.define([], () => {
+	"use strict";
+	const myFancyModule = {};
+	return myFancyModule;
+})
+```
+
+
+
