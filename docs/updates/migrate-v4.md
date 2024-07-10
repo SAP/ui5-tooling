@@ -1,39 +1,56 @@
 # Migrate to v4
 
 !!! tip "In Development"
-	**UI5 Tooling V4 is still in development 🚧**
+    **UI5 Tooling 4.0 has been released 🎉**
 
-	Please use UI5 Tooling V3 by installing the latest version via: `npm i --save-dev @ui5/cli@latest`
+    Install the latest version via: `npm i --save-dev @ui5/cli@latest`
 
-	And find the announcement blog post here: **[SAP Community: UI5 Tooling 3.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
+    Find the announcement blog post here: **[SAP Community: UI5 Tooling 4.0](https://blogs.sap.com/)**
+
+## UI5 2.x Compatibility
+
+*Also see the blog post [SAP Community: Introducing OpenUI5 2.x](https://community.sap.com/t5/open-source-blogs/introducing-openui5-2-x/ba-p/13580633)*
+
+UI5 Tooling 4.0 is required for building UI5 2.x projects. The UI5 2.x framework libraries define Specification Version 4.0 and therefore can't be built using older UI5 Tooling versions.
+
+For applications and libraries running with UI5 2.x, the use of Specification Version 4.0 is not enforced. However it is highly recommended since only then UI5 Tooling will ensure UI5 2.x compatibility of the generated bundles.
 
 ## Node.js and npm Version Support
 
-**This release requires Node.js versions v20.11.0, v21.2.0 or higher as well as npm v10 or higher.**
-Support for older Node.js and npm releases has been dropped and will cause an error.
+This release requires **Node.js versions v20.11.0, v21.2.0 or higher** as well as npm v8 or higher.
+Support for older Node.js releases has been dropped and will cause an error.
 
 ## Specification Versions Support
 
-Going forward, **only projects with Specification Versions 2.0 and higher are supported.**
+As before, only projects with Specification Versions 2.0 and higher are supported.
 
-If a legacy specification version is detected, **an automatic migration is attempted.**
+If a legacy specification version is detected, an automatic migration is attempted.
 Your old projects might therefore still work unless they have a non-standard configuration in their ui5.yaml.
 
 ## Changes for Projects
 
-!!! info
-    ✅ Projects defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v4**
+!!! success "No changes for Specification Versions 2.x and 3.x"
+    Projects defining **Specification Version 2.x or 3.x** are expected to be **fully compatible with UI5 Tooling v4**
 
-For projects defining the latest **Specification Versions 4.0 and higher**, some changes apply:
+    The following does not apply to them.
 
-* **Breaking Change:** Remove the bundle option `usePredefineCalls`. UI5 CLI v4.0.0 and above will always use `sap.ui.predefine` calls in bundles, making this option obsolete. See [Configuration](../pages/Configuration.md#properties) for details.
+For projects defining the latest **Specification Versions 4.0 or higher**, the following changes apply:
 
-* **Breaking Change:** New `async` option for `builder.bundles.bundleDefinition.section` with default value = `true`; only applicable if mode = "require". See [Configuration: `bundleDefinition.section`](../pages/Configuration.md#properties) for details.
+* **Breaking Change:** Bundling of JavaScript modules as string (in case they require "top level scope") is disabled. 
+    
+    In UI5 2.x the feature for evaluating modules from a string is expected to be removed. Therefore UI5 Tooling will instead log an error message and omit the affected module from the bundle.
+
+    For more details, see [JavaScript Files Requiring Top Level Scope](../pages/Builder.md#javascript-files-requiring-top-level-scope).
+
+* **Breaking Change:** Removal of the [bundle option](../pages/Configuration.md#properties) `usePredefineCalls`. UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete. We do not expect any negative impact on application behavior due to this change.
+
+* **Breaking Change:** New `async` option for the `bundleDefinition` section configuration where the section mode equals `require`. This option defaults to `true`, which can influence the loading behavior of your project. See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
 
 See also [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
 
-## Migrate Your Code 
+## Migrate Your Code
 
+When using the Node.js API of UI5 Tooling, or when integrating it into other tools, the following changes might be relevant to you:
 
 ### Changes to @ui5/cli
 
