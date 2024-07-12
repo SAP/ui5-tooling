@@ -13,12 +13,12 @@
 
 UI5 Tooling 4.0 is required for building UI5 2.x projects. The UI5 2.x framework libraries define Specification Version 4.0 and therefore can't be built using older UI5 Tooling versions.
 
-For applications and libraries running with UI5 2.x, the use of Specification Version 4.0 is not enforced. However it is highly recommended since only then UI5 Tooling will ensure UI5 2.x compatibility of the generated bundles.
+For applications and libraries running with UI5 2.x, the use of Specification Version 4.0 is not enforced. It is highly recommended, however, since only then UI5 Tooling will ensure UI5 2.x compatibility of the generated bundles.
 
 ## Node.js and npm Version Support
 
 This release requires **Node.js versions v20.11.0, v21.2.0 or higher** as well as npm v8 or higher.
-Support for older Node.js releases has been dropped and will cause an error.
+Support for older Node.js releases has been dropped; their use will cause an error.
 
 ## Specification Versions Support
 
@@ -34,15 +34,15 @@ Your old projects might therefore still work unless they have a non-standard con
 
     The following does not apply to them.
 
-For projects defining the latest **Specification Versions 4.0 or higher**, the following changes apply:
+For projects defining the latest **Specification Version 4.0 or higher**, the following changes apply:
 
-* **Breaking Change:** Bundling of JavaScript modules as string (in case they require "top level scope") is disabled. 
+* **Breaking Change:** Bundling of JavaScript modules as a string (in case they require "top level scope") is disabled. 
     
-    In UI5 2.x the feature for evaluating modules from a string is expected to be removed. Therefore UI5 Tooling will instead log an error message and omit the affected module from the bundle.
+    In UI5 2.x, the feature of evaluating modules from a string is expected to be removed. Therefore, UI5 Tooling will log an error message instead and omit the affected module from the bundle.
 
     For more details, see [JavaScript Files Requiring Top Level Scope](../pages/Builder.md#javascript-files-requiring-top-level-scope).
 
-* **Breaking Change:** Removal of the [bundle option](../pages/Configuration.md#properties) `usePredefineCalls`. UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete. We do not expect any negative impact on application behavior due to this change.
+* **Breaking Change:** Removal of the `usePredefineCalls` [bundle option](../pages/Configuration.md#properties). UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete. We do not expect any negative impact on application behavior due to this change.
 
 * **Breaking Change:** New `async` option for the `bundleDefinition` section configuration where the section mode equals `require`. This option defaults to `true`, which can influence the loading behavior of your project. See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
 
