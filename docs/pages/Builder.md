@@ -149,3 +149,27 @@ To get a list of all available processors, please visit [the API reference](http
 
 ## Legacy Bundle Tooling (lbt)
 JavaScript port of the "legacy" Maven/Java based bundle tooling.
+
+
+### JavaScript Files Requiring Top Level Scope
+UI5 Tooling packages JavaScript files that require "top level scope" as a string, provided your project uses a Specification Version lower than `4.0`. In this case, the code is evaluated using [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) at runtime.
+
+This ensures that the script works as expected, e.g. with regards to implicitly used globals. However, this `eval` runtime feature will be discontinued with UI5 2.x because of security best practices (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) and to comply with stricter CSP settings (`unsafe-eval`). If your project defines [Specification Version 4.0](./Configuration.md#specification-version-40) or higher, files requiring top level scope are no longer part of the created bundle and following error is logged by UI5 Tooling `Module myFancyModule requires top level scope and can only be embedded as a string (requires 'eval'), which is not supported with specVersion 4.0 and higher. For more information, see the UI5 Tooling documentation https://sap.github.io/ui5-tooling/stable/pages/Builder/#javascript-files-requiring-top-level-scope`. Therefore, please adjust your code with one of the following options:
+
+**Option 1**: Use [ui5-tooling-modules](https://www.npmjs.com/package/ui5-tooling-modules) to bundle third-party `npm` packages. It converts files to `sap.ui.define` modules automatically.
+
+**Option 2**: Wrap the respective files manually in `sap.ui.define` modules.
+
+*Before*:
+```js
+const myFancyModule = {};
+```
+
+*After*:
+```js
+sap.ui.define([], () => {
+	"use strict";
+	const myFancyModule = {};
+	return myFancyModule;
+})
+```
