@@ -111,31 +111,31 @@ In the `manifest.json` the `supportedLocales` property will be enhanced as follo
 **Source**
 ```json
 "models": {
-  "i18n": {
-    "type": "sap.ui.model.resource.ResourceModel",
-    "settings": {
-	    "bundleName": "my.app.i18n.i18n"
+    "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+            "bundleName": "my.app.i18n.i18n"
+        }
     }
-  }
 }
 ```
 
 **Build Result**
 ```json
 "models": {
-  "i18n": {
-    "type": "sap.ui.model.resource.ResourceModel",
-    "settings": {
-	    "bundleName": "my.app.i18n.i18n",
-	    "supportedLocales": [
-        "",
-        "de",
-        "de_DE",
-        "en",
-        "en_US"
-      ]
+    "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+            "bundleName": "my.app.i18n.i18n",
+            "supportedLocales": [
+                "",
+                "de",
+                "de_DE",
+                "en",
+                "en_US"
+            ]
+        }
     }
-  }
 }
 ```
 
@@ -168,8 +168,8 @@ const myFancyModule = {};
 *After*:
 ```js
 sap.ui.define([], () => {
-	"use strict";
-	const myFancyModule = {};
-	return myFancyModule;
-})
+    "use strict";
+    const myFancyModule = {};
+    return myFancyModule;
+});
 ```
