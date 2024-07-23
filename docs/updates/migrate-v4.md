@@ -6,7 +6,7 @@
     Install the latest version in your projects via: `npm i --save-dev @ui5/cli@latest`  
     And update your global install via `npm i --global @ui5/cli@latest`
 
-    Blog post following soon.
+    And find the announcement blog post here: **[SAP Community: UI5 Tooling 4.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
 
 ## UI5 2.x Compatibility
 
@@ -18,15 +18,15 @@ For applications and libraries running with UI5 2.x, the use of Specification Ve
 
 ## Node.js and npm Version Support
 
-This release requires **Node.js versions v20.11.0, v22.0.0 or higher** as well as npm v8 or higher.
+This release requires **Node.js versions v20.11.0, v22.0.0, or higher** as well as npm v8 or higher.
 Support for older Node.js releases has been dropped; their use will cause an error.
 
 ## Specification Versions Support
 
-As before, only projects with Specification Versions 2.0 and higher are supported.
+As with UI5 Tooling 3.x, all projects with Specification Versions 2.0 and higher are supported.
 
 If a legacy specification version is detected, an automatic migration is attempted.
-Your old projects might therefore still work unless they have a non-standard configuration in their ui5.yaml.
+Old projects might therefore still work, unless they have a non-standard configuration in their ui5.yaml.
 
 ## Changes for Projects
 
@@ -37,21 +37,25 @@ Your old projects might therefore still work unless they have a non-standard con
 
 For projects defining the latest **Specification Version 4.0 or higher**, the following changes apply:
 
-* **Breaking Change:** Bundling of JavaScript modules as a string (in case they require "top level scope") is disabled. 
+* **Breaking Change:** Bundling of JavaScript modules requiring "top level scope" as a string is terminated. 
     
-    In UI5 2.x, the feature of evaluating modules from a string is expected to be removed. Therefore, UI5 Tooling will log an error message instead and omit the affected module from the bundle.
+    In UI5 2.x, the feature of evaluating modules from a string is expected to be removed. Therefore, when using the latest Specification Version, UI5 Tooling will **omit affected module from the bundle and log an error message instead.**
 
-    For more details, see [JavaScript Files Requiring Top Level Scope](../pages/Builder.md#javascript-files-requiring-top-level-scope).
+    For more details, see [Builder: JavaScript Files Requiring Top Level Scope](../pages/Builder.md#javascript-files-requiring-top-level-scope).
+
+* **Breaking Change:** New `async` option for the `require` sections of bundle definitions.
+    
+    This option defaults to `true` for Specification Version 4.0 and higher, **which can influence the loading behavior of your project**. Require sections are now expressed using `sap.ui.require` instead of `sap.ui.requireSync`. The latter is not available in UI5 2.x.
+
+    Note that the same default applies for all standard bundles as well, like the component- or library preloads as well as self-contained bundles.
+
+    See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for more on the new `async` option.
 
 * **Breaking Change:** Removal of the `usePredefineCalls` [bundle option](../pages/Configuration.md#properties). UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete.
     
-    We do not expect any negative impact on application behavior due to this change.
+    **We do not expect any negative impact** on projects due to this change, therefore it is active independently of the Specification Version. However, when upgrading to Specification Version 4.0 you might need to remove the property if you have it in your ui5.yaml configuration.
 
-* **Breaking Change:** New `async` option for the `bundleDefinition`-section configuration where the section mode equals `require`.
-    
-    This option defaults to `true` for Specification Version 4.0 and higher, which can influence the loading behavior of your project. Note that the same default is used for all standard bundles, like the component- or library preloads as well as self-contained bundles. See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
-
-See also [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
+You can find a summary of the above at [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
 
 ## Migrate Your Code
 
