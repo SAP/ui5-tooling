@@ -43,9 +43,13 @@ For projects defining the latest **Specification Version 4.0 or higher**, the fo
 
     For more details, see [JavaScript Files Requiring Top Level Scope](../pages/Builder.md#javascript-files-requiring-top-level-scope).
 
-* **Breaking Change:** Removal of the `usePredefineCalls` [bundle option](../pages/Configuration.md#properties). UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete. We do not expect any negative impact on application behavior due to this change.
+* **Breaking Change:** Removal of the `usePredefineCalls` [bundle option](../pages/Configuration.md#properties). UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete.
+    
+    We do not expect any negative impact on application behavior due to this change.
 
-* **Breaking Change:** New `async` option for the `bundleDefinition` section-configuration where the section mode equals `require`. This option defaults to `true` for Specification Version 4.0 and higher, which can influence the loading behavior of your project. Note that the same default is used for all standard bundles, like the component- or library preloads as well as self-contained bundles. See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
+* **Breaking Change:** New `async` option for the `bundleDefinition`-section configuration where the section mode equals `require`.
+    
+    This option defaults to `true` for Specification Version 4.0 and higher, which can influence the loading behavior of your project. Note that the same default is used for all standard bundles, like the component- or library preloads as well as self-contained bundles. See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
 
 See also [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
 
