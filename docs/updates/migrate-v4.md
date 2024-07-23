@@ -1,9 +1,10 @@
 # Migrate to v4
 
 !!! tip "In Development"
-    **UI5 Tooling 4.0 has been released 🎉**
+    **UI5 Tooling 4.0 has been released on July 23, 2024 🎉**
 
-    Install the latest version via: `npm i --save-dev @ui5/cli@latest`
+    Install the latest version in your projects via: `npm i --save-dev @ui5/cli@latest`  
+    And update your global install via `npm i --global @ui5/cli@latest`
 
     Find the announcement blog post here: **[SAP Community: UI5 Tooling 4.0](https://blogs.sap.com/)**
 
@@ -17,7 +18,7 @@ For applications and libraries running with UI5 2.x, the use of Specification Ve
 
 ## Node.js and npm Version Support
 
-This release requires **Node.js versions v20.11.0, v21.2.0 or higher** as well as npm v8 or higher.
+This release requires **Node.js versions v20.11.0, v22.0.0 or higher** as well as npm v8 or higher.
 Support for older Node.js releases has been dropped; their use will cause an error.
 
 ## Specification Versions Support
@@ -44,7 +45,7 @@ For projects defining the latest **Specification Version 4.0 or higher**, the fo
 
 * **Breaking Change:** Removal of the `usePredefineCalls` [bundle option](../pages/Configuration.md#properties). UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete. We do not expect any negative impact on application behavior due to this change.
 
-* **Breaking Change:** New `async` option for the `bundleDefinition` section configuration where the section mode equals `require`. This option defaults to `true`, which can influence the loading behavior of your project. See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
+* **Breaking Change:** New `async` option for the `bundleDefinition` section-configuration where the section mode equals `require`. This option defaults to `true` for Specification Version 4.0 and higher, which can influence the loading behavior of your project. Note that the same default is used for all standard bundles, like the component- or library preloads as well as self-contained bundles. See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
 
 See also [Configuration: Specification Version 4.0](../pages/Configuration.md#specification-version-40).
 
