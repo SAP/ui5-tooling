@@ -6,7 +6,7 @@
     Install the latest version in your projects via: `npm i --save-dev @ui5/cli@latest`  
     And update your global install via `npm i --global @ui5/cli@latest`
 
-    And find the announcement blog post here: **[SAP Community: UI5 Tooling 4.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
+    And find the announcement blog post here: **[SAP Community: UI5 Tooling 4.0](https://community.sap.com/t5/technology-blogs-by-sap/ui5-tooling-4-0/ba-p/13769578)**
 
 ## UI5 2.x Compatibility
 
