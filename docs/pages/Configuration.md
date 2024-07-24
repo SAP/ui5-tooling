@@ -702,7 +702,9 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
     - `declareRawModules`: Whether raw modules should be declared after jQuery.sap.global became available. With the usage of the ui5loader, this flag should be set to 'false'. By default set to `false`
     - `renderer`: Whether renderers for controls should be added to the module set. By default set to `false`
     - `sort`:  By default, modules are sorted by their dependencies. The sorting can be suppressed by setting the option to `false`
-    - `async`: Specifies whether the `require` section of the module should be asynchronous. When set to `true`, the modules will be loaded using `sap.ui.require` instead of `sap.ui.requireSync`. The latter API is not available in UI5 version 2.x. **Note:** This property is available only for `mode=require` and defaults to `true`
+    - `async` (only available if `mode` equals `require`): Specifies whether the `require` section of the module should use an asynchronous API. When set to `true`, the modules are loaded using `sap.ui.require`. When set to `false`, modules are loaded using `sap.ui.requireSync`, which is not available in UI5 2.x.
+        - Projects defining [Specification Version](#specification-versions) 4.0 and higher: Defaults to `true`
+        - Projects defining [Specification Version](#specification-versions) lower than 4.0: Behaves like `false` but can't be configured
 
 **bundleOptions**
 
@@ -756,10 +758,12 @@ Version | UI5 CLI Release
 
 **Breaking changes:**
 
-- Remove bundle option [`usePredefineCalls`](#properties). UI5 CLI v4.0.0 and above will always use predefine calls in bundles, making this option obsolete.
-- New option “async“ for [builder.bundles.bundleDefinition.section](#properties)
+- Removed bundle option [`usePredefineCalls`](#properties). UI5 CLI v4.0.0 and above will always use predefine calls in bundles, making this option obsolete.
+- Adds new a new option `async` for `bundleDefinition`-section configuration, see [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for details.
 
 Specification Version 4.0 projects are supported by [UI5 CLI](https://github.com/SAP/ui5-cli) v4.0.0 and above.
+
+Also see [Migrate to v4](../updates/migrate-v4.md#changes-for-projects) for details on these breaking changes.
 
 ### Specification Version 3.2
 

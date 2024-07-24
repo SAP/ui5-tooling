@@ -4,12 +4,12 @@
 
 An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
-!!! tip "In Development"
-	**UI5 Tooling V4 is still in development 🚧**
+!!! tip "New Release"
+	**UI5 Tooling V4 is here 🎉**
 
-	Please use UI5 Tooling V3 by installing the latest version via: `npm i --save-dev @ui5/cli@latest`
+	Read the announcement blog post: **[SAP Community: UI5 Tooling 4.0](https://community.sap.com/t5/technology-blogs-by-sap/ui5-tooling-4-0/ba-p/13769578)**
 
-	And find the announcement blog post here: **[SAP Community: UI5 Tooling 3.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
+    And checkout the **[Migrate to v4](./updates/migrate-v4.md)** documentation.
 
 [**Get Started**](./pages/GettingStarted.md){: .md-button .md-button--primary .sap-icon-initiative }
 
