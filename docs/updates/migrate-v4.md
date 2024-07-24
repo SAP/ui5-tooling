@@ -1,7 +1,7 @@
 # Migrate to v4
 
 !!! tip "In Development"
-    **UI5 Tooling 4.0 has been released on July 23, 2024 🎉**
+    **UI5 Tooling 4.0 has been released on July 24, 2024 🎉**
 
     Install the latest version in your projects via: `npm i --save-dev @ui5/cli@latest`  
     And update your global install via `npm i --global @ui5/cli@latest`
