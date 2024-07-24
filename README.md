@@ -8,7 +8,9 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 
-> [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is the latest and stable version 🎉
+> [UI5 Tooling v4](https://sap.github.io/ui5-tooling/v4) is the latest and stable version 🎉
+>
+> [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is a stable version and in maintenance mode 🚢
 >
 > [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
 >
