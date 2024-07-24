@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MIKE_VERSION: v4
-      MIKE_ALIAS: next
+      MIKE_ALIAS: stable
       DOCKER_IMAGE: ui5-tooling/mkdocs-material
       GIT_COMMITTER_NAME: "OpenUI5 Bot"
       GIT_COMMITTER_EMAIL: "openui5@sap.com"
