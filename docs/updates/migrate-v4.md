@@ -121,3 +121,17 @@ Non-public `DuplexCollection#byGlobSource` API has been removed.
 - **Dependencies**: The `@ui5/builder` is now an optional dependency to the `@ui5/project`
 
 Consumers of the Node.js API that make use of the `ProjectGraph#build` method need to declare a dependency to `@ui5/builder` in their respective `package.json`. The package manager should ensure that the version fulfills the range specified in the `package.json` of `@ui5/project`.
+
+## Troubleshooting
+
+### App Stops Working With UI5 1.71
+
+This might be caused by a mismatch of your project's manifest version and your UI5 version.
+
+UI5 Tooling v4 enhances the manifest.json with information about the `supportedLocales` (also see [Builder: Generation of Supported Locales](../pages/Builder.md#generation-of-supported-locales)). In UI5 1.71 this configuration is not supported and leads to an ambiguous error message `TypeError: invalid input` and a failure to process the manifest file.
+
+UI5 Tooling uses the manifest's `_version` property to decide whether the `supportedLocales` can be generated. For UI5 1.71, only versions up to `1.17.0` are supported. See [UI5 Demo Kit: Descriptor for Applications, Components, and Libraries (manifest.json)](https://sdk.openui5.org/#/topic/be0cf40f61184b358b5faedaec98b2da) for a mapping per manifest version.
+
+To resolve this issue, adjust the manifest version according to the UI5 version you are using.
+
+*This issue was first raised here: [Ui5 Tooling #988](https://github.com/SAP/ui5-tooling/issues/988)*
