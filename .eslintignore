@@ -1,4 +1,0 @@
-# /node_modules/* and /bower_components/* ignored by default
-
-# Exclude output for gh-pages
-site/
