@@ -45,7 +45,7 @@
 		"@ui5/cli": "^4.0.2",
 		"@ui5/fs": "^4.0.0",
 		"@ui5/logger": "^4.0.1",
-		"@ui5/project": "^4.0.1",
+		"@ui5/project": "^4.0.2",
 		"@ui5/server": "^4.0.1"
 	},
 	"devDependencies": {
@@ -56,10 +56,10 @@
 		"docdash": "^2.0.2",
 		"eslint": "^9.8.0",
 		"eslint-config-google": "^0.14.0",
-		"globals": "^15.8.0",
+		"globals": "^15.9.0",
 		"handlebars": "^4.7.8",
 		"jsdoc": "^4.0.3",
-		"local-web-server": "^5.3.4",
+		"local-web-server": "^5.4.0",
 		"open-cli": "^8.0.0",
 		"traverse": "^0.6.9"
 	}
