@@ -2644,7 +2644,7 @@
             },
             "decorateBootstrapModule": {
               "type": "boolean",
-              "default": true
+              "default": false
             },
             "addTryCatchRestartWrapper": {
               "type": "boolean",
@@ -2670,7 +2670,7 @@
             },
             "decorateBootstrapModule": {
               "type": "boolean",
-              "default": true
+              "default": false
             },
             "addTryCatchRestartWrapper": {
               "type": "boolean",
@@ -2700,7 +2700,7 @@
             },
             "decorateBootstrapModule": {
               "type": "boolean",
-              "default": true
+              "default": false
             },
             "addTryCatchRestartWrapper": {
               "type": "boolean",
