@@ -1,99 +1,143 @@
-import jsdoc from "eslint-plugin-jsdoc";
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
+import stylistic from "@stylistic/eslint-plugin";
 import ava from "eslint-plugin-ava";
+import jsdoc from "eslint-plugin-jsdoc";
 import globals from "globals";
-import js from "@eslint/js";
-import google from "eslint-config-google";
 
-export default [{
-	ignores: [ // Common ignore patterns across all tooling repos
-		"**/coverage/",
-		"test/tmp/",
-		"test/expected/",
-		"test/fixtures/",
-		"**/docs/",
-		"**/jsdocs/",
-	],
-}, js.configs.recommended, google, ava.configs["flat/recommended"], {
-	name: "Common ESLint config used for all tooling repos",
+export default tseslint.config(
+	{
+		// This block defines ignore patterns globally to all configurations below
+		// (therefore it can use slightly different patterns, see also the eslint "Flat Config" doc)
+		ignores: [
+			".github/*",
+			".reuse/*",
+			"coverage/*",
+			"**/docs/",
+			"**/jsdocs/",
 
-	plugins: {
-		jsdoc,
+			// Exclude test files
+			"test/tmp/*",
+			"test/fixtures/*",
+
+			// Exclude generated code
+			"lib/*",
+		],
 	},
-
-	languageOptions: {
-		globals: {
-			...globals.node,
-		},
-
-		ecmaVersion: 2023,
-		sourceType: "module",
-	},
-
-	settings: {
-		jsdoc: {
-			mode: "jsdoc",
-
-			tagNamePreference: {
-				return: "returns",
-				augments: "extends",
+	// Base configs applying to JS and TS files
+	eslint.configs.recommended,
+	stylistic.configs.customize({
+		indent: "tab",
+		quotes: "double",
+		semi: true,
+		jsx: false,
+		arrowParens: true,
+		braceStyle: "1tbs",
+		blockSpacing: false,
+	}),
+	ava.configs["flat/recommended"], {
+		// Lint all JS files using the eslint parser
+		files: ["**/*.js"],
+		languageOptions: {
+			ecmaVersion: 2022,
+			sourceType: "module",
+			globals: {
+				...globals.node,
 			},
 		},
-	},
+	}, {
+		// Lint all TS files using the typescript-eslint parser
+		// Also enable all recommended typescript-eslint rules
+		files: ["src/**/*.ts", "test/**/*.ts", "scripts/**/*.ts"],
+		extends: [
+			...tseslint.configs.recommendedTypeChecked,
+			...tseslint.configs.stylisticTypeChecked,
+		],
+		languageOptions: {
+			ecmaVersion: 2022,
+			sourceType: "module",
+			parser: tseslint.parser,
+			parserOptions: {
+				project: true,
+			},
+		},
+		rules: {
+			// TypeScript specific overwrites
+			// We must disable the base rule as it can report incorrect errors
+			"no-unused-vars": "off",
+			"@typescript-eslint/no-unused-vars": [
+				"error", {
+					argsIgnorePattern: "^_",
+					varsIgnorePattern: "^_",
+					caughtErrorsIgnorePattern: "^_",
+				},
+			],
+		},
+	}, {
+		// To be discussed: Type-aware checks might add quite some additional work when writing tests
+		// and could even require us to export types that we would otherwise not export
+		files: ["test/**/*.ts"],
+		rules: {
+			"@typescript-eslint/no-unsafe-argument": "off",
+			"@typescript-eslint/no-unsafe-assignment": "off",
+			"@typescript-eslint/no-unsafe-call": "off",
+			"@typescript-eslint/no-unsafe-enum-comparison": "off",
+			"@typescript-eslint/no-unsafe-member-access": "off",
+			"@typescript-eslint/no-unsafe-return": "off",
+			"@typescript-eslint/no-unsafe-unary-minus": "off",
+		},
+	}, {
+		// Overwrite any rules from the configurations above for both, JS and TS files
+		rules: {
+			"linebreak-style": [
+				"error",
+				"unix",
+			],
+			"@stylistic/object-curly-spacing": [
+				"error",
+				"never",
+			],
+			"@stylistic/operator-linebreak": ["error", "after"],
+			"@stylistic/comma-dangle": ["error", {
+				functions: "never",
+				arrays: "always-multiline",
+				objects: "always-multiline",
+				imports: "always-multiline",
+				exports: "always-multiline",
+				enums: "always-multiline",
+				generics: "always-multiline",
+				tuples: "always-multiline",
+			}],
+			"max-len": [
+				"error",
+				{
+					code: 120,
+					ignoreUrls: true,
+					ignoreRegExpLiterals: true,
+				},
+			],
+			"no-implicit-coercion": [
+				"error",
+				{allow: ["!!"]},
+			],
+			"no-console": "error",
+			"no-eval": "error",
 
-	rules: {
-		"indent": ["error", "tab"],
-		"linebreak-style": ["error", "unix"],
-
-		"quotes": ["error", "double", {
-			allowTemplateLiterals: true,
-		}],
-
-		"semi": ["error", "always"],
-		"no-negated-condition": "off",
-		"require-jsdoc": "off",
-		"no-mixed-requires": "off",
-
-		"max-len": ["error", {
-			code: 120,
-			ignoreUrls: true,
-			ignoreRegExpLiterals: true,
-		}],
-
-		"no-implicit-coercion": [2, {
-			allow: ["!!"],
-		}],
-
-		"comma-dangle": "off",
-		"no-tabs": "off",
-		"no-console": 2, // Disallow console.log()
-		"no-eval": 2,
-		// The following rule must be disabled as of ESLint 9.
-		// It's removed and causes issues when present
-		// https://eslint.org/docs/latest/rules/valid-jsdoc
-		"valid-jsdoc": 0,
-		"jsdoc/check-examples": 0,
-		"jsdoc/check-param-names": 2,
-		"jsdoc/check-tag-names": 2,
-		"jsdoc/check-types": 2,
-		"jsdoc/no-undefined-types": 0,
-		"jsdoc/require-description": 0,
-		"jsdoc/require-description-complete-sentence": 0,
-		"jsdoc/require-example": 0,
-		"jsdoc/require-hyphen-before-param-description": 0,
-		"jsdoc/require-param": 2,
-		"jsdoc/require-param-description": 0,
-		"jsdoc/require-param-name": 2,
-		"jsdoc/require-param-type": 2,
-		"jsdoc/require-returns": 0,
-		"jsdoc/require-returns-description": 0,
-		"jsdoc/require-returns-type": 2,
-
-		"jsdoc/tag-lines": [2, "any", {
-			startLines: 1,
-		}],
-
-		"jsdoc/valid-types": 0,
-		"ava/assertion-arguments": 0,
-	},
-}
-];
+			"valid-jsdoc": 0,
+		},
+	}, {
+		// JSdoc only applying to sources
+		files: ["src/**/*.ts"],
+		...jsdoc.configs["flat/recommended-typescript-error"],
+	}, {
+		// Overwriting JSDoc rules in a separate config with the same files pattern
+		files: ["src/**/*.ts"],
+		rules: {
+			"jsdoc/require-returns": 0,
+			"jsdoc/require-returns-description": 0,
+			"jsdoc/tag-lines": [2, "any", {
+				startLines: 1,
+			}],
+		},
+	}
+);
