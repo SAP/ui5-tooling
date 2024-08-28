@@ -3,7 +3,6 @@ import tseslint from "typescript-eslint";
 import stylistic from "@stylistic/eslint-plugin";
 import ava from "eslint-plugin-ava";
 import jsdoc from "eslint-plugin-jsdoc";
-import globals from "globals";
 
 export default tseslint.config(
 	{
@@ -19,6 +18,7 @@ export default tseslint.config(
 			// Exclude test files
 			"test/tmp/*",
 			"test/fixtures/*",
+			"test/expected/*",
 
 			// Exclude generated code
 			"lib/*",
@@ -41,9 +41,6 @@ export default tseslint.config(
 		languageOptions: {
 			ecmaVersion: 2022,
 			sourceType: "module",
-			globals: {
-				...globals.node,
-			},
 		},
 	}, {
 		// Lint all TS files using the typescript-eslint parser
@@ -65,6 +62,12 @@ export default tseslint.config(
 			// TypeScript specific overwrites
 			// We must disable the base rule as it can report incorrect errors
 			"no-unused-vars": "off",
+			"@typescript-eslint/consistent-type-imports": ["error", {
+				fixStyle: "inline-type-imports",
+			}],
+			"@typescript-eslint/consistent-type-exports": ["error", {
+				fixMixedExportsWithInlineTypeSpecifier: true,
+			}],
 			"@typescript-eslint/no-unused-vars": [
 				"error", {
 					argsIgnorePattern: "^_",
@@ -123,7 +126,7 @@ export default tseslint.config(
 			"no-console": "error",
 			"no-eval": "error",
 
-			"valid-jsdoc": 0,
+			"valid-jsdoc": "off",
 		},
 	}, {
 		// JSdoc only applying to sources
@@ -133,9 +136,10 @@ export default tseslint.config(
 		// Overwriting JSDoc rules in a separate config with the same files pattern
 		files: ["src/**/*.ts"],
 		rules: {
-			"jsdoc/require-returns": 0,
-			"jsdoc/require-returns-description": 0,
-			"jsdoc/tag-lines": [2, "any", {
+			"jsdoc/require-jsdoc": "off",
+			"jsdoc/require-returns": "off",
+			"jsdoc/require-returns-description": "off",
+			"jsdoc/tag-lines": ["error", "any", {
 				startLines: 1,
 			}],
 		},
