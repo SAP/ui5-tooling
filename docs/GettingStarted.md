@@ -87,9 +87,9 @@ Use `ui5 serve` to start a local development server and `ui5 build --all` to pro
 
 Find more information here:
 
- [Server](./Server.md) 
- [Builder](./Builder.md) 
- [CLI](./CLI.md)
+ - [Server](./Server.md) 
+ - [Builder](./Builder.md) 
+ - [CLI](./CLI.md)
 :::
 1. If you are using Git or similar version control, commit `package.json` and `ui5.yaml` to your repository.
     ```sh
