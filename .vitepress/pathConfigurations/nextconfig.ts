@@ -18,7 +18,7 @@ const loadSyntax = async (file: string, name: string, alias: string = name): Pro
 
 export default defineConfig({
   
-  base: "/ui5-tooling/v4", // use this for github pages deployment or remove for CF
+  base: "/ui5-tooling/next", // use this for github pages deployment or remove for CF
 
   srcDir: "docs",
   outDir: "site",

@@ -3,7 +3,7 @@ import {fileURLToPath} from "node:url";
 
 // Define the new content you want to write to the file
 const content =
-readFileSync(fileURLToPath(new URL("../.vitepress/pathConfigurations/stableconfig.ts", import.meta.url)), "utf8");
+readFileSync(fileURLToPath(new URL("../.vitepress/pathConfigurations/nextconfig.ts", import.meta.url)), "utf8");
 
 // Write the new content to the file, replacing the old content
 writeFileSync("./.vitepress/config.ts", content, "utf8");

@@ -55,8 +55,8 @@ jobs:
           sudo chown -R $(id -u):$(id -g) ./site
       - name: generate CLI doc
         run: npm run generate-cli-doc
-      - name: generate stable Config
-        run: npm run replace-base-path-stable
+      - name: generate next config
+        run: npm run replace-base-path
       - name: Build jsdoc
         run:  npm run jsdoc-generate
       - name: Build vitepress build
@@ -74,8 +74,8 @@ jobs:
         run: |
           rm -rf ./gh-pages/schema
           cp -R ./site/schema ./gh-pages/
-          rm -rf ./gh-pages/stable/
-          cp -R ./site ./gh-pages/stable/
+          rm -rf ./gh-pages/next/
+          cp -R ./site ./gh-pages/next/
           cp ./scripts/resources/custom404.html ./gh-pages/404.html
       - name: Publish Docs
         run: |
