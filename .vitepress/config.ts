@@ -17,6 +17,7 @@ const loadSyntax = async (file: string, name: string, alias: string = name): Pro
 }
 
 export default defineConfig({
+  
   base: "/ui5-tooling/v4", // use this for github pages deployment or remove for CF
 
   srcDir: "docs",
@@ -96,6 +97,9 @@ export default defineConfig({
   },
 
   markdown: {
+    externalLinks: {
+      target: '_self'
+    }
     //theme: "material-theme-palenight", // pre rc5 default
     // Add support for your own languages.
     // https://github.com/shikijs/shiki/blob/main/languages.md#supporting-your-own-languages-with-shiki
