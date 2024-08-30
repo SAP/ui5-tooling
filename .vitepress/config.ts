@@ -97,9 +97,7 @@ export default defineConfig({
   },
 
   markdown: {
-    externalLinks: {
-      target: '_self'
-    },
+    
     //theme: "material-theme-palenight", // pre rc5 default
     // Add support for your own languages.
     // https://github.com/shikijs/shiki/blob/main/languages.md#supporting-your-own-languages-with-shiki
@@ -141,7 +139,9 @@ export default defineConfig({
       });
     },
   },
-
+externalLinks: {
+      target: ""
+    },
   vite: {
     build: {
       chunkSizeWarningLimit: 4000, // chunk for local search index dominates
