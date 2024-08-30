@@ -97,6 +97,7 @@ export default defineConfig({
   },
 
   markdown: {
+   
     
     //theme: "material-theme-palenight", // pre rc5 default
     // Add support for your own languages.
@@ -139,9 +140,8 @@ export default defineConfig({
       });
     },
   },
-externalLinks: {
-      target: ""
-    },
+
+ 
   vite: {
     build: {
       chunkSizeWarningLimit: 4000, // chunk for local search index dominates
@@ -157,11 +157,13 @@ function nav() {
       items: [
         {
           text: 'V3',
-          link: 'https://konnraad.github.io/ui5-tooling/v3/'
+          link: 'https://konnraad.github.io/ui5-tooling/v3/',
+          target: "_self"
         },
         {
           text: 'V2',
-          link: 'https://konnraad.github.io/ui5-tooling/v2/'
+          link: 'https://konnraad.github.io/ui5-tooling/v2/',
+          target: "_self"
         }
       ]
     },
