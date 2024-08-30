@@ -74,6 +74,7 @@ jobs:
           cp -R ./site/schema ./gh-pages/
           rm -rf ./gh-pages/$DOC_VERSION
           cp -R ./site ./gh-pages/$DOC_VERSION/
+          rm -rf ./gh-pages/stable
           cp -R ./site ./gh-pages/stable/
           cp ./scripts/resources/custom404.html ./gh-pages/404.html
       - name: Publish Docs
