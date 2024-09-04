@@ -29,11 +29,14 @@
 		"jsdoc-generate": "node ./scripts/isWorkspace.js && npm run jsdoc-generate-workspace || npm run jsdoc-generate-local",
 		"jsdoc-generate-local": "jsdoc -c ./jsdoc.json -t $(node -p 'path.dirname(require.resolve(\"docdash\"))') ./ || (echo 'Error during JSDoc generation! Check log.' && exit 1)",
 		"jsdoc-generate-workspace": "jsdoc -c ./jsdoc-workspace.json -t $(node -p 'path.dirname(require.resolve(\"docdash\"))') ../ || (echo 'Error during JSDoc generation! Check log.' && exit 1)",
-		"docs": "bash ./scripts/serveDocs.sh",
-		"docs-generate": "bash ./scripts/buildDocs.sh && open-cli http://localhost:8000 && ws --compress -d site",
+		"start": "vitepress --open",
+		"serve-docs": "vitepress build && vitepress preview --port 8080",
+		"docs-generate": "vitepress build",
 		"schema-generate": "node ./scripts/buildSchema.js ui5",
 		"schema-workspace-generate": "node ./scripts/buildSchema.js ui5-workspace",
 		"generate-cli-doc": "node ./scripts/generateCliDoc.js",
+		"replace-base-path-next": "node ./scripts/generatenextConfig.js",
+		"replace-base-path-stable": "node ./scripts/generateStableConfig.js",
 		"depcheck": "depcheck --ignores @ui5/builder,@ui5/cli,@ui5/fs,@ui5/logger,@ui5/project,@ui5/server,docdash,local-web-server"
 	},
 	"repository": {
@@ -62,6 +65,21 @@
 		"jsdoc": "^4.0.3",
 		"local-web-server": "^5.4.0",
 		"open-cli": "^8.0.0",
-		"traverse": "^0.6.9"
+		"traverse": "^0.6.9",
+		"@odata2ts/http-client-fetch": "^0.6.2",
+        "@odata2ts/odata2ts": "^0.35.0",
+        "@types/markdown-it-plantuml": "^1.4.5",
+        "@types/node": "^20.14.9",
+        "@ui5/webcomponents": "^1.24.5",
+        "autoprefixer": "^10.4.19",
+        "cssnano": "^7.0.3",
+        "markdown-it-implicit-figures": "^0.12.0",
+        "markdown-it-link-attributes": "^4.0.1",
+        "markdown-it-plantuml": "^1.4.1",
+        "postcss": "^8.4.38",
+        "tailwindcss": "^3.4.4",
+        "vitepress": "^1.2.3",
+        "vue": "^3.4.30"
+
 	}
 }
