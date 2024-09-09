@@ -122,3 +122,7 @@ There are phases when development of a new major version of UI5 Tooling has alre
 1. Create a pull request for the current version (e.g. Version 3) with the desired commit message header `[FEATURE]`, `[FIX]` or `[INTERNAL]`.
 2. Rebase and merge the PR in the current version.
 3. Cherry-pick this commit to the new major version (e.g. Version 4) and change the commit message header to `[INTERNAL]`. With this, you ensure that the coding change does not appear in the changelog of the new major version.
+
+### GenAI
+In case you plan to contribute code created by GenAI, please follow these guidelines:
+https://github.com/SAP/.github/blob/main/CONTRIBUTING_USING_GENAI.md
