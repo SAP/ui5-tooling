@@ -122,3 +122,8 @@ There are phases when development of a new major version of UI5 Tooling has alre
 1. Create a pull request for the current version (e.g. Version 3) with the desired commit message header `[FEATURE]`, `[FIX]` or `[INTERNAL]`.
 2. Rebase and merge the PR in the current version.
 3. Cherry-pick this commit to the new major version (e.g. Version 4) and change the commit message header to `[INTERNAL]`. With this, you ensure that the coding change does not appear in the changelog of the new major version.
+
+### Contributing with AI-generated code
+As artificial intelligence evolves, AI-generated code is becoming valuable for many software projects, including open-source initiatives. While we recognize the potential benefits of incorporating AI-generated content into our open-source projects there are certain requirements that need to be reflected and adhered to when making contributions.
+
+Please see our [guideline for AI-generated code contributions to SAP Open Source Software Projects](https://github.com/SAP/.github/blob/main/CONTRIBUTING_USING_GENAI.md) for these requirements.
