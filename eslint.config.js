@@ -4,7 +4,7 @@ export default [
 	{
 		// Add project-specific ignore patterns for ESLint here
 		// to add to common config
-		ignores: ["**/site/"]
+		ignores: ["**/site/", ".vitepress", "src", "tailwind.config.js", "docs", "postcss.config.js"]
 	},
 	...eslintCommonConfig, // Load common ESLint config
 	{
