@@ -46,7 +46,7 @@
 		"@ui5/fs": "^3.0.5",
 		"@ui5/logger": "^3.0.0",
 		"@ui5/project": "^3.9.2",
-		"@ui5/server": "^3.2.1"
+		"@ui5/server": "^3.3.0"
 	},
 	"devDependencies": {
 		"@apidevtools/json-schema-ref-parser": "^11.7.0",
@@ -58,6 +58,6 @@
 		"jsdoc": "^4.0.3",
 		"local-web-server": "^5.4.0",
 		"open-cli": "^8.0.0",
-		"traverse": "^0.6.9"
+		"traverse": "^0.6.10"
 	}
 }
