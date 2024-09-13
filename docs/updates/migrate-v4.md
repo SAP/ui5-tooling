@@ -1,6 +1,6 @@
 # Migrate to v4
 
-!!! tip "In Development"
+!!! tip "New Release"
     **UI5 Tooling 4.0 has been released on July 24, 2024 🎉**
 
     Install the latest version in your projects via: `npm i --save-dev @ui5/cli@latest`  
@@ -18,7 +18,7 @@ For applications and libraries running with UI5 2.x, the use of Specification Ve
 
 ## Node.js and npm Version Support
 
-This release requires **Node.js versions v20.11.0, v22.0.0, or higher** as well as npm v8 or higher.
+This release requires **Node.js version v20.11.0 and higher or v22.0.0 and higher (v21 is not supported)** as well as npm v8 or higher.
 Support for older Node.js releases has been dropped; their use will cause an error.
 
 ## Specification Versions Support
