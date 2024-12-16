@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        branch: ["v3"] # List of branches to run the security audit uppon
+        branch: ["main", "v3"] # List of branches to run the security audit on
 
     steps:
       - name: Checkout '${{ matrix.branch }}' branch
@@ -18,8 +18,5 @@ jobs:
         with:
           ref: ${{ matrix.branch }}
 
-      - name: install dependencies
-        run: npm ci
-
       - name: Use audit-ci
-        run: npx audit-ci@^6 --config ./audit-ci.jsonc
+        run: npx audit-ci@^7 --config ./audit-ci.jsonc
