@@ -49,15 +49,15 @@
 		"@ui5/server": "^4.0.5"
 	},
 	"devDependencies": {
-		"@apidevtools/json-schema-ref-parser": "^11.9.0",
+		"@apidevtools/json-schema-ref-parser": "^11.9.1",
 		"@eslint/js": "^9.8.0",
 		"depcheck": "^1.4.7",
 		"docdash": "^2.0.2",
-		"eslint": "^9.20.0",
+		"eslint": "^9.20.1",
 		"eslint-config-google": "^0.14.0",
 		"eslint-plugin-ava": "^15.0.1",
 		"eslint-plugin-jsdoc": "^50.6.3",
-		"globals": "^15.14.0",
+		"globals": "^15.15.0",
 		"handlebars": "^4.7.8",
 		"jsdoc": "^4.0.4",
 		"local-web-server": "^5.4.0",
