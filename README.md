@@ -24,7 +24,7 @@
 - [Project Configuration](https://sap.github.io/ui5-tooling/v3/pages/Configuration/)
 - 🎬 [UI5con@SAP 2020 Talk](https://www.youtube.com/watch?v=8IHoVJLKN34)
 - 🎬 [UI5con@SAP 2018 Talk](https://www.youtube.com/watch?v=iQ07oe26y_k)
-- [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/main/CONTRIBUTING.md)
+- [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/master/CONTRIBUTING.md)
 - [Roadmap](https://github.com/SAP/ui5-tooling/issues/701)
 
 ## Modules
