@@ -2,7 +2,8 @@
 name: Bug Report
 about: Report an issue with UI5 Tooling
 title: ''
-labels: bug, needs triage
+type: Bug
+labels: needs triage
 assignees: ''
 
 ---
