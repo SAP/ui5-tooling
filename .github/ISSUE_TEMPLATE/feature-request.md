@@ -2,7 +2,7 @@
 name: Feature Request
 about: Request a new feature to be added to UI5 Tooling
 title: ''
-labels: enhancement
+type: Feature
 assignees: ''
 
 ---

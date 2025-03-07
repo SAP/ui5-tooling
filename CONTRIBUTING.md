@@ -7,7 +7,7 @@
 
 ### ⚡️ Quick Links for Maintainers
 - [All Open Pull Requests (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs)
-- [Pull Request Queue (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Apr+-label%3Aenhancement+-label%3Adependencies+-label%3ARFC+is%3Aopen+no%3Aassignee+sort%3Aupdated-desc+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs+repo%3ASAP%2Fgrunt-openui5+repo%3ASAP%2Fless-openui5+repo%3ASAP%2Fconnect-openui5+repo%3ASAP%2Fkarma-openui5+repo%3ASAP%2Fopenui5-sample-app)
+- [Pull Request Queue (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Apr+-label%3Adependencies+-label%3ARFC+is%3Aopen+no%3Aassignee+sort%3Aupdated-desc+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs+repo%3ASAP%2Fgrunt-openui5+repo%3ASAP%2Fless-openui5+repo%3ASAP%2Fconnect-openui5+repo%3ASAP%2Fkarma-openui5+repo%3ASAP%2Fopenui5-sample-app)
 
 ## 📝 Reporting Issues
 ### Seeking Help / Not a Bug
@@ -50,11 +50,19 @@ Please also refer to the general [SAP security information page](https://www.sap
 ### Use of Labels
 GitHub offers labels to categorize issues. The labels can only be set and modified by committers.
 
-##### General issue categories:
-* **`bug`**: This issue is a bug in the code.
+#### General issue types:
+- **`Bug`**: This issue is a bug in the code.
+- **`Feature`**: This is not a bug report, but an feature request.
+
+#### Specific issue categories for UI5 Tooling:
 * **`documentation`**: This issue is about wrong documentation.
-* **`enhancement`**: This is not a bug report, but an enhancement request.
 * **`needs triage`**: This issue needs to be investigated and confirmed as a valid issue that is not a duplicate
+* **`module/ui5-builder`**: This issue is related to the UI5 Builder module
+* **`module/ui5-cli`**: This issue is related to the UI5 CLI module
+* **`module/ui5-fs`**: This issue is related to the UI5 FS module
+* **`module/ui5-logger`**: This issue is related to the UI5 Logger module
+* **`module/ui5-project`**: This issue is related to the UI5 Project module
+* **`module/ui5-server`**: This issue is related to the UI5 Server module
 
 ##### Status of an open issue:
 * **`information required`**: The author is required to provide information.
