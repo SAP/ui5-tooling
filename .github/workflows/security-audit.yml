@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "36 4 * * *" # Run once a day
   workflow_dispatch:
+
+# No permissions are required for this workflow
+permissions: {}
+
 jobs:
   security-scan:
     name: Security Audit
