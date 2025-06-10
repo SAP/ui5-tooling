@@ -46,7 +46,7 @@
 		"@ui5/fs": "^3.0.5",
 		"@ui5/logger": "^3.0.0",
 		"@ui5/project": "^3.9.4",
-		"@ui5/server": "^3.5.0"
+		"@ui5/server": "^3.6.0"
 	},
 	"devDependencies": {
 		"@apidevtools/json-schema-ref-parser": "^11.9.3",
