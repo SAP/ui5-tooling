@@ -1,13 +1,13 @@
 # Consuming OpenUI5 Libraries
 
-OpenUI5 consumption with UI5 Tooling is very similar to SAPUI5 consumption. Please refer to the documentation on [Consuming SAPUI5 Libraries](./SAPUI5.md) for a general description of how UI5 Tooling can fetch and provide framework dependencies to your project.
+OpenUI5 consumption with UI5 CLI is very similar to SAPUI5 consumption. Please refer to the documentation on [Consuming SAPUI5 Libraries](./SAPUI5.md) for a general description of how UI5 CLI can fetch and provide framework dependencies to your project.
 
 Note that projects using the SAPUI5 framework can depend on projects using the OpenUI5 framework. However, OpenUI5 projects can't depend on SAPUI5 projects.
 
 Please also refer to our documentation on the [differences between OpenUI5 and SAPUI5](./FAQ.md#whats-the-difference-between-openui5-and-sapui5).
 
 !!! info
-    The minimum OpenUI5 version that can be consumed by UI5 Tooling is **1.52.5**
+    The minimum OpenUI5 version that can be consumed by UI5 CLI is **1.52.5**
 
 ## Configuration
 Your project's `ui5.yaml` provides a configuration section dedicated to framework dependency handling.

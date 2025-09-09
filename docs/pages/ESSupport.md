@@ -1,15 +1,15 @@
 
 # ECMAScript Support
 
-UI5 Tooling offers general support for `ES2023` ECMAScript features. While a `ui5 build` is executed, UI5 Tooling analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the usage of certain ECMAScript syntax.
+UI5 CLI offers general support for `ES2023` ECMAScript features. While a `ui5 build` is executed, UI5 CLI analyses a project's code. Depending on the project type, you have to consider some restrictions regarding the usage of certain ECMAScript syntax.
 
-| UI5 Tooling Version | Supported ECMAScript Version | Note |
+| UI5 CLI Version | Supported ECMAScript Version | Note |
 |-------------------- |----------------------------- | ---- |
 | v3.11+              | ECMAScript 2023              |      |
 | v3.0+               | ECMAScript 2022              |      |
 | v2.0+               | ECMAScript 2009/ES5          | Note that code up to ECMAScript 2020 can be parsed, however required code analysis might not work correctly for specific language features |
 
-The following section describes all restrictions grouped by the kind of ECMAScript language feature. To get more insights into the code analysing executed by UI5 Tooling check out [Code Analysis](./CodeAnalysis.md).
+The following section describes all restrictions grouped by the kind of ECMAScript language feature. To get more insights into the code analysing executed by UI5 CLI check out [Code Analysis](./CodeAnalysis.md).
 
 ## Language Features with Restrictions
 
@@ -17,9 +17,9 @@ The following sections describe the restrictions grouped by the ECMAScript langu
 
 ### JavaScript modules
 
-In general, UI5 Tooling only analyzes **JavaScript** files of type `script`. [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) are not analyzed.
+In general, UI5 CLI only analyzes **JavaScript** files of type `script`. [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) are not analyzed.
 
-UI5 Tooling and the UI5 Runtime does not support the usage of `export` and `import` of JavaScript Modules. Therefore, `sap.ui.define` has to be used.
+UI5 CLI and the UI5 Runtime does not support the usage of `export` and `import` of JavaScript Modules. Therefore, `sap.ui.define` has to be used.
 
 === "Supported"
 
@@ -42,7 +42,7 @@ UI5 Tooling and the UI5 Runtime does not support the usage of `export` and `impo
 
 ### Template Literal
 
-[Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) without an expressions can be used in all places where string literals can be used. However, since UI5 Tooling will attempt a static code analysis for certain calls to UI5 API, Template Literals with one or more expressions (e.g. `Hello ${planets[2]}`) can't be used in the scenarios described below.
+[Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) without an expressions can be used in all places where string literals can be used. However, since UI5 CLI will attempt a static code analysis for certain calls to UI5 API, Template Literals with one or more expressions (e.g. `Hello ${planets[2]}`) can't be used in the scenarios described below.
 
 #### Template Literal in `sap.ui.define` or `sap.ui.require`
 
@@ -122,7 +122,7 @@ When declaring a **Smart Template** using a **Template Literal** with one or mor
 
 #### Template Literal in XMLComposite Declaration
 
-The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 CLI will attempt to analyze the declaration of any such controls in a project.
 
 Declaring an **XMLComposite** control using a **Template Literal** with one or more expressions in the name, is not supported.
 
@@ -170,7 +170,7 @@ A library is typically initialized via an accompanying `library.js`. Within that
 
 #### Reserved Variable Names in a Template Literal
 
-While UI5 Tooling performs a build placeholders are replaced with a values offered by the build. For example `${version}` is replaced with the actual version defined in the package.json of the project. Therefore it is required to not use any **Template Literal** where any expression contains variable with following names:
+While UI5 CLI performs a build placeholders are replaced with a values offered by the build. For example `${version}` is replaced with the actual version defined in the package.json of the project. Therefore it is required to not use any **Template Literal** where any expression contains variable with following names:
 
 - `version`
 - `project.version`
@@ -191,7 +191,7 @@ While UI5 Tooling performs a build placeholders are replaced with a values offer
     const transformedVersion `v${version}`
     ```
 
-UI5 Tooling searches for the exact match of `${version}`, so with adding whitespaces before and after the variable name `${ version }` UI5 Tooling won't replace this occurence. This can be enforced by the dedicated ESLint config [template-curly-spacing](https://eslint.org/docs/latest/rules/template-curly-spacing) with option `always`.
+UI5 CLI searches for the exact match of `${version}`, so with adding whitespaces before and after the variable name `${ version }` UI5 CLI won't replace this occurence. This can be enforced by the dedicated ESLint config [template-curly-spacing](https://eslint.org/docs/latest/rules/template-curly-spacing) with option `always`.
 
 ### Spread Element
 
@@ -276,7 +276,7 @@ When declaring a **Smart Template**, the usage of a **Spread Element** in the co
 
 #### Spread Element in XMLComposite Declaration
 
-The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 CLI will attempt to analyze the declaration of any such controls in a project.
 
 When declaring an **XMLComposite**, the usage of a **Spread Element** in the configuration is not supported.
 
@@ -411,7 +411,7 @@ When declaring a **Smart Template**, the usage of an **Object Expression** in th
 
 #### Object Expression in XMLComposite Declaration
 
-The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless UI5 CLI will attempt to analyze the declaration of any such controls in a project.
 
 When declaring an **XMLComposite**, the usage of an **Object Expression** in the configuration is not supported.
 

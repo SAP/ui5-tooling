@@ -1,9 +1,9 @@
 # Migrate to v3
 
 !!! warning "Superseded"
-	**UI5 Tooling 3.0 has been superseded by version 4.0. See [Migrate to v4](./migrate-v4.md).**
+	**UI5 CLI 3.0 has been superseded by version 4.0. See [Migrate to v4](./migrate-v4.md).**
 
-	Find the announcement blog post for version 3.0 here: **[SAP Community: UI5 Tooling 3.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
+	Find the announcement blog post for version 3.0 here: **[SAP Community: UI5 CLI 3.0](https://blogs.sap.com/2023/02/10/ui5-tooling-3.0/)**
 
 ## Node.js and npm Version Support
 
@@ -20,7 +20,7 @@ This means your old projects might still work. Unless they have non-standard con
 ## Changes for Projects
 
 !!! info
-    ✅ Projects defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v3**
+    ✅ Projects defining **Specification Version 2.x** are expected to be **fully compatible with UI5 CLI v3**
 
 For projects defining the latest **Specification Versions 3.0 and higher**, some changes apply:
 
@@ -31,7 +31,7 @@ See also [Configuration: Specification Version 3.0](../pages/Configuration.md#sp
 ## Changes for Extensions
 
 !!! info
-    ✅ Custom Tasks and Custom Middleware defining **Specification Version 2.x** are expected to be **fully compatible with UI5 Tooling v3**
+    ✅ Custom Tasks and Custom Middleware defining **Specification Version 2.x** are expected to be **fully compatible with UI5 CLI v3**
 
 For extensions defining the latest **Specification Versions 3.0 and higher**, some changes and improvements apply:
 
@@ -45,7 +45,7 @@ For extensions defining the latest **Specification Versions 3.0 and higher**, so
 ## Changes to Dependency Configuration
 
 !!! info
-    ✅ The **`ui5.dependencies` package.json configuration** becomes obsolete and is ignored in UI5 Tooling v3.
+    ✅ The **`ui5.dependencies` package.json configuration** becomes obsolete and is ignored in UI5 CLI v3.
 
     Configuration like the following is not needed anymore:
 
@@ -62,7 +62,7 @@ For extensions defining the latest **Specification Versions 3.0 and higher**, so
     ```
 
     `dependencies`, `devDependencies` and `optionalDependencies` are now [automatically analyzed](https://github.com/SAP/ui5-project/blob/ff04ae4aeeb7f7d889dffd0c0e3e8774dd708c79/lib/graph/providers/NodePackageDependencies.js#L104).
-    If a dependency can be configured as a UI5 project or UI5 Tooling extension, it is added to the graph and its `dependencies` are analyzed.
+    If a dependency can be configured as a UI5 project or UI5 CLI extension, it is added to the graph and its `dependencies` are analyzed.
 
     Note that `devDependencies` and `optionalDependencies` are ignored for all but the current root project. For projects that are intended to be consumed in other projects (for example libraries), this means that any required custom tasks must be added to `dependencies`.
 
@@ -76,7 +76,7 @@ Also the @ui5/server API has been changed. Instead of a `tree`, it now only acce
 
 ### Migrate Your Code
 
-The tooling modules such as @ui5/builder, etc. have been transformed to ES Modules ("ESM"). Therefore, they no longer use a CommonJS export and cannot be included via `require`.
+The UI5 CLI-related modules such as @ui5/builder, etc. have been transformed to ES Modules ("ESM"). Therefore, they no longer use a CommonJS export and cannot be included via `require`.
 If your code is in CommonJS format, it needs to use dynamic imports or be converted to [ES Modules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
 
 
@@ -137,11 +137,11 @@ The `jsdocGenerator` processor and the corresponding `generateJsdoc` task will n
 
 ## Always Building Required Dependencies
 
-If any of a project's build tasks requires access to resources of the project's dependencies, UI5 Tooling v3 will now **always build that dependency upfront**.
+If any of a project's build tasks requires access to resources of the project's dependencies, UI5 CLI v3 will now **always build that dependency upfront**.
 
 This ensures that tasks always access processed resources and never the raw sources of a dependency. Resulting in better reproducibility of build results and resolving common issues.
 
-Especially for projects of type `library`, where standard tasks like [`buildThemes`](https://github.com/SAP/ui5-project/blob/b40e3f569e0f01c6dd8e72141c7ba43449812d01/lib/build/definitions/library.js#L139) always require dependency access, UI5 Tooling will now always build all dependencies.
+Especially for projects of type `library`, where standard tasks like [`buildThemes`](https://github.com/SAP/ui5-project/blob/b40e3f569e0f01c6dd8e72141c7ba43449812d01/lib/build/definitions/library.js#L139) always require dependency access, UI5 CLI will now always build all dependencies.
 
 In the future, a caching mechanism should help and improve build times with this new behavior.
 
@@ -167,7 +167,7 @@ The following processors have been removed:
 
 **Task Migration**
 
-| UI5 Tooling v2              | UI5 Tooling v3              | Note |
+| UI5 CLI v2                 | UI5 CLI v3                  | Note |
 | --------------------------- | --------------------------- | ------------------------- |
 | createDebugFiles<br/>uglify | minify                      | The minify task is executed earlier, before the bundling process takes place. Any existing `beforeTask` or `afterTask` configuration of custom tasks might need to be adapted to cater for this change. <br>To adapt, you can use the `generateResourcesJson` task for subscription before or after the last standard task. By default, `generateResourcesJson` is disabled, but you can still subscribe to it, thereby ensuring that your custom tasks execute in the correct order. |
 | generateVersionInfo         | generateVersionInfo         | The task is no longer executed by default for application projects. It can be re-enabled by using the `--include-task` parameter. |
@@ -219,6 +219,6 @@ The following middleware has been removed from the [standard middlewares list](.
 
 **Middleware Migration**
 
-| UI5 Tooling v2              | UI5 Tooling v3              | Note |
+| UI5 CLI v2                  | UI5 CLI v3                  | Note |
 | --------------------------- | --------------------------- | ------------------------- |
 | connectUi5Proxy | *None* | More sophisticated proxy solutions for ui5-server are now available in the form of [custom middleware extensions from the UI5-community](https://bestofui5.org/#/packages?tokens=proxy:tag). Make sure to refactor any custom middleware that attaches to `beforeMiddleware` or `afterMiddleware` of `connectUi5Proxy` to reference some other middleware. |

@@ -1,6 +1,6 @@
 ### Support
 
-If you need help setting something up, or if you have questions regarding UI5 Tooling, please refrain from opening an issue on GitHub. 
+If you need help setting something up, or if you have questions regarding UI5 CLI, please refrain from opening an issue on GitHub. 
 
 Instead, please use one of the following platforms to seek help:
 

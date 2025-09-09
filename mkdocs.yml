@@ -1,11 +1,11 @@
-site_name: UI5 Tooling
+site_name: UI5 CLI
 site_url: 'https://sap.github.io/ui5-tooling/' # required for working 404 page
 repo_name: 'SAP/ui5-tooling'
 repo_url: 'https://github.com/SAP/ui5-tooling'
 edit_uri: ./edit/main/docs # default points to "master" branch
 docs_dir: 'docs' # default
 site_dir: 'site' # default
-copyright: '© Copyright 2025, SAP SE and UI5 Tooling Contributors'
+copyright: '© Copyright 2025, SAP SE and UI5 CLI Contributors'
 nav:
     - Home: index.md
     - Getting Started: pages/GettingStarted.md

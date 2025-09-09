@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Request a new feature to be added to UI5 Tooling
+about: Request a new feature to be added to UI5 CLI
 title: ''
 type: Feature
 assignees: ''

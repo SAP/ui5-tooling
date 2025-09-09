@@ -70,7 +70,7 @@ Related to this, the bundling tasks will also incorporate the generated source m
 
 For projects facilitating transpilation (such as TypeScript-based projects), it is commonly desired to debug in the browser using the original sources, e.g. TypeScript files. To make this work, the transpilation process first needs to create source maps and reference them in the generated JavaScript code.
 
-UI5 Tooling's `minify` task will then find this reference and incorporate the source map into the minification process. In the end, the minified JavaScript resources will reference an updated source map, which reflects the transpilation as well as the minification. The browser can use this to map every statement back to the original TypeScript file, making debugging a breeze.
+UI5 CLI's `minify` task will then find this reference and incorporate the source map into the minification process. In the end, the minified JavaScript resources will reference an updated source map, which reflects the transpilation as well as the minification. The browser can use this to map every statement back to the original TypeScript file, making debugging a breeze.
 
 !!! warning
     If a resource has been modified by another build task before `minify` is executed, any referenced source map will be ignored. This is to ensure the integrity of the source maps in the build result.
@@ -82,7 +82,7 @@ UI5 Tooling's `minify` task will then find this reference and incorporate the so
 Expand the block below to view a diagram illustrating the minification process and source map handling.
 
 ??? info "Minification Activity Diagram"
-    ![minify Task Activity](../images/UI5_Tooling/Task_Minify.svg){ loading=lazy }
+    ![minify Task Activity](../images/UI5_CLI/Task_Minify.svg){ loading=lazy }
 
 
 ### Generation of Supported Locales
@@ -152,11 +152,11 @@ JavaScript port of the "legacy" Maven/Java based bundle tooling.
 
 
 ### JavaScript Files Requiring Top Level Scope
-UI5 Tooling packages JavaScript files that require "top level scope" as a string, provided your project uses a Specification Version lower than `4.0`. In this case, the code is evaluated using [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) at runtime.
+UI5 CLI packages JavaScript files that require "top level scope" as a string, provided your project uses a Specification Version lower than `4.0`. In this case, the code is evaluated using [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) at runtime.
 
 This ensures that the script works as expected, e.g. with regards to implicitly used globals. However, this `eval` runtime feature will be discontinued with UI5 2.x because of [security best practices](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) and to comply with stricter CSP settings (i.e. [unsafe-eval](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src#unsafe_eval_expressions)).
 
-If your project defines [Specification Version 4.0](./Configuration.md#specification-version-40) or higher, files requiring top level scope are no longer part of the created bundle and following error is logged by UI5 Tooling:
+If your project defines [Specification Version 4.0](./Configuration.md#specification-version-40) or higher, files requiring top level scope are no longer part of the created bundle and following error is logged by UI5 CLI:
 >  Module myFancyModule requires top level scope and can only be embedded as a string (requires 'eval'), which is not supported with specVersion 4.0 and higher.
 
 If you see this error message, please adjust your code by applying one of the following options:

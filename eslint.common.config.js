@@ -5,7 +5,7 @@ import js from "@eslint/js";
 import google from "eslint-config-google";
 
 export default [{
-	ignores: [ // Common ignore patterns across all tooling repos
+	ignores: [ // Common ignore patterns across all UI5 CLI repos
 		"**/coverage/",
 		"test/tmp/",
 		"test/expected/",
@@ -14,7 +14,7 @@ export default [{
 		"**/jsdocs/",
 	],
 }, js.configs.recommended, google, ava.configs["flat/recommended"], {
-	name: "Common ESLint config used for all tooling repos",
+	name: "Common ESLint config used for all UI5 CLI repos",
 
 	plugins: {
 		jsdoc,

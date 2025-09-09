@@ -1,13 +1,18 @@
 ![UI5 logo](images/UI5_logo_wide.png)
 
-# UI5 Tooling
+# UI5 CLI
 
 An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
-!!! tip "New Release"
-	**UI5 Tooling V4 is here 🎉**
+!!! abstract "Project Rename"
+	**UI5 Tooling has been renamed to UI5 CLI 🚨**
 
-	Read the announcement blog post: **[SAP Community: UI5 Tooling 4.0](https://community.sap.com/t5/technology-blogs-by-sap/ui5-tooling-4-0/ba-p/13769578)**
+	Read the announcement blog post: **[SAP Community: Goodbye UI5 Tooling - Hello UI5 CLI!](https://community.sap.com/t5/technology-blog-posts-by-sap/goodbye-ui5-tooling-hello-ui5-cli/ba-p/14211769)**
+
+!!! tip "New Release"
+	**UI5 CLI V4 is here 🎉**
+
+	Read the announcement blog post: **[SAP Community: UI5 CLI 4.0](https://community.sap.com/t5/technology-blogs-by-sap/ui5-tooling-4-0/ba-p/13769578)**
 
     And checkout the **[Migrate to v4](./updates/migrate-v4.md)** documentation.
 
@@ -29,7 +34,7 @@ npm install --save-dev @ui5/cli
 
 #### ⚙️ Project Setup
 
-Configure your project for use with UI5 Tooling.  
+Configure your project for use with UI5 CLI.  
 *Also see the [Configuration Documentation](./pages/Configuration.md)*
 
 ```
@@ -44,7 +49,7 @@ type: application
 
 #### 🚚 Dependency Management
 
-UI5 framework dependencies are managed by the tooling. All other dependencies are managed by your favorite node package manager.
+UI5 framework dependencies are managed by UI5 CLI. All other dependencies are managed by your favorite node package manager.
 
 ```
 ❯ ui5 use SAPUI5@1.117.0
@@ -91,10 +96,10 @@ info ProjectBuilder Executing cleanup tasks...
 
 ### 🧪 Node.js API
 
-Most UI5 Tooling modules provide JavaScript APIs for direct consumption in other Node.js projects.
-This allows you to rely on UI5 Tooling for UI5-specific build functionality and project handling, while creating your own tools to perfectly match the needs of your project.
+Most UI5 CLI modules provide JavaScript APIs for direct consumption in other Node.js projects.
+This allows you to rely on UI5 CLI for UI5-specific build functionality and project handling, while creating your own tools to perfectly match the needs of your project.
 
-All available APIs are documented in the [UI5 Tooling API Reference](https://sap.github.io/ui5-tooling/v4/api/index.html).
+All available APIs are documented in the [UI5 CLI API Reference](https://sap.github.io/ui5-tooling/v4/api/index.html).
 
 === "ESM"
 

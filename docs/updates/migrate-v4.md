@@ -1,20 +1,20 @@
 # Migrate to v4
 
 !!! tip "New Release"
-    **UI5 Tooling 4.0 has been released on July 24, 2024 🎉**
+    **UI5 CLI 4.0 has been released on July 24, 2024 🎉**
 
     Install the latest version in your projects via: `npm i --save-dev @ui5/cli@latest`  
     And update your global install via `npm i --global @ui5/cli@latest`
 
-    And find the announcement blog post here: **[SAP Community: UI5 Tooling 4.0](https://community.sap.com/t5/technology-blogs-by-sap/ui5-tooling-4-0/ba-p/13769578)**
+    And find the announcement blog post here: **[SAP Community: UI5 CLI 4.0](https://community.sap.com/t5/technology-blogs-by-sap/ui5-tooling-4-0/ba-p/13769578)**
 
 ## UI5 2.x Compatibility
 
 *Also see the blog post [SAP Community: Introducing OpenUI5 2.x](https://community.sap.com/t5/open-source-blogs/introducing-openui5-2-x/ba-p/13580633)*
 
-UI5 Tooling 4.0 is required for building UI5 2.x projects. The UI5 2.x framework libraries define Specification Version 4.0 and therefore can't be built using older UI5 Tooling versions.
+UI5 CLI 4.0 is required for building UI5 2.x projects. The UI5 2.x framework libraries define Specification Version 4.0 and therefore can't be built using older UI5 CLI versions.
 
-For applications and libraries running with UI5 2.x, the use of Specification Version 4.0 is not enforced. It is highly recommended, however, since only then UI5 Tooling will ensure UI5 2.x compatibility of the generated bundles.
+For applications and libraries running with UI5 2.x, the use of Specification Version 4.0 is not enforced. It is highly recommended, however, since only then UI5 CLI will ensure UI5 2.x compatibility of the generated bundles.
 
 ## Node.js and npm Version Support
 
@@ -23,7 +23,7 @@ Support for older Node.js releases has been dropped; their use will cause an err
 
 ## Specification Versions Support
 
-As with UI5 Tooling 3.x, all projects with Specification Versions 2.0 and higher are supported.
+As with UI5 CLI 3.x, all projects with Specification Versions 2.0 and higher are supported.
 
 If a legacy specification version is detected, an automatic migration is attempted.
 Old projects might therefore still work, unless they have a non-standard configuration in their ui5.yaml.
@@ -31,7 +31,7 @@ Old projects might therefore still work, unless they have a non-standard configu
 ## Changes for Projects
 
 !!! success "No changes for Specification Versions 2.x and 3.x"
-    Projects defining **Specification Version 2.x or 3.x** are expected to be **fully compatible with UI5 Tooling v4**
+    Projects defining **Specification Version 2.x or 3.x** are expected to be **fully compatible with UI5 CLI v4**
 
     The following does not apply to them.
 
@@ -39,7 +39,7 @@ For projects defining the latest **Specification Version 4.0 or higher**, the fo
 
 * **Breaking Change:** Bundling of JavaScript modules requiring "top level scope" as a string is terminated. 
     
-    In UI5 2.x, the feature of evaluating modules from a string is expected to be removed. Therefore, when using the latest Specification Version, UI5 Tooling will **omit affected module from the bundle and log an error message instead.**
+    In UI5 2.x, the feature of evaluating modules from a string is expected to be removed. Therefore, when using the latest Specification Version, UI5 CLI will **omit affected module from the bundle and log an error message instead.**
 
     For more details, see [Builder: JavaScript Files Requiring Top Level Scope](../pages/Builder.md#javascript-files-requiring-top-level-scope).
 
@@ -51,7 +51,7 @@ For projects defining the latest **Specification Version 4.0 or higher**, the fo
 
     See [Configuration: `bundleDefinition.sections`](../pages/Configuration.md#properties) for more on the new `async` option.
 
-* **Breaking Change:** Removal of the `usePredefineCalls` [bundle option](../pages/Configuration.md#properties). UI5 Tooling v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete.
+* **Breaking Change:** Removal of the `usePredefineCalls` [bundle option](../pages/Configuration.md#properties). UI5 CLI v4 will _always_ use `sap.ui.predefine` calls in bundles, making this option obsolete.
     
     **We do not expect any negative impact** on projects due to this change, therefore it is active independently of the Specification Version. However, when upgrading to Specification Version 4.0 you might need to remove the property if you have it in your ui5.yaml configuration.
 
@@ -59,7 +59,7 @@ You can find a summary of the above at [Configuration: Specification Version 4.0
 
 ## Migrate Your Code
 
-When using the Node.js API of UI5 Tooling, or when integrating it into other tools, the following changes might be relevant to you:
+When using the Node.js API of UI5 CLI, or when integrating it into other tools, the following changes might be relevant to you:
 
 ### Changes to @ui5/cli
 
@@ -128,10 +128,10 @@ Consumers of the Node.js API that make use of the `ProjectGraph#build` method ne
 
 This might be caused by a mismatch of your project's manifest version and your UI5 version.
 
-UI5 Tooling v4 enhances the manifest.json with information about the `supportedLocales` (also see [Builder: Generation of Supported Locales](../pages/Builder.md#generation-of-supported-locales)). In UI5 1.71 this configuration is not supported and leads to an ambiguous error message `TypeError: invalid input` and a failure to process the manifest file.
+UI5 CLI v4 enhances the manifest.json with information about the `supportedLocales` (also see [Builder: Generation of Supported Locales](../pages/Builder.md#generation-of-supported-locales)). In UI5 1.71 this configuration is not supported and leads to an ambiguous error message `TypeError: invalid input` and a failure to process the manifest file.
 
-UI5 Tooling uses the manifest's `_version` property to decide whether the `supportedLocales` can be generated. For UI5 1.71, only versions up to `1.17.0` are supported. See [UI5 Demo Kit: Descriptor for Applications, Components, and Libraries (manifest.json)](https://sdk.openui5.org/#/topic/be0cf40f61184b358b5faedaec98b2da) for a mapping per manifest version.
+UI5 CLI uses the manifest's `_version` property to decide whether the `supportedLocales` can be generated. For UI5 1.71, only versions up to `1.17.0` are supported. See [UI5 Demo Kit: Descriptor for Applications, Components, and Libraries (manifest.json)](https://sdk.openui5.org/#/topic/be0cf40f61184b358b5faedaec98b2da) for a mapping per manifest version.
 
 To resolve this issue, adjust the manifest version according to the UI5 version you are using.
 
-*This issue was first raised here: [Ui5 Tooling #988](https://github.com/SAP/ui5-tooling/issues/988)*
+*This issue was first raised here: [UI5 CLI #988](https://github.com/SAP/ui5-tooling/issues/988)*

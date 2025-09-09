@@ -1,5 +1,5 @@
 ### Project Shims
-A project shim extension can be used to define or extend a project configuration of a module. The most popular use case is probably to add UI5 project configuration to a third party module that otherwise could not be used with the UI5 Tooling.
+A project shim extension can be used to define or extend a project configuration of a module. The most popular use case is probably to add UI5 project configuration to a third party module that otherwise could not be used with the UI5 CLI.
 
 Also see [RFC 0002 Project Shims](https://github.com/SAP/ui5-tooling/blob/main/rfcs/0002-project-shims.md).
 

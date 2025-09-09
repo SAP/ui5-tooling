@@ -22,7 +22,7 @@ Remove the `.ui5/framework/` directory from your user's home directory:
 rm -rf ~/.ui5/framework/
 ```
 
-Any missing framework dependencies will be downloaded again during the next UI5 Tooling invocation.
+Any missing framework dependencies will be downloaded again during the next UI5 CLI invocation.
 
 ## Environment Variables
 ### Changing the Log Level
@@ -31,7 +31,7 @@ In CI environments or in a combination with other tools, the usage of [UI5 CLI's
 
 #### Resolution
 
-Replace UI5 Tooling's `--log-level` option with the `UI5_LOG_LVL` environment variable.
+Replace UI5 CLI's `--log-level` option with the `UI5_LOG_LVL` environment variable.
 
 Example:
 
@@ -53,9 +53,9 @@ UI5 + Karma:
 !!! warning
     The combination of the `UI5_LOG_LVL` environment variable with the `--log-level` CLI parameter might lead to unexpected results; they should be used interchangeably but not together. The CLI parameter takes precedence over the `UI5_LOG_LVL` environment variable.
 
-### Changing UI5 Tooling's Data Directory
+### Changing UI5 CLI's Data Directory
 
-UI5 Tooling's data directory is by default at `~/.ui5`. It's the place where the framework artifacts are stored.
+UI5 CLI's data directory is by default at `~/.ui5`. It's the place where the framework artifacts are stored.
 In some cases and environments this is not a convenient location and the user needs to provide a better one.
 
 The path to it can either be provided via environment variable or permanently set in the configuration.
