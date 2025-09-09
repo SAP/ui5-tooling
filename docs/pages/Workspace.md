@@ -103,16 +103,16 @@ dependencyManagement:
        	- path: ../test.library
 ```
 
-Resolution paths will be used by UI5 Tooling to look for project dependencies. Any dependencies found via these paths will be used over the ones found with the regular dependency resolution mechanism. This includes UI5 Tooling extensions.
+Resolution paths will be used by UI5 CLI to look for project dependencies. Any dependencies found via these paths will be used over the ones found with the regular dependency resolution mechanism. This includes UI5 CLI extensions.
 
-Paths must point to a directory containing a `package.json`. UI5 Tooling will attempt to find a UI5 project here. However, if the `package.json` contains a [`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces), or equivalently, `ui5.workspaces` configuration (which overrules the first), UI5 Tooling will resolve the workspace first and attempt to find UI5 projects in the configured "npm workspaces". This is commonly used in mono-repos. An example can be found in the [OpenUI5 repository](https://github.com/SAP/openui5/blob/b4267488e5d3546de4cd9577ccac4208482d71e0/package.json#L130-L132).
+Paths must point to a directory containing a `package.json`. UI5 CLI will attempt to find a UI5 project here. However, if the `package.json` contains a [`workspaces`](https://docs.npmjs.com/cli/v8/using-npm/workspaces), or equivalently, `ui5.workspaces` configuration (which overrules the first), UI5 CLI will resolve the workspace first and attempt to find UI5 projects in the configured "npm workspaces". This is commonly used in mono-repos. An example can be found in the [OpenUI5 repository](https://github.com/SAP/openui5/blob/b4267488e5d3546de4cd9577ccac4208482d71e0/package.json#L130-L132).
 
 Paths must be written in POSIX (i.e. using only forward slashes `/` as path segment separators) and must be **relative to the workspace configuration file**. Absolute paths, or paths relative to the home directory (`~`), are not allowed. This is to ensure that workspace configuration files are easy to share and to reduce the chance of them exposing sensitive information like user names or large directory hierarchies. Symbolic links are followed.
 
 Note that this configuration only affects the resolution of dependencies which have already been found during the regular dependency resolution process of a project. For example, if a workspace resolution path resolves to a project that would otherwise not be part of the dependency tree of the current root project, it will not be added to the dependency tree. Also, transitive dependencies of resolved projects are not being followed.
 
 ## Workspace Specification Versions
-A workspace configuration must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible with a workspace's configuration.
+A workspace configuration must define a Specification Version by setting the `specVersion` property. UI5 CLI uses this information to detect whether the currently installed version is compatible with a workspace's configuration.
 
 ```yaml
 specVersion: "workspace/1.0"
@@ -130,7 +130,7 @@ All changes are documented below.
 
 ### Compatibility Matrix
 
-Unless otherwise noted in the table below, UI5 Tooling modules are backward-compatible.
+Unless otherwise noted in the table below, UI5 CLI modules are backward-compatible.
 
 Version | UI5 CLI Release
 --- | ---

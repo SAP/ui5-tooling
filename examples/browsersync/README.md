@@ -1,4 +1,4 @@
-# UI5 Tooling Example - Browsersync
+# UI5 CLI Example - Browsersync
 
 This example shows how to use `ui5 serve` in combination with [Browsersync](https://www.browsersync.io/) to enable live-reloading during development.
 

@@ -69,7 +69,7 @@ Related to this, the bundling tasks will also incorporate the generated source m
 
 For projects facilitating transpilation (such as TypeScript-based projects), it is commonly desired to debug in the browser using the original sources, e.g. TypeScript files. To make this work, the transpilation process first needs to create source maps and reference them in the generated JavaScript code.
 
-UI5 Tooling's `minify` task will then find this reference and incorporate the source map into the minification process. In the end, the minified JavaScript resources will reference an updated source map, which reflects the transpilation as well as the minification. The browser can use this to map every statement back to the original TypeScript file, making debugging a breeze.
+UI5 CLI's `minify` task will then find this reference and incorporate the source map into the minification process. In the end, the minified JavaScript resources will reference an updated source map, which reflects the transpilation as well as the minification. The browser can use this to map every statement back to the original TypeScript file, making debugging a breeze.
 
 !!! warning
     If a resource has been modified by another build task before `minify` is executed, any referenced source map will be ignored. This is to ensure the integrity of the source maps in the build result.
@@ -81,7 +81,7 @@ UI5 Tooling's `minify` task will then find this reference and incorporate the so
 Expand the block below to view a diagram illustrating the minification process and source map handling.
 
 ??? info "Minification Activity Diagram"
-    ![minify Task Activity](../images/UI5_Tooling/Task_Minify.svg){ loading=lazy }
+    ![minify Task Activity](../images/UI5_CLI/Task_Minify.svg){ loading=lazy }
 
 ## Processors
 Processors work with provided resources. They contain the actual build step logic to apply specific modifications to supplied resources, or to make use of the resources' content to create new resources out of that.

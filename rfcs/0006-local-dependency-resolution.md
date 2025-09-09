@@ -46,7 +46,7 @@ It should be possible to use local copies of selected dependencies, while others
 
 A new kind of configuration file should be introduced, allowing to define "UI5 Workspaces". In a first step, and to address the key purpose of this RFC, this configuration shall allow for influencing the dependency resolution when working with a UI5 project.
 
-For this, it should be possible to define locations at which UI5 Tooling will look for a dependency first, before falling back to the regular dependency resolution.
+For this, it should be possible to define locations at which UI5 CLI will look for a dependency first, before falling back to the regular dependency resolution.
 
 #### Example: Overwrite Resolution of a Single Library
 
@@ -76,7 +76,7 @@ dependencyManagement:
         - path: ../openui5
 ```
 
-For resolving all modules in OpenUI5, it should be enough to provide a path to the root directory. UI5 Tooling shall then use the [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) configuration in the [package.json](https://github.com/SAP/openui5/blob/b74d3c2f153d7a23a2c9b914280b14b7289d7880/package.json#L128) to resolve all libraries located in the repository. Alternatively, an equivalent `ui5.workspaces` configuration in the package.json can be used. If a `ui5.workspaces` configuration is found, the standard npm workspace configuration shall be ignored.
+For resolving all modules in OpenUI5, it should be enough to provide a path to the root directory. UI5 CLI shall then use the [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces) configuration in the [package.json](https://github.com/SAP/openui5/blob/b74d3c2f153d7a23a2c9b914280b14b7289d7880/package.json#L128) to resolve all libraries located in the repository. Alternatively, an equivalent `ui5.workspaces` configuration in the package.json can be used. If a `ui5.workspaces` configuration is found, the standard npm workspace configuration shall be ignored.
 
 ![Workspace configuration for using local version of all OpenUI5 libraries](./resources/0006-workspace-setup/Workspace_Configuration_All_OpenUI5.svg)
 
@@ -129,10 +129,10 @@ Workspace names should be restricted in a reasonable matter (max length, only se
 
 1. There can only be one active workspace at a time. Workspaces can not be combined (to be discussed)
 2. Default configuration file name and format is `ui5-workspace.yaml`. A different filename can be used by passing a parameter `--workspace-config workspace.yaml` to the UI5 CLI. The ui5-project Node.js API shall accept a JSON.
-1. If no `--workspace-config` parameter is given, UI5 Tooling shall search for a file named `ui5-workspace.yaml` in the current directory and in the directory of the `ui5.yaml` in use. UI5 Tooling shall never use more than one workspace configuration files.
+1. If no `--workspace-config` parameter is given, UI5 CLI shall search for a file named `ui5-workspace.yaml` in the current directory and in the directory of the `ui5.yaml` in use. UI5 CLI shall never use more than one workspace configuration files.
 1. (Optional) To make workspace configurations reusable across projects, it should be possible to reference a workspace configuration located in an npm dependency. An additional parameter `--workspace-config-module` should allow for providing the name of an npm dependency which contains one or multiple workspace configurations. For example: `--workspace-config-module my-ui5-workspace-config-module --workspace-config workspace.yaml`
 1. Requested dependency versions do not matter (we may warn the user in some cases though)
-    * For example, when using a local version of OpenUI5 through a workspace configuration of a project, the OpenUI5 version specified in the ui5.yaml of that project should be ignored. In the future, UI5 Tooling might detect potential issues when using cominations of framework libraries in different versions and warn the user.
+    * For example, when using a local version of OpenUI5 through a workspace configuration of a project, the OpenUI5 version specified in the ui5.yaml of that project should be ignored. In the future, UI5 CLI might detect potential issues when using cominations of framework libraries in different versions and warn the user.
 1. Workspace configuration **must not** be located in a ui5.yaml. If workspace configuration is found in a ui5.yaml, this should cause an error.
 
 **Dependency resolution configuration**
