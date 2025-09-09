@@ -58,7 +58,7 @@ It will be passed to the `app.use` call (see [express API reference](https://exp
 **This section is partially equal to what is outlined in [RFC 0001](https://github.com/SAP/ui5-tooling/blob/rfc-type-ext/rfcs/0001-type-extensibility.md#generic-handling-of-extension).**
 
 Custom middleware implementations have similar characteristics than other possible "extensions" of the
-UI5 Tooling. Examples for other extensions include "Shims" ([RFC 0002](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0002-project-shims.md)), tasks 
+UI5 CLI. Examples for other extensions include "Shims" ([RFC 0002](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0002-project-shims.md)), tasks 
 ([RFC 0004](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0004-simple-build-extensibility.md)), and translators.
 
 To separate "UI5 Projects" (i.e. things that represent UI5-artifacts for the browser) from tooling specific things

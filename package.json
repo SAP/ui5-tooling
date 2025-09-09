@@ -2,7 +2,7 @@
 	"name": "@ui5/tooling",
 	"private": true,
 	"version": "0.0.1",
-	"description": "UI5 Tooling - Main Repository",
+	"description": "UI5 CLI - Main Repository",
 	"author": {
 		"name": "SAP SE",
 		"email": "openui5@sap.com",

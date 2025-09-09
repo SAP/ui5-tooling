@@ -1,15 +1,15 @@
 # Migrate to v2
 
-v2.0.0 of the UI5 Tooling was released on April 1, 2020. As a major feature, it introduces the easy consumption of SAPUI5 libraries in UI5 projects.
+v2.0.0 of the UI5 CLI was released on April 1, 2020. As a major feature, it introduces the easy consumption of SAPUI5 libraries in UI5 projects.
 
 ## Breaking changes
-**All UI5 Tooling Modules: Require Node.js >= 10**
+**All UI5 CLI Modules: Require Node.js >= 10**
 
 Support for older Node.js releases has been dropped.
 
 **UI5 Builder: Make namespace mandatory for application and library projects ([SAP/ui5-builder#430](https://github.com/SAP/ui5-builder/pull/430))**
 
-The UI5 Tooling must be able to determine an application- or library project's namespace. Otherwise an error is thrown.
+The UI5 CLI must be able to determine an application- or library project's namespace. Otherwise an error is thrown.
 
 Ideally the namespace should be defined in the `sap.app/id` field of the [`manifest.json`](https://ui5.sap.com/#/topic/be0cf40f61184b358b5faedaec98b2da)
 

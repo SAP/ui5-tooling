@@ -1,9 +1,9 @@
 # Configuration
 
-A projects UI5 Tooling configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
+A projects UI5 CLI configuration is typically located in a [YAML](https://yaml.org/) file named `ui5.yaml`, located in the root directory.
 
 !!! info
-    This document describes the configuration of UI5 Tooling-based projects and extensions. It represents **[Specification Version 2.6](#specification-versions)**.
+    This document describes the configuration of UI5 CLI-based projects and extensions. It represents **[Specification Version 2.6](#specification-versions)**.
 
 ## Validation / IDE support
 
@@ -73,7 +73,7 @@ In addition, a project must define a `type`. This can be either `application`, `
 
 A project must have a `name` and might define a `copyright` string.
 
-In UI5 Tooling, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `company.businessarea.project`.
+In UI5 CLI, a project is typically identified by the configured `name`. It must be unique and should ideally follow a namespace scheme like `company.businessarea.project`.
 
 #### copyright
 
@@ -82,11 +82,11 @@ Inside the copyright string, you can use the placeholder `${currentYear}` which 
 
 #### deprecated
 
-In case your project is deprecated you may also define a property `deprecated: true`. In projects that have a direct dependency to your project, UI5 Tooling will then display a deprecation warning.
+In case your project is deprecated you may also define a property `deprecated: true`. In projects that have a direct dependency to your project, UI5 CLI will then display a deprecation warning.
 
 ## Resources
 ### Path Mapping
-Depending on the project type, UI5 Tooling expects your projects source files to be located in certain directories.
+Depending on the project type, UI5 CLI expects your projects source files to be located in certain directories.
 
 If your project's sources are located in different directories, you need to configure the path mapping accordingly. Depending on the type of project, there are several different path mappings available.
 
@@ -175,7 +175,7 @@ Note that all configured paths must be written in POSIX (i.e. using only forward
             propertiesFileSourceEncoding: ISO-8859-1
         ````
 
-By default UI5 Tooling expects different encodings for `*.properties` i18n files, depending on the project's specification version:
+By default UI5 CLI expects different encodings for `*.properties` i18n files, depending on the project's specification version:
 
 Specification Version | Default `propertiesFileSourceEncoding`
 --- | ---
@@ -184,7 +184,7 @@ Specification Version | Default `propertiesFileSourceEncoding`
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
 
-UI5 Tooling will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
+UI5 CLI will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0007-properties-file-encoding.md) for details.
 
 ## Custom Configuration
 
@@ -202,7 +202,7 @@ UI5 Tooling will read the corresponding files of the project in the given encodi
         otherKey: otherValue
     ```
 
-Custom configuration that is ignored by UI5 Tooling.  
+Custom configuration that is ignored by UI5 CLI.  
 This can be used to store UI5 specific configuration for third-party tools.
 
 The "customConfiguration" value must be an object.  
@@ -240,9 +240,9 @@ If you are not sure which framework is right for you, see our [documentation on 
 You can find an overview of the available versions for each framework here:
 
 - [**OpenUI5** Version Overview](https://sdk.openui5.org/versionoverview.html)
-    - *The lowest version supported by UI5 Tooling is __1.52.5__*
+    - *The lowest version supported by UI5 CLI is __1.52.5__*
 - [**SAPUI5** Version Overview](http://ui5.sap.com/versionoverview.html)
-    - *The lowest version supported by UI5 Tooling is __1.76.0__*
+    - *The lowest version supported by UI5 CLI is __1.76.0__*
 
 !!! info
     Projects that use the OpenUI5 framework cannot depend on projects that use the SAPUI5 framework.
@@ -563,7 +563,7 @@ Note that patterns are always applied relative to the project's virtual source d
         httpsPort: 1443
     ````
 
-By default, UI5 Tooling will serve applications using Port `8080`. When running in HTTP/2 or HTTPS mode, Port `8443` will be used.
+By default, UI5 CLI will serve applications using Port `8080`. When running in HTTP/2 or HTTPS mode, Port `8443` will be used.
 
 If the default port is already in use, the next highest free port will be used.
 
@@ -669,7 +669,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 - `numberOfParts`: By default set to `1`. The number of parts into which a module bundle should be splitted
 
 ## Specification Versions
-A project must define a Specification Version by setting the `specVersion` property. UI5 Tooling uses this information to detect whether the currently installed version is compatible to a projects configuration.
+A project must define a Specification Version by setting the `specVersion` property. UI5 CLI uses this information to detect whether the currently installed version is compatible to a projects configuration.
 
 ````yaml
 specVersion: "2.6"
@@ -687,7 +687,7 @@ All changes are documented below.
 
 ### Compatibility Matrix
 
-Unless otherwise noted in the table below, UI5 Tooling modules are backward compatible.
+Unless otherwise noted in the table below, UI5 CLI modules are backward compatible.
 
 Version | UI5 CLI Release
 --- | ---

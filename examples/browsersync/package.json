@@ -1,8 +1,8 @@
 {
-  "name": "@ui5/tooling-example-browsersync",
+  "name": "@ui5/cli-example-browsersync",
   "version": "0.0.0",
   "private": true,
-  "description": "UI5 Tooling Example - Browsersync",
+  "description": "UI5 CLI Example - Browsersync",
   "scripts": {
     "start": "concurrently \"npm:serve\" \"npm:browser-sync\"",
     "serve": "ui5 serve --port=8080",

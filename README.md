@@ -1,6 +1,6 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
-# UI5 Tooling
+# UI5 CLI
 
 > An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
@@ -10,19 +10,21 @@
 
 ## Deprecation
 
-> [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is the latest and stable version 🎉
+> [UI5 CLI v4](https://sap.github.io/ui5-tooling/v4) is the latest and stable version 🎉
 >
-> [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
+> [UI5 CLI v3](https://sap.github.io/ui5-tooling/v3) is a stable version and in maintenance mode 🚢
 >
-> Please migrate your projects to [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
+> [UI5 CLI v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
+>
+> Please migrate your projects to [UI5 CLI v3](https://sap.github.io/ui5-tooling/v4/updates/migrate-v3/) and afterwards to [UI5 CLI v4](https://sap.github.io/ui5-tooling/v4/updates/migrate-v4/)!
 
-The reason to deprecate **UI5 Tooling Version 2** and enforce the migration to **UI5 Tooling Version 3** is rooted in our efforts to allow the usage of the latest ECMAScript syntax in the UI5 framework. OpenUI5 and SAPUI5 libraries will make use of modern ECMAScript syntax up to and including "ES2022". UI5 Tooling comes with comprehensive [ECMAScript support](https://sap.github.io/ui5-tooling/v3/pages/ESSupport/) only with Version 3. 
+The reason to deprecate **UI5 CLI Version 2** and enforce the migration to **UI5 CLI Version 3** is rooted in our efforts to allow the usage of the latest ECMAScript syntax in the UI5 framework. OpenUI5 and SAPUI5 libraries will make use of modern ECMAScript syntax up to and including "ES2022". UI5 CLI comes with comprehensive [ECMAScript support](https://sap.github.io/ui5-tooling/v3/pages/ESSupport/) only with Version 3. 
 
-Beginning with Release **1.116** of **OpenUI5** and **SAPUI5**, UI5 Framework libraries will start using modern ECMAScript syntax and define **"Specification Version 3.0"** in their UI5 Tooling configuration. 
+Beginning with Release **1.116** of **OpenUI5** and **SAPUI5**, UI5 Framework libraries will start using modern ECMAScript syntax and define **"Specification Version 3.0"** in their UI5 CLI configuration. 
 
-If you use UI5 Tooling in your projects, this means you will have to upgrade to UI5 Tooling Version 3. 
+If you use UI5 CLI in your projects, this means you will have to upgrade to UI5 CLI Version 3. 
 
-If you use additional build scripts or UI5 Tooling extensions, you should ensure their support for ECMAScript 2022. 
+If you use additional build scripts or UI5 CLI extensions, you should ensure their support for ECMAScript 2022. 
 
 
 ## Resources
@@ -36,7 +38,7 @@ If you use additional build scripts or UI5 Tooling extensions, you should ensure
 - [Roadmap](https://github.com/SAP/ui5-tooling/issues/101)
 
 ## Modules
-UI5 Tooling consists of multiple modules. Each one is managed in a separate repository:
+UI5 CLI consists of multiple modules. Each one is managed in a separate repository:
 
 - [ui5-cli](https://github.com/SAP/ui5-cli): UI5 Command Line Interface, utilizing all of the following modules
 - [ui5-project](https://github.com/SAP/ui5-project): Modules for building a UI5 project's dependency tree, including configuration
