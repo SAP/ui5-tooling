@@ -49,11 +49,11 @@ When building "my.library", this will execute the custom task *babel* before the
 ### Generic handling of extension
 **This section is partially equal to what is outlined in [RFC 0001](https://github.com/SAP/ui5-tooling/blob/rfc-type-ext/rfcs/0001-type-extensibility.md#generic-handling-of-extension).**
 
-Custom task implementations have similar characteristics than other possible "extensions" of the UI5 Build and Development Tooling. Examples for other extensions include "Shims" (see RFC 0002), server middlewares and translators.
+Custom task implementations have similar characteristics than other possible "extensions" of the UI5 CLI. Examples for other extensions include "Shims" (see RFC 0002), server middlewares and translators.
 
 Therefore a somewhat generic concept for dealing with extensions is needed.
 
-To separate "UI5 Projects" (i.e. things that represent UI5-artifacts for the browser) from tooling specific things like "extensions", an additional attribute "kind" is added to the ui5.yaml.
+To separate "UI5 Projects" (i.e. things that represent UI5-artifacts for the browser) from UI5 CLI specific things like "extensions", an additional attribute "kind" is added to the ui5.yaml.
 
 A custom task (a.k.a. "task extension") will consist of at least a ui5.yaml defining it as an extension and a JavaScript implementation.
 

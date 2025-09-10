@@ -14,7 +14,7 @@
 
 ## Summary
 
-Refactor the bundle creation process of UI5 Tooling to make it more efficient and to provide new features.
+Refactor the bundle creation process of UI5 CLI to make it more efficient and to provide new features.
 
 ## Motivation
 

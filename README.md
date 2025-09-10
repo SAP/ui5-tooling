@@ -1,6 +1,6 @@
 ![UI5 logo](./docs/images/UI5_logo_wide.png)
 
-# UI5 Tooling
+# UI5 CLI
 > An open and modular toolchain to develop state-of-the-art applications based on the [UI5](https://ui5.sap.com) framework.
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/ui5-tooling)](https://api.reuse.software/info/github.com/SAP/ui5-tooling)
@@ -8,13 +8,13 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 
-> [UI5 Tooling v4](https://sap.github.io/ui5-tooling/v4) is the latest and stable version 🎉
+> [UI5 CLI v4](https://sap.github.io/ui5-tooling/v4) is the latest and stable version 🎉
 >
-> [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3) is a stable version and in maintenance mode 🚢
+> [UI5 CLI v3](https://sap.github.io/ui5-tooling/v3) is a stable version and in maintenance mode 🚢
 >
-> [UI5 Tooling v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
+> [UI5 CLI v2](https://sap.github.io/ui5-tooling/v2) has been deprecated 🚫  
 >
-> Please migrate your projects to [UI5 Tooling v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
+> Please migrate your projects to [UI5 CLI v3](https://sap.github.io/ui5-tooling/v3/updates/migrate-v3/)!
 
 
 
@@ -29,7 +29,7 @@
 - [Roadmap](https://github.com/SAP/ui5-tooling/issues/701)
 
 ## Modules
-UI5 Tooling consists of multiple modules. Each one is managed in a separate repository:
+UI5 CLI consists of multiple modules. Each one is managed in a separate repository:
 
 - [ui5-cli](https://github.com/SAP/ui5-cli): UI5 Command Line Interface, utilizing all of the following modules
 - [ui5-project](https://github.com/SAP/ui5-project): Modules for building a UI5 project's dependency tree, including configuration

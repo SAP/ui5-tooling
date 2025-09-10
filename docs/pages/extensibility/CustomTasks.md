@@ -192,17 +192,17 @@ A custom task implementation needs to return a function with the following signa
 !!! info
     This functionality has been added with UI5 CLI [`v3.0.0`](https://github.com/SAP/ui5-cli/releases/tag/v3.0.0)
 
-Custom tasks can export an optional callback function `determineRequiredDependencies` to control which dependency-resources are made available through the `dependencies`-reader that is provided to the task. By reducing the amount of required dependencies or by not requiring any, UI5 Tooling might be able to build a project faster.
+Custom tasks can export an optional callback function `determineRequiredDependencies` to control which dependency-resources are made available through the `dependencies`-reader that is provided to the task. By reducing the amount of required dependencies or by not requiring any, UI5 CLI might be able to build a project faster.
 
-Before executing a task, UI5 Tooling will ensure that all required dependencies have been built.
+Before executing a task, UI5 CLI will ensure that all required dependencies have been built.
 
-If this callback is not provided, UI5 Tooling will make an assumption as to whether the custom task requires access to any resources of dependencies based on the defined Specification Version of the custom task extension:
+If this callback is not provided, UI5 CLI will make an assumption as to whether the custom task requires access to any resources of dependencies based on the defined Specification Version of the custom task extension:
 
-* **Specification Version 3.0 and later:** If no callback is provided, UI5 Tooling assumes that no dependencies are required. In this case, the `dependencies` parameter will be omitted.
-* **Specification Versions before 3.0:** If no callback is provided, UI5 Tooling assumes that all dependencies are required.
+* **Specification Version 3.0 and later:** If no callback is provided, UI5 CLI assumes that no dependencies are required. In this case, the `dependencies` parameter will be omitted.
+* **Specification Versions before 3.0:** If no callback is provided, UI5 CLI assumes that all dependencies are required.
 
 
-*For more details, see also [RFC 0012 UI5 Tooling Extension API v3](https://github.com/SAP/ui5-tooling/blob/rfc-ui5-tooling-extension-api-v3/rfcs/0012-UI5-Tooling-Extension-API-3.md#3-tasks-requiring-dependencies)*
+*For more details, see also [RFC 0012 UI5 CLI Extension API v3](https://github.com/SAP/ui5-tooling/blob/rfc-ui5-tooling-extension-api-v3/rfcs/0012-UI5-Tooling-Extension-API-3.md#3-tasks-requiring-dependencies)*
 
 === "ESM"
 
@@ -228,7 +228,7 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
      * @returns {Promise<Set>}
      *      Promise resolving with a Set containing all dependencies
      *      that should be made available to the task.
-     *      UI5 Tooling will ensure that those dependencies have been
+     *      UI5 CLI will ensure that those dependencies have been
      *      built before executing the task.
      */
     export async function determineRequiredDependencies({availableDependencies, getDependencies, getProject, options}) {
@@ -269,7 +269,7 @@ If this callback is not provided, UI5 Tooling will make an assumption as to whet
      * @returns {Promise<Set>}
      *      Promise resolving with a Set containing all dependencies
      *      that should be made available to the task.
-     *      UI5 Tooling will ensure that those dependencies have been
+     *      UI5 CLI will ensure that those dependencies have been
      *      built before executing the task.
      */
     module.exports.determineRequiredDependencies = async function({availableDependencies, getDependencies, getProject, options}) {
@@ -359,9 +359,9 @@ result by writing them into the provided `workspace`.
     ```
 
 !!! warning
-    Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module in case it is used.
+    Depending on your project setup, UI5 CLI tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module in case it is used.
 
-    Tasks should ideally use the reader/writer APIs provided by UI5 Tooling for working with project resources.
+    Tasks should ideally use the reader/writer APIs provided by UI5 CLI for working with project resources.
 
 ### Example: lib/tasks/compileLicenseSummary.js
 
