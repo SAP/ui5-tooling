@@ -135,7 +135,7 @@ A custom task implementation needs to return a function with the following signa
      * @param {@ui5/builder.tasks.TaskUtil} parameters.taskUtil
      *      Specification Version-dependent interface to a TaskUtil instance.
      *      See the corresponding API reference for details:
-     *      https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html
+     *      https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html
      * @param {module:@ui5/fs.DuplexCollection} parameters.workspace
      *      Reader/Writer to access and modify resources of the
      *      project currently being built
@@ -175,7 +175,7 @@ A custom task implementation needs to return a function with the following signa
      * @param {@ui5/builder.tasks.TaskUtil} parameters.taskUtil
      *      Specification Version-dependent interface to a TaskUtil instance.
      *      See the corresponding API reference for details:
-     *      https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html
+     *      https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html
      * @param {module:@ui5/fs.DuplexCollection} parameters.workspace
      *      Reader/Writer to access and modify resources of the
      *      project currently being built
@@ -202,7 +202,7 @@ If this callback is not provided, UI5 CLI will make an assumption as to whether 
 * **Specification Versions before 3.0:** If no callback is provided, UI5 CLI assumes that all dependencies are required.
 
 
-*For more details, see also [RFC 0012 UI5 CLI Extension API v3](https://github.com/SAP/ui5-tooling/blob/rfc-ui5-tooling-extension-api-v3/rfcs/0012-UI5-Tooling-Extension-API-3.md#3-tasks-requiring-dependencies)*
+*For more details, see also [RFC 0012 UI5 CLI Extension API v3](https://github.com/UI5/cli/blob/rfc-ui5-tooling-extension-api-v3/rfcs/0012-UI5-Tooling-Extension-API-3.md#3-tasks-requiring-dependencies)*
 
 === "ESM"
 
@@ -216,12 +216,12 @@ If this callback is not provided, UI5 CLI will make an assumption as to whether 
      *      the project currently being built.
      * @param {function} parameters.getDependencies
      *      Identical to TaskUtil#getDependencies
-     *         (see https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html).
+     *         (see https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html).
      *      Creates a list of names of all direct dependencies
      *      of a given project.
      * @param {function} parameters.getProject
      *      Identical to TaskUtil#getProject
-     *         (see https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html).
+     *         (see https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html).
      *      Retrieves a Project-instance for a given project name.
      * @param {object} parameters.options
      *      Identical to the options given to the standard task function.
@@ -257,12 +257,12 @@ If this callback is not provided, UI5 CLI will make an assumption as to whether 
      *      the project currently being built.
      * @param {function} parameters.getDependencies
      *      Identical to TaskUtil#getDependencies
-     *         (see https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html).
+     *         (see https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html).
      *      Creates a list of names of all direct dependencies
      *      of a given project.
      * @param {function} parameters.getProject
      *      Identical to TaskUtil#getProject
-     *         (see https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html).
+     *         (see https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html).
      *      Retrieves a Project-instance for a given project name.
      * @param {object} parameters.options
      *      Identical to the options given to the standard task function.
@@ -292,7 +292,7 @@ The following code snippets show examples for custom task implementations.
 
 ### Example: lib/tasks/renderMarkdownFiles.js
 
-This example is making use of the `resourceFactory` [TaskUtil](https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html)
+This example is making use of the `resourceFactory` [TaskUtil](https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html)
 API to create new resources based on the output of a third-party module for rendering Markdown files. The created resources are added to the build
 result by writing them into the provided `workspace`.
 
@@ -365,7 +365,7 @@ result by writing them into the provided `workspace`.
 
 ### Example: lib/tasks/compileLicenseSummary.js
 
-This example is making use of multiple [TaskUtil](https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html)
+This example is making use of multiple [TaskUtil](https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html)
 APIs to retrieve additional information about the project currently being built (`taskUtil.getProject()`) and its direct dependencies
 (`taskUtil.getDependencies()`). Project configuration files like `package.json` can be accessed directly using `project.getRootReader()`.
 
@@ -471,6 +471,6 @@ APIs to retrieve additional information about the project currently being built 
 
 ## Helper Class `TaskUtil`
 
-Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html) instance.
+Custom tasks defining [Specification Version](../Configuration.md#specification-versions) 2.2 or higher have access to an interface of a [TaskUtil](https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html) instance.
 
-In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_helpers_TaskUtil.html).
+In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://ui5.github.io/cli/v4/api/@ui5_project_build_helpers_TaskUtil.html).

@@ -30,7 +30,7 @@ _**Note:** This change does not affect most projects as `*.properties` files are
 
 **UI5 FS: Remove deprecated parameter useNamespaces ([SAP/ui5-fs#223](https://github.com/SAP/ui5-fs/pull/223))**
 
-Remove the deprecated parameter `useNamespaces` from method [`resourceFactory.createCollectionsForTree`](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree). Use the parameter `getVirtualBasePathPrefix` instead.
+Remove the deprecated parameter `useNamespaces` from method [`resourceFactory.createCollectionsForTree`](https://ui5.github.io/cli/v2/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree). Use the parameter `getVirtualBasePathPrefix` instead.
 
 ## How to upgrade
 

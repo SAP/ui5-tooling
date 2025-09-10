@@ -1,5 +1,5 @@
 - Start Date: 2018-04-03
-- RFC PR: [#5](https://github.com/SAP/ui5-tooling/pull/5)
+- RFC PR: [#5](https://github.com/UI5/cli/pull/5)
 - Issue: -
 - Affected components
     + [ ] [ui5-builder](https://github.com/SAP/ui5-builder)
@@ -28,7 +28,7 @@ Therefore a developer might need to "Shim" configuration and dependency informat
 Another scenario is to extend or overwrite specific parts of a dependencies configuration.
 
 ## Detailed design
-Facilitate the generic extension concept described in [RFC 0001 (#4)](https://github.com/SAP/ui5-tooling/pull/4) to declare an extension of type "project-shim". For example:
+Facilitate the generic extension concept described in [RFC 0001 (#4)](https://github.com/UI5/cli/pull/4) to declare an extension of type "project-shim". For example:
 ```yaml
 specVersion: "0.1"
 kind: extension

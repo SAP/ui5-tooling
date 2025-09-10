@@ -134,4 +134,4 @@ UI5 CLI uses the manifest's `_version` property to decide whether the `supported
 
 To resolve this issue, adjust the manifest version according to the UI5 version you are using.
 
-*This issue was first raised here: [UI5 CLI #988](https://github.com/SAP/ui5-tooling/issues/988)*
+*This issue was first raised here: [UI5 CLI #988](https://github.com/UI5/cli/issues/988)*

@@ -2,7 +2,7 @@
 
 The [UI5 Server](https://github.com/SAP/ui5-server) module provides server capabilities for local development of UI5 projects.
 
-[**API Reference**](https://sap.github.io/ui5-tooling/v4/api/module-@ui5_server.html){: .md-button .sap-icon-initiative }
+[**API Reference**](https://ui5.github.io/cli/v4/api/module-@ui5_server.html){: .md-button .sap-icon-initiative }
 
 ## Standard Middleware
 

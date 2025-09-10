@@ -7,7 +7,7 @@ An HTTPS server or proxy that was previously running on a domain (e.g. `localhos
 You need to delete the HSTS mapping in [chrome://net-internals/#hsts](chrome://net-internals/#hsts) by entering the domain name (e.g. `localhost`) and pressing "delete".
 
 ## Issues Not Listed Here
-Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/blob/main/CONTRIBUTING.md#report-an-issue) on how to report an issue.
+Please follow our [Contribution Guidelines](https://github.com/UI5/cli/blob/main/CONTRIBUTING.md#report-an-issue) on how to report an issue.
 
 ## UI5 Project
 ### `~/.ui5` Taking too Much Disk Space
@@ -27,7 +27,7 @@ Any missing framework dependencies will be downloaded again during the next UI5 
 ## Environment Variables
 ### Changing the Log Level
 
-In CI environments or in a combination with other tools, the usage of [UI5 CLI's `--log-level`](https://sap.github.io/ui5-tooling/stable/pages/CLI/#common-options) command parameter might be inconvenient and even impossible.
+In CI environments or in a combination with other tools, the usage of [UI5 CLI's `--log-level`](https://ui5.github.io/cli/stable/pages/CLI/#common-options) command parameter might be inconvenient and even impossible.
 
 #### Resolution
 

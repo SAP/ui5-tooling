@@ -8,7 +8,7 @@ A projects UI5 CLI configuration is typically located in a [YAML](https://yaml.o
 ## Validation / IDE support
 
 Starting with [Specification Version 2.0](#specification-version-20) the configuration is validated according to a JSON schema.  
-The current version of the schema can be found here: https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+The current version of the schema can be found here: https://ui5.github.io/cli/schema/ui5.yaml.json
 
 The schema is also part of the [JSON Schema Store Catalog](http://schemastore.org/json/) which is used by the [YAML Language Server](https://github.com/redhat-developer/yaml-language-server).  
 See the list of [clients](https://github.com/redhat-developer/yaml-language-server/blob/main/README.md#clients) to find extensions for various IDEs and editors.
@@ -202,7 +202,7 @@ Specification Version | Default `propertiesFileSourceEncoding`
 
 If your project uses a different encoding for `*.properties` files, you need to set the `propertiesFileSourceEncoding` configuration property.
 
-UI5 CLI will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/SAP/ui5-tooling/blob/main/rfcs/0007-properties-file-encoding.md) for details.
+UI5 CLI will read the corresponding files of the project in the given encoding. Any non-ASCII characters will be replaced with the respective Unicode escape sequences. This allows you to deploy the resulting files to any environment, independent of how it expects `*.properties` files to be encoded. Please refer to [RFC 7](https://github.com/UI5/cli/blob/main/rfcs/0007-properties-file-encoding.md) for details.
 
 ## Custom Configuration
 
@@ -694,7 +694,7 @@ A list of bundle definitions. A `bundleDefinition` contains of the following opt
 
 - `name`: The module bundle name
 - `defaultFileTypes`: List of default file types which should be included in the bundle. Defaults to: `.js`, `.control.xml`, `.fragment.html`, `.fragment.json`, `.fragment.xml`, `.view.html`, `.view.json` and `.view.xml`
-- `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://sap.github.io/ui5-tooling/v4/api/module-@ui5_builder_processors_bundlers_moduleBundler.html#~ModuleBundleDefinition)) and lists the resources that should be in- or excluded from the section.
+- `sections`: A list of module bundle definition sections. Each section specifies an embedding technology (see [API-Reference](https://ui5.github.io/cli/v4/api/module-@ui5_builder_processors_bundlers_moduleBundler.html#~ModuleBundleDefinition)) and lists the resources that should be in- or excluded from the section.
     - `mode`:  The embedding technology (e.g. provided, raw, preload, bundleInfo, depCache, require)
     - `filters`: List of modules declared as glob patterns (resource name patterns) that are in- or excluded. Similarly to the use of a single `*` or double `**` asterisk, a pattern ending with a slash `/` denotes an arbitrary number of characters or folder names. Excludes have to be marked with a leading exclamation mark `!`. The order of filters is relevant; a later inclusion overrides an earlier exclusion, and vice versa.
     - `resolve`: Setting resolve to `true` will also include all (transitive) dependencies of the files

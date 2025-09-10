@@ -5,7 +5,7 @@ cd "$(dirname -- "$0")"
 echo "Changed directory to $(pwd)"
 
 # Store docker image name
-DOCKER_IMAGE=ui5-tooling/mkdocs-material
+DOCKER_IMAGE=ui5-cli/mkdocs-material
 # If Dockerfile has been modified, we need to rebuild the image
 DOCKER_TAG=$(node ./hash.js ./Dockerfile)
 

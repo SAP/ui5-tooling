@@ -1,8 +1,8 @@
 # RFC 0007 Properties File Encoding
 
 - Start Date: 2019-07-15
-- RFC PR: [#168](https://github.com/SAP/ui5-tooling/pull/168)
-- Issue: [#161](https://github.com/SAP/ui5-tooling/issues/161)
+- RFC PR: [#168](https://github.com/UI5/cli/pull/168)
+- Issue: [#161](https://github.com/UI5/cli/issues/161)
 - Affected components
   - [x] [ui5-builder](https://github.com/SAP/ui5-builder)
   - [x] [ui5-server](https://github.com/SAP/ui5-server)
