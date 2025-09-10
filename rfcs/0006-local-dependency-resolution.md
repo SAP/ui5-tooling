@@ -1,5 +1,5 @@
 - Start Date: 2019-06-11
-- RFC PR: [#157](https://github.com/SAP/ui5-tooling/pull/157)
+- RFC PR: [#157](https://github.com/UI5/cli/pull/157)
 - Issue: -
 - Affected components
     + [ ] [ui5-builder](https://github.com/SAP/ui5-builder)
@@ -235,7 +235,7 @@ openui5/
 
 ### Documentation
 
-* Update [Development Guide](https://sap.github.io/ui5-tooling/pages/Overview/)
+* Update [Development Guide](https://ui5.github.io/cli/pages/Overview/)
 * How-To guide for local development
 
 ## Drawbacks

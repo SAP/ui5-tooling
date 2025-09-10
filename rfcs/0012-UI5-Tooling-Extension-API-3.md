@@ -1,5 +1,5 @@
 - Start Date: 2022-10-27
-- RFC PR: [#664](https://github.com/SAP/ui5-tooling/pull/664)
+- RFC PR: [#664](https://github.com/UI5/cli/pull/664)
 - Issue: -
 - Affected components <!-- Check affected components by writing an "X" into the brackets -->
     + [ ] [ui5-builder](https://github.com/SAP/ui5-builder)
@@ -34,9 +34,9 @@
 ## Summary
 <!-- You can either remove the following explanatory text or move it into this comment for later reference -->
 
-This **Request for Comment** summarizes potential enhancements to APIs provided to UI5 CLI extensions. Namely [custom tasks](https://sap.github.io/ui5-tooling/pages/extensibility/CustomTasks/) and [custom middleware](https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/).
+This **Request for Comment** summarizes potential enhancements to APIs provided to UI5 CLI extensions. Namely [custom tasks](https://ui5.github.io/cli/pages/extensibility/CustomTasks/) and [custom middleware](https://ui5.github.io/cli/pages/extensibility/CustomServerMiddleware/).
 
-This RFC is written in the context of the current development- and upcoming release of [UI5 CLI version 3](https://sap.github.io/ui5-tooling/updates/migrate-v3/). This major release of UI5 CLI brings many changes and improvements. **And a new Specification Version `3.0`.**
+This RFC is written in the context of the current development- and upcoming release of [UI5 CLI version 3](https://ui5.github.io/cli/updates/migrate-v3/). This major release of UI5 CLI brings many changes and improvements. **And a new Specification Version `3.0`.**
 
 It is therefore reasonable that most of the new API described below will only be available to extensions defining Specification Version 3.0. However, we might decide to postpone the implementation of some features for a later version, like `3.1` or even a future major version `4.0`.
 
@@ -71,18 +71,18 @@ UI5 CLI v3 will stop using the `"ui5": { "dependencies": [...] }` package.json c
 
 In the past, `devDependencies` were not analyzed. Which made the package.json configuration necessary in many cases.
 
-For mode details, see also the [Migrate to v3](https://sap.github.io/ui5-tooling/updates/migrate-v3/) UI5 CLI documentation.
+For mode details, see also the [Migrate to v3](https://ui5.github.io/cli/updates/migrate-v3/) UI5 CLI documentation.
 
 ## Proposed Enhancements
 <!-- You can either remove the following explanatory text or move it into this comment for later reference -->
 
 ### 1. Dependencies to UI5 CLI Modules
 
-✅ This has been realized with [UI5 CLI v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+✅ This has been realized with [UI5 CLI v3](https://ui5.github.io/cli/stable/updates/migrate-v3/)
 
 #### Description
 
-It is common for extensions to require UI5 CLI modules like `@ui5/fs` or `@ui5/logger`. For example to create [`Resource`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.Resource.html) entities, or to log messages to the console.
+It is common for extensions to require UI5 CLI modules like `@ui5/fs` or `@ui5/logger`. For example to create [`Resource`](https://ui5.github.io/cli/api/module-@ui5_fs.Resource.html) entities, or to log messages to the console.
 
 The problem that arises with this, is **compatibility across UI5 CLI versions**.
 
@@ -97,7 +97,7 @@ The problem that arises with this, is **compatibility across UI5 CLI versions**.
 
 In a future **UI5 CLI version 4**, extensions defining **Specification Version 3** would then still receive the expected `Resource` and `Logger` APIs, thus staying compatible while UI5 CLI v4 makes internal enhancements and changes to the APIs.
 
-The new APIs should be provided via the existing helper classes [`taskUtil`](https://sap.github.io/ui5-tooling/api/module-@ui5_builder.tasks.TaskUtil.html) and [`middlewareUtil`](https://sap.github.io/ui5-tooling/api/module-@ui5_server.middleware.MiddlewareUtil.html).
+The new APIs should be provided via the existing helper classes [`taskUtil`](https://ui5.github.io/cli/api/module-@ui5_builder.tasks.TaskUtil.html) and [`middlewareUtil`](https://ui5.github.io/cli/api/module-@ui5_server.middleware.MiddlewareUtil.html).
 
 #### New API
 * New parameter **log**
@@ -105,11 +105,11 @@ The new APIs should be provided via the existing helper classes [`taskUtil`](htt
     * Additional sub-loggers can be crated using `log.createSubLogger("name suffix")`
 * taskUtil|middlewareUtil.**resourceFactory.createResource(**_{...}_**)**
     * Creates and returns a `Resource` with an interface signature according to the Specification Version of the extension.
-    * This implies a new `resourceFactory` object which provides Specification Version-dependent access to functions of the [`@ui5/fs/resourceFactory`](https://sap.github.io/ui5-tooling/api/module-@ui5_fs.resourceFactory.html)
+    * This implies a new `resourceFactory` object which provides Specification Version-dependent access to functions of the [`@ui5/fs/resourceFactory`](https://ui5.github.io/cli/api/module-@ui5_fs.resourceFactory.html)
 
 #### Solution Example
 
-Migrating the custom task example from our current [documentation](https://sap.github.io/ui5-tooling/pages/extensibility/CustomTasks/#example-libtasksgeneratemarkdownfilesjs) to make use of the new API could look like this:
+Migrating the custom task example from our current [documentation](https://ui5.github.io/cli/pages/extensibility/CustomTasks/#example-libtasksgeneratemarkdownfilesjs) to make use of the new API could look like this:
 
 ```patch
 const path = require("path");
@@ -143,7 +143,7 @@ const renderMarkdown = require("./renderMarkdown");
 
 ### 2. Access to Project Information
 
-✅ This has been realized with [UI5 CLI v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+✅ This has been realized with [UI5 CLI v3](https://ui5.github.io/cli/stable/updates/migrate-v3/)
 
 #### Description
 
@@ -151,7 +151,7 @@ Extensions can not access information about the current project directly. Except
 
 #### Examples
 
-See issue [Access package.json in custom task #360](https://github.com/SAP/ui5-tooling/issues/360#issuecomment-737717601).
+See issue [Access package.json in custom task #360](https://github.com/UI5/cli/issues/360#issuecomment-737717601).
 
 #### Solution
 
@@ -195,7 +195,7 @@ module.exports = async function({workspace, dependencies, taskUtil, options}) {
 
 ### 3. Tasks Requiring Dependencies
 
-✅ This has been realized with [UI5 CLI v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+✅ This has been realized with [UI5 CLI v3](https://ui5.github.io/cli/stable/updates/migrate-v3/)
 
 #### Description
 
@@ -346,7 +346,7 @@ server:
 
 ### 6. Restrictions for Project and Extension Names
 
-✅ This has been realized with [UI5 CLI v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+✅ This has been realized with [UI5 CLI v3](https://ui5.github.io/cli/stable/updates/migrate-v3/)
 
 #### Description
 
@@ -415,7 +415,7 @@ In the future, similar restrictions should be implemented for other configuratio
 
 ### 7. Provide Extension Name *(minor)*
 
-✅ This has been realized with [UI5 CLI v3](https://sap.github.io/ui5-tooling/stable/updates/migrate-v3/)
+✅ This has been realized with [UI5 CLI v3](https://ui5.github.io/cli/stable/updates/migrate-v3/)
 
 #### Description
 
@@ -423,7 +423,7 @@ If multiple extension definitions share the same implementation, it would be ben
 
 #### Examples
 
-See issue [TaskUtil to expose the current tasks name #545](https://github.com/SAP/ui5-tooling/issues/545#issue-975525925)
+See issue [TaskUtil to expose the current tasks name #545](https://github.com/UI5/cli/issues/545#issue-975525925)
 
 #### Solution
 

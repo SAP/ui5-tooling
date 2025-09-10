@@ -42,7 +42,7 @@ If a workspace configuration named `default` exists, it will be used automatical
 
 Workspaces can only be used in the project that is currently being worked on, i.e. the current root project. Workspace configurations of dependencies are ignored. The workspace file, however, does not necessarily have to be located within the project. You can reference any workspace configuration file via the UI5 CLI parameter `--workspace-config`.
 
-This concept has been discussed in an RFC: [RFC 0006 Local Dependency Resolution](https://github.com/SAP/ui5-tooling/blob/main/rfcs/0006-local-dependency-resolution.md)
+This concept has been discussed in an RFC: [RFC 0006 Local Dependency Resolution](https://github.com/UI5/cli/blob/main/rfcs/0006-local-dependency-resolution.md)
 
 ## Configuration
 A UI5 Workspace configuration must define a specification version (`specVersion`) compatible with its configuration. For more information, see [Workspace Specification Versions](#workspace-specification-versions).

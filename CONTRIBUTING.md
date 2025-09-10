@@ -6,22 +6,22 @@
 4. [💻 **Contributing Code**](#-contributing-code)
 
 ### ⚡️ Quick Links for Maintainers
-- [All Open Pull Requests (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs)
-- [Pull Request Queue (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Apr+-label%3Adependencies+-label%3ARFC+is%3Aopen+no%3Aassignee+sort%3Aupdated-desc+repo%3ASAP%2Fui5-tooling+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs+repo%3ASAP%2Fgrunt-openui5+repo%3ASAP%2Fless-openui5+repo%3ASAP%2Fconnect-openui5+repo%3ASAP%2Fkarma-openui5+repo%3ASAP%2Fopenui5-sample-app)
+- [All Open Pull Requests (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+repo%3AUI5%2Fcli+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs)
+- [Pull Request Queue (cross-repo)](https://github.com/pulls?utf8=%E2%9C%93&q=is%3Apr+-label%3Adependencies+-label%3ARFC+is%3Aopen+no%3Aassignee+sort%3Aupdated-desc+repo%3AUI5%2Fcli+repo%3ASAP%2Fui5-cli+repo%3ASAP%2Fui5-logger+repo%3ASAP%2Fui5-project+repo%3ASAP%2Fui5-server+repo%3ASAP%2Fui5-builder+repo%3ASAP%2Fui5-fs+repo%3ASAP%2Fgrunt-openui5+repo%3ASAP%2Fless-openui5+repo%3ASAP%2Fconnect-openui5+repo%3ASAP%2Fkarma-openui5+repo%3ASAP%2Fopenui5-sample-app)
 
 ## 📝 Reporting Issues
 ### Seeking Help / Not a Bug
 If you need help setting something up, or if you have questions regarding UI5 CLI, please seek help on a community platform like [StackOverflow](http://stackoverflow.com/questions/tagged/ui5-tooling) or the [`#tooling`](https://openui5.slack.com/archives/C0A7QFN6B) channel of the [OpenUI5 Community Slack](https://ui5-slack-invite.cfapps.eu10.hana.ondemand.com).
 
 ### How to Report an Issue
-Note that we collect issues for all UI5 CLI modules (*[ui5-cli](https://github.com/SAP/ui5-cli), [ui5-server](https://github.com/SAP/ui5-server), [ui5-project](https://github.com/SAP/ui5-project), [ui5-builder](https://github.com/SAP/ui5-builder), [ui5-fs](https://github.com/SAP/ui5-fs) and [ui5-logger](https://github.com/SAP/ui5-logger)*) in the central [ui5-tooling](https://github.com/SAP/ui5-tooling) repository.
+Note that we collect issues for all UI5 CLI modules (*[ui5-cli](https://github.com/SAP/ui5-cli), [ui5-server](https://github.com/SAP/ui5-server), [ui5-project](https://github.com/SAP/ui5-project), [ui5-builder](https://github.com/SAP/ui5-builder), [ui5-fs](https://github.com/SAP/ui5-fs) and [ui5-logger](https://github.com/SAP/ui5-logger)*) in the central [UI5 CLI](https://github.com/UI5/cli) repository.
 
 1. **Only UI5 CLI issues**
     * Please do not report:
         * Issues caused by dependencies or plugins.
         * Issues caused by the use of non-public/internal methods. Only the public methods listed in the API documentation may be used.
         * Something you do not get to work properly, see [Not a Bug / Questions](#not-a-bug--questions).
-2. **No duplicate**: You have searched the [issue tracker](https://github.com/SAP/ui5-tooling/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) to make sure the bug has not already been reported.
+2. **No duplicate**: You have searched the [issue tracker](https://github.com/UI5/cli/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) to make sure the bug has not already been reported.
 3. **Good summary**: The summary should be specific to the issue.
 4. **Current bug**: The bug can be reproduced in the most current version of the relevant module(s).
 5. **Reproducible bug**: There are step-by-step instructions provided on how to reproduce the issue.
@@ -34,7 +34,7 @@ Note that we collect issues for all UI5 CLI modules (*[ui5-cli](https://github.c
 
 We encourage you to follow the issue template that will be presented to you when creating a new issue.
 
-When you are ready, report your issue here: https://github.com/SAP/ui5-tooling/issues/new
+When you are ready, report your issue here: https://github.com/UI5/cli/issues/new
 
 ### Reporting Security Issues
 
@@ -82,7 +82,7 @@ Therefore, we reserve the right to close or to not process insufficient bug repo
 Bug report analysis support is always very welcome! See [Analyze Issues](#-analyzing-issues).
 
 ## 🤩 Feature Requests
-You can request most features by creating an issue in the UI5 CLI repository: https://github.com/SAP/ui5-tooling/issues/new
+You can request most features by creating an issue in the UI5 CLI repository: https://github.com/UI5/cli/issues/new
 
 For bigger features an RFC (Request for Comment) might be necessary. You should always clarify the need for an RFC with the project contributors upfront. You could do this either by opening an issue or in our [Slack channel](#seeking-help--not-a-bug). You can use [this template](rfcs/0000-template.md) for creating an RFC.
 

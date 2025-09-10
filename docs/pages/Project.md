@@ -55,7 +55,7 @@ In the table below you can find the available combinations of project type & out
 | `Flat` | **Unsupported** ^2^ |
 | `Namespace` | **Unsupported** ^2^ |
 | **module** | |
-| `Default` | Root project is written with the [configured paths](https://sap.github.io/ui5-tooling/stable/pages/Configuration/#available-path-mappings). ^1^ |
+| `Default` | Root project is written with the [configured paths](https://ui5.github.io/cli/stable/pages/Configuration/#available-path-mappings). ^1^ |
 | `Flat` | **Unsupported** ^3^  |
 | `Namespace` | **Unsupported**  ^3^ |
 
@@ -64,4 +64,4 @@ In the table below you can find the available combinations of project type & out
 ^3^ Modules have explicit path mappings configured and no namespace concept.  
 
 
-[**API Reference**](https://sap.github.io/ui5-tooling/v4/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }
+[**API Reference**](https://ui5.github.io/cli/v4/api/@ui5_project_build_ProjectBuilder.html){: .md-button .sap-icon-initiative }

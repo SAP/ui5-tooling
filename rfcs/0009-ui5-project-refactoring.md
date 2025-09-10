@@ -1,5 +1,5 @@
 - Start Date: 2020-02-23
-- RFC PR: https://github.com/SAP/ui5-tooling/pull/501
+- RFC PR: https://github.com/UI5/cli/pull/501
 - Issue: -
 - Affected components <!-- Check affected components by writing an "X" into the brackets -->
     + [x] [ui5-builder](https://github.com/SAP/ui5-builder)
@@ -25,10 +25,10 @@ The following is a list of issues and requirements that the proposed refactoring
 
 ### Issues
 
-1. ["JavaScript heap out of memory" error when declaring the UI5 CLI as a "dependency"](https://github.com/SAP/ui5-tooling/issues/311)
+1. ["JavaScript heap out of memory" error when declaring the UI5 CLI as a "dependency"](https://github.com/UI5/cli/issues/311)
     * Improve detecting relevant dependencies and/or building the dependency tree
-1. [Fix handling of circular dependencies between UI5 projects](https://github.com/SAP/ui5-tooling/issues/312)
-1. [UI5 CLI modules might use different installations/instances of each other](https://github.com/SAP/ui5-tooling/issues/302)
+1. [Fix handling of circular dependencies between UI5 projects](https://github.com/UI5/cli/issues/312)
+1. [UI5 CLI modules might use different installations/instances of each other](https://github.com/UI5/cli/issues/302)
     * Affected modules:
         * addTask API of `taskRepository`
         * addMiddleware API of  `middlewareRepository`
@@ -45,12 +45,12 @@ The following is a list of issues and requirements that the proposed refactoring
     * Custom middleware is typically referenced as a `devDependency` and should be detected by default
 1. Make `ui5: {dependencies: [...]}` workaround in package.json obsolete
     * Currently required in projects with lots of transitive dependencies or to force UI5 CLI into analyzing a `devDependency`
-1. [Access package.json in custom task](https://github.com/SAP/ui5-tooling/issues/360)
+1. [Access package.json in custom task](https://github.com/UI5/cli/issues/360)
     * Have a "Project" entity providing an API for such use cases
 1. Introduce easier maintainability of specification version updates
 1. "Formatters" should already access project resources via the `@ui5/fs` abstraction layer
     * Currently they use the native file system layer. This caused addional efforts while working on the ZipArchiveAdapter PoC
-1. Option to access resources of a project (typically the root project) in a "flat" (namespace-less) way ([related issue](https://github.com/SAP/ui5-tooling/issues/507))
+1. Option to access resources of a project (typically the root project) in a "flat" (namespace-less) way ([related issue](https://github.com/UI5/cli/issues/507))
 
 ## Detailed design
 
@@ -64,7 +64,7 @@ A graph represents the structure of a typical UI5 project and its dependencies w
 
 **Secondly**, the process of gathering all dependencies for a given project and analyzing them for their relevance should be merged into a single operation:
 
-As of today, a [translator](https://sap.github.io/ui5-tooling/v2/pages/Project/#translators) like the `npm`-translator will first need to collect all *possibly relevant* dependencies of a project. Only in the next step, the [`projectPreprocessor`](https://sap.github.io/ui5-tooling/v2/pages/Project/#project-preprocessor) can check which dependencies are actually relevant by looking for a ui5.yaml file or [project-shim](https://sap.github.io/ui5-tooling/v2/pages/extensibility/ProjectShims/) configuration. This means that for some projects, maybe thousands of npm dependencies are read and organized in a preliminary dependency tree by a translator. Only for the `projectPreprocessor` to pick some one percent of them as actually being relevant. This is also one of the reason why the `npm`-translator currently has to ignore `devDependencies` by default.
+As of today, a [translator](https://ui5.github.io/cli/v2/pages/Project/#translators) like the `npm`-translator will first need to collect all *possibly relevant* dependencies of a project. Only in the next step, the [`projectPreprocessor`](https://ui5.github.io/cli/v2/pages/Project/#project-preprocessor) can check which dependencies are actually relevant by looking for a ui5.yaml file or [project-shim](https://ui5.github.io/cli/v2/pages/extensibility/ProjectShims/) configuration. This means that for some projects, maybe thousands of npm dependencies are read and organized in a preliminary dependency tree by a translator. Only for the `projectPreprocessor` to pick some one percent of them as actually being relevant. This is also one of the reason why the `npm`-translator currently has to ignore `devDependencies` by default.
 
 To resolve this, dependencies should be checked for relevance immediately. And only if a dependency can be configured as a UI5 project or extension, its dependencies should be searched for and analyzed as well. In first tests based on the [PoC](#proof-of-concept) mentioned below, this seems to work very well and solves a series of the issues listed in the [Motivation](#motivation) chapter above.
 
@@ -375,7 +375,7 @@ By mapping this concept onto a class-based inheritance hierarchy, every project-
 
 This concept is similar to the already existing [Formatters](https://github.com/SAP/ui5-builder/blob/0fc364ded64eb5bae4085397dc1831e04b19edf4/lib/types/library/LibraryFormatter.js), which basically formatted the JSON representation of a project by modifying and adding attributes. However the proposed specification instances will have a much longer lifecycle. They are intended to represent a specification throughout an entire UI5 CLI operation. They should be available to extensions, providing a public API to interact with project resources.
 
-Specifications should provide an API for accessing its resources via ui5-fs readers. This should make the [`@ui5/fs.resourceFactory#createCollectionsForTree`](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree) API obsolete, leaving decisions like whether to include the projects namespace to the project itself.
+Specifications should provide an API for accessing its resources via ui5-fs readers. This should make the [`@ui5/fs.resourceFactory#createCollectionsForTree`](https://ui5.github.io/cli/v2/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree) API obsolete, leaving decisions like whether to include the projects namespace to the project itself.
 
 ![UI5 Project: Specification Class Diagram](./resources/UI5_CLI_Main/UI5_Project_Specifications.svg)
 
@@ -466,7 +466,7 @@ There are trade-offs to choosing any path, please attempt to identify them here.
 
 What other designs have been considered? What is the impact of not doing this?-->
 
-npm dependency resolution could be done using [Arborist](https://github.com/npm/arborist), a tool developed by the npm team and also used in the npm CLI. However, it does a lot more than what we need and would add approximately **6 MB** to the size of a UI5 CLI installation. Plus, the basic dependency resolution as implemented by the current [npm translator](https://github.com/SAP/ui5-project/blob/e262a9ceec6734e598184747f41203e2a5541415/lib/translators/npm.js) worked very well in the past and even [seems to work with Yarn 2 PnP](https://github.com/SAP/ui5-tooling/issues/207#issuecomment-582518273).
+npm dependency resolution could be done using [Arborist](https://github.com/npm/arborist), a tool developed by the npm team and also used in the npm CLI. However, it does a lot more than what we need and would add approximately **6 MB** to the size of a UI5 CLI installation. Plus, the basic dependency resolution as implemented by the current [npm translator](https://github.com/SAP/ui5-project/blob/e262a9ceec6734e598184747f41203e2a5541415/lib/translators/npm.js) worked very well in the past and even [seems to work with Yarn 2 PnP](https://github.com/UI5/cli/issues/207#issuecomment-582518273).
 
 ## Unresolved Questions and Bikeshedding
 <!--You can either remove the following explanatory text or move it into this comment for later reference

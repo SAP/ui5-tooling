@@ -39,7 +39,7 @@ For extensions defining the latest **Specification Versions 3.0 and higher**, so
     * By default, resources of dependencies can't be accessed. A custom task requiring such access needs to implement a callback function with the export name `determineRequiredDependencies`. In this function it can define the scope of dependency-access. Please refer to the [Custom Task: Required Dependencies](../pages/extensibility/CustomTasks.md#required-dependencies) documentation for details
 * **Breaking Change:** The `metadata.name` property is now restricted to contain only certain characters and no uppercase letters. See [Configuration: `name`](../pages/Configuration.md#name) for details
 * **Features:** Enhanced TaskUtil and MiddlewareUtil API
-    * For example providing access to a [project's root directory](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
+    * For example providing access to a [project's root directory](https://ui5.github.io/cli/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface), or [dependencies](https://ui5.github.io/cli/v3/api/@ui5_project_build_helpers_TaskUtil.html#getDependencies)
     * See also [Custom Tasks](../pages/extensibility/CustomTasks.md) and [Custom Server Middleware](../pages/extensibility/CustomServerMiddleware.md)
 
 ## Changes to Dependency Configuration

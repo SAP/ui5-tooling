@@ -31,9 +31,9 @@
 	"openGraph": {
 		"title": "UI5 CLI - API Reference",
 		"type": "website",
-		"image": "https://sap.github.io/ui5-tooling/v4/images/UI5_logo_wide.png",
+		"image": "https://ui5.github.io/cli/v4/images/UI5_logo_wide.png",
 		"site_name": "UI5 CLI - API Reference",
-		"url": "https://sap.github.io/ui5-tooling/v4/"
+		"url": "https://ui5.github.io/cli/v4/"
 	},
 	"docdash": {
 		"sectionOrder": [
@@ -55,7 +55,7 @@
 		"wrap": true,
 		"menu": {
 			"GitHub": {
-				"href": "https://github.com/SAP/ui5-tooling",
+				"href": "https://github.com/UI5/cli",
 				"target": "_blank",
 				"class": "menu-item",
 				"id": "github_link"

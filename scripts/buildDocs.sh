@@ -5,7 +5,7 @@ cd "$(dirname -- "$0")/.."
 echo "Changed directory to $(pwd)"
 
 # Store docker image name
-DOCKER_IMAGE=ui5-tooling/mkdocs-material
+DOCKER_IMAGE=ui5-cli/mkdocs-material
 
 # Build image if not existing
 ./scripts/buildImage.sh

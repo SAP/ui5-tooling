@@ -1,5 +1,5 @@
 - Start Date: 2019-04-23
-- RFC PR: [#151](https://github.com/SAP/ui5-tooling/pull/151)
+- RFC PR: [#151](https://github.com/UI5/cli/pull/151)
 - Issue: [#113](https://github.com/SAP/ui5-server/issues/113)
 - Affected components
     + [ ] [ui5-builder](https://github.com/SAP/ui5-builder)
@@ -55,11 +55,11 @@ An optional `mountPath` for which the middleware function is invoked, can be pro
 It will be passed to the `app.use` call (see [express API reference](https://expressjs.com/en/4x/api.html#app.use)).
 
 ### Generic handling of extensions
-**This section is partially equal to what is outlined in [RFC 0001](https://github.com/SAP/ui5-tooling/blob/rfc-type-ext/rfcs/0001-type-extensibility.md#generic-handling-of-extension).**
+**This section is partially equal to what is outlined in [RFC 0001](https://github.com/UI5/cli/blob/rfc-type-ext/rfcs/0001-type-extensibility.md#generic-handling-of-extension).**
 
 Custom middleware implementations have similar characteristics than other possible "extensions" of the
-UI5 CLI. Examples for other extensions include "Shims" ([RFC 0002](https://github.com/SAP/ui5-tooling/blob/main/rfcs/0002-project-shims.md)), tasks 
-([RFC 0004](https://github.com/SAP/ui5-tooling/blob/main/rfcs/0004-simple-build-extensibility.md)), and translators.
+UI5 CLI. Examples for other extensions include "Shims" ([RFC 0002](https://github.com/UI5/cli/blob/main/rfcs/0002-project-shims.md)), tasks 
+([RFC 0004](https://github.com/UI5/cli/blob/main/rfcs/0004-simple-build-extensibility.md)), and translators.
 
 To separate "UI5 Projects" (i.e. things that represent UI5-artifacts for the browser) from UI5 CLI specific things
 like "extensions", an additional attribute "kind" is added to the ui5.yaml.

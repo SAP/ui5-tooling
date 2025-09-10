@@ -1,5 +1,5 @@
 - Start Date: 2018-08-28
-- RFC PR: [#54](https://github.com/SAP/ui5-tooling/pull/54)
+- RFC PR: [#54](https://github.com/UI5/cli/pull/54)
 - Issue: -
 - Affected components
     + [x] [ui5-builder](https://github.com/SAP/ui5-builder)
@@ -18,15 +18,15 @@ Currently the UI5 build is only capable of building UI5 projects of types "appli
 
 A UI5 project (for example a library) may want to add build steps. For this, an extensibility mechanism is needed.
 
-While multiple UI5 projects may require the same kind of "customized" build, easy reuse capabilities are not in focus of this RFC. [RFC 0001](https://github.com/SAP/ui5-tooling/pull/4) focuses more on that.
+While multiple UI5 projects may require the same kind of "customized" build, easy reuse capabilities are not in focus of this RFC. [RFC 0001](https://github.com/UI5/cli/pull/4) focuses more on that.
 
-This shall be a preliminary solution to allow for basic extensibility and to learn about the different needs and use cases in that area before proceeding with [RFC 0001](https://github.com/SAP/ui5-tooling/pull/4) or similar concepts.
+This shall be a preliminary solution to allow for basic extensibility and to learn about the different needs and use cases in that area before proceeding with [RFC 0001](https://github.com/UI5/cli/pull/4) or similar concepts.
 
 ## Detailed design
 ### Configuration
 In a projects `ui5.yaml`, a new configuration option should be added to define additional tasks that shall be executed at a specific time during the build process of a project. This configuration shall only affect the project it belongs to. The build process of any of the other projects (e.g. project dependencies) shall be unaffected by this configuration.
 
-A task may require certain tasks to be executed before and after it. This shall be configurable in a simple but less generic way. See [RFC 0001](https://github.com/SAP/ui5-tooling/pull/4) for a concept of a more generic handling.
+A task may require certain tasks to be executed before and after it. This shall be configurable in a simple but less generic way. See [RFC 0001](https://github.com/UI5/cli/pull/4) for a concept of a more generic handling.
 
 A project configuration might look like this:
 ```yaml
@@ -47,7 +47,7 @@ builder:
 When building "my.library", this will execute the custom task *babel* before the "standard" task *generateComponentPreload* and *generateMarkdownFiles* after *uglify*. This means that for example *generateComponentPreload* and all following tasks can work with the resources created or modified by the *babel* task.
 
 ### Generic handling of extension
-**This section is partially equal to what is outlined in [RFC 0001](https://github.com/SAP/ui5-tooling/blob/rfc-type-ext/rfcs/0001-type-extensibility.md#generic-handling-of-extension).**
+**This section is partially equal to what is outlined in [RFC 0001](https://github.com/UI5/cli/blob/rfc-type-ext/rfcs/0001-type-extensibility.md#generic-handling-of-extension).**
 
 Custom task implementations have similar characteristics than other possible "extensions" of the UI5 CLI. Examples for other extensions include "Shims" (see RFC 0002), server middlewares and translators.
 
@@ -150,7 +150,7 @@ Custom task configurations might break with future changes to the Application- a
 ## Alternatives
 There are ways to consume (and thereby possibly adapt) UI5 CLI through its API via taskrunners such as grunt or gulp, or using a custom node.js script. But this offers only limited possibilities, especially when it comes to building transient dependencies.
 
-[RFC 0001](https://github.com/SAP/ui5-tooling/pull/4) may offer a more generic way to tackle this but requires additional concept and evaluation work. This RFC (0004) should not prevent the implementation of RFC 0001 in the future.
+[RFC 0001](https://github.com/UI5/cli/pull/4) may offer a more generic way to tackle this but requires additional concept and evaluation work. This RFC (0004) should not prevent the implementation of RFC 0001 in the future.
 
 ## Unresolved questions
 - Detailed task signature
