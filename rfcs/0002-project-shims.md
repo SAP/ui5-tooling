@@ -14,7 +14,7 @@
 Add a feature to define configuration and dependency information of a UI5 project outside of that project.
 
 ## Motivation
-To make a UI5 project (e.g. an application or library) available in the UI5 tooling, there are currently two requirements:
+To make a UI5 project (e.g. an application or library) available in the UI5 CLI, there are currently two requirements:
 
 1. A `ui5.yaml` file must be present in the projects root directory, containing the projects **configuration**
 2. The projects **dependencies** must be defined in a `package.json` file in the projects root directory

@@ -29,10 +29,10 @@
 		}
 	},
 	"openGraph": {
-		"title": "UI5 Tooling - API Reference",
+		"title": "UI5 CLI - API Reference",
 		"type": "website",
 		"image": "https://sap.github.io/ui5-tooling/v4/images/UI5_logo_wide.png",
-		"site_name": "UI5 Tooling - API Reference",
+		"site_name": "UI5 CLI - API Reference",
 		"url": "https://sap.github.io/ui5-tooling/v4/"
 	},
 	"docdash": {
@@ -47,8 +47,8 @@
 			"Interfaces"
 		],
 		"meta": {
-			"title": "UI5 Tooling - API Reference",
-			"description": "UI5 Tooling - API Reference",
+			"title": "UI5 CLI - API Reference",
+			"description": "UI5 CLI - API Reference",
 			"keyword": "openui5 sapui5 ui5 build development tool api reference"
 		},
 		"search": true,

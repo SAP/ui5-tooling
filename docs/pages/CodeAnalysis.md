@@ -1,6 +1,6 @@
 # Code Analysis
 
-During the build process, UI5 Tooling executes a static code analysis of your project. In the following sections the term "simple literal" is used for the following language features:
+During the build process, UI5 CLI executes a static code analysis of your project. In the following sections the term "simple literal" is used for the following language features:
 
 - string literals
 - numeric literals
@@ -12,7 +12,7 @@ During the build process, UI5 Tooling executes a static code analysis of your pr
 
 ## Dependency Analysis
 
-UI5 Tooling extracts dependency information from a project's code as outlined in the following sections.
+UI5 CLI extracts dependency information from a project's code as outlined in the following sections.
 The APIs described there require the usage of "simple literals" when declaring dependencies.
 
 ### JSModule Analyzer
@@ -35,9 +35,9 @@ For example, top-level code is always executed. Flow-control statements in JavaS
 
 Any dependencies found that - according to these rules - are always executed, are collected as eager (or standard) dependencies. Dependencies that are found on a code path that depends on certain conditions are collected as conditional dependencies.
 
-The bundling implemented by UI5 Tooling can either follow only eager dependencies (`resolve`: `true`) or additionally conditional dependencies (`resolveConditional`). For more information, see [Custom Bundling](https://sap.github.io/ui5-tooling/v4/pages/Configuration/#custom-bundling).
+The bundling implemented by UI5 CLI can either follow only eager dependencies (`resolve`: `true`) or additionally conditional dependencies (`resolveConditional`). For more information, see [Custom Bundling](https://sap.github.io/ui5-tooling/v4/pages/Configuration/#custom-bundling).
 
-When a dependency in one of the mentioned APIs is not a "simple literal" but an expression, the corresponding module is marked as "having dynamic dependencies". This marker is currently not further evaluated by the tooling.
+When a dependency in one of the mentioned APIs is not a "simple literal" but an expression, the corresponding module is marked as "having dynamic dependencies". This marker is currently not further evaluated by UI5 CLI.
 
 ### Component Analyzer
 
@@ -80,11 +80,11 @@ Additionally, some special dependencies are handled:
 - embedded fragments or views
 
 In an XMLView/XMLFragment, usually three categories of element nodes exist: Controls, aggregations, and non-UI5 nodes (e.g. XHTML or SVG). The third category usually can be identified by its namespace. To distinguish between the first two categories, the analyzer checks whether a resource exists in the project or its dependencies whose name matches the qualified node name.
-For example, if the qualified node name is `sap.m.Text`, the analyzer checks whether `sap/m/Text.js` exists. If so, UI5 Tooling detects this node as a control, otherwise as an aggregation.
+For example, if the qualified node name is `sap.m.Text`, the analyzer checks whether `sap/m/Text.js` exists. If so, UI5 CLI detects this node as a control, otherwise as an aggregation.
 
 ### XML Composite Analyzer
 
-The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless, UI5 Tooling will attempt to analyze the declaration of any such controls in a project.
+The **XMLComposite** control is deprecated since version UI5 1.88. Nevertheless, UI5 CLI will attempt to analyze the declaration of any such controls in a project.
 
 The [XML Composite Analyzer](https://github.com/SAP/ui5-builder/blob/main/lib/lbt/analyzer/XMLCompositeAnalyzer.js) searches for the name of the configured fragment containing the **XMLComposite** control.
 
@@ -126,7 +126,7 @@ Note: Currently only the usage via the global `sap.ui.getCore().initLibrary` is 
 
 ## JSDoc
 
-The UI5 Tooling offers a JSDoc build, which is enhanced by UI5-specific JSDoc features.
+The UI5 CLI offers a JSDoc build, which is enhanced by UI5-specific JSDoc features.
 
 An UI5 SDK can be built locally. To get more insight into the local UI5 SDK build setup, have a look at our [Developer's Guide](https://github.com/SAP/openui5/blob/-/docs/developing.md#building-the-openui5-sdk-demo-kit).
 
@@ -135,11 +135,11 @@ Currently, the resources needed for a UI5 SDK build are stored in [openui5](http
 The following artefacts contribute to the JSDoc build:
 
 - [jsdocGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/jsdocGenerator.js):
-  Executes the actual JSDoc build. UI5 Tooling wrapper for `plugin.cjs`.
+  Executes the actual JSDoc build. UI5 CLI wrapper for `plugin.cjs`.
 - [sdkTransformer.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/sdkTransformer.js):
-  UI5 Tooling wrapper for `transformApiJson.cjs`.
+  UI5 CLI wrapper for `transformApiJson.cjs`.
 - [apiIndexGenerator.js](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/apiIndexGenerator.js):
-  UI5 Tooling wrapper for `createIndexFiles.cjs`.
+  UI5 CLI wrapper for `createIndexFiles.cjs`.
 - [createIndexFiles.cjs](https://github.com/SAP/ui5-builder/blob/main/lib/processors/jsdoc/lib/createIndexFiles.cjs):
   Creates API index resources from all `api.json` resources and by interpreting the `sap-ui-version.json` available in the given test resources directory. The resulting index resources (e.g. `api-index.json`,  `api-index-deprecated.json`,
   `api-index-experimental.json` and `api-index-since.json`) are only to be used in a UI5 SDK.

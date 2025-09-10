@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report an issue with UI5 Tooling
+about: Report an issue with UI5 CLI
 title: ''
 type: Bug
 labels: needs triage

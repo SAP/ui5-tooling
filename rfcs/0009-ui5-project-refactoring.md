@@ -13,7 +13,7 @@
 # RFC 0009 UI5 Project Refactoring
 
 ## Summary
-Refactor the ui5-project module to resolve a series of issues with the way dependencies are currently detected and analyzed as well as to provide a "Project" class entity, which can provide useful API for UI5 Tooling internal processes as well as for custom tasks and -middleware.
+Refactor the ui5-project module to resolve a series of issues with the way dependencies are currently detected and analyzed as well as to provide a "Project" class entity, which can provide useful API for UI5 CLI internal processes as well as for custom tasks and -middleware.
 
 ## Motivation
 <!-- Why are we doing this? What use cases does it support? What is the expected outcome?
@@ -25,10 +25,10 @@ The following is a list of issues and requirements that the proposed refactoring
 
 ### Issues
 
-1. ["JavaScript heap out of memory" error when declaring the ui5 tooling as a "dependency"](https://github.com/SAP/ui5-tooling/issues/311)
+1. ["JavaScript heap out of memory" error when declaring the UI5 CLI as a "dependency"](https://github.com/SAP/ui5-tooling/issues/311)
     * Improve detecting relevant dependencies and/or building the dependency tree
 1. [Fix handling of circular dependencies between UI5 projects](https://github.com/SAP/ui5-tooling/issues/312)
-1. [UI5 Tooling modules might use different installations/instances of each other](https://github.com/SAP/ui5-tooling/issues/302)
+1. [UI5 CLI modules might use different installations/instances of each other](https://github.com/SAP/ui5-tooling/issues/302)
     * Affected modules:
         * addTask API of `taskRepository`
         * addMiddleware API of  `middlewareRepository`
@@ -44,7 +44,7 @@ The following is a list of issues and requirements that the proposed refactoring
 1. Analyze `devDependencies` listed in the package.json by default
     * Custom middleware is typically referenced as a `devDependency` and should be detected by default
 1. Make `ui5: {dependencies: [...]}` workaround in package.json obsolete
-    * Currently required in projects with lots of transitive dependencies or to force UI5 Tooling into analyzing a `devDependency`
+    * Currently required in projects with lots of transitive dependencies or to force UI5 CLI into analyzing a `devDependency`
 1. [Access package.json in custom task](https://github.com/SAP/ui5-tooling/issues/360)
     * Have a "Project" entity providing an API for such use cases
 1. Introduce easier maintainability of specification version updates
@@ -73,7 +73,7 @@ To resolve this, dependencies should be checked for relevance immediately. And o
 * Introduce a **`ProjectGraph`** entity which contains all projects and extensions required for any build or serve operation of a UI5 project
 * Introduce a **`projectGraphBuilder`** helper module which allows "**providers**" to easily generate a Project Graph for an environment (for example npm)
 
-* Introduce a private **`Module`** entity which can be instantiated with an identifier and a module path and then provides any available project and extensions (if any) for the given module. If none are be returned, the module is not relevant for UI5 Tooling
+* Introduce a private **`Module`** entity which can be instantiated with an identifier and a module path and then provides any available project and extensions (if any) for the given module. If none are be returned, the module is not relevant for UI5 CLI
 
 Since the `ProjectGraph` provides a place to store all extensions that may be referenced in the configuration of any of the projects, the current singleton-like task- and middleware "repositories" become obsolete for the purpose of storing extensions.
 
@@ -81,7 +81,7 @@ The `projectGraphBuilder` is called with an instance of one of the aforementione
 
 ### Proposed "Graph" Entities in Detail
 
-![UI5 Project: Graph Components](./resources/UI5_Tooling_Main/UI5_Project.svg)
+![UI5 Project: Graph Components](./resources/UI5_CLI_Main/UI5_Project.svg)
 
 #### ProjectGraph
 A rooted, directed graph representing a UI5 project, its dependencies and available extensions
@@ -367,17 +367,17 @@ async getSpecifications() {}
 
 ### Introduce "Specification" Entities
 
-It is proposed to introduce the umbrella term "Specification" to refer to any entity that has a configuration (specification) from which UI5 Tooling can derive a functionality.
+It is proposed to introduce the umbrella term "Specification" to refer to any entity that has a configuration (specification) from which UI5 CLI can derive a functionality.
 
 Currently, there are two kinds of specifications: projects and extensions. These are again subdivided into the different types. For example there are projects of type application, library, theme-library and module.
 
 By mapping this concept onto a class-based inheritance hierarchy, every project- and extension-type will have its own class, sharing common functionalities with the other specifications.
 
-This concept is similar to the already existing [Formatters](https://github.com/SAP/ui5-builder/blob/0fc364ded64eb5bae4085397dc1831e04b19edf4/lib/types/library/LibraryFormatter.js), which basically formatted the JSON representation of a project by modifying and adding attributes. However the proposed specification instances will have a much longer lifecycle. They are intended to represent a specification throughout an entire UI5 Tooling operation. They should be available to extensions, providing a public API to interact with project resources.
+This concept is similar to the already existing [Formatters](https://github.com/SAP/ui5-builder/blob/0fc364ded64eb5bae4085397dc1831e04b19edf4/lib/types/library/LibraryFormatter.js), which basically formatted the JSON representation of a project by modifying and adding attributes. However the proposed specification instances will have a much longer lifecycle. They are intended to represent a specification throughout an entire UI5 CLI operation. They should be available to extensions, providing a public API to interact with project resources.
 
 Specifications should provide an API for accessing its resources via ui5-fs readers. This should make the [`@ui5/fs.resourceFactory#createCollectionsForTree`](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_fs.resourceFactory.html#.createCollectionsForTree) API obsolete, leaving decisions like whether to include the projects namespace to the project itself.
 
-![UI5 Project: Specification Class Diagram](./resources/UI5_Tooling_Main/UI5_Project_Specifications.svg)
+![UI5 Project: Specification Class Diagram](./resources/UI5_CLI_Main/UI5_Project_Specifications.svg)
 
 The proposed resource access APIs for specifications are as follows:
 
@@ -428,12 +428,12 @@ getWorkspace() {}
 
 #### Specification Version Requirements
 
-Projects and extensions using specification versions before 2.0 can define arbitrary configuration in their ui5.yaml which might influence the behavior of the UI5 Tooling or is being relied on by extensions. Since the proposed changes to the handling of  configuration and projects in general would break these use cases, it might make sense to require a specification equal or later than 2.0. This would also make much of the validation currently taking place in the `Formatters` obsolete. Validation could be completely handed over to the schema validator.
+Projects and extensions using specification versions before 2.0 can define arbitrary configuration in their ui5.yaml which might influence the behavior of the UI5 CLI or is being relied on by extensions. Since the proposed changes to the handling of  configuration and projects in general would break these use cases, it might make sense to require a specification equal or later than 2.0. This would also make much of the validation currently taking place in the `Formatters` obsolete. Validation could be completely handed over to the schema validator.
 
 #### Breaking Changes
 It might be possible to convert the a project graph into the format of the current dependency tree. This would allow to implement parts of this concept behind a feature toggle and to make it available to the community for evaluation and early feedback.
 
-To implement all the requirements listed in the [Motivation](#motivation) chapter of this RFC, it is very likely that a UI5 Tooling 3.0 release is necessary due to incompatible changes.
+To implement all the requirements listed in the [Motivation](#motivation) chapter of this RFC, it is very likely that a UI5 CLI 3.0 release is necessary due to incompatible changes.
 
 **Any expected breaking changes shall be listed here:**  
 * A shim extension located in a project's dependencies can't influence other dependencies of that project anymore (to be confirmed, see `projectGraphFromTree` test case in the PoC)
@@ -450,14 +450,14 @@ A description on how to test it should be added to this document soon.
 
 What names and terminology work best for these concepts and why? How is this idea best presented?
 
-Would the acceptance of this proposal mean the UI5 Tooling or any of its sub-components documentation must be re-organized or altered?
+Would the acceptance of this proposal mean the UI5 CLI or any of its sub-components documentation must be re-organized or altered?
 
-How should this feature be introduced and taught to existing UI5 Tooling users? -->
+How should this feature be introduced and taught to existing UI5 CLI users? -->
 
 ## Drawbacks
 <!--You can either remove the following explanatory text or move it into this comment for later reference 
 
-Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
+Why should we not do this? Please consider the impact on teaching people to use the UI5 CLI, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
 
 There are trade-offs to choosing any path, please attempt to identify them here.-->
 

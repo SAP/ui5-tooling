@@ -5,14 +5,14 @@ However, you might have good reasons to also use the UI5 Builder during developm
 
 ## Project Dependencies
 
-UI5 Tooling differentiates between "framework dependencies" and "project dependencies".
+UI5 CLI differentiates between "framework dependencies" and "project dependencies".
 
-**Framework dependencies** are generally libraries and themes provided by the SAP frameworks "OpenUI5" and "SAPUI5". UI5 Tooling will take care of downloading them and handling their versions for you. Please see the corresponding documentation on both options:
+**Framework dependencies** are generally libraries and themes provided by the SAP frameworks "OpenUI5" and "SAPUI5". UI5 CLI will take care of downloading them and handling their versions for you. Please see the corresponding documentation on both options:
 
 * [Working with **OpenUI5** Framework Dependencies](./OpenUI5.md)
 * [Working with **SAPUI5** Framework Dependencies](./SAPUI5.md)
 
-**Project dependencies** are all other libraries, custom themes, UI5 Tooling extensions or JavaScript modules your project depends on. In general these dependencies are maintained in the package.json of your project. See also: [FAQ: Why package.json? / Why npm?](./FAQ.md#why-packagejson-why-npm).
+**Project dependencies** are all other libraries, custom themes, UI5 CLI extensions or JavaScript modules your project depends on. In general these dependencies are maintained in the package.json of your project. See also: [FAQ: Why package.json? / Why npm?](./FAQ.md#why-packagejson-why-npm).
 
 ## Linking Projects
 Would you like to work on an application project and one or more of its dependencies at the same time? We got you covered!
@@ -94,7 +94,7 @@ That's it. You can check whether the linking worked by executing `ui5 tree` in t
 
 As an alternative to defining your project dependencies in the `package.json`, you can define a static dependency hierarchy for the project in a YAML file. This is typically only advised in special cases where none of the other concepts work.
 
-To use such a file in UI5 CLI, provide a path to it using the [`--dependency-definition`](./CLI.md#common-options) parameter. Note that all `package.json` dependencies will be ignored (including UI5 Tooling extensions), but UI5 framework dependencies defined in `ui5.yaml` will still be used.
+To use such a file in UI5 CLI, provide a path to it using the [`--dependency-definition`](./CLI.md#common-options) parameter. Note that all `package.json` dependencies will be ignored (including UI5 CLI extensions), but UI5 framework dependencies defined in `ui5.yaml` will still be used.
 
 **Example: `projectDependencies.yaml`**
 
@@ -113,7 +113,7 @@ By placing this file in the root directory of the `my.app` application project, 
 The structure of the dependency definition file follows that of the [`@ui5/project/graph/providers/DependencyTree~TreeNode`](https://sap.github.io/ui5-tooling/stable/api/@ui5_project_graph_providers_DependencyTree.html#~TreeNode) type.
 
 ## HTTP/2 Development Webserver
-The UI5 Tooling contains a web server to serve the project via HTTP/2 protocol.
+The UI5 CLI contains a web server to serve the project via HTTP/2 protocol.
 
 ```sh
 ui5 serve --h2
@@ -122,6 +122,6 @@ ui5 serve --h2
 This requires an SSL certificate. You are guided through the automatic generation process. Also see the [UI5 Server documentation](./Server.md#ssl-certificates)
 
 ## Integration in Other Tools
-One of the key features of the UI5 Tooling is its modularization. Single parts of the tooling can easily be integrated in other `Node.js`-based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).
+One of the key features of the UI5 CLI is its modularization. Single parts of UI5 CLI can easily be integrated in other `Node.js`-based tools and frameworks like [Grunt](https://gruntjs.com/) or [Gulp](https://gulpjs.com/).
 
 All JavaScript APIs available for direct consumption are listed [here](https://sap.github.io/ui5-tooling/v4/api/index.html). However, for standard UI5 development, the [UI5 CLI](./CLI.md) should always be the first choice.
