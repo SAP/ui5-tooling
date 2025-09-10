@@ -14,7 +14,7 @@ Please follow our [Contribution Guidelines](https://github.com/SAP/ui5-tooling/b
 
 When using the UI5 CLI in versions lower than `v2.9.1` or the `@ui5/project` module in versions lower than `v2.2.6` you might experience build- or runtime issues caused by missing or corrupt files in one or more UI5 framework dependencies. Note that this does not affect other project dependencies, such as reuse libraries, which are installed via external package managers like npm or Yarn.
 
-These issues can be the result of an aborted install during a preceding UI5 Tooling execution. Because of [a bug](https://github.com/SAP/ui5-tooling/issues/478) that has since been fixed, UI5 Tooling assumes that the preceding install was successful and uses the potentially corrupted dependency.
+These issues can be the result of an aborted install during a preceding UI5 CLI execution. Because of [a bug](https://github.com/SAP/ui5-tooling/issues/478) that has since been fixed, UI5 CLI assumes that the preceding install was successful and uses the potentially corrupted dependency.
 
 #### Resolution
 
@@ -24,7 +24,7 @@ Remove the `.ui5/framework/` directory from your user's home directory.
 rm -rf ~/.ui5/framework/
 ```
 
-Any missing framework dependencies will be downloaded again during the next UI5 Tooling invocation.
+Any missing framework dependencies will be downloaded again during the next UI5 CLI invocation.
 
 ### `~/.ui5` Taking too Much Disk Space
 
@@ -38,11 +38,11 @@ Remove the `.ui5/framework/` directory from your user's home directory:
 rm -rf ~/.ui5/framework/
 ```
 
-Any missing framework dependencies will be downloaded again during the next UI5 Tooling invocation.
+Any missing framework dependencies will be downloaded again during the next UI5 CLI invocation.
 
-## Benchmarking UI5 Tooling
+## Benchmarking UI5 CLI
 
-For benchmarking UI5 Tooling we typically make use of the open source tool [hyperfine](https://github.com/sharkdp/hyperfine).
+For benchmarking UI5 CLI we typically make use of the open source tool [hyperfine](https://github.com/sharkdp/hyperfine).
 
 In general we only benchmark calls to the UI5 CLI. However, we might add scripted benchmarks for some components in the future.
 
@@ -51,10 +51,10 @@ The following is a walk-through on how to evaluate the performance impact of an 
 ### Setup
 
 1. Install [hyperfine](https://github.com/sharkdp/hyperfine#installation)
-1. Prepare the UI5 Tooling projects you want to measure *(optional if your development environment already reflects this)*:
+1. Prepare the UI5 CLI projects you want to measure *(optional if your development environment already reflects this)*:
     1. Start in an empty directory
         ```sh
-        mkdir ui5-tooling-benchmark && cd ui5-tooling-benchmark/
+        mkdir ui5-cli-benchmark && cd ui5-cli-benchmark/
         ```
     1. Clone [UI5 CLI](https://github.com/SAP/ui5-cli)
         ```sh
@@ -87,7 +87,7 @@ The following is a walk-through on how to evaluate the performance impact of an 
 
         For example:
         ```
-        2.6.6 (from /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js)
+        2.6.6 (from /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js)
         ```
 
 1. Prepare your test project (we choose the [openui5-sample-app](https://github.com/SAP/openui5-sample-app))
@@ -106,11 +106,11 @@ The following is a walk-through on how to evaluate the performance impact of an 
         Note: We won't link UI5 CLI into this project. Instead, we'll call it directly.
     1. Verify that the previously installed UI5 CLI can be called with the following command:
         ```sh
-        UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js --version
+        UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js --version
         ```
         On Windows:
         ```sh
-        set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js --version
+        set UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js --version
         ```
         *(Replace the path to ui5.js with the one shown in the previous `ui5 --version` output)*
 
@@ -126,20 +126,20 @@ The following is a walk-through on how to evaluate the performance impact of an 
     1. In the project, start your first benchmark
         ```sh
         hyperfine --warmup 1 \
-        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build' \
         --export-markdown ./baseline.md
         ```
         On Windows:
         ```sh
         hyperfine --warmup 1 \
-        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build' \
         --export-markdown ./baseline.md
         ```
     1. Your baseline benchmark is now stored in `baseline.md` and should look similar to this:
 
         | Command | Mean [s] | Min [s] | Max [s] | Relative |
         |:---|---:|---:|---:|---:|
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 | 1.00 |
+        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 | 1.00 |
 
 1. Prepare your change
     1. Switch to the branch that contains your change
@@ -150,19 +150,19 @@ The following is a walk-through on how to evaluate the performance impact of an 
         ```sh
         (cd ../ui5-builder && npm install)
         ```
-    1. The link from UI5 CLI is still in place. However, if you have changes in **multiple** UI5 Tooling modules, you might need to `npm link` those again
+    1. The link from UI5 CLI is still in place. However, if you have changes in **multiple** UI5 CLI modules, you might need to `npm link` those again
 
 1. Perform the change measurement
     1. In the project, start your second benchmark
         ```sh
         hyperfine --warmup 1 \
-        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build' \
         --export-markdown ./my_change.md
         ```
         On Windows:
         ```sh
         hyperfine --warmup 1 \
-        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build' \
+        'set UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build' \
         --export-markdown ./my_change.md
         ```
     1. Your change's benchmark is now stored in `my_change.md`
@@ -175,15 +175,15 @@ The following is a walk-through on how to evaluate the performance impact of an 
         ```md
         | Command | Mean [s] | Min [s] | Max [s] |
         |:---|---:|---:|---:|
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 |
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.584 ± 0.074 | 1.477 | 1.680 |
+        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 |
+        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build` | 1.584 ± 0.074 | 1.477 | 1.680 |
         ```
         Rendering like this:
 
         | Command | Mean [s] | Min [s] | Max [s] |
         |:---|---:|---:|---:|
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 |
-        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-tooling-benchmark/ui5-cli/bin/ui5.js build` | 1.584 ± 0.074 | 1.477 | 1.680 |
+        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build` | 1.439 ± 0.036 | 1.400 | 1.507 |
+        | `UI5_CLI_NO_LOCAL=X node /my/home/ui5-cli-benchmark/ui5-cli/bin/ui5.js build` | 1.584 ± 0.074 | 1.477 | 1.680 |
 
 1. You can now share these results on GitHub or wherever you might need them.
 

@@ -26,7 +26,7 @@ This solution should not be used to store AST or dependency information of a res
 
 ## Detailed design
 
-<!-- This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the UI5 Tooling to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here. -->
+<!-- This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the UI5 CLI to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here. -->
 
 Introduce a new class "ResourceTagCollection" in ui5-fs which allows setting, clearing and getting of tag values for a resource. An instance of this class should be created and exposed in the [ProjectBuildContext](https://github.com/SAP/ui5-builder/blob/4e75d4dc7a1d74a0fa21bb45928f07eec25dd353/lib/builder/BuildContext.js#L42). With that the lifecycle of the tags is limited to that of a single project build.  
 In the future, some tags might be shared across all projects (via [BuildContext](https://github.com/SAP/ui5-builder/blob/4e75d4dc7a1d74a0fa21bb45928f07eec25dd353/lib/builder/BuildContext.js#L7)). Currently we are not aware of any use case for this.
@@ -35,7 +35,7 @@ Tags are stored with a given resource's virtual path as key. This makes changes 
 
 Tasks can set and get tags via a new "TaskUtil" class which provides a specVersion dependent interface per (custom-) task. Its API basically wraps that of the ResourceTagCollection instance of the ProjectBuildContext.
 
-![UI5 Tooling Resource Tagging Classes](./resources/UI5_Tooling_Resource_Tagging_Classes.png)
+![UI5 CLI Resource Tagging Classes](./resources/UI5_CLI_Resource_Tagging_Classes.png)
 
 ### Tags
 **Standard tags shall be provided as a constant on the ProjectBuildContext/TaskUtil:**
@@ -47,9 +47,9 @@ buildContext.STANDARD_TAGS = {
 
 JSDoc for this constant shall document that the OmitFromBuildResult tag must be set to `true`.
 
-Tags shall follow a naming convention `<namespace>:<TagName>`. Namespaces `sap`, `ui5`, `core`, `sapui5`, `openui5` shall be reserved for standard tags provided by the UI5 Tooling. No other tags are allowed to use these namespaces. The namespace must be alphanumeric, all lowercase and start with a letter (no number). The tag name must be alphanumeric, camel case and start with a capital letter (no number).
+Tags shall follow a naming convention `<namespace>:<TagName>`. Namespaces `sap`, `ui5`, `core`, `sapui5`, `openui5` shall be reserved for standard tags provided by the UI5 CLI. No other tags are allowed to use these namespaces. The namespace must be alphanumeric, all lowercase and start with a letter (no number). The tag name must be alphanumeric, camel case and start with a capital letter (no number).
 
-Initially, tagging shall be restricted to the use of the standard tags defined by the UI5 Tooling.  
+Initially, tagging shall be restricted to the use of the standard tags defined by the UI5 CLI.  
 In the future, custom tasks shall be enabled to use self-defined tags for the purpose of communicating per-resource information between tasks. These tags must follow the naming conventions and restrictions outlined above.
 
 ### New APIs in Detail
@@ -100,12 +100,12 @@ There are no configuration changes in the ui5.yaml / schema.
 <!--
 What names and terminology work best for these concepts and why? How is this idea best presented?
 
-Would the acceptance of this proposal mean the UI5 Tooling or any of its subcomponents documentation must be re-organized or altered?
+Would the acceptance of this proposal mean the UI5 CLI or any of its subcomponents documentation must be re-organized or altered?
 
-How should this feature be introduced and taught to existing UI5 Tooling users?
+How should this feature be introduced and taught to existing UI5 CLI users?
 -->
 
-Updated UI5 Tooling documentation:
+Updated UI5 CLI documentation:
 
 * JSDoc for TaskUtil class
 * Update the custom task example to include the taskUtil parameter, however state that this is just some optional API that can be used if there is a need to (see [Drawbacks](#drawbacks)).
@@ -113,7 +113,7 @@ Updated UI5 Tooling documentation:
 ## Drawbacks
 
 <!--
-Why should we not do this? Please consider the impact on teaching people to use the UI5 Tooling, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
+Why should we not do this? Please consider the impact on teaching people to use the UI5 CLI, on the integration of this feature with existing and planned features, on the impact of churn on existing users.
 
 There are tradeoffs to choosing any path, please attempt to identify them here.
 -->
@@ -122,7 +122,7 @@ This enhancement is an opt-in for tasks to make use of that new API / functional
 However it increases the complexity of the custom task API by adding a new entity that needs to be described and understood.
 To ensure that tasks can be executed independently from the UI5 build (i.e. direct function call), the new `taskUtil` parameter must be optional. This might make the task implementation more complex.
 
-It does not have an impact for most of the UI5 Tooling users, so there are no major drawbacks expected.
+It does not have an impact for most of the UI5 CLI users, so there are no major drawbacks expected.
 
 Dependencies can be tagged, but might have already been processed. Therefore, depending on the tag, the desired effect might not occur.
 

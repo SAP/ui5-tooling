@@ -142,7 +142,7 @@ In case of errors the promise should reject with an [Error object](https://devel
 
 
 !!! warning
-    Depending on your project setup, UI5 Tooling tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
+    Depending on your project setup, UI5 CLI tends to open many files simultaneously during a build. To prevent errors like `EMFILE: too many open files`, we urge custom task implementations to use the [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) module as a drop-in replacement for the native `fs` module.
 
 ### Example: lib/tasks/generateMarkdownFiles.js
 
@@ -196,4 +196,4 @@ Custom tasks defining [Specification Version](../Configuration.md#specification-
 
 In this case, a `taskUtil` object is provided as a part of the custom task's [parameters](#task-implementation). Depending on the specification version of the custom task, a set of helper functions is available to the implementation. The lowest required specification version for every function is listed in the [TaskUtil API reference](https://sap.github.io/ui5-tooling/v2/api/module-@ui5_builder.tasks.TaskUtil.html).
 
-Also see UI5 Tooling [RFC 0008 Resource Tagging During Build](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0008-resource-tagging-during-build.md) for details on resource tagging.
+Also see UI5 CLI [RFC 0008 Resource Tagging During Build](https://github.com/SAP/ui5-tooling/blob/master/rfcs/0008-resource-tagging-during-build.md) for details on resource tagging.
