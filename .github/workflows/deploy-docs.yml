@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - v3
+
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     name: Build and Deploy
