@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "title": "ui5.yaml",
-  "description": "Schema for UI5 Tooling Configuration File (ui5.yaml)",
-  "$comment": "See https://sap.github.io/ui5-tooling/",
+  "description": "Schema for UI5 CLI Configuration File (ui5.yaml)",
+  "$comment": "See https://ui5.github.io/cli/",
   "type": "object",
   "required": [
     "specVersion"
@@ -25,7 +25,7 @@
         "1.0",
         "0.1"
       ],
-      "errorMessage": "Unsupported \"specVersion\"\nYour UI5 CLI installation might be outdated.\nSupported specification versions: \"4.0\", \"3.2\", \"3.1\", \"3.0\", \"2.6\", \"2.5\", \"2.4\", \"2.3\", \"2.2\", \"2.1\", \"2.0\", \"1.1\", \"1.0\", \"0.1\"\nFor details, see: https://sap.github.io/ui5-tooling/pages/Configuration/#specification-versions"
+      "errorMessage": "Unsupported \"specVersion\"\nYour UI5 CLI installation might be outdated.\nSupported specification versions: \"4.0\", \"3.2\", \"3.1\", \"3.0\", \"2.6\", \"2.5\", \"2.4\", \"2.3\", \"2.2\", \"2.1\", \"2.0\", \"1.1\", \"1.0\", \"0.1\"\nFor details, see: https://ui5.github.io/cli/pages/Configuration/#specification-versions"
     }
   },
   "if": {
@@ -2180,7 +2180,7 @@
               "pattern": "^(?:@[0-9a-z-_.]+\\/)?[a-z][0-9a-z-_.]*$",
               "title": "Project Name",
               "description": "Unique identifier for the project, for example: organization.product.project",
-              "errorMessage": "Not a valid project name. It must consist of lowercase alphanumeric characters, dash, underscore, and period only. Additionally, it may contain an npm-style package scope. For details, see: https://sap.github.io/ui5-tooling/stable/pages/Configuration/#name"
+              "errorMessage": "Not a valid project name. It must consist of lowercase alphanumeric characters, dash, underscore, and period only. Additionally, it may contain an npm-style package scope. For details, see: https://ui5.github.io/cli/stable/pages/Configuration/#name"
             },
             "copyright": {
               "type": "string"
@@ -2206,7 +2206,7 @@
           ],
           "default": "UTF-8",
           "title": "Encoding of *.properties files",
-          "description": "By default, the UI5 Tooling expects *.properties files to be UTF-8 encoded."
+          "description": "By default, the UI5 CLI expects *.properties files to be UTF-8 encoded."
         },
         "builder-resources": {
           "type": "object",
@@ -3595,7 +3595,7 @@
                 "pattern": "^(?:@[0-9a-z-_.]+\\/)?[a-z][0-9a-z-_.]*$",
                 "title": "Extension Name",
                 "description": "Unique identifier for the extension, for example: ui5-task-fearless-rock",
-                "errorMessage": "Not a valid extension name. It must consist of lowercase alphanumeric characters, dash, underscore, and period only. Additionally, it may contain an npm-style package scope. For details, see: https://sap.github.io/ui5-tooling/stable/pages/Configuration/#name"
+                "errorMessage": "Not a valid extension name. It must consist of lowercase alphanumeric characters, dash, underscore, and period only. Additionally, it may contain an npm-style package scope. For details, see: https://ui5.github.io/cli/stable/pages/Configuration/#name"
               },
               "copyright": {
                 "type": "string"
