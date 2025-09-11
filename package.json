@@ -44,12 +44,12 @@
 		"@ui5/builder": "^4.0.10",
 		"@ui5/cli": "^4.0.24",
 		"@ui5/fs": "^4.0.1",
-		"@ui5/logger": "^4.0.1",
+		"@ui5/logger": "^4.0.2",
 		"@ui5/project": "^4.0.4",
 		"@ui5/server": "^4.0.6"
 	},
 	"devDependencies": {
-		"@apidevtools/json-schema-ref-parser": "^14.2.0",
+		"@apidevtools/json-schema-ref-parser": "^14.2.1",
 		"@eslint/js": "^9.8.0",
 		"depcheck": "^1.4.7",
 		"docdash": "^2.0.2",
